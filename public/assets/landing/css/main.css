@@ -1,0 +1,1520 @@
+body {
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  max-width: 90vw;
+}
+
+.navbar-div {
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+/* **************************** media query*************************************** */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  /* top content */
+  .top-content div h3 {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+  }
+  .top-content div span {
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .top-content div h4 {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 38px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .top-content {
+    margin-top: 30px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .download-buttons {
+    justify-content: center;
+  }
+  .play-store img,
+  .apple-store img {
+    width: 100%;
+    height: auto;
+    max-width: 107px;
+    max-height: 40px;
+    border-radius: 5px;
+  }
+  .web-browse {
+    width: 100%;
+    height: auto;
+    max-width: 107px;
+    max-height: 40px;
+    border-radius: 3px;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 1.3rem;
+    background-color: #ef7822;
+    padding: 5px 5px 5px 5px;
+  }
+  .web-browse > div {
+    color: white;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 5px 5px 5px;
+  }
+  .web-browse > div > i {
+    display: none;
+  }
+
+  .top-image {
+    margin-top: 31.32px;
+    padding: 10px 0 10px 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    max-width: auto;
+    max-height: auto;
+  }
+  .top-image > img {
+    max-width: 215.72px;
+    max-height: 273.84px;
+  }
+
+  /* featured */
+  .featured-section__image img {
+    width: 100%;
+    height: auto;
+    max-width: 136.92px;
+    max-height: 273.84px;
+  }
+  .featured-title-m {
+    display: visible;
+  }
+  .featured-section__content span {
+    visibility: hidden;
+  }
+  .featured-section__content {
+    padding: 0;
+  }
+  .about-us {
+    margin-top: 51px;
+  }
+  .featured-section__content h2 {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0.20000000298023224px;
+  }
+
+  .featured-section__content p {
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+
+    color: #4b5d68;
+    text-justify: inter-word;
+  }
+  .featured-section__content div a {
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+
+    columns: #ffffff;
+    text-align: center;
+  }
+
+  /* why choose us */
+  .why-choose-us {
+    margin-top: 34.5px;
+  }
+  .choosing-section__title h2 {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+
+    color: #252b42;
+  }
+  .choosing-section__title span {
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+
+    color: #4b5d68;
+  }
+
+  /* trusted customer */
+  .trusted-customers {
+    margin-top: 46px;
+  }
+  .trusted_customers__title span {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: center;
+
+    color: #272d4e;
+  }
+
+  /* footer */
+  .hr-footer-m {
+    display: visible;
+  }
+  .footer-article-div {
+    margin-top: 0;
+  }
+  .footer-article {
+    font-family: Montserrat;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: -0.01em;
+    text-align: center;
+
+    color: #ffffff;
+  }
+  .footer-div {
+    margin-top: 10px;
+  }
+  .footer-title {
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+
+  .footer-item {
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+  .company_details {
+    margin-top: 2rem;
+  }
+  .footer-items {
+    margin-top: 0;
+  }
+  .list-unstyled {
+    margin-top: 49px;
+  }
+
+  .list-unstyled li {
+    margin-top: 10px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .navbar-div {
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+  }
+
+  /* top content */
+  .top-content div h3 {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+  }
+  .top-content div span {
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .top-content div h4 {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 38px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .top-content {
+    margin-top: 30px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .download-buttons {
+    justify-content: center;
+  }
+  .play-store img,
+  .apple-store img {
+    width: 100%;
+    height: auto;
+    max-width: 107px;
+    max-height: 40px;
+    border-radius: 5px;
+  }
+  .web-browse {
+    width: 100%;
+    height: auto;
+    max-width: 107px;
+    max-height: 40px;
+    border-radius: 3px;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 1.3rem;
+    background-color: #ef7822;
+    padding: 5px 5px 5px 5px;
+  }
+  .web-browse > div {
+    color: white;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 5px 5px 5px;
+  }
+  .web-browse > div > i {
+    display: none;
+  }
+
+  .top-image {
+    margin-top: 31.32px;
+    padding: 10px 0 10px 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    max-width: auto;
+    max-height: auto;
+  }
+  .top-image > img {
+    max-width: 215.72px;
+    max-height: 273.84px;
+  }
+
+  /* featured */
+  .featured-section__image img {
+    width: 100%;
+    height: auto;
+    max-width: 136.92px;
+    max-height: 273.84px;
+  }
+  .featured-title-m {
+    display: visible;
+  }
+  .featured-title-m {
+    display: visible;
+  }
+  .featured-section__content span {
+    visibility: hidden;
+  }
+  .featured-section__content {
+    padding: 0;
+  }
+  .about-us {
+    margin-top: 51px;
+  }
+  .featured-section__content h2 {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0.20000000298023224px;
+  }
+
+  .featured-section__content p {
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+
+    color: #4b5d68;
+
+    /* text-align: justify; */
+    text-justify: inter-word;
+  }
+  .featured-section__content div a {
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+
+    columns: #ffffff;
+  }
+
+  /* why choose us */
+  .why-choose-us {
+    margin-top: 34.5px;
+  }
+  .choosing-section__title h2 {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+
+    color: #252b42;
+  }
+  .choosing-section__title span {
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: center;
+
+    color: #4b5d68;
+  }
+
+  /* trusted customer */
+  .trusted-customers {
+    margin-top: 46px;
+  }
+  .trusted_customers__title span {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: center;
+
+    color: #272d4e;
+  }
+
+  /* footer */
+  .hr-footer-m {
+    display: visible;
+  }
+  .footer-article-div {
+    margin-top: 0;
+  }
+  .footer-article {
+    font-family: Montserrat;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: -0.01em;
+    text-align: center;
+
+    color: #ffffff;
+  }
+  .footer-div {
+    margin-top: 10px;
+  }
+  .footer-title {
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+
+  .footer-item {
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+  .company_details {
+    margin-top: 2rem;
+  }
+  .footer-items {
+    margin-top: 0;
+  }
+  .list-unstyled {
+    margin-top: 49px;
+  }
+
+  .list-unstyled li {
+    margin-top: 10px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .navbar-div {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* top content */
+  .top-content div h3 {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+  }
+  .top-content div span {
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .top-content div h4 {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 38px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .top-content div span {
+    font-family: Poppins, sans-serif;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .top-content div h4 {
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 38px;
+    letter-spacing: 0.20000000298023224px;
+    color: #989898;
+
+    margin-top: 1.2rem;
+    margin-bottom: 2.2rem;
+  }
+  .top-content {
+    margin-top: 30px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .download-buttons {
+    justify-content: initial;
+  }
+  .play-store img,
+  .apple-store img {
+    width: 100%;
+    height: auto;
+    max-width: 107px;
+    max-height: 40px;
+    border-radius: 5px;
+  }
+  .web-browse {
+    width: 100%;
+    height: auto;
+    max-width: 107px;
+    max-height: 40px;
+    border-radius: 3px;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 1.3rem;
+    background-color: #ef7822;
+    padding: 5px 5px 5px 5px;
+  }
+  .web-browse > div {
+    color: white;
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 5px 5px 5px;
+  }
+  .web-browse > div > i {
+    display: none;
+  }
+
+  .top-image {
+    margin-top: 31.32px;
+    padding: 10px 0 10px 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    max-width: auto;
+    max-height: auto;
+  }
+  .top-image > img {
+    max-width: 737.29px;
+    max-height: 808.02px;
+  }
+
+  /* featured */
+  .featured-section__image img {
+    width: 100%;
+    height: auto;
+    max-width: 393.71px;
+    max-height: 787.42px;
+  }
+  .featured-title-m {
+    display: none;
+  }
+  .featured-section__content span {
+    visibility: visible;
+  }
+  .featured-section__content {
+    padding: 7rem 0 0 0;
+  }
+  .about-us {
+    margin-top: 51px;
+  }
+  .featured-section__content h2 {
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.20000000298023224px;
+  }
+
+  .featured-section__content p {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    color: #4b5d68;
+
+    /* text-align: justify; */
+    text-justify: inter-word;
+  }
+  .featured-section__content div a {
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+
+    columns: #ffffff;
+  }
+
+  /* why choose us */
+  .why-choose-us {
+    margin-top: 12.5rem;
+  }
+  .choosing-section__title h2 {
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.20000000298023224px;
+
+    color: #252b42;
+  }
+  .choosing-section__title span {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #4b5d68;
+  }
+
+  /* trusted customer */
+  .trusted-customers {
+    margin-top: 12.5rem;
+  }
+  .trusted_customers__title span {
+    font-family: Poppins;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 70px;
+    letter-spacing: 0em;
+    text-align: center;
+
+    color: #272d4e;
+  }
+
+  /* footer */
+  .hr-footer-m {
+    display: none;
+  }
+  .footer-article-div {
+    margin-top: 1.83rem;
+  }
+  .footer-article {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: -0.01em;
+
+    text-align: left;
+  }
+  .footer-div {
+    margin-top: 12.5rem;
+  }
+  .footer-title {
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .footer-item {
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .company_details {
+
+  }
+  .footer-items {
+    margin-top: 2.3rem;
+  }
+  .list-unstyled {
+    margin-top: 49px;
+  }
+
+  .list-unstyled li {
+
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  /* top content*/
+  .top-content > div {
+  }
+  .top-content div h3 {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+  }
+  .top-content div span {
+    font-family: Poppins;
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .top-content div h4 {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 38px;
+    letter-spacing: 0.20000000298023224px;
+    color: #989898;
+
+    margin-top: 1.2rem;
+    margin-bottom: 2.2rem;
+  }
+  .top-content {
+    margin-top: 13.25rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .download-buttons {
+    justify-content: initial;
+  }
+  .play-store img,
+  .apple-store img {
+    width: 100%;
+    height: auto;
+    max-width: 11rem;
+    max-height: 2.9rem;
+    border-radius: 5px;
+  }
+  .web-browse {
+    width: 100%;
+    height: auto;
+    max-width: 11rem;
+    max-height: 2.9rem;
+    border-radius: 3px;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 1.3rem;
+    background-color: #ef7822;
+    padding: 5px 5px 5px 5px;
+  }
+
+  .web-browse > div {
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 5px 5px 5px;
+  }
+
+  .top-image {
+    margin-top: 63px;
+    padding: 10px 0 10px 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    max-width: auto;
+    max-height: auto;
+  }
+  .top-image > img {
+    max-width: 737.29px;
+    max-height: 808.02px;
+  }
+
+  /* featured */
+  .featured-section__image img {
+    width: 100%;
+    height: auto;
+    max-width: 393.71px;
+    max-height: 787.42px;
+  }
+  .featured-title-m {
+    display: none;
+  }
+  .featured-section__content span {
+    visibility: visible;
+  }
+  .featured-section__content {
+    padding: 7rem 0 0 0;
+  }
+  .about-us {
+    margin-top: 200px;
+  }
+  .featured-section__content h2 {
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.20000000298023224px;
+  }
+
+  .featured-section__content p {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    color: #4b5d68;
+
+    /* text-align: justify; */
+    text-justify: inter-word;
+  }
+  .featured-section__content div a {
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+
+    columns: #ffffff;
+  }
+
+  /* why choose us */
+  .why-choose-us {
+    margin-top: 12.5rem;
+  }
+  .choosing-section__title h2 {
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.20000000298023224px;
+
+    color: #252b42;
+  }
+  .choosing-section__title span {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #4b5d68;
+  }
+
+  /* trusted customer */
+  .trusted-customers {
+    margin-top: 12.5rem;
+  }
+  .trusted_customers__title span {
+    font-family: Poppins;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 70px;
+    letter-spacing: 0em;
+    text-align: center;
+
+    color: #272d4e;
+  }
+
+  /* footer */
+  .hr-footer-m {
+    display: none;
+  }
+  .footer-article-div {
+    margin-top: 1.83rem;
+  }
+  .footer-article {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: -0.01em;
+
+    text-align: left;
+  }
+  .footer-div {
+    margin-top: 12.5rem;
+  }
+  .footer-title {
+    font-family: Poppins, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .footer-item {
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .company_details {
+
+  }
+  .footer-items {
+
+  }
+  .list-unstyled {
+    margin-top: 49px;
+  }
+
+  .list-unstyled li {
+
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  /* top content */
+  .top-content {
+  }
+  .top-content div h3 {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+  }
+  .top-content div span {
+    font-family: Poppins;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .top-content div h4 {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 38px;
+    letter-spacing: 0.20000000298023224px;
+    color: #989898;
+
+    margin-top: 1.2rem;
+    margin-bottom: 2.2rem;
+  }
+  .top-content {
+    margin-top: 13.25rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .download-buttons {
+    justify-content: initial;
+  }
+  .play-store img,
+  .apple-store img {
+    width: 100%;
+    height: auto;
+    max-width: 11rem;
+    /* max-height: 60px; */
+    max-height: 2.9rem;
+    /* padding-right: 1.3rem; */
+    border-radius: 5px;
+  }
+  .web-browse {
+    width: 100%;
+    height: auto;
+    max-width: 11rem;
+    max-height: 2.9rem;
+    border-radius: 3px;
+    text-align: center;
+    vertical-align: middle;
+    padding-right: 1.3rem;
+    background-color: #ef7822;
+    padding: 5px 5px 5px 5px;
+  }
+
+  .web-browse > div {
+    color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 5px 5px 5px;
+  }
+
+  .top-image {
+    margin-top: 63px;
+    padding: 10px 0 10px 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    max-width: auto;
+    max-height: auto;
+  }
+  .top-image > img {
+    max-width: 737.29px;
+    max-height: 808.02px;
+  }
+
+  /* featured */
+  .featured-section__image img {
+    margin-left: 4rem;
+  }
+  .featured-section__image img {
+    width: 100%;
+    height: auto;
+    /* max-width: 379.09px;
+    max-height: 778.28; */
+    max-width: 393.71px;
+    max-height: 787.42px;
+  }
+  .featured-title-m {
+    display: none;
+  }
+  .featured-section__content span {
+    display: visible;
+  }
+  .featured-section__content {
+    padding: 7rem 0 0 0;
+  }
+  .about-us {
+    margin-top: 200px;
+  }
+  .featured-section__content h2 {
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.20000000298023224px;
+  }
+  .featured-section__content p {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    color: #4b5d68;
+
+    /* text-align: justify; */
+    text-justify: inter-word;
+  }
+  .featured-section__content div a {
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0.10000000149011612px;
+
+    columns: #ffffff;
+  }
+
+  /* why choose us */
+  .why-choose-us {
+    margin-top: 12.5rem;
+  }
+  .choosing-section__title h2 {
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 57px;
+    letter-spacing: 0.20000000298023224px;
+
+    color: #252b42;
+  }
+  .choosing-section__title span {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 40px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #4b5d68;
+  }
+
+  /* trusted customer */
+  .trusted-customers {
+    margin-top: 12.5rem;
+  }
+  .trusted_customers__title span {
+    font-family: Poppins;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 70px;
+    letter-spacing: 0em;
+    text-align: center;
+
+    color: #272d4e;
+  }
+
+  /* footer */
+  .hr-footer-m {
+    display: none;
+  }
+  .footer-article-div {
+    margin-top: 1.83rem;
+  }
+  .footer-article {
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+  .footer-div {
+    margin-top: 12.5rem;
+  }
+  .footer-title {
+    font-family: Poppins, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .footer-item {
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .company_details {
+
+  }
+  .footer-items {
+
+  }
+  .list-unstyled {
+    margin-top: 30px;
+  }
+
+  .list-unstyled li {
+
+  }
+}
+/* **************************** media query*************************************** */
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* nav section */
+.navbar-font-selected {
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  color: white;
+}
+
+.navbar-font {
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  color: white;
+}
+
+/* top section */
+.top-image img {
+  width: 100%;
+  height: auto;
+  padding-right: 0;
+}
+.download-buttons {
+  width: 100%;
+  display: flex;
+  flex-flow: wrap row;
+}
+
+.play-store,
+.apple-store,
+.web-browse {
+  cursor: pointer;
+  display: inline !important;
+  margin: 0.42rem;
+}
+
+.play-store {
+  margin-left: 0;
+}
+.play-store,
+.apple-store {
+}
+
+/* featured section */
+.featured-section__image {
+  margin-top: 1em;
+  width: 393.71px;
+  height: auto;
+}
+.featured-section__content span {
+  /* for laptops/desktops */
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: left;
+
+  color: #ff7714;
+}
+.featured-title-m {
+  text-align: center;
+}
+.featured-title-m span {
+  /* for mobile */
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0.10000000149011612px;
+  text-align: left;
+
+  color: #ff7714;
+}
+
+/* choosing section */
+.choosing-section {
+}
+.choosing-section__title {
+  width: 100%;
+  text-align: center;
+}
+.choosing-section__title h2,
+.choosing-section__title span,
+.choosing-section__title hr {
+  text-align: center;
+}
+.choosing-section__content {
+  width: 100%;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-evenly;
+}
+.choosing-section__content > div {
+  height: 312px !important;
+  width: 312px !important;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+  margin: 1rem;
+  box-shadow: 4px 4px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px !important;
+}
+
+.choosing-section__image-card {
+}
+
+.choosing-section__image-card img {
+  width: 100%;
+  height: auto;
+  max-width: 110px;
+  max-height: 110px;
+  margin: 60px 101px 42px 101px;
+}
+
+.choosing-section__content > div p {
+  width: 100%;
+  height: auto;
+
+  font-family: Montserrat;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 35px;
+  letter-spacing: 0.20000000298023224px;
+  text-align: center;
+}
+/* trusted customer */
+.trusted_customers__title {
+  width: 100%;
+  text-align: center;
+}
+.trusted-customer {
+  font-family: Poppins, sans-serif;
+  font-size: 55px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 70px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #272d4e;
+}
+/* footer */
+
+/**************** Sections End **********************/
+
+.customed-hr-1 {
+  border-top: 0.25rem solid #ef7822;
+  width: 70px;
+  border-radius: 10px;
+}
+
+.text-color-primary {
+  color: #ef7822;
+}
+
+.btn-color-primary {
+  background-color: #ef7822;
+  color: black;
+}
+
+.bg-color-primary {
+  background-color: #ef7822;
+  color: black;
+}
+
+p {
+  text-justify: inter-word;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.bg-color-div {
+  /* background-color: white; */
+  border-color: 100%;
+  bottom: 90%;
+}
+
+.footer-background {
+  background-color: #333e4f;
+}
+
+.hr-footer-m {
+  border: 1px solid #292d53;
+  width: 100%;
+}
+/**************************** Testimonial Start **************************************/
+.testimonial {
+  padding: 20px;
+  margin: 20px 10px;
+}
+.testimonial .pic {
+  width: 122px;
+  height: 122px;
+  float: left;
+  margin-right: 50px;
+  position: relative;
+}
+.testimonial .pic:before,
+.testimonial .pic:after {
+  content: "";
+  display: block;
+  height: 50%;
+  width: 50%;
+  position: absolute;
+}
+.testimonial .pic:before {
+  bottom: -10%;
+  left: -10%;
+  border-bottom: 3px solid #e16b47;
+  border-left: 3px solid #e16b47;
+}
+.testimonial .pic:after {
+  top: -10%;
+  right: -10%;
+  border-top: 3px solid #e16b47;
+  border-right: 3px solid #e16b47;
+}
+.testimonial .pic img {
+  width: 100%;
+  height: auto;
+}
+.testimonial .testimonial-content {
+  display: table;
+  position: relative;
+}
+.testimonial .testimonial-content:before {
+  content: "\f10d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: -30px;
+  left: -15px;
+  font-size: 60px;
+  color: #d8dad6;
+  z-index: -1;
+}
+.testimonial .testimonial-title {
+  font-size: 24px;
+  color: #e16b47;
+  text-transform: capitalize;
+}
+.testimonial .post {
+  font-size: 13px;
+  font-weight: 600;
+  color: #585f62;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  margin-left: 5px;
+  padding-left: 5px;
+}
+.testimonial .description {
+  font-size: 13px;
+  color: #7c7c7c;
+  line-height: 22px;
+  margin-top: 12px;
+  font-style: italic;
+}
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span {
+  background-color: #e16b47;
+}
+@media only screen and (max-width: 980px) {
+  .testimonial {
+    padding: 20px 0;
+    margin: 20px 15px;
+  }
+  .testimonial .pic {
+    float: none;
+  }
+  .testimonial .testimonial-content {
+    display: block;
+    margin-top: 30px;
+  }
+  .testimonial .testimonial-content:before {
+    z-index: 1;
+    top: -200px;
+  }
+}
+/**************************** Testimonial End **************************************/
