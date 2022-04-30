@@ -37,7 +37,7 @@ class FlutterwaveController extends Controller
             ],
 
             "customizations" => [
-                "title" => BusinessSetting::where(['key'=>'business_name'])->first()->value??'Stack Food',
+                "title" => BusinessSetting::where(['key'=>'business_name'])->first()->value??'Stack TIKTAK',
                 "description" => $order->id,
             ]
         ];

@@ -25,13 +25,15 @@
                         @if (session('cart'))
                             @foreach (session('cart') as $id => $details)
                                 @php
-                                    $total = 0;
-                                $total += $details['rate'] * $details['quantity']; @endphp
+                                $total = 0;
+                                $total += $details['rate'] * $details['quantity']; 
+                                @endphp
 
                                 <tr data-id="{{ $id }}">
                                     <td class="product-item">
                                         <div class="dish-image">
-                                            <a href="#"><img src="{{ asset('assets/images/img1.jpg') }}" alt="product"></a>
+                                            <a href="#"><img src="{{ asset('assets/images/img1.jpg') }}"
+                                                    alt="product"></a>
                                         </div>
                                         <div class="product-name">
                                             <a href="#">{{ $details['food_item'] }}</a>
@@ -41,23 +43,20 @@
                                     <td>
                                         <div class="add-remove-button">
                                             <div class="input-group">
-                                                <a href="{{ route('customer.removeFromCart', $id) }}" min="0"
+                                                <a href="{{ route('removeFromCart', $id) }}" min="0"
                                                     class="number-button  minus">-</a>
                                                 <input type="number" step="1" max="" value="{{ $details['quantity'] }}"
                                                     name="quantity" class="quantity-field">
-                                                <a href="{{ route('customer.addToCart', $id) }}"
+                                                <a href="{{ route('addToCart', $id) }}"
                                                     class="number-button  plus">+</a>
                                             </div>
                                         </div>
                                     </td>
                                     <td>{{ $total }}</td>
-
                                     <td>
-                                        <a href="{{ route('customer.cartDelete', $id) }}" class="float-right"><i
+                                        <a href="{{ route('cartDelete', $id) }}" class="float-right"><i
                                                 class='bx bx-trash'></i></a>
                                     </td>
-
-
                                 </tr>
                             @endforeach
                         @endif

@@ -5,26 +5,30 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Food;
 use App\Models\Restaurant;
+use Livewire\WithPagination;
 
 class Fooditem extends Component
 {
-    public $itemfoods;
+    use WithPagination;
+    public string $itemfoods;
     public $restaurant=[];
     public $cart;
     public $sum=[];
     
     protected $listeners = ['some-event' => '$refresh'];
-    public function mount($restaurant){
+    
+    public function mount($restaurant)
+    {
 
-        $this->itemfoods=Food::all();
+        $this->itemfoods=Food::where('status', 1)->paginate(5);
 
         
-        $this->restaurant=$restaurant->itemfoods;
+        
     }
 
     public function addToCart($id)
     {
-        $itemfoods = Food::findOrFail($id);
+        $this->itemfoods = Food::findOrFail($id);
         $cartsession = session()->get('cartsession', []);
         
         if(isset($cartsession[$id]) && $cartsession[$id]['quantity'] == "1") {
@@ -37,10 +41,10 @@ class Fooditem extends Component
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
-                "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "id"=>$this->itemfoods->id,
+                "food_item" => $this->itemfoods->food_item,
                 "quantity" => 1,
-                "order_amount" => $itemfoods->order_amount,
+                "order_amount" => $this->itemfoods->order_amount,
                 
             ];
         }
@@ -52,10 +56,10 @@ class Fooditem extends Component
             $cartsession[$id]['quantity']++;
         } else {
             $cartsession[$id] = [
-                "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "id"=>$this->itemfoods->id,
+                "food_item" => $this->itemfoods->food_item,
                 "quantity" => 1,
-                "order_amount" => $itemfoods->order_amount,
+                "order_amount" => $this->itemfoods->order_amount,
                 
             ];
         }
@@ -66,8 +70,9 @@ class Fooditem extends Component
         $this->emit('some-event');
     }
     
-    public function removeFromCart($id){
-        $itemfoods = Food::findOrFail($id);
+    public function removeFromCart($id)
+    {
+        $this->itemfoods = Food::findOrFail($id);
        
         $cart = session()->get('cart', []);
         
@@ -84,10 +89,10 @@ class Fooditem extends Component
         
         else {
             $cart[$id] = [
-                "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "id"=>$this->itemfoods->id,
+                "food_item" => $this->itemfoods->food_item,
                 "quantity" => 1,
-                "order_amount" => $itemfoods->order_amount,
+                "order_amount" => $this->itemfoods->order_amount,
             ];
         }
           
@@ -100,10 +105,10 @@ class Fooditem extends Component
             unset($cartsession[$id]);
         } else {
             $cartsession[$id] = [
-                "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "id"=>$this->itemfoods->id,
+                "food_item" => $this->itemfoods->food_item,
                 "quantity" => 1,
-                "order_amount" => $itemfoods->order_amount,            
+                "order_amount" => $this->itemfoods->order_amount,            
                 
             ];
         }

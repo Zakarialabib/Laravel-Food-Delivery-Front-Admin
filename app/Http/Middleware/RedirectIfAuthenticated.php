@@ -31,6 +31,11 @@ class RedirectIfAuthenticated
                     return redirect()->route('vendor.dashboard');
                 }
                 break;
+            case 'customer':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('home');
+                }
+                break;
             default:
                 if (Auth::guard($guard)->check()) {
                     return response()->json([],404);

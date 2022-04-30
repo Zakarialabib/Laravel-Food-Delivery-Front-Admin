@@ -25,9 +25,13 @@ class Authenticate extends Middleware
         {
             return route('vendor.auth.login');
         }
+        else if ($request->is('customer'))
+        {
+            return route('myaacount');
+        }
         else
         {
-            return route('/');
+            return route('home');
         }
     }
 }

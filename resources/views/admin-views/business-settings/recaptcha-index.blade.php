@@ -104,7 +104,7 @@
                                                 <li>
                                                     {{__('messages.Add')}}
                                                     <b>{{__('messages.domain')}}</b>
-                                                    {{__('messages.(For ex: demo.6amtech.com)')}}
+                                                    {{__('messages.(For ex: demo.tiktak.com)')}}
                                                 </li>
                                                 <li>
                                                     {{__('messages.Check in ')}}
@@ -114,10 +114,7 @@
                                                     {{__('messages.Press')}}
                                                     <b>{{__('messages.Submit')}}</b>
                                                 </li>
-                                                <li>{{__('messages.Copy')}} <b>Site
-                                                        Key</b> {{__('messages.and')}} <b>Secret
-                                                        Key</b>, {{__('messages.paste in the input filed below and')}}
-                                                    <b>Save</b>.
+                                                <li>{{__('messages.Copy Key Site and Secret Key paste in the input filed below and save')}}
                                                 </li>
                                             </ol>
                                         </div>

@@ -1,34 +1,34 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('title', __('messages.restaurant_registration'))
+    @section('title', __('Restaurant registration'))
 
-@push('styles')
-    <style>
-        #map {
-            height: 100%;
-        }
-
-        @media only screen and (max-width: 768px) {
-
-            /* For mobile phones: */
+    @push('styles')
+        <style>
             #map {
-                height: 200px;
+                height: 100%;
             }
-        }
 
-    </style>
-@endpush
+            @media only screen and (max-width: 768px) {
 
-@section('content')
-    <div class="content container">
-        <!-- Page Header -->
+                /* For mobile phones: */
+                #map {
+                    height: 200px;
+                }
+            }
 
-        <div class="search-nav">
-            <div class="container">
-                <h3 class="mb-0">{{ __('messages.restaurant_application') }}</h3>
-            </div>
+        </style>
+    @endpush
+
+
+    <!-- Page Header -->
+
+    <div class="search-nav">
+        <div class="container">
+            <h3 class="mb-0">{{ __('Restaurant application') }}</h3>
         </div>
+    </div>
 
+    <div class="container py-6">
         <!-- End Page Header -->
         <div class="row gx-2 gx-lg-3 pt-5">
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
@@ -38,49 +38,48 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="name">{{ __('messages.restaurant') }}
-                                    {{ __('messages.name') }}</label>
+                                <label class="input-label" for="name">{{ __('Restaurant Name') }}</label>
                                 <input type="text" name="name" class="form-control"
-                                    placeholder="{{ __('messages.first') }} {{ __('messages.name') }}"
+                                    placeholder="{{ __('TIKTAK CASABLANCA RESTAURANT') }}"
                                     value="{{ old('name') }}" required>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="address">{{ __('messages.restaurant') }}
-                                    {{ __('messages.address') }}</label>
+                                <label class="input-label" for="address">{{ __('Restaurant address') }}</label>
                                 <textarea type="text" name="address" class="form-control"
-                                    placeholder="{{ __('messages.restaurant') }} {{ __('messages.address') }}"
+                                    placeholder="{{ __('Restaurant address') }}"
                                     required>{{ old('address') }}</textarea>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="tax">{{ __('messages.vat/tax') }} (%)</label>
+                                <label class="input-label" for="tax">{{ __('Tax') }} (%)</label>
                                 <input type="number" name="tax" class="form-control"
-                                    placeholder="{{ __('messages.vat/tax') }}" min="0" step=".01" required
+                                    placeholder="{{ __('Tax') }}" min="0" step=".01" required
                                     value="{{ old('tax') }}">
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6 pr-md-1 px-3">
                                     <label class="input-label"
-                                        for="minimum_delivery_time">{{ __('messages.minimum_delivery_time') }}</label>
-                                    <input type="text" name="minimum_delivery_time" class="form-control" placeholder="30"
-                                        pattern="^[0-9]{2}$" required value="{{ old('minimum_delivery_time') }}">
+                                        for="minimum_delivery_time">{{ __('Minimum delivery time') }}</label>
+                                    <input type="text" name="minimum_delivery_time" class="form-control"
+                                        placeholder="30" pattern="^[0-9]{2}$" required
+                                        value="{{ old('minimum_delivery_time') }}">
                                 </div>
                                 <div class="form-group col-md-6 px-3">
                                     <label class="input-label"
-                                        for="maximum_delivery_time">{{ __('messages.maximum_delivery_time') }}</label>
-                                    <input type="text" name="maximum_delivery_time" class="form-control" placeholder="40"
-                                        pattern="[0-9]{2}" required value="{{ old('maximum_delivery_time') }}">
+                                        for="maximum_delivery_time">{{ __('Maximum delivery time') }}</label>
+                                    <input type="text" name="maximum_delivery_time" class="form-control"
+                                        placeholder="40" pattern="[0-9]{2}" required
+                                        value="{{ old('maximum_delivery_time') }}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="input-label">{{ __('messages.restaurant') }}
-                                    {{ __('messages.logo') }}<small style="color: red"> ( {{ __('messages.ratio') }} 1:1
+                                <label class="input-label">{{ __('Restaurant logo') }}<small style="color: red"> (
+                                        {{ __('ratio') }} 1:1
                                         )</small></label>
                                 <div class="custom-file">
                                     <input type="file" name="logo" id="customFileEg1" class="custom-file-input"
                                         accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                                    <label class="custom-file-label" for="logo">{{ __('messages.choose') }}
-                                        {{ __('messages.file') }}</label>
+                                    <label class="custom-file-label" for="logo">{{ __('Choose file') }}</label>
                                 </div>
                             </div>
                         </div>
@@ -97,18 +96,19 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="choice_zones">{{ __('messages.zone') }}<span
-                                        class="input-label-secondary" title="{{ __('messages.select_zone_for_map') }}"><img
+                                <label class="input-label" for="choice_zones">{{ __('Zone') }}<span
+                                        class="input-label-secondary"
+                                        title="{{ __('select_zone_for_map') }}"><img
                                             src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
-                                            alt="{{ __('messages.select_zone_for_map') }}"></span></label>
+                                            alt="{{ __('select_zone_for_map') }}"></span></label>
                                 <select name="zone_id" id="choice_zones" required class="form-control js-select2-custom"
-                                    data-placeholder="{{ __('messages.select') }} {{ __('messages.zone') }}">
-                                    <option value="" selected disabled>{{ __('messages.select') }}
-                                        {{ __('messages.zone') }}</option>
+                                    data-placeholder="{{ __('Select zone') }}">
+                                    <option value="" selected disabled>{{ __('Select zone') }}</option>
                                     @foreach (\App\Models\Zone::all() as $zone)
                                         @if (isset(auth('admin')->user()->zone_id))
                                             @if (auth('admin')->user()->zone_id == $zone->id)
-                                                <option value="{{ $zone->id }}" selected>{{ $zone->name }}</option>
+                                                <option value="{{ $zone->id }}" selected>{{ $zone->name }}
+                                                </option>
                                             @endif
                                         @else
                                             <option value="{{ $zone->id }}">{{ $zone->name }}</option>
@@ -117,20 +117,20 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="latitude">{{ __('messages.latitude') }}<span
+                                <label class="input-label" for="latitude">{{ __('latitude') }}<span
                                         class="input-label-secondary"
-                                        title="{{ __('messages.restaurant_lat_lng_warning') }}"><img
+                                        title="{{ __('restaurant_lat_lng_warning') }}"><img
                                             src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
-                                            alt="{{ __('messages.restaurant_lat_lng_warning') }}"></span></label>
+                                            alt="{{ __('restaurant_lat_lng_warning') }}"></span></label>
                                 <input type="text" id="latitude" name="latitude" class="form-control"
                                     placeholder="Ex : -94.22213" value="{{ old('latitude') }}" required readonly>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="longitude">{{ __('messages.longitude') }}<span
+                                <label class="input-label" for="longitude">{{ __('longitude') }}<span
                                         class="input-label-secondary"
-                                        title="{{ __('messages.restaurant_lat_lng_warning') }}"><img
+                                        title="{{ __('restaurant_lat_lng_warning') }}"><img
                                             src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
-                                            alt="{{ __('messages.restaurant_lat_lng_warning') }}"></span></label>
+                                            alt="{{ __('restaurant_lat_lng_warning') }}"></span></label>
                                 <input type="text" name="longitude" class="form-control" placeholder="Ex : 103.344322"
                                     id="longitude" value="{{ old('longitude') }}" required readonly>
                             </div>
@@ -145,27 +145,31 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="f_name">{{ __('messages.first') }}
-                                    {{ __('messages.name') }}</label>
+                                <label class="input-label" for="f_name">{{ __('First name') }}</label>
                                 <input type="text" name="f_name" class="form-control"
-                                    placeholder="{{ __('messages.first') }} {{ __('messages.name') }}"
+                                    placeholder="{{ __('First name') }}"
                                     value="{{ old('f_name') }}" required>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="l_name">{{ __('messages.last') }}
-                                    {{ __('messages.name') }}</label>
+                                <label class="input-label" for="l_name">{{ __('Last name') }}</label>
                                 <input type="text" name="l_name" class="form-control"
-                                    placeholder="{{ __('messages.last') }} {{ __('messages.name') }}"
+                                    placeholder="{{ __('Last name') }}"
                                     value="{{ old('l_name') }}" required>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="phone">{{ __('messages.phone') }}</label>
-                                <input type="text" name="phone" class="form-control" placeholder="Ex : 017********"
-                                    value="{{ old('phone') }}" required>
+                                <label class="input-label" for="phone">{{ __('Phone') }}</label>
+                                <x-tel-input
+                                        id="phone"
+                                        name="phone"
+                                        placeholder="{{__('Ex : 017********')}}"
+                                        value="{{ old('tel') }}"
+                                        required
+                                        class="form-control"
+                                        /> 
                             </div>
                         </div>
                     </div>
@@ -174,30 +178,28 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="email">{{ __('messages.email') }}</label>
-                                <input type="email" name="email" class="form-control" placeholder="Ex : ex@example.com"
-                                    value="{{ old('email') }}" required>
+                                <label class="input-label" for="email">{{ __('email') }}</label>
+                                <input type="email" name="email" class="form-control"
+                                    placeholder="Ex : ex@example.com" value="{{ old('email') }}" required>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                    for="exampleInputPassword">{{ __('messages.password') }}</label>
+                                    for="exampleInputPassword">{{ __('password') }}</label>
                                 <input type="password" name="password"
-                                    placeholder="{{ __('messages.password_length_placeholder', ['length' => '6+']) }}"
-                                    class="form-control form-control-user" minlength="6" id="exampleInputPassword" required
-                                    value="{{ old('password') }}">
+                                    class="form-control form-control-user" minlength="6" id="exampleInputPassword"
+                                    required value="{{ old('password') }}">
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="js-form-message form-group">
                                 <label class="input-label"
-                                    for="signupSrConfirmPassword">{{ __('messages.confirm_password') }}</label>
+                                    for="signupSrConfirmPassword">{{ __('Confirm password') }}</label>
                                 <input type="password" name="confirm-password" class="form-control form-control-user"
                                     minlength="6" id="exampleRepeatPassword"
-                                    placeholder="{{ __('messages.password_length_placeholder', ['length' => '6+']) }}"
                                     required value="{{ old('confirm-password') }}">
-                                <div class="pass invalid-feedback">{{ __('messages.password_not_matched') }}</div>
+                                <div class="pass invalid-feedback">{{ __('password_not_matched') }}</div>
                             </div>
                         </div>
                     </div>
@@ -205,32 +207,35 @@
                     <div class="row">
                         <div class="col-12 pb-5">
                             <div class="form-group">
-                                <label for="name">{{ __('messages.upload') }} {{ __('messages.cover') }}
-                                    {{ __('messages.photo') }} <span class="text-danger">({{ __('messages.ratio') }}
+                                <label for="name">{{ __('upload cover photo') }}<span
+                                        class="text-danger">({{ __('ratio') }}
                                         2:1)</span></label>
                                 <div class="custom-file">
-                                    <input type="file" name="cover_photo" id="coverImageUpload" class="custom-file-input"
+                                    <input type="file" name="cover_photo" id="coverImageUpload"
+                                        class="custom-file-input"
                                         accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                    <label class="custom-file-label" for="customFileUpload">{{ __('messages.choose') }}
-                                        {{ __('messages.file') }}</label>
+                                    <label class="custom-file-label"
+                                        for="customFileUpload">{{ __('choose') }}
+                                        {{ __('file') }}</label>
                                 </div>
                             </div>
                             <center>
                                 <img style="max-width: 100%;border: 1px solid; border-radius: 10px; max-height:200px;"
-                                    id="coverImageViewer" src="{{ asset('public/assets/admin/img/900x400/img1.jpg') }}"
+                                    id="coverImageViewer"
+                                    src="{{ asset('public/assets/admin/img/900x400/img1.jpg') }}"
                                     alt="Product thumbnail" />
                             </center>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">{{ __('messages.submit') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ __('submit') }}</button>
                 </form>
             </div>
         </div>
     </div>
 
-@endsection
 
+</x-app-layout>
 @push('scripts')
     <script>
         $('#exampleInputPassword ,#exampleRepeatPassword').on('keyup', function() {
@@ -288,13 +293,13 @@
 
                 },
                 onExtensionErr: function(index, file) {
-                    toastr.error('{{ __('messages.please_only_input_png_or_jpg_type_file') }}', {
+                    toastr.error('{{ __('please_only_input_png_or_jpg_type_file') }}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 },
                 onSizeErr: function(index, file) {
-                    toastr.error('{{ __('messages.file_size_too_big') }}', {
+                    toastr.error('{{ __('file_size_too_big') }}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

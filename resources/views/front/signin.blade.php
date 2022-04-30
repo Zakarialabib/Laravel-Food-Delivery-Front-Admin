@@ -1,16 +1,16 @@
-@extends('layouts.app')
-@section('content')
-    <!-- <div class="search-nav">
-            <div class="container">
-                <h3 class="mb-0">Sign in</h3>
-            </div>
-        </div> -->
+<x-app-layout>
+    @section('title', __('Sign in'))
+    <div class="search-nav">
+        <div class="container">
+            <h3 class="mb-0">{{__('Sign in')}}</h3>
+        </div>
+    </div>
 
     <section class="log-reg-sec">
         <div class="content">
             <div class="form-content">
                 <img src="{{ asset('assets/images/logo-round.png') }}" alt="" class="form-logo">
-                <h1 class="text-center">Sign in to FoodDay</h1>
+                <h1 class="text-center">{{__('Sign in to your account')}}</h1>
                 <form action="{{ route('check') }}" method="post">
                     @csrf
                     @if (Session::get('fail'))
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-group">
-                        <a href="{{ route('signup_store') }}">Forgot password?</a>
+                        <a href="{{ route('showforgotForm') }}">Forgot password?</a>
                     </div>
 
                     <div class="form-group">
@@ -48,7 +48,7 @@
             </div>
         </div>
     </section>
-@endsection
+</x-app-layout>
 
 
 @push('scripts')

@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<x-app-layout>
     <!-- Banner -->
 
     <section class="py-60">
@@ -23,14 +22,15 @@
                                         <em class="ribbon"></em>{{ _('Closed') }}
                                 @endif
                                 </span>
-                                <div class="restaurant-image" style="background-image: url('{{ $rest->logo }}');">
+                                <div class="restaurant-image" style="background-image: url({{ asset('storage/app/public/restaurant/cover/' . $rest->cover_photo) }});
+                                    background-size: cover;height: 150px;">
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $rest->name }}</h5>
                                     <p class="location"><i class="bx bx-location-plus"></i> {{ $rest->address }}
                                     </p>
                                     <div class="details">
-                                        <span class="badge"><i class='bx bxs-star'></i> 4.2</span>
+                                        <span class="badge p-2"><i class='bx bxs-star text-yellow-300'></i> 4.2</span>
                                     </div>
                                 </div>
                             </a>
@@ -72,18 +72,19 @@
                 @endforelse
             </div>
             {{-- @endif --}}
+            {{ $restaurants->links() }}
         </div>
     </section>
+</x-app-layout>
+@push('scripts')
+    <script type="text/javascript">
+        function locationPopup() {
 
-    @push('scripts')
-        <script type="text/javascript">
-            function locationPopup() {
+            document.getElementById('location').focus();
 
-                document.getElementById('location').focus();
+            document.getElementById('location-popup').style.display = "none";
 
-                document.getElementById('location-popup').style.display = "none";
+        }
+    </script>
+@endpush
 
-            }
-        </script>
-    @endpush
-@endsection

@@ -18,7 +18,6 @@ use App\Models\Zone;
 use Carbon\Carbon;
 use Session;
 Use PDF;
-// use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Hash;
 use Auth;
@@ -48,132 +47,23 @@ class FrontController extends Controller
     public function contact(){
         return view('front.contact');
     }
-    public function signin(){
-        return view('front.signin');
-    }
-   
-    public function signup(){
-        return view('front.signup');
-    }
-    public function signup_store(Request $request){
-        $request->validate([
-            'first_name'=>'required|min:3|max:15',
-            'last_name'=>'required|max:8',
-            'mobile'=>'required|min:10|max:12',
-            'email'=>'required|email',
-            'password'=>'required|min:4',
-            'confirm_password'=>['same:password'],
-        
 
-        ]);
-        $customer = new User;
-        $customer->first_name = $request->first_name;
-
-        $customer->last_name = $request->last_name;
-        
-        $customer->mobile = $request->mobile;
-        
-        $customer->email = $request->email;
-        
-        $customer->password = Hash::make($request->password);
-        
-        $save= $customer->save();
-        $userInfo=$request->only('email','password');
-        if(Auth::guard('customer')->attempt($userInfo)){
-            return redirect('customer/my_home');
-        }
-        else{
-            return back()->with('fail','Something went wrong');  
-
-        }
-        
-            
-    }
-    public function check(Request $request)//signin 
+    public function myaccount(User $customer,Request $request)
     {
-    $request->validate([
-        'email'=>'required|email',  
-        'password'=>'required|min:4',
-        ]);
+        $customer = Auth::user();
 
-        $userInfo=$request->only('email','password');
-        if(Auth::guard('customer')->attempt($userInfo)){
-            return redirect()->intended();
-        }else{
-            return back()->with('fail','We do not recognize your email address');
-        }
-    }
-        
-
-////////////////Logout//////////////////////////
-public function logout(Request $request){
-    Auth::logout();
-    return back()->with('succes','you are logged out');
-   
-}
-
-
-////////////////Forgot Password//////////////////
-    public function showforgotForm(){
-        return view('front.forgotpassword');
-    }
-
-    public function sendresetLink(Request $request){
-        $request->validate([
-         'email'=>'required|email|exists:customers,email'
-        ]);
-        $token=\Str::random(64);
-        \DB::table('password_resets')->insert([
-            'email'=>$request->email,
-            'token'=>$token,
-            'created_at'=>Carbon::now(),
-        ]);
-        $action_link=route('customer.showresetForm',['token'=>$token,'email'=>$request->email]);
-        $body="we are recieved the reset main for account associated with ".$request->email.".you can reset 
-        the password by clicking the below link";
-        \Mail::send('email_forgot',['action_link'=>$action_link,'body'=>$body],function($message) use ($request){
-            $message->from('sreerekhaps222@gmail.com','Name');
-            $message->to($request->email,'name')->subject('Reset Password');
-        });
-        return back()->with('success','we have emailed your reset password link');
-    }
-    public function showresetForm(Request $request, $token=null){
-        return view('front.reset_password')->with(['token'=>$token,'email'=>$request->email]);
-    }
-    public function resetPassword(Request $request){
-        $request->validate([
-            'email'=>'required|email|exists:customers,email',
-            'password'=>'required|confirmed',
-            'password_confirmation'=>'required',
-        ]);
-        $check_token=DB::table('password_resets')->where([
-            'email'=>$request->email,
-            'token'=>$request->token,
-        ])->first();
-        
-        if(!$check_token){
-            return back()->withInput()->with('fail','Invalid token');
-
-        }
-        else{
-            User::where('email',$request->email)->update([
-                'password'=>\Hash::make($request->password)
-            ]);
-            \DB::table('password_resets')->where([
-                'email'=>$request->email
-            ])->delete();
-            return redirect()->route('customer.signin')->with('info','password changed')->with('verifiedemail',$request->email);
-        }
-    }
-   
-    ////////////////////
-   
-    public function myaccount(User $customer,Request $request){
-        $customer=Auth::user();
         // $request->session()->forget('address');
-        $request->session()->forget('cartsession');
-        return view('front.components.my_account-master',['customer'=>$customer]);
         
+        $request->session()->forget('cartsession');
+        
+        return view('front.my_account',['customer'=>$customer]);   
+    }
+    
+    public function account(User $customer)
+    {
+        $customer = Auth::user();
+        // dd($customer);
+        return view('front.my_account', compact('customer'));
     }
 
     public function profile_update(Request $request,$id){
@@ -192,15 +82,12 @@ public function logout(Request $request){
         }
 
     }
-   
-    public function account(User $customer){
-        $customer=Auth::user();
-        return view('front.my_account',['customer'=>$customer]);
-    }
+    
     ///////////Change Password///////////////
     public function show_password(){
         return view('front.change_password');
     }
+
     public function change_password(Request $request) {  
         
         $request->validate([
@@ -219,7 +106,9 @@ public function logout(Request $request){
         $address = CustomerAddress::all();
         return view('front.address',['address'=>$address]);
     }
-    public function address_store(){
+
+    public function address_store()
+    {
         $inputs=request()->validate([
             'contact_person_name' => 'required',
             'address_type' => 'required',
@@ -265,6 +154,7 @@ public function logout(Request $request){
         return back();
 
     }
+
     public function removedefault($id){
 
     $inputs=request()->validate([
@@ -372,15 +262,10 @@ public function logout(Request $request){
         return back();
     }
 
-    ////////////////Search/////////////
-    public function my_home(Request $request){
-        
-        return view('my_home');
-    }
     
     public function restaurant_listing()
     {    
-        $restaurant = Restaurant::all();
+        $restaurant = Restaurant::where('status', 1)->paginate(10);
      
         // dd($restaurant);
      
@@ -704,9 +589,9 @@ public function logout(Request $request){
 
      }
      public function order_history(Order $order){
-         $order=Order::orderBy('created_at', 'DESC')->where('customer_id',auth()->user()->id)->get();
+         $order = Order::orderBy('created_at', 'DESC')->where('user_id',auth()->user()->id)->get();
          
-         $itemfoods=Food::all();
+         $itemfoods = Food::all();
          return view('front.orderhistory',['order'=>$order],compact('itemfoods'));
      }
 
@@ -719,5 +604,14 @@ public function logout(Request $request){
         return $pdf->download('order_download.pdf');
        
     }
+
+    public function changeLanguage($locale)
+    {
+        Session::put('language_code', $locale);
+        $language = Session::get('language_code');
+
+        return redirect()->back();
+    }
+
             
 }

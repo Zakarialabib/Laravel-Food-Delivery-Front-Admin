@@ -1,10 +1,8 @@
-@extends('layouts.app')
-@section('content')
-
+<x-app-layout>
     <div class="search-nav restaurant-head">
         <div class="container">
             <div class="rest-info-wrap">
-                <div class="rest-logo" style="background-image: url('{{ $restaurant->logo }}');">
+                <div class="rest-logo" style="background-image: url({{ asset('storage/app/public/restaurant/' . $restaurant->logo) }});">
                 </div>
                 <div>
                     <h3>{{ $restaurant->name }}</h3>
@@ -18,7 +16,6 @@
                             @endif
                         @endforeach
                     </div>
-
                     <p><i class="bx bx-location-plus"></i> {{ $restaurant->address }}</p>
                 </div>
             </div>
@@ -30,20 +27,20 @@
                 </div>
                 <div class="detail-block">
                     <h5>{{ $restaurant->delivery_time }}</h5>
-                    <span>Delivery Time</span>
+                    <span>{{__('Delivery Time')}}</span>
                 </div>
                 <div class="detail-block">
                     <h5>{{ $restaurant->opening_time->format('h:m') }} /
                         {{ $restaurant->closeing_time->format('h:m') }}</h5>
-                    <span>Opening and Closeing Time</span>
+                    <span>{{__('Opening and Closing Time')}}</span>
                 </div>
                 <div class="detail-block">
                     @if ($restaurant->take_away == 1)
-                        <h5><i class="bx bx-walk"></i>Pick Up</h5>
-                        <span>Pick Up Available</span>
+                        <h5><i class="bx bx-walk"></i>{{__('Pick Up')}}</h5>
+                        <span>{{__('Pick Up Available')}}</span>
                     @else
-                        <h5><i class="bx bx-walk"></i> No Pick Up</h5>
-                        <span>Pick Up Not Available</span>
+                        <h5><i class="bx bx-walk"></i> {{__('No Pick Up')}}</h5>
+                        <span>{{__('Pick Up Not Available')}}</span>
                     @endif
                 </div>
             </div>
@@ -55,7 +52,6 @@
             <div class="row cuisine-dish-wrap">
                 <div class="col-lg-8 cuisine-col">
                     <div class="rest-menus" id="rest-menus">
-
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                 aria-labelledby="pills-home-tab">
@@ -72,18 +68,17 @@
 
                                 <div class="food-item-cards-wrap">
                                     <div class="sub-cat mt-0" id="sub-cat1">
-                                        <h4 class="mb-4">Most Popular</h4>
+                                        <h4 class="mb-4">{{__('Most Popular')}}</h4>
 
-                                        @if ($restaurant->is_open == 1)
+                                        @if ($restaurant->active == 1)
                                             <livewire:fooditem :restaurant="$restaurant" />
                                         @else
                                             <div class="row">
-
                                                 @foreach ($restaurant->foods as $item)
                                                     <div class="col-lg-6">
                                                         <div class="food-item-card unavailable">
                                                             <div class="food-item-img"
-                                                                style="background-image: url('{{ $item->image }}');">
+                                                                style="background-image: url({{ asset('storage/app/public/product/' . $item->image) }});">
                                                             </div>
                                                             <div class="food-item-body">
                                                                 <h5 class="card-title">
@@ -125,4 +120,4 @@
                 <livewire:cart />
     </section>
     <!--cart modal-->
-@endsection
+</x-app-layout>

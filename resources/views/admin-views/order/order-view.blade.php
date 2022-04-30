@@ -249,7 +249,7 @@
                                                 <i class="tio-search"></i>
                                             </div>
                                         </div>
-                                        <input id="datatableSearch" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control" placeholder="Search here" aria-label="Search here">
+                                        <input id="datatableSearch" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control" placeholder="{{__('Search here')}}" aria-label="Search here">
                                     </div>
                                     <!-- End Search -->
                                 </form>

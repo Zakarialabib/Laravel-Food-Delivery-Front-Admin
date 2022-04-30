@@ -1,54 +1,68 @@
-<x-my_account-master>
-@section('content')
-<div class="col-lg-9">
-<div class="tab-pane fade show active"  id="v-pills-account" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">
-                                <div class="my-account-content">
-                                    <h4>Account Details</h4>
-                                    <form method="post" action="{{route('customer.profile_update',$customer->id)}}">
-                                    @csrf
-                                    @method('PATCH')
+<x-app-layout>
 
-                                    @if(Session::get('success'))
+    <div class="search-nav">
+        <div class="container">
+            <h3 class="mb-0">{{ __('My Account') }}</h3>
+        </div>
+    </div>
+
+    <section class="py-60">
+        <div class="container">
+            <div class="row">
+                @include('partials.sidebar')
+
+                {{-- @livewire('front.account', [$customer]) --}}
+                
+                <div class="col-lg-9">
+                    <div class="tab-pane fade show active" id="v-pills-account" role="tabpanel"
+                        aria-labelledby="v-pills-settings-tab">
+                        <div class="my-account-content">
+                            <h4>{{ __('Account Details') }}</h4>
+                            <form method="post" action="{{ route('profile_update', $customer->id) }}">
+                                @csrf
+                                @method('PATCH')
+
+                                @if (Session::get('success'))
                                     <div class="alert alert-success">
-                                        {{Session::get('success')}}
+                                        {{ Session::get('success') }}
                                     </div>
-                                    @endif
-                                        <div class="form-row">
-                                            <div class="col-lg-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{$customer['first_name']}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{$customer['last_name']}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" name="email" placeholder="Email" value="{{$customer['email']}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" name="mobile" placeholder="Mobile" value="{{$customer['mobile']}}">
-                                                </div>
-                                                <div class="form-group  mb-0">
-                                                    <button class="btn btn-primary">Save Changes</button>
-                                                </div>
-                                            </div>
+                                @endif
+                                <div class="form-row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="f_name"
+                                                placeholder="{{ __('First Name') }}" value="{{ $customer['f_name'] }}">
                                         </div>
-                                    </form>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="l_name"
+                                                placeholder="{{ __('Last Name') }}" value="{{ $customer['l_name'] }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="email"
+                                                placeholder="{{ __('Email') }}" value="{{ $customer['email'] }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="mobile"
+                                                placeholder="{{ __('Mobile') }}" value="{{ $customer['phone'] }}">
+                                        </div>
+                                        <div class="form-group  mb-0">
+                                            <button class="btn btn-primary">{{ __('Save Changes') }}</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-         
-</div>
-@endsection('content')
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                @yield('order_history')
+                @yield('change_password')
+                @yield('address')
 
-@section('javascript')
-@parent
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
-<script>
-$("document").ready(function(){
-setTimeout(function(){
-$("div.alert").remove();
-}, 3000 ); // 3 sec
-});
-</script>
-@stop
-</x-my_account-master>
+
+                
+            </div>
+        </div>
+    </section>
+
+</x-app-layout>

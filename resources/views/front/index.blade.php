@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<x-app-layout>
     <!-- Banner -->
     @php($landing_page_text = \App\Models\BusinessSetting::where(['key'=>'landing_page_text'])->first())
     @php($landing_page_text = isset($landing_page_text->value)?json_decode($landing_page_text->value, true):null)
@@ -7,7 +6,7 @@
     <div class="home-banner d-flex align-items-center">
         <div class="container">
             <div class="banner-content">
-                <h1 class="text-center py-2">
+                <h1 class="text-center text-5xl py-2" >
                     {{isset($landing_page_text)?$landing_page_text['header_title_1']:''}}
                 </h1>
                 <h5
@@ -21,9 +20,9 @@
                     <div class="input-group search-location-group">
                         <input type="text" class="form-control" name="location" placeholder="Enter your delivery location"
                             aria-label="delivery location" aria-describedby="button-addon2">
-                        <a href="" class="btn-locate"><i class='bx bx-target-lock'></i> Locate Me</a>
+                        <a href="" class="btn-locate"><i class='bx bx-target-lock'></i> {{__('Locate Me')}}</a>
                         <div class="input-group-append btn-find-food">
-                            <button class="btn btn-danger" type="submit">Find Food</button>
+                            <button class="btn btn-danger" type="submit">{{__('Find Food')}}</button>
                         </div>
                     </div>
                 </form>
@@ -37,11 +36,11 @@
 
     <section class="how-it-works pb-0">
         <div class="container">
-            <h4>How It Works</h4>
-            <div class="row">
-                <div class="col-lg-4">
+            <h4 class="text-4xl pb-5">{{__('How It Works')}}</h4>
+            <div class="flex flex-wrap">
+                <div class="lg:w-1/3 sm:w-full px-4">
                     <div class="item">
-                        <div class="item-image">
+                        <div class="item-image flex justify-center">
                             <img src="{{ asset('public/assets/images/meal.svg') }}" alt="">
                         </div>
                         <div class="item-desc">
@@ -52,9 +51,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="lg:w-1/3 sm:w-full px-4">
                     <div class="item">
-                        <div class="item-image">
+                        <div class="item-image flex justify-center">
                             <img src="{{ asset('public/assets/images/delivery.svg') }}" alt="">
                         </div>
                         <div class="item-desc">
@@ -64,9 +63,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="lg:w-1/3 sm:w-full px-4">
                     <div class="item">
-                        <div class="item-image">
+                        <div class="item-image flex justify-center">
                             <img src="{{ asset('public/assets/images/eat-enjoy.svg') }}" alt="">
                         </div>
                         <div class="item-desc">
@@ -81,10 +80,10 @@
     </section>
     <section class="pt-5 pb-4">
         <div class="container">
-            <h4 class="mb-4">Popular Restaurants</h4>
-            <div class="row rest-listing-row">
+            <h4 class="mb-4">{{__('Popular Restaurants')}}</h4>
+            <div class="row rest-listing-row -mx-5">
                 @forelse ($restaurants as $restaurant)
-                    <div class="col-md-4 col-sm-6">
+                    <div class="lg:w-1/3 sm:w-full px-4 rounded-2xl shadow-xl shadow-slate-300/60">
                         <a class="card restaurant-card">
                             @if ($restaurant->status == 1)
                                 <span class="restaurant-status">
@@ -98,7 +97,8 @@
                             @endif
                             <a href="{{ route('restaurant_details', $restaurant->id) }}">
                                 <div class="restaurant-image"
-                                    style="background-image: url({{ asset('storage/app/public/restaurant/cover/' . $restaurant->cover_photo) }});">
+                                    style="background-image: url({{ asset('storage/app/public/restaurant/cover/' . $restaurant->cover_photo) }});
+                                           background-size: cover;height: 150px;">
                             </a>
                     </div>
                     <div class="card-body">
@@ -114,9 +114,10 @@
                             {{ $restaurant->address }}
                         </p>
                         <div class="details">
-                            @if (empty($restaurant->rating))
+                            <span class="badge bg-red-500 text-white p-2"><i class='bx bxs-star text-yellow-300'></i> 4.2</span>
+                            {{-- @if (empty($restaurant->rating))
                                 <span class="badge"><i class='bx bxs-star'></i> {{ $restaurant->rating }}</span>
-                            @endif
+                            @endif --}}
                             <span class="badge">{{ $restaurant->delivery_time }}</span>
                             <span class="badge">{{ $restaurant->opening_time->format('h:m') }} /
                                 {{ $restaurant->closeing_time->format('h:m') }}</span>
@@ -130,7 +131,7 @@
         </div>
         </div>
     </section>
-@endsection
+</x-app-layout>
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('public/assets/admin') }}/css/toastr.css">

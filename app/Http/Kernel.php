@@ -39,6 +39,10 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
+            // Set language
+            \App\Http\Middleware\Locale::class,
+
         ],
 
         'api' => [
@@ -72,5 +76,6 @@ class Kernel extends HttpKernel
         'installation-check' => InstallationMiddleware::class,
         // 'actch' => ActivationCheckMiddleware::class,
         'localization' => \App\Http\Middleware\LocalizationMiddleware::class,
+        'customer'=> \App\Http\Middleware\Customer::class,
     ];
 }

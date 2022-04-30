@@ -1,6 +1,6 @@
 @extends('layouts.landing.app')
 
-@section('title','Landing Page | '.\App\Models\BusinessSetting::where(['key'=>'business_name'])->first()->value??'Stack Food')
+@section('title','Landing Page | '.\App\Models\BusinessSetting::where(['key'=>'business_name'])->first()->value??'Stack TIKTAK')
 
 @section('content')
 

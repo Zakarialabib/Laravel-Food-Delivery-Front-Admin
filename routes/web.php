@@ -13,11 +13,23 @@ use App\Http\Controllers\FrontController;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/langue/{locale}', 'FrontController@changeLanguage')->name('change_language');
 Route::get('terms-and-conditions', 'HomeController@terms_and_conditions')->name('terms-and-conditions');
 Route::get('about-us', 'HomeController@about_us')->name('about-us');
 Route::get('contact-us', 'HomeController@contact_us')->name('contact-us');
 Route::get('privacy-policy', 'HomeController@privacy_policy')->name('privacy-policy');
+Route::get('/search', [FrontController::class, 'search'])->name('search');
+
+Route::get('/restaurants', [FrontController::class, 'restaurant_listing'])->name('restaurant_listing');
+Route::get('/restaurant-catalogue/{restaurant}', [FrontController::class, 'restaurant_details'])->name('restaurant_details'); 
+///cart///
+Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
+Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
+
+// Route::get('/aboutus',[FrontController::class,'aboutus'])->name('aboutus');
+// Route::get('/contact',[FrontController::class,'contact'])->name('contact');
 
 Route::get('authentication-failed', function () {
     $errors = [];
@@ -127,73 +139,41 @@ Route::get('authentication-failed', function () {
         'errors' => $errors
     ], 401);
 })->name('authentication-failed');
-
-
-Route::get('/front', [FrontController::class, 'index'])->name('index');
-Route::get('/search', [FrontController::class, 'search'])->name('search');
-Route::get('/restaurants', [FrontController::class, 'restaurant_listing'])->name('restaurant_listing');
-Route::get('/restaurant_details/{restaurant}', [FrontController::class, 'restaurant_details'])->name('restaurant_details'); 
-///cart///
-Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
-Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
-
-// Route::get('/aboutus',[FrontController::class,'aboutus'])->name('aboutus');
-// Route::get('/contact',[FrontController::class,'contact'])->name('contact');
-
-Route::middleware(['guest:customer'])->group(function (){
-        
-    Route::get('/signin', [FrontController::class, 'signin'])->name('signin');
-    Route::post('/check', [FrontController::class, 'check'])->name('check');
-    Route::get('/signup', [FrontController::class, 'signup'])->name('signup');
-    Route::post('/signup_store', [FrontController::class, 'signup_store'])->name('signup_store');
-    Route::get('/password/forgot',[FrontController::class,'showforgotForm'])->name('showforgotForm');
-    Route::post('/password/forgot',[FrontController::class,'sendresetLink'])->name('sendresetLink');
-    Route::get('/password/reset/{token}',[FrontController::class,'showresetForm'])->name('showresetForm');
-    Route::post('/password/reset',[FrontController::class,'resetPassword'])->name('resetPassword');
-
-});
     
 
-    Route::middleware(['auth:customer'])->group(function (){
-        Route::get('/my_home', [FrontController::class, 'my_home'])->name('my_home');
-        //////////////search/////////////
-       
-        Route::get('/myaccount', [FrontController::class, 'myaccount'])->name('myaccount'); 
-        Route::get('/account', [FrontController::class, 'account'])->name('account');
-        Route::patch('/update/{id}', [FrontController::class, 'profile_update'])->name('profile_update');
-        Route::get('/address', [FrontController::class, 'address'])->name('address');
-        Route::post('/address_store', [FrontController::class, 'address_store'])->name('address_store');
-        Route::get('/edit_address/{id}', [FrontController::class, 'edit_address'])->name('edit_address');
-        Route::get('/address/{id}', [FrontController::class, 'address_destroy'])->name('address_destroy');
-        Route::patch('/update_address/{id}', [FrontController::class, 'update_address'])->name('update_address');
-        Route::get('/default/{id}', [FrontController::class, 'default'])->name('default');
-        Route::get('/removedefault/{id}', [FrontController::class, 'removedefault'])->name('removedefault');
+Route::middleware('auth')->group(function (){
+    
+    Route::get('/myaccount', [FrontController::class, 'myaccount'])->name('myaccount'); 
+    Route::get('/account', [FrontController::class, 'account'])->name('account');
+    Route::patch('/update/{id}', [FrontController::class, 'profile_update'])->name('profile_update');
+    Route::get('/address', [FrontController::class, 'address'])->name('address');
+    Route::post('/address_store', [FrontController::class, 'address_store'])->name('address_store');
+    Route::get('/edit_address/{id}', [FrontController::class, 'edit_address'])->name('edit_address');
+    Route::get('/address/{id}', [FrontController::class, 'address_destroy'])->name('address_destroy');
+    Route::patch('/update_address/{id}', [FrontController::class, 'update_address'])->name('update_address');
+    Route::get('/default/{id}', [FrontController::class, 'default'])->name('default');
+    Route::get('/removedefault/{id}', [FrontController::class, 'removedefault'])->name('removedefault');
 
+    Route::get('/show_password', [FrontController::class, 'show_password'])->name('show_password');
+    Route::post('/changePassword',[FrontController::class, 'change_password'])->name('change_password');
+    Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
+    //////////Cart///////////////
+    Route::get('/cart',[FrontController::class,'cart'])->name('cart');
+    Route::get('/add-to-cart/{id}', [FrontController::class, 'addToCart'])->name('addToCart');
+    Route::get('/remove-from-cart/{id}', [FrontController::class, 'removeFromCart'])->name('removeFromCart');
+    Route::delete('cartDelete/{id}', [FrontController::class, 'cartDelete'])->name('cartDelete');
+    
+    Route::get('/checkout',[FrontController::class,'checkout'])->name('checkout');
+    Route::get('/order',[FrontController::class,'order'])->name('order');
+    Route::get('/order_tracking/{order}',[FrontController::class,'order_tracking'])->name('order_tracking');
 
-        Route::get('/show_password', [FrontController::class, 'show_password'])->name('show_password');
-        Route::post('/changePassword',[FrontController::class, 'change_password'])->name('change_password');
-        Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
-        //////////Cart///////////////
-        Route::get('/cart',[FrontController::class,'cart'])->name('cart');
-        Route::get('/add-to-cart/{id}', [FrontController::class, 'addToCart'])->name('addToCart');
-        Route::get('/remove-from-cart/{id}', [FrontController::class, 'removeFromCart'])->name('removeFromCart');
-        Route::delete('cartDelete/{id}', [FrontController::class, 'cartDelete'])->name('cartDelete');
-        
-        Route::get('/checkout',[FrontController::class,'checkout'])->name('checkout');
-        Route::get('/order',[FrontController::class,'order'])->name('order');
-        Route::get('/order_tracking/{order}',[FrontController::class,'order_tracking'])->name('order_tracking');
+    Route::get('/addressStore/{id}', [FrontController::class, 'addressStore'])->name('addressStore');
 
-        Route::get('/addressStore/{id}', [FrontController::class, 'addressStore'])->name('addressStore');
+    Route::post('/order/store', [FrontController::class, 'orderStore'])->name('orderStore');
+    Route::get('/orderhistory',[FrontController::class, 'order_history'])->name('order_history');
+    Route::get('download-pdf/{order}', [FrontController::class, 'downloadPDF'])->name('downloadPDF'); 
 
-        Route::post('/order/store', [FrontController::class, 'orderStore'])->name('orderStore');
-        Route::get('/orderhistory',[FrontController::class, 'order_history'])->name('order_history');
-        Route::get('download-pdf/{order}', [FrontController::class, 'downloadPDF'])->name('downloadPDF'); 
-
-
-
-    });
-
-
+});
 
 //Restaurant Registration
 Route::group(['prefix' => 'restaurant', 'as' => 'restaurant.'], function () {
@@ -206,3 +186,5 @@ Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.'], function () {
     Route::get('apply', 'DeliveryManController@create')->name('create');
     Route::post('apply', 'DeliveryManController@store')->name('store');
 });
+
+require __DIR__.'/auth.php';

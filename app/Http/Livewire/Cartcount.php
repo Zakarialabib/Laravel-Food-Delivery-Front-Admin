@@ -8,6 +8,7 @@ class CartCount extends Component
 {
 
     protected $listeners = ['some-event' => '$refresh'];
+    
     public function render()
     {
         $cart = session()->get('cart', []);
