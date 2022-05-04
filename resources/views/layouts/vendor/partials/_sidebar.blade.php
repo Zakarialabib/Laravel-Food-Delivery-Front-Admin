@@ -39,10 +39,10 @@
                     <!-- Dashboards -->
                     <li class="navbar-vertical-aside-has-menu {{Request::is('vendor-panel')?'show':''}}">
                         <a class="js-navbar-vertical-aside-menu-link nav-link"
-                            href="{{route('vendor.dashboard')}}" title="{{__('messages.dashboard')}}">
+                            href="{{route('vendor.dashboard')}}" title="{{__('Dashboard')}}">
                             <i class="tio-home-vs-1-outlined nav-icon"></i>
                             <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                {{__('messages.dashboard')}}
+                                {{__('Dashboard')}}
                             </span>
                         </a>
                     </li>

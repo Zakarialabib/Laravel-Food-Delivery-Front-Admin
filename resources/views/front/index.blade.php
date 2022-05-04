@@ -6,23 +6,37 @@
     <div class="home-banner d-flex align-items-center">
         <div class="container">
             <div class="banner-content">
-                <h1 class="text-center text-5xl py-2" >
+                <h1 class="text-center text-5xl pt-4 pb-2" >
                     {{isset($landing_page_text)?$landing_page_text['header_title_1']:''}}
                 </h1>
                 <h5
-                    class="text-center py-2">
+                    class="text-center py-4">
                     {{isset($landing_page_text)?$landing_page_text['header_title_2']:''}}
                 </h5>
-                <h4 class="text-center py-2">
+                <h4 class="text-center pt-2 pb-4">
                     {{isset($landing_page_text)?$landing_page_text['header_title_3']:''}}
                 </h4>
-                <form action="{{ route('search') }}" method="GET">
+                {{-- <div class="text-center">
+                <form action="{{ route('restaurants.query') }}" method="post" class="flex flex-row relative w-full lg:max-w-xl mx-auto border dark:border-dark-hover overflow-hidden rounded">
+                    @csrf
                     <div class="input-group search-location-group">
-                        <input type="text" class="form-control" name="location" placeholder="Enter your delivery location"
+                        <input id="zipSearch" class="w-full min-h-full px-4 pt-6 pb-2 text-bold dark:bg-dark-primary dark:text-dark-primary" onkeydown="return checkPhoneKey(event.key)" id="search-input" name="postcode" tabindex="1" type="text"  autocomplete="false" pattern="\d{1,4}" maxlength="4" title="Four digit zip code" required>
+                        <span class="absolute transform translate-y-1/2 transition duration-500 ease-in-out left-0 ml-4 mt-1 text-sm sm:text-base">Enter your postcode</span>
+                    </label>
+                    <button class="bg-light-important dark:bg-dark-important hover:bg-light-hover dark:hover:bg-dark-hover text-light-secondary font-bold py-2 px-4 inline-flex items-center">
+                        <i class='bx bx-target-lock'></i>
+                        <span class="hidden sm:block whitespace-no-wrap">Find restaurant</span>
+                    </button>
+                </form>
+                </div> --}}
+                 <form action="{{ route('search') }}" method="GET">
+                    @csrf
+                    <div class="input-group search-location-group">
+                        <input type="text" class="form-control" name="search_text" placeholder="Enter your delivery location"
                             aria-label="delivery location" aria-describedby="button-addon2">
                         <a href="" class="btn-locate"><i class='bx bx-target-lock'></i> {{__('Locate Me')}}</a>
                         <div class="input-group-append btn-find-food">
-                            <button class="btn btn-danger" type="submit">{{__('Find Food')}}</button>
+                            <button class="btn btn-danger" type="submit">{{__('Order Now')}}</button>
                         </div>
                     </div>
                 </form>
@@ -81,18 +95,18 @@
     <section class="pt-5 pb-4">
         <div class="container">
             <h4 class="mb-4">{{__('Popular Restaurants')}}</h4>
-            <div class="row rest-listing-row -mx-5">
+            <div class="flex flex-wrap -mx-5 overflow-hidden">
                 @forelse ($restaurants as $restaurant)
-                    <div class="lg:w-1/3 sm:w-full px-4 rounded-2xl shadow-xl shadow-slate-300/60">
+                    <div class="lg:w-1/3 sm:w-full my-2 px-4 ">
                         <a class="card restaurant-card">
                             @if ($restaurant->status == 1)
                                 <span class="restaurant-status">
-                                    <em class="ribbon"></em>Open
+                                    <em class="ribbon"></em>{{__('Open')}}
                                 </span>
                             @endif
                             @if ($restaurant->status == 0)
                                 <span class="restaurant-status closed">
-                                    <em class="ribbon"></em>Closed
+                                    <em class="ribbon"></em>{{__('Closed')}}
                                 </span>
                             @endif
                             <a href="{{ route('restaurant_details', $restaurant->id) }}">
@@ -107,9 +121,9 @@
                             {{ $restaurant->name }}
                             </a>
                         </h5>
-                        <div class="cuisines">
+                        {{-- <div class="cuisines">
                             <span>{{ $restaurant->zone->id }}</span>
-                        </div>
+                        </div> --}}
                         <p class="location"><i class="bx bx-location-plus"></i>
                             {{ $restaurant->address }}
                         </p>
@@ -131,7 +145,6 @@
         </div>
         </div>
     </section>
-</x-app-layout>
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('public/assets/admin') }}/css/toastr.css">
@@ -141,4 +154,16 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key={{ \App\Models\BusinessSetting::where('key', 'map_api_key')->first()->value }}&v=3.45.8">
     </script>
+    <script>
+          function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(
+                    browserHasGeolocation ?
+                    "Error: The Geolocation service failed." :
+                    "Error: Your browser doesn't support geolocation."
+                );
+            }
+    </script>
 @endpush
+</x-app-layout>
+

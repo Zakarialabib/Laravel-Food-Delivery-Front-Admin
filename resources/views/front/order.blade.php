@@ -1,7 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-
+<x-app-layout>
     <div class="search-nav">
         <div class="container">
             <h3 class="mb-0">Order Summery</h3>
@@ -32,4 +29,4 @@
     </section>
    
 
-@endsection
+</x-app-layout>

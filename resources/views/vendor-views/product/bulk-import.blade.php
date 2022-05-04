@@ -10,7 +10,7 @@
     <div class="content container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('vendor.dashboard')}}">{{trans('messages.dashboard')}}</a>
+                <li class="breadcrumb-item"><a href="{{route('vendor.dashboard')}}">{{trans('Dashboard')}}</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page"><a
                         href="{{route('vendor.food.list')}}">{{trans('messages.foods')}}</a>
@@ -64,7 +64,7 @@
                     <div class="card card-footer">
                         <div class="row">
                             <div class="col-md-12" style="padding-top: 20px">
-                                <button type="submit" class="btn btn-primary">{{__('messages.Submit')}}</button>
+                                <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                             </div>
                         </div>
                     </div>

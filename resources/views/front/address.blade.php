@@ -1,5 +1,5 @@
 <x-app-layout>
-@section('title', __('Address'))
+    @section('title', __('Address'))
 
     <div class="search-nav">
         <div class="container">
@@ -15,18 +15,18 @@
                 <div class="col-lg-9">
                     <div class="tab-pane fade show active" id="v-pills-account" role="tabpanel"
                         aria-labelledby="v-pills-settings-tab">
-                        <div class="my-account-content">
+                        <div class="flex flex-wrap -m-5">
                             @foreach ($address as $value)
-                                @if (Auth::user()->id == $value->customer_id)
-                                    <div class="col-md-6">
+                                @if (Auth::user()->id == $value->user_id)
+                                    <div class="lg:w-1/2 sm:w-full mb-5">
                                         <div class="card address-card">
                                             <div class="card-body">
-                                                <h5 class="card-title">{{ $value->home }}</h5>
-                                                <h6> {{ $value->house_name }} , {{ $value->area }},
-                                                    {{ $value->city }},
-                                                    {{ $value->pincode }}</h6>
-                                                <p class="card-text">
-                                                    {{ $value->landmark }}
+                                                <h5 class="card-title">{{ $value->address_type }}</h5>
+                                                <p class="text-2xl text-black-500 py-3 leading-3"> {{ $value->longitude }} , {{ $value->latitude }}<br>
+                                                    {{ $value->contact_person_name }}<br>
+                                                    {{ $value->contact_person_number }}</p>
+                                                <p class="text-2xl text-black-500  pb-5">
+                                                    {{ $value->address }}
                                                 </p>
                                                 <button type="button" class="btn-link" id="edit-item"
                                                     data-toggle="modal" data-target="#exampleModal{{ $value->id }}">
@@ -89,51 +89,46 @@
                                     </div>
                                 @endif
 
-                                <div class="form-group col-lg-12">
-                                    <input type="text" name="location" class="form-control" id="location"
-                                        placeholder="Location" value="{{ $value->location }}">
+                                <div class="form-group col-lg-6">
+                                    <input type="text" name="longitude" class="form-control" id="longitude"
+                                        value="{{ $value->longitude }}" readonly>
                                     @error('location')
                                         <p style="color:red">{{ $errors->first('location') }}
                                         @enderror
                                 </div>
-                                <div class="form-group col-lg-12">
-                                    <input type="text" name="house_name" class="form-control"
-                                        placeholder="{{__('House Name / Flat / Building')}}" value="{{ $value->house_name }}">
-                                    @error('house_name')
-                                        <p style="color:red">{{ $errors->first('house_name') }}
-                                        @enderror
-                                </div>
                                 <div class="form-group col-lg-6">
-                                    <input type="text" name="area" class="form-control" placeholder="{{__('Area / Street')}}"
-                                        value="{{ $value->area }}">
-                                    @error('area')
-                                        <p style="color:red">{{ $errors->first('area') }}
-                                        @enderror
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <input type="text" name="city" class="form-control" placeholder="{{__('City')}}"
-                                        value="{{ $value->city }}">
-                                    @error('city')
-                                        <p style="color:red">{{ $errors->first('city') }}
-                                        @enderror
-                                </div>
-                                <div class="form-group col-lg-12">
-                                    <input type="text" name="landmark" class="form-control" placeholder="{{__('Landmark')}}"
-                                        value="{{ $value->landmark }}">
-                                    @error('landmark')
-                                        <p style="color:red">{{ $errors->first('landmark') }}
+                                    <input type="text" name="latitude" class="form-control" readonly
+                                        value="{{ $value->latitude }}">
+                                    @error('latitude')
+                                        <p style="color:red">{{ $errors->first('latitude') }}
                                         @enderror
                                 </div>
 
                                 <div class="form-group col-lg-6">
-                                    <input type="text" name="pincode" class="form-control" placeholder="{{__('Zip code')}}"
-                                        value="{{ $value->pincode }}">
-                                    @error('pincode')
-                                        <p style="color:red">{{ $errors->first('pincode') }}
+                                    <input type="text" name="contact_person_name" class="form-control"
+                                        placeholder="{{ __('Full name') }}"
+                                        value="{{ $value->contact_person_name }}">
+                                    @error('contact_person_name')
+                                        <p style="color:red">{{ $errors->first('contact_person_name') }}
                                         @enderror
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <select name="home" id="home" class="form-control">
+                                    <x-tel-input id="contact_person_number" name="contact_person_number"
+                                        value="{{ $value->contact_person_number }}" required class="form-control" />
+                                    @error('contact_person_number')
+                                        <p style="color:red">{{ $errors->first('contact_person_number') }}
+                                        @enderror
+                                </div>
+
+                                <div class="form-group col-lg-12">
+                                    <input type="text" name="address" class="form-control"
+                                        placeholder="{{ __('Address') }}" value="{{ $value->address }}">
+                                    @error('address')
+                                        <p style="color:red">{{ $errors->first('address') }}
+                                        @enderror
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <select name="address_type" id="address_type" class="form-control">
 
                                         <option value="0" disabled selected>{{ __('Address Type') }}</option>
 
@@ -149,10 +144,7 @@
 
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-12">
-                                    <textarea class="form-control" name="note_a_driver" id="note_A_driver" rows="3" cols="6" placeholder="{{__('Note for Driver')}}"
-                                        value="{{ $value->note }}">{{ $value->note_a_driver }}</textarea>
-                                </div>
+
 
                                 <div class="form-group col-md-6 mb-md-0 d-none d-md-block">
                                     <button type="button" class="btn btn-outline-primary w-100" data-dismiss="modal"
@@ -194,45 +186,49 @@
                         @csrf
                         <div class="form-row">
 
+                            <div class="col-md-4 col-12">
+                                <div class="form-group">
+                                    <input type="text" name="longitude" class="form-control" value="-94.22213"
+                                        placeholder="Ex : -94.22213" readonly>
+                                    @if ($errors->has('longitude'))
+                                        <span class="text-danger">{{ $errors->first('longitude') }}</span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="latitude" class="form-control" value="103.344322"
+                                        placeholder="Ex : 103.344322" readonly>
+                                    @if ($errors->has('latitude'))
+                                        <span class="text-danger">{{ $errors->first('latitude') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-12">
+                                <div id="map"></div>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <input type="text" name="contact_person_name" class="form-control"
+                                    placeholder="{{ __('Contact person name') }}">
+                                @if ($errors->has('contact_person_name'))
+                                    <span class="text-danger">{{ $errors->first('contact_person_name') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <x-tel-input id="contact_person_number" name="contact_person_number"
+                                    placeholder="{{ __('Ex : 017********') }}" required class="form-control" />
+                                @if ($errors->has('contact_person_name'))
+                                    <span class="text-danger">{{ $errors->first('contact_person_name') }}</span>
+                                @endif
+                            </div>
                             <div class="form-group col-lg-12">
-                                <input type="text" name="location" class="form-control" placeholder="Location">
-                                @if ($errors->has('location'))
-                                    <span class="text-danger">{{ $errors->first('location') }}</span>
+                                <input type="text" name="address" class="form-control"
+                                    placeholder="{{ __('Address/Street') }}">
+                                @if ($errors->has('address'))
+                                    <span class="text-danger">{{ $errors->first('address') }}</span>
                                 @endif
                             </div>
+
                             <div class="form-group col-lg-12">
-                                <input type="text" name="house_name" class="form-control"
-                                    placeholder="House Name/Flat No/Building">
-                                @if ($errors->has('house_name'))
-                                    <span class="text-danger">{{ $errors->first('house_name') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" name="area" class="form-control" placeholder="Area/Street">
-                                @if ($errors->has('area'))
-                                    <span class="text-danger">{{ $errors->first('area') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" name="city" class="form-control" placeholder="City">
-                                @if ($errors->has('city'))
-                                    <span class="text-danger">{{ $errors->first('city') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group col-lg-12">
-                                <input type="text" name="landmark" class="form-control" placeholder="Landmark">
-                                @if ($errors->has('landmark'))
-                                    <span class="text-danger">{{ $errors->first('landmark') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <input type="text" name="pincode" class="form-control" placeholder="Pincode">
-                                @if ($errors->has('pincode'))
-                                    <span class="text-danger">{{ $errors->first('pincode') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <select name="home" id="home" class="form-control">
+                                <select name="address_type" id="address_type" class="form-control">
 
                                     <option value="0" disabled selected>{{ __('Address Type') }}</option>
 
@@ -243,25 +239,18 @@
                                     <option value="Other">{{ __('Other') }}</option>
 
                                 </select>
-                                @if ($errors->has('home'))
-                                    <span class="text-danger">{{ $errors->first('home') }}</span>
+                                @if ($errors->has('address_type'))
+                                    <span class="text-danger">{{ $errors->first('address_type') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group col-lg-12">
-                                <input type="text" name="note_a_driver" id="note_a_driver" class="form-control"
-                                    placeholder="Note for Driver">
-                                @if ($errors->has('note_a_driver'))
-                                    <span class="text-danger">{{ $errors->first('note_a_driver') }}</span>
-                                @endif
-                            </div>
-                            <div class="form-group col-md-6 mb-md-0 d-none d-md-block">
-                                <button type="button" class="btn btn-outline-primary w-100" data-dismiss="modal"
+
+                            <div class="form-group col-md-12 flex flex-wrap">
+                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal"
                                     aria-label="Close">{{ __('Close') }}</button>
+                                <div class="form-group col-md-6 mb-0">
+                                    <button class="btn btn-secondary">{{ __('Save changes') }}</button>
+                                </div>
                             </div>
-                            <div class="form-group col-md-6 mb-0">
-                                <button class="btn btn-secondary w-100">{{ __('Save changes') }}</button>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -269,4 +258,65 @@
     </div>
     <!-- Address Modal End -->
 
+
+    @push('scripts')
+        <script
+                src="https://maps.googleapis.com/maps/api/js?key={{ \App\Models\BusinessSetting::where('key', 'map_api_key')->first()->value }}&v=3.45.8">
+        </script>
+        <script>
+            @php($default_location = \App\Models\BusinessSetting::where('key', 'default_location')->first())
+            @php($default_location = $default_location->value ? json_decode($default_location->value, true) : 0)
+            let myLatlng = {
+                lat: {{ $default_location ? $default_location['lat'] : '23.757989' }},
+                lng: {{ $default_location ? $default_location['lng'] : '90.360587' }}
+            };
+            let map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: myLatlng,
+            });
+            let infoWindow = new google.maps.InfoWindow({
+                content: "Click the map to get Lat/Lng!",
+                position: myLatlng,
+            });
+
+            function initMap() {
+                // Create the initial InfoWindow.
+                infoWindow.open(map);
+                //get current location block
+                infoWindow = new google.maps.InfoWindow();
+                // Try HTML5 geolocation.
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            myLatlng = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude,
+                            };
+                            infoWindow.setPosition(myLatlng);
+                            infoWindow.setContent("Location found.");
+                            infoWindow.open(map);
+                            map.setCenter(myLatlng);
+                        },
+                        () => {
+                            handleLocationError(true, infoWindow, map.getCenter());
+                        }
+                    );
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
+                //-----end block------
+            }
+            initMap();
+
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(
+                    browserHasGeolocation ?
+                    "Error: The Geolocation service failed." :
+                    "Error: Your browser doesn't support geolocation."
+                );
+            }
+        </script>
+    @endpush
 </x-app-layout>

@@ -26,7 +26,7 @@
 <div class="content container-fluid"> 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('vendor.dashboard')}}">{{__('messages.dashboard')}}</a></li>
+            <li class="breadcrumb-item"><a href="{{route('vendor.dashboard')}}">{{__('Dashboard')}}</a></li>
             <li class="breadcrumb-item" aria-current="page">{{__('messages.Employee')}} {{__('messages.update')}} </li>
         </ol>
     </nav>

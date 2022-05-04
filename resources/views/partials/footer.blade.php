@@ -3,10 +3,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                    <h3>{{__('Quick links')}}</h3>
+                    <h3>{{ __('Quick links') }}</h3>
                     <ul>
-                        <li><a href="{{ route('home') }}">{{_('Home')}}</a></li>
-                        <li><a href="{{ route('restaurant_listing') }}">{{__('Restaurants')}}</a></li>
+                        <li><a href="{{ route('home') }}">{{ _('Home') }}</a></li>
+                        <li><a href="{{ route('restaurant_listing') }}">{{ __('Restaurants') }}</a></li>
                         <li>
                             <a href="{{ $landing_page_links['app_url_android'] }}" class="footer-item">
                                 Play Store</a>
@@ -18,16 +18,15 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <h3>{{__('Quick links')}}</h3>
+                    <h3>{{ __('Quick links') }}</h3>
                     <ul>
                         @if ($toggle_restaurant_registration)
-                            <li><a
-                                    href="{{ route('restaurant.create') }}">{{ __('messages.restaurant_registration') }}</a>
+                            <li><a href="{{ route('restaurant.create') }}">{{ __('Restaurant registration') }}</a>
                             </li>
                         @endif
                         @if ($toggle_dm_registration)
                             <li><a href="{{ route('deliveryman.create') }}">
-                                    {{ __('messages.deliveryman_registration') }}
+                                    {{ __('Deliveryman registration') }}
                                 </a>
                             </li>
                         @endif
@@ -39,7 +38,7 @@
 
 
                 <div class="col-lg-4 col-md-6">
-                    <h3>{{__('Contact us')}}</h3>
+                    <h3>{{ __('Contact us') }}</h3>
                     <ul class="contact">
                         <li>
                             <a>
@@ -90,21 +89,27 @@
             <div class="col-4 item">
                 <a href="">
                     <i class='bx bx-search'></i>
-                    <span>{{__('Search')}}</span>
+                    <span>{{ __('Search') }}</span>
                 </a>
             </div>
             <div class="col-4 item">
-                <a href="">
-                    <i class='bx bx-cart'><span class="badge badge-light">22</span></i>
-                    <span>Cart</span>
-                </a>
+                <livewire:cart-count />
             </div>
-            <div class="col-4 item">
-                <a href="">
-                    <i class='bx bx-user'></i>
-                    <span>Account</span>
-                </a>
-            </div>
+            @if (empty($auth))
+                <div class="col-4 item">
+                    <a href="{{ $landing_page_links['app_url_android'] }}" class="footer-item">
+                        Play Store</a>
+                    <a href="{{ $landing_page_links['app_url_ios'] }}" class="footer-item">App
+                        Store</a>
+                </div>
+            @else
+                <div class="col-4 item">
+                    <a href="{{ route('myaccount') }}">
+                        <i class='bx bx-user'></i>
+                        <span>{{ __('Account') }}</span>
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
 

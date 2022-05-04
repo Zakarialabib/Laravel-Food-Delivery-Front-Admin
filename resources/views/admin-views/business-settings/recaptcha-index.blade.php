@@ -112,7 +112,7 @@
                                                 </li>
                                                 <li>
                                                     {{__('messages.Press')}}
-                                                    <b>{{__('messages.Submit')}}</b>
+                                                    <b>{{__('Save')}}</b>
                                                 </li>
                                                 <li>{{__('messages.Copy Key Site and Secret Key paste in the input filed below and save')}}
                                                 </li>

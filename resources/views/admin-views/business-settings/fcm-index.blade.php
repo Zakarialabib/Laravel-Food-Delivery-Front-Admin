@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary">{{__('messages.submit')}}</button>
+                            <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary">{{__('Save')}}</button>
                         </form>
                     </div>
                 </div>
@@ -322,7 +322,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <button type="submit" class="btn btn-primary">{{__('messages.submit')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                         </form>
                     </div>
                 </div>

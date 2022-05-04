@@ -130,7 +130,7 @@
                             </select>
                         </div>
                         <div class="form-group col-sm-12">
-                            <button class="btn btn-sm btn-primary" type="submit">{{__('messages.submit')}}</button>
+                            <button class="btn btn-sm btn-primary" type="submit">{{__('Save')}}</button>
                         </div>
                     </form>
                 </div>
@@ -156,7 +156,7 @@
                         </div>
 
                         <div class="form-group col-sm-12">
-                            <button class="btn btn-sm btn-primary" type="submit">{{__('messages.submit')}}</button>
+                            <button class="btn btn-sm btn-primary" type="submit">{{__('Save')}}</button>
                         </div>
                     </form>
                 </div>
@@ -189,7 +189,7 @@
                             </select>
                         </div>
                         <div class="form-group col-12">
-                            <button class="btn btn-sm btn-primary" type="submit">{{__('messages.submit')}}</button>
+                            <button class="btn btn-sm btn-primary" type="submit">{{__('Save')}}</button>
                         </div>
                     </form>
                 </div>

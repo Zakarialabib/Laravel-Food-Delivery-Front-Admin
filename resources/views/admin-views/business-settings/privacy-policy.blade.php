@@ -25,7 +25,7 @@
                         <textarea class="ckeditor form-control" name="privacy_policy">{!! $data['value'] !!}</textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">{{__('messages.submit')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                 </form>
             </div>
         </div>

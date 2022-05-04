@@ -246,7 +246,7 @@
                         </center>
                     </div>
                     <hr>
-                    <button type="submit" class="btn btn-primary">{{__('messages.submit')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                 </form>
             </div>
         </div>

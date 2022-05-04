@@ -20,7 +20,7 @@
 <div class="content container-fluid">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('messages.dashboard')}}</a></li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('Dashboard')}}</a></li>
             <li class="breadcrumb-item text-capitalize" aria-current="page">{{trans('messages.file_manager')}}</li>
         </ol>
     </nav>

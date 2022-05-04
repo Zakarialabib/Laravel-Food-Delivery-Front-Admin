@@ -53,7 +53,7 @@
                         <input type="number" min="0" max="999999999999.99" name="price" step="0.01" class="form-control" placeholder="100.00" value="{{old('price')}}" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">{{__('messages.submit')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                 </form>
             </div>
 

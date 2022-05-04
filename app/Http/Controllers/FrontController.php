@@ -101,7 +101,7 @@ class FrontController extends Controller
         return back()->with('success','Password Updated Successfully.');
     }
     /////////////Address///////////////////
-    public function address( CustomerAddress $address)
+    public function address(CustomerAddress $address)
     {
         $address = CustomerAddress::all();
         return view('front.address',['address'=>$address]);
@@ -109,14 +109,14 @@ class FrontController extends Controller
 
     public function address_store()
     {
-        $inputs=request()->validate([
+   
+        $inputs = request()->validate([
             'contact_person_name' => 'required',
             'address_type' => 'required',
             'contact_person_number' => 'required',
             'address' => 'required',
             'longitude' => 'required',
             'latitude' => 'required',
-        
         ],[
             'contact_person_name.required' => 'Name is required',
             'address_type.required' =>'Adresse type is required',
@@ -124,21 +124,20 @@ class FrontController extends Controller
             'address.required' =>'Address is required',
             'longitude.required' =>'Longitude is required',
             'latitude.required' =>'Latitude is required',
-
         ]);
         
-        $address = new CustomerAddress;
-        $customer = Auth::user()->id;
         $zone = Zone::contains('coordinates', $point)->first();
+        $point = new Point($request->latitude,$request->longitude);
 
-        $address->contact_person_name=$inputs['location'];
-        $address->address_type=$inputs['house_name'];
-        $address->contact_person_number=$inputs['area'];
-        $address->address=$inputs['city'];
-        $address->longitude=$inputs['landmark'];
-        $address->latitude=$inputs['pincode'];
-        $address->user_id = $customer;
-        $address->zone_id = $zone;
+        $address = new CustomerAddress;
+        $address->contact_person_name=$inputs['contact_person_name'];
+        $address->contact_person_number=$inputs['contact_person_number'];
+        $address->address_type=$inputs['address_type'];
+        $address->address=$inputs['address'];
+        $address->longitude=$inputs['longitude'];
+        $address->latitude=$inputs['latitude'];
+        $address->zone_id = $zone->id;
+        
         $address->save();
 
         return back();
@@ -167,52 +166,7 @@ class FrontController extends Controller
     return back();
 
     }
-        // public function edit_address(Address $address,$id){
-        //     $address=Address::find($id);
-            
-        //     // return response()->json([
-        //     //     'status'=>200,
-        //     //     'address'=>$address,
-        //     // ]);
-        //     // return back();
-        //     // dd($address);
-        //     return view('front.address',['address'=>$address]);
-    
-        // }
-        // public function update_address(Address $add){
-        //     $inputs=request()->validate([
-        //         'location'=>'required',
-        //         'house_name'=>'required',
-        //         'area'=>'required',
-        //         'city'=>'required',
-        //         'landmark'=>'required',
-        //         'pincode'=>'required',
-        //         'home'=>'required',
-        //         'note_a_driver'=>'required',
-            
-        //     ],[
-        //         'location.required' => 'Location is required',
-        //         'house_name.required' =>'House Name is required',
-        //         'area.required' =>'Area is required',
-        //         'city.required' =>'City is required',
-        //         'landmark.required' =>'Landmark is required',
-        //         'pincode.required' =>'Pincode is required',
-        //         'home.required' =>'Address Type is required',
-        //         'note_a_driver.required' =>'Note for Driver is required',
-
-        //     ]);
-        //     $add->location=$inputs['location'];
-        //     $add->house_name=$inputs['house_name'];
-        //     $add->area=$inputs['area'];
-        //     $add->city=$inputs['city'];
-        //     $add->landmark=$inputs['landmark'];
-        //     $add->pincode=$inputs['pincode'];
-        //     $add->home=$inputs['home'];
-        //     $add->note_a_driver=$inputs['note_a_driver'];
-        //     $add->save();
-            
-        //     return back();
-        // }
+      
 
     public function edit_address($id){
         $address=CustomerAddress::find($id);
@@ -222,35 +176,29 @@ class FrontController extends Controller
     }
     public function update_address(Request $request, $id){
         $inputs=request()->validate([
-            'location'=>'required',
-            'house_name'=>'required',
-            'area'=>'required',
-            'city'=>'required',
-            'landmark'=>'required',
-            'pincode'=>'required',
-            'home'=>'required',
-            'note_a_driver'=>'required',
+            'contact_person_name' => 'required',
+            'address_type' => 'required',
+            'contact_person_number' => 'required',
+            'address' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
         
         ],[
-            'location.required' => 'Location is required',
-            'house_name.required' =>'House Name is required',
-            'area.required' =>'Area is required',
-            'city.required' =>'City is required',
-            'landmark.required' =>'Landmark is required',
-            'pincode.required' =>'Pincode is required',
-            'home.required' =>'Address Type is required',
-            'note_a_driver.required' =>'Note for Driver is required',
+            'contact_person_name.required' => 'Name is required',
+            'address_type.required' =>'Adresse type is required',
+            'contact_person_number.required' =>'Phone number is required',
+            'address.required' =>'Address is required',
+            'longitude.required' =>'Longitude is required',
+            'latitude.required' =>'Latitude is required',
 
         ]);
         $address = CustomerAddress::find($id);
-        $address->location=$inputs['location'];
-        $address->house_name=$inputs['house_name'];
-        $address->area=$inputs['area'];
-        $address->city=$inputs['city'];
-        $address->landmark=$inputs['landmark'];
-        $address->pincode=$inputs['pincode'];
-        $address->home=$inputs['home'];
-        $address->note_a_driver=$inputs['note_a_driver'];
+        $address->contact_person_name=$inputs['contact_person_name'];
+        $address->contact_person_number=$inputs['contact_person_number'];
+        $address->address_type=$inputs['address_type'];
+        $address->address=$inputs['address'];
+        $address->longitude=$inputs['longitude'];
+        $address->latitude=$inputs['latitude'];
 
         $address->update();
         return back();
@@ -273,19 +221,19 @@ class FrontController extends Controller
     }
     public function search(Request $request)
     {    
-        $search_text = $request->location;
+        // $search_text = $request->location;
         
-        // $point = new Point($request->latitude, $request->longitude);
-        // $zone = Zone::contains('coordinates', $point)->first();
+        $point = new Point($request->latitude, $request->longitude);
+        $zone = Zone::contains('coordinates', $point)->first();
        
         // $type = $this->query('type', 'all');
-        $zone_id = $request->header('zoneId');
+        // $zone_id = $request->header('zoneId');
         
-        $rest = Restaurant::where('zone_id', $zone_id)
-                            ->where('name','LIKE','%'.$search_text.'%')
+        $rest = Restaurant::where('name','LIKE','%'.$postcode.'%')
+                            ->orWhere('zone_id', $zone_id)
                             ->get();
 
-        return view('front.restaurant_listing',['restaurants'=>$rest],compact('zone_id'));
+        return view('front.restaurant_listing',['restaurants'=>$rest],compact('zone_id','search_text'));
     }
 
 
@@ -410,36 +358,7 @@ class FrontController extends Controller
     $data=$request->session()->put(['restaurant'=>['restaurant'=>$id,'name'=>$restaurant->name,'location'=>$restaurant->location,
     'addess'=>$restaurant->address,'mobile'=>$restaurant->mobile]]);  
     $rest=$request->session()->get('restaurant');
-   
-  
-    // $rest=session()->get('rest');
-   
-    // if(isset($rest[$id])) {
-    //     unset($rest[$id]);
-    // } else {
-    //     $rest[$id]=[
-    //         "id"=>$restaurant->id,
-    //         "name"=>$restaurant->name,
-    //         "location"=>$restaurant->location,
-    //         "address"=>$restaurant->address,
-    //         "mobile"=>$restaurant->mobile,
-    //     ];
-        
-            
-        
-    // }
-    
-    
-    //     session()->put('rest',$rest);
-    // $request->validate([
-    //     'email'=>'required|email',  
-    //     'password'=>'required|min:4',
-    //     ]);
 
-    //     $userInfo=$request->only('email','password');
-    // if(Auth::guard('customer')->attempt($userInfo)){
-    //     return redirect()->intended('/customer/checkout');
-    // }  
         
         
     return view('front.restaurant_details', ['restaurant'=>$restaurant], compact('itemfoods'));
@@ -490,28 +409,7 @@ class FrontController extends Controller
         
          $data=$request->session()->put(['address'=>['id'=>$id,'location'=>$address->location,'home'=>$address->home,
          'house_name'=>$address->house_name,'area'=>$address->area,'pincode'=>$address->pincode,'city'=>$address->city]]);  
-         $store=$request->session()->get('address');
-        
-        //  if(isset($store[$id])) {     
-        //     unset($store[$id]);
-        // } 
-        // else {
-         
-        //      $store[$id] = [
-        //          "id" => $address->id,
-        //          "location" => $address->location, 
-        //          "home"=>$address->home,
-        //          "house_name"=>$address->house_name,
-        //          "area"=>$address->area,
-        //          "pincode"=>$address->pincode,
-        //          "city"=>$address->city,
-        //      ];
-            
-        // }
-       
-        //  session()->put('store', $store);
-         
-         
+         $store=$request->session()->get('address');         
             
          return redirect()->back()->with('success', 'Address selected successfully!');
      }

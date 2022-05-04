@@ -10,20 +10,26 @@ use Livewire\WithPagination;
 class Fooditem extends Component
 {
     use WithPagination;
-    public string $itemfoods;
+    public $itemfoods;
     public $restaurant=[];
     public $cart;
     public $sum=[];
-    
+    public int $perPage;
+
     protected $listeners = ['some-event' => '$refresh'];
-    
+    public function updatingPerPage()
+    {
+        $this->resetPage();
+    }
     public function mount($restaurant)
     {
+        $this->perPage           = 100;
 
-        $this->itemfoods=Food::where('status', 1)->paginate(5);
+        $this->itemfoods=Food::all();
 
-        
-        
+        $this->restaurant = $restaurant->itemfoods;
+        // $this->itemfoods->toArray();
+        // $this->itemfoods->paginate($this->perPage);
     }
 
     public function addToCart($id)

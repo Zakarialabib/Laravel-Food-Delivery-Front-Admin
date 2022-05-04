@@ -1,5 +1,4 @@
 <x-app-layout>
-    @section('content')
         <div class="search-nav">
             <div class="container">
                 <h3 class="mb-0">Order Tracking</h3>
@@ -147,5 +146,4 @@
                     </div>
                 </div>
         </section>
-    @endsection
 </x-app-layout>

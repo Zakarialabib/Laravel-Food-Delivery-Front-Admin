@@ -555,7 +555,7 @@
                             @if($editing)
                             <div class="offset-sm-8 col-sm-4 d-flex justify-content-between">
                                 <button class="btn btn-sm btn-danger" type="button" onclick="cancle_editing_order()">{{__('messages.cancel')}}</button>
-                                <button class="btn btn-sm btn-primary" type="button" onclick="update_order()">{{__('messages.submit')}}</button>
+                                <button class="btn btn-sm btn-primary" type="button" onclick="update_order()">{{__('Save')}}</button>
                             </div>
                             @endif
                         </div>
@@ -811,7 +811,7 @@
                                    placeholder="EX : Code123" required>
                         </div>
                         <!-- End Input Group -->
-                        <button class="btn btn-primary">{{__('messages.submit')}}</button>
+                        <button class="btn btn-primary">{{__('Save')}}</button>
                     </div>
                 </form>
 

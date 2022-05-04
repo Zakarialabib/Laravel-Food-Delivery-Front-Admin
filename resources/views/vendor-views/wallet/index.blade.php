@@ -153,7 +153,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('messages.Close')}}</button>
-                        <button type="submit" class="btn btn-primary">{{__('messages.Submit')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                     </div>
                 </form>
             </div>

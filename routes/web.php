@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\RestaurantQueryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,11 @@ Route::get('/search', [FrontController::class, 'search'])->name('search');
 
 Route::get('/restaurants', [FrontController::class, 'restaurant_listing'])->name('restaurant_listing');
 Route::get('/restaurant-catalogue/{restaurant}', [FrontController::class, 'restaurant_details'])->name('restaurant_details'); 
+Route::post('/search', [RestaurantQueryController::class, '__invoke'])->name('restaurants.query');
+Route::get('/area/{postcode}', function ($postcode) {
+    return view('front.restaurant_listing', ['postcode' => $postcode]);
+})->name('restaurants.filter');
+
 ///cart///
 Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
 Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
@@ -156,7 +162,6 @@ Route::middleware('auth')->group(function (){
 
     Route::get('/show_password', [FrontController::class, 'show_password'])->name('show_password');
     Route::post('/changePassword',[FrontController::class, 'change_password'])->name('change_password');
-    Route::get('/logout', [FrontController::class, 'logout'])->name('logout');
     //////////Cart///////////////
     Route::get('/cart',[FrontController::class,'cart'])->name('cart');
     Route::get('/add-to-cart/{id}', [FrontController::class, 'addToCart'])->name('addToCart');

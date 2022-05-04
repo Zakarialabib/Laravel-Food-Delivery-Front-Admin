@@ -233,7 +233,7 @@
                             <label for="message-text" class="col-form-label">{{__('messages.End time')}}:</label>
                             <input type="time" class="form-control" name="end_time" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">{{__('messages.Submit')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                     </form>
                 </div>
             </div>

@@ -61,7 +61,7 @@
                                                                 class="btn btn-outline-primary btn-sm"
                                                                 data-target="#exampleModal{{ $orderstore->id }}">
                                                                 {{ __('Details') }}</button>
-                                                            <button class="btn btn-primary btn-sm"><i
+                                                            <button class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"><i
                                                                     class="bx bx-download align-middle mr-1"></i>
                                                                 <a href="/customer/download-pdf/{{ $orderstore->id }}"
                                                                     style="color:white">{{ __('Download') }}</a></button>

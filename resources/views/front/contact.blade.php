@@ -85,7 +85,7 @@
             <div class="row">
 
                 <div class="col-lg-8 offset-lg-2 mt-4">
-                    <h5 class="mb-4 text-center">Send us a message</h5>
+                    <h5 class="mb-4 text-center">{{__('Send us a message')}}</h5>
                     <form>
                         <div class="form-row">
 
@@ -109,7 +109,7 @@
                                     placeholder="Message"></textarea>
                             </div>
                             <div class="form-group col-lg-12">
-                                <button class="btn btn-primary">Submit Message</button>
+                                <button class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">{{__('Submit Message')}}</button>
                             </div>
                         </div>
                     </form>

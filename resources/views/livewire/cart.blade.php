@@ -82,7 +82,7 @@
                             <span class="float-right">${{ $total }}.00</span>
                         </h4>
                     </li>
-                    <button class="btn btn-primary mt-3 w-100"
+                    <button class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm mt-3 w-100"
                         onclick="window.location.href='{{ route('customer.checkout') }}';">Proceed to Buy</button>
                 </ul>
             </div>

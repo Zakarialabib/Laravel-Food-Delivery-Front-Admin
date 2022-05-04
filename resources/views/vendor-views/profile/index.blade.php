@@ -18,7 +18,7 @@
 
                 <div class="col-sm-auto">
                     <a class="btn btn-primary" href="{{route('vendor.dashboard')}}">
-                        <i class="tio-home mr-1"></i> {{__('messages.dashboard')}}
+                        <i class="tio-home mr-1"></i> {{__('Dashboard')}}
                     </a>
                 </div>
             </div>

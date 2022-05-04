@@ -33,9 +33,14 @@
                             <a class="nav-link {{ Request::is('customer/change_password') ? 'active' : '' }}"
                                 href="{{ route('show_password') }}" role="tab" aria-controls="v-pills-settings"
                                 aria-selected="false"><i class='bx bxs-wallet-alt'></i> Change Password</a>
-                            <a class="nav-link" href="{{ route('logout') }}" role="tab"
-                                aria-controls="v-pills-settings" aria-selected="false"><i class='bx bxs-log-out'></i>
-                                Logout</a>
+                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                               <i class='bx bxs-log-out'></i> {{ __('Logout') }}</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                             </form>
+                               
                             <!-- <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-no-orders"
                                 role="tab" aria-controls="v-pills-settings" aria-selected="false"><i
                                     class='bx bxs-log-out'></i> No Orders</a> -->

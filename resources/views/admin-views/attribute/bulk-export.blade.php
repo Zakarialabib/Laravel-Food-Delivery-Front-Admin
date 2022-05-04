@@ -10,7 +10,7 @@
     <div class="content container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('messages.dashboard')}}</a>
+                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('Dashboard')}}</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page"><a
                         href="{{route('admin.attribute.add-new')}}">{{trans('messages.attributes')}}</a>
@@ -64,7 +64,7 @@
                                 <input type="date" name="to_date" class="form-control">
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit">{{__('messages.submit')}}</button>
+                        <button class="btn btn-primary" type="submit">{{__('Save')}}</button>
                     </div>
                 </form>
             </div>

@@ -4,7 +4,7 @@
     <section class="py-60">
         <div class="container">
             {{-- @if (app('request')->has('location')) --}}
-            <h4 class="mb-4">Restaurants</h4>
+            <h4 class="mb-4">{{__('Restaurants')}}</h4>
             <div class="row rest-listing-row">
                 @forelse ($restaurants as $rest)
                     @if ($rest->status == 1)
@@ -27,8 +27,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $rest->name }}</h5>
-                                    <p class="location"><i class="bx bx-location-plus"></i> {{ $rest->address }}
-                                    </p>
+                                    <p class="location"><i class="bx bx-location-plus"></i> {{ $rest->address }}</p>
                                     <div class="details">
                                         <span class="badge p-2"><i class='bx bxs-star text-yellow-300'></i> 4.2</span>
                                     </div>
@@ -72,10 +71,11 @@
                 @endforelse
             </div>
             {{-- @endif --}}
-            {{ $restaurants->links() }}
+            <div class="pt-3">
+            {{ $restaurants->links('layouts.tailwind') }}
+            </div>
         </div>
     </section>
-</x-app-layout>
 @push('scripts')
     <script type="text/javascript">
         function locationPopup() {
@@ -87,4 +87,5 @@
         }
     </script>
 @endpush
+</x-app-layout>
 

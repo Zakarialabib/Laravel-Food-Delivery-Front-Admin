@@ -40,9 +40,9 @@
                 <h1 class="display-1 mb-0">404</h1>
                 <p class="lead">{{__('messages.404_warning_message')}}.</p>
                 @if(auth('vendor')->check())
-                    <a class="btn btn-primary" href="{{route('vendor.dashboard')}}">{{__('messages.dashboard')}}</a>
+                    <a class="btn btn-primary" href="{{route('vendor.dashboard')}}">{{__('Dashboard')}}</a>
                 @else
-                    <a class="btn btn-primary" href="{{route('admin.dashboard')}}">{{__('messages.dashboard')}}</a>
+                    <a class="btn btn-primary" href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a>
                 @endif
             </div>
         </div>

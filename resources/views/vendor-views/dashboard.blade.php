@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('messages.dashboard'))
+@section('title',__('Dashboard'))
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -32,7 +32,7 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title">
-                        {{__('messages.dashboard')}}
+                        {{__('Dashboard')}}
 
                         <span class="float-right" style="font-size: 14px;color: gray">
                             {{__('messages.followup')}}

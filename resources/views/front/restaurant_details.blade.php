@@ -1,5 +1,8 @@
 <x-app-layout>
-    <div class="search-nav restaurant-head">
+    <div class="search-nav restaurant-head" 
+        {{-- style="background-image: url({{ asset('storage/app/public/restaurant/cover/' . $restaurant->cover_photo) }});
+               background-size: cover;" --}}
+        >
         <div class="container">
             <div class="rest-info-wrap">
                 <div class="rest-logo" style="background-image: url({{ asset('storage/app/public/restaurant/' . $restaurant->logo) }});">
@@ -19,18 +22,18 @@
                     <p><i class="bx bx-location-plus"></i> {{ $restaurant->address }}</p>
                 </div>
             </div>
-            <div class="details">
+            <div class="details justify-center">
+                @if (empty($restaurant->rating))
                 <div class="detail-block">
-                    @if (empty($restaurant->rating))
                         <span class="badge"><i class='bx bxs-star'></i> {{ $restaurant->rating }}</span>
-                    @endif
-                </div>
+                    </div>
+                @endif
                 <div class="detail-block">
                     <h5>{{ $restaurant->delivery_time }}</h5>
                     <span>{{__('Delivery Time')}}</span>
                 </div>
                 <div class="detail-block">
-                    <h5>{{ $restaurant->opening_time->format('h:m') }} /
+                    <h5>AM {{ $restaurant->opening_time->format('h:m') }} / PM
                         {{ $restaurant->closeing_time->format('h:m') }}</h5>
                     <span>{{__('Opening and Closing Time')}}</span>
                 </div>

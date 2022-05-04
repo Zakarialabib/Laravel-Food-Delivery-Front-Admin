@@ -1,7 +1,5 @@
 <div class="row">
-    @php
-        $this->restaurant = $restaurant->itemfoods;
-    @endphp
+    
     @foreach ($itemfoods as $item)
         {{-- @if ($restaurant->contains($item->id)) --}}
             <div class="col-lg-6" wire:key="{{ $item->id }}">
@@ -24,7 +22,7 @@
                                             <i class="bx bxs-circle"></i>
                                         </div>
                                     @endif
-                                    <span class="price">${{ $item->price }}</span>
+                                    <span class="price">{{ $item->price }} DH</span>
                                     {{-- <span class="actual-price">$180.99</span> --}}
                                 </div>
 
@@ -65,7 +63,7 @@
                                             <i class="bx bxs-circle"></i>
                                         </div>
                                     @endif
-                                    <span class="price">${{ $item->price }}</span>
+                                    <span class="price">{{ $item->price }} DH</span>
                                     {{-- <span class="actual-price">$180.99</span> --}}
                                 </div>
 
@@ -77,5 +75,5 @@
             </div>
         {{-- @endif --}}
     @endforeach
-    {{ $itemfoods->links() }}
+    {{-- {{$itemfoods->links()}} --}}
 </div>

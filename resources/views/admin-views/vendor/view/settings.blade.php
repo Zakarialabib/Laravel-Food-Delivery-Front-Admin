@@ -12,7 +12,7 @@
 <div class="content container-fluid">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('messages.dashboard')}}</a></li>
+            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
             <li class="breadcrumb-item" aria-current="page">{{__('messages.vendor_view')}}</li>
         </ol>
     </nav>
@@ -289,7 +289,7 @@
                         <label for="message-text" class="col-form-label">{{__('messages.End time')}}:</label>
                         <input type="time" class="form-control" name="end_time" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">{{__('messages.Submit')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                 </form>
             </div>
         </div>
