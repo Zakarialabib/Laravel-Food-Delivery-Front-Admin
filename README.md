@@ -22,14 +22,22 @@ php artisan migrate --seed
 
 ## Tasks coming 
 
-- Restaurant page ( Needs map localisation to serve restarant in client zone)
+- Home page search ( Fetch localisation to serve available restarant in client zone )
+
+- Restaurant List Needs Filters : -map localisation in client zone
+                                  -food categories
+                                  -popular
+
+- Restaurant Page Needs Filters : -price/high low
+                                  -food categories
+                                  -popular
+
+- Fooditems in restaurant page needs pagination and buy button
+
+- buy button will lead to checkout if users is auth else registration page
 
 - Translation files (40000+ words needs translation)
-
-- Fooditems in restaurant page needs pagination
-
-- Account page ( Address needs to be fixed)
-
+ 
 ## Tasks Done 
 
 - App layout ( Header - Footer - Styles - Scripts)
@@ -38,9 +46,7 @@ php artisan migrate --seed
 
 - Restaurants list and detail page for each one of them 
 
-- Authentification for customer 
+- Customer Authentification 
 
-- Account page (account details - change password - Orders )
-
-- 
+- Account page (account details - change password - Orders - Address )
 

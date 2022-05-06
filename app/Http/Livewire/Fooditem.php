@@ -10,27 +10,68 @@ use Livewire\WithPagination;
 class Fooditem extends Component
 {
     use WithPagination;
-    public $itemfoods;
-    public $restaurant=[];
-    public $cart;
-    public $sum=[];
-    public int $perPage;
 
-    protected $listeners = ['some-event' => '$refresh'];
-    public function updatingPerPage()
+    public $itemfoods;
+    
+    public $restaurant=[];
+
+    public $cart;
+    
+    public $sum=[];
+    
+    public ?string $term = null;
+
+    public string $orderBy = 'id';
+    
+    public string $sortBy = 'asc';
+    
+    public int $perPage = 10;
+
+    public $readyToLoad = false;
+
+    public function loadItems()
     {
+        $this->readyToLoad = true;
+    }
+
+    public function updatingTerm(){
+        $this->resetPage();
+     }
+
+    public function updatingOrderBy(){
         $this->resetPage();
     }
+
+    public function updatingSortBy(){
+        $this->resetPage();
+    }
+
+    public function updatingPerPage(){
+        $this->resetPage();
+    }
+
+    protected $listeners = ['some-event' => '$refresh'];
+
+
     public function mount($restaurant)
     {
-        $this->perPage           = 100;
-
-        $this->itemfoods=Food::all();
-
+        $this->itemfoods = Food::all();
         $this->restaurant = $restaurant->itemfoods;
-        // $this->itemfoods->toArray();
-        // $this->itemfoods->paginate($this->perPage);
+        
+        // * Search
+        
+        if (!empty($this->term)&& $this->term != null){
+            $itemfoods = $itemfoods->search(trim($this->term));
+        }
     }
+
+    public function render()
+    {
+       
+        
+        return view('livewire.fooditem');
+    }
+
 
     public function addToCart($id)
     {
@@ -138,9 +179,6 @@ class Fooditem extends Component
   
     }
 
-    public function render()
-    {
-        return view('livewire.fooditem');
-    }
+  
     
 }
