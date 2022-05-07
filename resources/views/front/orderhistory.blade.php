@@ -41,7 +41,7 @@
                                                     <p class="rest-address">
 
                                                         <i class="bx bx-location-plus"></i>
-                                                        {{ $orderstore->restaurant->address }},{{ $orderstore->restaurant->location }}
+                                                        {{ $orderstore->restaurant->address }}
                                                     </p>
                                                     <div class="order-id-time">
                                                         <p>{{ __('Order') }} #{{ $orderstore->id }}</p>
@@ -49,7 +49,7 @@
                                                     </div>
                                                     <div class="order-id-time">
                                                         @foreach ($orderstore->itemfoods as $item)
-                                                            <p class="items">{{ $item->food_item }}</p>
+                                                            <p class="items">{{ $item->name }}</p>
                                                         @endforeach
                                                     </div>
                                                     <div class="total-buttons">
@@ -132,8 +132,8 @@
                                             <tbody>
                                                 @foreach ($orderstore->itemfoods as $item)
                                                     <tr>
-                                                        <td>{{ $item->food_item }}</td>
-                                                        <td>${{ $item->rate }}</td>
+                                                        <td>{{ $item->name }}</td>
+                                                        <td>${{ $item->price }}</td>
                                                         <td>${{ $orderstore->grand_total }}</td>
                                                     </tr>
                                                 @endforeach

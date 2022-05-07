@@ -8,6 +8,7 @@ use App\Rules\MatchOldPassword;
 use App\CentralLogics\Helpers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+use App\Models\Category;
 use App\Models\Wishlist;
 use App\Models\CustomerAddress;
 use App\Models\Cuisine;
@@ -25,12 +26,11 @@ use Auth;
 class FrontController extends Controller
 {
     
-    //
     public function index(){
 
         $restaurants = Restaurant::orderBy("order_count", 'desc')
-        ->take(6)
-        ->get();
+            ->take(6)
+            ->get();
 
         $top_sell = Food::withoutGlobalScopes()
             ->orderBy("order_count", 'desc')
@@ -41,10 +41,13 @@ class FrontController extends Controller
         return view('front.index', compact('restaurants','top_sell'));
     }
   
-    public function aboutus(){
+    public function aboutus()
+    {
         return view('front.aboutus');
     }
-    public function contact(){
+    
+    public function contact()
+    {
         return view('front.contact');
     }
 
@@ -66,21 +69,21 @@ class FrontController extends Controller
         return view('front.my_account', compact('customer'));
     }
 
-    public function profile_update(Request $request,$id){
-        $customer=User::findorFail($id);
+    public function profile_update(Request $request,$id)
+    {    
+        $customer = User::findorFail($id);
         $customer->first_name=$request->first_name;
         $customer->last_name=$request->last_name;
-        $customer->mobile=$request->mobile;
+        $customer->phone=$request->phone;
         $customer->email=$request->email;
         $save=$customer->save();
+
         if($save){
             return back()->with('success','Account Details Updated Successfully.');  
         }
         else{
             return back()->with('fail','Something went wrong');  
-
         }
-
     }
     
     ///////////Change Password///////////////
@@ -100,7 +103,8 @@ class FrontController extends Controller
    
         return back()->with('success','Password Updated Successfully.');
     }
-    /////////////Address///////////////////
+
+    ///////////// Customer Address///////////////////
     public function address(CustomerAddress $address)
     {
         $address = CustomerAddress::all();
@@ -109,7 +113,6 @@ class FrontController extends Controller
 
     public function address_store()
     {
-   
         $inputs = request()->validate([
             'contact_person_name' => 'required',
             'address_type' => 'required',
@@ -139,50 +142,48 @@ class FrontController extends Controller
         $address->zone_id = $zone->id;
         
         $address->save();
-
         return back();
         
     }
-    public function default(Request $request,$id){
-       
-        $address=CustomerAddress::find($id);
+    public function default(Request $request,$id)
+    {   
+        $address = CustomerAddress::find($id);
        
         CustomerAddress::where('default', 1)->update(['default' => 0]);
         
         CustomerAddress::where('id', $request->id)->update(['default' => 1]);
         return back();
-
     }
 
-    public function removedefault($id){
-
-    $inputs=request()->validate([
-        'default'=>['sometimes', 'in:1,0'],
-    ]);
-    $address=CustomerAddress::find($id);
-    $address->default=0;
-        
-    $address->save();
-    return back();
-
+    public function removedefault($id)
+    {
+        $inputs = request()->validate([
+            'default'=>['sometimes', 'in:1,0'],
+        ]);
+        $address = CustomerAddress::find($id);
+        $address->default=0;
+            
+        $address->save();
+        return back();
     }
       
 
-    public function edit_address($id){
-        $address=CustomerAddress::find($id);
+    public function edit_address($id)
+    {
+        $address = CustomerAddress::find($id);
         
         return view('front.address',compact('address'));
-
     }
-    public function update_address(Request $request, $id){
-        $inputs=request()->validate([
+
+    public function update_address(Request $request, $id)
+    {
+        $inputs = request()->validate([
             'contact_person_name' => 'required',
             'address_type' => 'required',
             'contact_person_number' => 'required',
             'address' => 'required',
             'longitude' => 'required',
             'latitude' => 'required',
-        
         ],[
             'contact_person_name.required' => 'Name is required',
             'address_type.required' =>'Adresse type is required',
@@ -190,8 +191,8 @@ class FrontController extends Controller
             'address.required' =>'Address is required',
             'longitude.required' =>'Longitude is required',
             'latitude.required' =>'Latitude is required',
-
         ]);
+
         $address = CustomerAddress::find($id);
         $address->contact_person_name=$inputs['contact_person_name'];
         $address->contact_person_number=$inputs['contact_person_number'];
@@ -204,21 +205,18 @@ class FrontController extends Controller
         return back();
     }
 
-    public function address_destroy($id){
+    public function address_destroy($id)
+    {
         $address=CustomerAddress::find($id);
+    
         $address->delete();
+    
         return back();
     }
 
-    
-    public function restaurant_listing()
-    {    
-        $restaurant = Restaurant::where('status', 1)->paginate(10);
-     
-        // dd($restaurant);
-     
-        return view('front.restaurant_listing',['restaurants'=>$restaurant]);
-    }
+   
+     ////////////// Home Search ///////////////
+
     public function search(Request $request)
     {    
         // $search_text = $request->location;
@@ -235,14 +233,44 @@ class FrontController extends Controller
 
         return view('front.restaurant_listing',['restaurants'=>$rest],compact('zone_id','search_text'));
     }
+     ////////////// Restaurant List ///////////////
+     public function restaurant_listing()
+     {    
+         $itemfoods = Food::all();
 
+         $restaurant = Restaurant::where('status', 1)->paginate(10);
+      
+         $categories = Category::where(['position'=>0])->latest()->get();
+      
+         return view('front.restaurant_listing',
+                    [
+                    'restaurants'=>$restaurant,
+                    'categories'=>$categories,
+                    ]);
+     }
+     public function restaurant_details($id,Request $request)
+     {
+         $itemfoods = Food::all();
+ 
+         $restaurant = Restaurant::find($id);
+ 
+         $data = $request->session()->put([
+             'restaurant'=>['restaurant'=>$id,
+             'name'=>$restaurant->name,
+             'location'=>$restaurant->location,
+             'addess'=>$restaurant->address,
+             'phone'=>$restaurant->phone]
+             ]); 
+ 
+         $rest = $request->session()->get('restaurant');
+ 
+         return view('front.restaurant_details', ['restaurant'=>$restaurant], compact('itemfoods'));
+     }
 
      //////////////Add to Cart///////////////
      public function cart()
     {
-       
-            return view('front.cart');
-        
+        return view('front.cart');   
     }
      
     public function addToCart($id)
@@ -256,9 +284,9 @@ class FrontController extends Controller
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
-                "rate" => $itemfoods->rate,
+                "price" => $itemfoods->price,
             ];
         }
           
@@ -268,239 +296,365 @@ class FrontController extends Controller
         } else {
             $cartsession[$id] = [
                 "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
-                "rate" => $itemfoods->rate,
+                "price" => $itemfoods->price,
             ];
         }
         
         session()->put('cartsession', $cartsession);
-        dd($cartsession);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
-        
 
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-    public function removeFromCart($id){
+
+    public function add_to_cart(Request $request)
+    {
+        $product = Food::find($request->id);
+
+        $data = array();
+        $data['id'] = $product->id;
+        $str = '';
+        $variations = [];
+        $price = 0;
+        $addon_price = 0;
+
+        //Gets all the choice values of customer choice option and generate a string like Black-S-Cotton
+        foreach (json_decode($product->choice_options) as $key => $choice) {
+            $data[$choice->name] = $request[$choice->name];
+            $variations[$choice->title] = $request[$choice->name];
+            if ($str != null) {
+                $str .= '-' . str_replace(' ', '', $request[$choice->name]);
+            } else {
+                $str .= str_replace(' ', '', $request[$choice->name]);
+            }
+        }
+        $data['variations'] = $variations;
+        $data['variant'] = $str;
+        if ($request->session()->has('cart') && !isset($request->cart_item_key)) {
+            if (count($request->session()->get('cart')) > 0) {
+                foreach ($request->session()->get('cart') as $key => $cartItem) {
+                    if (is_array($cartItem) && $cartItem['id'] == $request['id'] && $cartItem['variant'] == $str) {
+                        return response()->json([
+                            'data' => 1
+                        ]);
+                    }
+                }
+
+            }
+        }
+        //Check the string and decreases quantity for the stock
+        if ($str != null) {
+            $count = count(json_decode($product->variations));
+            for ($i = 0; $i < $count; $i++) {
+                if (json_decode($product->variations)[$i]->type == $str) {
+                    $price = json_decode($product->variations)[$i]->price;
+                }
+            }
+        } else {
+            $price = $product->price;
+        }
+
+        $data['quantity'] = $request['quantity'];
+        $data['price'] = $price;
+        $data['name'] = $product->name;
+        $data['discount'] = Helpers::product_discount_calculate($product, $price,Helpers::get_restaurant_data());
+        $data['image'] = $product->image;
+        $data['add_ons'] = [];
+        $data['add_on_qtys'] = [];
+        
+        if($request['addon_id'])
+        {
+            foreach($request['addon_id'] as $id)
+            {
+                $addon_price+= $request['addon-price'.$id]*$request['addon-quantity'.$id];
+                $data['add_on_qtys'][]=$request['addon-quantity'.$id];
+            } 
+            $data['add_ons'] = $request['addon_id'];
+        }
+
+        $data['addon_price'] = $addon_price;
+        
+        if ($request->session()->has('cart')) {
+            $cart = $request->session()->get('cart', collect([]));
+            if(isset($request->cart_item_key))
+            {
+                $cart[$request->cart_item_key] = $data;
+                $data = 2;
+            }
+            else
+            {
+                $cart->push($data);
+            }
+
+        } else {
+            $cart = collect([$data]);
+            $request->session()->put('cart', $cart);
+        }
+
+        return response()->json([
+            'data' => $data
+        ]);
+    }
+
+    public function removeFromCart($id)
+    {
         $itemfoods = Food::findOrFail($id);
            
         if(isset($cart[$id]) && $cart[$id]['quantity'] > "1") {
             $cart[$id]['quantity']--;
-        } 
-        elseif($itemId== 1){
-           
-                unset($cart[$id]);
-            }
-        
-        
-        else {
+        } elseif($itemId== 1){
+            unset($cart[$id]);
+        } else {
             $cart[$id] = [
                 "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
-                "rate" => $itemfoods->rate,
-            
-                
+                "price" => $itemfoods->price,
             ];
         }
           
         session()->put('cart', $cart);
         if(isset($cartsession[$id]) && $cartsession[$id]['quantity'] > "1") {
             $cartsession[$id]['quantity']--;
-        } 
-        elseif($itemId== 1){
-           
-                unset($cartsession[$id]);
-            }
-        
-        
-        else {
+        } elseif($itemId== 1){
+            unset($cartsession[$id]);
+        } else {
             $cartsession[$id] = [
                 "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
-                "rate" => $itemfoods->rate,
-            
-                
+                "price" => $itemfoods->price,
             ];
         }
         session()->put('cartsession', $cartsession);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
-
     }
+   //removes from Cart
+   public function remove_from_cart(Request $request)
+   {
+       if ($request->session()->has('cart')) {
+           $cart = $request->session()->get('cart', collect([]));
+           $cart->forget($request->key);
+           $request->session()->put('cart', $cart);
+       }
+
+       return response()->json([],200);
+   }
+
+   //updated the quantity for a cart item
+   public function updateQuantity(Request $request)
+   {
+       $cart = $request->session()->get('cart', collect([]));
+       $cart = $cart->map(function ($object, $key) use ($request) {
+           if ($key == $request->key) {
+               $object['quantity'] = $request->quantity;
+           }
+           return $object;
+       });
+       $request->session()->put('cart', $cart);
+       return response()->json([],200);
+   }
+   
+     //empty Cart
+     public function empty_cart(Request $request)
+     {
+         session()->forget('cart');
+         return response()->json([],200);
+     }
+ 
     public function cartDelete(Request $request,$id)
     {
+        $cart = session()->get('cart');
         
-            $cart = session()->get('cart');
-            
-            unset($cart[$id]);
-            session()->put('cart', $cart);
-           
-            session()->flash('success', 'Product removed successfully');
+        unset($cart[$id]);
+        session()->put('cart', $cart);
         
+        session()->flash('success', 'Product removed successfully');
     }
-    public function cart2(){
 
-       
-            return view('front.cart2');
-            
-        
-
+    public function cart2()
+    {
+        return view('front.cart2');       
     }
-    public function emptycart(){
+
+    public function emptycart()
+    {
         return view('front.emptycart');
     }
-    public function restaurant_details($id,Request $request)
+
+
+    public function checkout(Restaurant $restaurant,Request $request)
     {
-
-    $itemfoods=Food::all();
-    $restaurant = Restaurant::find($id);
-    // dd($restaurant);
-    $data=$request->session()->put(['restaurant'=>['restaurant'=>$id,'name'=>$restaurant->name,'location'=>$restaurant->location,
-    'addess'=>$restaurant->address,'mobile'=>$restaurant->mobile]]);  
-    $rest=$request->session()->get('restaurant');
-
+        $rest = $request->session()->get('restaurant');
         
-        
-    return view('front.restaurant_details', ['restaurant'=>$restaurant], compact('itemfoods'));
-
-    }
-
-    public function checkout(Restaurant $restaurant,Request $request){
-        $rest=$request->session()->get('restaurant');
-        
-        $cartsession=session()->get('cartsession',[]);
+        $cartsession = session()->get('cartsession',[]);
          
-        $address=CustomerAddress::where('customer_id',auth()->user()->id)->get();
-        $itemfoods=Food::all();
-        $restaurant=Restaurant::all();
-        
-        // session()->put('rest',$rest);
+        $address = CustomerAddress::where('user_id',auth()->user()->id)->get();
+        $itemfoods = Food::all();
+        $restaurant = Restaurant::all();
         
         return view('front.checkout',compact('itemfoods','address'));
-       
     }
-     public function order(orderStore $order,$id){
-        $order=Order::findOrFail($id);
+
+     public function order(orderStore $order,$id)
+     {
+        $order = Order::findOrFail($id);
         
          return view('front.order',['order'=>$order]);
      }
-     public function order_tracking(Order $order,Request $request){
-         
-        //  $store=session()->get('address');
-        
+
+     public function order_tracking(Order $order,Request $request)
+     {
        
-        $cartsession=session()->get('cartsession');
+        $cartsession = session()->get('cartsession');
         $request->session()->forget('cart');
         $request->session()->forget('address');
            
-         return view('front.order_tracking',['Order'=>$order],compact('order'));
-         
-        // $request->session()->forget('cart');
-       
-        // return redirect('/customer/my_home');
-        
+         return view('front.order_tracking', compact('order'), ['Order'=>$order]);
      }
 
      public function addressStore($id,Request $request)
      {
          $address = CustomerAddress::findOrFail($id);
-            // dd($address->default);
-        //  $store = session()->get('store');
         
-         $data=$request->session()->put(['address'=>['id'=>$id,'location'=>$address->location,'home'=>$address->home,
-         'house_name'=>$address->house_name,'area'=>$address->area,'pincode'=>$address->pincode,'city'=>$address->city]]);  
-         $store=$request->session()->get('address');         
+         $data = $request->session()->put(['address'=>[
+            'id'=>$id,
+            'location'=>$address->location,
+             'home'=>$address->home,
+             'house_name'=>$address->house_name,
+            'area'=>$address->area,
+            'pincode'=>$address->pincode,
+            'city'=>$address->city]
+            ]);  
+
+         $store = $request->session()->get('address');         
             
          return redirect()->back()->with('success', 'Address selected successfully!');
      }
 
-     public function orderStore(Order $order,Request $request,Address $address){
+     public function quick_view(Request $request)
+     {
+         $product = Food::findOrFail($request->product_id);
+ 
+         return response()->json([
+             'success' => 1,
+             'view' => view('front.quickview', compact('product'))->render(),
+         ]);
+     }
+     public function variant_price(Request $request)
+     {
+         $product = Food::find($request->id);
+         $str = '';
+         $quantity = 0;
+         $price = 0;
+         $addon_price = 0;
+ 
+         foreach (json_decode($product->choice_options) as $key => $choice) {
+             if ($str != null) {
+                 $str .= '-' . str_replace(' ', '', $request[$choice->name]);
+             } else {
+                 $str .= str_replace(' ', '', $request[$choice->name]);
+             }
+         }
+ 
+         if($request['addon_id'])
+         {
+             foreach($request['addon_id'] as $id)
+             {
+                 $addon_price+= $request['addon-price'.$id]*$request['addon-quantity'.$id];
+             } 
+         }
+ 
+         if ($str != null) {
+             $count = count(json_decode($product->variations));
+             for ($i = 0; $i < $count; $i++) {
+                 if (json_decode($product->variations)[$i]->type == $str) {
+                     $price = json_decode($product->variations)[$i]->price - Helpers::product_discount_calculate($product, json_decode($product->variations)[$i]->price,Helpers::get_restaurant_data());
+                 }
+             }
+         } else {
+             $price = $product->price - Helpers::product_discount_calculate($product, $product->price,Helpers::get_restaurant_data());
+         }
+ 
+         return array('price' => Helpers::format_currency(($price * $request->quantity)+$addon_price));
+     }
+
+     public function orderStore(Order $order,Request $request,CustomerAddress $address)
+     {
         
-       
-        // $address=Address::where('customer_id',auth()->user()->id)->get();
-        $address=CustomerAddress::where('default','1')->first();
-       
-        $store=session()->get('address');
+        $address = CustomerAddress::where('default','1')
+                                  ->first();
+
+        $store = session()->get('address');
         $cart = session()->get('cart', []);
         
-        $rest=session()->get('restaurant');
-        // dd($store);
-       
-        // $rest=$request->session()->get('restaurant');
+        $rest = session()->get('restaurant');
     
-        $inputs=request()->validate([
-            'delivery_method'=>'required',]);
+        $inputs = request()->validate(['delivery_method'=>'required',]);
         
-        
-        $address_id=0;
+        $restaurant_discount_amount = 0;
+
+        $address_id = 0;
         if($request->delivery_method == "delivery") {
         
-         $address_id=isset($store['id']) ? $store['id'] : ($address->id);
+         $address_id = isset($store['id']) ? $store['id'] : ($address->id);
         }
-      dd($address_id);
         
-        $restaurant_id=null;
-        $restaurant_id=$rest['restaurant'];
-       
-        // foreach($rest as $restaurant){
-        //     $restaurant_id=$restaurant['id'];
-        // }
+        $restaurant_id = null;
+        $restaurant_id = $rest['restaurant'];
         
         $total=0;
         
-            
+
         foreach($cart as $cartitems){
-                $total +=($cartitems['rate'] * $cartitems['quantity']);       
+                $total +=($cartitems['price'] * $cartitems['quantity']);       
         }
-       
-        $customer=Auth::user()->id;
-       $customer1=Auth::user()->mobile;
-        $order->order_date=Carbon::now();
-        $order->mobile=$customer1;
-        $order->item_total=$total;
-        $order->sub_total=$total;
-        $order->grand_total=$total;
-        $order->address_id=$address_id;
-        $order->order_type=$inputs['delivery_method'];
-        $order->order_status='pending';
-        $order->payment_status='pending';
-        $order->payment_method='cash on delivery';
-        $order->customer_id=$customer;
-        $order->restaurant_id=$restaurant_id;
         
-        // dd($cid);
-        // dd($quantity);
+       
+        $customer = Auth::user()->id;
+        $order->order_amount = $total;
+        $order->delivery_address = $address_id;
+        $order->order_type = $inputs['delivery_method'];
+        $order->order_status = 'pending';
+        $order->payment_status = 'pending';
+        $order->payment_method = 'cash on delivery';
+        $order->user_id = $customer;
+        $order->restaurant_id = $restaurant_id;
+        $order->restaurant_discount_amount = $restaurant_discount_amount;
+        $order->created_at = now();
+        $order->updated_at = now();
+
         $order->save();
         
         $cartid=array();
+
         foreach($cart as $cartItem){
+            // dd($cartItem);
             array_push($cartid,$cartItem);
-            $cid=$cartItem['id'];
             $quantity=$cartItem['quantity'];
-            $name=$cartItem['food_item'];
-            $order->itemfoods()->attach($cid,['quantity'=>$quantity,'food_item'=>$name]);
-            
+            $name=$cartItem['name'];
+            $order->transaction()->attach(['quantity'=>$quantity,'name'=>$name]);
         }    
         
         return view('front.order',['Order' => $order],compact('order'));
         
-
      }
-     public function order_history(Order $order){
+
+     public function order_history(Order $order)
+     {
          $order = Order::orderBy('created_at', 'DESC')->where('user_id',auth()->user()->id)->get();
          
          $itemfoods = Food::all();
+
          return view('front.orderhistory',['order'=>$order],compact('itemfoods'));
      }
 
 
-     public function downloadPDF(Order $order,Request $request){
-       
-        
+     public function downloadPDF(Order $order,Request $request)
+     {
         $pdf = PDF::loadView('front.order_download',['Order' => $order],compact('order'))->setOptions(['defaultFont' => 'sans-serif']);
         
         return $pdf->download('order_download.pdf');
-       
     }
 
     public function changeLanguage($locale)
@@ -510,6 +664,4 @@ class FrontController extends Controller
 
         return redirect()->back();
     }
-
-            
 }

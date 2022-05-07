@@ -108,10 +108,10 @@
 
                                             <div class="details">
 
-                                                <h6>{{ $item->food_item }}</h6>
+                                                <h6>{{ $item->name }}</h6>
                                             </div>
                                             <div class="price">
-                                                <h6>${{ $item->rate }}</h6>
+                                                <h6>${{ $item->price }}</h6>
                                                 <div class="add-remove-button">
 
                                                 </div>

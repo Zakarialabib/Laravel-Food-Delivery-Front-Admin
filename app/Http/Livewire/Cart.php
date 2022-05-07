@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Itemfood;
+use App\Models\Food;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 class Cart extends Component
@@ -23,7 +23,7 @@ class Cart extends Component
     public function addItemToCart($id, Request $request)
     {
        
-        $itemfoods = Itemfood::findOrFail($id);
+        $itemfoods = Food::findOrFail($id);
         
         $cart = session()->get('cart', []);
         
@@ -40,7 +40,7 @@ class Cart extends Component
         } else {
             $cart[$id] = [
                 "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $itemfoods->order_amount,  
                 
@@ -54,7 +54,7 @@ class Cart extends Component
         } else {
             $cartsession[$id] = [
                 "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $itemfoods->order_amount,
             ];
@@ -69,7 +69,7 @@ class Cart extends Component
     }
     
     public function removeItemFromCart($id){
-        $itemfoods = Itemfood::findOrFail($id);
+        $itemfoods = Food::findOrFail($id);
            
         $cart = session()->get('cart', []);
         
@@ -91,7 +91,7 @@ class Cart extends Component
         else {
             $cart[$id] = [
                 "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $itemfoods->order_amount,
             ];
@@ -110,7 +110,7 @@ class Cart extends Component
         else {
             $cartsession[$id] = [
                 "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $itemfoods->order_amount,
             ];
@@ -124,7 +124,7 @@ class Cart extends Component
     }
     public function checkout()
     {
-        return redirect()->to('/customer/checkout');
+        return redirect()->to('/checkout');
     }
 
     public function render()

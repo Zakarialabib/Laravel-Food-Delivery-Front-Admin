@@ -6,12 +6,13 @@ use Livewire\Component;
 use App\Models\Food;
 use App\Models\Restaurant;
 use Livewire\WithPagination;
+use DB;
 
 class Fooditem extends Component
 {
     use WithPagination;
 
-    public $itemfoods;
+    // public $itemfoods;
     
     public $restaurant=[];
 
@@ -55,21 +56,27 @@ class Fooditem extends Component
 
     public function mount($restaurant)
     {
-        $this->itemfoods = Food::all();
-        $this->restaurant = $restaurant->itemfoods;
-        
         // * Search
-        
+        // $resto = Restaurant::find($restaurant);
+        // $itemfoods = Food::where('restaurant_id', $restaurant)->orderBy($this->orderBy, $this->sortBy)->paginate($this->perPage);
+
         if (!empty($this->term)&& $this->term != null){
             $itemfoods = $itemfoods->search(trim($this->term));
         }
+
     }
 
-    public function render()
+    public function render(Restaurant $restaurant)
     {
-       
-        
-        return view('livewire.fooditem');
+         if (!empty($this->term)&& $this->term != null){
+            $itemfoods = $itemfoods->search(trim($this->term));
+        }
+
+         $itemfoods = Food::orderBy($this->orderBy, $this->sortBy)->paginate($this->perPage);
+        // dd($itemfoods);
+        return view('livewire.fooditem', [
+            'itemfoods' => $itemfoods,
+        ]);
     }
 
 
@@ -89,7 +96,7 @@ class Fooditem extends Component
         } else {
             $cart[$id] = [
                 "id"=>$this->itemfoods->id,
-                "food_item" => $this->itemfoods->food_item,
+                "name" => $this->itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $this->itemfoods->order_amount,
                 
@@ -104,7 +111,7 @@ class Fooditem extends Component
         } else {
             $cartsession[$id] = [
                 "id"=>$this->itemfoods->id,
-                "food_item" => $this->itemfoods->food_item,
+                "name" => $this->itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $this->itemfoods->order_amount,
                 
@@ -137,7 +144,7 @@ class Fooditem extends Component
         else {
             $cart[$id] = [
                 "id"=>$this->itemfoods->id,
-                "food_item" => $this->itemfoods->food_item,
+                "name" => $this->itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $this->itemfoods->order_amount,
             ];
@@ -153,7 +160,7 @@ class Fooditem extends Component
         } else {
             $cartsession[$id] = [
                 "id"=>$this->itemfoods->id,
-                "food_item" => $this->itemfoods->food_item,
+                "name" => $this->itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $this->itemfoods->order_amount,            
                 

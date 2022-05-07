@@ -33,7 +33,7 @@
                                                                 <div class="food-item-body">
 
                                                                     <h5 class="card-title">
-                                                                        {{ $details['food_item'] }}
+                                                                        {{ $details['name'] }}
                                                                     </h5>
                                                                     <p class="description">description
                                                                         Lorem ipsum dolor sit amet consectetur
@@ -41,7 +41,7 @@
                                                                     </p>
                                                                     <div class="pricing">
                                                                         <span
-                                                                            class="price">${{ $details['rate'] }}</span>
+                                                                            class="price">${{ $details['price'] }}</span>
                                                                         <div class="add-remove-button">
 
                                                                             <div class="input-group">
@@ -123,8 +123,9 @@
                         <span class="float-right">${{ $total }}</span>
                     </h4>
                 </li>
-                <button class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm mt-3 w-100"
-                    onclick="window.location.href='{{ route('customer.checkout') }}';">Checkout</button>
+                <button
+                    class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm mt-3 w-100"
+                    onclick="window.location.href='{{ route('checkout') }}';">Checkout</button>
             </ul>
         </div>
     </div>
@@ -142,7 +143,9 @@
             <i class="bx bx-shopping-bag"></i>
             <h4 class="mb-3">Your Cart is Empty</h4>
             <p class="mb-2">Looks like you haven't added anything to your cart yet.</p>
-            <a href="{{ route('restaurant_listing') }}" class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm mt-3">See Restaurants Near
+            <a href="{{ route('restaurant_listing') }}"
+                class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm mt-3">See
+                Restaurants Near
                 You</a>
         </div>
 

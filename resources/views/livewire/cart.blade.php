@@ -3,46 +3,40 @@
     <div class="cart d-none d-md-block">
         @if (count((array) session('cart')) != 0)
             <div class="cart-head">
-                <span>Your order</span>
+                <span>{{__('Your order')}}</span>
             </div>
 
             @php $total = 0 @endphp
             @if (session('cart'))
 
                 @foreach (session('cart') as $id => $details)
+                    {{-- @dd(session('cart')) --}}
                     @php
-                        
-                        $total += $details['rate'] * $details['quantity'];
+                        $total += $details['price'] * $details['quantity'];
                     @endphp
+
                     <div class="cart-body">
                         <div class="cart-item">
                             <div class="details">
-                                <h6> {{ $details['food_item'] }}</h6>
-
-
+                                <h6> {{ $details['name'] }}</h6>
                             </div>
                             <div class="price">
-                                <h6>${{ $details['rate'] }}.00</h6>
+                                <h6> {{ $details['price'] }}</h6>
 
                                 <div class="add-remove-button">
 
                                     <div class="input-group">
 
-                                        <input wire:click="removeItemFromCart({{ $details['id'] }})" type="button"
+                                        <input wire:click="removeItemFromCart({{ $id }})" type="button"
                                             value="-" class="button-minus changeQuantity" id="changeQuantity"
                                             data-field="quantity" />
                                         <input type="number" step="1" max="" value="{{ $details['quantity'] }}"
                                             name="quantity" class="quantity-field" />
-                                        <input wire:click="addItemToCart({{ $details['id'] }})" type="button"
+                                        <input wire:click="addItemToCart({{ $id }})" type="button"
                                             value="+" class="button-plus changeQuantity" id="changeQuantity"
                                             data-field="quantity" />
 
                                     </div>
-
-
-
-
-
                                 </div>
 
                             </div>
@@ -56,7 +50,7 @@
             <div class="cart-footer">
                 @php $total = 0 @endphp
                 @foreach ((array) session('cart') as $id => $details)
-                    @php $total += $details['rate'] * $details['quantity'] @endphp
+                    @php $total += $details['price'] * $details['quantity'] @endphp
                 @endforeach
                 <ul>
                     <li>
@@ -83,7 +77,7 @@
                         </h4>
                     </li>
                     <button class="rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm mt-3 w-100"
-                        onclick="window.location.href='{{ route('customer.checkout') }}';">Proceed to Buy</button>
+                        onclick="window.location.href='{{ route('checkout') }}';">Proceed to Buy</button>
                 </ul>
             </div>
     </div>

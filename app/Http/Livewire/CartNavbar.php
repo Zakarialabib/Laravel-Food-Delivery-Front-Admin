@@ -19,7 +19,7 @@ class CartNavbar extends Component
         } else {
             $cart[$id] = [
                 "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $itemfoods->order_amount,
                 
@@ -55,7 +55,7 @@ class CartNavbar extends Component
         else {
             $cart[$id] = [
                 "id"=>$itemfoods->id,
-                "food_item" => $itemfoods->food_item,
+                "name" => $itemfoods->name,
                 "quantity" => 1,
                 "order_amount" => $itemfoods->order_amount,
             

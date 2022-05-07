@@ -20,33 +20,8 @@ cp .env.example .env
 
 php artisan migrate --seed
 
-## Tasks coming 
+database.sql in database folder
 
-- Home page search ( Fetch localisation to serve available restarant in client zone )
+## Check projects tab in github 
 
-- Restaurant List Needs Filters : -map localisation in client zone
-                                  -food categories
-                                  -popular
-
-- Restaurant Page Needs Filters : -price/high low
-                                  -food categories
-                                  -popular
-
-- Fooditems in restaurant page needs pagination and buy button
-
-- buy button will lead to checkout if users is auth else registration page
-
-- Translation files (40000+ words needs translation)
- 
-## Tasks Done 
-
-- App layout ( Header - Footer - Styles - Scripts)
-
-- Translation strings are prepared
-
-- Restaurants list and detail page for each one of them 
-
-- Customer Authentification 
-
-- Account page (account details - change password - Orders - Address )
-
+## Check projects tab in github 

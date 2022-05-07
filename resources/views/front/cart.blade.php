@@ -26,7 +26,7 @@
                             @foreach (session('cart') as $id => $details)
                                 @php
                                 $total = 0;
-                                $total += $details['rate'] * $details['quantity']; 
+                                $total += $details['price'] * $details['quantity']; 
                                 @endphp
 
                                 <tr data-id="{{ $id }}">
@@ -36,10 +36,10 @@
                                                     alt="product"></a>
                                         </div>
                                         <div class="product-name">
-                                            <a href="#">{{ $details['food_item'] }}</a>
+                                            <a href="#">{{ $details['name'] }}</a>
                                         </div>
                                     </td>
-                                    <td>${{ $details['rate'] }}</td>
+                                    <td>${{ $details['price'] }}</td>
                                     <td>
                                         <div class="add-remove-button">
                                             <div class="input-group">
@@ -83,7 +83,7 @@
                         <tbody>
                             @php $total = 0 @endphp
                             @foreach ((array) session('cart') as $id => $details)
-                                @php $total += $details['rate'] * $details['quantity'] @endphp
+                                @php $total += $details['price'] * $details['quantity'] @endphp
                             @endforeach
                             <tr>
                                 <th>Sub Total</th>

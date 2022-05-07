@@ -30,6 +30,8 @@ Route::get('/area/{postcode}', function ($postcode) {
     return view('front.restaurant_listing', ['postcode' => $postcode]);
 })->name('restaurants.filter');
 
+Route::get('quick-view', [FrontController::class, 'quick_view'])->name('quick-view');
+Route::post('variant_price', [FrontController::class, 'variant_price'])->name('variant_price');
 ///cart///
 Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
 Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
@@ -165,6 +167,11 @@ Route::middleware('auth')->group(function (){
     //////////Cart///////////////
     Route::get('/cart',[FrontController::class,'cart'])->name('cart');
     Route::get('/add-to-cart/{id}', [FrontController::class, 'addToCart'])->name('addToCart');
+    
+    Route::post('add-to-cart', [FrontController::class, 'add_to_cart'])->name('add-to-cart');
+    Route::post('remove-from-cart', [FrontController::class, 'remove_from_cart'])->name('remove-from-cart');
+    Route::post('update-quantity', [FrontController::class, 'updateQuantity'])->name('updateQuantity');
+    Route::post('empty-cart', [FrontController::class, 'empty_cart'])->name('emptyCart');
     Route::get('/remove-from-cart/{id}', [FrontController::class, 'removeFromCart'])->name('removeFromCart');
     Route::delete('cartDelete/{id}', [FrontController::class, 'cartDelete'])->name('cartDelete');
     

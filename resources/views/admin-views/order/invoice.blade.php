@@ -67,13 +67,13 @@
                     </div>
                     <div class="col-12">
                         <h5>
-                            Customer Name : {{$order->customer['f_name'].' '.$order->customer['l_name']}}
+                            {{__('Customer Name')}} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}
                         </h5>
                         <h5>
-                            Phone : {{$order->customer['phone']}}
+                            {{__('Phone')}} : {{$order->customer['phone']}}
                         </h5>
                         <h5 class="text-break">
-                            Address : {{isset($order->delivery_address)?json_decode($order->delivery_address, true)['address']:''}}
+                            {{__('Address')}} : {{isset($order->delivery_address)?json_decode($order->delivery_address, true)['address']:''}}
                         </h5>
                     </div>
                 </div>
