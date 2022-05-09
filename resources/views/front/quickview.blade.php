@@ -1,3 +1,4 @@
+@push('styles')
 <style>
     .btn-check {
         position: absolute;
@@ -32,6 +33,8 @@
         border:none;
     }
 </style>
+@endpush
+
 <div class="modal-header p-0">
     <h4 class="modal-title product-title">
     </h4>
@@ -74,22 +77,20 @@
                     <strong id="set-discount-amount">{{\App\CentralLogics\Helpers::get_product_discount($product)}}</strong>
                 </div>
             @endif
-            <!-- Product panels-->
-            {{--<div style="margin-left: -1%" class="sharethis-inline-share-buttons"></div>--}}
         </div>
     </div>
     <div class="row pt-2">
         <div class="col-12">
             <?php
-                // $cart = false;
-                // if(session()->has('cart'))
-                // {
-                //     foreach (session()->get('cart') as $key => $cartItem) {
-                //         if ( is_array($cartItem)&& $cartItem['id'] == $product['id']) {
-                //             $cart = $cartItem;
-                //         }
-                //     }
-                // }
+                $cart = false;
+                if(session()->has('cart'))
+                {
+                    foreach (session()->get('cart') as $key => $cartItem) {
+                        if ( is_array($cartItem)&& $cartItem['id'] == $product['id']) {
+                            $cart = $cartItem;
+                        }
+                    }
+                }
 
             ?>
             <h2>{{__('Description')}}</h2>
@@ -190,7 +191,8 @@
         </div>
     </div>
 </div>
-
+@push('scripts')
+    
 <script type="text/javascript">
     cartQuantityInitialize();
     getVariantPrice();
@@ -198,4 +200,5 @@
         getVariantPrice();
     });
 </script>
+@endpush
 

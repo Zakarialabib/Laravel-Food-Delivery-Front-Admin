@@ -1,4 +1,7 @@
-@extends('layouts.app')
-@section('content')
+<x-app-layout>
+    @section('title', __('cart'))
+
+
     <livewire:cart-navbar />
-@endsection
+
+</x-app-layout>

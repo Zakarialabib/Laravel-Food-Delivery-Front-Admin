@@ -1,4 +1,6 @@
 <x-app-layout>
+    @section('title', __('Restaurant listing'))
+
     <!-- Banner -->
     <div class="w-full">
         <h1 class="text-2xl leading-5 font-bold text-center py-6 ">{{__('Restaurants in map')}}</h1>

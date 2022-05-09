@@ -9,9 +9,7 @@ use App\CentralLogics\Helpers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Category;
-use App\Models\Wishlist;
 use App\Models\CustomerAddress;
-use App\Models\Cuisine;
 use App\Models\User;
 use App\Models\Food;
 use App\Models\Order;
@@ -250,7 +248,7 @@ class FrontController extends Controller
      }
      public function restaurant_details($id,Request $request)
      {
-         $itemfoods = Food::all();
+         $products = Food::latest()->paginate(10);
  
          $restaurant = Restaurant::find($id);
  
@@ -264,7 +262,7 @@ class FrontController extends Controller
  
          $rest = $request->session()->get('restaurant');
  
-         return view('front.restaurant_details', ['restaurant'=>$restaurant], compact('itemfoods'));
+         return view('front.restaurant_details', ['restaurant'=>$restaurant], compact('products'));
      }
 
      //////////////Add to Cart///////////////
@@ -272,39 +270,26 @@ class FrontController extends Controller
     {
         return view('front.cart');   
     }
-     
-    public function addToCart($id)
+
+    public function quick_view(Request $request)
     {
-        $itemfoods = Food::findOrFail($id);
-           
-        $cart = session()->get('cart', []);
-        $cartsession = session()->get('cartsession', []);
+        $product = Food::findOrFail($request->product_id);
 
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                "name" => $itemfoods->name,
-                "quantity" => 1,
-                "price" => $itemfoods->price,
-            ];
-        }
-          
-        session()->put('cart', $cart);
-        if(isset($cartsession[$id])) {
-            $cartsession[$id]['quantity']++;
-        } else {
-            $cartsession[$id] = [
-                "id"=>$itemfoods->id,
-                "name" => $itemfoods->name,
-                "quantity" => 1,
-                "price" => $itemfoods->price,
-            ];
-        }
+        return response()->json([
+            'success' => 1,
+            'view' => view('front.quickview', compact('product'))->render(),
+        ]);
+    }
+    public function quick_view_card_item(Request $request)
+    {
+        $product = Food::findOrFail($request->product_id);
+        $item_key = $request->item_key;
+        $cart_item = session()->get('cart')[$item_key];
         
-        session()->put('cartsession', $cartsession);
-
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return response()->json([
+            'success' => 1,
+            'view' => view('front.quick-view-cart-item', compact('product', 'cart_item', 'item_key'))->render(),
+        ]);
     }
 
     public function add_to_cart(Request $request)
@@ -532,15 +517,8 @@ class FrontController extends Controller
          return redirect()->back()->with('success', 'Address selected successfully!');
      }
 
-     public function quick_view(Request $request)
-     {
-         $product = Food::findOrFail($request->product_id);
+   
  
-         return response()->json([
-             'success' => 1,
-             'view' => view('front.quickview', compact('product'))->render(),
-         ]);
-     }
      public function variant_price(Request $request)
      {
          $product = Food::find($request->id);

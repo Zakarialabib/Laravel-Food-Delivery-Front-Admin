@@ -1,4 +1,4 @@
-<div wire:init="loadItems">
+<div>
 
     {{-- <div wire:loading class="w-full">
         <div class="flex justify-center items-center mt-32">
@@ -53,6 +53,7 @@
                 <div class="lg:w-1/2 sm:w-full px-4 my-2" wire:key="{{ $item->id }}">
 
                     @if ($item->status == 1)
+                    
                         <div class="food-item-card" onclick="quickView('{{ $item->id }}')" style="cursor: pointer;">
                             <div class="clickable p-0">
                                 <div class="food-item-img"
@@ -127,7 +128,7 @@
                                                 <i class="bx bxs-circle"></i>
                                             </div>
                                         @endif
-                                        <span class="price">{{ $item->price }} DH</span>
+                                        <span class="price">{{ \App\CentralLogics\Helpers::format_currency($item['price']) }}</span>
                                         {{-- <span class="actual-price">$180.99</span> --}}
                                     </div>
 
@@ -145,15 +146,6 @@
 
         <div class="px-4 py-3 border-t dark:border-gray-700">
             {{ $itemfoods->links() }}
-        </div>
-
-
-    </div>
-    <div class="modal fade" id="quick-view" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content" id="quick-view-modal">
-
-            </div>
         </div>
     </div>
 </div>

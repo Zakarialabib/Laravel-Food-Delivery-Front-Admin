@@ -1,4 +1,6 @@
 <x-app-layout>
+    @section('title', __('Checkout'))
+
 
     <div class="search-nav">
         <div class="container">
@@ -60,10 +62,10 @@
                                                 <button type="button" class="btn btn-outline-primary btn-sm"
                                                     id="edit-item" data-toggle="modal"
                                                     data-target="#exampleModal{{ $add->id }}">
-                                                    Edit</button> {{ session()->get('location') }}
+                                                    {{__('Edit')}}</button> {{ session()->get('location') }}
                                                 <button class="btn btn-outline-primary btn-sm">
                                                     <a href="{{ route('address_destroy', $add->id) }}">
-                                                        Delete</a></button>
+                                                        {{__('Delete')}}</a></button>
 
                                             </div>
                                         </div>
@@ -88,19 +90,19 @@
                             </div>
 
                             <button type="button" class="btn btn-outline-primary mb-lg-auto mb-4" data-toggle="modal"
-                                data-target="#exampleModal">Add New Address</button>
+                                data-target="#exampleModal">{{__('Add New Address')}}</button>
 
                         </div>
 
                         @if ('delvery_method' != 'delivery')
                             <div class="checkout-delivery-address" id="pick1">
-                                <h6 class="checkout-title">Pick up</h6>
+                                <h6 class="checkout-title">{{__('Pick up')}}</h6>
 
                                 @if (session('restaurant'))
-                                    <p>This is a Pickup order. You'll need to go to
-                                        <strong>{{ session('restaurant')['name'] }}</strong> to
+                                    <p>{{"This is a Pickup order. You'll need to go to"}}
+                                        <strong>{{ session('restaurant')['name'] }}</strong> {{__('to
                                         pick up this order.
-                                        Pick up at
+                                        Pick up at')}}
                                         .{{ session('restaurant')['addess'] }}
                                        </strong>
                                     </p>
@@ -112,7 +114,7 @@
                     <div class="col-lg-4 cart-col">
                         <div class="cart d-none d-md-block">
                             <div class="cart-head">
-                                <span>Your order</span>
+                                <span>{{__('Your order')}}</span>
                             </div>
                             @php $total = 0 @endphp
                             @if (session('cart'))
@@ -145,37 +147,37 @@
                                 <ul>
                                     <li>
                                         <h5>
-                                            <span>SubTotal</span>
+                                            <span>{{__('SubTotal')}}</span>
                                             <span class="float-right">${{ $total }}.00</span>
                                         </h5>
                                     </li>
                                     <li>
                                         <p>
-                                            <span>Delivery fee</span>
+                                            <span>{{__('Delivery fee')}}</span>
                                             <span class="float-right">$00.00</span>
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span>Tax</span> <span class="float-right">$00.00</span>
+                                            <span>{{__('Tax')}}</span> <span class="float-right">$00.00</span>
                                         </p>
                                     </li>
                                     <li>
                                         <h4>
-                                            <span>Total</span>
+                                            <span>{{__('Total')}}</span>
                                             <span class="float-right">${{ $total }}.00</span>
                                         </h4>
 
                                     </li>
                                     <li>
                                         <p>
-                                            <span>Please keep the exact change for <b>${{ $total }}</b> handy to
-                                                help us serve you better.</span>
+                                            <span>{{__('Please keep the exact change for ')}}<b>${{ $total }}</b> {{__('handy to
+                                                help us serve you better')}}.</span>
 
                                         </p>
                                     </li>
                                     <button class="btn btn-primary mt-3 w-100"
-                                        onclick="window.location.href='{{ route('order') }}';">Checkout</button>
+                                        onclick="window.location.href='{{ route('order') }}';">{{__('Checkout')}}</button>
                                 </ul>
                             </div>
                         </div>

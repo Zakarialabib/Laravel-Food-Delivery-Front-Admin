@@ -22,8 +22,7 @@
                                     </p>
 
                                     <p class="mb-0"><a
-                                            href="{{ route('home') }}">{{ __('Click here to continue
-                                shopping') }}.</a>
+                                            href="{{ route('home') }}">{{ __('Click here to continue shopping') }}.</a>
                                     </p>
 
                                 </div>
@@ -87,7 +86,7 @@
                                         <div class="text-center w-100">
                                             <h5 class="modal-title" id="exampleModalLabel">{{ __('Order') }}
                                                 #{{ $orderstore->id }}</h5>
-                                            <h6>September 07 2019, 09:08 AM</h6>
+                                            <h6>{{ $orderstore->created_at }}</h6>
                                         </div>
                                         <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
@@ -133,15 +132,13 @@
                                                 @foreach ($orderstore->itemfoods as $item)
                                                     <tr>
                                                         <td>{{ $item->name }}</td>
-                                                        <td>${{ $item->price }}</td>
+                                                        <td>{{ \App\CentralLogics\Helpers::format_currency($item['price']) }}</td>
                                                         <td>${{ $orderstore->grand_total }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
