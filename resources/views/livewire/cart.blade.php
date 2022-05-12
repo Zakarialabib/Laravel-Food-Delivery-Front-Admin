@@ -1,4 +1,4 @@
-<div class="col-lg-4 cart-col" id="cart">>
+<div class="col-lg-4 cart-col" id="cart">
     <div class="cart d-none d-md-block">
         @if (count((array) session('cart')) != 0)
             <div class="cart-head">

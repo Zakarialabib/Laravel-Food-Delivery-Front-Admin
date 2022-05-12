@@ -39,11 +39,13 @@
                                 </p>
                             @endif
                         </div>
-                        <!-- <div class="map-wrap">
+                        <!--
+                             <div class="map-wrap">
                                 <iframe width="100%" height="330" class="map"
                                     src="https://maps.google.com/maps?q=cedex%20technologies&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
                                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                            </div> -->
+                            </div> 
+                        -->
 
                         <ul class="timeline">
                             <li class="active">

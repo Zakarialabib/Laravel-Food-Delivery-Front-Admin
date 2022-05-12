@@ -56,12 +56,11 @@
 
                         </div>
                         <div class="flex justify-center">
-
                             <button type="button" class="btn btn-outline-primary  mb-4" data-toggle="modal"
-                                data-target="#exampleModal">{{ __('Add Address') }}</button>
+                                data-target="#exampleModal">{{ __('Add Address') }}
+                            </button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

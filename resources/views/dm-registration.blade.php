@@ -17,19 +17,17 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{ __('first') }}
-                                    {{ __('name') }}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{ __('First name') }}</label>
                                 <input type="text" name="f_name" class="form-control"
-                                    placeholder="{{ __('first') }} {{ __('name') }}" required
+                                    placeholder="{{ __('First name') }}" required
                                     value="{{ old('f_name') }}">
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{ __('last') }}
-                                    {{ __('name') }}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{ __('Last name') }}</label>
                                 <input type="text" name="l_name" class="form-control"
-                                    placeholder="{{ __('last') }} {{ __('name') }}"
+                                    placeholder="{{ __('Last name') }}"
                                     value="{{ old('l_name') }}" required>
                             </div>
                         </div>
@@ -48,11 +46,10 @@
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                    for="exampleFormControlInput1">{{ __('deliveryman') }}
-                                    {{ __('type') }}</label>
+                                    for="exampleFormControlInput1">{{ __('Deliveryman type') }}</label>
                                 <select name="earning" class="form-control">
-                                    <option value="1">{{ __('freelancer') }}</option>
-                                    <option value="0">{{ __('salary_based') }}</option>
+                                    <option value="1">{{ __('Freelancer') }}</option>
+                                    <option value="0">{{ __('Salary based') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -60,11 +57,10 @@
                         <div class="col-sm-4 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                    for="exampleFormControlInput1">{{ __('zone') }}</label>
+                                    for="exampleFormControlInput1">{{ __('Zone') }}</label>
                                 <select name="zone_id" class="form-control" required
                                     data-placeholder="{{ __('select') }} {{ __('zone') }}">
-                                    <option value="" readonly="true" hidden="true">{{ __('select') }}
-                                        {{ __('zone') }}</option>
+                                    <option value="" readonly="true" hidden="true">{{ __('Select zone') }}</option>
                                     @foreach (\App\Models\Zone::all() as $zone)
                                         @if (isset(auth('admin')->user()->zone_id))
                                             @if (auth('admin')->user()->zone_id == $zone->id)
@@ -84,23 +80,19 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                    for="exampleFormControlInput1">{{ __('identity') }}
-                                    {{ __('type') }}</label>
+                                    for="exampleFormControlInput1">{{ __('Identity type') }}</label>
                                 <select name="identity_type" class="form-control">
                                     <option value="passport">{{ __('passport') }}</option>
-                                    <option value="driving_license">{{ __('driving') }}
-                                        {{ __('license') }}</option>
+                                    <option value="driving_license">{{ __('Driving license') }}</option>
                                     <option value="nid">{{ __('nid') }}</option>
-                                    <option value="restaurant_id">{{ __('restaurant') }}
-                                        {{ __('id') }}</option>
+                                    <option value="restaurant_id">{{ __('Restaurant id') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                    for="exampleFormControlInput1">{{ __('identity') }}
-                                    {{ __('number') }}</label>
+                                    for="exampleFormControlInput1">{{ __('Identity number') }}</label>
                                 <input type="text" name="identity_number" class="form-control"
                                     value="{{ old('identity_number') }}" placeholder="Ex : DH-23434-LS" required>
                             </div>
@@ -108,8 +100,7 @@
                         <div class="col-md-12 col-12">
                             <div class="form-group">
                                 <label class="input-label"
-                                    for="exampleFormControlInput1">{{ __('identity') }}
-                                    {{ __('image') }}</label>
+                                    for="exampleFormControlInput1">{{ __('Identity image') }}</label>
                                 <div>
                                     <div class="row" id="coba"></div>
                                 </div>

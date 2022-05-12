@@ -1,19 +1,19 @@
 <x-app-layout>
     @section('title', $restaurant->name)
-{{--loader--}}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div id="loading" style="display: none;">
-                <div style="position: fixed;z-index: 9999; left: 40%;top: 37% ;width: 100%">
-                    <img width="200" src="{{asset('public/assets/admin/img/loader.gif')}}">
+    {{-- loader --}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="loading" style="display: none;">
+                    <div style="position: fixed;z-index: 9999; left: 40%;top: 37% ;width: 100%">
+                        <img width="200" src="{{ asset('public/assets/admin/img/loader.gif') }}">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-{{--loader--}}
-    <div class="search-nav restaurant-head" {{-- style="background-image: url({{ asset('storage/app/public/restaurant/cover/' . $restaurant->cover_photo) }});
+    {{-- loader --}}
+    <div class="bg-gray-100 py-10 restaurant-head" {{-- style="background-image: url({{ asset('storage/app/public/restaurant/cover/' . $restaurant->cover_photo) }});
                background-size: cover;" --}}>
 
         <div class="container">
@@ -37,7 +37,7 @@
                             </div>
                         @endif
                         <div class="detail-block">
-                            <h5 class="pt-2">{{ $restaurant->delivery_time }} {{__('Minutes')}}</h5>
+                            <h5 class="pt-2">{{ $restaurant->delivery_time }} {{ __('Minutes') }}</h5>
                             <p class="py-2">{{ __('Delivery Time') }}</p>
                         </div>
                         <div class="detail-block">
@@ -71,39 +71,56 @@
         <div class="container">
             <div class="row cuisine-dish-wrap">
                 <div class="col-lg-8 cuisine-col">
-                    <div class="rest-menus" id="rest-menus">
+                    <div class="card-header d-flex flex-wrap justify-content-between">
+                        <form id="search-form" class="header-item">
+                            <!-- Search -->
+                            <div class="input-group input-group-merge input-group-flush">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="bx bx-search"></i>
+                                    </div>
+                                </div>
+                                <input id="datatableSearch" type="search" value="{{ $keyword ? $keyword : '' }}"
+                                    name="search" class="form-control" placeholder="{{ __('Search here') }}"
+                                    aria-label="{{ __('Search here') }}">
+                            </div>
+                            <!-- End Search -->
+                        </form>
+                        <div class="input-group header-item" style="width:250px;">
+                            <select name="category" id="category" class="form-control js-select2-custom mx-1"
+                                title="{{ __('Select category') }}" onchange="set_category_filter(this.value)">
+                                <option value="">{{ __('All categories') }}</option>
+                                @foreach ($categories as $item)
+                                    <option value="{{ $item->id }}" {{ $category == $item->id ? 'selected' : '' }}>
+                                        {{ Str::limit($item->name, 20, '...') }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="rest-menus bg-gray-100" id="rest-menus">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                 aria-labelledby="pills-home-tab">
-                                <ul class="nav sub-cat-nav">
-                                    @foreach ($products as $item)
-                                        @if ($restaurant->foods->contains($item->id))
-                                            <li class="nav-item">
-                                                <a class="nav-link js-scroll-trigger"
-                                                    href="#sub-cat2">{{ Str::limit($item->category, 20, '...') }}</a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
 
                                 <div class="food-item-cards-wrap">
-                                    <div class="sub-cat mt-0" id="sub-cat1">
-                                        <h4 class="mb-4">{{ __('Most Popular') }}</h4>
+                                    <div id="sub-cat1">
+                                        <h4 class="text-center py-4">{{ __('Most Popular') }}</h4>
 
                                         @if ($restaurant->active == 1)
-                                        <div class="flex flex-wrap overflow-hidden">
-                                            @foreach ($products as $product)
-                                                <div class="px-6 py-4 lg:w-1/4 md:w-1/3 sm-w-1/2">
-                                                    @include('front.single_product', [
-                                                        'product' => $product,
-                                                        'restaurant' => $restaurant,
-                                                    ])
-                                                    {{-- <hr class="d-sm-none"> --}}
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                            <div class="card-footer">
-                                                {!! $products->withQueryString()->links() !!}
+                                            <div class="flex flex-wrap overflow-hidden">
+                                                @foreach ($products as $product)
+                                                    <div class="px-4 py-4 lg:w-1/3 md:w-1/3 sm-w-1/2">
+                                                        @include('front.single_product', [
+                                                            'product' => $product,
+                                                            'restaurant' => $restaurant,
+                                                        ])
+                                                        {{-- <hr class="d-sm-none"> --}}
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="p-4">
+                                                {!! $products->withQueryString()->links('layouts.tailwind') !!}
                                             </div>
                                             {{-- <livewire:fooditem :restaurant="$restaurant" /> --}}
                                         @else
@@ -186,6 +203,21 @@
                     title: "{{ $restaurant->name }}",
                 });
             }
+
+            function set_category_filter(id) {
+                var nurl = new URL('{!! url()->full() !!}');
+                nurl.searchParams.set('category_id', id);
+                location.href = nurl;
+            }
+
+
+            $('#search-form').on('submit', function(e) {
+                e.preventDefault();
+                var keyword = $('#datatableSearch').val();
+                var nurl = new URL('{!! url()->full() !!}');
+                nurl.searchParams.set('keyword', keyword);
+                location.href = nurl;
+            });
 
             function addon_quantity_input_toggle(e) {
                 var cb = $(e.target);

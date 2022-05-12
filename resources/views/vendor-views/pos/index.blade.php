@@ -235,7 +235,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control" placeholder="{{__('messages.search_here')}}" aria-label="{{__('messages.search_here')}}">
+                                <input id="searchable" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control" placeholder="{{__('messages.search_here')}}" aria-label="{{__('messages.search_here')}}">
                             </div>
                             <!-- End Search -->
                         </form>
@@ -385,7 +385,7 @@
 
     $('#search-form').on('submit', function (e) {
         e.preventDefault();
-        var keyword= $('#datatableSearch').val();
+        var keyword= $('#searchable').val();
         var nurl = new URL('{!!url()->full()!!}');
         nurl.searchParams.set('keyword', keyword);
         location.href = nurl;

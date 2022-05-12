@@ -248,21 +248,30 @@ class FrontController extends Controller
      }
      public function restaurant_details($id,Request $request)
      {
-         $products = Food::latest()->paginate(10);
- 
          $restaurant = Restaurant::find($id);
+         
  
-         $data = $request->session()->put([
-             'restaurant'=>['restaurant'=>$id,
-             'name'=>$restaurant->name,
-             'location'=>$restaurant->location,
-             'addess'=>$restaurant->address,
-             'phone'=>$restaurant->phone]
-             ]); 
+         $category = $request->query('category_id', 0);
+        // $sub_category = $request->query('sub_category', 0);
+        $categories = Category::active()->get();
+        $keyword = $request->query('keyword', false);
+        $key = explode(' ', $keyword);
+        $products = Food::withoutGlobalScope(\App\Scopes\RestaurantScope::class)
+        ->where('restaurant_id', $restaurant->id)
+        ->when($category, function($query)use($category){
+            $query->whereHas('category',function($q)use($category){
+                return $q->whereId($category)->orWhere('parent_id', $category);
+            });
+        })
+        ->when($keyword, function($query)use($key){
+            return $query->where(function ($q) use ($key) {
+                foreach ($key as $value) {
+                    $q->orWhere('name', 'like', "%{$value}%");
+                }
+            });
+        })->latest()->paginate(10);
  
-         $rest = $request->session()->get('restaurant');
- 
-         return view('front.restaurant_details', ['restaurant'=>$restaurant], compact('products'));
+         return view('front.restaurant_details', compact('categories', 'products','category', 'keyword','restaurant'));
      }
 
      //////////////Add to Cart///////////////

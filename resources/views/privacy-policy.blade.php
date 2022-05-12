@@ -10,7 +10,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 mt-2 text-center">
-                            <h1>{{__('messages.privacy_policy')}}</h1>
+                            <h1>{{__('Privacy policy')}}</h1>
                         </div>
                         <div class="col-12">
                             {!! $data !!}

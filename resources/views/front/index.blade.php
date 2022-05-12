@@ -143,11 +143,10 @@
             {{__('No restaurant')}}
             @endforelse
         </div>
-        </div>
     </section>
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('public/assets/admin') }}/css/toastr.css">
+    <link rel="stylesheet" href="{{ asset('public/assets/admin/css/toastr.css') }}">
 @endpush
 
 @push('scripts')
