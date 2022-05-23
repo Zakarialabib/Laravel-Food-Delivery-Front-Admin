@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="card-header">
     <h5 class="card-header-title">
-        <i class="tio-medal"></i> {{trans('messages.top_restaurants')}}
+        <i class="tio-medal"></i> {{__('top_restaurants')}}
     </h5>
     @php($params=session('dash_params'))
     @if($params['zone_id']!='all')
@@ -9,7 +9,7 @@
     @else
         @php($zone_name='All')
     @endif
-    <label class="badge badge-soft-info">( {{__('messages.zone')}} : {{$zone_name}} )</label>
+    <label class="badge badge-soft-info">( {{__('Zone')}} : {{$zone_name}} )</label>
 </div>
 <!-- End Header -->
 
@@ -27,7 +27,7 @@
                                  onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                  src="{{asset('storage/app/public/restaurant')}}/{{$item['logo']}}">
                             <span class="ml-2">
-                                    {{Str::limit($item->name??__('messages.Restaurant deleted!'), 20, '...')}}
+                                    {{Str::limit($item->name??__('Restaurant deleted!'), 20, '...')}}
                             </span>
                         </td>
                         <td>

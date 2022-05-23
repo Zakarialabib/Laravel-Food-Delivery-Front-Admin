@@ -7,9 +7,9 @@
         </span>
         </td>
         <td>
-            <a class="btn btn-sm btn-white" href="{{route('admin.attribute.edit',[$attribute['id']])}}" title="{{__('messages.edit')}}"><i class="tio-edit"></i>
+            <a class="btn btn-sm btn-white" href="{{route('admin.attribute.edit',[$attribute['id']])}}" title="{{__('Edit')}}"><i class="tio-edit"></i>
             </a>
-            <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('attribute-{{$attribute['id']}}','Want to delete this attribute ?')" title="{{__('messages.delete')}}"><i class="tio-delete-outlined"></i>
+            <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('attribute-{{$attribute['id']}}','Want to delete this attribute ?')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
             </a>
             <form action="{{route('admin.attribute.delete',[$attribute['id']])}}"
                     method="post" id="attribute-{{$attribute['id']}}">

@@ -12,15 +12,15 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('messages.restaurants')}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{$restaurants->total()}}</span></h1>
+                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('restaurants')}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{$restaurants->total()}}</span></h1>
                 </div>
                 @if ($toggle_veg_non_veg)
                     <!-- Veg/NonVeg filter -->
                     <div class="col-sm-auto mb-1 mb-sm-0">
-                        <select name="category_id" onchange="set_filter('{{url()->full()}}',this.value, 'type')" data-placeholder="{{__('messages.all')}}" class="form-control">
-                            <option value="all" {{$type=='all'?'selected':''}}>{{__('messages.all')}}</option>
-                            <option value="veg" {{$type=='veg'?'selected':''}}>{{__('messages.veg')}}</option>
-                            <option value="non_veg" {{$type=='non_veg'?'selected':''}}>{{__('messages.non_veg')}}</option>
+                        <select name="category_id" onchange="set_filter('{{url()->full()}}',this.value, 'type')" data-placeholder="{{__('All')}}" class="form-control">
+                            <option value="all" {{$type=='all'?'selected':''}}>{{__('All')}}</option>
+                            <option value="veg" {{$type=='veg'?'selected':''}}>{{__('Veg')}}</option>
+                            <option value="non_veg" {{$type=='non_veg'?'selected':''}}>{{__('Non veg')}}</option>
                         </select>
                     </div>
                     <!-- End Veg/NonVeg filter -->
@@ -48,7 +48,7 @@
                 <div class="card">
                     <!-- Header -->
                     <div class="card-header pb-1 pt-1" >
-                        <h5>{{__('messages.restaurants')}} {{__('messages.list')}}</h5>
+                        <h5>{{__('restaurants list')}}</h5>
                         <form action="javascript:" id="search-form" >
                                         <!-- Search -->
                             @csrf
@@ -59,8 +59,8 @@
                                     </div>
                                 </div>
                                 <input id="datatableSearch_" type="search" name="search" class="form-control"
-                                        placeholder="{{__('messages.search')}}" aria-label="{{__('messages.search')}}" required>
-                                <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                                        placeholder="{{__('Search')}}" aria-label="{{__('Search')}}" required>
+                                <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
 
                             </div>
                             <!-- End Search -->
@@ -80,14 +80,14 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th style="width: 10%;">{{__('messages.#')}}</th>
-                                <th style="width: 10%;">{{__('messages.logo')}}</th>
-                                <th style="width: 20%;">{{__('messages.restaurant')}}</th>
-                                <th style="width: 15%;">{{__('messages.owner')}}</th>
-                                <th style="width: 15%;">{{__('messages.zone')}}</th>
-                                <th style="width: 10%;">{{__('messages.phone')}}</th>
-                                <th class="text-uppercase" style="width: 10%;">{{__('messages.active')}}/{{__('messages.inactive')}}</th>
-                                <th style="width: 10%;">{{__('messages.action')}}</th>
+                                <th style="width: 10%;">{{__('#')}}</th>
+                                <th style="width: 10%;">{{__('Logo')}}</th>
+                                <th style="width: 20%;">{{__('Restaurant')}}</th>
+                                <th style="width: 15%;">{{__('Owner')}}</th>
+                                <th style="width: 15%;">{{__('Zone')}}</th>
+                                <th style="width: 10%;">{{__('Phone')}}</th>
+                                <th class="text-uppercase" style="width: 10%;">{{__('Active')}}/{{__('Inactive')}}</th>
+                                <th style="width: 10%;">{{__('Action')}}</th>
                             </tr>
                             </thead>
 
@@ -107,7 +107,7 @@
                                         <a href="{{route('admin.vendor.view', $dm->id)}}" alt="view restaurant">
                                             <span class="d-block font-size-sm text-body">
                                                 {{Str::limit($dm->name,20,'...')}}<br>
-                                                {{__('messages.id')}}:{{$dm->id}}
+                                                {{__('id')}}:{{$dm->id}}
                                             </span>
                                         </a>
                                     </td>
@@ -117,7 +117,7 @@
                                         </span>
                                     </td>
                                     <td>
-                                        {{$dm->zone?$dm->zone->name:__('messages.zone').' '.__('messages.deleted')}}
+                                        {{$dm->zone?$dm->zone->name:__('Zone').' '.__('deleted')}}
                                         {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
                                     </td>
                                     <td>
@@ -127,27 +127,27 @@
                                         @if(isset($dm->vendor->status))
                                             @if($dm->vendor->status)
                                             <label class="toggle-switch toggle-switch-sm" for="stocksCheckbox{{$dm->id}}">
-                                                <input type="checkbox" onclick="status_change_alert('{{route('admin.vendor.status',[$dm->id,$dm->status?0:1])}}', '{{__('messages.you_want_to_change_this_restaurant_status')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$dm->id}}" {{$dm->status?'checked':''}}>
+                                                <input type="checkbox" onclick="status_change_alert('{{route('admin.vendor.status',[$dm->id,$dm->status?0:1])}}', '{{__('you_want_to_change_this_restaurant_status')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$dm->id}}" {{$dm->status?'checked':''}}>
                                                 <span class="toggle-switch-label">
                                                     <span class="toggle-switch-indicator"></span>
                                                 </span>
                                             </label>
                                             @else
-                                            <span class="badge badge-soft-danger">{{__('messages.denied')}}</span>
+                                            <span class="badge badge-soft-danger">{{__('Denied')}}</span>
                                             @endif
                                         @else
-                                            <span class="badge badge-soft-danger">{{__('messages.pending')}}</span>
+                                            <span class="badge badge-soft-danger">{{__('Pending')}} </span>
                                         @endif
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-white"
-                                            href="{{route('admin.vendor.view',[$dm['id']])}}" title="{{__('messages.view')}} {{__('messages.restaurant')}}"><i class="tio-visible text-success"></i>
+                                            href="{{route('admin.vendor.view',[$dm['id']])}}" title="{{__('view restaurant')}}"><i class="tio-visible text-success"></i>
                                         </a>
                                         <a class="btn btn-sm btn-white"
-                                            href="{{route('admin.vendor.edit',[$dm['id']])}}" title="{{__('messages.edit')}} {{__('messages.restaurant')}}"><i class="tio-edit text-primary"></i>
+                                            href="{{route('admin.vendor.edit',[$dm['id']])}}" title="{{__('edit restaurant')}}"><i class="tio-edit text-primary"></i>
                                         </a>
                                         {{--<a class="btn btn-sm btn-white" href="javascript:"
-                                        onclick="form_alert('vendor-{{$dm['id']}}','Want to remove this information ?')" title="{{__('messages.delete')}} {{__('messages.restaurant')}}"><i class="tio-delete-outlined text-danger"></i>
+                                        onclick="form_alert('vendor-{{$dm['id']}}','Want to remove this information ?')" title="{{__('delete restaurant')}}"><i class="tio-delete-outlined text-danger"></i>
                                         </a>
                                         <form action="{{route('admin.vendor.delete',[$dm['id']])}}" method="post" id="vendor-{{$dm['id']}}">
                                             @csrf @method('delete')

@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.vendor_view')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('vendor_view')}}</li>
         </ol>
     </nav>
 
@@ -25,7 +25,7 @@
             </div>
             <div class="col-6">
                 <a href="{{route('admin.vendor.edit',[$restaurant->id])}}" class="btn btn-primary float-right">
-                    <i class="tio-edit"></i> {{__('messages.edit')}} {{__('messages.restaurant')}}
+                    <i class="tio-edit"></i> {{__('edit restaurant')}}
                 </a>
             </div>
         </div>
@@ -46,25 +46,25 @@
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', $restaurant->id)}}">{{__('messages.restaurant')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', $restaurant->id)}}">{{__('Restaurant')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'order'])}}"  aria-disabled="true">{{__('messages.order')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'order'])}}"  aria-disabled="true">{{__('Order')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'product'])}}"  aria-disabled="true">{{__('messages.food')}}</a>
+                    <a class="nav-link active" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'product'])}}"  aria-disabled="true">{{__('Food')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'discount'])}}"  aria-disabled="true">{{__('messages.discount')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'discount'])}}"  aria-disabled="true">{{__('Discount')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'settings'])}}"  aria-disabled="true">{{__('messages.settings')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'settings'])}}"  aria-disabled="true">{{__('Settings')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('messages.transaction')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('transaction')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'reviews'])}}"  aria-disabled="true">{{__('messages.reviews')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'reviews'])}}"  aria-disabled="true">{{__('Reviews')}}</a>
                 </li>
             </ul>
             <!-- End Nav -->
@@ -80,10 +80,10 @@
                 <div class="col-md-12">
                     <div class="card h-100">
                         <div class="card-header">
-                            <h3>{{__('messages.products')}} <span class="badge badge-soft-dark ml-2">{{$foods->total()}}</span></h3>
+                            <h3>{{__('products')}} <span class="badge badge-soft-dark ml-2">{{$foods->total()}}</span></h3>
                             
                             <a href="{{route('admin.food.add-new')}}" class="btn btn-primary pull-right"><i
-                                        class="tio-add-circle"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.food')}}</a>
+                                        class="tio-add-circle"></i> {{__('Add new food')}}</a>
                         </div>
                         <div class="table-responsive datatable-custom">
                             <table id="columnSearchDatatable"
@@ -95,12 +95,12 @@
                                     }'>
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>{{__('messages.#')}}</th>
-                                        <th style="width: 20%">{{__('messages.name')}}</th>
-                                        <th style="width: 20%">{{__('messages.type')}}</th>
-                                        <th>{{__('messages.price')}}</th>
-                                        <th>{{__('messages.status')}}</th>
-                                        <th>{{__('messages.action')}}</th>
+                                        <th>{{__('#')}}</th>
+                                        <th style="width: 20%">{{__('Name')}}</th>
+                                        <th style="width: 20%">{{__('Type')}}</th>
+                                        <th>{{__('Price')}}</th>
+                                        <th>{{__('status')}}</th>
+                                        <th>{{__('Action')}}</th>
                                     </tr>
                                 </thead>
 
@@ -133,10 +133,10 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-white"
-                                            href="{{route('admin.food.edit',[$food['id']])}}" title="{{__('messages.edit')}} {{__('messages.food')}}"><i class="tio-edit"></i>
+                                            href="{{route('admin.food.edit',[$food['id']])}}" title="{{__('Edit food')}}"><i class="tio-edit"></i>
                                         </a>
                                         <a class="btn btn-sm btn-white" href="javascript:"
-                                            onclick="form_alert('food-{{$food['id']}}','Want to delete this item ?')" title="{{__('messages.delete')}} {{__('messages.food')}}"><i class="tio-delete-outlined"></i>
+                                            onclick="form_alert('food-{{$food['id']}}','Want to delete this item ?')" title="{{__('Delete food')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('admin.food.delete',[$food['id']])}}"
                                                 method="post" id="food-{{$food['id']}}">

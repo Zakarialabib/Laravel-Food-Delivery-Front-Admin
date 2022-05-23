@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.landing_page_settings'))
+@section('title',__('Landing_page_settings'))
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
@@ -31,31 +31,31 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.landing_page_settings')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Landing_page_settings')}}</li>
         </ol>
     </nav>
 
     <!-- Page Header -->
     <div class="page-header">
-        <h1 class="page-header-title">{{__('messages.landing_page_settings')}}</h1>
+        <h1 class="page-header-title">{{__('Landing_page_settings')}}</h1>
         <!-- Nav Scroller -->
         <div class="js-nav-scroller hs-nav-scroller-horizontal">
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('messages.text')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('text')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('messages.button_links')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('button_links')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('messages.speciality')}}</a>
+                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('speciality')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'testimonial')}}"  aria-disabled="true">{{__('messages.testimonial')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'testimonial')}}"  aria-disabled="true">{{__('testimonial')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'image')}}"  aria-disabled="true">{{__('messages.image')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'image')}}"  aria-disabled="true">{{__('image')}}</a>
                 </li>
             </ul>
             <!-- End Nav -->
@@ -74,15 +74,15 @@
                 @csrf
 
                 <div class="form-group">
-                    <label class="input-label" for="speciality_title">{{__('messages.speciality_title')}}</label>
+                    <label class="input-label" for="speciality_title">{{__('speciality_title')}}</label>
                     <input type="text" id="speciality_title"  name="speciality_title" class="form-control" >
                 </div>
                 <div class="form-group">
-                    <label class="input-label" >{{__('messages.speciality_img')}}<small style="color: red">* ( {{__('messages.size')}}: 140 X 140 px )</small></label>
+                    <label class="input-label" >{{__('speciality_img')}}<small style="color: red">* ( {{__('size')}}: 140 X 140 px )</small></label>
                     <div class="custom-file">
                         <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                        <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                        <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                     </div>
 
                     <center style="display: none" id="image-viewer-section" class="pt-2">
@@ -100,9 +100,9 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">{{__('messages.image')}}</th>
-                            <th scope="col">{{__('messages.speciality_title')}}</th>
-                            <th scope="col">{{__('messages.action')}}</th>
+                            <th scope="col">{{__('image')}}</th>
+                            <th scope="col">{{__('speciality_title')}}</th>
+                            <th scope="col">{{__('Action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -119,7 +119,7 @@
                                 <td>{{$sp['title']}}</td>
                                 <td>
                                     <a class="btn btn-sm btn-white" href="javascript:"
-                                        onclick="form_alert('sp-{{$key}}','{{__('messages.Want_to_delete_this_item')}}')" title="{{__('messages.delete')}}"><i class="tio-delete-outlined"></i>
+                                        onclick="form_alert('sp-{{$key}}','{{__('Want_to_delete_this_item')}}')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
                                     </a>
                                     <form action="{{route('admin.business-settings.landing-page-settings-delete',['tab'=>'speciality', 'key'=>$key])}}"
                                             method="post" id="sp-{{$key}}">

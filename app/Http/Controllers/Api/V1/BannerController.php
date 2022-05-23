@@ -14,7 +14,7 @@ class BannerController extends Controller
     {
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);

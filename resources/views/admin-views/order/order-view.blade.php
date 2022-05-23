@@ -28,49 +28,49 @@
                             <li class="breadcrumb-item">
                                 <a class="breadcrumb-link"
                                    href="{{route('admin.order.list',['status'=>'all'])}}">
-                                    {{__('messages.orders')}}
+                                    {{__('Orders')}} 
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{__('messages.order')}} {{__('messages.details')}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('order details')}}</li>
                         </ol>
                     </nav>
 
                     <div class="d-sm-flex align-items-sm-center">
-                        <h1 class="page-header-title">{{__('messages.order')}} #{{$order['id']}}</h1>
+                        <h1 class="page-header-title">{{__('Order')}} #{{$order['id']}}</h1>
 
                         @if($order['payment_status']=='paid')
                             <span class="badge badge-soft-success ml-sm-3">
-                                <span class="legend-indicator bg-success"></span>{{__('messages.paid')}}
+                                <span class="legend-indicator bg-success"></span>{{__('Paid')}}
                             </span>
                         @else
                             <span class="badge badge-soft-danger ml-sm-3">
-                                <span class="legend-indicator bg-danger"></span>{{__('messages.unpaid')}}
+                                <span class="legend-indicator bg-danger"></span>{{__('unpaid')}}
                             </span>
                         @endif
 
                         @if($order['order_status']=='pending')
                             <span class="badge badge-soft-info ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-info text"></span>{{__('messages.pending')}}
+                              <span class="legend-indicator bg-info text"></span>{{__('Pending')}} 
                             </span>
                         @elseif($order['order_status']=='confirmed')
                             <span class="badge badge-soft-info ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-info"></span>{{__('messages.confirmed')}}
+                              <span class="legend-indicator bg-info"></span>{{__('Confirmed')}} 
                             </span>
                         @elseif($order['order_status']=='processing')
                             <span class="badge badge-soft-warning ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-warning"></span>{{__('messages.processing')}}
+                              <span class="legend-indicator bg-warning"></span>{{__('Processing')}}
                             </span>
                         @elseif($order['order_status']=='picked_up')
                             <span class="badge badge-soft-warning ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-warning"></span>{{__('messages.out_for_delivery')}}
+                              <span class="legend-indicator bg-warning"></span>{{__('out_for_delivery')}}
                             </span>
                         @elseif($order['order_status']=='delivered')
                             <span class="badge badge-soft-success ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-success"></span>{{__('messages.delivered')}}
+                              <span class="legend-indicator bg-success"></span>{{__('Delivered')}}
                             </span>
                         @elseif($order['order_status']=='failed')
                             <span class="badge badge-soft-danger ml-2 ml-sm-3 text-capitalize">
-                                <span class="legend-indicator text-capitalize bg-danger"></span>{{__('messages.payment')}} {{ __('messages.failed')}}
+                                <span class="legend-indicator text-capitalize bg-danger"></span>{{__('payment')}} {{ __('failed')}}
                             </span>
                         @else
                             <span class="badge badge-soft-danger ml-2 ml-sm-3 text-capitalize">
@@ -79,12 +79,12 @@
                         @endif
                         @if($campaign_order)
                             <span class="badge badge-soft-success ml-sm-3">
-                                <span class="legend-indicator bg-success"></span>{{__('messages.campaign_order')}}
+                                <span class="legend-indicator bg-success"></span>{{__('campaign_order')}}
                             </span>
                         @endif
                         @if($order->edited)
                             <span class="badge badge-soft-dark ml-sm-3">
-                                <span class="legend-indicator bg-dark"></span>{{__('messages.edited')}}
+                                <span class="legend-indicator bg-dark"></span>{{__('edited')}}
                             </span>
                         @endif
                         <span class="ml-2 ml-sm-3">
@@ -95,15 +95,15 @@
                     <div class="mt-2">
                         <a class="text-body mr-3"
                            href={{route('admin.order.generate-invoice',[$order['id']])}}>
-                            <i class="tio-print mr-1"></i> {{__('messages.print')}} {{__('messages.invoice')}}
+                            <i class="tio-print mr-1"></i> {{__('print invoice')}}
                         </a>
 
                         <!-- Unfold -->
                         <div class="hs-unfold ml-1">
                             <h5>
                                 <i class="tio-shop"></i>
-                                {{__('messages.restaurant')}} : <label
-                                    class="badge badge-secondary">{{Str::limit($order->restaurant?$order->restaurant->name:__('messages.Restaurant deleted!'), 25,'...')}}</label>
+                                {{__('Restaurant')}} : <label
+                                    class="badge badge-secondary">{{Str::limit($order->restaurant?$order->restaurant->name:__('Restaurant deleted!'), 25,'...')}}</label>
                             </h5>
                         </div>
                         @php
@@ -115,9 +115,9 @@
                         @endphp
                         <div class="hs-unfold ml-1">
                             <h5>
-                                <button class="btn btn-xs btn-secondary"  data-toggle="modal" data-target="#locationModal" ><i class="tio-map"></i> {{__('messages.show_locations_on_map')}}</button>
+                                <button class="btn btn-xs btn-secondary"  data-toggle="modal" data-target="#locationModal" ><i class="tio-map"></i> {{__('show_locations_on_map')}}</button>
                                 @if($order->payment_method != 'cash_on_delivery' && $order->payment_status == 'paid' && $order->order_status != 'refunded')
-                                <button class="btn btn-xs btn-danger"  onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'refunded'])}}','{{__('messages.you_want_to_refund_this_order', ['amount'=> $refund_amount.' '.\App\CentralLogics\Helpers::currency_code()])}}', '{{__('messages.are_you_sure_want_to_refund')}}')" ><i class="tio-money"></i> {{__('messages.refund_this_order')}}</button>
+                                <button class="btn btn-xs btn-danger"  onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'refunded'])}}','{{__('you_want_to_refund_this_order', ['amount'=> $refund_amount.' '.\App\CentralLogics\Helpers::currency_code()])}}', '{{__('are_you_sure_want_to_refund')}}')" ><i class="tio-money"></i> {{__('refund_this_order')}}</button>
                                 @endif
                             </h5>
                         </div>
@@ -127,31 +127,31 @@
                                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
-                                    {{__('messages.status')}}
+                                    {{__('status')}}
                                 </button>
                                 @php($order_delivery_verification = (boolean)\App\Models\BusinessSetting::where(['key' => 'order_delivery_verification'])->first()->value)
                                 <div class="dropdown-menu text-capitalize" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item {{$order['order_status']=='pending'?'active':''}}"
                                        onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'pending'])}}','Change status to pending ?')"
-                                       href="javascript:">{{__('messages.pending')}}</a>
+                                       href="javascript:">{{__('Pending')}} </a>
                                     <a class="dropdown-item {{$order['order_status']=='confirmed'?'active':''}}"
                                        onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'confirmed'])}}','Change status to confirmed ?')"
-                                       href="javascript:">{{__('messages.confirmed')}}</a>
+                                       href="javascript:">{{__('Confirmed')}} </a>
                                     <a class="dropdown-item {{$order['order_status']=='processing'?'active':''}}"
                                        onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'processing'])}}','Change status to processing ?')"
-                                       href="javascript:">{{__('messages.processing')}}</a>
+                                       href="javascript:">{{__('Processing')}}</a>
                                     <a class="dropdown-item {{$order['order_status']=='handover'?'active':''}}"
                                        onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'handover'])}}','Change status to handover ?')"
-                                       href="javascript:">{{__('messages.handover')}}</a>
+                                       href="javascript:">{{__('handover')}}</a>
                                     <a class="dropdown-item {{$order['order_status']=='picked_up'?'active':''}}"
                                        onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'picked_up'])}}','Change status to out for delivery ?')"
-                                       href="javascript:">{{__('messages.out_for_delivery')}}</a>
+                                       href="javascript:">{{__('out_for_delivery')}}</a>
                                     <a class="dropdown-item {{$order['order_status']=='delivered'?'active':''}}"
                                        onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'delivered'])}}','Change status to delivered (payment status will be paid if not)?')"
-                                       href="javascript:">{{__('messages.delivered')}}</a>
+                                       href="javascript:">{{__('Delivered')}}</a>
                                     <a class="dropdown-item {{$order['order_status']=='canceled'?'active':''}}"
                                        onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'canceled'])}}','Change status to canceled ?')"
-                                       href="javascript:">{{__('messages.canceled')}}</a>
+                                       href="javascript:">{{__('Canceled')}}</a>
                                 </div>
                             </div>
                         </div>
@@ -185,13 +185,13 @@
                         <div class="row">
                             <div class="col-12 pb-2 border-bottom  d-flex justify-content-between">
                                 <h4 class="card-header-title">
-                                    {{__('messages.order')}} {{__('messages.details')}}
+                                    {{__('order details')}}
                                     <span
                                         class="badge badge-soft-dark rounded-circle ml-1">{{$order->details->count()}}</span>
                                 </h4>
                                 @if (!$editing && in_array($order->order_status, ['pending','confirmed','processing','accepted']))
                                 <button class="btn btn-sm btn-primary" type="button" onclick="edit_order()">
-                                    <i class="tio-edit"></i> {{__('messages.edit')}}
+                                    <i class="tio-edit"></i> {{__('Edit')}}
                                 </button>
                                 @endif
                             </div>
@@ -199,39 +199,39 @@
                         <div class="row">
                             <div class="col-6 pt-2">
                                 <h6 style="color: #8a8a8a;">
-                                    {{__('messages.order')}} {{__('messages.note')}} : {{$order['order_note']}}
+                                    {{__('order note')}} : {{$order['order_note']}}
                                 </h6>
                             </div>
                             <div class="col-6 pt-2">
                                 <div class="text-right">
                                     <h6 class="text-capitalize" style="color: #8a8a8a;">
-                                        {{__('messages.payment')}} {{__('messages.method')}} : {{str_replace('_',' ',$order['payment_method'])}}
+                                        {{__('payment method')}} : {{str_replace('_',' ',$order['payment_method'])}}
                                     </h6>
                                     <h6 class="" style="color: #8a8a8a;">
                                         @if($order['transaction_reference']==null)
-                                            {{__('messages.reference')}} {{__('messages.code')}} :
+                                            {{__('Reference code')}} :
                                             <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
                                                     data-target=".bd-example-modal-sm">
-                                                {{__('messages.add')}}
+                                                {{__('Add')}}
                                             </button>
                                         @else
-                                            {{__('messages.reference')}} {{__('messages.code')}} : {{$order['transaction_reference']}}
+                                            {{__('Reference code')}} : {{$order['transaction_reference']}}
                                         @endif
                                     </h6>
-                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('messages.order')}} {{__('messages.type')}}
+                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('Order type')}} 
                                         : <label style="font-size: 10px"
                                                  class="badge badge-soft-primary">{{str_replace('_',' ',$order['order_type'])}}</label>
                                     </h6>
                                     @if($order->schedule_at && $order->scheduled)
-                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('messages.scheduled_at')}}
+                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('Scheduled_at')}}
                                         : <label style="font-size: 10px"
                                                  class="badge badge-soft-primary">{{date('d M Y '.config('timeformat'),strtotime($order['schedule_at']))}}</label>
                                     </h6>
                                     @endif
                                     @if($order->coupon)
-                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('messages.coupon')}}
+                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('coupon')}}
                                         : <label style="font-size: 10px"
-                                                 class="badge badge-soft-primary">{{$order->coupon_code}} ({{__('messages.'.$order->coupon->coupon_type)}})</label>
+                                                 class="badge badge-soft-primary">{{$order->coupon_code}} ({{__(''.$order->coupon->coupon_type)}})</label>
                                     </h6>
                                     @endif
                                 </div>
@@ -254,8 +254,8 @@
                                     <!-- End Search -->
                                 </form>
                                 <div class="input-group header-item">
-                                    <select name="category" id="category" class="form-control js-select2-custom mx-1" title="{{__('messages.select')}} {{__('messages.category')}}" onchange="set_category_filter(this.value)">
-                                        <option value="">{{__('messages.all')}} {{__("messages.categories")}}</option>
+                                    <select name="category" id="category" class="form-control js-select2-custom mx-1" title="{{__('Select category')}}" onchange="set_category_filter(this.value)">
+                                        <option value="">{{__('All')}} {{__("messages.categories")}}</option>
                                         @foreach ($categories as $item)
                                         <option value="{{$item->id}}" {{$category==$item->id?'selected':''}}>{{$item->name}}</option>
                                         @endforeach
@@ -327,7 +327,7 @@
                             <!-- Media -->
                                 <div class="media">
                                 @if($editing)
-                                    <div class="avatar avatar-xl mr-3 cursor-pointer" onclick="quick_view_cart_item({{$key}})" title="{{__('messages.click_to_edit_this_item')}}">
+                                    <div class="avatar avatar-xl mr-3 cursor-pointer" onclick="quick_view_cart_item({{$key}})" title="{{__('click_to_edit_this_item')}}">
                                         <span class="avatar-status avatar-lg-status avatar-status-dark"><i class="tio-edit"></i></span>
                                         <img class="img-fluid"
                                              src="{{asset('storage/app/public/product')}}/{{$detail->food['image']}}"
@@ -348,7 +348,7 @@
                                                 <strong> {{Str::limit($detail->food['name'], 20, '...')}}</strong><br>
 
                                                 @if(count(json_decode($detail['variation'],true))>0)
-                                                    <strong><u>{{__('messages.variation')}} : </u></strong>
+                                                    <strong><u>{{__('variation')}} : </u></strong>
                                                     @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                                         <div class="font-size-sm text-body">
                                                             <span>{{$key1}} :  </span>
@@ -358,7 +358,7 @@
                                                 @endif
 
                                                 @foreach(json_decode($detail['add_ons'],true) as $key2 =>$addon)
-                                                    @if($key2==0)<strong><u>{{__('messages.addons')}} : </u></strong>@endif
+                                                    @if($key2==0)<strong><u>{{__('Addons')}} : </u></strong>@endif
                                                     <div class="font-size-sm text-body">
                                                         <span>{{Str::limit($addon['name'],20,'...')}} :  </span>
                                                         <span class="font-weight-bold">
@@ -398,7 +398,7 @@
                             <!-- Media -->
                                 <div class="media">
                                     @if ($editing)
-                                    <div class="avatar avatar-xl mr-3  cursor-pointer" onclick="quick_view_cart_item({{$key}})" title="{{__('messages.click_to_edit_this_item')}}">
+                                    <div class="avatar avatar-xl mr-3  cursor-pointer" onclick="quick_view_cart_item({{$key}})" title="{{__('click_to_edit_this_item')}}">
                                         <span class="avatar-status avatar-lg-status avatar-status-dark"><i class="tio-edit"></i></span>    
                                         <img class="img-fluid"
                                              src="{{asset('storage/app/public/campaign')}}/{{$detail->campaign['image']}}"
@@ -421,7 +421,7 @@
                                                 <strong> {{Str::limit($detail->campaign['name'],20,'...')}}</strong><br>
 
                                                 @if(count(json_decode($detail['variation'],true))>0)
-                                                    <strong><u>{{__('messages.variation')}} : </u></strong>
+                                                    <strong><u>{{__('variation')}} : </u></strong>
                                                     @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                                         <div class="font-size-sm text-body">
                                                             <span>{{$key1}} :  </span>
@@ -431,7 +431,7 @@
                                                 @endif
 
                                                 @foreach(json_decode($detail['add_ons'],true) as $key2 =>$addon)
-                                                    @if($key2==0)<strong><u>{{__('messages.addons')}} : </u></strong>@endif
+                                                    @if($key2==0)<strong><u>{{__('Addons')}} : </u></strong>@endif
                                                     <div class="font-size-sm text-body">
                                                         <span>{{Str::limit($addon['name'],20, '...')}} :  </span>
                                                         <span class="font-weight-bold">
@@ -521,40 +521,40 @@
                         <div class="row justify-content-md-end mb-3">
                             <div class="col-md-9 col-lg-8">
                                 <dl class="row text-sm-right">
-                                    <dt class="col-sm-6">{{__('messages.items')}} {{__('messages.price')}}:</dt>
+                                    <dt class="col-sm-6">{{__('items price')}}:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($product_price)}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.addon')}} {{__('messages.cost')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Addon cost')}}:</dt>
                                     <dd class="col-sm-6">
                                         {{\App\CentralLogics\Helpers::format_currency($total_addon_price)}}
                                         <hr>
                                     </dd>
 
-                                    <dt class="col-sm-6">{{__('messages.subtotal')}}:</dt>
+                                    <dt class="col-sm-6">{{__('subtotal')}}:</dt>
                                     <dd class="col-sm-6">
                                         {{\App\CentralLogics\Helpers::format_currency($product_price+$total_addon_price)}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.discount')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($restaurant_discount_amount)}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.coupon')}} {{__('messages.discount')}}:</dt>
+                                    <dt class="col-sm-6">{{__('coupon discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($coupon_discount_amount)}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.vat/tax')}}:</dt>
+                                    <dt class="col-sm-6">{{__('vat/tax')}}:</dt>
                                     <dd class="col-sm-6">
                                         + {{\App\CentralLogics\Helpers::format_currency($total_tax_amount)}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.delivery')}} {{__('messages.fee')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Delivery fee')}}:</dt>
                                     <dd class="col-sm-6">
                                         + {{\App\CentralLogics\Helpers::format_currency($del_c)}}
                                         <hr>
                                     </dd>
 
-                                    <dt class="col-sm-6">{{__('messages.total')}}:</dt>
+                                    <dt class="col-sm-6">{{__('total')}}:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($product_price+$del_c+$total_tax_amount+$total_addon_price-$coupon_discount_amount - $restaurant_discount_amount)}}</dd>
                                 </dl>
                                 <!-- End Row -->
                             </div>
                             @if($editing)
                             <div class="offset-sm-8 col-sm-4 d-flex justify-content-between">
-                                <button class="btn btn-sm btn-danger" type="button" onclick="cancle_editing_order()">{{__('messages.cancel')}}</button>
+                                <button class="btn btn-sm btn-danger" type="button" onclick="cancle_editing_order()">{{__('Cancel')}}</button>
                                 <button class="btn btn-sm btn-primary" type="button" onclick="update_order()">{{__('Save')}}</button>
                             </div>
                             @endif
@@ -572,10 +572,10 @@
                 <div class="card mb-2">
                     <!-- Header -->
                     <div class="card-header">
-                        <h4 class="card-header-title">{{__('messages.deliveryman')}}</h4>
+                        <h4 class="card-header-title">{{__('Deliveryman')}}</h4>
                         @if($order->delivery_man && !isset($order->delivered) && !$order->restaurant->self_delivery_system)  
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            {{__('messages.change')}}
+                            {{__('change')}}
                         </button>
                         @endif
                     </div>
@@ -595,14 +595,14 @@
                             </div>
                             <div class="media-body">
                                 <span class="text-body text-hover-primary">{{$order->delivery_man['f_name'].' '.$order->delivery_man['l_name']}}</span><br>
-                                <span class="badge badge-ligh">{{$order->delivery_man->orders_count}} {{__('messages.orders_delivered')}}</span>
+                                <span class="badge badge-ligh">{{$order->delivery_man->orders_count}} {{__('orders_delivered')}}</span>
                             </div>
                         </a>
 
                         <hr>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5>{{__('messages.contact')}} {{__('messages.info')}}</h5>
+                            <h5>{{__('Contact info')}}</h5>
                         </div>
 
                         <ul class="list-unstyled list-unstyled-py-2">
@@ -620,7 +620,7 @@
                         <hr>
                         @php($address=$order->dm_last_location)
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5>{{__('messages.last')}} {{__('messages.location')}}</h5>
+                            <h5>{{__('last location')}}</h5>
                         </div>
                         @if(isset($address))
                         <span class="d-block">
@@ -631,7 +631,7 @@
                         </span>
                         @else
                         <span class="d-block text-lowercase qcont">
-                            {{__('messages.location').' '.__('messages.not_found')}}
+                            {{__('location').' '.__('not_found')}}
                         </span>
                         @endif
            
@@ -639,7 +639,7 @@
                         <div class="w-100 text-center">
                             <div class="hs-unfold">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-lat='21.03' data-lng='105.85'>
-                                    {{__('messages.assign_delivery_mam_manually')}}
+                                    {{__('assign_delivery_mam_manually')}}
                                 </button>
                             </div>
                         </div>
@@ -654,7 +654,7 @@
                 <div class="card mb-2">
                     <!-- Header -->
                     <div class="card-header">
-                        <h4 class="card-header-title">{{__('messages.customer')}}</h4>
+                        <h4 class="card-header-title">{{__('customer')}}</h4>
                     </div>
                     <!-- End Header -->
 
@@ -673,7 +673,7 @@
                                 </div>
                                 <div class="media-body">
                                     <span class="text-body text-hover-primary">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</span><br>
-                                    <span class="badge badge-ligh">{{$order->customer->orders_count}} {{__('messages.orders')}}</span>
+                                    <span class="badge badge-ligh">{{$order->customer->orders_count}} {{__('Orders')}} </span>
                                 </div>
             
                             </a>
@@ -681,7 +681,7 @@
                             <hr>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5>{{__('messages.contact')}} {{__('messages.info')}}</h5>
+                                <h5>{{__('Contact info')}}</h5>
                             </div>
 
                             <ul class="list-unstyled list-unstyled-py-2">
@@ -701,16 +701,16 @@
                                 <hr>
                                 @php($address=json_decode($order->delivery_address,true))
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <h5>{{__('messages.delivery')}} {{__('messages.info')}}</h5>
+                                    <h5>{{__('Delivery info')}}</h5>
                                     @if(isset($address))
                                         <a class="link" data-toggle="modal" data-target="#shipping-address-modal"
-                                           href="javascript:">{{__('messages.edit')}}</a>
+                                           href="javascript:">{{__('Edit')}}</a>
                                     @endif
                                 </div>
                                 @if(isset($address))
                                     <span class="d-block">
-                                    {{__('messages.name')}}: {{$address['contact_person_name']}}<br>
-                                    {{__('messages.contact')}}:<a class="deco-none" href="tel:{{$address['contact_person_number']}}"> {{$address['contact_person_number']}}</a><br>
+                                    {{__('Name')}}: {{$address['contact_person_name']}}<br>
+                                    {{__('Contact')}}:<a class="deco-none" href="tel:{{$address['contact_person_number']}}"> {{$address['contact_person_number']}}</a><br>
                                     @if(isset($address['address']))
                                     @if(isset($address['latitude']) && isset($address['longitude']))
                                     <a target="_blank"
@@ -734,7 +734,7 @@
                 <div class="card">
                     <!-- Header -->
                     <div class="card-header">
-                        <h4 class="card-header-title">{{__('messages.restaurant')}}</h4>
+                        <h4 class="card-header-title">{{__('Restaurant')}}</h4>
                     </div>
                     <!-- End Header -->
 
@@ -751,13 +751,13 @@
                             </div>
                             <div class="media-body">
                                 <span class="text-body text-hover-primary text-break">{{$order->restaurant->name}}</span><br>
-                                <span class="badge badge-ligh">{{$order->restaurant->orders_count}} {{__('messages.orders_served')}}</span>
+                                <span class="badge badge-ligh">{{$order->restaurant->orders_count}} {{__('orders_served')}}</span>
                             </div>
                         </a>
                         <hr>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5>{{__('messages.contact')}} {{__('messages.info')}}</h5>
+                            <h5>{{__('Contact info')}}</h5>
                         </div>
 
                         <ul class="list-unstyled list-unstyled-py-2">
@@ -795,7 +795,7 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title h4" id="mySmallModalLabel">{{__('messages.reference')}} {{__('messages.code')}} {{__('messages.add')}}</h5>
+                    <h5 class="modal-title h4" id="mySmallModalLabel">{{__('Reference code add')}}</h5>
                     <button type="button" class="btn btn-xs btn-icon btn-ghost-secondary" data-dismiss="modal"
                             aria-label="Close">
                         <i class="tio-clear tio-lg"></i>
@@ -859,7 +859,7 @@
                         <div class="modal-body">
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.type')}}
+                                    {{__('Type')}}
                                 </label>
                                 <div class="col-md-10 js-form-message">
                                     <input type="text" class="form-control" name="address_type"
@@ -868,7 +868,7 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.contact')}}
+                                    {{__('Contact')}}
                                 </label>
                                 <div class="col-md-10 js-form-message">
                                     <input type="text" class="form-control" name="contact_person_number"
@@ -877,7 +877,7 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.name')}}
+                                    {{__('Name')}}
                                 </label>
                                 <div class="col-md-10 js-form-message">
                                     <input type="text" class="form-control" name="contact_person_name"
@@ -886,7 +886,7 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.address')}}
+                                    {{__('Address')}}
                                 </label>
                                 <div class="col-md-10 js-form-message">
                                     <input type="text" class="form-control" name="address"
@@ -896,7 +896,7 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.latitude')}}
+                                    {{__('Latitude')}}
                                 </label>
                                 <div class="col-md-4 js-form-message">
                                     <input type="text" class="form-control" name="latitude"
@@ -904,7 +904,7 @@
                                            >
                                 </div>
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.longitude')}}
+                                    {{__('Longitude')}}
                                 </label>
                                 <div class="col-md-4 js-form-message">
                                     <input type="text" class="form-control" name="longitude"
@@ -913,8 +913,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">{{__('messages.close')}}</button>
-                            <button type="submit" class="btn btn-primary">{{__('messages.save')}} {{__('messages.changes')}}</button>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">{{__('close')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('save changes')}}</button>
                         </div>
                     </form>
                 @endif
@@ -928,7 +928,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">{{__('messages.assign')}} {{__('messages.deliveryman')}}</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{__('assign deliveryman')}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -942,7 +942,7 @@
                                             {{$dm['name']}}
                                         </span>    
 
-                                        <a class="btn btn-primary btn-xs float-right" onclick="addDeliveryMan({{$dm['id']}})">{{__('messages.assign')}}</a>
+                                        <a class="btn btn-primary btn-xs float-right" onclick="addDeliveryMan({{$dm['id']}})">{{__('assign')}}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -964,7 +964,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="locationModalLabel">{{__('messages.location')}} {{__('messages.data')}}</h4>
+                    <h4 class="modal-title" id="locationModalLabel">{{__('location data')}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -1182,12 +1182,12 @@
                         Swal.fire({
                             icon: 'info',
                             title: 'Cart',
-                            text: "{{__('messages.product_already_added_in_cart')}}"
+                            text: "{{__('product_already Added in_cart')}}"
                         });
                         return false;
                     } 
                     else if (data.data == 0) {
-                        toastr.success('{{__('messages.product_has_been_added_in_cart')}}', {
+                        toastr.success('{{__('product_has_been Added in_cart')}}', {
                             CloseButton: true,
                             ProgressBar: true
                         });
@@ -1196,7 +1196,7 @@
                     }
                     $('.call-when-done').click();
 
-                    toastr.success('{{__('messages.order_updated_successfully')}}', {
+                    toastr.success('{{__('order updated successfully')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
@@ -1210,14 +1210,14 @@
 
         function removeFromCart(key) {
             Swal.fire({
-                title: '{{__('messages.are_you_sure')}}',
-                text: '{{__('messages.you_want_to_remove_this_order_item')}}',
+                title: '{{__('are_you_sure')}}',
+                text: '{{__('you_want_to_remove_this_order_item')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
                 confirmButtonColor: '#FC6A57',
-                cancelButtonText: '{{__('messages.no')}}',
-                confirmButtonText: '{{__('messages.yes')}}',
+                cancelButtonText: '{{__('no')}}',
+                confirmButtonText: '{{__('yes')}}',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
@@ -1230,7 +1230,7 @@
                                 });
                             }
                         } else {
-                            toastr.success('{{__('messages.item_has_been_removed_from_cart')}}', {
+                            toastr.success('{{__('item_has_been_removed_from_cart')}}', {
                                 CloseButton: true,
                                 ProgressBar: true
                             });
@@ -1246,14 +1246,14 @@
         function edit_order()
         {
             Swal.fire({
-                title: '{{__('messages.are_you_sure')}}',
-                text: '{{__('messages.you_want_to_edit_this_order')}}',
+                title: '{{__('are_you_sure')}}',
+                text: '{{__('you_want_to_edit_this_order')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
                 confirmButtonColor: '#FC6A57',
-                cancelButtonText: '{{__('messages.no')}}',
-                confirmButtonText: '{{__('messages.yes')}}',
+                cancelButtonText: '{{__('no')}}',
+                confirmButtonText: '{{__('yes')}}',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
@@ -1265,14 +1265,14 @@
         function cancle_editing_order()
         {
             Swal.fire({
-                title: '{{__('messages.are_you_sure')}}',
-                text: '{{__('messages.you_want_to_cancel_editing')}}',
+                title: '{{__('are_you_sure')}}',
+                text: '{{__('you_want_to_cancel_editing')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
                 confirmButtonColor: '#FC6A57',
-                cancelButtonText: '{{__('messages.no')}}',
-                confirmButtonText: '{{__('messages.yes')}}',
+                cancelButtonText: '{{__('no')}}',
+                confirmButtonText: '{{__('yes')}}',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
@@ -1284,14 +1284,14 @@
         function update_order()
         {
             Swal.fire({
-                title: '{{__('messages.are_you_sure')}}',
-                text: '{{__('messages.you_want_to_submit_all_changes_for_this_order')}}',
+                title: '{{__('are_you_sure')}}',
+                text: '{{__('you_want_to_submit_all_changes_for_this_order')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
                 confirmButtonColor: '#FC6A57',
-                cancelButtonText: '{{__('messages.no')}}',
-                confirmButtonText: '{{__('messages.yes')}}',
+                cancelButtonText: '{{__('no')}}',
+                confirmButtonText: '{{__('yes')}}',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {

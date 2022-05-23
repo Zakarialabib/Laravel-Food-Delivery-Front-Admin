@@ -21,7 +21,7 @@ class AddOnController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(trans('messages.permission_denied'));
+            Toastr::warning(__('permission_denied'));
             return back();
         }
         $request->validate([
@@ -29,7 +29,7 @@ class AddOnController extends Controller
             'name.*' => 'max:191',
             'price' => 'required|numeric|between:0,999999999999.99',
         ],[
-            'name.required' => trans('messages.Name is required!'),
+            'name.required' => __('Name is required!'),
         ]);
 
         $addon = new AddOn();
@@ -55,7 +55,7 @@ class AddOnController extends Controller
         {
             Translation::insert($data);
         }
-        Toastr::success(trans('messages.addon_added_successfully'));
+        Toastr::success(__('addon Added successfully'));
         return back();
     }
 
@@ -63,7 +63,7 @@ class AddOnController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(trans('messages.permission_denied'));
+            Toastr::warning(__('permission_denied'));
             return back();
         }
         $addon = AddOn::withoutGlobalScope('translate')->findOrFail($id);
@@ -74,14 +74,14 @@ class AddOnController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(trans('messages.permission_denied'));
+            Toastr::warning(__('permission_denied'));
             return back();
         }
         $request->validate([
             'name' => 'required|max:191',
             'price' => 'required|numeric|between:0,999999999999.99',
         ], [
-            'name.required' => trans('messages.Name is required!'),
+            'name.required' => __('Name is required!'),
         ]);
 
         $addon = AddOn::find($id);
@@ -103,7 +103,7 @@ class AddOnController extends Controller
             }
         }
         
-        Toastr::success(trans('messages.addon_updated_successfully'));
+        Toastr::success(__('addon updated successfully'));
         return redirect(route('vendor.addon.add-new'));
     }
 
@@ -111,12 +111,12 @@ class AddOnController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(trans('messages.permission_denied'));
+            Toastr::warning(__('permission_denied'));
             return back();
         }
         $addon = AddOn::find($request->id);
         $addon->delete();
-        Toastr::success(trans('messages.addon_deleted_successfully'));
+        Toastr::success(__('addon deleted successfully'));
         return back();
     }
 }

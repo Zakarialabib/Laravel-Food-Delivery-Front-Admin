@@ -54,8 +54,8 @@ class FileManagerController extends Controller
             // Storage::disk('local')->put($request->path.'/'. $name, file_get_contents($file));  
 
         }
-        Toastr::success(trans('messages.image_uploaded_successfully'));
-        return back()->with('success', trans('messages.image_uploaded_successfully'));
+        Toastr::success(__('image_uploaded_successfully'));
+        return back()->with('success', __('image_uploaded_successfully'));
     }
 
 
@@ -93,7 +93,7 @@ class FileManagerController extends Controller
     public function destroy($file_path)
     {
         Storage::disk('local')->delete(base64_decode($file_path));
-        Toastr::success(trans('messages.image_deleted_successfully'));
-        return back()->with('success', trans('messages.image_deleted_successfully'));
+        Toastr::success(__('image deleted successfully'));
+        return back()->with('success', __('image deleted successfully'));
     }
 }

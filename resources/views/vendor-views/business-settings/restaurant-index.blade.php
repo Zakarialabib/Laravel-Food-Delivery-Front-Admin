@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('messages.settings'))
+@section('title',__('Settings'))
 
 @push('css_or_js')
 <link href="{{asset('public/assets/admin/css/croppie.css')}}" rel="stylesheet">
@@ -60,7 +60,7 @@
         <div class="page-header p-0">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.restaurant')}} {{__('messages.setup')}}</h1>
+                    <h1 class="page-header-title">{{__('Restaurant setup')}}</h1>
                 </div>
                 <div class="col-md-12 mb-3 mt-3">
                     <div class="card">
@@ -69,7 +69,7 @@
 
                                     <h5 class="text-capitalize">
                                         <i class="tio-settings-outlined"></i>
-                                        {{__('messages.restaurant_temporarily_closed_title')}}
+                                        {{__('Restaurant temporarily closed')}}
                                     </h5>
 
                                     <label class="switch toggle-switch-lg">
@@ -91,14 +91,14 @@
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
                 <div class="card h-100">
                     <div class="card-header">
-                        {{__('messages.restaurant')}} {{__('messages.settings')}}
+                        {{__('Restaurant settings')}}
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="schedule_order">
-                                        <span class="pr-2">{{__('messages.scheduled')}} {{__('messages.order')}}:</span> 
+                                        <span class="pr-2">{{__('Scheduled order')}}:</span> 
                                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('vendor.business-settings.toggle-settings',[$restaurant->id,$restaurant->schedule_order?0:1, 'schedule_order'])}}'" id="schedule_order" {{$restaurant->schedule_order?'checked':''}}>
                                         <span class="toggle-switch-label">
                                             <span class="toggle-switch-indicator"></span>
@@ -109,7 +109,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="delivery">
-                                        <span class="pr-2">{{__('messages.delivery')}}:</span> 
+                                        <span class="pr-2">{{__('Delivery')}}:</span> 
                                         <input type="checkbox" name="delivery" class="toggle-switch-input" onclick="location.href='{{route('vendor.business-settings.toggle-settings',[$restaurant->id,$restaurant->delivery?0:1, 'delivery'])}}'" id="delivery" {{$restaurant->delivery?'checked':''}}>
                                         <span class="toggle-switch-label">
                                             <span class="toggle-switch-indicator"></span>
@@ -120,7 +120,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="take_away">
-                                        <span class="pr-2 text-capitalize">{{__('messages.take_away')}}:</span> 
+                                        <span class="pr-2 text-capitalize">{{__('take_away')}}:</span> 
                                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('vendor.business-settings.toggle-settings',[$restaurant->id,$restaurant->take_away?0:1, 'take_away'])}}'" id="take_away" {{$restaurant->take_away?'checked':''}}>
                                         <span class="toggle-switch-label">
                                             <span class="toggle-switch-indicator"></span>
@@ -132,7 +132,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="veg">
-                                        <span class="pr-2 text-capitalize">{{__('messages.veg')}}:</span> 
+                                        <span class="pr-2 text-capitalize">{{__('Veg')}}:</span> 
                                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('vendor.business-settings.toggle-settings',[$restaurant->id,$restaurant->veg?0:1, 'veg'])}}'" id="veg" {{$restaurant->veg?'checked':''}}>
                                         <span class="toggle-switch-label">
                                             <span class="toggle-switch-indicator"></span>
@@ -144,7 +144,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="non_veg">
-                                        <span class="pr-2 text-capitalize">{{__('messages.non_veg')}}:</span> 
+                                        <span class="pr-2 text-capitalize">{{__('Non veg')}}:</span> 
                                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('vendor.business-settings.toggle-settings',[$restaurant->id,$restaurant->non_veg?0:1, 'non_veg'])}}'" id="non_veg" {{$restaurant->non_veg?'checked':''}}>
                                         <span class="toggle-switch-label">
                                             <span class="toggle-switch-indicator"></span>
@@ -156,14 +156,14 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                {{__('messages.Daily time schedule')}}
+                                {{__('Daily time schedule')}}
                             </div>
                             <div class="card-body" id="schedule">
                                 @include('admin-views.vendor.view.partials._schedule', $restaurant)
                             </div>
                         </div>
                         <div class="card mt-2">
-                            <div class="card-header">{{__('messages.basic')}} {{__('messages.settings')}}</div>
+                            <div class="card-header">{{__('Basic settings')}}</div>
                             <div class="card-body">
                                 <form action="{{route('vendor.business-settings.update-setup',[$restaurant['id']])}}" method="post"
                                     enctype="multipart/form-data">
@@ -171,14 +171,14 @@
                                     <div class="row">
                                         <div class="col-sm-{{$restaurant->self_delivery_system?'4':'6'}} col-12">
                                             <div class="form-group">
-                                                <label class="input-label text-capitalize" for="title">{{__('messages.minimum')}} {{__('messages.order')}} {{__('messages.amount')}}</label>
+                                                <label class="input-label text-capitalize" for="title">{{__('Minimum order amount')}}</label>
                                                 <input type="number" name="minimum_order" step="0.01" min="0" max="100000" class="form-control" placeholder="100" value="{{$restaurant->minimum_order??'0'}}"> 
                                             </div>
                                         </div>
                                         @if($restaurant->self_delivery_system)
                                         <div class="col-sm-{{$restaurant->self_delivery_system?'4':'6'}} col-12">
                                             <div class="form-group">
-                                                <label class="input-label text-capitalize" for="title">{{__('messages.delivery_charge')}}</label>
+                                                <label class="input-label text-capitalize" for="title">{{__('Delivery_charge')}}</label>
                                                 <input type="number" name="delivery_charge" step="0.01" min="0" max="100000" class="form-control" placeholder="100" value="{{$restaurant->delivery_charge??'0'}}"> 
                                             </div>
                                         </div>
@@ -187,7 +187,7 @@
                                         <div class="col-sm-{{$restaurant->self_delivery_system?'4':'6'}} col-12">
                                             <div class="form-group p-2 border">
                                                 <label class="d-flex justify-content-between switch toggle-switch-sm text-dark" for="gst_status">
-                                                    <span>{{__('messages.gst')}} <span class="input-label-secondary" title="{{__('messages.gst_status_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.gst_status_warning')}}"></span></span>
+                                                    <span>{{__('gst')}} <span class="input-label-secondary" title="{{__('gst_status_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('gst_status_warning')}}"></span></span>
                                                     <input type="checkbox" class="toggle-switch-input" name="gst_status" id="gst_status" value="1" {{$restaurant->gst_status?'checked':''}}>
                                                     <span class="toggle-switch-label">
                                                         <span class="toggle-switch-indicator"></span>
@@ -198,7 +198,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary">{{__('messages.update')}}</button>
+                                        <button type="submit" class="btn btn-primary">{{__('Update')}}</button>
                                     </div>
                                 </form>
                             </div>
@@ -216,7 +216,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{__('messages.Create Schedule For ')}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{__('Create Schedule For ')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -226,11 +226,11 @@
                         @csrf
                         <input type="hidden" name="day" id="day_id_input">
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">{{__('messages.Start time')}}:</label>
+                            <label for="recipient-name" class="col-form-label">{{__('Start time')}}:</label>
                             <input type="time" class="form-control" name="start_time" required>
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="col-form-label">{{__('messages.End time')}}:</label>
+                            <label for="message-text" class="col-form-label">{{__('End time')}}:</label>
                             <input type="time" class="form-control" name="end_time" required>
                         </div>
                         <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
@@ -245,14 +245,14 @@
     <script>
         function restaurant_open_status(e) {
             Swal.fire({
-                title: '{{__('messages.are_you_sure')}}',
-                text: '{{$restaurant->active ? __('messages.you_want_to_temporarily_close_this_restaurant') : __('messages.you_want_to_open_this_restaurant') }}',
+                title: '{{__('are_you_sure')}}',
+                text: '{{$restaurant->active ? __('you_want_to_temporarily_close_this_restaurant') : __('you_want_to_open_this_restaurant') }}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
                 confirmButtonColor: '#377dff',
-                cancelButtonText: '{{__('messages.no')}}',
-                confirmButtonText: '{{__('messages.yes')}}',
+                cancelButtonText: '{{__('no')}}',
+                confirmButtonText: '{{__('yes')}}',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
@@ -279,14 +279,14 @@
 
         function delete_schedule(route) {
             Swal.fire({
-                title: '{{__('messages.are_you_sure')}}',
-                text: '{{__('messages.You want to remove this schedule')}}',
+                title: '{{__('are_you_sure')}}',
+                text: '{{__('You want to remove this schedule')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
                 confirmButtonColor: '#377dff',
-                cancelButtonText: '{{__('messages.no')}}',
-                confirmButtonText: '{{__('messages.yes')}}',
+                cancelButtonText: '{{__('no')}}',
+                confirmButtonText: '{{__('yes')}}',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
@@ -305,14 +305,14 @@
                                 }
                             } else {
                                 $('#schedule').empty().html(data.view);
-                                toastr.success('{{__('messages.Schedule removed successfully')}}', {
+                                toastr.success('{{__('Schedule removed successfully')}}', {
                                     CloseButton: true,
                                     ProgressBar: true
                                 });
                             }
                         },
                         error: function(XMLHttpRequest, textStatus, errorThrown) {
-                            toastr.error('{{__('messages.Schedule not found')}}', {
+                            toastr.error('{{__('Schedule not found')}}', {
                                 CloseButton: true,
                                 ProgressBar: true
                             });
@@ -363,7 +363,7 @@
             var day_name = button.data('day');
             var day_id = button.data('dayid');
             var modal = $(this);
-            modal.find('.modal-title').text('{{__('messages.Create Schedule For ')}} ' + day_name);
+            modal.find('.modal-title').text('{{__('Create Schedule For ')}} ' + day_name);
             modal.find('.modal-body input[name=day]').val(day_id);
         })
 
@@ -395,7 +395,7 @@
                     } else {
                         $('#schedule').empty().html(data.view);
                         $('#exampleModal').modal('hide');
-                        toastr.success('{{__('messages.Schedule added successfully')}}', {
+                        toastr.success('{{__('Schedule added successfully')}}', {
                             CloseButton: true,
                             ProgressBar: true
                         });

@@ -27,7 +27,7 @@ class ModulePermissionMiddleware
             }
         }
 
-        Toastr::error(trans('messages.access_denied'));
+        Toastr::error(__('Access denied'));
         return back();
     }
 }

@@ -52,7 +52,7 @@ class VendorController extends Controller
             'logo' => 'required',
             'tax' => 'required',
         ], [
-            'f_name.required' => trans('messages.first_name_is_required')
+            'f_name.required' => __('first_name_is_required')
         ]);
 
         if($request->zone_id)
@@ -60,7 +60,7 @@ class VendorController extends Controller
             $point = new Point($request->latitude, $request->longitude);
             $zone = Zone::contains('coordinates', $point)->where('id', $request->zone_id)->first();
             if(!$zone){
-                $validator->getMessageBag()->add('latitude', trans('messages.coordinates_out_of_zone'));
+                $validator->getMessageBag()->add('latitude', __('coordinates_out_of_zone'));
                 return back()->withErrors($validator)
                         ->withInput();
             }
@@ -94,7 +94,7 @@ class VendorController extends Controller
 
         $restaurant->save();
         // $restaurant->zones()->attach($request->zone_ids);
-        Toastr::success(trans('messages.vendor').trans('messages.added_successfully'));
+        Toastr::success(__('vendor').__('added_successfully'));
         return redirect('admin/vendor/list');
     }
 
@@ -102,7 +102,7 @@ class VendorController extends Controller
     {
         if(env('APP_MODE')=='demo' && $id == 2)
         {
-            Toastr::warning(trans('messages.you_can_not_edit_this_restaurant_please_add_a_new_restaurant_to_edit'));
+            Toastr::warning(__('you_can_not_edit_this_restaurant_please_add_a_new_restaurant_to_edit'));
             return back();
         }
         $restaurant = Restaurant::find($id);
@@ -126,7 +126,7 @@ class VendorController extends Controller
             'minimum_delivery_time' => 'required|regex:/^([0-9]{2})$/|min:2|max:2',
             'maximum_delivery_time' => 'required|regex:/^([0-9]{2})$/|min:2|max:2',
         ], [
-            'f_name.required' => trans('messages.first_name_is_required')
+            'f_name.required' => __('first_name_is_required')
         ]);
 
         if($request->zone_id)
@@ -134,7 +134,7 @@ class VendorController extends Controller
             $point = new Point($request->latitude, $request->longitude);
             $zone = Zone::contains('coordinates', $point)->where('id', $request->zone_id)->first();
             if(!$zone){
-                $validator->getMessageBag()->add('latitude', trans('messages.coordinates_out_of_zone'));
+                $validator->getMessageBag()->add('latitude', __('coordinates_out_of_zone'));
                 return back()->withErrors($validator)
                         ->withInput();
             }
@@ -165,7 +165,7 @@ class VendorController extends Controller
         $restaurant->delivery_time = $request->minimum_delivery_time .'-'. $request->maximum_delivery_time;
         // $restaurant->zones()->sync($request->zone_ids);
         $restaurant->save();
-        Toastr::success(trans('messages.restaurant').trans('messages.updated_successfully'));
+        Toastr::success(__('restaurant').__('updated_successfully'));
         return redirect('admin/vendor/list');
     }
 
@@ -173,7 +173,7 @@ class VendorController extends Controller
     {
         if(env('APP_MODE')=='demo' && $restaurant->id == 2)
         {
-            Toastr::warning(trans('messages.you_can_not_delete_this_restaurant_please_add_a_new_restaurant_to_delete'));
+            Toastr::warning(__('you_can_not_delete_this_restaurant_please_add_a_new_restaurant_to_delete'));
             return back();
         }
         if (Storage::disk('public')->exists('restaurant/' . $restaurant['logo'])) {
@@ -183,7 +183,7 @@ class VendorController extends Controller
 
         $vendor = Vendor::findOrFail($restaurant->vendor->id);
         $vendor->delete();
-        Toastr::success(trans('messages.restaurant').' '.trans('messages.removed'));
+        Toastr::success(__('restaurant').' '.__('removed'));
         return back();
     }
 
@@ -232,7 +232,7 @@ class VendorController extends Controller
     public function view_tab(Restaurant $restaurant)
     {
 
-        Toastr::error(trans('messages.unknown_tab'));
+        Toastr::error(__('unknown_tab'));
         return back();
     }
 
@@ -297,8 +297,8 @@ class VendorController extends Controller
                 if(isset($vendor->fcm_token))
                 {
                     $data = [
-                        'title' => trans('messages.suspended'),
-                        'description' => trans('messages.your_account_has_been_suspended'),
+                        'title' => __('suspended'),
+                        'description' => __('your_account_has_been_suspended'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'
@@ -316,10 +316,10 @@ class VendorController extends Controller
 
         }
         catch (\Exception $e) {
-            Toastr::warning(trans('messages.push_notification_faild'));
+            Toastr::warning(__('push_notification_faild'));
         }
 
-        Toastr::success(trans('messages.restaurant').trans('messages.status_updated'));
+        Toastr::success(__('restaurant').__('status_updated'));
         return back();
     }
     
@@ -327,32 +327,32 @@ class VendorController extends Controller
     {
         if($request->menu == "schedule_order" && !Helpers::schedule_order())
         {
-            Toastr::warning(trans('messages.schedule_order_disabled_warning'));
+            Toastr::warning(__('schedule_order_disabled_warning'));
             return back();
         }
 
         if((($request->menu == "delivery" && $restaurant->take_away==0) || ($request->menu == "take_away" && $restaurant->delivery==0)) &&  $request->status == 0 )
         {
-            Toastr::warning(trans('messages.can_not_disable_both_take_away_and_delivery'));
+            Toastr::warning(__('can_not_disable_both_take_away_and_delivery'));
             return back();
         }
 
         if((($request->menu == "veg" && $restaurant->non_veg==0) || ($request->menu == "non_veg" && $restaurant->veg==0)) &&  $request->status == 0 )
         {
-            Toastr::warning(trans('messages.veg_non_veg_disable_warning'));
+            Toastr::warning(__('veg_non_veg_disable_warning'));
             return back();
         }
 
         $restaurant[$request->menu] = $request->status;
         $restaurant->save();
-        Toastr::success(trans('messages.restaurant').trans('messages.settings_updated'));
+        Toastr::success(__('restaurant').__('settings_updated'));
         return back();
     }
 
     public function discountSetup(Restaurant $restaurant, Request $request)
     {
-        $message=trans('messages.discount');
-        $message .= $restaurant->discount?trans('messages.updated_successfully'):trans('messages.added_successfully');
+        $message=__('discount');
+        $message .= $restaurant->discount?__('updated_successfully'):__('added_successfully');
         $restaurant->discount()->updateOrinsert(
         [
             'restaurant_id' => $restaurant->id
@@ -396,7 +396,7 @@ class VendorController extends Controller
         $restaurant->delivery_time = $request->minimum_delivery_time .'-'. $request->maximum_delivery_time;
 
         $restaurant->save();
-        Toastr::success(trans('messages.restaurant').trans('messages.settings_updated'));
+        Toastr::success(__('restaurant').__('settings_updated'));
         return back();
     }
 
@@ -408,14 +408,14 @@ class VendorController extends Controller
         if($request->status) $restaurant->status = 1;
         $restaurant->save();
 
-        Toastr::success(trans('messages.application_status_updated_successfully'));
+        Toastr::success(__('application_status updated successfully'));
         return back();
     }
 
     public function cleardiscount(Restaurant $restaurant)
     {
         $restaurant->discount->delete();
-        Toastr::success(trans('messages.restaurant').trans('messages.discount_cleared'));
+        Toastr::success(__('restaurant').__('discount_cleared'));
         return back();
     }
 
@@ -465,15 +465,15 @@ class VendorController extends Controller
             RestaurantWallet::where('vendor_id', $withdraw->vendor_id)->increment('total_withdrawn', $withdraw->amount);
             RestaurantWallet::where('vendor_id', $withdraw->vendor_id)->decrement('pending_withdraw', $withdraw->amount);
             $withdraw->save();
-            Toastr::success(trans('messages.seller_payment_approved'));
+            Toastr::success(__('seller_payment_approved'));
             return redirect()->route('admin.vendor.withdraw_list');
         } else if ($request->approved == 2) {
             RestaurantWallet::where('vendor_id', $withdraw->vendor_id)->decrement('pending_withdraw', $withdraw->amount);
             $withdraw->save();
-            Toastr::info(trans('messages.seller_payment_denied'));
+            Toastr::info(__('seller_payment_denied'));
             return redirect()->route('admin.vendor.withdraw_list');
         } else {
-            Toastr::error(trans('messages.not_found'));
+            Toastr::error(__('Not found'));
             return back();
         }
     }
@@ -537,7 +537,7 @@ class VendorController extends Controller
         try {
             $collections = (new FastExcel)->import($request->file('products_file'));
         } catch (\Exception $exception) {
-            Toastr::error(trans('messages.you_have_uploaded_a_wrong_format_file'));
+            Toastr::error(__('you_have_uploaded_a_wrong_format_file'));
             return back();
         }
         $duplicate_phones = $collections->duplicates('phone');
@@ -546,13 +546,13 @@ class VendorController extends Controller
         // dd(['Phone'=>$duplicate_phones, 'Email'=>$duplicate_emails]);
         if($duplicate_emails->isNotEmpty())
         {
-            Toastr::error(trans('messages.duplicate_data_on_column',['field'=>trans('messages.email')]));
+            Toastr::error(__('duplicate_data_on_column',['field'=>__('email')]));
             return back();
         }
 
         if($duplicate_phones->isNotEmpty())
         {
-            Toastr::error(trans('messages.duplicate_data_on_column',['field'=>trans('messages.phone')]));
+            Toastr::error(__('duplicate_data_on_column',['field'=>__('phone')]));
             return back();
         }
 
@@ -562,7 +562,7 @@ class VendorController extends Controller
         $vendor_id = $vendor?$vendor->id:0;
         foreach ($collections as $key=>$collection) {
                 if ($collection['ownerFirstName'] === "" || $collection['restaurantName'] === "" || $collection['phone'] === "" || $collection['email'] === "" || $collection['latitude'] === "" || $collection['longitude'] === "" || empty($collection['openingTime']) === "" || empty($collection['closeingTime']) || $collection['zone_id'] === "") {
-                    Toastr::error(trans('messages.please_fill_all_required_fields'));
+                    Toastr::error(__('please_fill_all_required_fields'));
                     return back();
                 }
 
@@ -601,11 +601,11 @@ class VendorController extends Controller
         {
             DB::rollBack();
             info($e);
-            Toastr::error(trans('messages.failed_to_import_data'));
+            Toastr::error(__('failed_to_import_data'));
             return back();
         }
 
-        Toastr::success(trans('messages.restaurant_imported_successfully',['count'=>count($restaurants)]));
+        Toastr::success(__('restaurant imported successfully',['count'=>count($restaurants)]));
         return back();
     }
 
@@ -641,7 +641,7 @@ class VendorController extends Controller
             'end_time'=>'required|date_format:H:i|after:start_time',
             'restaurant_id'=>'required',
         ],[
-            'end_time.after'=>trans('messages.End time must be after the start time')
+            'end_time.after'=>__('End time must be after the start time')
         ]);
 
         if ($validator->fails()) {
@@ -661,7 +661,7 @@ class VendorController extends Controller
         if(isset($temp))
         {
             return response()->json(['errors' => [
-                ['code'=>'time', 'message'=>trans('messages.schedule_overlapping_warning')]
+                ['code'=>'time', 'message'=>__('schedule_overlapping_warning')]
             ]]);
         }
 

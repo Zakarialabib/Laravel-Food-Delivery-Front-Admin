@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', trans('messages.third_party_apis'))
+@section('title', __('third_party_apis'))
 
 @push('css_or_js')
 
@@ -12,9 +12,9 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.third_party_apis')}}</h1>
-                    <span class="badge badge-soft-dark">{{__('messages.map_api_hint')}}</span><br>
-                    <span class="badge badge-soft-dark">{{__('messages.map_api_hint_2')}}</span><br>
+                    <h1 class="page-header-title">{{__('third_party_apis')}}</h1>
+                    <span class="badge badge-soft-dark">{{__('map_api_hint')}}</span><br>
+                    <span class="badge badge-soft-dark">{{__('map_api_hint_2')}}</span><br>
                 </div>
             </div>
         </div>
@@ -33,21 +33,21 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label class="input-label" style="padding-left: 10px">{{__('messages.map_api_key')}} ({{__('messages.client')}})</label>
-                                <input type="text" placeholder="{{__('messages.map_api_key')}} ({{__('messages.client')}})" class="form-control" name="map_api_key"
+                                <label class="input-label" style="padding-left: 10px">{{__('map_api_key')}} ({{__('client')}})</label>
+                                <input type="text" placeholder="{{__('map_api_key')}} ({{__('client')}})" class="form-control" name="map_api_key"
                                     value="{{env('APP_MODE')!='demo'?$map_api_key??'':''}}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label class="input-label" style="padding-left: 10px">{{__('messages.map_api_key')}} ({{__('messages.server')}})</label>
-                                <input type="text" placeholder="{{__('messages.map_api_key')}} ({{__('messages.server')}})" class="form-control" name="map_api_key_server"
+                                <label class="input-label" style="padding-left: 10px">{{__('map_api_key')}} ({{__('server')}})</label>
+                                <input type="text" placeholder="{{__('map_api_key')}} ({{__('server')}})" class="form-control" name="map_api_key_server"
                                     value="{{env('APP_MODE')!='demo'?$map_api_key_server??'':''}}" required>
                             </div>
                         </div>
                     </div>
 
-                    <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2">{{__('messages.save')}}</button>
+                    <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2">{{__('Save')}}</button>
                 </form>
             </div>
         </div>

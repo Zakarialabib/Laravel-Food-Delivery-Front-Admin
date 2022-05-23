@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title -->
-    <title>{{__('messages.restaurant')}} | {{__('messages.login')}}</title>
+    <title>{{__('restaurant')}} | {{__('login')}}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
@@ -43,12 +43,7 @@
                     <div class="card-body">
                         <div class="text-center">
                             <div class="mb-5">
-                                <h1 class="display-4">{{__('messages.restaurant')}} {{__('messages.sign_in')}}</h1>
-                                <p>{{__('messages.want_to_login_your_admin_account')}}
-                                    <a href="{{route('admin.auth.login')}}">
-                                        {{__('messages.admin_login')}}
-                                    </a>
-                                </p>
+                                <h1 class="display-4">{{__('Restaurant sign in')}}</h1>
                             </div>
                         </div>
                         <!-- Form -->
@@ -57,15 +52,15 @@
                             <!-- Form Group -->
                             <div class="text-center">
                                 <div class="m-2">
-                                    <span class="divider text-muted m-4">{{__('messages.restaurant_owner_login_form')}}</span>
+                                    <span class="divider text-muted m-4">{{__('Restaurant owner login')}}</span>
                                 </div>
                             </div>
                             <div class="js-form-message form-group">
-                                <label class="input-label" for="signinSrEmail">{{__('messages.your_email')}}</label>
+                                <label class="input-label" for="signinSrEmail">{{__('Your email')}}</label>
 
                                 <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail"
                                        tabindex="1" placeholder="email@address.com" aria-label="email@address.com"
-                                       required data-msg="Please enter a valid email address.">
+                                       required data-msg="{{__('Please enter a valid email address')}}">
                             </div>
                             <!-- End Form Group -->
 
@@ -73,15 +68,15 @@
                             <div class="js-form-message form-group">
                                 <label class="input-label" for="signupSrPassword" tabindex="0">
                                     <span class="d-flex justify-content-between align-items-center">
-                                      {{__('messages.password')}}
+                                      {{__('Password')}}
                                     </span>
                                 </label>
 
                                 <div class="input-group input-group-merge">
                                     <input type="password" class="js-toggle-password form-control form-control-lg"
-                                           name="password" id="signupSrPassword" placeholder="5+ characters required"
+                                           name="password" id="signupSrPassword" placeholder="{{__('5+ characters required')}}"
                                            aria-label="8+ characters required" required
-                                           data-msg="{{__('messages.invalid_password_warning')}}"
+                                           data-msg="{{__('invalid password warning')}}"
                                            data-hs-toggle-password-options='{
                                                      "target": "#changePassTarget",
                                             "defaultClass": "tio-hidden-outlined",
@@ -103,7 +98,7 @@
                                     <input type="checkbox" class="custom-control-input" id="termsCheckbox"
                                            name="remember">
                                     <label class="custom-control-label text-muted" for="termsCheckbox">
-                                        {{__('messages.remember_me')}}
+                                        {{__('Remember me')}}
                                     </label>
                                 </div>
                             </div>
@@ -126,7 +121,7 @@
                                 </div>
                             @endif
                             
-                            <button type="submit" class="btn btn-lg btn-block btn-primary">Sign in</button>
+                            <button type="submit" class="btn btn-lg btn-block btn-primary">{{__('Sign in')}}</button>
                             <div class="text-center">
                                 <span class="divider text-muted m-4">OR</span>
                             </div>
@@ -137,16 +132,16 @@
                             @csrf
                             <div class="text-center">
                                 <div class="m-2">
-                                    <span class="divider text-muted m-4">{{{__('messages.restaurant_employee_login_form')}}}</span>
+                                    <span class="divider text-muted m-4">{{{__('Restaurant employee login')}}}</span>
                                 </div>
                             </div>
                             <!-- Form Group -->
                             <div class="js-form-message form-group">
-                                <label class="input-label" for="signinSrEmail">{{__('messages.your_email')}}</label>
+                                <label class="input-label" for="signinSrEmail">{{__('your email')}}</label>
 
                                 <input type="email" class="form-control form-control-lg" name="email"
                                        tabindex="1" placeholder="email@address.com" aria-label="email@address.com"
-                                       required data-msg="Please enter a valid email address.">
+                                       required data-msg="{{__('Please enter a valid email address')}}">
                             </div>
                             <!-- End Form Group -->
 
@@ -154,15 +149,15 @@
                             <div class="js-form-message form-group">
                                 <label class="input-label" for="" tabindex="0">
                                     <span class="d-flex justify-content-between align-items-center">
-                                      {{__('messages.password')}}
+                                      {{__('Password')}}
                                     </span>
                                 </label>
 
                                 <div class="input-group input-group-merge">
                                     <input type="password" class="js-toggle-password form-control form-control-lg"
-                                           name="password"  placeholder="{{__('messages.password_length_placeholder', ['length'=>'8+'])}}"
+                                           name="password"  placeholder="{{__('password length placeholder', ['length'=>'8+'])}}"
                                            aria-label="8+ characters required" required
-                                           data-msg="{{__('messages.invalid_password_warning')}}"
+                                           data-msg="{{__('invalid password warning')}}"
                                            data-hs-toggle-password-options='{
                                                      "target": "#changePassTarget2",
                                             "defaultClass": "tio-hidden-outlined",
@@ -184,7 +179,7 @@
                                     <input type="checkbox" class="custom-control-input" id="employeeCheckbox"
                                            name="remember">
                                     <label class="custom-control-label text-muted" for="employeeCheckbox">
-                                        {{__('messages.remember_me')}}
+                                        {{__('Remember me')}}
                                     </label>
                                 </div>
                             </div>
@@ -207,23 +202,23 @@
                                 </div>
                             @endif
 
-                            <button type="submit" class="btn btn-lg btn-block btn-primary">{{__('messages.sine_in')}}</button>
+                            <button type="submit" class="btn btn-lg btn-block btn-primary">{{__('Sign in')}}</button>
 
                             <div class="text-center">
-                                <span class="divider text-muted m-4">OR</span>
+                                <span class="divider text-muted m-4">{{__('OR')}}</span>
                             </div>
                         </form>
                         <!-- End Form -->
                         <div class="text-center">
                             <button class="btn btn-lg btn-block btn-white mb-4" type="button" id="owner_sign_in">
                                 <span class="d-flex justify-content-center align-items-center">
-                                    {{__('messages.sign_in_as_owner')}}
+                                    {{__('Sign in as owner')}}
                                 </span>
                             </button>
                             <span class="divider text-muted mb-4 signIn">OR</span>
                             <button class="btn btn-lg btn-block btn-white mb-4" type="button" id="employee_sign_in">
                                 <span class="d-flex justify-content-center align-items-center">
-                                    {{__('messages.sign_in_as_employee')}}
+                                    {{__('Sign in as employee')}}
                                 </span>
                             </button>
 
@@ -331,7 +326,7 @@
 
             if (response.length === 0) {
                 e.preventDefault();
-                toastr.error("{{__('messages.Please check the recaptcha')}}");
+                toastr.error("{{__('Please check the recaptcha')}}");
             }
         });
 
@@ -340,7 +335,7 @@
 
             if (response.length === 0) {
                 e.preventDefault();
-                toastr.error("{{__('messages.Please check the recaptcha')}}");
+                toastr.error("{{__('Please check the recaptcha')}}");
             }
         });
     </script>

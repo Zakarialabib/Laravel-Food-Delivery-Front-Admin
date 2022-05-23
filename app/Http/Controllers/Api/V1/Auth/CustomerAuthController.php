@@ -31,7 +31,7 @@ class CustomerAuthController extends Controller
             if($user->is_phone_verified)
             {
                 return response()->json([
-                    'message' => trans('messages.phone_number_is_already_varified')
+                    'message' => __('phone_number_is_already_varified')
                 ], 200);
 
             }
@@ -44,12 +44,12 @@ class CustomerAuthController extends Controller
                     $user->save();
                     
                     return response()->json([
-                        'message' => trans('messages.phone_number_varified_successfully'),
+                        'message' => __('phone_number_varified_successfully'),
                         'otp' => 'inactive'
                     ], 200);
                 }
                 return response()->json([
-                    'message' => trans('messages.phone_number_and_otp_not_matched')
+                    'message' => __('phone_number_and_otp_not_matched')
                 ], 404);
             }
 
@@ -69,18 +69,18 @@ class CustomerAuthController extends Controller
                 $user->save();
 
                 return response()->json([
-                    'message' => trans('messages.phone_number_varified_successfully'),
+                    'message' => __('phone_number_varified_successfully'),
                     'otp' => 'inactive'
                 ], 200);
             }
             else{
                 return response()->json([
-                    'message' => trans('messages.phone_number_and_otp_not_matched')
+                    'message' => __('phone_number_and_otp_not_matched')
                 ], 404);
             }
         }
         return response()->json([
-            'message' => trans('messages.not_found')
+            'message' => __('Not found')
         ], 404);
 
     }
@@ -133,12 +133,12 @@ class CustomerAuthController extends Controller
         if (isset($verify)) {
             $verify->delete();
             return response()->json([
-                'message' => trans('messages.token_varified'),
+                'message' => __('token_varified'),
             ], 200);
         }
 
         $errors = [];
-        array_push($errors, ['code' => 'token', 'message' => trans('messages.token_not_found')]);
+        array_push($errors, ['code' => 'token', 'message' => __('token_not_found')]);
         return response()->json(['errors' => $errors ]
         , 404);
     }
@@ -184,7 +184,7 @@ class CustomerAuthController extends Controller
             if($response != 'success')
             {
                 $errors = [];
-                array_push($errors, ['code' => 'otp', 'message' => trans('messages.faield_to_send_sms')]);
+                array_push($errors, ['code' => 'otp', 'message' => __('faield_to_send_sms')]);
                 return response()->json([
                     'errors' => $errors
                 ], 405);
@@ -214,7 +214,7 @@ class CustomerAuthController extends Controller
             if(!auth()->user()->status)
             {
                 $errors = [];
-                array_push($errors, ['code' => 'auth-003', 'message' => trans('messages.your_account_is_blocked')]);
+                array_push($errors, ['code' => 'auth-003', 'message' => __('your_account_is_blocked')]);
                 return response()->json([
                     'errors' => $errors
                 ], 403);
@@ -233,7 +233,7 @@ class CustomerAuthController extends Controller
                 {
 
                     $errors = [];
-                    array_push($errors, ['code' => 'otp', 'message' => trans('messages.faield_to_send_sms')]);
+                    array_push($errors, ['code' => 'otp', 'message' => __('faield_to_send_sms')]);
                     return response()->json([
                         'errors' => $errors
                     ], 405);
@@ -243,7 +243,7 @@ class CustomerAuthController extends Controller
             return response()->json(['token' => $token, 'is_phone_verified'=>auth()->user()->is_phone_verified], 200);
         } else {
             $errors = [];
-            array_push($errors, ['code' => 'auth-001', 'message' => trans('messages.Unauthorized')]);
+            array_push($errors, ['code' => 'auth-001', 'message' => __('Unauthorized')]);
             return response()->json([
                 'errors' => $errors
             ], 401);

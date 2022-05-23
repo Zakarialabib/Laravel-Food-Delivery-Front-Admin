@@ -12,7 +12,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.vendor')}} {{__('messages.withdraw')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('vendor withdraw')}}</li>
         </ol>
     </nav>
 
@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-header p-3">
                     <h3 class="text-center text-capitalize">
-                        {{trans('messages.vendor')}} {{trans('messages.withdraw')}} {{trans('messages.information')}}
+                        {{__('vendor')}} {{__('withdraw')}} {{__('information')}}
                     </h3>
 
                     <i class="tio-wallet-outlined" style="font-size: 30px"></i>
@@ -30,9 +30,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-4">
-                            <h5 class="text-capitalize">{{trans('messages.amount')}}
+                            <h5 class="text-capitalize">{{__('amount')}}
                                 : {{$wr->amount}}</h5>
-                            <h5>{{trans('messages.request_time')}} : {{$wr->created_at}}</h5>
+                            <h5>{{__('request_time')}} : {{$wr->created_at}}</h5>
                         </div>
                         <div class="col-4">
                             Note : {{$wr->transaction_note}}
@@ -40,18 +40,18 @@
                         <div class="col-4">
                             @if ($wr->approved== 0)
                                 <button type="button" class="btn btn-success float-right" data-toggle="modal"
-                                        data-target="#exampleModal">{{trans('messages.proceed')}}
+                                        data-target="#exampleModal">{{__('proceed')}}
                                     <i class="tio-arrow-forward"></i>
                                 </button>
                             @else
                                 <div class="text-center float-right text-capitalize">
                                     @if($wr->approved==1)
                                         <label class="badge badge-success p-2 rounded-bottom">
-                                            {{trans('messages.approved')}}
+                                            {{__('approved')}}
                                         </label>
                                     @else
                                         <label class="badge badge-danger p-2 rounded-bottom">
-                                            {{trans('messages.denied')}}
+                                            {{__('denied')}}
                                         </label>
                                     @endif
                                 </div>
@@ -65,18 +65,18 @@
         <div class="col-md-4">
             <div class="card" style="min-height: 260px;">
                 <div class="card-header">
-                    <h3 class="h3 mb-0 text-capitalize">{{trans('messages.my_bank_info')}} </h3>
+                    <h3 class="h3 mb-0 text-capitalize">{{trans('My bank info')}} </h3>
                     <i class="tio tio-dollar-outlined"></i>
                 </div>
                 <div class="card-body">
                     <div class="col-md-8 mt-2">
-                        <h4>{{trans('messages.bank_name')}}
+                        <h4>{{__('bank_name')}}
                             : {{$wr->vendor->bank_name ? $wr->vendor->bank_name : 'No Data found'}}</h4>
-                        <h6 class="text-capitalize">{{trans('messages.branch')}}
+                        <h6 class="text-capitalize">{{__('branch')}}
                             : {{$wr->vendor->branch ? $wr->vendor->branch : 'No Data found'}}</h6>
-                        <h6>{{trans('messages.holder_name')}}
+                        <h6>{{__('holder_name')}}
                             : {{$wr->vendor->holder_name ? $wr->vendor->holder_name : 'No Data found'}}</h6>
-                        <h6>{{trans('messages.account_no')}}
+                        <h6>{{__('account_no')}}
                             : {{$wr->vendor->account_no ? $wr->vendor->account_no : 'No Data found'}}</h6>
                     </div>
                 </div>
@@ -86,14 +86,14 @@
             <div class="col-md-4">
                 <div class="card" style="min-height: 260px;">
                     <div class="card-header">
-                        <h3 class="h3 mb-0">{{trans('messages.restaurant')}} {{trans('messages.info')}}</h3>
+                        <h3 class="h3 mb-0">{{__('restaurant')}} {{__('info')}}</h3>
                         <i class="tio tio-shop-outlined"></i>
                     </div>
                     <div class="card-body">
-                        <h5>{{trans('messages.restaurant')}} : {{$wr->vendor->restaurants[0]->name}}</h5>
-                        <h5>{{trans('messages.phone')}} : {{$wr->vendor->restaurants[0]->contact}}</h5>
-                        <h5>{{trans('messages.address')}} : {{$wr->vendor->restaurants[0]->address}}</h5>
-                        <h5 class="text-capitalize badge badge-success">{{trans('messages.balance')}}
+                        <h5>{{__('restaurant')}} : {{$wr->vendor->restaurants[0]->name}}</h5>
+                        <h5>{{__('phone')}} : {{$wr->vendor->restaurants[0]->contact}}</h5>
+                        <h5>{{__('address')}} : {{$wr->vendor->restaurants[0]->address}}</h5>
+                        <h5 class="text-capitalize badge badge-success">{{__('balance')}}
                             : {{$wr->vendor->wallet->balance}}
                         </h5>
                     </div>
@@ -103,13 +103,13 @@
         <div class="col-md-4">
             <div class="card" style="min-height: 260px;">
                 <div class="card-header">
-                    <h3 class="h3 mb-0 "> {{trans('messages.owner')}} {{trans('messages.info')}}</h3>
+                    <h3 class="h3 mb-0 "> {{__('owner')}} {{__('info')}}</h3>
                     <i class="tio tio-user-big-outlined"></i>
                 </div>
                 <div class="card-body">
-                    <h5>{{trans('messages.name')}} : {{$wr->vendor->f_name}} {{$wr->vendor->l_name}}</h5>
-                    <h5>{{trans('messages.email')}} : {{$wr->vendor->email}}</h5>
-                    <h5>{{trans('messages.phone')}} : {{$wr->vendor->phone}}</h5>
+                    <h5>{{__('name')}} : {{$wr->vendor->f_name}} {{$wr->vendor->l_name}}</h5>
+                    <h5>{{__('email')}} : {{$wr->vendor->email}}</h5>
+                    <h5>{{__('phone')}} : {{$wr->vendor->phone}}</h5>
                 </div>
             </div>
         </div>

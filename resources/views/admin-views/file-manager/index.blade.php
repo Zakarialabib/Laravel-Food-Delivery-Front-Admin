@@ -21,20 +21,20 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('Dashboard')}}</a></li>
-            <li class="breadcrumb-item text-capitalize" aria-current="page">{{trans('messages.file_manager')}}</li>
+            <li class="breadcrumb-item text-capitalize" aria-current="page">{{__('file_manager')}}</li>
         </ol>
     </nav>
     <!-- Page Heading -->
     <div class="d-md-flex_ align-items-center justify-content-between mb-2">
         <div class="row">
             <div class="col-md-8">
-                <h3 class="h3 mb-0 text-capitalize text-black-50">{{trans('messages.file_manager')}}</h3>
+                <h3 class="h3 mb-0 text-capitalize text-black-50">{{__('file_manager')}}</h3>
             </div>
 
             <div class="col-md-4">
                 <button type="button" class="btn btn-primary modalTrigger  float-right" data-toggle="modal" data-target="#exampleModal">
                     <i class="tio-add-circle"></i>
-                    <span class="text">{{trans('messages.add')}} {{trans('messages.new')}}</span>
+                    <span class="text">{{__('add')}} {{__('new')}}</span>
                 </button>
             </div>
         </div>
@@ -48,7 +48,7 @@
                     $pwd = explode('/',base64_decode($folder_path));
                 @endphp
                     <h5 class="text-capitalize">{{end($pwd)}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{count($data)}}</span></h5>
-                    <a class="btn btn-primary" href="{{url()->previous()}}"><i class="tio-left-arrow"></i>{{__('messages.back')}}</a>
+                    <a class="btn btn-primary" href="{{url()->previous()}}"><i class="tio-left-arrow"></i>{{__('back')}}</a>
                 </div>
                 <div class="card-body" style="padding: 0">
                     <div class="row">
@@ -78,12 +78,12 @@
                                             <img src="{{asset('storage/app/'.$file['path'])}}" style="width: 100%; height: auto;" >
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="btn btn-primary" href="{{route('admin.file-manager.download', base64_encode($file['path']))}}"><i class="tio-download"></i> {{__('messages.download')}} </a>
+                                            <a class="btn btn-primary" href="{{route('admin.file-manager.download', base64_encode($file['path']))}}"><i class="tio-download"></i> {{__('download')}} </a>
                                             <button class="btn btn-info" onclick="copy_test('{{$file['db_path']}}')"><i class="tio-copy"></i> Copy path</button>
                                             {{--<form action="{{route('admin.file-manager.destroy',base64_encode($file['path']))}}" method="post">
                                                 @csrf
                                                 @method('delete')    
-                                                <button class="btn btn-danger" type="submit"><i class="tio-delete"></i> {{__('messages.delete')}}</button>
+                                                <button class="btn btn-danger" type="submit"><i class="tio-delete"></i> {{__('Delete')}}</button>
                                             </form>--}}
                                         </div>
                                     </div>
@@ -108,7 +108,7 @@
           <div class="modal-content">
             <div class="indicator"></div>
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">{{__('messages.upload')}} {{__('messages.file')}} </h5>
+              <h5 class="modal-title" id="exampleModalLabel">{{__('upload file')}} </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
               </button>
@@ -120,20 +120,20 @@
                     <div class="form-group">
                         <div class="custom-file">
                             <input type="file" name="images[]" id="customFileUpload" class="custom-file-input" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" multiple>
-                            <label class="custom-file-label" for="customFileUpload">{{__('messages.choose')}} {{__('messages.images')}}</label>
+                            <label class="custom-file-label" for="customFileUpload">{{__('choose images')}}</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="custom-file">
                             <input type="file" name="file" id="customZipFileUpload" class="custom-file-input"
                                                         accept=".zip">
-                            <label class="custom-file-label" id="zipFileLabel" for="customZipFileUpload">{{__('messages.upload_zip_file')}}</label>
+                            <label class="custom-file-label" id="zipFileLabel" for="customZipFileUpload">{{__('upload_zip_file')}}</label>
                         </div>
                     </div>
 
                     <div class="row" id="files"></div>
                     <div class="form-group">
-                        <input class="btn btn-primary" type="submit" value="{{__('messages.upload')}}">
+                        <input class="btn btn-primary" type="submit" value="{{__('upload')}}">
                     </div>
                 </form>
 

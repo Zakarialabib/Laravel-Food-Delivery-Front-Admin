@@ -77,7 +77,7 @@
     </div>
     <div class="row pt-2">
         <div class="col-12">
-            <h2>{{__('messages.description')}}</h2>
+            <h2>{{__('description')}}</h2>
             <span class="d-block text-dark">
                 {!! $product->description !!}
             </span>
@@ -105,7 +105,7 @@
 
                 <!-- Quantity + Add to cart -->
                 <div class="d-flex justify-content-between">
-                    <div class="product-description-label mt-2 text-dark h3">{{__('messages.quantity')}}:</div>
+                    <div class="product-description-label mt-2 text-dark h3">{{__('quantity')}}:</div>
                     <div class="product-quantity d-flex align-items-center">
                         <div class="input-group input-group--style-2 pr-3"
                                 style="width: 160px;">
@@ -130,7 +130,7 @@
                 </div>
                 @php($add_ons = json_decode($product->add_ons))
                 @if(count($add_ons)>0)
-                <div class="h3 p-0 pt-2">{{ __('messages.addon') }}
+                <div class="h3 p-0 pt-2">{{ __('addon') }}
                 </div>
                 
                 <div class="d-flex justify-content-left flex-wrap">
@@ -171,7 +171,7 @@
                             type="button"
                             style="width:37%; height: 45px">
                             <i class="tio-shopping-cart"></i>
-                        {{trans('messages.add_to_cart')}}
+                        {{__('Add to_cart')}}
                     </button>
                 </div>
             </form>

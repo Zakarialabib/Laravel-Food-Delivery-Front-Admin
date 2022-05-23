@@ -33,7 +33,7 @@ class BannerController extends Controller
 
         $banner->restaurant_ids = json_encode($restaurant_ids);
         $banner->save();
-        Toastr::success(trans('messages.capmaign_participation_updated'));
+        Toastr::success(__('capmaign_participation_updated'));
         return back();
     }
 

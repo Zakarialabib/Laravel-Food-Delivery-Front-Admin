@@ -13,7 +13,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.food')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('Add new food')}}</h1>
                 </div>
             </div>
         </div>
@@ -38,12 +38,12 @@
                         @foreach(json_decode($language) as $lang)
                             <div class="card p-4 {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
                                 <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_name">{{__('messages.name')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" name="name[]" id="{{$lang}}_name" class="form-control" placeholder="{{__('messages.new_food')}}" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
+                                    <label class="input-label" for="{{$lang}}_name">{{__('Name')}} ({{strtoupper($lang)}})</label>
+                                    <input type="text" name="name[]" id="{{$lang}}_name" class="form-control" placeholder="{{__('New food')}}" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
                                 </div>
                                 <input type="hidden" name="lang[]" value="{{$lang}}">
                                 <div class="form-group pt-4">
-                                    <label class="input-label" for="exampleFormControlInput1">{{__('messages.short')}} {{__('messages.description')}} ({{strtoupper($lang)}})</label>
+                                    <label class="input-label" for="exampleFormControlInput1">{{__('Short description')}} ({{strtoupper($lang)}})</label>
                                     <textarea type="text" name="description[]" class="form-control ckeditor"></textarea>
                                 </div>
                             </div>
@@ -51,12 +51,12 @@
                     @else
                     <div class="card p-4" id="{{$default_lang}}-form">
                         <div class="form-group">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}} (EN)</label>
-                            <input type="text" name="name[]" class="form-control" placeholder="{{__('messages.new_food')}}" required>
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Name')}} (EN)</label>
+                            <input type="text" name="name[]" class="form-control" placeholder="{{__('New food')}}" required>
                         </div>
                         <input type="hidden" name="lang[]" value="en">
                         <div class="form-group pt-4">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.short')}} {{__('messages.description')}}</label>
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Short description')}}</label>
                             <textarea type="text" name="description[]" class="form-control ckeditor"></textarea>
                         </div>
                     </div>
@@ -64,9 +64,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.restaurant')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Restaurant')}}<span
                                         class="input-label-secondary"></span></label>
-                                <select name="restaurant_id" data-placeholder="{{__('messages.select')}} {{__('messages.restaurant')}}" class="js-data-example-ajax form-control" onchange="getRestaurantData('{{url('/')}}/admin/vendor/get-addons?data[]=0&restaurant_id=',this.value,'add_on')" oninvalid="this.setCustomValidity('{{__('messages.please_select_restaurant')}}')">
+                                <select name="restaurant_id" data-placeholder="{{__('Select restaurant')}}" class="js-data-example-ajax form-control" onchange="getRestaurantData('{{url('/')}}/admin/vendor/get-addons?data[]=0&restaurant_id=',this.value,'add_on')" oninvalid="this.setCustomValidity('{{__('please_select_restaurant')}}')">
                                                         
                                 </select>
                             </div>
@@ -76,33 +76,33 @@
                     <div class="row">
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.price')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Price')}}</label>
                                 <input type="number" min="0" max="999999999999.99" step="0.01" value="1" name="price" class="form-control"
                                        placeholder="Ex : 100" required>
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.discount')}} {{__('messages.type')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Discount type')}}</label>
                                 <select name="discount_type" class="form-control js-select2-custom">
-                                    <option value="percent">{{__('messages.percent')}}</option>
-                                    <option value="amount">{{__('messages.amount')}}</option>
+                                    <option value="percent">{{__('percent')}}</option>
+                                    <option value="amount">{{__('Amount')}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.discount')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Discount')}}</label>
                                 <input type="number" min="0" max="9999999999999999999999" value="0" name="discount" class="form-control"
                                        placeholder="Ex : 100" >
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.item_type')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('item_type')}}</label>
                                 <select name="veg" class="form-control js-select2-custom">
-                                    <option value="0">{{__('messages.non_veg')}}</option>
-                                    <option value="1">{{__('messages.veg')}}</option>
+                                    <option value="0">{{__('Non veg')}}</option>
+                                    <option value="1">{{__('Veg')}}</option>
                                 </select>
                             </div>
                         </div>
@@ -111,11 +111,11 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.category')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Category')}} <span
                                         class="input-label-secondary">*</span></label>
                                 <select name="category_id" class="form-control js-select2-custom"
                                         onchange="getRequest('{{url('/')}}/admin/food/get-categories?parent_id='+this.value,'sub-categories')">
-                                    <option value="">---{{__('messages.select')}}---</option>
+                                    <option value="">---{{__('Select')}}---</option>
                                     @foreach($categories as $category)
                                         <option value="{{$category['id']}}">{{$category['name']}}</option>
                                     @endforeach
@@ -124,8 +124,8 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.sub_category')}}<span
-                                        class="input-label-secondary" title="{{__('messages.category_required_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.category_required_warning')}}"></span></label>
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Sub category')}} <span
+                                        class="input-label-secondary" title="{{__('Category required warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Category required warning')}}"></span></label>
                                 <select name="sub_category_id" id="sub-categories"
                                         class="form-control js-select2-custom">
 
@@ -148,7 +148,7 @@
                     <div class="row" style="border: 1px solid #80808045; border-radius: 10px;padding-top: 10px;margin: 1px">
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.attribute')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('attribute')}}<span
                                         class="input-label-secondary"></span></label>
                                 <select name="attribute_id[]" id="choice_attributes"
                                         class="form-control js-select2-custom"
@@ -175,8 +175,8 @@
                     <div class="row mt-2">
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.addon')}}<span
-                                        class="input-label-secondary" title="{{__('messages.restaurant_required_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.restaurant_required_warning')}}"></span></label>                                
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Addon')}}<span
+                                        class="input-label-secondary" title="{{__('restaurant_required_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_required_warning')}}"></span></label>                                
                                 <select name="addon_ids[]" class="form-control js-select2-custom" multiple="multiple" id="add_on">
                                    
                                 </select>
@@ -187,14 +187,14 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.available')}} {{__('messages.time')}} {{__('messages.starts')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Available time starts')}}</label>
                                 <input type="time" name="available_time_starts" class="form-control" id="available_time_starts"
                                        placeholder="Ex : 10:30 am" required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.available')}} {{__('messages.time')}} {{__('messages.ends')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Available time ends')}}</label>
                                 <input type="time" name="available_time_ends" class="form-control"  id="available_time_ends" placeholder="5:45 pm"
                                        required>
                             </div>
@@ -202,11 +202,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label>{{__('messages.food')}} {{__('messages.image')}}</label><small style="color: red">* ( {{__('messages.ratio')}} 1:1 )</small>
+                        <label>{{__('Food image')}}</label><small style="color: red">* ( {{__('ratio')}} 1:1 )</small>
                         <div class="custom-file">
                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                            <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                            <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                         </div>
 
                         <center style="display: none" id="image-viewer-section" class="pt-2">
@@ -306,7 +306,7 @@
             $.each($("#choice_attributes option:selected"), function () {
                 if($(this).val().length > 50)
                 {
-                    toastr.error('{{__('validation.max.string',['attribute'=>__('messages.variation'),'max'=>'50'])}}', {
+                    toastr.error('{{__('validation.max.string',['attribute'=>__('variation'),'max'=>'50'])}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
@@ -318,7 +318,7 @@
 
         function add_more_customer_choice_option(i, name) {
             let n = name;
-            $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="{{__('messages.choice_title')}}" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="{{__('messages.enter_choice_values')}}" data-role="tagsinput" onchange="combination_update()"></div></div>');
+            $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="{{__('choice_title')}}" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="{{__('enter_choice_values')}}" data-role="tagsinput" onchange="combination_update()"></div></div>');
             $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
         }
 
@@ -378,7 +378,7 @@
                             });
                         }
                     } else {
-                        toastr.success('{{__('messages.product_added_successfully')}}', {
+                        toastr.success('{{__('product Added successfully')}}', {
                             CloseButton: true,
                             ProgressBar: true
                         });

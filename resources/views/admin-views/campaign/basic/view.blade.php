@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-6">
                     {{--<a href="{{url()->previous()}}" class="btn btn-primary float-right">
-                        <i class="tio-back-ui"></i> {{__('messages.back')}}
+                        <i class="tio-back-ui"></i> {{__('back')}}
                     </a>--}}
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="col-md">
-                        <h4>{{__('messages.short')}} {{__('messages.description')}} : </h4>
+                        <h4>{{__('Short description')}} : </h4>
                         <p>{{$campaign->description}}</p>
                     </div>
 
@@ -64,13 +64,13 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 15%">{{__('messages.logo')}}</th>
-                                <th style="width: 20%">{{__('messages.restaurant')}}</th>
-                                <th style="width: 25%">{{__('messages.owner')}}</th>
-                                <th>{{__('messages.email')}}</th>
-                                <th>{{__('messages.phone')}}</th>
-                                <th>{{__('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 15%">{{__('Logo')}}</th>
+                                <th style="width: 20%">{{__('Restaurant')}}</th>
+                                <th style="width: 25%">{{__('Owner')}}</th>
+                                <th>{{__('Email')}}</th>
+                                <th>{{__('Phone')}}</th>
+                                <th>{{__('Action')}}</th>
                             </tr>
                             <tr>
                                 <th colspan="3">
@@ -90,7 +90,7 @@
                                                     @endforelse
                                                 </select>
                                             </div>
-                                            <button type="submit" class="btn btn-primary col-md-5">{{__('messages.add')}} {{__('messages.restaurant')}}</button>
+                                            <button type="submit" class="btn btn-primary col-md-5">{{__('Add restaurant')}}</button>
 
                                         </div>
                                         <!-- End Search -->
@@ -107,8 +107,8 @@
                                                 </div>
                                             </div>
                                             <input id="datatableSearch_" type="search" name="search" class="form-control"
-                                                   placeholder="{{__('messages.search')}}" aria-label="Search" required>
-                                            <button type="submit" class="btn btn-primary">{{__('messages.search')}}</button>
+                                                   placeholder="{{__('Search')}}" aria-label="Search" required>
+                                            <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
 
                                         </div>
                                         <!-- End Search -->
@@ -147,7 +147,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-white text-danger" href="javascript:"
-                                            onclick="form_alert('campaign-{{$campaign['id']}}','Want to remove this restaurant ?')" title="{{__('messages.delete')}} {{__('messages.campaign')}}"><i class="tio-delete-outlined"></i>
+                                            onclick="form_alert('campaign-{{$campaign['id']}}','Want to remove this restaurant ?')" title="{{__('Delete campaign')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         
                                         <form action="{{route('admin.campaign.remove-restaurant',[$campaign->id, $dm['id']])}}"

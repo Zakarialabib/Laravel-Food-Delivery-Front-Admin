@@ -257,7 +257,7 @@ class POSController extends Controller
         ->limit(8)
         ->get([DB::raw('id, CONCAT(f_name, " ", l_name, " (", phone ,")") as text')]);
         
-        $data[]=(object)['id'=>false, 'text'=>trans('messages.walk_in_customer')];
+        $data[]=(object)['id'=>false, 'text'=>__('walk_in_customer')];
 
         return response()->json($data);
     }
@@ -268,13 +268,13 @@ class POSController extends Controller
         {
             if(count($request->session()->get('cart')) < 1)
             {
-                Toastr::error(trans('messages.cart_empty_warning'));
+                Toastr::error(__('cart_empty_warning'));
                 return back();
             }
         }
         else
         {
-            Toastr::error(trans('messages.cart_empty_warning'));
+            Toastr::error(__('cart_empty_warning'));
             return back();
         }
 
@@ -357,12 +357,12 @@ class POSController extends Controller
             OrderDetail::insert($order_details);
             session()->forget('cart');
             session(['last_order' => $order->id]);
-            Toastr::success(trans('messages.order_placed_successfully'));
+            Toastr::success(__('order_placed_successfully'));
             return back();
         } catch (\Exception $e) {
             info($e);
         }
-        Toastr::warning(trans('messages.failed_to_place_order'));
+        Toastr::warning(__('failed_to_place_order'));
         return back();
     }
 

@@ -22,7 +22,7 @@ class FoodController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'unauthorized', 'message'=>trans('messages.permission_denied')]
+                    ['code'=>'unauthorized', 'message'=>__('permission_denied')]
                 ]
             ],403);
         }
@@ -36,7 +36,7 @@ class FoodController extends Controller
             'translations'=>'required',
             
         ], [
-            'category_id.required' => trans('messages.category_required'),
+            'category_id.required' => __('Category required '),
         ]);
 
         if ($request['discount_type'] == 'percent') {
@@ -46,13 +46,13 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', trans('messages.discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
         }
 
         $data = json_decode($request->translations, true);
 
         if (count($data) < 1) {
-            $validator->getMessageBag()->add('translations', trans('messages.Name and description in english is required'));
+            $validator->getMessageBag()->add('translations', __('Name and description in english is required'));
         }
 
         if ($request['price'] <= $dis || count($data) < 1 || $validator->fails()) {
@@ -90,7 +90,7 @@ class FoodController extends Controller
             foreach (json_decode($request->choice_no) as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', trans('messages.attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -149,7 +149,7 @@ class FoodController extends Controller
         }
         Translation::insert($data);
 
-        return response()->json(['message'=>trans('messages.product_added_successfully')], 200);
+        return response()->json(['message'=>__('product Added successfully')], 200);
     }
 
     public function status(Request $request)
@@ -158,7 +158,7 @@ class FoodController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'unauthorized', 'message'=>trans('messages.permission_denied')]
+                    ['code'=>'unauthorized', 'message'=>__('permission_denied')]
                 ]
             ],403);
         }
@@ -176,7 +176,7 @@ class FoodController extends Controller
         $product->status = $request->status;
         $product->save();
 
-        return response()->json(['message' => trans('messages.product_status_updated')], 200);
+        return response()->json(['message' => __('product_status_updated')], 200);
     }
 
     public function update(Request $request)
@@ -185,7 +185,7 @@ class FoodController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'unauthorized', 'message'=>trans('messages.permission_denied')]
+                    ['code'=>'unauthorized', 'message'=>__('permission_denied')]
                 ]
             ],403);
         }
@@ -198,7 +198,7 @@ class FoodController extends Controller
             'veg' => 'required|boolean',
             
         ], [
-            'category_id.required' => trans('messages.category_required'),
+            'category_id.required' => __('Category required '),
         ]);
 
         if ($request['discount_type'] == 'percent') {
@@ -208,12 +208,12 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', trans('messages.discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
         }
         $data = json_decode($request->translations, true);
 
         if (count($data) < 1) {
-            $validator->getMessageBag()->add('translations', trans('messages.Name and description in english is required'));
+            $validator->getMessageBag()->add('translations', __('Name and description in english is required'));
         }
 
         if ($request['price'] <= $dis || count($data) < 1 || $validator->fails()) {
@@ -253,7 +253,7 @@ class FoodController extends Controller
             foreach (json_decode($request->choice_no) as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if (json_decode($request[$str])[0] == null) {
-                    $validator->getMessageBag()->add('name', trans('messages.attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -315,7 +315,7 @@ class FoodController extends Controller
             );
         }
 
-        return response()->json(['message'=>trans('messages.product_updated_successfully')], 200);
+        return response()->json(['message'=>__('product updated successfully')], 200);
     }
 
     public function delete(Request $request)
@@ -324,7 +324,7 @@ class FoodController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'unauthorized', 'message'=>trans('messages.permission_denied')]
+                    ['code'=>'unauthorized', 'message'=>__('permission_denied')]
                 ]
             ],403);
         }
@@ -339,7 +339,7 @@ class FoodController extends Controller
         $product->translations()->delete();
         $product->delete();
 
-        return response()->json(['message'=>trans('messages.product_deleted_successfully')], 200);
+        return response()->json(['message'=>__('product deleted successfully')], 200);
     }
 
     public function search(Request $request)

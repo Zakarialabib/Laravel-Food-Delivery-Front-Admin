@@ -5,7 +5,7 @@
     @else
         @php($zone_name='All')
     @endif
-    <label class="badge badge-soft-info">( {{__('messages.zone')}} : {{$zone_name}} )</label>
+    <label class="badge badge-soft-info">( {{__('Zone')}} : {{$zone_name}} )</label>
 </div>
 
 <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
@@ -121,7 +121,7 @@
                 <div class="media" style="cursor: pointer"
                      onclick="location.href='{{route('admin.order.list',['delivered'])}}'">
                     <div class="media-body">
-                        <h6 class="card-subtitle">{{__('messages.delivered')}}</h6>
+                        <h6 class="card-subtitle">{{__('Delivered')}}</h6>
                         <span class="card-title h3">
                                              {{$data['delivered']}}
                                             </span>
@@ -139,7 +139,7 @@
                 <div class="media" style="cursor: pointer"
                      onclick="location.href='{{route('admin.order.list',['canceled'])}}'">
                     <div class="media-body">
-                        <h6 class="card-subtitle">{{__('messages.canceled')}}</h6>
+                        <h6 class="card-subtitle">{{__('Canceled')}}</h6>
                         <span
                             class="card-title h3">{{$data['canceled']}}</span>
                     </div>
@@ -156,7 +156,7 @@
                 <div class="media" style="cursor: pointer"
                      onclick="location.href='{{route('admin.order.list',['failed'])}}'">
                     <div class="media-body">
-                        <h6 class="card-subtitle">{{__('messages.payment')}} {{__('messages.failed')}}</h6>
+                        <h6 class="card-subtitle">{{__('payment failed')}}</h6>
                         <span
                             class="card-title h3">{{$data['refund_requested']}}</span>
                     </div>
@@ -173,7 +173,7 @@
                 <div class="media" style="cursor: pointer"
                      onclick="location.href='{{route('admin.order.list',['refunded'])}}'">
                     <div class="media-body">
-                        <h6 class="card-subtitle">{{__('messages.refunded')}}</h6>
+                        <h6 class="card-subtitle">{{__('Refunded')}}</h6>
                         <span
                             class="card-title h3">{{$data['refunded']}}</span>
                     </div>

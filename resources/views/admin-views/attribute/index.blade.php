@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.attributes'))
+@section('title',__('attributes'))
 
 @push('css_or_js')
 
@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.attribute')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('Add new attribute')}}</h1>
                 </div>
             </div>
         </div>
@@ -24,8 +24,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}}</label>
-                                <input type="text" name="name" class="form-control" placeholder="{{__('messages.new_attribute')}}" maxlength="191" required>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Name')}}</label>
+                                <input type="text" name="name" class="form-control" placeholder="{{__('new_attribute')}}" maxlength="191" required>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                 <hr>
                 <div class="card">
                     <div class="card-header">
-                    <h5>{{__('messages.attribute')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$attributes->total()}}</span></h5>
+                    <h5>{{__('attribute list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$attributes->total()}}</span></h5>
                         <form action="javascript:" id="search-form" >
                                         <!-- Search -->
                                         @csrf
@@ -48,8 +48,8 @@
                                     </div>
                                 </div>
                                 <input id="datatableSearch_" type="search" name="search" class="form-control"
-                                        placeholder="{{__('messages.search')}}" aria-label="Search" required>
-                                <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                                        placeholder="{{__('Search')}}" aria-label="Search" required>
+                                <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                             </div>
                             <!-- End Search -->
                         </form>
@@ -65,9 +65,9 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 50%">{{__('messages.name')}}</th>
-                                <th style="width: 10%">{{__('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 50%">{{__('Name')}}</th>
+                                <th style="width: 10%">{{__('Action')}}</th>
                             </tr>
                             
                             </thead>
@@ -82,9 +82,9 @@
                                     </span>
                                     </td>
                                     <td>
-                                        <a class="btn btn-sm btn-white" href="{{route('admin.attribute.edit',[$attribute['id']])}}" title="{{__('messages.edit')}}"><i class="tio-edit"></i>
+                                        <a class="btn btn-sm btn-white" href="{{route('admin.attribute.edit',[$attribute['id']])}}" title="{{__('Edit')}}"><i class="tio-edit"></i>
                                         </a>
-                                        <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('attribute-{{$attribute['id']}}','Want to delete this attribute ?')" title="{{__('messages.delete')}}"><i class="tio-delete-outlined"></i>
+                                        <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('attribute-{{$attribute['id']}}','Want to delete this attribute ?')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('admin.attribute.delete',[$attribute['id']])}}"
                                                 method="post" id="attribute-{{$attribute['id']}}">

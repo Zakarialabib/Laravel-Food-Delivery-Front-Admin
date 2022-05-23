@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="card-header">
     <h5 class="card-header-title">
-        <i class="tio-align-to-top"></i> {{trans('messages.top_selling_foods')}}
+        <i class="tio-align-to-top"></i> {{__('top_selling_foods')}}
     </h5>
 </div>
 <!-- End Header -->
@@ -14,7 +14,7 @@
                  onclick="location.href='{{route('vendor.food.view',[$item['id']])}}'"
                  style="cursor: pointer;padding-right: 6px;padding-left: 6px">
                 <div class="grid-card">
-                    <label class="label_1">{{__('messages.sold')}} : {{$item['order_count']}}</label>
+                    <label class="label_1">{{__('sold')}} : {{$item['order_count']}}</label>
                     <img style="width: 100%;height: 120px"
                          src="{{asset('storage/app/public/product')}}/{{$item['image']}}"
                          onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"

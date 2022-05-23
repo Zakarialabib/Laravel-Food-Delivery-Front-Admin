@@ -1,5 +1,5 @@
 <div>
-    <h3 class="qcont px-3 pt-4">{{ __('messages.order')}} {{ __('messages.transactions')}}</h3>
+    <h3 class="qcont px-3 pt-4">{{ __('Order')}} {{ __('transactions')}}</h3>
 
     <div class="table-responsive">
         <table id="datatable"
@@ -7,13 +7,13 @@
             style="width: 100%">
             <thead class="thead-light">
                 <tr>
-                    <th style="width: 10%">{{__('messages.sl#')}}</th>
-                    <th style="width: 10%">{{__('messages.order')}} {{__('messages.id')}}</th>
-                    <th style="width: 20%">{{__('messages.total_order_amount')}}</th>
-                    <th style="width: 20%">{{__('messages.restaurant')}} {{__('messages.earned')}}</th>
-                    <th style="width: 15%">{{__('messages.admin')}}  {{__('messages.earned')}}</th>
-                    <th style="width: 15%">{{__('messages.delivery')}}  {{__('messages.fee')}}</th>
-                    <th style="width: 10%">{{__('messages.vat/tax')}}</th>
+                    <th style="width: 10%">{{__('sl#')}}</th>
+                    <th style="width: 10%">{{__('order id')}}</th>
+                    <th style="width: 20%">{{__('total_order_amount')}}</th>
+                    <th style="width: 20%">{{__('restaurant earned')}}</th>
+                    <th style="width: 15%">{{__('admin')}}  {{__('earned')}}</th>
+                    <th style="width: 15%">{{__('Delivery')}}  {{__('fee')}}</th>
+                    <th style="width: 10%">{{__('vat/tax')}}</th>
                 </tr>
             </thead>
             <tbody>

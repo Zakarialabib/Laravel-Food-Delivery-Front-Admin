@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.food_wise_report'))
+@section('title',__('Food wise_report'))
 
 @push('css_or_js')
 
@@ -17,7 +17,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('messages.food_wise_report')}} <span class="h6 badge badge-soft-success ml-2" id="itemCount">( {{session('from_date')}} - {{session('to_date')}} )</span></h1>
+                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('Food wise_report')}} <span class="h6 badge badge-soft-success ml-2" id="itemCount">( {{session('from_date')}} - {{session('to_date')}} )</span></h1>
                 </div>
                 <div class="col-sm-auto" style="width: 306px;">
                     <select name="zone_id" class="form-control js-select2-custom"
@@ -32,11 +32,11 @@
                     </select>
                 </div>
                 <div class="col-sm-auto" style="width: 306px;">
-                    <select name="restaurant_id" onchange="set_restaurant_filter('{{url()->full()}}',this.value)" data-placeholder="{{__('messages.select')}} {{__('messages.restaurant')}}" class="js-data-example-ajax form-control">
+                    <select name="restaurant_id" onchange="set_restaurant_filter('{{url()->full()}}',this.value)" data-placeholder="{{__('Select restaurant')}}" class="js-data-example-ajax form-control">
                         @if(isset($restaurant))    
                         <option value="{{$restaurant->id}}" selected>{{$restaurant->name}}</option>
                         @else
-                        <option value="all" selected>{{__('messages.all')}} {{__('messages.restaurants')}}</option>
+                        <option value="all" selected>{{__('all restaurants')}}</option>
                         @endif
                     </select>
                 </div>
@@ -51,8 +51,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">{{__('messages.show')}} {{__('messages.data')}} by {{__('messages.date')}}
-                                    {{__('messages.range')}}</label>
+                                <label for="exampleInputEmail1" class="form-label">{{__('show data')}} by {{__('Date')}}
+                                    {{__('range')}}</label>
                             </div>
                         </div>
                         <div class="col-4">
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-4">
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary btn-block">{{__('messages.show')}}</button>
+                                <button type="submit" class="btn btn-primary btn-block">{{__('show')}}</button>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                                 <i class="tio-search"></i>
                             </div>
                             </div>
-                            <input id="datatableSearch" name="search" type="search" class="form-control" placeholder="{{__('messages.search_here')}}" aria-label="{{__('messages.search_here')}}">
+                            <input id="datatableSearch" name="search" type="search" class="form-control" placeholder="{{__('Search here')}}" aria-label="{{__('Search here')}}">
                         </div>
                         <!-- End Search -->
                         </form>
@@ -124,11 +124,11 @@
                     }'>
                     <thead class="thead-light">
                     <tr>
-                        <th>{{__('messages.#')}}</th>
-                        <th style="width: 20%">{{__('messages.name')}}</th>
-                        <th style="width: 15%">{{__('messages.restaurant')}}</th>
-                        <th>{{__('messages.zone')}}</th>
-                        <th>{{__('messages.order')}} {{__('messages.count')}}</th>
+                        <th>{{__('#')}}</th>
+                        <th style="width: 20%">{{__('Name')}}</th>
+                        <th style="width: 15%">{{__('Restaurant')}}</th>
+                        <th>{{__('Zone')}}</th>
+                        <th>{{__('order count')}}</th>
                     </tr>
                     </thead>
 
@@ -150,14 +150,14 @@
                                 @if($food->restaurant)
                                 {{Str::limit($food->restaurant->name,25,'...')}}
                                 @else
-                                {{__('messages.restaurant')}} {{__('messages.deleted')}}
+                                {{__('restaurant deleted')}}
                                 @endif
                             </td>
                             <td>
                                 @if($food->restaurant)
                                     {{$food->restaurant->zone->name}}
                                 @else
-                                    {{__('messages.not_found')}}
+                                    {{__('not_found')}}
                                 @endif
                             </td>
                             <td>

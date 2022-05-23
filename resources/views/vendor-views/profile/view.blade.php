@@ -10,8 +10,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('vendor.dashboard')}}">{{__('Dashboard')}}</a></li>
-                <li class="breadcrumb-item" aria-current="page">{{__('messages.vendor')}}</li>
-                <li class="breadcrumb-item">{{__('messages.my_bank_info')}}</li>
+                <li class="breadcrumb-item" aria-current="page">{{__('Vendor')}}</li>
+                <li class="breadcrumb-item">{{__('My bank info')}}</li>
             </ol>
         </nav>
 
@@ -20,21 +20,21 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="h3 mb-0 text-capitalize">{{__('messages.my_bank_info')}}  </h3>
+                        <h3 class="h3 mb-0 text-capitalize">{{__('My bank info')}}  </h3>
                     </div>
                     <div class="card-body">
                         <div class="col-md-8 mt-4">
-                            <h4>{{__('messages.bank_name')}}
+                            <h4>{{__('Bank name')}}
                                 : {{$data->bank_name ? $data->bank_name : 'No Data found'}}</h4>
-                            <h6>{{__('messages.branch')}} : {{$data->branch ? $data->branch : 'No Data found'}}</h6>
-                            <h6>{{__('messages.holder_name')}}
+                            <h6>{{__('Branch')}} : {{$data->branch ? $data->branch : 'No Data found'}}</h6>
+                            <h6>{{__('Holder name')}}
                                 : {{$data->holder_name ? $data->holder_name : 'No Data found'}}</h6>
-                            <h6>{{__('messages.account_no')}}
+                            <h6>{{__('Account no')}}
                                 : {{$data->account_no ? $data->account_no : 'No Data found'}}</h6>
 
 
                             <a class="btn btn-primary"
-                               href="{{route('vendor.profile.bankInfo')}}">{{__('messages.edit')}}</a>
+                               href="{{route('vendor.profile.bankInfo')}}">{{__('Edit')}}</a>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@
         @if($dm->zone)
         <label class="badge badge-soft-info">{{$dm->zone->name}}</label>
         @else
-        <label class="badge badge-soft-warning">{{__('messages.zone').' '.__('messages.deleted')}}</label>
+        <label class="badge badge-soft-warning">{{__('Zone').' '.__('deleted')}}</label>
         @endif
         {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
     </td>
@@ -22,9 +22,9 @@
         <a class="deco-none" href="tel:{{$dm['phone']}}">{{$dm['phone']}}</a>
     </td>
     <td>
-        <a class="btn btn-sm btn-white" href="{{route('admin.delivery-man.edit',[$dm['id']])}}" title="{{__('messages.edit')}}"><i class="tio-edit"></i>
+        <a class="btn btn-sm btn-white" href="{{route('admin.delivery-man.edit',[$dm['id']])}}" title="{{__('Edit')}}"><i class="tio-edit"></i>
         </a>
-        <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('delivery-man-{{$dm['id']}}','Want to remove this deliveryman ?')" title="{{__('messages.delete')}}"><i class="tio-delete-outlined"></i>
+        <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('delivery-man-{{$dm['id']}}','Want to remove this deliveryman ?')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
         </a>
         <form action="{{route('admin.delivery-man.delete',[$dm['id']])}}" method="post" id="delivery-man-{{$dm['id']}}">
             @csrf @method('delete')

@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.app_settings'))
+@section('title',__('app_settings'))
 
 @push('css_or_js')
 
@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title text-capitalize">{{__('messages.app_settings')}}</h1>
+                    <h1 class="page-header-title text-capitalize">{{__('app_settings')}}</h1>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="col-md-6 col-sm-6 col-12">
                 <div class="form-group">
                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="popular_food">
-                        <span class="pr-2">{{__('messages.popular_foods')}}:</span> 
+                        <span class="pr-2">{{__('popular_foods')}}:</span> 
                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.business-settings.toggle-settings',['popular_food',$popular_food?0:1, 'popular_food'])}}'" id="popular_food" {{$popular_food?'checked':''}}>
                         <span class="toggle-switch-label">
                             <span class="toggle-switch-indicator"></span>
@@ -57,7 +57,7 @@
             <div class="col-md-6 col-sm-6 col-12">
                 <div class="form-group">
                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="popular_restaurant">
-                        <span class="pr-2">{{__('messages.popular_restaurants')}}:</span> 
+                        <span class="pr-2">{{__('popular_restaurants')}}:</span> 
                         <input type="checkbox" name="popular_restaurant" class="toggle-switch-input" onclick="location.href='{{route('admin.business-settings.toggle-settings',['popular_restaurant',$popular_restaurant?0:1, 'popular_restaurant'])}}'" id="popular_restaurant" {{$popular_restaurant?'checked':''}}>
                         <span class="toggle-switch-label">
                             <span class="toggle-switch-indicator"></span>
@@ -68,7 +68,7 @@
             <div class="col-md-6 col-sm-6 col-12">
                 <div class="form-group">
                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="new_restaurant">
-                        <span class="pr-2 text-capitalize">{{__('messages.new_restaurants')}}:</span> 
+                        <span class="pr-2 text-capitalize">{{__('new_restaurants')}}:</span> 
                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.business-settings.toggle-settings',['new_restaurant',$new_restaurant?0:1, 'new_restaurant'])}}'" id="new_restaurant" {{$new_restaurant?'checked':''}}>
                         <span class="toggle-switch-label">
                             <span class="toggle-switch-indicator"></span>
@@ -79,7 +79,7 @@
             <div class="col-md-6 col-sm-6 col-12">
                 <div class="form-group">
                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="most_reviewed_foods">
-                        <span class="pr-2 text-capitalize">{{__('messages.most_reviewed_foods')}}:</span> 
+                        <span class="pr-2 text-capitalize">{{__('most_reviewed_foods')}}:</span> 
                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.business-settings.toggle-settings',['most_reviewed_foods',$most_reviewed_foods?0:1, 'most_reviewed_foods'])}}'" id="most_reviewed_foods" {{$most_reviewed_foods?'checked':''}}>
                         <span class="toggle-switch-label">
                             <span class="toggle-switch-indicator"></span>
@@ -98,25 +98,25 @@
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label  class="input-label d-inline text-capitalize">{{__('messages.app_minimum_version')}} ({{__('messages.android')}})</label>
-                                        <input type="number" placeholder="{{__('messages.app_minimum_version')}}" class="form-control" name="app_minimum_version_android"
+                                        <label  class="input-label d-inline text-capitalize">{{__('app_minimum_version')}} ({{__('android')}})</label>
+                                        <input type="number" placeholder="{{__('app_minimum_version')}}" class="form-control" name="app_minimum_version_android"
                                             value="{{env('APP_MODE')!='demo'?$app_minimum_version_android??'':''}}">
                                     </div>
                                     <div class="form-group">
-                                        <label class="input-label d-inline text-capitalize">{{__('messages.app_url')}} ({{__('messages.android')}})</label>
-                                        <input type="text" placeholder="{{__('messages.app_url')}}" class="form-control" name="app_url_android"
+                                        <label class="input-label d-inline text-capitalize">{{__('app_url')}} ({{__('android')}})</label>
+                                        <input type="text" placeholder="{{__('app_url')}}" class="form-control" name="app_url_android"
                                             value="{{env('APP_MODE')!='demo'?$app_url_android??'':''}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="form-group">
-                                        <label  class="input-label d-inline text-capitalize">{{__('messages.app_minimum_version')}} ({{__('messages.ios')}})</label>
-                                        <input type="number" placeholder="{{__('messages.app_minimum_version')}}" class="form-control" name="app_minimum_version_ios"
+                                        <label  class="input-label d-inline text-capitalize">{{__('app_minimum_version')}} ({{__('ios')}})</label>
+                                        <input type="number" placeholder="{{__('app_minimum_version')}}" class="form-control" name="app_minimum_version_ios"
                                             value="{{env('APP_MODE')!='demo'?$app_minimum_version_ios??'':''}}">
                                     </div>
                                     <div class="form-group">
-                                        <label class="input-label d-inline text-capitalize">{{__('messages.app_url')}} ({{__('messages.ios')}})</label>
-                                        <input type="text" placeholder="{{__('messages.app_url')}}" class="form-control" name="app_url_ios"
+                                        <label class="input-label d-inline text-capitalize">{{__('app_url')}} ({{__('ios')}})</label>
+                                        <input type="text" placeholder="{{__('app_url')}}" class="form-control" name="app_url_ios"
                                             value="{{env('APP_MODE')!='demo'?$app_url_ios??'':''}}">
                                     </div>
                                 </div>

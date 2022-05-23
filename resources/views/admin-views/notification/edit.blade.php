@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.update').' '.__('messages.notification'))
+@section('title',__('Update').' '.__('notification'))
 
 @push('css_or_js')
 
@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-notifications"></i> {{__('messages.notification')}} {{__('messages.update')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-notifications"></i> {{__('notification update')}}</h1>
                 </div>
             </div>
         </div>
@@ -24,15 +24,15 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.title')}}</label>
-                                <input type="text" value="{{$notification['title']}}" name="notification_title" class="form-control" placeholder="{{__('messages.new_notification')}}" required maxlength="191">
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Title')}}</label>
+                                <input type="text" value="{{$notification['title']}}" name="notification_title" class="form-control" placeholder="{{__('new_notification')}}" required maxlength="191">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.zone')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Zone')}}</label>
                                 <select name="zone" class="form-control js-select2-custom" >
-                                    <option value="all" {{isset($notification->zone_id)?'':'selected'}}>{{__('messages.all')}} {{__('messages.zone')}}</option>
+                                    <option value="all" {{isset($notification->zone_id)?'':'selected'}}>{{__('all zone')}}</option>
                                     @foreach(\App\Models\Zone::orderBy('name')->get() as $z)
                                         <option value="{{$z['id']}}"  {{$notification->zone_id==$z['id']?'selected':''}}>{{$z['name']}}</option>
                                     @endforeach
@@ -41,27 +41,27 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label class="input-label" for="tergat">{{__('messages.send')}} {{__('messages.to')}}</label>
+                                <label class="input-label" for="tergat">{{__('send to')}}</label>
                         
-                                <select name="tergat" class="form-control" id="tergat" data-placeholder="{{__('messages.select')}} {{__('messages.tergat')}}" required>
-                                    <option value="customer" {{$notification->tergat=='customer'?'selected':''}}>{{__('messages.customer')}}</option>
-                                    <option value="deliveryman" {{$notification->tergat=='deliveryman'?'selected':''}}>{{__('messages.deliveryman')}}</option>
-                                    <option value="restaurant" {{$notification->tergat=='restaurant'?'selected':''}}>{{__('messages.restaurant')}}</option>
+                                <select name="tergat" class="form-control" id="tergat" data-placeholder="{{__('Select tergat')}}" required>
+                                    <option value="customer" {{$notification->tergat=='customer'?'selected':''}}>{{__('customer')}}</option>
+                                    <option value="deliveryman" {{$notification->tergat=='deliveryman'?'selected':''}}>{{__('Deliveryman')}}</option>
+                                    <option value="restaurant" {{$notification->tergat=='restaurant'?'selected':''}}>{{__('Restaurant')}}</option>
                                 </select>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.description')}}</label>
+                        <label class="input-label" for="exampleFormControlInput1">{{__('description')}}</label>
                         <textarea name="description" class="form-control" required>{{$notification['description']}}</textarea>
                     </div>
                     <div class="form-group">
-                        <label>{{__('messages.image')}}</label><small style="color: red">* ( {{__('messages.ratio')}} 3:1 )</small>
+                        <label>{{__('image')}}</label><small style="color: red">* ( {{__('ratio')}} 3:1 )</small>
                         <div class="custom-file">
                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                            <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                            <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                         </div>
                         <hr>
                         <center>

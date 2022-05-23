@@ -38,8 +38,8 @@ class SystemController extends Controller
             'email' => 'required|unique:admins,email,'.auth('admin')->id(),
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:admins,phone,'.auth('admin')->id(),
         ], [
-            'f_name.required' => trans('messages.first_name_is_required'),
-            'l_name.required' => trans('messages.Last name is required!'),
+            'f_name.required' => __('first_name_is_required'),
+            'l_name.required' => __('Last name is required!'),
         ]);
 
         $admin = Admin::find(auth('admin')->id());
@@ -57,7 +57,7 @@ class SystemController extends Controller
         $admin->phone = $request->phone;
         $admin->image = $image_name;
         $admin->save();
-        Toastr::success(trans('messages.admin_updated_successfully'));
+        Toastr::success(__('admin updated successfully'));
         return back();
     }
 
@@ -71,7 +71,7 @@ class SystemController extends Controller
         $admin = Admin::find(auth('admin')->id());
         $admin->password = bcrypt($request['password']);
         $admin->save();
-        Toastr::success(trans('messages.admin_password_updated_successfully'));
+        Toastr::success(__('admin_password updated successfully'));
         return back();
     }
 

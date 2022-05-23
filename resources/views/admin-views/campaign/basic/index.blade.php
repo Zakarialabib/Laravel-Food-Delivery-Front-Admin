@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.campaign')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('Add new campaign')}}</h1>
                 </div>
             </div>
         </div>
@@ -36,12 +36,12 @@
                         @foreach(json_decode($language) as $lang)
                             <div class="card mb-1 p-4 {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
                                 <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_title">{{__('messages.title')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="title[]" id="{{$lang}}_title" class="form-control" placeholder="{{__('messages.new_campaign')}}" oninvalid="document.getElementById('en-link').click()">
+                                    <label class="input-label" for="{{$lang}}_title">{{__('Title')}} ({{strtoupper($lang)}})</label>
+                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="title[]" id="{{$lang}}_title" class="form-control" placeholder="{{__('new_campaign')}}" oninvalid="document.getElementById('en-link').click()">
                                 </div>
                                 <input type="hidden" name="lang[]" value="{{$lang}}">
                                 <div class="form-group pt-4">
-                                    <label class="input-label" for="exampleFormControlInput1">{{__('messages.short')}} {{__('messages.description')}} ({{strtoupper($lang)}})</label>
+                                    <label class="input-label" for="exampleFormControlInput1">{{__('Short description')}} ({{strtoupper($lang)}})</label>
                                     <textarea type="text" name="description[]" class="form-control ckeditor"></textarea>
                                 </div>
                             </div>
@@ -49,12 +49,12 @@
                     @else
                     <div class="card mb-1 p-4" id="{{$default_lang}}-form">
                         <div class="form-group">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.title')}} (EN)</label>
-                            <input type="text" name="title[]" class="form-control" placeholder="{{__('messages.new_food')}}" required>
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Title')}} (EN)</label>
+                            <input type="text" name="title[]" class="form-control" placeholder="{{__('New food')}}" required>
                         </div>
                         <input type="hidden" name="lang[]" value="en">
                         <div class="form-group pt-4">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.short')}} {{__('messages.description')}}</label>
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Short description')}}</label>
                             <textarea type="text" name="description[]" class="form-control ckeditor"></textarea>
                         </div>
                     </div>
@@ -64,34 +64,34 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="input-label" for="title">{{__('messages.start')}} {{__('messages.date')}}</label>
+                                        <label class="input-label" for="title">{{__('Start date')}}</label>
                                         <input type="date" id="date_from" class="form-control" required="" name="start_date"> 
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <label class="input-label" for="title">{{__('messages.end')}} {{__('messages.date')}}</label>
+                                    <label class="input-label" for="title">{{__('End date')}}</label>
                                     <input type="date" id="date_to" class="form-control" required="" name="end_date">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="input-label text-capitalize" for="title">{{__('messages.daily')}} {{__('messages.start')}} {{__('messages.time')}}</label>
+                                        <label class="input-label text-capitalize" for="title">{{__('daily start time')}}</label>
                                         <input type="time" id="start_time" class="form-control" name="start_time">
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <label class="input-label text-capitalize" for="title">{{__('messages.daily')}} {{__('messages.end')}} {{__('messages.time')}}</label>
+                                    <label class="input-label text-capitalize" for="title">{{__('daily end time')}}</label>
                                     <input type="time" id="end_time" class="form-control" name="end_time">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>{{__('messages.campaign')}} {{__('messages.image')}}</label>
-                                <small style="color: red">* ( {{__('messages.ratio')}} 3:1 )</small>
+                                <label>{{__('campaign image')}}</label>
+                                <small style="color: red">* ( {{__('ratio')}} 3:1 )</small>
                                 <div class="custom-file">
                                     <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                            accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                                    <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                                    <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                                 </div>
                             </div>
 

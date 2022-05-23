@@ -85,7 +85,7 @@
                                 <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="{{route('vendor.profile.view')}}">
-                                    <span class="text-truncate pr-2" title="Settings">{{__('messages.settings')}}</span>
+                                    <span class="text-truncate pr-2" title="Settings">{{__('Settings')}}</span>
                                 </a>
 
                                 <div class="dropdown-divider"></div>
@@ -109,7 +109,7 @@
                                     Swal.fire('Canceled', '', 'info')
                                     }
                                     })">
-                                    <span class="text-truncate pr-2" title="Sign out">{{__('messages.sign_out')}}</span>
+                                    <span class="text-truncate pr-2" title="Sign out">{{__('sign_out')}}</span>
                                 </a>
                             </div>
                         </div>

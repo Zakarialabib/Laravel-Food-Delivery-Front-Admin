@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('messages.addon')}} {{__('messages.update')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('Addon update')}}</h1>
                 </div>
             </div>
         </div>
@@ -50,25 +50,25 @@
                                 }
                             ?>
                             <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}} ({{strtoupper($lang)}})</label>
-                                <input type="text" name="name[]" class="form-control" placeholder="{{__('messages.new_addon')}}" maxlength="191" value="{{$lang==$default_lang?$addon['name']:($translate[$lang]['name']??'')}}" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Name')}} ({{strtoupper($lang)}})</label>
+                                <input type="text" name="name[]" class="form-control" placeholder="{{__('New addon')}}" maxlength="191" value="{{$lang==$default_lang?$addon['name']:($translate[$lang]['name']??'')}}" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
                             </div>
                             <input type="hidden" name="lang[]" value="{{$lang}}">
                         @endforeach
                     @else
                         <div class="form-group">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}}</label>
-                            <input type="text" name="name" class="form-control" placeholder="{{__('messages.new_addon')}}" value="{{ $attribute['name'] }}" required maxlength="191">
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Name')}}</label>
+                            <input type="text" name="name" class="form-control" placeholder="{{__('New addon')}}" value="{{ $attribute['name'] }}" required maxlength="191">
                         </div>
                         <input type="hidden" name="lang[]" value="{{$lang}}">
                     @endif
 
                         <div class="form-group">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.price')}}</label>
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Price')}}</label>
                             <input type="number" min="0" max="999999999999.99" step="0.01" name="price" value="{{$addon['price']}}" class="form-control" placeholder="200" required>
                         </div>
 
-                    <button type="submit" class="btn btn-primary">{{__('messages.update')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Update')}}</button>
                 </form>
             </div>
             <!-- End Table -->

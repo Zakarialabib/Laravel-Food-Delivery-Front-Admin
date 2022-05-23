@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center mb-3">
                 <div class="col-sm">
-                    <h1 class="page-header-title">{{__('messages.customers')}}
+                    <h1 class="page-header-title">{{__('Customers')}}
                         <span class="badge badge-soft-dark ml-2">{{\App\Models\User::count()}}</span>
                     </h1>
                 </div>
@@ -37,10 +37,10 @@
                                     </div>
                                 </div>
                                 <input id="datatableSearch_" type="search" name="search" class="form-control" value="{{request()->get('search')}}"
-                                       placeholder="{{__('messages.search')}}" aria-label="Search" required>
-                                <button type="submit" class="btn btn-primary">{{__('messages.search')}}</button>
+                                       placeholder="{{__('Search')}}" aria-label="Search" required>
+                                <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                                 @if(request()->get('search'))
-                                <button type="reset" class="btn btn-info mx-1" onclick="location.href = '{{route('admin.customer.list')}}'">{{__('messages.reset')}}</button>
+                                <button type="reset" class="btn btn-info mx-1" onclick="location.href = '{{route('admin.customer.list')}}'">{{__('Reset')}}</button>
                                 @endif
                             </div>
                             <!-- End Search -->
@@ -58,43 +58,43 @@
                                      "target": "#usersExportDropdown",
                                      "type": "css-animation"
                                    }'>
-                                    <i class="tio-download-to mr-1"></i> {{__('messages.export')}}
+                                    <i class="tio-download-to mr-1"></i> {{__('Export')}}
                                 </a>
 
                                 <div id="usersExportDropdown"
                                      class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-sm-right">
-                                    <span class="dropdown-header">{{__('messages.options')}}</span>
+                                    <span class="dropdown-header">{{__('Options')}}</span>
                                     <a id="export-copy" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/illustrations/copy.svg"
                                              alt="Image Description">
-                                        {{__('messages.copy')}}
+                                        {{__('Copy')}}
                                     </a>
                                     <a id="export-print" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/illustrations/print.svg"
                                              alt="Image Description">
-                                        {{__('messages.print')}}
+                                        {{__('Print')}}
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <span class="dropdown-header">{{__('messages.download')}} {{__('messages.options')}}</span>
+                                    <span class="dropdown-header">{{__('Download options')}}</span>
                                     <a id="export-excel" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/components/excel.svg"
                                              alt="Image Description">
-                                        {{__('messages.excel')}}
+                                        {{__('Excel')}}
                                     </a>
                                     <a id="export-csv" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/components/placeholder-csv-format.svg"
                                              alt="Image Description">
-                                        .{{__('messages.csv')}}
+                                        .{{__('Csv')}}
                                     </a>
                                     <a id="export-pdf" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/components/pdf.svg"
                                              alt="Image Description">
-                                        {{__('messages.pdf')}}
+                                        {{__('Pdf')}}
                                     </a>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                      "target": "#showHideDropdown",
                                      "type": "css-animation"
                                    }'>
-                                    <i class="tio-table mr-1"></i> {{__('messages.columns')}} <span
+                                    <i class="tio-table mr-1"></i> {{__('Columns')}} <span
                                         class="badge badge-soft-dark rounded-circle ml-1"></span>
                                 </a>
 
@@ -117,7 +117,7 @@
                                     <div class="card card-sm">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.name')}}</span>
+                                                <span class="mr-2">{{__('Name')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_name">
@@ -131,7 +131,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.email')}}</span>
+                                                <span class="mr-2">{{__('Email')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_email">
@@ -145,7 +145,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.phone')}}</span>
+                                                <span class="mr-2">{{__('Phone')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm"
@@ -160,7 +160,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.total')}} {{__('messages.order')}}</span>
+                                                <span class="mr-2">{{__('Total order')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm"
@@ -175,7 +175,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <span class="mr-2">{{__('messages.status')}}</span>
+                                                <span class="mr-2">{{__('status')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm"
@@ -190,7 +190,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <span class="mr-2">{{__('messages.actions')}}</span>
+                                                <span class="mr-2">{{__('Actions')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm"
@@ -239,14 +239,14 @@
                     <thead class="thead-light">
                     <tr>
                         <th class="">
-                            {{__('messages.#')}}
+                            {{__('#')}}
                         </th>
-                        <th class="table-column-pl-0">{{__('messages.name')}}</th>
-                        <th>{{__('messages.email')}}</th>
-                        <th>{{__('messages.phone')}}</th>
-                        <th>{{__('messages.total')}} {{__('messages.order')}}</th>
-                        <th>{{__('messages.active')}}/{{__('messages.inactive')}}</th>
-                        <th>{{__('messages.actions')}}</th>
+                        <th class="table-column-pl-0">{{__('Name')}}</th>
+                        <th>{{__('Email')}}</th>
+                        <th>{{__('Phone')}}</th>
+                        <th>{{__('Total order')}}</th>
+                        <th>{{__('Active')}}/{{__('Inactive')}}</th>
+                        <th>{{__('Actions')}}</th>
                     </tr>
                     </thead>
 
@@ -274,7 +274,7 @@
                             </td>
                             <td>
                                 <label class="toggle-switch toggle-switch-sm" for="stocksCheckbox{{$customer->id}}">
-                                    <input type="checkbox" onclick="status_change_alert('{{route('admin.customer.status',[$customer->id,$customer->status?0:1])}}', '{{$customer->status?__('messages.you_want_to_block_this_customer'):__('messages.you_want_to_unblock_this_customer')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$customer->id}}" {{$customer->status?'checked':''}}>
+                                    <input type="checkbox" onclick="status_change_alert('{{route('admin.customer.status',[$customer->id,$customer->status?0:1])}}', '{{$customer->status?__('You want to block this customer'):__('You want to unblock this customer')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$customer->id}}" {{$customer->status?'checked':''}}>
                                     <span class="toggle-switch-label">
                                         <span class="toggle-switch-indicator"></span>
                                     </span>
@@ -282,7 +282,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-sm btn-white"
-                                    href="{{route('admin.customer.view',[$customer['id']])}}" title="{{__('messages.view')}} {{__('messages.customer')}}"><i class="tio-visible text-primary"></i>
+                                    href="{{route('admin.customer.view',[$customer['id']])}}" title="{{__('View customer')}}"><i class="tio-visible text-primary"></i>
                                 </a>
                             </td>
                         </tr>

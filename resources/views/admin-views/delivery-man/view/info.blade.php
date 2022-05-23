@@ -11,19 +11,19 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-                <li class="breadcrumb-item" aria-current="page">{{__('messages.deliveryman')}} {{__('messages.view')}}</li>
+                <li class="breadcrumb-item" aria-current="page">{{__('Deliveryman view')}}</li>
             </ol>
         </nav>
         <!-- Page Header -->
         <div class="page-header">
             <div class="row">
                 <div class="col-6">
-                    <h1>{{__('messages.deliveryman_preview')}}</h1>
+                    <h1>{{__('Deliveryman preview')}}</h1>
                 </div>
                 @if($dm->application_status == 'approved')
                 <div class="col-6">
                     <a href="{{url()->previous()}}" class="btn btn-primary float-right">
-                        <i class="tio-back-ui"></i> {{__('messages.back')}}
+                        <i class="tio-back-ui"></i> {{__('back')}}
                     </a>
                 </div>
 
@@ -31,10 +31,10 @@
                     <!-- Nav -->
                     <ul class="nav nav-tabs page-header-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{route('admin.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'info'])}}"  aria-disabled="true">{{__('messages.info')}}</a>
+                            <a class="nav-link active" href="{{route('admin.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'info'])}}"  aria-disabled="true">{{__('info')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('messages.transaction')}}</a>
+                            <a class="nav-link" href="{{route('admin.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('transaction')}}</a>
                         </li>
                     </ul>
                     <!-- End Nav -->
@@ -43,12 +43,12 @@
                 <div class="col-md-6">
                     <div class="hs-unfold float-right">
                         <a class="btn btn-primary text-capitalize font-weight-bold"
-                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'approved'])}}','{{__('messages.you_want_to_approve_this_application')}}')"
-                            href="javascript:">{{__('messages.approve')}}</a>
+                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'approved'])}}','{{__('you_want_to_approve_this_application')}}')"
+                            href="javascript:">{{__('approve')}}</a>
                         @if($dm->application_status !='denied')
                         <a class="btn btn-danger text-capitalize font-weight-bold" 
-                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'denied'])}}','{{__('messages.you_want_to_deny_this_application')}}')"
-                            href="javascript:">{{__('messages.deny')}}</a>
+                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'denied'])}}','{{__('you_want_to_deny_this_application')}}')"
+                            href="javascript:">{{__('deny')}}</a>
                         @endif
                     </div>
                 </div>
@@ -66,29 +66,29 @@
                     
                     (@if($dm->zone) 
                         {{$dm->zone->name}} 
-                    @else {{__('messages.zone').' '.__('messages.deleted')}} 
+                    @else {{__('Zone').' '.__('deleted')}} 
                     @endif ) 
                     @if($dm->application_status=='approved')
                         @if($dm['status']) 
                             @if($dm['active']) 
-                                <label class="badge badge-soft-primary">{{__('messages.online')}}</label> 
+                                <label class="badge badge-soft-primary">{{__('online')}}</label> 
                             @else 
-                                <label class="badge badge-soft-danger">{{__('messages.offline')}}</label> 
+                                <label class="badge badge-soft-danger">{{__('offline')}}</label> 
                             @endif  
                         @else 
-                        <span class="badge badge-danger">{{__('messages.suspended')}}</span> 
+                        <span class="badge badge-danger">{{__('suspended')}}</span> 
                         @endif
                     
                     @else
-                    <label class="badge badge-soft-{{$dm->application_status=='pending'?'info':'danger'}}">{{__('messages.'.$dm->application_status)}}</label>
+                    <label class="badge badge-soft-{{$dm->application_status=='pending'?'info':'danger'}}">{{__(''.$dm->application_status)}}</label>
                     @endif
                 </h4>
-                <!-- <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],$dm->earning?0:1])}}','{{$dm->earning?__('messages.want_to_disable_earnings'):__('messages.want_to_enable_earnings')}}')" class="btn {{$dm->earning?'btn-danger':'btn-success'}}">
-                         {{$dm->earning?__('messages.disable_earning'):__('messages.enable_earning')}}
+                <!-- <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],$dm->earning?0:1])}}','{{$dm->earning?__('want_to_disable_earnings'):__('want_to_enable_earnings')}}')" class="btn {{$dm->earning?'btn-danger':'btn-success'}}">
+                         {{$dm->earning?__('disable_earning'):__('enable_earning')}}
                 </a> -->
                 @if($dm->application_status=='approved')
-                <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.status',[$dm['id'],$dm->status?0:1])}}','{{$dm->status?__('messages.you_want_to_suspend_this_deliveryman'):__('messages.you_want_to_unsuspend_this_deliveryman')}}')" class="btn {{$dm->status?'btn-danger':'btn-success'}}">
-                        {{$dm->status?__('messages.suspend_this_delivery_man'):__('messages.unsuspend_this_delivery_man')}}
+                <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.status',[$dm['id'],$dm->status?0:1])}}','{{$dm->status?__('you_want_to_suspend_this_deliveryman'):__('you_want_to_unsuspend_this_deliveryman')}}')" class="btn {{$dm->status?'btn-danger':'btn-success'}}">
+                        {{$dm->status?__('suspend_this_delivery_man'):__('unsuspend_this_delivery_man')}}
                 </a>
                 @endif
                 <div class="hs-unfold float-right">
@@ -96,15 +96,15 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                            {{__('messages.type')}} ({{$dm->earning?__('messages.freelancer'):__('messages.salary_based')}})
+                            {{__('Type')}} ({{$dm->earning?__('freelancer'):__('salary_based')}})
                         </button>
                         <div class="dropdown-menu text-capitalize" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item {{$dm->earning?'active':''}}"
-                            onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],1])}}','{{__('messages.want_to_enable_earnings')}}')"
-                                href="javascript:">{{__('messages.freelancer')}}</a>
+                            onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],1])}}','{{__('want_to_enable_earnings')}}')"
+                                href="javascript:">{{__('freelancer')}}</a>
                             <a class="dropdown-item {{$dm->earning?'':'active'}}"
-                            onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],0])}}','{{__('messages.want_to_disable_earnings')}}')"
-                                href="javascript:">{{__('messages.salary_based')}}</a>
+                            onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],0])}}','{{__('want_to_disable_earnings')}}')"
+                                href="javascript:">{{__('salary_based')}}</a>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                                  alt="Image Description">
                             <div class="d-block">
                                 <h4 class="display-2 text-dark mb-0">{{count($dm->rating)>0?number_format($dm->rating[0]->average, 2, '.', ' '):0}}</h4>
-                                <p> of {{$dm->reviews->count()}} {{__('messages.reviews')}}
+                                <p> of {{$dm->reviews->count()}} {{__('Reviews')}}
                                     <span class="badge badge-soft-dark badge-pill ml-1"></span>
                                 </p>
                             </div>
@@ -217,7 +217,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="font-weight-bold  text-uppercase for-card-text mb-1">
-                                    {{__('messages.total')}} {{__('messages.delivered')}} {{__('messages.orders')}}
+                                    {{__('total delivered orders')}}
                                 </div>
                                 <div
                                     class="for-card-count">{{$dm->orders->count()}}
@@ -235,7 +235,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div
-                                    class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('messages.cash_in_hand')}}</div>
+                                    class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('Cash in hand')}}</div>
                                 <div
                                     class="for-card-count">{{\App\CentralLogics\Helpers::format_currency($dm->wallet?$dm->wallet->collected_cash:0.0)}}</div>
                             </div>
@@ -251,7 +251,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div
-                                    class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('messages.total_earning')}}</div>
+                                    class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('Total earning')}} </div>
                                 <div
                                     class="for-card-count">{{\App\CentralLogics\Helpers::format_currency($dm->wallet?$dm->wallet->total_earning:0.00)}}</div>
                             </div>
@@ -285,10 +285,10 @@
                    }'>
                     <thead class="thead-light">
                     <tr>
-                        <th>{{__('messages.reviewer')}}</th>
-                        <th>{{__('messages.review')}}</th>
-                        <th>{{__('messages.attachment')}}</th>
-                        <th>{{__('messages.date')}}</th>
+                        <th>{{__('reviewer')}}</th>
+                        <th>{{__('review')}}</th>
+                        <th>{{__('attachment')}}</th>
+                        <th>{{__('Date')}}</th>
                     </tr>
                     </thead>
 
@@ -361,14 +361,14 @@
 <script>
     function request_alert(url, message) {
         Swal.fire({
-            title: '{{__('messages.are_you_sure')}}',
+            title: '{{__('are_you_sure')}}',
             text: message,
             type: 'warning',
             showCancelButton: true,
             cancelButtonColor: 'default',
             confirmButtonColor: '#FC6A57',
-            cancelButtonText: '{{__('messages.no')}}',
-            confirmButtonText: '{{__('messages.yes')}}',
+            cancelButtonText: '{{__('no')}}',
+            confirmButtonText: '{{__('yes')}}',
             reverseButtons: true
         }).then((result) => {
             if (result.value) {

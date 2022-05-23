@@ -72,11 +72,11 @@ class SslCommerzPaymentController extends Controller
             $sslc = new SslCommerzNotification();
             $payment_options = $sslc->makePayment($post_data, 'hosted');
             if (!is_array($payment_options)) {
-                Toastr::error(trans('messages.your_currency_is_not_supported',['method'=>trans('messages.sslcommerz')]));
+                Toastr::error(__('your_currency_is_not_supported',['method'=>__('sslcommerz')]));
                 return back();
             }
         } catch (\Exception $exception) {
-            Toastr::error(trans('messages.misconfiguration_or_data_missing'));
+            Toastr::error(__('misconfiguration_or_data_missing'));
             return back();
         }
     }

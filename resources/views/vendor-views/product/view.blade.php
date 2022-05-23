@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-6">
                     <a href="{{route('vendor.food.edit',[$product['id']])}}" class="btn btn-primary float-right">
-                        <i class="tio-edit"></i> {{__('messages.edit')}}
+                        <i class="tio-edit"></i> {{__('Edit')}}
                     </a>
                 </div>
             </div>
@@ -32,11 +32,11 @@
                         <div class="d-flex align-items-center">
                             <img class="avatar avatar-xxl avatar-4by3 mr-4"
                                  src="{{asset('storage/app/public/product')}}/{{$product['image']}}"
-                                 onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
+                                 onerror="this.src='data:image/svg+xml,%3Csvg%20width%3D%22344%22%20height%3D%22194%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22M-1%200h344v194H-1z%22%2F%3E%3C%2Fdefs%3E%3Cg%20transform%3D%22translate(1)%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cmask%20id%3D%22b%22%20fill%3D%22%23fff%22%3E%3Cuse%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fmask%3E%3Cuse%20fill%3D%22%23BDBDBD%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cg%20mask%3D%22url(%23b)%22%3E%3Cpath%20d%3D%22M173.65%2069.238L198.138%2027%20248%20112.878h-49.3c.008.348.011.697.011%201.046%200%2028.915-23.44%2052.356-52.355%2052.356C117.44%20166.28%2094%20142.84%2094%20113.924c0-28.915%2023.44-52.355%2052.356-52.355%2010%200%2019.347%202.804%2027.294%207.669zm0%200l-25.3%2043.64h50.35c-.361-18.478-10.296-34.61-25.05-43.64z%22%20fill%3D%22%23757575%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'"
                                  alt="Image Description">
                             <div class="d-block">
                                 <h4 class="display-2 text-dark mb-0">{{round($product->avg_rating,1)}}</h4>
-                                <p> {{__('messages.of')}} {{$product->reviews->count()}} {{__('messages.reviews')}}
+                                <p> {{__('of')}} {{$product->reviews->count()}} {{__('Reviews')}}
                                     <span class="badge badge-soft-dark badge-pill ml-1"></span>
                                 </p>
                             </div>
@@ -51,7 +51,7 @@
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($five=$product->rating?json_decode($product->rating, true)[5]:0)
                                 <span
-                                    class="mr-3">5 {{__('messages.star')}}</span>
+                                    class="mr-3">5 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                         style="width: {{$total==0?0:($five/$total)*100}}%;"
@@ -65,7 +65,7 @@
                             <!-- Review Ratings -->
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($four=$product->rating?json_decode($product->rating, true)[4]:0)
-                                <span class="mr-3">4 {{__('messages.star')}}</span>
+                                <span class="mr-3">4 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                         style="width: {{$total==0?0:($four/$total)*100}}%;"
@@ -79,7 +79,7 @@
                             <!-- Review Ratings -->
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($three=$product->rating?json_decode($product->rating, true)[3]:0)
-                                <span class="mr-3">3 {{__('messages.star')}}</span>
+                                <span class="mr-3">3 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                         style="width: {{$total==0?0:($three/$total)*100}}%;"
@@ -93,7 +93,7 @@
                             <!-- Review Ratings -->
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($two=$product->rating?json_decode($product->rating, true)[2]:0)
-                                <span class="mr-3">2 {{__('messages.star')}}</span>
+                                <span class="mr-3">2 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                         style="width: {{$total==0?0:($two/$total)*100}}%;"
@@ -107,7 +107,7 @@
                             <!-- Review Ratings -->
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($one=$product->rating?json_decode($product->rating, true)[1]:0)
-                                <span class="mr-3">1 {{__('messages.star')}}</span>
+                                <span class="mr-3">1 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                         style="width: {{$total==0?0:($one/$total)*100}}%;"
@@ -125,22 +125,22 @@
                     </div>
                     <div class="col-4 pt-2">
                         <h4 class="border-bottom">{{$product['name']}}</h4>
-                        <span>{{__('messages.price')}} :
+                        <span>{{__('Price')}} :
                             <span>{{\App\CentralLogics\Helpers::format_currency($product['price'])}}</span>
                         </span><br>
-                        <span>{{__('messages.tax')}} :
+                        <span>{{__('tax')}} :
                             <span>{{\App\CentralLogics\Helpers::format_currency(\App\CentralLogics\Helpers::tax_calculate($product,$product['price']))}}</span>
                         </span><br>
-                        <span>{{__('messages.discount')}} :
+                        <span>{{__('Discount')}} :
                             <span>{{\App\CentralLogics\Helpers::format_currency(\App\CentralLogics\Helpers::discount_calculate($product,$product['price']))}}</span>
                         </span><br>
                         <span>
-                            {{__('messages.available')}} {{__('messages.time')}} {{__('messages.starts')}} : {{date(config('timeformat'), strtotime($product['available_time_starts']))}}
+                            {{__('Available time starts')}} : {{date(config('timeformat'), strtotime($product['available_time_starts']))}}
                         </span><br>
                         <span>
-                            {{__('messages.available')}} {{__('messages.time')}} {{__('messages.ends')}} : {{date(config('timeformat'), strtotime($product['available_time_ends']))}}
+                            {{__('Available time ends')}} : {{date(config('timeformat'), strtotime($product['available_time_ends']))}}
                         </span>
-                        <h4 class="border-bottom mt-2"> {{__('messages.variations')}} </h4>
+                        <h4 class="border-bottom mt-2"> {{__('variations')}} </h4>
                         @foreach(json_decode($product['variations'],true) as $variation)
                             <span class="text-capitalize">
                               {{$variation['type']}} : {{\App\CentralLogics\Helpers::format_currency($variation['price'])}}
@@ -155,7 +155,7 @@
                     </div>
 
                     <div class="col-8 pt-2 border-left">
-                        <h4>{{__('messages.short')}} {{__('messages.description')}} : </h4>
+                        <h4>{{__('Short description')}} : </h4>
                         <p>{{$product['description']}}</p>
                     </div>
                 </div>
@@ -187,9 +187,9 @@
                    }'>
                     <thead class="thead-light">
                     <tr>
-                        <th>{{__('messages.reviewer')}}</th>
-                        <th>{{__('messages.review')}}</th>
-                        <th>{{__('messages.date')}}</th>
+                        <th>{{__('reviewer')}}</th>
+                        <th>{{__('review')}}</th>
+                        <th>{{__('Date')}}</th>
                     </tr>
                     </thead>
 
@@ -215,7 +215,7 @@
                                         </div>
                                     </a>
                                 @else
-                                    {{__('messages.customer_not_found')}}
+                                    {{__('customer_not_found')}}
                                 @endif
 
                             </td>

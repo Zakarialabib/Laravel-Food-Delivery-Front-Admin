@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('messages.coupon')}} {{__('messages.update')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('coupon update')}}</h1>
                 </div>
             </div>
         </div>
@@ -24,26 +24,26 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.title')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Title')}}</label>
                                 <input type="text" name="title" value="{{$coupon['title']}}" class="form-control"
-                                       placeholder="{{__('messages.new_coupon')}}" required maxlength="191">
+                                       placeholder="{{__('new_coupon')}}" required maxlength="191">
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.coupon')}} {{__('messages.type')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('coupon type')}}</label>
                                 <select name="coupon_type" class="form-control" onchange="coupon_type_change(this.value)">
-                                    <option value="restaurant_wise" {{$coupon['coupon_type']=='restaurant_wise'?'selected':''}}>{{__('messages.restaurant')}} {{__('messages.wise')}}</option>
-                                    <option value="zone_wise" {{$coupon['coupon_type']=='zone_wise'?'selected':''}}>{{__('messages.zone')}} {{__('messages.wise')}}</option>
-                                    <option value="free_delivery" {{$coupon['coupon_type']=='free_delivery'?'selected':''}}>{{__('messages.free_delivery')}}</option>
-                                    <option value="first_order" {{$coupon['coupon_type']=='first_order'?'selected':''}}>{{__('messages.first')}} {{__('messages.order')}}</option>
-                                    <option value="default" {{$coupon['coupon_type']=='default'?'selected':''}}>{{__('messages.default')}}</option>
+                                    <option value="restaurant_wise" {{$coupon['coupon_type']=='restaurant_wise'?'selected':''}}>{{__('restaurant wise')}}</option>
+                                    <option value="zone_wise" {{$coupon['coupon_type']=='zone_wise'?'selected':''}}>{{__('Zone wise')}}</option>
+                                    <option value="free_delivery" {{$coupon['coupon_type']=='free_delivery'?'selected':''}}>{{__('free_delivery')}}</option>
+                                    <option value="first_order" {{$coupon['coupon_type']=='first_order'?'selected':''}}>{{__('first order')}}</option>
+                                    <option value="default" {{$coupon['coupon_type']=='default'?'selected':''}}>{{__('default')}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="form-group" id="restaurant_wise" style="display: {{$coupon['coupon_type']=='restaurant_wise'?'block':'none'}}">
-                                    <label class="input-label" for="exampleFormControlSelect1">{{__('messages.restaurant')}}<span
+                                    <label class="input-label" for="exampleFormControlSelect1">{{__('Restaurant')}}<span
                                             class="input-label-secondary"></span></label>
                                     <select name="restaurant_ids[]" class="js-data-example-ajax form-control"  title="Select Restaurant">
                                     @if($coupon->coupon_type == 'restaurant_wise')
@@ -57,10 +57,10 @@
                                     </select>
                                 </div>
                                 <div class="form-group" id="zone_wise" style="display: {{$coupon['coupon_type']=='zone_wise'?'block':'none'}}">
-                                    <label class="input-label" for="exampleFormControlInput1">{{__('messages.select')}} {{__('messages.zone')}}</label>
+                                    <label class="input-label" for="exampleFormControlInput1">{{__('Select zone')}}</label>
                                     <select name="zone_ids[]" id="choice_zones"
                                         class="form-control js-select2-custom"
-                                        multiple="multiple" placeholder="{{__('messages.select_zone')}}">
+                                        multiple="multiple" placeholder="{{__('Select zone')}}">
                                     @foreach(\App\Models\Zone::all() as $zone)
                                         <option value="{{$zone->id}}" {{($coupon->coupon_type=='zone_wise'&&json_decode($coupon->data))?(in_array($zone->id, json_decode($coupon->data))?'selected':''):''}}>{{$zone->name}}</option>
                                     @endforeach
@@ -72,28 +72,28 @@
                     <div class="row">
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.code')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Code')}}</label>
                                 <input type="text" name="code" class="form-control" value="{{$coupon['code']}}"
                                        placeholder="{{\Illuminate\Support\Str::random(8)}}" required maxlength="100">
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="limit">{{__('messages.limit')}} {{__('messages.for')}} {{__('messages.same')}} {{__('messages.user')}}</label>
+                                <label class="input-label" for="limit">{{__('limit for same user')}}</label>
                                 <input type="number" name="limit" id="coupon_limit" value="{{$coupon['limit']}}" class="form-control" max="100"
                                        placeholder="EX: 10">
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="">{{__('messages.start')}} {{__('messages.date')}}</label>
-                                <input type="date" name="start_date" class="form-control" id="date_from" placeholder="{{__('messages.select_date')}}" value="{{date('Y-m-d',strtotime($coupon['start_date']))}}">
+                                <label class="input-label" for="">{{__('Start date')}}</label>
+                                <input type="date" name="start_date" class="form-control" id="date_from" placeholder="{{__('Select date')}}" value="{{date('Y-m-d',strtotime($coupon['start_date']))}}">
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="date_to">{{__('messages.expire')}} {{__('messages.date')}}</label>
-                                <input type="date" name="expire_date" class="form-control" placeholder="{{__('messages.select_date')}}" id="date_to" value="{{date('Y-m-d',strtotime($coupon['expire_date']))}}"
+                                <label class="input-label" for="date_to">{{__('expire date')}}</label>
+                                <input type="date" name="expire_date" class="form-control" placeholder="{{__('Select date')}}" id="date_to" value="{{date('Y-m-d',strtotime($coupon['expire_date']))}}"
                                        data-hs-flatpickr-options='{
                                      "dateFormat": "Y-m-d"
                                    }'>
@@ -104,40 +104,40 @@
                     <div class="row">
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="discount_type">{{__('messages.discount')}} {{__('messages.type')}}</label>
+                                <label class="input-label" for="discount_type">{{__('Discount type')}}</label>
                                 <select name="discount_type" id="discount_type" class="form-control">
-                                    <option value="amount" {{$coupon['discount_type']=='amount'?'selected':''}}>{{__('messages.amount')}}
+                                    <option value="amount" {{$coupon['discount_type']=='amount'?'selected':''}}>{{__('Amount')}}
                                     </option>
                                     <option value="percent" {{$coupon['discount_type']=='percent'?'selected':''}}>
-                                        {{__('messages.percent')}}
+                                        {{__('percent')}}
                                     </option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="discount">{{__('messages.discount')}}</label>
+                                <label class="input-label" for="discount">{{__('Discount')}}</label>
                                 <input type="number" id="discount" min="1" max="999999999999.99" step="0.01" value="{{$coupon['discount']}}"
                                        name="discount" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.max')}} {{__('messages.discount')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('max discount')}}</label>
                                 <input type="number" min="0" max="999999999999.99" step="0.01"
                                        value="{{$coupon['max_discount']}}" name="max_discount" id="max_discount" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.min')}} {{__('messages.purchase')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('min purchase')}}</label>
                                 <input type="number" name="min_purchase" step="0.01" value="{{$coupon['min_purchase']}}"
                                        min="0" max="999999999999.99" class="form-control"
                                        placeholder="100">
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">{{__('messages.update')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Update')}}</button>
                 </form>
             </div>
             <!-- End Table -->

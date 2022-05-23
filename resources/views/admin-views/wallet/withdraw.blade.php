@@ -11,7 +11,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-                <li class="breadcrumb-item" aria-current="page">{{__('messages.withdraw')}}  </li>
+                <li class="breadcrumb-item" aria-current="page">{{__('withdraw')}}  </li>
             </ol>
         </nav>
 
@@ -20,25 +20,25 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>{{ __('messages.withdraw')}} {{ __('messages.request')}} {{ __('messages.table')}} <span
+                        <h5>{{ __('withdraw')}} {{ __('request')}} {{ __('table')}} <span
                                 class="badge badge-soft-dark ml-2">{{$withdraw_req->total()}}</span></h5>
                         <select name="withdraw_status_filter" onchange="status_filter(this.value)"
                                 class="custom-select float-right" style="width: 200px">
                             <option
                                 value="all" {{session()->has('withdraw_status_filter') && session('withdraw_status_filter') == 'all'?'selected':''}}>
-                                {{__('messages.all')}}
+                                {{__('All')}}
                             </option>
                             <option
                                 value="approved" {{session()->has('withdraw_status_filter') && session('withdraw_status_filter') == 'approved'?'selected':''}}>
-                                {{__('messages.approved')}}
+                                {{__('Approved')}}
                             </option>
                             <option
                                 value="denied" {{session()->has('withdraw_status_filter') && session('withdraw_status_filter') == 'denied'?'selected':''}}>
-                                {{__('messages.denied')}}
+                                {{__('Denied')}}
                             </option>
                             <option
                                 value="pending" {{session()->has('withdraw_status_filter') && session('withdraw_status_filter') == 'pending'?'selected':''}}>
-                                {{__('messages.pending')}}
+                                {{__('Pending')}} 
                             </option>
 
                         </select>
@@ -50,13 +50,13 @@
                                    style="width: 100%">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th>{{__('messages.sl#')}}</th>
-                                    <th>{{__('messages.amount')}}</th>
-                                    {{-- <th>{{__('messages.note')}}</th> --}}
-                                    <th>{{ __('messages.restaurant') }}</th>
-                                    <th>{{__('messages.request_time')}}</th>
-                                    <th>{{__('messages.status')}}</th>
-                                    <th style="width: 5px">{{__('messages.action')}}</th>
+                                    <th>{{__('sl#')}}</th>
+                                    <th>{{__('Amount')}}</th>
+                                    {{-- <th>{{__('Note')}}</th> --}}
+                                    <th>{{ __('Restaurant') }}</th>
+                                    <th>{{__('Request time')}}</th>
+                                    <th>{{__('status')}}</th>
+                                    <th style="width: 5px">{{__('Action')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -70,7 +70,7 @@
                                             <a class="deco-none"
                                                href="{{route('admin.vendor.view',[$wr->vendor['id']])}}">{{ Str::limit($wr->vendor->restaurants[0]->name, 20, '...') }}</a>
                                             @else
-                                            {{__('messages.Restaurant deleted!') }}
+                                            {{__('Restaurant deleted!') }}
                                             @endif
                                         </td>
                                         <td>{{date('Y-m-d '.config('timeformat'),strtotime($wr->created_at))}}</td>
@@ -89,10 +89,10 @@
                                                class="btn btn-white btn-sm"><i class="tio-visible"></i>
                                             </a>
                                             @else
-                                            {{__('messages.restaurant').' '.__('messages.deleted') }}
+                                            {{__('Restaurant').' '.__('deleted') }}
                                             @endif
                                             {{--<a class="btn btn-danger btn-sm" href="javascript:"
-                                            onclick="form_alert('withdraw-{{$wr['id']}}','Want to delete this  ?')">{{__('messages.Delete')}}</a>
+                                            onclick="form_alert('withdraw-{{$wr['id']}}','Want to delete this  ?')">{{__('Delete')}}</a>
                                             <form action="{{route('vendor.withdraw.close',[$wr['id']])}}"
                                                   method="post" id="withdraw-{{$wr['id']}}">
                                                 @csrf @method('delete')

@@ -9,21 +9,21 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('vendor.dashboard')}}">{{trans('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{trans('messages.Employee')}}</li>
-            <li class="breadcrumb-item" aria-current="page">{{trans('messages.list')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Employee')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('list')}}</li>
         </ol>
     </nav>
     <!-- Page Heading -->
     <div class="d-md-flex_ align-items-center justify-content-between mb-2">
         <div class="row">
             <div class="col-md-8">
-                <h3 class="h3 mb-0 text-black-50">{{trans('messages.Employee')}} {{trans('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$em->total()}}</span></h3>
+                <h3 class="h3 mb-0 text-black-50">{{__('Employee')}} {{__('list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$em->total()}}</span></h3>
             </div>
 
             <div class="col-md-4">
                 <a href="{{route('vendor.employee.add-new')}}" class="btn btn-primary  float-right">
                     <i class="tio-add-circle"></i>
-                    <span class="text">{{trans('messages.add')}} {{trans('messages.new')}}</span>
+                    <span class="text">{{__('add')}} {{__('new')}}</span>
                 </a>
             </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header py-0">
-                    <h5>{{trans('messages.Employee')}} {{trans('messages.table')}}</h5>
+                    <h5>{{__('Employee')}} {{__('table')}}</h5>
                     <form action="javascript:" id="search-form">
                         @csrf
                         <!-- Search -->
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="Search" aria-label="Search">
-                            <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                         </div>
                         <!-- End Search -->
                     </form>
@@ -60,12 +60,12 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{trans('messages.#')}}</th>
-                                <th>{{trans('messages.name')}}</th>
-                                <th>{{trans('messages.email')}}</th>
-                                <th>{{trans('messages.phone')}}</th>
-                                <th>{{trans('messages.Role')}}</th>
-                                <th style="width: 50px">{{trans('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th>{{__('name')}}</th>
+                                <th>{{__('email')}}</th>
+                                <th>{{__('phone')}}</th>
+                                <th>{{__('Role')}}</th>
+                                <th style="width: 50px">{{__('action')}}</th>
                             </tr>
                             </thead>
                             <tbody id="set-rows">
@@ -77,13 +77,13 @@
                                       {{$e['email']}}
                                     </td>
                                     <td>{{$e['phone']}}</td>
-                                    <td>{{$e->role?$e->role['name']:__('messages.role_deleted')}}</td>
+                                    <td>{{$e->role?$e->role['name']:__('role_deleted')}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-white"
-                                            href="{{route('vendor.employee.edit',[$e['id']])}}" title="{{__('messages.edit')}} {{__('messages.Employee')}}"><i class="tio-edit"></i>
+                                            href="{{route('vendor.employee.edit',[$e['id']])}}" title="{{__('edit Employee')}}"><i class="tio-edit"></i>
                                         </a>
                                         <a class="btn btn-sm btn-danger" href="javascript:"
-                                            onclick="form_alert('employee-{{$e['id']}}','{{__('messages.Want_to_delete_this_role')}}')" title="{{__('messages.delete')}} {{__('messages.Employee')}}"><i class="tio-delete-outlined"></i>
+                                            onclick="form_alert('employee-{{$e['id']}}','{{__('Want to delete this role')}}')" title="{{__('delete Employee')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('vendor.employee.delete',[$e['id']])}}"
                                                 method="post" id="employee-{{$e['id']}}">

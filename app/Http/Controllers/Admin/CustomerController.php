@@ -46,8 +46,8 @@ class CustomerController extends Controller
                 if(isset($customer->cm_firebase_token))
                 {
                     $data = [
-                        'title' => trans('messages.suspended'),
-                        'description' => trans('messages.your_account_has_been_blocked'),
+                        'title' => __('suspended'),
+                        'description' => __('your_account_has_been_blocked'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'
@@ -66,10 +66,10 @@ class CustomerController extends Controller
 
         }
         catch (\Exception $e) {
-            Toastr::warning(trans('messages.push_notification_faild'));
+            Toastr::warning(__('push_notification_faild'));
         }
 
-        Toastr::success(trans('messages.customer').trans('messages.status_updated'));
+        Toastr::success(__('customer').__('status_updated'));
         return back();
     }
 
@@ -95,7 +95,7 @@ class CustomerController extends Controller
             $orders = Order::latest()->where(['user_id' => $id])->Notpos()->paginate(config('default_pagination'));
             return view('admin-views.customer.customer-view', compact('customer', 'orders'));
         }
-        Toastr::error(trans('messages.customer_not_found'));
+        Toastr::error(__('customer_not_found'));
         return back();
     }
 }

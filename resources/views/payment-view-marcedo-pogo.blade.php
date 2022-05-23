@@ -32,7 +32,7 @@
                         <p class="item-name">Book x <span id="summary-quantity"></span></p>
                     </div> -->
                     <p class="alert alert-danger" role="alert" id="error_alert" style="display:none;"></p>
-                    <div class="total">{{__('messages.amount_to_be_paid')}}<span class="price">{{\App\CentralLogics\Helpers::format_currency($order->order_amount)}}</span></div>
+                    <div class="total">{{__('amount_to_be_paid')}}<span class="price">{{\App\CentralLogics\Helpers::format_currency($order->order_amount)}}</span></div>
                 </div>
                 <div class="payment-details">
                     <form id="form-checkout">
@@ -106,15 +106,15 @@
                 id: "form-checkout",
                 cardholderName: {
                     id: "form-checkout__cardholderName",
-                    placeholder: "{{__('messages.card_holder_name')}}",
+                    placeholder: "{{__('card_holder_name')}}",
                 },
                 cardholderEmail: {
                     id: "form-checkout__cardholderEmail",
-                    placeholder: "{{__('messages.card_holder_email')}}",
+                    placeholder: "{{__('card_holder_email')}}",
                 },
                 cardNumber: {
                     id: "form-checkout__cardNumber",
-                    placeholder: "{{__('messages.card_number')}}",
+                    placeholder: "{{__('card_number')}}",
                 },
                 cardExpirationMonth: {
                     id: "form-checkout__cardExpirationMonth",
@@ -126,22 +126,22 @@
                 },
                 securityCode: {
                     id: "form-checkout__securityCode",
-                    placeholder: "{{__('messages.security_code')}}",
+                    placeholder: "{{__('security_code')}}",
                 },
                 installments: {
                     id: "form-checkout__installments",
-                    placeholder: "{{__('messages.installments')}}",
+                    placeholder: "{{__('installments')}}",
                 },
                 identificationType: {
                     id: "form-checkout__identificationType",
                 },
                 identificationNumber: {
                     id: "form-checkout__identificationNumber",
-                    placeholder: "{{__('messages.identification_number')}}",
+                    placeholder: "{{__('identification_number')}}",
                 },
                 issuer: {
                     id: "form-checkout__issuer",
-                    placeholder: "{{__('messages.issuer')}}",
+                    placeholder: "{{__('issuer')}}",
                 },
             },
             callbacks: {

@@ -13,12 +13,12 @@
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('Dashboard')}}</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page"><a
-                        href="{{route('admin.category.add')}}">{{trans('messages.category')}}</a>
+                        href="{{route('admin.category.add')}}">{{__('category')}}</a>
                 </li>
-                <li class="breadcrumb-item">{{trans('messages.bulk_import')}} </li>
+                <li class="breadcrumb-item">{{__('Bulk import')}} </li>
             </ol>
         </nav>
-        <h1 class="text-capitalize">{{__('messages.categories')}} {{__('messages.bulk_import')}}</h1>
+        <h1 class="text-capitalize">{{__('categories bulk_import')}}</h1>
         <!-- Content Row -->
         <div class="row">
             <div class="col-12">
@@ -47,9 +47,9 @@
                     @csrf
                     <div class="card mt-2 rest-part">
                         <div class="card-header">
-                            <h4>{{__('messages.Import Categories File')}}</h4>
+                            <h4>{{__('Import Categories File')}}</h4>
                             <a href="{{asset('public/assets/categories_bulk_format.xlsx')}}" download=""
-                               class="btn btn-secondary">{{__('messages.Download Format')}}</a>
+                               class="btn btn-secondary">{{__('Download Format')}}</a>
                         </div>
                         <div class="card-body">
                             <div class="form-group">

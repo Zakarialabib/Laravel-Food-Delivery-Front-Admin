@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.Add new category'))
+@section('title',__('Add new category'))
 
 @push('css_or_js')
 
@@ -12,17 +12,17 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.category')}}</h1>
+                    <h1 class="page-header-title">{{__('Category')}} </h1>
                 </div>
                 @if(isset($category))
-                <a href="{{route('admin.category.add')}}" class="btn btn-primary pull-right"><i class="tio-add-circle"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.category')}}</a>
+                <a href="{{route('admin.category.add')}}" class="btn btn-primary pull-right"><i class="tio-add-circle"></i> {{__('Add new category')}}</a>
                 @endif
             </div>
         </div>
         <!-- End Page Header -->
 
         <div class="card">
-            <div class="card-header"><h5>{{isset($category)?__('messages.update'):__('messages.add').' '.__('messages.new')}} {{__('messages.category')}}</h5></div>
+            <div class="card-header"><h5>{{isset($category)?__('Update'):__('Add').' '.__('new category')}}</h5></div>
             <div class="card-body">
                 <form action="{{isset($category)?route('admin.category.update',[$category['id']]):route('admin.category.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -42,29 +42,29 @@
                     @if ($language)
                         @foreach(json_decode($language) as $lang)
                             <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}} ({{strtoupper($lang)}})</label>
-                                <input type="text" name="name[]" class="form-control" placeholder="{{__('messages.new_category')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Name')}} ({{strtoupper($lang)}})</label>
+                                <input type="text" name="name[]" class="form-control" placeholder="{{__('new_category')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
                             </div>
                             <input type="hidden" name="lang[]" value="{{$lang}}">
                         @endforeach
                     @else
                         <div class="form-group">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}}</label>
-                            <input type="text" name="name" class="form-control" placeholder="{{__('messages.new_category')}}" value="{{old('name')}}" required maxlength="191">
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Name')}}</label>
+                            <input type="text" name="name" class="form-control" placeholder="{{__('new_category')}}" value="{{old('name')}}" required maxlength="191">
                         </div>
                         <input type="hidden" name="lang[]" value="{{$lang}}">
                     @endif
                     <!-- <div class="form-group">
-                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}}</label>
+                        <label class="input-label" for="exampleFormControlInput1">{{__('Name')}}</label>
                         <input type="text" name="name" value="{{isset($category)?$category['name']:''}}" class="form-control" placeholder="New Category" required>
                     </div> -->
                     <input name="position" value="0" style="display: none">
                     <div class="form-group">
-                        <label>{{__('messages.image')}}</label><small style="color: red">* ( {{__('messages.ratio')}} 1:1)</small>
+                        <label>{{__('image')}}</label><small style="color: red">* ( {{__('ratio')}} 1:1)</small>
                         <div class="custom-file">
                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                            <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                            <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                         </div>
                     </div>
                     <div class="form-group" style="margin-bottom:0%;">
@@ -79,7 +79,7 @@
                         </center>
                     </div>
                     <div class="form-group pt-2">
-                        <button type="submit" class="btn btn-primary">{{isset($category)?__('messages.update'):__('messages.add')}}</button>
+                        <button type="submit" class="btn btn-primary">{{isset($category)?__('Update'):__('Add')}}</button>
                     </div>
                     
                 </form>
@@ -88,7 +88,7 @@
 
         <div class="card mt-3">
             <div class="card-header pb-0">
-                <h5>{{__('messages.category')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$categories->total()}}</span></h5>
+                <h5>{{__('Category list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$categories->total()}}</span></h5>
                 <form id="dataSearch">
                     @csrf
                     <!-- Search -->
@@ -98,8 +98,8 @@
                                 <i class="tio-search"></i>
                             </div>
                         </div>
-                        <input type="search" name="search" class="form-control" placeholder="{{__('messages.search_categories')}}" aria-label="{{__('messages.search_categories')}}">
-                        <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                        <input type="search" name="search" class="form-control" placeholder="{{__('search_categories')}}" aria-label="{{__('search_categories')}}">
+                        <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                     </div>
                     <!-- End Search -->
                 </form>
@@ -115,12 +115,12 @@
                         }'>
                         <thead class="thead-light">
                             <tr>
-                                <th style="width: 5%">{{__('messages.#')}}</th>
-                                <th style="width: 10%">{{__('messages.id')}}</th>
-                                <th style="width: 30%">{{__('messages.name')}}</th>
-                                <th style="width: 10%">{{__('messages.status')}}</th>
-                                <th style="width: 20%">{{__('messages.priority')}}</th>
-                                <th style="width: 25%">{{__('messages.action')}}</th>
+                                <th style="width: 5%">{{__('#')}}</th>
+                                <th style="width: 10%">{{__('id')}}</th>
+                                <th style="width: 30%">{{__('Name')}}</th>
+                                <th style="width: 10%">{{__('status')}}</th>
+                                <th style="width: 20%">{{__('priority')}}</th>
+                                <th style="width: 25%">{{__('Action')}}</th>
                             </tr>
                         </thead>
 
@@ -145,18 +145,18 @@
                                 <td>
                                     <form action="{{route('admin.category.priority',$category->id)}}">
                                     <select name="priority" id="priority" class="w-100" onchange="this.form.submit()"> 
-                                        <option value="0" {{$category->priority == 0?'selected':''}}>{{__('messages.normal')}}</option>
-                                        <option value="1" {{$category->priority == 1?'selected':''}}>{{__('messages.medium')}}</option>
-                                        <option value="2" {{$category->priority == 2?'selected':''}}>{{__('messages.high')}}</option>
+                                        <option value="0" {{$category->priority == 0?'selected':''}}>{{__('normal')}}</option>
+                                        <option value="1" {{$category->priority == 1?'selected':''}}>{{__('medium')}}</option>
+                                        <option value="2" {{$category->priority == 2?'selected':''}}>{{__('high')}}</option>
                                     </select>
                                     </form>
                                 </td>
                                 <td>
                                     <a class="btn btn-sm btn-white"
-                                        href="{{route('admin.category.edit',[$category['id']])}}" title="{{__('messages.edit')}} {{__('messages.category')}}"><i class="tio-edit"></i>
+                                        href="{{route('admin.category.edit',[$category['id']])}}" title="{{__('edit category')}}"><i class="tio-edit"></i>
                                     </a>
                                     <a class="btn btn-sm btn-white" href="javascript:"
-                                    onclick="form_alert('category-{{$category['id']}}','Want to delete this category')" title="{{__('messages.delete')}} {{__('messages.category')}}"><i class="tio-delete-outlined"></i>
+                                    onclick="form_alert('category-{{$category['id']}}','Want to delete this category')" title="{{__('delete category')}}"><i class="tio-delete-outlined"></i>
                                     </a>
                                     <form action="{{route('admin.category.delete',[$category['id']])}}" method="post" id="category-{{$category['id']}}">
                                         @csrf @method('delete')

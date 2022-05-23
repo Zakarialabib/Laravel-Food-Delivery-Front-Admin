@@ -129,7 +129,7 @@ class ProvideDMEarningController extends Controller
     public function destroy($id)
     {
         DeliveryMan::where('id', $id)->delete();
-        Toastr::success(trans('messages.provided_dm_earnings_removed'));
+        Toastr::success(__('provided_dm_earnings_removed'));
         return back();
     }
 }

@@ -17,18 +17,18 @@
                             <li class="breadcrumb-item">
                                 <a class="breadcrumb-link"
                                    href="{{route('admin.customer.list')}}">
-                                    {{__('messages.customers')}}
+                                    {{__('Customers')}}
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{__('messages.customer')}} {{__('messages.details')}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('customer details')}}</li>
                         </ol>
                     </nav>
 
                     <div class="d-sm-flex align-items-sm-center">
-                        <h1 class="page-header-title">{{__('messages.customer')}} {{__('messages.id')}} #{{$customer['id']}}</h1>
+                        <h1 class="page-header-title">{{__('customer id')}} #{{$customer['id']}}</h1>
                         <span class="ml-2 ml-sm-3">
                         <i class="tio-date-range">
-                        </i> {{__('messages.joined_at')}} : {{date('d M Y '.config('timeformat'),strtotime($customer['created_at']))}}
+                        </i> {{__('joined_at')}} : {{date('d M Y '.config('timeformat'),strtotime($customer['created_at']))}}
                         </span>
                     </div>
                     
@@ -66,10 +66,10 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 50%" class="text-center">{{__('messages.order')}} {{__('messages.id')}}</th>
-                                <th style="width: 50%">{{__('messages.total')}}</th>
-                                <th style="width: 10%">{{__('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 50%" class="text-center">{{__('order id')}}</th>
+                                <th style="width: 50%">{{__('total')}}</th>
+                                <th style="width: 10%">{{__('Action')}}</th>
                             </tr>
                             <tr>
                                 <th></th>
@@ -95,10 +95,10 @@
                                     <td>{{\App\CentralLogics\Helpers::format_currency($order['order_amount'])}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-white"
-                                                    href="{{route('admin.order.details',['id'=>$order['id']])}}" title="{{__('messages.view')}}"><i
+                                                    href="{{route('admin.order.details',['id'=>$order['id']])}}" title="{{__('view')}}"><i
                                                             class="tio-visible"></i></a>
                                         <a class="btn btn-sm btn-white" target="_blank"
-                                                    href="{{route('admin.order.generate-invoice',[$order['id']])}}" title="{{__('messages.invoice')}}"><i
+                                                    href="{{route('admin.order.generate-invoice',[$order['id']])}}" title="{{__('invoice')}}"><i
                                                             class="tio-download"></i> </a>
                                     </td>
                                 </tr>
@@ -121,7 +121,7 @@
                 <div class="card">
                     <!-- Header -->
                     <div class="card-header">
-                        <h4 class="card-header-title">{{__('messages.customer')}}</h4>
+                        <h4 class="card-header-title">{{__('customer')}}</h4>
                     </div>
                     <!-- End Header -->
 
@@ -153,7 +153,7 @@
                                 </div>
                                 <div class="media-body">
                                     <span
-                                        class="text-body text-hover-primary">{{$customer->orders->count()}} {{__('messages.orders')}}</span>
+                                        class="text-body text-hover-primary">{{$customer->orders->count()}} {{__('Orders')}} </span>
                                 </div>
                                 <div class="media-body text-right">
                                     {{--<i class="tio-chevron-right text-body"></i>--}}
@@ -163,7 +163,7 @@
                             <hr>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5>{{__('messages.contact')}} {{__('messages.info')}}</h5>
+                                <h5>{{__('Contact info')}}</h5>
                             </div>
 
                             <ul class="list-unstyled list-unstyled-py-2">
@@ -178,7 +178,7 @@
                             </ul>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5>{{__('messages.addresses')}}</h5>
+                                <h5>{{__('Addresses')}}</h5>
                             </div>
 
                             @foreach($customer->addresses as $address)

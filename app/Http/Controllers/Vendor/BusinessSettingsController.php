@@ -31,7 +31,7 @@ class BusinessSettingsController extends Controller
         $request->validate([
             'gst' => 'required_if:gst_status,1',
         ], [
-            'gst.required_if' => trans('messages.gst_can_not_be_empty'),
+            'gst.required_if' => __('gst_can_not_be_empty'),
         ]);
 
         $off_day = $request->off_day?implode('',$request->off_day):'';
@@ -42,7 +42,7 @@ class BusinessSettingsController extends Controller
         $restaurant->gst = json_encode(['status'=>$request->gst_status, 'code'=>$request->gst]);
         $restaurant->delivery_charge = $restaurant->self_delivery_system?$request->delivery_charge??0: $restaurant->delivery_charge;
         $restaurant->save();
-        Toastr::success(trans('messages.restaurant_settings_updated'));
+        Toastr::success(__('restaurant_settings_updated'));
         return back();
     }
 
@@ -50,25 +50,25 @@ class BusinessSettingsController extends Controller
     {
         if($request->menu == "schedule_order" && !Helpers::schedule_order())
         {
-            Toastr::warning(trans('messages.schedule_order_disabled_warning'));
+            Toastr::warning(__('schedule_order_disabled_warning'));
             return back();
         }
 
         if((($request->menu == "delivery" && $restaurant->take_away==0) || ($request->menu == "take_away" && $restaurant->delivery==0)) &&  $request->status == 0 )
         {
-            Toastr::warning(trans('messages.can_not_disable_both_take_away_and_delivery'));
+            Toastr::warning(__('can_not_disable_both_take_away_and_delivery'));
             return back();
         }
 
         if((($request->menu == "veg" && $restaurant->non_veg==0) || ($request->menu == "non_veg" && $restaurant->veg==0)) &&  $request->status == 0 )
         {
-            Toastr::warning(trans('messages.veg_non_veg_disable_warning'));
+            Toastr::warning(__('veg_non_veg_disable_warning'));
             return back();
         }
         
         $restaurant[$request->menu] = $request->status;
         $restaurant->save();
-        Toastr::success(trans('messages.Restaurant settings updated!'));
+        Toastr::success(__('Restaurant settings updated!'));
         return back();
     }
 
@@ -77,7 +77,7 @@ class BusinessSettingsController extends Controller
         $restaurant = Helpers::get_restaurant_data();
         $restaurant->active = $restaurant->active?0:1;
         $restaurant->save();
-        return response()->json(['message' => $restaurant->active?trans('messages.restaurant_opened'):trans('messages.restaurant_temporarily_closed')], 200);
+        return response()->json(['message' => $restaurant->active?__('restaurant_opened'):__('restaurant_temporarily_closed')], 200);
     }
 
     public function add_schedule(Request $request)
@@ -86,7 +86,7 @@ class BusinessSettingsController extends Controller
             'start_time'=>'required|date_format:H:i',
             'end_time'=>'required|date_format:H:i|after:start_time',
         ],[
-            'end_time.after'=>trans('messages.End time must be after the start time')
+            'end_time.after'=>__('End time must be after the start time')
         ]);
 
         if ($validator->fails()) {
@@ -105,7 +105,7 @@ class BusinessSettingsController extends Controller
         if(isset($temp))
         {
             return response()->json(['errors' => [
-                ['code'=>'time', 'message'=>trans('messages.schedule_overlapping_warning')]
+                ['code'=>'time', 'message'=>__('schedule_overlapping_warning')]
             ]]);
         }
 

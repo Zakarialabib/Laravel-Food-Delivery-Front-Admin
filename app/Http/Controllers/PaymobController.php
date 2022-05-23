@@ -58,7 +58,7 @@ class PaymobController extends Controller
     {
         $currency_code = Helpers::currency_code();
         if ($currency_code != "EGP") {
-            Toastr::error(trans('messages.paymob_supports_EGP_currency'));
+            Toastr::error(__('paymob_supports_EGP_currency'));
             return back();
         }
 
@@ -68,7 +68,7 @@ class PaymobController extends Controller
             $order = $this->createOrder($token);
             $paymentToken = $this->getPaymentToken($order, $token);
         }catch (\Exception $exception){
-            Toastr::error(trans('messages.country_permission_denied_or_misconfiguration'));
+            Toastr::error(__('country_permission_denied_or_misconfiguration'));
             return back();
         }
         return \Redirect::away('https://portal.weaccept.co/api/acceptance/iframes/' . $config['iframe_id'] . '?payment_token=' . $paymentToken);

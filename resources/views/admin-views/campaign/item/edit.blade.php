@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('messages.update')}} {{__('messages.campaign')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('update campaign')}}</h1>
                 </div>
             </div>
         </div>
@@ -51,12 +51,12 @@
                             ?>
                             <div class="card p-4 {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
                                 <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_title">{{__('messages.title')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="title[]" id="{{$lang}}_title" class="form-control" placeholder="{{__('messages.new_campaign')}}" value="{{$translate[$lang]['title']??$campaign['title']}}" oninvalid="document.getElementById('en-link').click()">
+                                    <label class="input-label" for="{{$lang}}_title">{{__('Title')}} ({{strtoupper($lang)}})</label>
+                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="title[]" id="{{$lang}}_title" class="form-control" placeholder="{{__('new_campaign')}}" value="{{$translate[$lang]['title']??$campaign['title']}}" oninvalid="document.getElementById('en-link').click()">
                                 </div>
                                 <input type="hidden" name="lang[]" value="{{$lang}}">
                                 <div class="form-group pt-4">
-                                    <label class="input-label" for="exampleFormControlInput1">{{__('messages.short')}} {{__('messages.description')}} ({{strtoupper($lang)}})</label>
+                                    <label class="input-label" for="exampleFormControlInput1">{{__('Short description')}} ({{strtoupper($lang)}})</label>
                                     <textarea type="text" name="description[]" class="form-control ckeditor">{!! $translate[$lang]['description']??$campaign['description'] !!}</textarea>
                                 </div>
                             </div>
@@ -64,12 +64,12 @@
                     @else
                     <div class="card p-4" id="{{$default_lang}}-form">
                         <div class="form-group">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.title')}} (EN)</label>
-                            <input type="text" name="title[]" class="form-control" placeholder="{{__('messages.new_campaign')}}" value="{{$campaign['title']}}" required>
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Title')}} (EN)</label>
+                            <input type="text" name="title[]" class="form-control" placeholder="{{__('new_campaign')}}" value="{{$campaign['title']}}" required>
                         </div>
                         <input type="hidden" name="lang[]" value="en">
                         <div class="form-group pt-4">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.short')}} {{__('messages.description')}}</label>
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Short description')}}</label>
                             <textarea type="text" name="description[]" class="form-control ckeditor">{!! $campaign['description'] !!}</textarea>
                         </div>
                     </div>
@@ -77,9 +77,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="input-label" for="title">{{__('messages.zone')}}</label>
+                                <label class="input-label" for="title">{{__('Zone')}}</label>
                                 <select name="zone_id" id="zone" class="form-control js-select2-custom">
-                                    <option disabled selected>---{{__('messages.select')}}---</option>
+                                    <option disabled selected>---{{__('Select')}}---</option>
                                     @php($zones=\App\Models\Zone::all())
                                     @foreach($zones as $zone)
                                         @if(isset(auth('admin')->user()->zone_id))
@@ -95,7 +95,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.restaurant')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Restaurant')}}<span
                                         class="input-label-secondary"></span></label>
                                 <select name="restaurant_id" class="js-data-example-ajax form-control" onchange="getRestaurantData('{{url('/')}}/admin/vendor/get-addons?data[]=0&restaurant_id='+this.value,'add_on')"  title="Select Restaurant" required>
                                     @if($campaign->restaurant)
@@ -112,25 +112,25 @@
                     <div class="row">
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="title">{{__('messages.start')}} {{__('messages.date')}}</label>
+                                <label class="input-label" for="title">{{__('Start date')}}</label>
                                 <input type="date" id="date_from" class="form-control" required="" name="start_date" value="{{$campaign->start_date->format('Y-m-d')}}"> 
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="title">{{__('messages.end')}} {{__('messages.date')}}</label>
+                                <label class="input-label" for="title">{{__('End date')}}</label>
                                 <input type="date" id="date_to" class="form-control" required="" name="end_date" value="{{$campaign->end_date->format('Y-m-d')}}">
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="title">{{__('messages.start')}} {{__('messages.time')}}</label>                                    
+                                <label class="input-label" for="title">{{__('Start time')}}</label>                                    
                                 <input type="time" id="start_time" class="form-control" name="start_time" value="{{$campaign->start_time->format('H:i')}}">
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="title">{{__('messages.end')}} {{__('messages.time')}}</label>
+                                <label class="input-label" for="title">{{__('End time')}}</label>
                                 <input type="time" id="end_time" class="form-control" name="end_time" value="{{$campaign->end_time->format('H:i')}}">
                             </div>
                         </div>
@@ -139,34 +139,34 @@
                     <div class="row">
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.price')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Price')}}</label>
                                 <input type="number" min="1" max="100000" step="0.01" value="{{$campaign->price}}" name="price" class="form-control"
                                        placeholder="Ex : 100" required>
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.discount')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Discount')}}</label>
                                 <input type="number" min="0" max="100000" value="{{$campaign->discount}}" name="discount" class="form-control"
                                        placeholder="Ex : 100" >
                             </div>
                         </div>
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.discount')}} {{__('messages.type')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Discount type')}}</label>
                                 <select name="discount_type" class="form-control js-select2-custom">
-                                    <option value="percent" {{$campaign->discount_type == 'percent'?'selected':''}}>{{__('messages.percent')}}</option>
-                                    <option value="amount" {{$campaign->discount_type == 'amount'?'selected':''}}>{{__('messages.amount')}}</option>
+                                    <option value="percent" {{$campaign->discount_type == 'percent'?'selected':''}}>{{__('percent')}}</option>
+                                    <option value="amount" {{$campaign->discount_type == 'amount'?'selected':''}}>{{__('Amount')}}</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.item_type')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('item_type')}}</label>
                                 <select name="veg" class="form-control js-select2-custom">
-                                    <option value="0" {{$campaign['veg']==0?'selected':''}}>{{__('messages.non_veg')}}</option>
-                                    <option value="1" {{$campaign['veg']==1?'selected':''}}>{{__('messages.veg')}}</option>
+                                    <option value="0" {{$campaign['veg']==0?'selected':''}}>{{__('Non veg')}}</option>
+                                    <option value="1" {{$campaign['veg']==1?'selected':''}}>{{__('Veg')}}</option>
                                 </select>
                             </div>
                         </div>
@@ -175,11 +175,11 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.category')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Category')}} <span
                                         class="input-label-secondary">*</span></label>
                                 <select name="category_id" id="category-id" class="form-control js-select2-custom"
                                         onchange="getRequest('{{url('/')}}/admin/food/get-categories?parent_id='+this.value,'sub-categories')">
-                                    <option value="">---{{__('messages.select')}}---</option>
+                                    <option value="">---{{__('Select')}}---</option>
                                     @php($categories=\App\Models\Category::where(['position' => 0])->get())
                                     @foreach($categories as $category)
                                         <option value="{{$category['id']}}" {{ $category->id==json_decode($campaign->category_ids)[0]->id ? 'selected' : ''}} >{{$category['name']}}</option>
@@ -189,8 +189,8 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.sub_category')}}<span
-                                        class="input-label-secondary" title="{{__('messages.category_required_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.category_required_warning')}}"></span></label>
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Sub category')}} <span
+                                        class="input-label-secondary" title="{{__('Category required warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Category required warning')}}"></span></label>
                                 @php($product_category = json_decode($campaign->category_ids))        
                                 <select name="sub_category_id" id="sub-categories" data-id="{{count($product_category)>=2?$product_category[1]->id:''}}" class="form-control js-select2-custom"
                                         onchange="getRequest('{{url('/')}}/admin/food/get-categories?parent_id='+this.value,'sub-sub-categories')">
@@ -203,7 +203,7 @@
                     <div class="row" style="border: 1px solid #80808045; border-radius: 10px;padding-top: 10px;margin: 1px">
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.attribute')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('attribute')}}<span
                                         class="input-label-secondary"></span></label>
                                 <select name="attribute_id[]" id="choice_attributes"
                                         class="form-control js-select2-custom"
@@ -230,8 +230,8 @@
                     <div class="row mt-2">
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.addon')}}<span
-                                        class="input-label-secondary" title="{{__('messages.restaurant_required_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.restaurant_required_warning')}}"></span></label>
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Addon')}}<span
+                                        class="input-label-secondary" title="{{__('restaurant_required_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_required_warning')}}"></span></label>
                                 <select name="addon_ids[]" id="add_on" class="form-control js-select2-custom" multiple="multiple">
                                     @foreach(\App\Models\AddOn::orderBy('name')->get() as $addon)
                                         <option value="{{$addon['id']}}" {{in_array($addon->id,json_decode($campaign['add_ons'],true))?'selected':''}}>{{$addon['name']}}</option>
@@ -242,11 +242,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label>{{__('messages.food')}} {{__('messages.image')}}</label><small style="color: red">* ( {{__('messages.ratio')}} 1:1 )</small>
+                        <label>{{__('Food image')}}</label><small style="color: red">* ( {{__('ratio')}} 1:1 )</small>
                         <div class="custom-file">
                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                            <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                            <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                         </div>
 
                         <center id="image-viewer-section" class="pt-2">
@@ -343,7 +343,7 @@
 
         function add_more_customer_choice_option(i, name) {
             let n = name.split(' ').join('');
-            $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="Choice Title" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="{{__('messages.enter_choice_values')}}" data-role="tagsinput" onchange="combination_update()"></div></div>');
+            $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="Choice Title" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="{{__('enter_choice_values')}}" data-role="tagsinput" onchange="combination_update()"></div></div>');
             $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
         }
 

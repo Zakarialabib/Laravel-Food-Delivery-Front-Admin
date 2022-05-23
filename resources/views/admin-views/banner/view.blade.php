@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-6">
                     <a href="{{url()->previous()}}" class="btn btn-primary float-right">
-                        <i class="tio-back-ui"></i> {{__('messages.back')}}
+                        <i class="tio-back-ui"></i> {{__('back')}}
                     </a>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="col-md">
-                        <h4>{{__('messages.short')}} {{__('messages.description')}} : </h4>
+                        <h4>{{__('Short description')}} : </h4>
                         <p>{{$banner->description}}</p>
                     </div>
 
@@ -64,13 +64,13 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 15%">{{__('messages.logo')}}</th>
-                                <th style="width: 20%">{{__('messages.name')}}</th>
-                                <th style="width: 25%">{{__('messages.vendor')}}</th>
-                                <th>{{__('messages.email')}}</th>
-                                <th>{{__('messages.phone')}}</th>
-                                <th>{{__('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 15%">{{__('Logo')}}</th>
+                                <th style="width: 20%">{{__('Name')}}</th>
+                                <th style="width: 25%">{{__('Vendor')}}</th>
+                                <th>{{__('Email')}}</th>
+                                <th>{{__('Phone')}}</th>
+                                <th>{{__('Action')}}</th>
                             </tr>
                             <tr>
                                 <th colspan="3">
@@ -90,7 +90,7 @@
                                                     @endforelse
                                                 </select>
                                             </div>
-                                            <button type="submit" class="btn btn-primary col-md-5">{{__('messages.add')}} {{__('messages.restaurant')}}</button>
+                                            <button type="submit" class="btn btn-primary col-md-5">{{__('Add restaurant')}}</button>
 
                                         </div>
                                         <!-- End Search -->
@@ -107,8 +107,8 @@
                                                 </div>
                                             </div>
                                             <input id="datatableSearch_" type="search" name="search" class="form-control"
-                                                   placeholder="{{__('messages.search')}}" aria-label="Search" required>
-                                            <button type="submit" class="btn btn-primary">{{__('messages.search')}}</button>
+                                                   placeholder="{{__('Search')}}" aria-label="Search" required>
+                                            <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
 
                                         </div>
                                         <!-- End Search -->

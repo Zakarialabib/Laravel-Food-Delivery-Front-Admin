@@ -11,7 +11,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-                <li class="breadcrumb-item" aria-current="page">{{__('messages.deliveryman')}} {{__('messages.view')}}</li>
+                <li class="breadcrumb-item" aria-current="page">{{__('Deliveryman view')}}</li>
             </ol>
         </nav>
         <!-- Page Header -->
@@ -22,17 +22,17 @@
                 </div>
                 <div class="col-6">
                     <a href="{{url()->previous()}}" class="btn btn-primary float-right">
-                        <i class="tio-back-ui"></i> {{__('messages.back')}}
+                        <i class="tio-back-ui"></i> {{__('back')}}
                     </a>
                 </div>
                 <div class="js-nav-scroller hs-nav-scroller-horizontal">
                     <!-- Nav -->
                     <ul class="nav nav-tabs page-header-tabs">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('vendor.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'info'])}}"  aria-disabled="true">{{__('messages.info')}}</a>
+                            <a class="nav-link" href="{{route('vendor.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'info'])}}"  aria-disabled="true">{{__('info')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{route('vendor.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('messages.transaction')}}</a>
+                            <a class="nav-link active" href="{{route('vendor.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('transaction')}}</a>
                         </li>
                     </ul>
                     <!-- End Nav -->
@@ -44,7 +44,7 @@
         <!-- Card -->
         <div class="card mb-3 mb-lg-5 mt-2">
             <div class="card-header">
-                <h3 class="qcont px-3 pt-4">{{ __('messages.order')}} {{ __('messages.transactions')}}</h3>
+                <h3 class="qcont px-3 pt-4">{{ __('Order')}} {{ __('transactions')}}</h3>
             </div>
             <!-- Body -->
             <div class="card-body">
@@ -54,9 +54,9 @@
                         style="width: 100%">
                         <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.sl#')}}</th>
-                                <th>{{__('messages.order')}} {{__('messages.id')}}</th>
-                                <th>{{__('messages.deliveryman')}} {{__('messages.earned')}}</th>
+                                <th>{{__('sl#')}}</th>
+                                <th>{{__('order id')}}</th>
+                                <th>{{__('Deliveryman earned')}}</th>
                             </tr>
                         </thead>
                         <tbody>

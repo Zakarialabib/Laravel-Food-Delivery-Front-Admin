@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('messages.deliverymen'))
+@section('title',__('Deliverymen'))
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('messages.deliverymen')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('Deliverymen')}} </h1>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <div class="card">
                     <!-- Header -->
                     <div class="card-header p-1">
-                        <h5>{{__('messages.deliveryman')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$delivery_men->total()}}</span></h5>
+                        <h5>{{__('Deliveryman list')}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{$delivery_men->total()}}</span></h5>
                         <form action="javascript:" id="search-form" >
                                         <!-- Search -->
                             @csrf
@@ -34,8 +34,8 @@
                                     </div>
                                 </div>
                                 <input id="datatableSearch_" type="search" name="search" class="form-control"
-                                        placeholder="{{__('messages.search')}}" aria-label="{{__('messages.search')}}" required>
-                                <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                                        placeholder="{{__('Search')}}" aria-label="{{__('Search')}}" required>
+                                <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
 
                             </div>
                             <!-- End Search -->
@@ -54,11 +54,11 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th class="text-capitalize">{{__('messages.#')}}</th>
-                                <th class="text-capitalize">{{__('messages.name')}}</th>
-                                <th class="text-capitalize">{{__('messages.availability')}} {{__('messages.status')}}</th>
-                                <th class="text-capitalize">{{__('messages.phone')}}</th>
-                                <th class="text-capitalize">{{__('messages.action')}}</th>
+                                <th class="text-capitalize">{{__('#')}}</th>
+                                <th class="text-capitalize">{{__('Name')}}</th>
+                                <th class="text-capitalize">{{__('Availability status')}}</th>
+                                <th class="text-capitalize">{{__('Phone')}}</th>
+                                <th class="text-capitalize">{{__('Action')}}</th>
                             </tr>
                             </thead>
 
@@ -77,18 +77,18 @@
                                     </td>
                                     <td>
                                         @if($dm->active)
-                                        <label class="badge badge-soft-primary">{{__('messages.online')}}</label>
+                                        <label class="badge badge-soft-primary">{{__('online')}}</label>
                                         @else
-                                        <label class="badge badge-soft-danger">{{__('messages.offline')}}</label>
+                                        <label class="badge badge-soft-danger">{{__('offline')}}</label>
                                         @endif
                                     </td>
                                     <td>
                                         <a class="deco-none" href="tel:{{$dm['phone']}}">{{$dm['phone']}}</a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-sm btn-white" href="{{route('vendor.delivery-man.edit',[$dm['id']])}}" title="{{__('messages.edit')}}"><i class="tio-edit"></i>
+                                        <a class="btn btn-sm btn-white" href="{{route('vendor.delivery-man.edit',[$dm['id']])}}" title="{{__('Edit')}}"><i class="tio-edit"></i>
                                         </a>
-                                        <a class="btn btn-sm btn-white text-danger" href="javascript:" onclick="form_alert('delivery-man-{{$dm['id']}}','Want to remove this deliveryman ?')" title="{{__('messages.delete')}}"><i class="tio-delete-outlined"></i>
+                                        <a class="btn btn-sm btn-white text-danger" href="javascript:" onclick="form_alert('delivery-man-{{$dm['id']}}','Want to remove this deliveryman ?')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('vendor.delivery-man.delete',[$dm['id']])}}" method="post" id="delivery-man-{{$dm['id']}}">
                                             @csrf @method('delete')

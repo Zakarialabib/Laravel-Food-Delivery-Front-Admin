@@ -1,5 +1,5 @@
 @extends('layouts.vendor.app')
-@section('title',__('messages.restaurant_view'))
+@section('title',__('restaurant_view'))
 @push('css_or_js')
     <!-- Custom styles for this page -->
 @endpush
@@ -10,7 +10,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header" >
-                <h3 class="mb-0  text-capitalize position-absolute">{{__('messages.my_shop')}} {{__('messages.info')}} </h3>
+                <h3 class="mb-0  text-capitalize position-absolute">{{__('My shop info')}} </h3>
             </div>
             <div class="card-body">
                 @if($shop->cover_photo)
@@ -42,11 +42,11 @@
                  
                     <!-- http://localhost/Food-multivendor/public/assets/admin/img/restaurant_cover.jpg -->
                     <div class="col-md-8 mt-4">
-                        <span class="h4">{{__('messages.name')}} : {{$shop->name}}</span><br>
-                        <span class="h5">{{__('messages.phone')}} : <a style="text-decoration:none; color:black;" href="tel:{{$shop->phone}}">{{$shop->phone}}</a></span><br>
-                        <span class="h5">{{__('messages.address')}} : {{$shop->address}}</span><br>
-                        <span class="h5">{{__('messages.admin_commission')}} : {{(isset($shop->comission)?$shop->comission:\App\Models\BusinessSetting::where('key','admin_commission')->first()->value)}}%</span><br>
-                        <span class="h5">{{__('messages.vat/tax')}} : {{$shop->tax}}%</span><br>
+                        <span class="h4">{{__('Name')}} : {{$shop->name}}</span><br>
+                        <span class="h5">{{__('Phone')}} : <a style="text-decoration:none; color:black;" href="tel:{{$shop->phone}}">{{$shop->phone}}</a></span><br>
+                        <span class="h5">{{__('Address')}} : {{$shop->address}}</span><br>
+                        <span class="h5">{{__('admin_commission')}} : {{(isset($shop->comission)?$shop->comission:\App\Models\BusinessSetting::where('key','admin_commission')->first()->value)}}%</span><br>
+                        <span class="h5">{{__('vat/tax')}} : {{$shop->tax}}%</span><br>
                         <a class="btn btn-primary mt-1" href="{{route('vendor.shop.edit')}}">EDIT</a>
                     </div>
                 </div>

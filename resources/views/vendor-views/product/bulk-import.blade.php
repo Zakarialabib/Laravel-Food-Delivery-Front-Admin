@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('messages.Food Bulk Import'))
+@section('title',__('Food Bulk Import'))
 
 @push('css_or_js')
 
@@ -13,12 +13,12 @@
                 <li class="breadcrumb-item"><a href="{{route('vendor.dashboard')}}">{{trans('Dashboard')}}</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page"><a
-                        href="{{route('vendor.food.list')}}">{{trans('messages.foods')}}</a>
+                        href="{{route('vendor.food.list')}}">{{__('foods')}}</a>
                 </li>
-                <li class="breadcrumb-item">{{trans('messages.bulk_import')}} </li>
+                <li class="breadcrumb-item">{{__('Bulk import')}} </li>
             </ol>
         </nav>
-        <h1 class="text-capitalize">{{__('messages.foods')}} {{__('messages.bulk_import')}}</h1>
+        <h1 class="text-capitalize">{{__('foods bulk_import')}}</h1>
         <!-- Content Row -->
         <div class="row">
             <div class="col-12">
@@ -46,9 +46,9 @@
                     @csrf
                     <div class="card mt-2 rest-part">
                         <div class="card-header">
-                            <h4>{{__('messages.Import Food`s File')}}</h4>
+                            <h4>{{__('Import Food`s File')}}</h4>
                             <a href="{{asset('public/assets/restaurant_panel/foods_bulk_format.xlsx')}}" download=""
-                               class="btn btn-secondary">{{__('messages.Download Format')}}</a>
+                               class="btn btn-secondary">{{__('Download Format')}}</a>
                         </div>
                         <div class="card-body">
                             <div class="form-group">

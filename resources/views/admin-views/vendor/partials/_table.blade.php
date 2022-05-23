@@ -13,7 +13,7 @@
             <a href="{{route('admin.vendor.view', $dm->id)}}" alt="view restaurant">
                 <span class="d-block font-size-sm text-body">
                     {{Str::limit($dm->name,25,'...')}}<br>
-                    {{__('messages.id')}}:{{$dm->id}}
+                    {{__('id')}}:{{$dm->id}}
                 </span>
             </a>
         </td>
@@ -23,7 +23,7 @@
             </span>
         </td>
         <td>
-            {{$dm->zone?$dm->zone->name:__('messages.zone').' '.__('messages.deleted')}}
+            {{$dm->zone?$dm->zone->name:__('Zone').' '.__('deleted')}}
             {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
         </td>
         <td>
@@ -31,7 +31,7 @@
         </td>
         <td>
             <label class="toggle-switch toggle-switch-sm" for="stocksCheckbox{{$dm->id}}">
-                <input type="checkbox" onclick="status_change_alert('{{route('admin.vendor.status',[$dm->id,$dm->status?0:1])}}', '{{__('messages.you_want_to_change_this_restaurant_status')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$dm->id}}" {{$dm->status?'checked':''}}>
+                <input type="checkbox" onclick="status_change_alert('{{route('admin.vendor.status',[$dm->id,$dm->status?0:1])}}', '{{__('you_want_to_change_this_restaurant_status')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$dm->id}}" {{$dm->status?'checked':''}}>
                 <span class="toggle-switch-label">
                     <span class="toggle-switch-indicator"></span>
                 </span>
@@ -39,13 +39,13 @@
         </td>
         <td>
             <a class="btn btn-sm btn-white"
-                href="{{route('admin.vendor.view',[$dm['id']])}}" title="{{__('messages.view')}} {{__('messages.restaurant')}}"><i class="tio-visible text-success"></i>
+                href="{{route('admin.vendor.view',[$dm['id']])}}" title="{{__('view restaurant')}}"><i class="tio-visible text-success"></i>
             </a>
             <a class="btn btn-sm btn-white"
-                href="{{route('admin.vendor.edit',[$dm['id']])}}" title="{{__('messages.edit')}} {{__('messages.restaurant')}}"><i class="tio-edit text-primary"></i>
+                href="{{route('admin.vendor.edit',[$dm['id']])}}" title="{{__('edit restaurant')}}"><i class="tio-edit text-primary"></i>
             </a>
             {{--<a class="btn btn-sm btn-white" href="javascript:"
-            onclick="form_alert('vendor-{{$dm['id']}}','Want to remove this information ?')" title="{{__('messages.delete')}} {{__('messages.restaurant')}}"><i class="tio-delete-outlined text-danger"></i>
+            onclick="form_alert('vendor-{{$dm['id']}}','Want to remove this information ?')" title="{{__('delete restaurant')}}"><i class="tio-delete-outlined text-danger"></i>
             </a>
             <form action="{{route('admin.vendor.delete',[$dm['id']])}}" method="post" id="vendor-{{$dm['id']}}">
                 @csrf @method('delete')

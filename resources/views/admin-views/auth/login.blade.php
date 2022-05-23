@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title -->
-    <title>{{__('messages.admin')}} | {{__('messages.login')}}</title>
+    <title>{{__('admin')}} | {{__('login')}}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('public/favicon.ico')}}">
@@ -30,7 +30,7 @@
     <!-- Content -->
     <div class="container py-5 py-sm-7">
         <label class="badge badge-soft-success float-right" style="z-index: 9;position: absolute;right: 0.5rem;top: 0.5rem;">
-            {{__('messages.software_version')}} : {{env('SOFTWARE_VERSION')}}
+            {{__('software_version')}} : {{env('SOFTWARE_VERSION')}}
         </label>
         <a class="d-flex justify-content-center mb-5" href="javascript:">
             <img class="z-index-2"
@@ -49,11 +49,11 @@
                             @csrf
                             <div class="text-center">
                                 <div class="mb-5">
-                                    <h2 class="text-capitalize">{{__('messages.signin')}}</h2>
-                                    <span class="badge badge-soft-info">( {{__('messages.admin_or_employee_signin')}} )</span>
-                                    <p>{{__('messages.want')}} {{__('messages.to')}} {{__('messages.login')}} {{__('messages.your')}} {{__('messages.vendors')}}?
+                                    <h2 class="text-capitalize">{{__('Signin')}}</h2>
+                                    <span class="badge badge-soft-info">( {{__('Admin or employee signin')}} )</span>
+                                    <p>{{__('want to login your vendor dashboard')}} ?
                                         <a href="{{route('vendor.auth.login')}}">
-                                            {{__('messages.vendor')}} {{__('messages.login')}}
+                                            {{__('Login here')}}
                                         </a>
                                     </p>
                                 </div>
@@ -69,11 +69,11 @@
 
                             <!-- Form Group -->
                             <div class="js-form-message form-group">
-                                <label class="input-label text-capitalize" for="signinSrEmail">{{__('messages.your')}} {{__('messages.email')}}</label>
+                                <label class="input-label text-capitalize" for="signinSrEmail">{{__('Your email')}}</label>
 
                                 <input type="email" class="form-control form-control-lg" name="email" id="signinSrEmail"
                                        tabindex="1" placeholder="email@address.com" aria-label="email@address.com"
-                                       required data-msg="Please enter a valid email address.">
+                                       required data-msg="{{__('Please enter a valid email address')}}">
                             </div>
                             <!-- End Form Group -->
 
@@ -81,15 +81,15 @@
                             <div class="js-form-message form-group">
                                 <label class="input-label" for="signupSrPassword" tabindex="0">
                                     <span class="d-flex justify-content-between align-items-center">
-                                      {{__('messages.password')}}
+                                      {{__('Password')}}
                                     </span>
                                 </label>
 
                                 <div class="input-group input-group-merge">
                                     <input type="password" class="js-toggle-password form-control form-control-lg"
-                                           name="password" id="signupSrPassword" placeholder="{{__('messages.password_length_placeholder',['length'=>'6+'])}}"
-                                           aria-label="{{__('messages.password_length_placeholder',['length'=>'6+'])}}" required
-                                           data-msg="{{__('messages.invalid_password_warning')}}"
+                                           name="password" id="signupSrPassword" placeholder="{{__('password length placeholder',['length'=>'6+'])}}"
+                                           aria-label="{{__('password length placeholder',['length'=>'6+'])}}" required
+                                           data-msg="{{__('invalid password warning')}}"
                                            data-hs-toggle-password-options='{
                                                      "target": "#changePassTarget",
                                             "defaultClass": "tio-hidden-outlined",
@@ -111,7 +111,7 @@
                                     <input type="checkbox" class="custom-control-input" id="termsCheckbox"
                                            name="remember">
                                     <label class="custom-control-label text-muted" for="termsCheckbox">
-                                        {{__('messages.remember_me')}}
+                                        {{__('Remember me')}}
                                     </label>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@
                                 </div>
                             @endif
 
-                            <button type="submit" class="btn btn-lg btn-block btn-primary">{{__('messages.sign_in')}}</button>
+                            <button type="submit" class="btn btn-lg btn-block btn-primary">{{__('sign_in')}}</button>
                         </form>
                         <!-- End Form -->
                     </div>
@@ -214,7 +214,7 @@
 
             if (response.length === 0) {
                 e.preventDefault();
-                toastr.error("{{__('messages.Please check the recaptcha')}}");
+                toastr.error("{{__('Please check the recaptcha')}}");
             }
         });
     </script>

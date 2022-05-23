@@ -23,9 +23,9 @@
             </label>
         </td>
         <td>
-            <a class="btn btn-sm btn-white" href="{{route('admin.banner.edit',[$banner['id']])}}"title="{{__('messages.edit')}} {{__('messages.banner')}}"><i class="tio-edit"></i>
+            <a class="btn btn-sm btn-white" href="{{route('admin.banner.edit',[$banner['id']])}}"title="{{__('edit banner')}}"><i class="tio-edit"></i>
             </a>
-            <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('banner-{{$banner['id']}}','Want to delete this banner ?')" title="{{__('messages.delete')}} {{__('messages.banner')}}"><i class="tio-delete-outlined"></i>
+            <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('banner-{{$banner['id']}}','Want to delete this banner ?')" title="{{__('delete banner')}}"><i class="tio-delete-outlined"></i>
             </a>
             <form action="{{route('admin.banner.delete',[$banner['id']])}}"
                         method="post" id="banner-{{$banner['id']}}">

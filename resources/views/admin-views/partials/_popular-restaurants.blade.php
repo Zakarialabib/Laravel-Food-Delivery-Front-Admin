@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="card-header">
     <h5 class="card-header-title">
-        <i class="tio-restaurant"></i> {{trans('messages.popular_restaurants')}}
+        <i class="tio-restaurant"></i> {{__('popular_restaurants')}}
     </h5>
     @php($params=session('dash_params'))
     @if($params['zone_id']!='all')
@@ -26,7 +26,7 @@
                             <img height="35" style="border-radius: 5px"
                                  onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                                  src="{{asset('storage/app/public/restaurant')}}/{{$item->restaurant['logo']}}">
-                            <span class="ml-2"> {{Str::limit($item->restaurant->name??__('messages.Restaurant deleted!'), 20, '...')}} </span>
+                            <span class="ml-2"> {{Str::limit($item->restaurant->name??__('Restaurant deleted!'), 20, '...')}} </span>
                         </td>
                         <td>
                             <span style="font-size: 18px">

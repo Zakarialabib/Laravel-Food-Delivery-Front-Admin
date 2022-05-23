@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.smtp')}} {{__('messages.mail')}} {{__('messages.setup')}}</h1>
+                    <h1 class="page-header-title">{{__('smtp mail setup')}}</h1>
                 </div>
             </div>
         </div>
@@ -25,48 +25,48 @@
                       enctype="multipart/form-data">
                     @csrf
                         <div class="form-group mb-2">
-                            <label style="padding-left: 10px">{{__('messages.mailer')}} {{__('messages.name')}}</label><br>
+                            <label style="padding-left: 10px">{{__('mailer name')}}</label><br>
                             <input type="text" placeholder="ex : Alex" class="form-control" name="name"
                                    value="{{env('APP_MODE')!='demo'?$data['name']??'':''}}" required>
                         </div>
 
                         <div class="form-group mb-2">
-                            <label style="padding-left: 10px">{{__('messages.host')}}</label><br>
+                            <label style="padding-left: 10px">{{__('host')}}</label><br>
                             <input type="text" class="form-control" name="host" value="{{env('APP_MODE')!='demo'?$data['host']??'':''}}" required>
                         </div>
                         <div class="form-group mb-2">
-                            <label style="padding-left: 10px">{{__('messages.driver')}}</label><br>
+                            <label style="padding-left: 10px">{{__('driver')}}</label><br>
                             <input type="text" class="form-control" name="driver" value="{{env('APP_MODE')!='demo'?$data['driver']??'':''}}" required>
                         </div>
                         <div class="form-group mb-2">
-                            <label style="padding-left: 10px">{{__('messages.port')}}</label><br>
+                            <label style="padding-left: 10px">{{__('port')}}</label><br>
                             <input type="text" class="form-control" name="port" value="{{env('APP_MODE')!='demo'?$data['port']??'':''}}" required>
                         </div>
 
                         <div class="form-group mb-2">
-                            <label style="padding-left: 10px">{{__('messages.username')}}</label><br>
+                            <label style="padding-left: 10px">{{__('username')}}</label><br>
                             <input type="text" placeholder="ex : ex@yahoo.com" class="form-control" name="username"
                                    value="{{env('APP_MODE')!='demo'?$data['username']??'':''}}" required>
                         </div>
 
                         <div class="form-group mb-2">
-                            <label style="padding-left: 10px">{{__('messages.email')}} {{__('messages.id')}}</label><br>
+                            <label style="padding-left: 10px">{{__('email id')}}</label><br>
                             <input type="text" placeholder="ex : ex@yahoo.com" class="form-control" name="email"
                                    value="{{env('APP_MODE')!='demo'?$data['email_id']??'':''}}" required>
                         </div>
 
                         <div class="form-group mb-2">
-                            <label style="padding-left: 10px">{{__('messages.encryption')}}</label><br>
+                            <label style="padding-left: 10px">{{__('encryption')}}</label><br>
                             <input type="text" placeholder="ex : tls" class="form-control" name="encryption"
                                    value="{{env('APP_MODE')!='demo'?$data['encryption']??'':''}}" required>
                         </div>
 
                         <div class="form-group mb-2">
-                            <label style="padding-left: 10px">{{__('messages.password')}}</label><br>
+                            <label style="padding-left: 10px">{{__('Password')}}</label><br>
                             <input type="text" class="form-control" name="password" value="{{env('APP_MODE')!='demo'?$data['password']??'':''}}" required>
                         </div>
 
-                        <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2">{{__('messages.save')}}</button>
+                        <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2">{{__('Save')}}</button>
                     
                 </form>
             </div>

@@ -20,14 +20,14 @@ class CampaignController extends Controller
     {
         $campaign->restaurants()->detach($restaurant);
         $campaign->save();
-        Toastr::success(trans('messages.restaurant_remove_from_campaign'));
+        Toastr::success(__('restaurant_remove_from_campaign'));
         return back();
     }
     public function addrestaurant(Campaign $campaign, $restaurant)
     {
         $campaign->restaurants()->attach($restaurant);
         $campaign->save();
-        Toastr::success(trans('messages.restaurant_added_to_campaign'));
+        Toastr::success(__('restaurant Added to_campaign'));
         return back();
     }
 

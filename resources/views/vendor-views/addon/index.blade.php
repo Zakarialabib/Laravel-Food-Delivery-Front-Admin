@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('messages.add_new_addon'))
+@section('title',__('Add new addon'))
 
 @push('css_or_js')
 
@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.addon')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('Add new addon')}}</h1>
                 </div>
             </div>
         </div>
@@ -35,21 +35,21 @@
                         </ul>
                         @foreach(json_decode($language) as $lang)
                             <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}} ({{strtoupper($lang)}})</label>
-                                <input type="text" name="name[]" class="form-control" placeholder="{{__('messages.new_addon')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Name')}} ({{strtoupper($lang)}})</label>
+                                <input type="text" name="name[]" class="form-control" placeholder="{{__('New addon')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
                             </div>
                             <input type="hidden" name="lang[]" value="{{$lang}}">
                         @endforeach
                     @else
                         <div class="form-group">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}}</label>
-                            <input type="text" name="name" class="form-control" placeholder="{{__('messages.new_addon')}}" value="{{old('name')}}" required maxlength="191">
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Name')}}</label>
+                            <input type="text" name="name" class="form-control" placeholder="{{__('New addon')}}" value="{{old('name')}}" required maxlength="191">
                         </div>
                         <input type="hidden" name="lang[]" value="{{$lang}}">
                     @endif
 
                     <div class="form-group">
-                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.price')}}</label>
+                        <label class="input-label" for="exampleFormControlInput1">{{__('Price')}}</label>
                         <input type="number" min="0" max="999999999999.99" name="price" step="0.01" class="form-control" placeholder="100.00" value="{{old('price')}}" required>
                     </div>
 
@@ -61,7 +61,7 @@
                 <hr>
                 <div class="card">
                     <div class="card-header">
-                    <h5>{{__('messages.addon')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$addons->total()}}</span></h5>
+                    <h5>{{__('Addon list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$addons->total()}}</span></h5>
                     </div>
                     <!-- Table -->
                     <div class="table-responsive datatable-custom">
@@ -74,16 +74,16 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 50%">{{__('messages.name')}}</th>
-                                <th style="width: 50%">{{__('messages.price')}}</th>
-                                <th style="width: 10%">{{__('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 50%">{{__('Name')}}</th>
+                                <th style="width: 50%">{{__('Price')}}</th>
+                                <th style="width: 10%">{{__('Action')}}</th>
                             </tr>
                             <tr>
                                 <th></th>
                                 <th>
                                     <input type="text" id="column1_search" class="form-control form-control-sm"
-                                           placeholder="{{__('messages.search_here')}}">
+                                           placeholder="{{__('Search here')}}">
                                 </th>
                                 <th></th>
                                 <th>
@@ -105,9 +105,9 @@
                                     <td>{{\App\CentralLogics\Helpers::format_currency($addon['price'])}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-white"
-                                                href="{{route('vendor.addon.edit',[$addon['id']])}}" title="{{__('messages.edit')}} {{__('messages.addon')}}"><i class="tio-edit"></i></a>
+                                                href="{{route('vendor.addon.edit',[$addon['id']])}}" title="{{__('edit addon')}}"><i class="tio-edit"></i></a>
                                         <a class="btn btn-sm btn-white"     href="javascript:"
-                                            onclick="form_alert('addon-{{$addon['id']}}','Want to delete this addon ?')" title="{{__('messages.delete')}} {{__('messages.addon')}}"><i class="tio-delete-outlined"></i></a>
+                                            onclick="form_alert('addon-{{$addon['id']}}','Want to delete this addon ?')" title="{{__('delete addon')}}"><i class="tio-delete-outlined"></i></a>
                                         <form action="{{route('vendor.addon.delete',[$addon['id']])}}"
                                                     method="post" id="addon-{{$addon['id']}}">
                                             @csrf @method('delete')

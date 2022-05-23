@@ -13,9 +13,9 @@
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('Dashboard')}}</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page"><a
-                        href="{{route('admin.food.list')}}">{{trans('messages.foods')}}</a>
+                        href="{{route('admin.food.list')}}">{{__('foods')}}</a>
                 </li>
-                <li class="breadcrumb-item">{{trans('messages.bulk_import')}} </li>
+                <li class="breadcrumb-item">{{__('Bulk import')}} </li>
             </ol>
         </nav>
 
@@ -32,35 +32,35 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.type')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Type')}}<span
                                         class="input-label-secondary"></span></label>
-                                <select name="type" id="type" data-placeholder="{{__('messages.select')}} {{__('messages.type')}}" class="form-control" required title="Select Type">
-                                    <option value="all">{{__('messages.all')}} {{__('messages.data')}}</option>    
-                                    <option value="date_wise">{{__('messages.date')}} {{__('messages.wise')}}</option>
-                                    <option value="id_wise">{{__('messages.id')}} {{__('messages.wise')}}</option>
+                                <select name="type" id="type" data-placeholder="{{__('Select type')}}" class="form-control" required title="Select Type">
+                                    <option value="all">{{__('All data')}}</option>    
+                                    <option value="date_wise">{{__('Date wise')}}</option>
+                                    <option value="id_wise">{{__('id wise')}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group id_wise">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.start')}} {{__('messages.id')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Start id')}}<span
                                         class="input-label-secondary"></span></label>
                                 <input type="number" name="start_id" class="form-control">
                             </div>
                             <div class="form-group date_wise">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.from')}} {{__('messages.date')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('From date')}}<span
                                         class="input-label-secondary"></span></label>
                                 <input type="date" name="from_date" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group id_wise">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.end')}} {{__('messages.id')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('End id')}}<span
                                         class="input-label-secondary"></span></label>
                                 <input type="number" name="end_id" class="form-control">
                             </div>
                             <div class="form-group date_wise">
-                                <label class="input-label text-capitalize" for="exampleFormControlSelect1">{{__('messages.to')}} {{__('messages.date')}}<span
+                                <label class="input-label text-capitalize" for="exampleFormControlSelect1">{{__('to date')}}<span
                                         class="input-label-secondary"></span></label>
                                 <input type="date" name="to_date" class="form-control">
                             </div>

@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.landing_page_settings'))
+@section('title',__('Landing_page_settings'))
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
@@ -31,31 +31,31 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.landing_page_settings')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Landing_page_settings')}}</li>
         </ol>
     </nav>
 
     <!-- Page Header -->
     <div class="page-header">
-        <h1 class="page-header-title">{{__('messages.landing_page_settings')}}</h1>
+        <h1 class="page-header-title">{{__('Landing_page_settings')}}</h1>
         <!-- Nav Scroller -->
         <div class="js-nav-scroller hs-nav-scroller-horizontal">
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('messages.text')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('text')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('messages.button_links')}}</a>
+                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('button_links')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('messages.speciality')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('speciality')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'testimonial')}}"  aria-disabled="true">{{__('messages.testimonial')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'testimonial')}}"  aria-disabled="true">{{__('testimonial')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'image')}}"  aria-disabled="true">{{__('messages.image')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'image')}}"  aria-disabled="true">{{__('image')}}</a>
                 </li>
             </ul>
             <!-- End Nav -->
@@ -76,7 +76,7 @@
                     <div class="col-6"> 
                         <div class="form-group p-2 border">
                             <label class="d-flex justify-content-between switch toggle-switch-sm text-dark" for="app_url_android_status">
-                                <span>{{__('messages.app_url')}} ({{__('messages.play_store')}}) <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
+                                <span>{{__('app_url')}} ({{__('play_store')}}) <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
                                 <input type="checkbox" class="toggle-switch-input" name="app_url_android_status" id="app_url_android_status" value="1" {{(isset($landing_page_links) && $landing_page_links['app_url_android_status'])?'checked':''}}>
                                 <span class="toggle-switch-label">
                                     <span class="toggle-switch-indicator"></span>
@@ -88,7 +88,7 @@
                     <div class="col-6"> 
                         <div class="form-group p-2 border">
                             <label class="d-flex justify-content-between switch toggle-switch-sm text-dark" for="app_url_ios_status">
-                                <span>{{__('messages.app_url')}} ({{__('messages.app_store')}}) <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
+                                <span>{{__('app_url')}} ({{__('app_store')}}) <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
                                 <input type="checkbox" class="toggle-switch-input" name="app_url_ios_status" id="app_url_ios_status" value="1" {{(isset($landing_page_links) && $landing_page_links['app_url_ios_status'])?'checked':''}}>
                                 <span class="toggle-switch-label">
                                     <span class="toggle-switch-indicator"></span>
@@ -100,7 +100,7 @@
                     <div class="col-6"> 
                         <div class="form-group p-2 border">
                             <label class="d-flex justify-content-between switch toggle-switch-sm text-dark" for="web_app_url_status">
-                                <span>{{__('messages.web_app_url')}} <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
+                                <span>{{__('web_app_url')}} <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
                                 <input type="checkbox" class="toggle-switch-input" name="web_app_url_status" id="web_app_url_status" value="1" {{(isset($landing_page_links) && $landing_page_links['web_app_url_status'])?'checked':''}}>
                                 <span class="toggle-switch-label">
                                     <span class="toggle-switch-indicator"></span>

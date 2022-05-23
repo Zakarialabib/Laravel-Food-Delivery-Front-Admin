@@ -106,7 +106,7 @@
         <div class="col-md-12">
             <div id="loading" style="display: none;">
                 <div style="position: fixed;z-index: 9999; left: 40%;top: 37% ;width: 100%">
-                    <img width="200" src="{{asset('public/assets/admin/img/loader.gif')}}">
+                    <img width="100" src="{{asset('public/assets/admin/img/loader.gif')}}">
                 </div>
             </div>
         </div>
@@ -124,7 +124,7 @@
                 <a class="navbar-brand" href="{{route('vendor.dashboard')}}" aria-label="Front" style="padding-top: 0!important;padding-bottom: 0!important;">
                     <img class="navbar-brand-logo"
                          style="border-radius: 50%;height: 55px;width: 55px!important; border: 5px solid #80808012"
-                         onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
+                         onerror="this.src='data:image/svg+xml,%3Csvg%20width%3D%22344%22%20height%3D%22194%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22M-1%200h344v194H-1z%22%2F%3E%3C%2Fdefs%3E%3Cg%20transform%3D%22translate(1)%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cmask%20id%3D%22b%22%20fill%3D%22%23fff%22%3E%3Cuse%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fmask%3E%3Cuse%20fill%3D%22%23BDBDBD%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cg%20mask%3D%22url(%23b)%22%3E%3Cpath%20d%3D%22M173.65%2069.238L198.138%2027%20248%20112.878h-49.3c.008.348.011.697.011%201.046%200%2028.915-23.44%2052.356-52.355%2052.356C117.44%20166.28%2094%20142.84%2094%20113.924c0-28.915%2023.44-52.355%2052.356-52.355%2010%200%2019.347%202.804%2027.294%207.669zm0%200l-25.3%2043.64h50.35c-.361-18.478-10.296-34.61-25.05-43.64z%22%20fill%3D%22%23757575%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'"
                          src="{{asset('storage/app/public/restaurant/'.$restaurant_data->logo)}}"
                          alt="Logo">
                 </a>
@@ -185,7 +185,7 @@
                                 <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="{{route('vendor.profile.view')}}">
-                                    <span class="text-truncate pr-2" title="Settings">{{__('messages.settings')}}</span>
+                                    <span class="text-truncate pr-2" title="Settings">{{__('Settings')}}</span>
                                 </a>
 
                                 <div class="dropdown-divider"></div>
@@ -205,7 +205,7 @@
                                     Swal.fire('Canceled', '', 'info')
                                     }
                                     })">
-                                    <span class="text-truncate pr-2" title="Sign out">{{__('messages.sign_out')}}</span>
+                                    <span class="text-truncate pr-2" title="Sign out">{{__('sign_out')}}</span>
                                 </a>
                             </div>
                         </div>
@@ -235,13 +235,13 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="searchable" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control" placeholder="{{__('messages.search_here')}}" aria-label="{{__('messages.search_here')}}">
+                                <input id="searchable" type="search" value="{{$keyword?$keyword:''}}" name="search" class="form-control" placeholder="{{__('Search here')}}" aria-label="{{__('Search here')}}">
                             </div>
                             <!-- End Search -->
                         </form>
                         <div class="input-group header-item" style="width:250px;">
-                            <select name="category" id="category" class="form-control js-select2-custom mx-1" title="{{__('messages.select')}} {{__('messages.category')}}" onchange="set_category_filter(this.value)">
-                                <option value="">{{__('messages.all_categories')}}</option>
+                            <select name="category" id="category" class="form-control js-select2-custom mx-1" title="{{__('Select category')}}" onchange="set_category_filter(this.value)">
+                                <option value="">{{__('All categories')}}</option>
                                 @foreach ($categories as $item)
                                 <option value="{{$item->id}}" {{$category==$item->id?'selected':''}}>{{Str::limit($item->name,20 ,'...')}}</option>
                                 @endforeach
@@ -267,10 +267,10 @@
                     <div class="card">
                         <div class="w-100">
                             <div class="d-flex flex-row p-1">
-                                <select id='customer' name="customer_id" data-placeholder="{{__('messages.walk_in_customer')}}" class="js-data-example-ajax form-control">
+                                <select id='customer' name="customer_id" data-placeholder="{{__('walk_in_customer')}}" class="js-data-example-ajax form-control">
 
                                 </select>
-                                <!-- <button class="btn btn-sm btn-white btn-outline-primary ml-1" type="button" title="{{__('messages.add_customer')}}">
+                                <!-- <button class="btn btn-sm btn-white btn-outline-primary ml-1" type="button" title="{{__('Add customer')}}">
                                     <i class="tio-add-circle text-dark"></i>
                                 </button> -->
                             </div>
@@ -300,7 +300,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{__('messages.print')}} {{__('messages.invoice')}}</h5>
+                    <h5 class="modal-title">{{__('print invoice')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -581,7 +581,7 @@
                         Swal.fire({
                             icon: 'info',
                             title: 'Cart',
-                            text: "{{__('messages.product_already_added_in_cart')}}"
+                            text: "{{__('product_already Added in_cart')}}"
                         });
                         return false;
                     } 
@@ -590,7 +590,7 @@
                         Swal.fire({
                             icon: 'info',
                             title: 'Cart',
-                            text: "{{__('messages.product_has_been_updated_in_cart')}}"
+                            text: "{{__('product_has_been updated in_cart')}}"
                         });
                         
                         return false;
@@ -605,7 +605,7 @@
                     }
                     $('.call-when-done').click();
 
-                    toastr.success('{{__('messages.product_has_been_added_in_cart')}}', {
+                    toastr.success('{{__('product_has_been Added in_cart')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
@@ -636,7 +636,7 @@
                 }
             } else {
                 updateCart();
-                toastr.info('{{__('messages.item_has_been_removed_from_cart')}}', {
+                toastr.info('{{__('item_has_been_removed_from_cart')}}', {
                     CloseButton: true,
                     ProgressBar: true
                 });

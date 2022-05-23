@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('messages.food_list'))
+@section('title',__('Food list'))
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -12,22 +12,22 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('messages.food')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$foods->total()}}</span></h1>
+                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('Food list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$foods->total()}}</span></h1>
                 </div>
                 @if ($toggle_veg_non_veg)
                 <!-- Veg/NonVeg filter -->
                 <div class="col-sm-auto mb-1 mb-sm-0">
-                    <select name="category_id" onchange="set_filter('{{url()->full()}}',this.value, 'type')" data-placeholder="{{__('messages.all')}}" class="form-control">
-                        <option value="all" {{$type=='all'?'selected':''}}>{{__('messages.all')}}</option>
-                        <option value="veg" {{$type=='veg'?'selected':''}}>{{__('messages.veg')}}</option>
-                        <option value="non_veg" {{$type=='non_veg'?'selected':''}}>{{__('messages.non_veg')}}</option>
+                    <select name="category_id" onchange="set_filter('{{url()->full()}}',this.value, 'type')" data-placeholder="{{__('All')}}" class="form-control">
+                        <option value="all" {{$type=='all'?'selected':''}}>{{__('All')}}</option>
+                        <option value="veg" {{$type=='veg'?'selected':''}}>{{__('Veg')}}</option>
+                        <option value="non_veg" {{$type=='non_veg'?'selected':''}}>{{__('Non veg')}}</option>
                     </select>
                 </div>
                 <!-- End Veg/NonVeg filter -->
                 @endif
                 <div class="col-sm-auto">
                     <a href="{{route('vendor.food.add-new')}}" class="btn btn-primary pull-right"><i
-                                class="tio-add-circle"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.food')}}</a>
+                                class="tio-add-circle"></i> {{__('Add new food')}}</a>
                 </div>
                 
             </div>
@@ -50,8 +50,8 @@
                                         <i class="tio-search"></i>
                                     </div>
                                     </div>
-                                    <input id="datatableSearch" type="search" name="search" class="form-control" placeholder="{{__('messages.search_here')}}" aria-label="{{__('messages.search_here')}}">
-                                    <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                                    <input id="datatableSearch" type="search" name="search" class="form-control" placeholder="{{__('Search here')}}" aria-label="{{__('Search here')}}">
+                                    <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                                 </div>
                                 <!-- End Search -->
                                 </form>
@@ -60,11 +60,11 @@
                             <div class="col-auto">
                                 <!-- Unfold -->
                                 <div class="hs-unfold mr-2" style="width: 306px;">
-                                    <select name="category_id" id="category" onchange="set_filter('{{url()->full()}}',this.value, 'category_id')" data-placeholder="{{__('messages.select_category')}}" class="js-data-example-ajax form-control">
+                                    <select name="category_id" id="category" onchange="set_filter('{{url()->full()}}',this.value, 'category_id')" data-placeholder="{{__('Select category')}}" class="js-data-example-ajax form-control">
                                         @if($category)    
-                                            <option value="{{$category->id}}" selected>{{$category->name}} ({{$category->position == 0?__('messages.main'):__('messages.sub')}})</option>
+                                            <option value="{{$category->id}}" selected>{{$category->name}} ({{$category->position == 0?__('main'):__('sub')}})</option>
                                         @else
-                                            <option value="all" selected>{{__('messages.all_categories')}}</option>
+                                            <option value="all" selected>{{__('All categories')}}</option>
                                         @endif
                                     </select>
                                 </div>
@@ -77,7 +77,7 @@
                                     "target": "#showHideDropdown",
                                     "type": "css-animation"
                                     }'>
-                                    <i class="tio-table mr-1"></i> Columns <span class="badge badge-soft-dark rounded-circle ml-1">6</span>
+                                    <i class="tio-table mr-1"></i> {{__('Columns')}} <span class="badge badge-soft-dark rounded-circle ml-1">6</span>
                                 </a>
 
                                 <div id="showHideDropdown" class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right dropdown-card" style="width: 15rem;">
@@ -95,7 +95,7 @@
                                             <!-- End Checkbox Switch -->
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">Name</span>
+                                                <span class="mr-2">{{__('Name')}}</span>
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_name">
                                                     <input type="checkbox" class="toggle-switch-input" id="toggleColumn_name" checked>
@@ -107,7 +107,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">Type</span>
+                                                <span class="mr-2">{{__('Type')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_type">
@@ -120,7 +120,7 @@
                                             </div>
                                         
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">Status</span>
+                                                <span class="mr-2">{{__('Status')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_status">
@@ -132,7 +132,7 @@
                                                 <!-- End Checkbox Switch -->
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">Price</span>
+                                                <span class="mr-2">{{__('Price')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_price">
@@ -144,7 +144,7 @@
                                                 <!-- End Checkbox Switch -->
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">Action</span>
+                                                <span class="mr-2">{{__('Action')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_action">
@@ -187,12 +187,12 @@
                             }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 20%">{{__('messages.name')}}</th>
-                                <th style="width: 20%">{{__('messages.type')}}</th>
-                                <th>{{__('messages.price')}}</th>
-                                <th>{{__('messages.status')}}</th>
-                                <th>{{__('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 20%">{{__('Name')}}</th>
+                                <th style="width: 20%">{{__('Type')}}</th>
+                                <th>{{__('Price')}}</th>
+                                <th>{{__('status')}}</th>
+                                <th>{{__('Action')}}</th>
                             </tr>
                             </thead>
 
@@ -203,7 +203,7 @@
                                     <td>
                                         <a class="media align-items-center" href="{{route('vendor.food.view',[$food['id']])}}">
                                             <img class="avatar avatar-lg mr-3" src="{{asset('storage/app/public/product')}}/{{$food['image']}}" 
-                                                 onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'" alt="{{$food->name}} image">
+                                                 onerror="this.src='data:image/svg+xml,%3Csvg%20width%3D%22344%22%20height%3D%22194%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22M-1%200h344v194H-1z%22%2F%3E%3C%2Fdefs%3E%3Cg%20transform%3D%22translate(1)%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cmask%20id%3D%22b%22%20fill%3D%22%23fff%22%3E%3Cuse%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fmask%3E%3Cuse%20fill%3D%22%23BDBDBD%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cg%20mask%3D%22url(%23b)%22%3E%3Cpath%20d%3D%22M173.65%2069.238L198.138%2027%20248%20112.878h-49.3c.008.348.011.697.011%201.046%200%2028.915-23.44%2052.356-52.355%2052.356C117.44%20166.28%2094%20142.84%2094%20113.924c0-28.915%2023.44-52.355%2052.356-52.355%2010%200%2019.347%202.804%2027.294%207.669zm0%200l-25.3%2043.64h50.35c-.361-18.478-10.296-34.61-25.05-43.64z%22%20fill%3D%22%23757575%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'" alt="{{$food->name}} image">
                                             <div class="media-body">
                                                 <h5 class="text-hover-primary mb-0">{{Str::limit($food['name'],20,'...')}}</h5>
                                             </div>
@@ -223,10 +223,10 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-white"
-                                            href="{{route('vendor.food.edit',[$food['id']])}}" title="{{__('messages.edit')}} {{__('messages.food')}}"><i class="tio-edit"></i>
+                                            href="{{route('vendor.food.edit',[$food['id']])}}" title="{{__('Edit food')}}"><i class="tio-edit"></i>
                                         </a>
                                         <a class="btn btn-sm btn-white" href="javascript:"
-                                            onclick="form_alert('food-{{$food['id']}}','Want to delete this item ?')" title="{{__('messages.delete')}} {{__('messages.food')}}"><i class="tio-delete-outlined"></i>
+                                            onclick="form_alert('food-{{$food['id']}}','Want to delete this item ?')" title="{{__('Delete food')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('vendor.food.delete',[$food['id']])}}"
                                                 method="post" id="food-{{$food['id']}}">

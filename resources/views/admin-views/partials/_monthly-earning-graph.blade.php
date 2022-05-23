@@ -10,14 +10,14 @@
             <div class="d-flex align-items-center">
                 <span class="h3 mb-0">
                     <span class="legend-indicator bg-primary" style="background-color: #511281!important;"></span>
-                    {{__('messages.total_sell')}} : {{\App\CentralLogics\Helpers::format_currency(array_sum($total_sell))}}
+                    {{__('total_sell')}} : {{\App\CentralLogics\Helpers::format_currency(array_sum($total_sell))}}
                       <label style="font-size: 10px" class="badge badge-soft-info">( Zone : {{$zone_name}} )</label>
                 </span>
             </div>
             <div class="d-flex align-items-center mt-2 mb-2">
                 <span class="h5 mb-0">
                     <span class="legend-indicator bg-primary" style="background-color: #4CA1A3!important;"></span>
-                    {{__('messages.admin_commission')}} : {{\App\CentralLogics\Helpers::format_currency(array_sum($commission))}}
+                    {{__('admin_commission')}} : {{\App\CentralLogics\Helpers::format_currency(array_sum($commission))}}
                 </span>
             </div>
         </div>

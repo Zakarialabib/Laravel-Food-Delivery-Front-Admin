@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.customers')}} {{__('messages.reviews')}}</h1>
+                    <h1 class="page-header-title">{{__('Customers reviews')}}</h1>
                 </div>
             </div>
         </div>
@@ -38,12 +38,12 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th>{{__('messages.food')}}</th>
-                                <th>{{__('messages.reviewer')}}</th>
-                                <th>{{__('messages.review')}}</th>
-                                <th>{{__('messages.rating')}}</th>
-                                <th>{{__('messages.date')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th>{{__('Food')}}</th>
+                                <th>{{__('reviewer')}}</th>
+                                <th>{{__('review')}}</th>
+                                <th>{{__('rating')}}</th>
+                                <th>{{__('Date')}}</th>
                             </tr>
                             </thead>
 
@@ -61,7 +61,7 @@
                                             </div>
                                         </a>
                                         @else
-                                            {{__('messages.Food deleted!')}}
+                                            {{__('Food deleted!')}}
                                         @endif
                                     </td>
                                     <td>
@@ -81,7 +81,7 @@
                                             </div>
                                         </div>
                                         @else
-                                        {{__('messages.customer_not_found')}}
+                                        {{__('customer_not_found')}}
                                         @endif
                                     </td>
                                     <td>

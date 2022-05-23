@@ -1,10 +1,12 @@
 <x-app-layout>
+    <div class="flex flex-wrap">
+    <div class="lg:w-1/2 px-4 bg-zinc-100 ">
     <div class="search-nav">
         <div class="container">
             <h3 class="mb-0">{{ __('Login to your account') }}</h3>
         </div>
     </div>
-    <x-auth-card>
+    <x-auth-card >
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -52,4 +54,9 @@
             </div>
         </form>
     </x-auth-card>
+    </div>
+    <div class="lg:w-1/2 sm:w-full relative pb-full md:flex md:pb-0">
+        <div style="background-image: url(https://picsum.photos/seed/picsum/1920/1080);" class="absolute pin bg-no-repeat md:bg-left w-full h-full bg-center bg-cover"></div>
+    </div>
+</div>
 </x-app-layout>

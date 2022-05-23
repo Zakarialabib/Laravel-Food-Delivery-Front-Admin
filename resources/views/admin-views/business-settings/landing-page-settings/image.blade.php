@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.landing_page_image_settings'))
+@section('title',__('Landing_page_image_settings'))
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
@@ -31,31 +31,31 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.landing_page_settings')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Landing_page_settings')}}</li>
         </ol>
     </nav>
 
     <!-- Page Header -->
     <div class="page-header">
-        <h1 class="page-header-title">{{__('messages.landing_page_settings')}}</h1>
+        <h1 class="page-header-title">{{__('Landing_page_settings')}}</h1>
         <!-- Nav Scroller -->
         <div class="js-nav-scroller hs-nav-scroller-horizontal">
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('messages.text')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('text')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('messages.button_links')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('button_links')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('messages.speciality')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('speciality')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'testimonial')}}"  aria-disabled="true">{{__('messages.testimonial')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'testimonial')}}"  aria-disabled="true">{{__('testimonial')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'image')}}"  aria-disabled="true">{{__('messages.image')}}</a>
+                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'image')}}"  aria-disabled="true">{{__('image')}}</a>
                 </li>
             </ul>
             <!-- End Nav -->
@@ -74,11 +74,11 @@
                 @csrf
 
                 <div class="form-group">
-                    <label class="input-label" >{{__('messages.top_content_image')}}<small style="color: red">* ( {{__('messages.size')}}: 772 X 899 px )</small></label>
+                    <label class="input-label" >{{__('top_content_image')}}<small style="color: red">* ( {{__('size')}}: 772 X 899 px )</small></label>
                     <div class="custom-file">
                         <input type="file" name="top_content_image" id="customFileEg1" class="custom-file-input"
                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                        <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                        <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                     </div>
 
                     <center id="image-viewer-section" class="pt-2">
@@ -90,11 +90,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="input-label" >{{__('messages.about_us_image')}}<small style="color: red">* ( {{__('messages.size')}}: 1241 X 1755 px )</small></label>
+                    <label class="input-label" >{{__('About us image')}}<small style="color: red">* ( {{__('size')}}: 1241 X 1755 px )</small></label>
                     <div class="custom-file">
                         <input type="file" name="about_us_image" id="customFileEg2" class="custom-file-input"
                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                        <label class="custom-file-label" for="customFileEg2">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                        <label class="custom-file-label" for="customFileEg2">{{__('Choose file')}}</label>
                     </div>
 
                     <center id="image-viewer-section2" class="pt-2">

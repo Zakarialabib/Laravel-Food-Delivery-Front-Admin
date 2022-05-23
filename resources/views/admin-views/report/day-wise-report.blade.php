@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.day_wise_report'))
+@section('title',__('day_wise_report'))
 
 @push('css_or_js')
 
@@ -12,13 +12,13 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('messages.day_wise_report')}} <span class="h6 badge badge-soft-success ml-2" id="itemCount">( {{session('from_date')}} - {{session('to_date')}} )</span></h1>
+                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('day_wise_report')}} <span class="h6 badge badge-soft-success ml-2" id="itemCount">( {{session('from_date')}} - {{session('to_date')}} )</span></h1>
                 </div>
                 @if(!isset(auth('admin')->user()->zone_id))
                 <div class="col-sm-auto" style="width: 306px;">
                     <select name="zone_id" class="form-control js-select2-custom"
                             onchange="set_zone_filter('{{url()->full()}}',this.value)">
-                        <option value="all">{{__('messages.all')}} {{__('messages.zone')}}</option>
+                        <option value="all">{{__('all zone')}}</option>
                         @foreach(\App\Models\Zone::orderBy('name')->get() as $z)
                             <option
                                 value="{{$z['id']}}" {{isset($zone) && $zone->id == $z['id']?'selected':''}}>
@@ -40,8 +40,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">{{__('messages.show')}} {{__('messages.data')}} by {{__('messages.date')}}
-                                        {{__('messages.range')}}</label>
+                                    <label for="exampleInputEmail1" class="form-label">{{__('show data')}} by {{__('Date')}}
+                                        {{__('range')}}</label>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-4">
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary btn-block">{{__('messages.show')}}</button>
+                                    <button type="submit" class="btn btn-primary btn-block">{{__('show')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                                         <i class="tio-user nav-icon"></i>
 
                                         <div class="media-body">
-                                            <h4 class="mb-1">{{__('messages.admin')}} {{__('messages.earned')}}</h4>
+                                            <h4 class="mb-1">{{__('admin earned')}}</h4>
                                             <span class="font-size-sm text-success">
                                                 {{\App\CentralLogics\Helpers::format_currency($admin_earned)}}
                                             </span>
@@ -125,7 +125,7 @@
                                         <i class="tio-shop nav-icon"></i>
 
                                         <div class="media-body">
-                                            <h4 class="mb-1 text-capitalize">{{__('messages.restaurant')}} {{__('messages.earned')}}</h4>
+                                            <h4 class="mb-1 text-capitalize">{{__('restaurant earned')}}</h4>
                                             <span class="font-size-sm text-warning">
                                                 {{\App\CentralLogics\Helpers::format_currency($restaurant_earned)}}
                                             </span>
@@ -152,7 +152,7 @@
                                         <i class="tio-running nav-icon"></i>
 
                                         <div class="media-body">
-                                            <h4 class="mb-1 text-capitalize">{{__('messages.delivery')}} {{__('messages.fee')}} {{__('messages.earned')}}</h4>
+                                            <h4 class="mb-1 text-capitalize">{{__('Delivery fee earned')}}</h4>
                                             <span class="font-size-sm text-danger">
                                                 {{\App\CentralLogics\Helpers::format_currency($deliveryman_earned)}}
                                             </span>
@@ -179,7 +179,7 @@
                                         <i class="tio-money nav-icon"></i>
 
                                         <div class="media-body">
-                                            <h4 class="mb-1">{{__('messages.total_sell')}}</h4>
+                                            <h4 class="mb-1">{{__('total_sell')}}</h4>
                                             <span class="font-size-sm text-dark">
                                             {{\App\CentralLogics\Helpers::format_currency($total_sell)}}
                                             </span>
@@ -214,7 +214,7 @@
                                         <i class="tio-running nav-icon"></i>
 
                                         <div class="media-body">
-                                            <h4 class="mb-1 text-capitalize">{{__('messages.in')}} {{__('messages.progress')}}</h4>
+                                            <h4 class="mb-1 text-capitalize">{{__('in progress')}}</h4>
                                             <span class="font-size-sm text-warning">
                                             <i class="tio-trending-up"></i> {{$returned}}
                                             </span>
@@ -268,7 +268,7 @@
                                         <i class="tio-shopping-cart nav-icon"></i>
 
                                         <div class="media-body">
-                                            <h4 class="mb-1">{{__('messages.delivered')}}</h4>
+                                            <h4 class="mb-1">{{__('Delivered')}}</h4>
                                             <span class="font-size-sm text-success">
                                             <i class="tio-trending-up"></i> {{$delivered}}
                                             </span>
@@ -322,7 +322,7 @@
                                         <i class="tio-message-failed nav-icon"></i>
 
                                         <div class="media-body">
-                                            <h4 class="mb-1">{{__('messages.failed')}}</h4>
+                                            <h4 class="mb-1">{{__('failed')}}</h4>
                                             <span class="font-size-sm text-danger">
                                             <i class="tio-trending-up"></i> {{$failed}}
                                             </span>
@@ -376,7 +376,7 @@
                                         <i class="tio-flight-cancelled nav-icon"></i>
 
                                         <div class="media-body">
-                                            <h4 class="mb-1">{{__('messages.canceled')}}</h4>
+                                            <h4 class="mb-1">{{__('Canceled')}}</h4>
                                             <span class="font-size-sm text-muted">
                                             <i class="tio-trending-up"></i> {{$canceled}}
                                             </span>
@@ -420,7 +420,7 @@
         <div class="card mt-3">
             <!-- Header -->
             <div class="card-header">
-                <h1>{{__('messages.order')}} {{__('messages.transactions')}}
+                <h1>{{__('order transactions')}}
                 </h1>
             </div>
             <!-- End Header -->
@@ -433,15 +433,15 @@
                         style="width: 100%">
                         <thead class="thead-light">
                             <tr>
-                                <th  style="width: 5%">{{__('messages.sl#')}}</th>
-                                <th  style="width: 10%">{{__('messages.order')}} {{__('messages.id')}}</th>
-                                <th  style="width: 17%">{{__('messages.total_order_amount')}}</th>
-                                <th  style="width: 10%">{{__('messages.restaurant_commission')}}</th>
-                                <th  style="width: 10%">{{__('messages.admin_commission')}}</th>
-                                <th  style="width: 8%">{{__('messages.delivery')}} {{__('messages.fee')}}</th>
-                                <th  style="width: 8%">{{__('messages.vat/tax')}}</th>
-                                <th  style="width: 10%">{{__('messages.amount')}} {{__('messages.received_by')}}</th>
-                                <th  style="width: 22%">{{__('messages.created_at')}}</th>
+                                <th  style="width: 5%">{{__('sl#')}}</th>
+                                <th  style="width: 10%">{{__('order id')}}</th>
+                                <th  style="width: 17%">{{__('total_order_amount')}}</th>
+                                <th  style="width: 10%">{{__('restaurant_commission')}}</th>
+                                <th  style="width: 10%">{{__('admin_commission')}}</th>
+                                <th  style="width: 8%">{{__('Delivery fee')}}</th>
+                                <th  style="width: 8%">{{__('vat/tax')}}</th>
+                                <th  style="width: 10%">{{__('amount received_by')}}</th>
+                                <th  style="width: 22%">{{__('Created at')}}</th>
                             </tr>
                         </thead>
                         <tbody>

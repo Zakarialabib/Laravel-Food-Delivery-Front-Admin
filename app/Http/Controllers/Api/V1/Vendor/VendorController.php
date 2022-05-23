@@ -62,7 +62,7 @@ class VendorController extends Controller
         $restaurant = $request->vendor->restaurants[0];
         $restaurant->active = $restaurant->active?0:1;
         $restaurant->save();
-        return response()->json(['message' => $restaurant->active?trans('messages.restaurant_opened'):trans('messages.restaurant_temporarily_closed')], 200);
+        return response()->json(['message' => $restaurant->active?__('restaurant_opened'):__('restaurant_temporarily_closed')], 200);
     }
 
     public function get_earning_data(Request $request)
@@ -81,8 +81,8 @@ class VendorController extends Controller
             'phone' => 'required|unique:vendors,phone,'.$vendor->id,
             'password'=>'nullable|min:6',
         ], [
-            'f_name.required' => trans('messages.first_name_is_required'),
-            'l_name.required' => trans('messages.Last name is required!'),
+            'f_name.required' => __('first_name_is_required'),
+            'l_name.required' => __('Last name is required!'),
         ]);
 
         if ($validator->fails()) {
@@ -110,7 +110,7 @@ class VendorController extends Controller
         $vendor->updated_at = now();
         $vendor->save();
 
-        return response()->json(['message' => trans('messages.profile_updated_successfully')], 200);
+        return response()->json(['message' => __('profile updated successfully')], 200);
     }
 
     public function get_current_orders(Request $request)
@@ -212,7 +212,7 @@ class VendorController extends Controller
             {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'status', 'message' => trans('messages.you_can_not_cancel_a_order')]
+                        ['code' => 'status', 'message' => __('you_can_not_cancel_a_order')]
                     ]
                 ], 403);
             }
@@ -220,7 +220,7 @@ class VendorController extends Controller
             {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'status', 'message' => trans('messages.you_can_not_cancel_after_confirm')]
+                        ['code' => 'status', 'message' => __('you_can_not_cancel_after_confirm')]
                     ]
                 ], 403);
             }
@@ -230,7 +230,7 @@ class VendorController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order-confirmation-model', 'message' => trans('messages.order_confirmation_warning')]
+                    ['code' => 'order-confirmation-model', 'message' => __('order_confirmation_warning')]
                 ]
             ], 403);
         }
@@ -239,7 +239,7 @@ class VendorController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'status', 'message' => trans('messages.You_can_not_change_status_after_picked_up_by_delivery_man')]
+                    ['code' => 'status', 'message' => __('You_can_not_change_status_after_picked_up_by_delivery_man')]
                 ]
             ], 403);
         }
@@ -248,7 +248,7 @@ class VendorController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'status', 'message' => trans('messages.you_can_not_delivered_delivery_order')]
+                    ['code' => 'status', 'message' => __('you_can_not_delivered_delivery_order')]
                 ]
             ], 403);
         }
@@ -432,7 +432,7 @@ class VendorController extends Controller
         $restaurant = $request['vendor']->restaurants[0];
         $campaign->restaurants()->detach($restaurant);
         $campaign->save();
-        return response()->json(['message'=>trans('messages.you_are_successfully_removed_from_the_campaign')], 200);
+        return response()->json(['message'=>__('you_are_successfully_removed_from_the_campaign')], 200);
     }
     public function addrestaurant(Request $request)
     {
@@ -454,7 +454,7 @@ class VendorController extends Controller
         $restaurant = $request['vendor']->restaurants[0];
         $campaign->restaurants()->attach($restaurant);
         $campaign->save();
-        return response()->json(['message'=>trans('messages.you_are_successfully_joined_to_the_campaign')], 200);
+        return response()->json(['message'=>__('you_are_successfully_joined_to_the_campaign')], 200);
     }
 
     public function get_products(Request $request)
@@ -494,7 +494,7 @@ class VendorController extends Controller
         $bank->account_no = $request->account_no;
         $bank->save();
 
-        return response()->json(['message'=>trans('messages.bank_info_updated_successfully'),200]);
+        return response()->json(['message'=>__('Bank info updated successfully'),200]);
     }
 
     public function withdraw_list(Request $request)
@@ -550,7 +550,7 @@ class VendorController extends Controller
             {
                 DB::table('withdraw_requests')->insert($data);
                 $w->increment('pending_withdraw', $request['amount']);
-                return response()->json(['message'=>trans('messages.withdraw_request_placed_successfully')],200);
+                return response()->json(['message'=>__('withdraw_request_placed_successfully')],200);
             }
             catch(\Exception $e)
             {
@@ -559,7 +559,7 @@ class VendorController extends Controller
         }
         return response()->json([
             'errors'=>[
-                ['code'=>'amount', 'message'=>trans('messages.insufficient_balance')]
+                ['code'=>'amount', 'message'=>__('insufficient_balance')]
             ]
         ],403);
     }

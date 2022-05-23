@@ -14,7 +14,7 @@ class CampaignController extends Controller
     public function get_basic_campaigns(Request $request){
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
             return response()->json([
                 'errors' => $errors
             ], 200);
@@ -33,7 +33,7 @@ class CampaignController extends Controller
     public function basic_campaign_details(Request $request){
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
             return response()->json([
                 'errors' => $errors
             ], 200);
@@ -64,7 +64,7 @@ class CampaignController extends Controller
     public function get_item_campaigns(Request $request){
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
             return response()->json([
                 'errors' => $errors
             ], 200);

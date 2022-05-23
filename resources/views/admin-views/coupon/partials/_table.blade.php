@@ -11,17 +11,17 @@
         }'>
     <thead class="thead-light">
     <tr>
-        <th>{{__('messages.#')}}</th>
-        <th>{{__('messages.title')}}</th>
-        <th>{{__('messages.code')}}</th>
-        <th>{{__('messages.min')}} {{__('messages.purchase')}}</th>
-        <th>{{__('messages.max')}} {{__('messages.discount')}}</th>
-        <th>{{__('messages.discount')}}</th>
-        <th>{{__('messages.discount')}} {{__('messages.type')}}</th>
-        <th>{{__('messages.start')}} {{__('messages.date')}}</th>
-        <th>{{__('messages.expire')}} {{__('messages.date')}}</th>
-        <th>{{__('messages.status')}}</th>
-        <th>{{__('messages.action')}}</th>
+        <th>{{__('#')}}</th>
+        <th>{{__('Title')}}</th>
+        <th>{{__('Code')}}</th>
+        <th>{{__('min purchase')}}</th>
+        <th>{{__('max discount')}}</th>
+        <th>{{__('Discount')}}</th>
+        <th>{{__('Discount type')}}</th>
+        <th>{{__('Start date')}}</th>
+        <th>{{__('expire date')}}</th>
+        <th>{{__('status')}}</th>
+        <th>{{__('Action')}}</th>
     </tr>
     </thead>
 
@@ -50,9 +50,9 @@
                 </label>
             </td>
             <td>
-                <a class="btn btn-sm btn-white" href="{{route('admin.coupon.update',[$coupon['id']])}}"title="{{__('messages.edit')}} {{__('messages.coupon')}}"><i class="tio-edit"></i>
+                <a class="btn btn-sm btn-white" href="{{route('admin.coupon.update',[$coupon['id']])}}"title="{{__('edit coupon')}}"><i class="tio-edit"></i>
                 </a>
-                <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('coupon-{{$coupon['id']}}','Want to delete this coupon ?')" title="{{__('messages.delete')}} {{__('messages.coupon')}}"><i class="tio-delete-outlined"></i>
+                <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('coupon-{{$coupon['id']}}','Want to delete this coupon ?')" title="{{__('delete coupon')}}"><i class="tio-delete-outlined"></i>
                 </a>
                 <form action="{{route('admin.coupon.delete',[$coupon['id']])}}"
                             method="post" id="coupon-{{$coupon['id']}}">

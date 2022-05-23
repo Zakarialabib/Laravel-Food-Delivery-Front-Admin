@@ -3,10 +3,10 @@
         <thead>
         <tr>
             <td class="text-center">
-                <label for="" class="control-label">{{__('messages.Variant')}}</label>
+                <label for="" class="control-label">{{__('Variant')}}</label>
             </td>
             <td class="text-center">
-                <label for="" class="control-label">{{__('messages.Variant Price')}}</label>
+                <label for="" class="control-label">{{__('Variant Price')}}</label>
             </td>
         </tr>
         </thead>

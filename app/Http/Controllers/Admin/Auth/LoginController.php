@@ -42,14 +42,14 @@ class LoginController extends Controller
                         $response = \file_get_contents($url);
                         $response = json_decode($response);
                         if (!$response->success) {
-                            $fail(trans('messages.ReCAPTCHA Failed'));
+                            $fail(__('ReCAPTCHA Failed'));
                         }
                     },
                 ],
             ]);
         } else if(session('six_captcha') != $request->custome_recaptcha)
         {
-            Toastr::error(trans('messages.ReCAPTCHA Failed'));
+            Toastr::error(__('ReCAPTCHA Failed'));
             return back();
         }
 

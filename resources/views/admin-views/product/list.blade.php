@@ -12,25 +12,25 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"> {{__('messages.food')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="foodCount">{{$foods->total()}}</span></h1>
+                    <h1 class="page-header-title"> {{__('Food list')}}<span class="badge badge-soft-dark ml-2" id="foodCount">{{$foods->total()}}</span></h1>
                 </div>
                 @if ($toggle_veg_non_veg)
                 <!-- Veg/NonVeg filter -->
                 <div class="col-sm-auto mb-1 mb-sm-0">
-                    <select name="category_id" onchange="set_filter('{{url()->full()}}',this.value, 'type')" data-placeholder="{{__('messages.all')}}" class="form-control">
-                        <option value="all" {{$type=='all'?'selected':''}}>{{__('messages.all')}}</option>
-                        <option value="veg" {{$type=='veg'?'selected':''}}>{{__('messages.veg')}}</option>
-                        <option value="non_veg" {{$type=='non_veg'?'selected':''}}>{{__('messages.non_veg')}}</option>
+                    <select name="category_id" onchange="set_filter('{{url()->full()}}',this.value, 'type')" data-placeholder="{{__('All')}}" class="form-control">
+                        <option value="all" {{$type=='all'?'selected':''}}>{{__('All')}}</option>
+                        <option value="veg" {{$type=='veg'?'selected':''}}>{{__('Veg')}}</option>
+                        <option value="non_veg" {{$type=='non_veg'?'selected':''}}>{{__('Non veg')}}</option>
                     </select>
                 </div>
                 <!-- End Veg/NonVeg filter -->
                 @endif
                 <div class="col-sm-auto" style="min-width: 306px;">
-                    <select name="restaurant_id" id="restaurant" onchange="set_restaurant_filter('{{url()->full()}}',this.value)" data-placeholder="{{__('messages.select')}} {{__('messages.restaurant')}}" class="js-data-example-ajax form-control" onchange="getRestaurantData('{{url('/')}}/admin/vendor/get-addons?data[]=0&restaurant_id=',this.value,'add_on')" required title="Select Restaurant" oninvalid="this.setCustomValidity('{{__('messages.please_select_restaurant')}}')">
+                    <select name="restaurant_id" id="restaurant" onchange="set_restaurant_filter('{{url()->full()}}',this.value)" data-placeholder="{{__('Select restaurant')}}" class="js-data-example-ajax form-control" onchange="getRestaurantData('{{url('/')}}/admin/vendor/get-addons?data[]=0&restaurant_id=',this.value,'add_on')" required title="Select Restaurant" oninvalid="this.setCustomValidity('{{__('please_select_restaurant')}}')">
                     @if($restaurant)    
                     <option value="{{$restaurant->id}}" selected>{{$restaurant->name}}</option>
                     @else
-                    <option value="all" selected>{{__('messages.all_restaurants')}}</option>
+                    <option value="all" selected>{{__('All restaurants')}}</option>
                     @endif
                     </select>
                 </div>
@@ -55,8 +55,8 @@
                                             <i class="tio-search"></i>
                                         </div>
                                         </div>
-                                        <input id="datatableSearch" name="search" type="search" class="form-control" placeholder="{{__('messages.search_here')}}" aria-label="{{__('messages.search_here')}}">
-                                        <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                                        <input id="datatableSearch" name="search" type="search" class="form-control" placeholder="{{__('Search here')}}" aria-label="{{__('Search here')}}">
+                                        <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                                     </div>
                                     <!-- End Search -->
                                 </form>
@@ -65,11 +65,11 @@
                             <div class="col-auto">
                                 <!-- Unfold -->
                                 <div class="hs-unfold mr-2" style="width: 306px;">
-                                    <select name="category_id" id="category" onchange="set_filter('{{url()->full()}}',this.value, 'category_id')" data-placeholder="{{__('messages.select_category')}}" class="js-data-example-ajax form-control">
+                                    <select name="category_id" id="category" onchange="set_filter('{{url()->full()}}',this.value, 'category_id')" data-placeholder="{{__('Select category')}}" class="js-data-example-ajax form-control">
                                         @if($category)    
-                                            <option value="{{$category->id}}" selected>{{$category->name}} ({{$category->position == 0?__('messages.main'):__('messages.sub')}})</option>
+                                            <option value="{{$category->id}}" selected>{{$category->name}} ({{$category->position == 0?__('main'):__('sub')}})</option>
                                         @else
-                                            <option value="all" selected>{{__('messages.all_categories')}}</option>
+                                            <option value="all" selected>{{__('All categories')}}</option>
                                         @endif
                                     </select>
                                 </div>
@@ -82,7 +82,7 @@
                                         "target": "#showHideDropdown",
                                         "type": "css-animation"
                                         }'>
-                                        <i class="tio-table mr-1"></i> {{__('messages.columns')}} <span class="badge badge-soft-dark rounded-circle ml-1">7</span>
+                                        <i class="tio-table mr-1"></i> {{__('Columns')}} <span class="badge badge-soft-dark rounded-circle ml-1">7</span>
                                     </a>
 
                                     <div id="showHideDropdown" class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right dropdown-card" style="width: 15rem;">
@@ -100,7 +100,7 @@
                                                 <!-- End Checkbox Switch -->
                                                 </div>
                                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                                    <span class="mr-2">{{__('messages.name')}}</span>
+                                                    <span class="mr-2">{{__('Name')}}</span>
                                                     <!-- Checkbox Switch -->
                                                     <label class="toggle-switch toggle-switch-sm" for="toggleColumn_name">
                                                         <input type="checkbox" class="toggle-switch-input" id="toggleColumn_name" checked>
@@ -112,7 +112,7 @@
                                                 </div>
 
                                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                                    <span class="mr-2">{{__('messages.category')}}</span>
+                                                    <span class="mr-2">{{__('Category')}} </span>
 
                                                     <!-- Checkbox Switch -->
                                                     <label class="toggle-switch toggle-switch-sm" for="toggleColumn_type">
@@ -125,7 +125,7 @@
                                                 </div>
 
                                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                                    <span class="mr-2">{{__('messages.restaurant')}}</span>
+                                                    <span class="mr-2">{{__('Restaurant')}}</span>
 
                                                     <!-- Checkbox Switch -->
                                                     <label class="toggle-switch toggle-switch-sm" for="toggleColumn_vendor">
@@ -139,7 +139,7 @@
 
                                             
                                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                                    <span class="mr-2">{{__('messages.status')}}</span>
+                                                    <span class="mr-2">{{__('status')}}</span>
 
                                                     <!-- Checkbox Switch -->
                                                     <label class="toggle-switch toggle-switch-sm" for="toggleColumn_status">
@@ -151,7 +151,7 @@
                                                     <!-- End Checkbox Switch -->
                                                 </div>
                                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                                    <span class="mr-2">{{__('messages.price')}}</span>
+                                                    <span class="mr-2">{{__('Price')}}</span>
 
                                                     <!-- Checkbox Switch -->
                                                     <label class="toggle-switch toggle-switch-sm" for="toggleColumn_price">
@@ -163,7 +163,7 @@
                                                     <!-- End Checkbox Switch -->
                                                 </div>
                                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                                    <span class="mr-2">{{__('messages.action')}}</span>
+                                                    <span class="mr-2">{{__('Action')}}</span>
 
                                                     <!-- Checkbox Switch -->
                                                     <label class="toggle-switch toggle-switch-sm" for="toggleColumn_action">
@@ -207,13 +207,13 @@
                             }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 20%">{{__('messages.name')}}</th>
-                                <th style="width: 20%">{{__('messages.category')}}</th>
-                                <th style="width: 15%">{{__('messages.restaurant')}}</th>
-                                <th>{{__('messages.price')}}</th>
-                                <th>{{__('messages.status')}}</th>
-                                <th>{{__('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 20%">{{__('Name')}}</th>
+                                <th style="width: 20%">{{__('Category')}} </th>
+                                <th style="width: 15%">{{__('Restaurant')}}</th>
+                                <th>{{__('Price')}}</th>
+                                <th>{{__('status')}}</th>
+                                <th>{{__('Action')}}</th>
                             </tr>
                             </thead>
 
@@ -234,7 +234,7 @@
                                     {{Str::limit($food->category,20,'...')}}
                                     </td>
                                     <td>
-                                    {{Str::limit($food->restaurant?$food->restaurant->name:__('messages.Restaurant deleted!'), 20, '...')}}
+                                    {{Str::limit($food->restaurant?$food->restaurant->name:__('Restaurant deleted!'), 20, '...')}}
                                     </td>
                                     <td>{{\App\CentralLogics\Helpers::format_currency($food['price'])}}</td>
                                     <td>
@@ -247,10 +247,10 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-white"
-                                            href="{{route('admin.food.edit',[$food['id']])}}" title="{{__('messages.edit')}} {{__('messages.food')}}"><i class="tio-edit"></i>
+                                            href="{{route('admin.food.edit',[$food['id']])}}" title="{{__('Edit food')}}"><i class="tio-edit"></i>
                                         </a>
                                         <a class="btn btn-sm btn-white" href="javascript:"
-                                            onclick="form_alert('food-{{$food['id']}}','{{__('messages.Want_to_delete_this_item')}}')" title="{{__('messages.delete')}} {{__('messages.food')}}"><i class="tio-delete-outlined"></i>
+                                            onclick="form_alert('food-{{$food['id']}}','{{__('Want_to_delete_this_item')}}')" title="{{__('Delete food')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('admin.food.delete',[$food['id']])}}"
                                                 method="post" id="food-{{$food['id']}}">

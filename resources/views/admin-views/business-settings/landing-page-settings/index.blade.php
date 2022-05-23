@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.landing_page_settings'))
+@section('title',__('Landing_page_settings'))
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
@@ -31,31 +31,31 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.landing_page_settings')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Landing_page_settings')}}</li>
         </ol>
     </nav>
 
     <!-- Page Header -->
     <div class="page-header">
-        <h1 class="page-header-title">{{__('messages.landing_page_settings')}}</h1>
+        <h1 class="page-header-title">{{__('Landing_page_settings')}}</h1>
         <!-- Nav Scroller -->
         <div class="js-nav-scroller hs-nav-scroller-horizontal">
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('messages.text')}}</a>
+                    <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('text')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('messages.button_links')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('button_links')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('messages.speciality')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('speciality')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'testimonial')}}"  aria-disabled="true">{{__('messages.testimonial')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'testimonial')}}"  aria-disabled="true">{{__('testimonial')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'image')}}"  aria-disabled="true">{{__('messages.image')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'image')}}"  aria-disabled="true">{{__('image')}}</a>
                 </li>
             </ul>
             <!-- End Nav -->
@@ -73,35 +73,35 @@
 
                 @csrf
                 <div class="form-group">
-                    <label for="header_title_1">{{__('messages.header_title_1')}}</label>
+                    <label for="header_title_1">{{__('header_title_1')}}</label>
                     <input type="text" id="header_title_1" name="header_title_1" class="form-control" value="{{isset($landing_page_text)?$landing_page_text['header_title_1']:''}}">
                 </div>
                 <div class="form-group">
-                    <label for="header_title_2">{{__('messages.header_title_2')}}</label>
+                    <label for="header_title_2">{{__('header_title_2')}}</label>
                     <input type="text" id="header_title_2" name="header_title_2" class="form-control" value="{{isset($landing_page_text)?$landing_page_text['header_title_2']:''}}">
                 </div>
                 <div class="form-group">
-                    <label for="header_title_3">{{__('messages.header_title_3')}}</label>
+                    <label for="header_title_3">{{__('header_title_3')}}</label>
                     <input type="text" id="header_title_3" name="header_title_3" class="form-control" value="{{isset($landing_page_text)?$landing_page_text['header_title_3']:''}}">
                 </div>
                 <div class="form-group">
-                    <label for="about_title">{{__('messages.about_title')}}</label>
+                    <label for="about_title">{{__('about_title')}}</label>
                     <input type="text" id="about_title" name="about_title" class="form-control" value="{{isset($landing_page_text)?$landing_page_text['about_title']:''}}">
                 </div>
                 <div class="form-group">
-                    <label for="why_choose_us">{{__('messages.why_choose_us')}}</label>
+                    <label for="why_choose_us">{{__('why_choose_us')}}</label>
                     <input type="text" id="why_choose_us" name="why_choose_us" class="form-control" value="{{isset($landing_page_text)?$landing_page_text['why_choose_us']:''}}">
                 </div>
                 <div class="form-group">
-                    <label for="why_choose_us_title">{{__('messages.why_choose_us_title')}}</label>
+                    <label for="why_choose_us_title">{{__('why_choose_us_title')}}</label>
                     <input type="text" id="why_choose_us_title" name="why_choose_us_title" class="form-control" value="{{isset($landing_page_text)?$landing_page_text['why_choose_us_title']:''}}">
                 </div>
                 <div class="form-group">
-                    <label for="testimonial_title">{{__('messages.testimonial_title')}}</label>
+                    <label for="testimonial_title">{{__('testimonial_title')}}</label>
                     <input type="text" id="testimonial_title" name="testimonial_title" class="form-control" value="{{isset($landing_page_text)?$landing_page_text['testimonial_title']:''}}">
                 </div>
                 <div class="form-group">
-                    <label for="footer_article">{{__('messages.footer_article')}}</label>
+                    <label for="footer_article">{{__('footer_article')}}</label>
                     <textarea type="text" id="footer_article" name="footer_article" class="form-control">{{isset($landing_page_text)?$landing_page_text['footer_article']:''}}</textarea>
                 </div>
 

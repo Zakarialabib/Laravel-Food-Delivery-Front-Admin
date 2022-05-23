@@ -43,7 +43,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'schedule_at', 'message' => trans('messages.not_found')]
+                    ['code' => 'schedule_at', 'message' => __('Not found')]
                 ]
             ], 404);
         }
@@ -74,7 +74,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => trans('messages.you_can_not_schedule_a_order_in_past')]
+                    ['code' => 'order_time', 'message' => __('you_can_not_schedule_a_order_in_past')]
                 ]
             ], 406);
         }
@@ -84,7 +84,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => trans('messages.restaurant_not_found')]
+                    ['code' => 'order_time', 'message' => __('restaurant_not_found')]
                 ]
             ], 404);
         }
@@ -93,7 +93,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'schedule_at', 'message' => trans('messages.schedule_order_not_available')]
+                    ['code' => 'schedule_at', 'message' => __('schedule_order_not_available')]
                 ]
             ], 406);
         }
@@ -103,7 +103,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => trans('messages.restaurant_is_closed_at_order_time')]
+                    ['code' => 'order_time', 'message' => __('restaurant_is_closed_at_order_time')]
                 ]
             ], 406);
         }
@@ -113,7 +113,7 @@ class OrderController extends Controller
         // {
         //     return response()->json([
         //         'errors' => [
-        //             ['code' => 'order_time', 'message' => trans('messages.scheduled_date_is_restaurant_offday')]
+        //             ['code' => 'order_time', 'message' => __('scheduled_date_is_restaurant_offday')]
         //         ]
         //     ], 406);
         // }
@@ -126,7 +126,7 @@ class OrderController extends Controller
                 {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'coupon', 'message' => trans('messages.coupon_expire')]
+                            ['code' => 'coupon', 'message' => __('Coupon expire')]
                         ]
                     ], 407);
                 }
@@ -134,7 +134,7 @@ class OrderController extends Controller
                 {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'coupon', 'message' => trans('messages.coupon_usage_limit_over')]
+                            ['code' => 'coupon', 'message' => __('Coupon usage_limit_over')]
                         ]
                     ], 406);
                 }
@@ -142,7 +142,7 @@ class OrderController extends Controller
                 {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'coupon', 'message' => trans('messages.not_found')]                            
+                            ['code' => 'coupon', 'message' => __('Not found')]                            
                         ]
                     ], 404);
                 }
@@ -154,7 +154,7 @@ class OrderController extends Controller
             } else {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'coupon', 'message' => trans('messages.not_found')]
+                        ['code' => 'coupon', 'message' => __('Not found')]
                     ]
                 ], 401);
             }
@@ -182,7 +182,7 @@ class OrderController extends Controller
             if(!$zone)
             {
                 $errors = [];
-                array_push($errors, ['code' => 'coordinates', 'message' => trans('messages.out_of_coverage')]);
+                array_push($errors, ['code' => 'coordinates', 'message' => __('out_of_coverage')]);
                 return response()->json([
                     'errors' => $errors
                 ], 403);
@@ -263,7 +263,7 @@ class OrderController extends Controller
                 } else {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'campaign', 'message' => trans('messages.product_unavailable_warning')]
+                            ['code' => 'campaign', 'message' => __('product_unavailable_warning')]
                         ]
                     ], 401);
                 }
@@ -301,7 +301,7 @@ class OrderController extends Controller
                 } else {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'food', 'message' => trans('messages.product_unavailable_warning')]
+                            ['code' => 'food', 'message' => __('product_unavailable_warning')]
                         ]
                     ], 401);
                 }
@@ -331,7 +331,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => trans('messages.you_need_to_order_at_least', ['amount'=>$restaurant->minimum_order.' '.Helpers::currency_code()])]
+                    ['code' => 'order_time', 'message' => __('you_need_to_order_at_least', ['amount'=>$restaurant->minimum_order.' '.Helpers::currency_code()])]
                 ]
             ], 406);
         }
@@ -370,7 +370,7 @@ class OrderController extends Controller
             $restaurant->increment('total_order');
     
             return response()->json([
-                'message' => trans('messages.order_placed_successfully'),
+                'message' => __('order_placed_successfully'),
                 'order_id' => $order->id,
                 'total_ammount' => $total_price+$order->delivery_charge+$total_tax_amount
             ], 200);
@@ -380,7 +380,7 @@ class OrderController extends Controller
 
         return response()->json([
             'errors' => [
-                ['code' => 'order_time', 'message' => trans('messages.failed_to_place_order')]
+                ['code' => 'order_time', 'message' => __('failed_to_place_order')]
             ]
         ], 403);
     }
@@ -459,7 +459,7 @@ class OrderController extends Controller
         } else {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order', 'message' => trans('messages.not_found')]
+                    ['code' => 'order', 'message' => __('Not found')]
                 ]
             ], 401);
         }
@@ -471,7 +471,7 @@ class OrderController extends Controller
         if(!$order){
                 return response()->json([
                     'errors' => [
-                        ['code' => 'order', 'message' => trans('messages.not_found')]
+                        ['code' => 'order', 'message' => __('Not found')]
                     ]
                 ], 401);
         }
@@ -481,11 +481,11 @@ class OrderController extends Controller
             $order->canceled = now();
             $order->save();
             Helpers::send_order_notification($order);       
-            return response()->json(['message' => trans('messages.order_canceled_successfully')], 200);
+            return response()->json(['message' => __('order_canceled_successfully')], 200);
         }
         return response()->json([
             'errors' => [
-                ['code' => 'order', 'message' => trans('messages.you_can_not_cancel_after_confirm')]
+                ['code' => 'order', 'message' => __('you_can_not_cancel_after_confirm')]
             ]
         ], 401);
     }
@@ -496,7 +496,7 @@ class OrderController extends Controller
         if(!$order){
                 return response()->json([
                     'errors' => [
-                        ['code' => 'order', 'message' => trans('messages.not_found')]
+                        ['code' => 'order', 'message' => __('Not found')]
                     ]
                 ], 401);
         }
@@ -505,11 +505,11 @@ class OrderController extends Controller
             $order->order_status = 'refund_requested';
             $order->refund_requested = now();
             $order->save();            
-            return response()->json(['message' => trans('messages.refund_request_placed_successfully')], 200);
+            return response()->json(['message' => __('refund_request_placed_successfully')], 200);
         }
         return response()->json([
             'errors' => [
-                ['code' => 'order', 'message' => trans('messages.you_can_not_request_for_refund_after_delivery')]
+                ['code' => 'order', 'message' => __('you_can_not_request_for_refund_after_delivery')]
             ]
         ], 401);
     }
@@ -521,7 +521,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'cod', 'message' => trans('messages.Cash on delivery order not available at this time')]
+                    ['code' => 'cod', 'message' => __('Cash on delivery order not available at this time')]
                 ]
             ], 403);
         }
@@ -536,7 +536,7 @@ class OrderController extends Controller
             try {
                 if ($value) {
                     $data = [
-                        'title' =>trans('messages.order_placed_successfully'),
+                        'title' =>__('order_placed_successfully'),
                         'description' => $value,
                         'order_id' => $order->id,
                         'image' => '',
@@ -553,8 +553,8 @@ class OrderController extends Controller
                 if($order->order_type == 'delivery' && !$order->scheduled)
                 {
                     $data = [
-                        'title' =>trans('messages.order_placed_successfully'),
-                        'description' => trans('messages.new_order_push_description'),
+                        'title' =>__('order_placed_successfully'),
+                        'description' => __('New Order push description'),
                         'order_id' => $order->id,
                         'image' => '',
                     ];
@@ -564,11 +564,11 @@ class OrderController extends Controller
             } catch (\Exception $e) {
                 info($e);
             }
-            return response()->json(['message' => trans('messages.payment').' '.trans('messages.method').' '.trans('messages.updated_successfully')], 200);
+            return response()->json(['message' => __('payment').' '.__('method').' '.__('updated_successfully')], 200);
         }
         return response()->json([
             'errors' => [
-                ['code' => 'order', 'message' => trans('messages.not_found')]
+                ['code' => 'order', 'message' => __('Not found')]
             ]
         ], 404);
     }

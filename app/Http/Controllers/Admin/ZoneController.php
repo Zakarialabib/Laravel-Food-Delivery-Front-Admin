@@ -45,7 +45,7 @@ class ZoneController extends Controller
         $zone->deliveryman_wise_topic = 'zone_'.$zone_id.'_delivery_man';
         $zone->save();
 
-        Toastr::success(trans('messages.zone_added_successfully'));
+        Toastr::success(__('zone Added successfully'));
         return back();
     }
 
@@ -53,7 +53,7 @@ class ZoneController extends Controller
     {
         if(env('APP_MODE')=='demo' && $id == 1)
         {
-            Toastr::warning(trans('messages.you_can_not_edit_this_zone_please_add_a_new_zone_to_edit'));
+            Toastr::warning(__('you_can_not_edit_this_zone_please_add_a_new_zone_to_edit'));
             return back();
         }
         $zone=Zone::selectRaw("*,ST_AsText(ST_Centroid(`coordinates`)) as center")->findOrFail($id);
@@ -84,7 +84,7 @@ class ZoneController extends Controller
         $zone->customer_wise_topic = 'zone_'.$id.'_customer';
         $zone->deliveryman_wise_topic = 'zone_'.$id.'_delivery_man';
         $zone->save();
-        Toastr::success(trans('messages.zone_updated_successfully'));
+        Toastr::success(__('zone updated successfully'));
         return redirect()->route('admin.zone.home');
     }
 
@@ -92,11 +92,11 @@ class ZoneController extends Controller
     {
         if(env('APP_MODE')=='demo' && $zone->id == 1)
         {
-            Toastr::warning(trans('messages.you_can_not_delete_this_zone_please_add_a_new_zone_to_delete'));
+            Toastr::warning(__('you_can_not_delete_this_zone_please_add_a_new_zone_to_delete'));
             return back();
         }
         $zone->delete();
-        Toastr::success(trans('messages.zone_deleted_successfully'));
+        Toastr::success(__('zone deleted successfully'));
         return back();
     }
 
@@ -110,7 +110,7 @@ class ZoneController extends Controller
         $zone = Zone::findOrFail($request->id);
         $zone->status = $request->status;
         $zone->save();
-        Toastr::success(trans('messages.zone_status_updated'));
+        Toastr::success(__('zone_status_updated'));
         return back();
     }
 

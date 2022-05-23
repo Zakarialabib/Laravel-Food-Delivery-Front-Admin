@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('messages.restaurant').' '.__('messages.wallet'))
+@section('title',__('Restaurant Wallet'))
 
 @push('css_or_js')
 
@@ -10,7 +10,7 @@
 <div class="content container-fluid">
     <div class="card">
         <div class="card-header">
-            <h4 class="page-header-title text-capitalize">{{__('messages.restaurant')}} {{__('messages.wallet')}}</h4>
+            <h4 class="page-header-title text-capitalize">{{__('Restaurant wallet')}}</h4>
         </div>
         <div class="card-body row">
         <?php
@@ -31,7 +31,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="font-weight-bold  text-uppercase for-card-text mb-1">
-                                    {{__('messages.withdraw_able_balance')}}
+                                    {{__('Withdraw able balance')}}
                                 </div>
                                 <div
                                     class="for-card-count">{{$wallet->balance}}
@@ -41,9 +41,9 @@
                     </div>
                     <div class="card-footer"  style="background: #8d8d8d; border:none;">
                         @if(\App\CentralLogics\Helpers::get_vendor_data()->account_no==null || \App\CentralLogics\Helpers::get_vendor_data()->bank_name==null)
-                        <a tabindex="0" class="btn btn w-100 btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="{{__('messages.warning_missing_bank_info')}}" data-content="{{__('messages.warning_add_bank_info')}}">{{__('messages.request')}} {{__('messages.withdraw')}}</a>
+                        <a tabindex="0" class="btn btn w-100 btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="{{__('warning_missing_Bank info')}}" data-content="{{__('Warning add Bank info')}}">{{__('Request withdraw')}}</a>
                         @else   
-                        <a class="btn w-100" style="background: #f9fafc;" href="javascript:" data-toggle="modal" data-target="#balance-modal">{{__('messages.request')}} {{__('messages.withdraw')}}</a>
+                        <a class="btn w-100" style="background: #f9fafc;" href="javascript:" data-toggle="modal" data-target="#balance-modal">{{__('request withdraw')}}</a>
                         @endif
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div
-                                            class=" font-weight-bold for-card-text text-uppercase mb-1">{{__('messages.pending')}} {{__('messages.withdraw')}}</div>
+                                            class=" font-weight-bold for-card-text text-uppercase mb-1">{{__('Pending withdraw')}}</div>
                                         <div
                                             class="for-card-count">{{$wallet->pending_withdraw}}</div>
                                     </div>
@@ -77,7 +77,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div
-                                            class=" font-weight-bold for-card-text text-uppercase mb-1">{{__('messages.withdrawn')}}</div>
+                                            class=" font-weight-bold for-card-text text-uppercase mb-1">{{__('withdrawn')}}</div>
                                         <div
                                             class="for-card-count">{{$wallet->total_withdrawn}}</div>
                                     </div>
@@ -96,7 +96,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div
-                                            class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('messages.collected_cash')}}</div>
+                                            class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('Collected cash')}}</div>
                                         <div
                                             class="for-card-count">{{$wallet->collected_cash}}</div>
                                     </div>
@@ -115,7 +115,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div
-                                            class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('messages.total_earning')}}</div>
+                                            class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('Total earning')}} </div>
                                         <div
                                             class="for-card-count">{{$wallet->total_earning}}</div>
                                     </div>
@@ -136,7 +136,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{__('messages.withdraw')}} {{__('messages.request')}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{__('withdraw request')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -145,14 +145,14 @@
                     <div class="modal-body">
                         @csrf
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">{{__('messages.amount')}}:</label>
+                            <label for="recipient-name" class="col-form-label">{{__('Amount')}}:</label>
                             <input type="number" name="amount" step="0.01"
                                     value="{{$wallet->balance}}" 
                                     class="form-control" id="" min="0" max="{{$wallet->balance}}">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('messages.Close')}}</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('close')}}</button>
                         <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
                     </div>
                 </form>
@@ -166,7 +166,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>{{ __('messages.withdraw')}} {{ __('messages.request')}} {{ __('messages.table')}}</h5>
+                    <h5>{{ __('withdraw')}} {{ __('request')}} {{ __('table')}}</h5>
                 </div>
                 <div class="card-body" style="padding: 0">
                     <div class="table-responsive">
@@ -180,12 +180,12 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.sl#')}}</th>
-                                <th>{{__('messages.amount')}}</th>
-                                <th>{{__('messages.note')}}</th>
-                                <th>{{__('messages.request_time')}}</th>
-                                <th>{{__('messages.status')}}</th>
-                                <th style="width: 5px">Close</th>
+                                <th>{{__('sl#')}}</th>
+                                <th>{{__('Amount')}}</th>
+                                <th>{{__('Note')}}</th>
+                                <th>{{__('Request time')}}</th>
+                                <th>{{__('Status')}}</th>
+                                <th style="width: 5px">{{__('Close')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -197,20 +197,20 @@
                                     <td>{{date('Y-m-d '.config('timeformat'),strtotime($wr->created_at))}}</td>
                                     <td>
                                         @if($wr->approved==0)
-                                            <label class="badge badge-primary">{{__('messages.pending')}}</label>
+                                            <label class="badge badge-primary">{{__('Pending')}} </label>
                                         @elseif($wr->approved==1)
-                                            <label class="badge badge-success">{{__('messages.approved')}}</label>
+                                            <label class="badge badge-success">{{__('Approved')}}</label>
                                         @else
-                                            <label class="badge badge-danger">{{__('messages.denied')}}</label>
+                                            <label class="badge badge-danger">{{__('Denied')}}</label>
                                         @endif
                                     </td>
                                     <td>
                                         @if($wr->approved==0)
                                             {{-- <a href="{{route('vendor.withdraw.close',[$wr['id']])}}"
                                                 class="btn btn-danger btn-sm">
-                                                {{__('messages.Delete')}}
+                                                {{__('Delete')}}
                                             </a> --}}
-                                            <a class="btn btn-sm btn-danger" href="javascript:" onclick="form_alert('withdraw-{{$wr['id']}}','Want to delete this  ?')" title="{{__('messages.delete')}}"><i class="tio-delete-outlined"></i>
+                                            <a class="btn btn-sm btn-danger" href="javascript:" onclick="form_alert('withdraw-{{$wr['id']}}','Want to delete this  ?')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
                                         </a>
 
                                             <form action="{{route('vendor.wallet.close-request',[$wr['id']])}}"
@@ -218,7 +218,7 @@
                                                 @csrf @method('delete')
                                             </form>
                                         @else
-                                            <label>{{__('messages.complete')}}</label>
+                                            <label>{{__('Complete')}}</label>
                                         @endif
                                     </td>
                                 </tr>

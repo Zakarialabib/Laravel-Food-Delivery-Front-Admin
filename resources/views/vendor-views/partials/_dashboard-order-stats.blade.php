@@ -3,7 +3,7 @@
     <a class="card card-hover-shadow h-100" href="{{route('vendor.order.list',['confirmed'])}}" style="background: #2C2E43">
         <div class="card-body">
             <h6 class="card-subtitle"
-                style="color: white!important;">{{__('messages.confirmed')}}</h6>
+                style="color: white!important;">{{__('Confirmed')}} </h6>
             <div class="row align-items-center gx-2 mb-1">
                 <div class="col-6">
                     <span class="card-title h2" style="color: white!important;">
@@ -25,7 +25,7 @@
     <a class="card card-hover-shadow h-100" href="{{route('vendor.order.list',['cooking'])}}" style="background: #334257">
         <div class="card-body">
             <h6 class="card-subtitle"
-                style="color: white!important;">{{__('messages.cooking')}}</h6>
+                style="color: white!important;">{{__('Cooking')}} </h6>
 
             <div class="row align-items-center gx-2 mb-1">
                 <div class="col-6">
@@ -49,7 +49,7 @@
     <a class="card card-hover-shadow h-100" href="{{route('vendor.order.list',['ready_for_delivery'])}}" style="background: #362222">
         <div class="card-body">
             <h6 class="card-subtitle"
-                style="color: white!important;">{{__('messages.ready_for_delivery')}}</h6>
+                style="color: white!important;">{{__('Ready for delivery')}} </h6>
 
             <div class="row align-items-center gx-2 mb-1">
                 <div class="col-6">
@@ -73,7 +73,7 @@
     <a class="card card-hover-shadow h-100" href="{{route('vendor.order.list',['food_on_the_way'])}}" style="background: #053742">
         <div class="card-body">
             <h6 class="card-subtitle"
-                style="color: white!important;">{{__('messages.food_on_the_way')}}</h6>
+                style="color: white!important;">{{__('Food on the way')}} </h6>
 
             <div class="row align-items-center gx-2 mb-1">
                 <div class="col-6">
@@ -99,7 +99,7 @@
                 <div class="media" style="cursor: pointer"
                      onclick="location.href='{{route('vendor.order.list',['delivered'])}}'">
                     <div class="media-body">
-                        <h6 class="card-subtitle">{{__('messages.delivered')}}</h6>
+                        <h6 class="card-subtitle">{{__('Delivered')}}</h6>
                         <span class="card-title h3">
                          {{$data['delivered']}}
                         </span>
@@ -117,7 +117,7 @@
                 <div class="media" style="cursor: pointer"
                      onclick="location.href='{{route('vendor.order.list',['refunded'])}}'">
                     <div class="media-body">
-                        <h6 class="card-subtitle">{{__('messages.refunded')}}</h6>
+                        <h6 class="card-subtitle">{{__('Refunded')}}</h6>
                         <span
                             class="card-title h3">{{$data['refunded']}}</span>
                     </div>
@@ -134,7 +134,7 @@
                 <div class="media" style="cursor: pointer"
                      onclick="location.href='{{route('vendor.order.list',['scheduled'])}}'">
                     <div class="media-body">
-                        <h6 class="card-subtitle">{{__('messages.scheduled')}}</h6>
+                        <h6 class="card-subtitle">{{__('Scheduled')}}</h6>
                         <span
                             class="card-title h3">{{$data['scheduled']}}</span>
                     </div>
@@ -151,7 +151,7 @@
                 <div class="media" style="cursor: pointer"
                      onclick="location.href='{{route('vendor.order.list',['all'])}}'">
                     <div class="media-body">
-                        <h6 class="card-subtitle">{{__('messages.all')}}</h6>
+                        <h6 class="card-subtitle">{{__('All')}}</h6>
                         <span
                             class="card-title h3">{{$data['all']}}</span>
                     </div>

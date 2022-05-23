@@ -111,7 +111,7 @@ class DeliveryManController extends Controller
         $dm->password = bcrypt($request->password);
         $dm->save();
 
-        return response()->json(['message' => trans('messages.deliveryman_added_successfully')], 200);
+        return response()->json(['message' => __('deliveryman Added successfully')], 200);
 
         return redirect('vendor-panel/delivery-man/list');
     }
@@ -134,8 +134,8 @@ class DeliveryManController extends Controller
                 if(isset($delivery_man->fcm_token))
                 {
                     $data = [
-                        'title' => trans('messages.suspended'),
-                        'description' => trans('messages.your_account_has_been_suspended'),
+                        'title' => __('suspended'),
+                        'description' => __('your_account_has_been_suspended'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'
@@ -154,12 +154,12 @@ class DeliveryManController extends Controller
 
         }
         catch (\Exception $e) {
-            Toastr::warning(trans('messages.push_notification_faild'));
+            Toastr::warning(__('push_notification_faild'));
         }
 
         $delivery_man->save();
 
-        Toastr::success(trans('messages.deliveryman_status_updated'));
+        Toastr::success(__('deliveryman_status_updated'));
         return back();
     }
 
@@ -170,7 +170,7 @@ class DeliveryManController extends Controller
 
         $delivery_man->save();
 
-        Toastr::success(trans('messages.deliveryman_type_updated'));
+        Toastr::success(__('deliveryman_type_updated'));
         return back();
     }
 
@@ -225,7 +225,7 @@ class DeliveryManController extends Controller
         $delivery_man->password = strlen($request->password)>1?bcrypt($request->password):$delivery_man['password'];
         $delivery_man->save();
 
-        return response()->json(['message' => trans('messages.deliveryman_updated_successfully')], 200);
+        return response()->json(['message' => __('deliveryman updated successfully')], 200);
 
         return redirect('vendor-panel/delivery-man/list');
     }
@@ -244,7 +244,7 @@ class DeliveryManController extends Controller
         }
 
         $delivery_man->delete();
-        Toastr::success(trans('messages.deliveryman_deleted_successfully'));
+        Toastr::success(__('deliveryman deleted successfully'));
         return back();
     }
 

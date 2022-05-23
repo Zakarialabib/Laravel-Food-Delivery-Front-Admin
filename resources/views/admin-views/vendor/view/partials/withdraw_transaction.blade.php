@@ -1,5 +1,5 @@
 <div>
-    <h3 class="qcont px-3 pt-4">{{ __('messages.withdraw')}} {{ __('messages.transactions')}}</h3>
+    <h3 class="qcont px-3 pt-4">{{ __('withdraw')}} {{ __('transactions')}}</h3>
 
     <div class="table-responsive">
         <table id="datatable"
@@ -7,11 +7,11 @@
             style="width: 100%">
             <thead class="thead-light">
                 <tr>
-                    <th>{{__('messages.sl#')}}</th>
-                    <th>{{__('messages.created_at')}}</th>
-                    <th>{{__('messages.amount')}}</th>
-                    <th>{{__('messages.status')}}</th>
-                    <th>{{__('messages.action')}}</th>
+                    <th>{{__('sl#')}}</th>
+                    <th>{{__('Created at')}}</th>
+                    <th>{{__('Amount')}}</th>
+                    <th>{{__('status')}}</th>
+                    <th>{{__('Action')}}</th>
                 </tr>
             </thead>
             <tbody>

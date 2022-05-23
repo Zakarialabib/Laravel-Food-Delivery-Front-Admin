@@ -25,7 +25,7 @@ class BusinessSettingsController extends Controller
             'minimum_order' => 'required|numeric',
             'gst' => 'required_if:gst_status,1',
         ],[
-            'gst.required_if' => trans('messages.gst_can_not_be_empty'),
+            'gst.required_if' => __('gst_can_not_be_empty'),
         ]);
         $restaurant = $request['vendor']->restaurants[0];
         $validator->sometimes('delivery_charge', 'required', function ($request) use($restaurant) {
@@ -39,7 +39,7 @@ class BusinessSettingsController extends Controller
         {
             return response()->json([
                 'error'=>[
-                    ['code'=>'delivery_or_take_way', 'message'=>trans('messages.can_not_disable_both_take_away_and_delivery')]
+                    ['code'=>'delivery_or_take_way', 'message'=>__('can_not_disable_both_take_away_and_delivery')]
                 ]
             ],403);
         }
@@ -48,7 +48,7 @@ class BusinessSettingsController extends Controller
         {
             return response()->json([
                 'error'=>[
-                    ['code'=>'veg_non_veg', 'message'=>trans('messages.veg_non_veg_disable_warning')]
+                    ['code'=>'veg_non_veg', 'message'=>__('veg_non_veg_disable_warning')]
                 ]
             ],403);
         }
@@ -77,7 +77,7 @@ class BusinessSettingsController extends Controller
 
         $restaurant->save();
 
-        return response()->json(['message'=>trans('messages.restaurant_settings_updated')], 200);
+        return response()->json(['message'=>__('restaurant_settings_updated')], 200);
     }
 
     public function add_schedule(Request $request)
@@ -86,7 +86,7 @@ class BusinessSettingsController extends Controller
             'opening_time'=>'required|date_format:H:i:s',
             'closing_time'=>'required|date_format:H:i:s|after:opening_time',
         ],[
-            'closing_time.after'=>trans('messages.End time must be after the start time')
+            'closing_time.after'=>__('End time must be after the start time')
         ]);
 
         if ($validator->fails()) {
@@ -106,12 +106,12 @@ class BusinessSettingsController extends Controller
         if(isset($temp))
         {
             return response()->json(['errors' => [
-                ['code'=>'time', 'message'=>trans('messages.schedule_overlapping_warning')]
+                ['code'=>'time', 'message'=>__('schedule_overlapping_warning')]
             ]], 400);
         }
         
         $restaurant_schedule = RestaurantSchedule::insertGetId(['restaurant_id'=>$restaurant->id,'day'=>$request->day,'opening_time'=>$request->opening_time,'closing_time'=>$request->closing_time]);
-        return response()->json(['message'=>trans('messages.Schedule added successfully'), 'id'=>$restaurant_schedule], 200);
+        return response()->json(['message'=>__('Schedule added successfully'), 'id'=>$restaurant_schedule], 200);
     }
 
     public function remove_schedule(Request $request, $restaurant_schedule)
@@ -122,11 +122,11 @@ class BusinessSettingsController extends Controller
         {
             return response()->json([
                 'error'=>[
-                    ['code'=>'not-fond', 'message'=>trans('messages.Schedule not found')]
+                    ['code'=>'not-fond', 'message'=>__('Schedule not found')]
                 ]
             ],404);
         }
         $schedule->delete();
-        return response()->json(['message'=>trans('messages.Schedule removed successfully')], 200);
+        return response()->json(['message'=>__('Schedule removed successfully')], 200);
     }
 }

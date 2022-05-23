@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.vendor_view')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('vendor_view')}}</li>
         </ol>
     </nav>
 
@@ -25,7 +25,7 @@
             </div>
             <div class="col-6">
                 <a href="{{route('admin.vendor.edit',[$restaurant->id])}}" class="btn btn-primary float-right">
-                    <i class="tio-edit"></i> {{__('messages.edit')}} {{__('messages.restaurant')}}
+                    <i class="tio-edit"></i> {{__('edit restaurant')}}
                 </a>
             </div>
         </div>
@@ -46,25 +46,25 @@
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', $restaurant->id)}}">{{__('messages.restaurant')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', $restaurant->id)}}">{{__('Restaurant')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'order'])}}"  aria-disabled="true">{{__('messages.order')}}</a>
+                    <a class="nav-link active" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'order'])}}"  aria-disabled="true">{{__('Order')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'product'])}}"  aria-disabled="true">{{__('messages.food')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'product'])}}"  aria-disabled="true">{{__('Food')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'discount'])}}"  aria-disabled="true">{{__('messages.discount')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'discount'])}}"  aria-disabled="true">{{__('Discount')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'settings'])}}"  aria-disabled="true">{{__('messages.settings')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'settings'])}}"  aria-disabled="true">{{__('Settings')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('messages.transaction')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('transaction')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'reviews'])}}"  aria-disabled="true">{{__('messages.reviews')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'reviews'])}}"  aria-disabled="true">{{__('Reviews')}}</a>
                 </li>
             </ul>
             <!-- End Nav -->
@@ -79,7 +79,7 @@
                 <div class="col-md-12">
                     <div class="card w-100">
                         <div class="card-header">
-                            {{__('messages.order')}} {{__('messages.info')}}
+                            {{__('order info')}}
                         </div>
                         <!-- Card -->
                         <div class="card-body mb-3 mb-lg-5">
@@ -87,7 +87,7 @@
                                 <div class="col-sm-6 col-lg-3">
                                     <div class="media" style="cursor: pointer" onclick="location.href='{{route('admin.order.list',['pending'])}}?vendor[]={{$restaurant->id}}'">
                                         <div class="media-body">
-                                            <h6 class="card-subtitle">{{__('messages.pending')}}</h6>
+                                            <h6 class="card-subtitle">{{__('Pending')}} </h6>
                                             <span class="card-title h3">
                                             {{\App\Models\Order::where(['order_status'=>'pending','restaurant_id'=>$restaurant->id])->count()}}</span>
                                         </div>
@@ -103,7 +103,7 @@
                                 <div class="col-sm-6 col-lg-3 column-divider-sm">
                                     <div class="media" style="cursor: pointer" onclick="location.href='{{route('admin.order.list',['delivered'])}}?vendor[]={{$restaurant->id}}'">
                                         <div class="media-body">
-                                            <h6 class="card-subtitle">{{__('messages.delivered')}}</h6>
+                                            <h6 class="card-subtitle">{{__('Delivered')}}</h6>
                                             <span class="card-title h3">{{\App\Models\Order::where(['order_status'=>'delivered', 'restaurant_id'=>$restaurant->id])->count()}}</span>
                                         </div>
                                         <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
@@ -118,7 +118,7 @@
                                 <div class="col-sm-6 col-lg-3 column-divider-lg">
                                     <div class="media" style="cursor: pointer" onclick="location.href='{{route('admin.order.list',['scheduled'])}}?vendor[]={{$restaurant->id}}'">
                                         <div class="media-body">
-                                            <h6 class="card-subtitle">{{__('messages.scheduled')}}</h6>
+                                            <h6 class="card-subtitle">{{__('Scheduled')}}</h6>
                                             <span class="card-title h3">{{\App\Models\Order::Scheduled()->where('restaurant_id', $restaurant->id)->count()}}</span>
                                         </div>
                                         <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
@@ -133,7 +133,7 @@
                                 <div class="col-sm-6 col-lg-3 column-divider-sm">
                                     <div class="media" style="cursor: pointer" onclick="location.href='{{route('admin.order.list',['all'])}}?vendor[]={{$restaurant->id}}'">
                                         <div class="media-body">
-                                            <h6 class="card-subtitle">{{__('messages.all')}}</h6>
+                                            <h6 class="card-subtitle">{{__('All')}}</h6>
                                             <span class="card-title h3">{{\App\Models\Order::where('restaurant_id', $restaurant->id)->count()}}</span>
                                         </div>
                                         <span class="icon icon-sm icon-soft-secondary icon-circle ml-3">
@@ -171,15 +171,15 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th class="">
-                                        {{__('messages.#')}}
+                                        {{__('#')}}
                                     </th>
-                                    <th class="table-column-pl-0">{{__('messages.order')}}</th>
-                                    <th>{{__('messages.date')}}</th>
-                                    <th>{{__('messages.customer')}}</th>
-                                    <th>{{__('messages.payment')}} {{__('messages.status')}}</th>
-                                    <th>{{__('messages.total')}}</th>
-                                    <th>{{__('messages.order')}} {{__('messages.status')}}</th>
-                                    <th>{{__('messages.actions')}}</th>
+                                    <th class="table-column-pl-0">{{__('Order')}}</th>
+                                    <th>{{__('Date')}}</th>
+                                    <th>{{__('customer')}}</th>
+                                    <th>{{__('Payment status')}} </th>
+                                    <th>{{__('total')}}</th>
+                                    <th>{{__('Payment status')}} </th>
+                                    <th>{{__('Actions')}}</th>
                                 </tr>
                                 </thead>
 
@@ -200,17 +200,17 @@
                                                 <a class="text-body text-capitalize"
                                                 href="{{route('admin.customer.view',[$order['user_id']])}}">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</a>
                                             @else
-                                                <label class="badge badge-danger">{{__('messages.invalid')}} {{__('messages.customer')}} {{__('messages.data')}}</label>
+                                                <label class="badge badge-danger">{{__('invalid customer data')}}</label>
                                             @endif
                                         </td>
                                         <td>
                                             @if($order->payment_status=='paid')
                                                 <span class="badge badge-soft-success">
-                                                <span class="legend-indicator bg-success"></span>{{__('messages.paid')}}
+                                                <span class="legend-indicator bg-success"></span>{{__('Paid')}}
                                                 </span>
                                             @else
                                                 <span class="badge badge-soft-danger">
-                                                <span class="legend-indicator bg-danger"></span>{{__('messages.unpaid')}}
+                                                <span class="legend-indicator bg-danger"></span>{{__('unpaid')}}
                                                 </span>
                                             @endif
                                         </td>
@@ -218,23 +218,23 @@
                                         <td class="text-capitalize">
                                             @if($order['order_status']=='pending')
                                                 <span class="badge badge-soft-info ml-2 ml-sm-3">
-                                                <span class="legend-indicator bg-info"></span>{{__('messages.pending')}}
+                                                <span class="legend-indicator bg-info"></span>{{__('Pending')}} 
                                                 </span>
                                             @elseif($order['order_status']=='confirmed')
                                                 <span class="badge badge-soft-info ml-2 ml-sm-3">
-                                                <span class="legend-indicator bg-info"></span>{{__('messages.confirmed')}}
+                                                <span class="legend-indicator bg-info"></span>{{__('Confirmed')}} 
                                                 </span>
                                             @elseif($order['order_status']=='processing')
                                                 <span class="badge badge-soft-warning ml-2 ml-sm-3">
-                                                <span class="legend-indicator bg-warning"></span>{{__('messages.processing')}}
+                                                <span class="legend-indicator bg-warning"></span>{{__('Processing')}}
                                                 </span>
                                             @elseif($order['order_status']=='out_for_delivery')
                                                 <span class="badge badge-soft-warning ml-2 ml-sm-3">
-                                                <span class="legend-indicator bg-warning"></span>{{__('messages.out_for_delivery')}}
+                                                <span class="legend-indicator bg-warning"></span>{{__('out_for_delivery')}}
                                                 </span>
                                             @elseif($order['order_status']=='delivered')
                                                 <span class="badge badge-soft-success ml-2 ml-sm-3">
-                                                <span class="legend-indicator bg-success"></span>{{__('messages.delivered')}}
+                                                <span class="legend-indicator bg-success"></span>{{__('Delivered')}}
                                                 </span>
                                             @else
                                                 <span class="badge badge-soft-danger ml-2 ml-sm-3">
@@ -245,7 +245,7 @@
                                         <td>
                                             <a class="btn btn-sm btn-white"
                                            href="{{route('admin.order.details',['id'=>$order['id']])}}"><i
-                                                class="tio-visible"></i> {{__('messages.view')}}</a>
+                                                class="tio-visible"></i> {{__('view')}}</a>
                                         </td>
                                     </tr>
 

@@ -13,7 +13,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('messages.campaign')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('Campaign')}}</h1>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <!-- Card -->
                 <div class="card">
                     <div class="card-header p-1">
-                        <h4>{{__('messages.campaign')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$campaigns->total()}}</span></h4>
+                        <h4>{{__('Campaign list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$campaigns->total()}}</span></h4>
                         <form action="javascript:" id="search-form">
                             @csrf
                             <!-- Search -->
@@ -33,8 +33,8 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{__('messages.search')}}" aria-label="{{__('messages.search')}}">
-                                <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                                <input id="datatableSearch_" type="search" name="search" class="form-control" placeholder="{{__('Search')}}" aria-label="{{__('Search')}}">
+                                <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                             </div>
                             <!-- End Search -->
                         </form>
@@ -50,10 +50,10 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 30%">{{__('messages.title')}}</th>
-                                <th style="width: 25%">{{__('messages.image')}}</th>
-                                <th>{{__('messages.status')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 30%">{{__('Title')}}</th>
+                                <th style="width: 25%">{{__('image')}}</th>
+                                <th>{{__('status')}}</th>
                             </tr>
                             <!-- <tr>
                                 <th>
@@ -71,7 +71,7 @@
                                               "minimumResultsForSearch": "Infinity",
                                               "customClass": "custom-select custom-select-sm text-capitalize"
                                             }'>
-                                        <option value="">{{__('messages.any')}}</option>
+                                        <option value="">{{__('any')}}</option>
                                         <option value="Joined">Joined</option>
                                     </select>
                                 </th>
@@ -103,13 +103,13 @@
                                     ?>
                                         @if(in_array($restaurant_id,$restaurant_ids))
                                         <!-- <button type="button" onclick="location.href='{{route('vendor.campaign.remove-restaurant',[$campaign['id'],$restaurant_id])}}'" title="You are already joined. Click to out from the campaign." class="btn btn-outline-danger">Out</button> -->
-                                        <button type="button" onclick="form_alert('campaign-{{$campaign['id']}}','{{__('messages.alert_restaurant_out_from_campaign')}}')" title="You are already joined. Click to out from the campaign." class="btn btn-outline-danger">Out</button>
+                                        <button type="button" onclick="form_alert('campaign-{{$campaign['id']}}','{{__('alert_restaurant_out_from_campaign')}}')" title="You are already joined. Click to out from the campaign." class="btn btn-outline-danger">Out</button>
                                         <form action="{{route('vendor.campaign.remove-restaurant',[$campaign['id'],$restaurant_id])}}"
                                                 method="GET" id="campaign-{{$campaign['id']}}">
                                             @csrf 
                                         </form>
                                         @else
-                                        <button type="button" class="btn btn-outline-primary" onclick="form_alert('campaign-{{$campaign['id']}}','{{__('messages.alert_restaurant_join_campaign')}}')" title="Click to join the campaign">Join</button>
+                                        <button type="button" class="btn btn-outline-primary" onclick="form_alert('campaign-{{$campaign['id']}}','{{__('alert_restaurant_join_campaign')}}')" title="Click to join the campaign">Join</button>
                                         <form action="{{route('vendor.campaign.addrestaurant',[$campaign['id'],$restaurant_id])}}"
                                                 method="GET" id="campaign-{{$campaign['id']}}">
                                             @csrf 

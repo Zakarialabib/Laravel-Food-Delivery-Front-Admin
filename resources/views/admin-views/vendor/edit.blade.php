@@ -22,7 +22,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('messages.update')}} {{__('messages.restaurant')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('update restaurant')}}</h1>
                 </div>
             </div>
         </div>
@@ -34,40 +34,40 @@
                     @csrf
 
                     
-                    <small class="nav-subtitle text-secondary border-bottom">{{__('messages.restaurant')}} {{__('messages.info')}}</small>
+                    <small class="nav-subtitle text-secondary border-bottom">{{__('restaurant info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="name">{{__('messages.restaurant')}} {{__('messages.name')}}</label>
-                                <input type="text" name="name" class="form-control" placeholder="{{__('messages.first')}} {{__('messages.name')}}"
+                                <label class="input-label" for="name">{{__('restaurant name')}}</label>
+                                <input type="text" name="name" class="form-control" placeholder="{{__('First name')}}"
                                        required value="{{$restaurant->name}}">
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="address">{{__('messages.restaurant')}} {{__('messages.address')}}</label>
-                                <textarea  type="text" name="address" class="form-control" placeholder="{{__('messages.restaurant')}} {{__('messages.address')}}"
+                                <label class="input-label" for="address">{{__('restaurant address')}}</label>
+                                <textarea  type="text" name="address" class="form-control" placeholder="{{__('restaurant address')}}"
                                        required>{{$restaurant->address}}</textarea>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="address">{{__('messages.vat/tax')}} (%)</label>
-                                <input type="number" name="tax" class="form-control" placeholder="{{__('messages.vat/tax')}}" min="0" step=".01" required value="{{$restaurant->tax}}">
+                                <label class="input-label" for="address">{{__('vat/tax')}} (%)</label>
+                                <input type="number" name="tax" class="form-control" placeholder="{{__('vat/tax')}}" min="0" step=".01" required value="{{$restaurant->tax}}">
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label class="input-label" for="minimum_delivery_time">{{__('messages.minimum_delivery_time')}}</label>
+                                    <label class="input-label" for="minimum_delivery_time">{{__('minimum_delivery_time')}}</label>
                                     <input type="text" name="minimum_delivery_time" class="form-control" placeholder="30" pattern="^[0-9]{2}$" required value="{{explode('-',$restaurant->delivery_time)[0]}}">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="input-label" for="maximum_delivery_time">{{__('messages.maximum_delivery_time')}}</label>
+                                    <label class="input-label" for="maximum_delivery_time">{{__('maximum_delivery_time')}}</label>
                                     <input type="text" name="maximum_delivery_time" class="form-control" placeholder="40" pattern="[0-9]{2}" required value="{{explode('-',$restaurant->delivery_time)[1]}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="input-label">{{__('messages.restaurant')}} {{__('messages.logo')}}<small style="color: red"> ( {{__('messages.ratio')}} 1:1 )</small></label>
+                                <label class="input-label">{{__('restaurant logo')}}<small style="color: red"> ( {{__('ratio')}} 1:1 )</small></label>
                                 <div class="custom-file">
                                     <input type="file" name="logo" id="customFileEg1" class="custom-file-input"
                                         accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                    <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                                    <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                                 </div>
                             </div>
                         </div>
@@ -83,9 +83,9 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="choice_zones">{{__('messages.zone')}}<span
-                                        class="input-label-secondary" title="{{__('messages.select_zone_for_map')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.select_zone_for_map')}}"></span></label>
-                                <select name="zone_id" id="choice_zones" onchange="get_zone_data(this.value)" data-placeholder="{{__('messages.select')}} {{__('messages.zone')}}"
+                                <label class="input-label" for="choice_zones">{{__('Zone')}}<span
+                                        class="input-label-secondary" title="{{__('select_zone_for_map')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('select_zone_for_map')}}"></span></label>
+                                <select name="zone_id" id="choice_zones" onchange="get_zone_data(this.value)" data-placeholder="{{__('Select zone')}}"
                                         class="form-control js-select2-custom">
                                     @foreach(\App\Models\Zone::all() as $zone)
                                         @if(isset(auth('admin')->user()->zone_id))
@@ -99,15 +99,15 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.latitude')}}<span
-                                        class="input-label-secondary" title="{{__('messages.restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.restaurant_lat_lng_warning')}}"></span></label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Latitude')}}<span
+                                        class="input-label-secondary" title="{{__('restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_lat_lng_warning')}}"></span></label>
                                 <input type="text"
                                        name="latitude" class="form-control" id="latitude"
                                        placeholder="Ex : -94.22213" value="{{$restaurant->latitude}}" readonly>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.longitude')}}<span
-                                        class="input-label-secondary" title="{{__('messages.restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.restaurant_lat_lng_warning')}}"></span></label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Longitude')}}<span
+                                        class="input-label-secondary" title="{{__('restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_lat_lng_warning')}}"></span></label>
                                 <input type="text"
                                        name="longitude" class="form-control" id="longitude"
                                        placeholder="Ex : 103.344322" value="{{$restaurant->longitude}}" readonly>
@@ -125,7 +125,7 @@
                                        data-toggle="tooltip"
                                        data-placement="top"
                                        title="This value is the radius from your restaurant location, and customer can order food inside  the circle calculated by this radius."></i>
-                                    {{__('messages.coverage')}} ( {{__('messages.km')}} )
+                                    {{__('coverage')}} ( {{__('km')}} )
                                 </label>
                                 <input type="number" value=""
                                        name="coverage" class="form-control" placeholder="Ex : 3">
@@ -133,11 +133,11 @@
                         </div>--}}
                     </div>
                     <div class="form-group">
-                        <label for="name">{{__('messages.upload')}} {{__('messages.cover')}} {{__('messages.photo')}} <span class="text-danger">({{__('messages.ratio')}} 2:1)</span></label>
+                        <label for="name">{{__('upload cover photo')}} <span class="text-danger">({{__('ratio')}} 2:1)</span></label>
                         <div class="custom-file">
                             <input type="file" name="cover_photo" id="coverImageUpload" class="custom-file-input"
                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                            <label class="custom-file-label" for="customFileUpload">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                            <label class="custom-file-label" for="customFileUpload">{{__('Choose file')}}</label>
                         </div>
                     </div> 
                     <center>
@@ -147,26 +147,26 @@
                     </center>  
                     
                     <br>
-                    <small class="nav-subtitle text-secondary border-bottom">{{__('messages.vendor')}} {{__('messages.info')}}</small>
+                    <small class="nav-subtitle text-secondary border-bottom">{{__('vendor info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.first')}} {{__('messages.name')}}</label>
-                                <input type="text" name="f_name" class="form-control" placeholder="{{__('messages.first')}} {{__('messages.name')}}" value="{{$restaurant->vendor->f_name}}"
+                                <label class="input-label" for="exampleFormControlInput1">{{__('First name')}}</label>
+                                <input type="text" name="f_name" class="form-control" placeholder="{{__('First name')}}" value="{{$restaurant->vendor->f_name}}"
                                        required>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.last')}} {{__('messages.name')}}</label>
-                                <input type="text" name="l_name" class="form-control" placeholder="{{__('messages.last')}} {{__('messages.name')}}"
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Last name')}}</label>
+                                <input type="text" name="l_name" class="form-control" placeholder="{{__('Last name')}}"
                                 value="{{$restaurant->vendor->l_name}}"  required>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.phone')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Phone')}}</label>
                                 <input type="text" name="phone" class="form-control" placeholder="Ex : 017********"
                                 value="{{$restaurant->phone}}"   required>
                             </div>
@@ -174,12 +174,12 @@
                     </div>
                     <br>
                     
-                    <small class="nav-subtitle text-secondary border-bottom">{{__('messages.login')}} {{__('messages.info')}}</small>
+                    <small class="nav-subtitle text-secondary border-bottom">{{__('login info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.email')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Email')}}</label>
                                 <input type="email" name="email" class="form-control" placeholder="Ex : ex@example.com" value="{{$restaurant->email}}" required>
                             </div>
                         </div>
@@ -188,7 +188,7 @@
                                 <label class="input-label" for="signupSrPassword">Password</label>
 
                                 <div class="input-group input-group-merge">
-                                    <input type="password" class="js-toggle-password form-control" name="password" id="signupSrPassword" placeholder="{{__('messages.password_length_placeholder',['length'=>'6+'])}}" aria-label="6+ characters required"
+                                    <input type="password" class="js-toggle-password form-control" name="password" id="signupSrPassword" placeholder="{{__('Password length placeholder',['length'=>'6+'])}}" aria-label="6+ characters required"
                                     data-msg="Your password is invalid. Please try again."
                                     data-hs-toggle-password-options='{
                                     "target": [".js-toggle-password-target-1", ".js-toggle-password-target-2"],
@@ -209,7 +209,7 @@
                                 <label class="input-label" for="signupSrConfirmPassword">Confirm password</label>
 
                                 <div class="input-group input-group-merge">
-                                <input type="password" class="js-toggle-password form-control" name="confirmPassword" id="signupSrConfirmPassword" placeholder="{{__('messages.password_length_placeholder', ['length'=>'6+'])}}" aria-label="6+ characters required"                                      data-msg="Password does not match the confirm password."
+                                <input type="password" class="js-toggle-password form-control" name="confirmPassword" id="signupSrConfirmPassword" placeholder="{{__('Password length placeholder', ['length'=>'6+'])}}" aria-label="6+ characters required"                                      data-msg="Password does not match the confirm password."
                                         data-hs-toggle-password-options='{
                                         "target": [".js-toggle-password-target-1", ".js-toggle-password-target-2"],
                                         "defaultClass": "tio-hidden-outlined",

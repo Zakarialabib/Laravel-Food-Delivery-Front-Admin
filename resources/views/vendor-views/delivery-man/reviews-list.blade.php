@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.deliveryman')}} {{__('messages.reviews')}}</h1>
+                    <h1 class="page-header-title">{{__('Deliveryman reviews')}}</h1>
                 </div>
             </div>
         </div>
@@ -38,11 +38,11 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 30%">{{__('messages.deliveryman')}}</th>
-                                <th style="width: 25%">{{__('messages.customer')}}</th>
-                                <th>{{__('messages.review')}}</th>
-                                <th>{{__('messages.rating')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 30%">{{__('Deliveryman')}}</th>
+                                <th style="width: 25%">{{__('customer')}}</th>
+                                <th>{{__('review')}}</th>
+                                <th>{{__('rating')}}</th>
                             </tr>
                             </thead>
 

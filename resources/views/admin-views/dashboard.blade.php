@@ -31,13 +31,13 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.welcome')}}, {{auth('admin')->user()->f_name}}.</h1>
-                    <p class="page-header-text">{{__('messages.welcome_message')}}</p>
+                    <h1 class="page-header-title">{{__('Welcome')}}, {{auth('admin')->user()->f_name}}.</h1>
+                    <p class="page-header-text">{{__('Welcome_message')}}</p>
                 </div>
 
                 <div class="col-sm-auto" style="width: 306px;">
                     <label class="badge badge-soft-success float-right">
-                        {{__('messages.software_version')}} : {{env('SOFTWARE_VERSION')}}
+                        {{__('software_version')}} : {{env('SOFTWARE_VERSION')}}
                     </label>
                     <select name="zone_id" class="form-control js-select2-custom"
                             onchange="fetch_data_zone_wise(this.value)">
@@ -66,7 +66,7 @@
                         <select class="custom-select" name="statistics_type" onchange="order_stats_update(this.value)">
                             <option
                                 value="overall" {{$params['statistics_type'] == 'overall'?'selected':''}}>
-                                {{__('messages.Overall Statistics')}}
+                                {{__('Overall Statistics')}}
                             </option>
                             <option
                                 value="today" {{$params['statistics_type'] == 'today'?'selected':''}}>
@@ -103,7 +103,7 @@
                     <!-- Header -->
                     <div class="card-header">
                         <h5 class="card-header-title">
-                            {{__('messages.Users Overview')}}
+                            {{__('Users Overview')}}
                         </h5>
                         <select class="custom-select" style="width: 30%" name="user_overview"
                                 onchange="user_overview_stats_update(this.value)">
@@ -113,7 +113,7 @@
                             </option>
                             <option
                                 value="overall" {{$params['user_overview'] == 'overall'?'selected':''}}>
-                                {{__('messages.Overall')}}
+                                {{__('Overall')}}
                             </option>
                         </select>
                     </div>
@@ -181,8 +181,8 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.welcome')}}, {{auth('admin')->user()->f_name}}.</h1>
-                    <p class="page-header-text">{{__('messages.employee_welcome_message')}}</p>
+                    <h1 class="page-header-title">{{__('Welcome')}}, {{auth('admin')->user()->f_name}}.</h1>
+                    <p class="page-header-text">{{__('Employee welcome message')}} </p>
                 </div>
             </div>
         </div>
@@ -218,9 +218,9 @@
             type: 'doughnut',
             data: {
                 labels: [
-                    '{{__('messages.customer')}}',
-                    '{{__('messages.restaurant')}}',
-                    '{{__('messages.Delivery Man')}}'
+                    '{{__('customer')}}',
+                    '{{__('Restaurant')}}',
+                    '{{__('Delivery Man')}}'
                 ],
                 datasets: [{
                     label: 'User',

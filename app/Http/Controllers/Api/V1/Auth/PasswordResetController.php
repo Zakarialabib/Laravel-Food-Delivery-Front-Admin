@@ -27,7 +27,7 @@ class PasswordResetController extends Controller
         if (isset($customer)) {
             if(env('APP_MODE')=='demo')
             {
-                return response()->json(['message' => trans('messages.otp_sent_successfull')], 200);
+                return response()->json(['message' => __('otp_sent_successfull')], 200);
             }
             $token = rand(1000,9999);
             DB::table('password_resets')->insert([
@@ -40,13 +40,13 @@ class PasswordResetController extends Controller
             $response = SMS_module::send($request['phone'],$token);
             if($response == 'success')
             {
-                return response()->json(['message' => trans('messages.otp_sent_successfull')], 200);
+                return response()->json(['message' => __('otp_sent_successfull')], 200);
             }
             else
             {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'otp', 'message' => trans('messages.failed_to_send_sms')]
+                        ['code' => 'otp', 'message' => __('failed_to_send_sms')]
                 ]], 405);
             }
         }
@@ -134,7 +134,7 @@ class PasswordResetController extends Controller
             ]], 401);
         }
         return response()->json(['errors' => [
-            ['code' => 'invalid', 'message' => trans('messages.invalid_otp')]
+            ['code' => 'invalid', 'message' => __('invalid_otp')]
         ]], 400);
     }
 }

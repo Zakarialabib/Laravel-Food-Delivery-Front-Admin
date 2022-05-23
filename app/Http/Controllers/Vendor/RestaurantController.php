@@ -31,7 +31,7 @@ class RestaurantController extends Controller
             'address' => 'nullable|max:1000',
             'contact' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:20|unique:restaurants,phone,'.Helpers::get_restaurant_id(),
         ], [
-            'f_name.required' => trans('messages.first_name_is_required'),
+            'f_name.required' => __('first_name_is_required'),
         ]);
         $shop = Restaurant::findOrFail(Helpers::get_restaurant_id());
         $shop->name = $request->name;
@@ -44,7 +44,7 @@ class RestaurantController extends Controller
         
         $shop->save();
 
-        Toastr::success(trans('messages.restaurant_data_updated'));
+        Toastr::success(__('restaurant_data_updated'));
         return redirect()->route('vendor.shop.view');
     }
 

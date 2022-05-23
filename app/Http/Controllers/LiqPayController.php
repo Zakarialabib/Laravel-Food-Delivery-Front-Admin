@@ -298,7 +298,7 @@ class LiqPayController extends Controller
             ));
             return $html;
         }catch(\Exception $ex){
-            Toastr::error(trans('messages.config_your_account',['method'=>trans('messages.liqpay')]));
+            Toastr::error(__('config_your_account',['method'=>__('liqpay')]));
             return back();
         }
 

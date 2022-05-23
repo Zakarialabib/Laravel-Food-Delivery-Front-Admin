@@ -20,13 +20,13 @@
                 <div class="col-sm mb-2 mb-sm-0">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-no-gutter">
-                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:">{{__('messages.customers')}}</a>
+                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:">{{__('Customers')}}</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{__('messages.customer')}} {{__('messages.messages')}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('customer messages')}}</li>
                         </ol>
                     </nav>
 
-                    <h1 class="page-header-title">{{__('messages.conversation')}} {{__('messages.list')}}</h1>
+                    <h1 class="page-header-title">{{__('Conversation list')}}</h1>
                 </div>
 
                 <div class="col-sm-auto">
@@ -74,7 +74,7 @@
             </div>
             <div class="col-lg-8 col-8" id="view-conversation">
                 <center style="margin-top: 10%">
-                    <h4 style="color: rgba(113,120,133,0.62)">{{__('messages.view')}} {{__('messages.conversation')}}</h4>
+                    <h4 style="color: rgba(113,120,133,0.62)">{{__('view conversation')}}</h4>
                 </center>
                 {{--view here--}}
             </div>

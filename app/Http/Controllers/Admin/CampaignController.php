@@ -142,7 +142,7 @@ class CampaignController extends Controller
             'veg' => 'required',
             'description'=>'max:1000'
         ], [
-            'category_id.required' => trans('messages.select_category'),
+            'category_id.required' => __('select_category'),
         ]);
         
         if ($validator->fails()) {
@@ -156,7 +156,7 @@ class CampaignController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', trans('messages.discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -191,7 +191,7 @@ class CampaignController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', trans('messages.attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -294,7 +294,7 @@ class CampaignController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', trans('messages.discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -327,7 +327,7 @@ class CampaignController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', trans('messages.attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -450,7 +450,7 @@ class CampaignController extends Controller
         }
         $campaign->status = $status;
         $campaign->save();
-        Toastr::success(trans('messages.campaign_status_updated'));
+        Toastr::success(__('campaign_status_updated'));
         return back();
     }
 
@@ -461,7 +461,7 @@ class CampaignController extends Controller
         }
         $campaign->translations()->delete();
         $campaign->delete();
-        Toastr::success(trans('messages.campaign_deleted_successfully'));
+        Toastr::success(__('campaign deleted successfully'));
         return back();
     }
     public function delete_item(ItemCampaign $campaign)
@@ -471,7 +471,7 @@ class CampaignController extends Controller
         }
         $campaign->translations()->delete();
         $campaign->delete();
-        Toastr::success(trans('messages.campaign_deleted_successfully'));
+        Toastr::success(__('campaign deleted successfully'));
         return back();
     }
 
@@ -479,14 +479,14 @@ class CampaignController extends Controller
     {
         $campaign->restaurants()->detach($restaurant);
         $campaign->save();
-        Toastr::success(trans('messages.restaurant_remove_from_campaign'));
+        Toastr::success(__('restaurant_remove_from_campaign'));
         return back();
     }
     public function addrestaurant(Request $request, Campaign $campaign)
     {
         $campaign->restaurants()->attach($request->restaurant_id);
         $campaign->save();
-        Toastr::success(trans('messages.restaurant_added_to_campaign'));
+        Toastr::success(__('restaurant Added to_campaign'));
         return back();
     }
 

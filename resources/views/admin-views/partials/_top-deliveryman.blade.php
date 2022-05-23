@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="card-header">
     <h5 class="card-header-title">
-        <i class="tio-bike"></i> {{trans('messages.top_deliveryman')}}
+        <i class="tio-bike"></i> {{__('top_deliveryman')}}
     </h5>
     @php($params=session('dash_params'))
     @if($params['zone_id']!='all')
@@ -9,7 +9,7 @@
     @else
         @php($zone_name='All')
     @endif
-    <label class="badge badge-soft-info">( {{__('messages.zone')}} : {{$zone_name}} )</label>
+    <label class="badge badge-soft-info">( {{__('Zone')}} : {{$zone_name}} )</label>
 </div>
 <!-- End Header -->
 

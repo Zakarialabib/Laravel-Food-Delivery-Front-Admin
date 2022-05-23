@@ -16,7 +16,7 @@
                     <div class="flex flex-wrap">
                         @forelse ($restaurants as $rest)
                             @if ($rest->status == 1)
-                                <div class="col-md-4 col-sm-6">
+                                <div class="xl:w-1/3 px-4 lg:w-1/2 sm:w-full">
 
                                     <a href="{{ route('restaurant_details', $rest->id) }}"
                                         class="card restaurant-card available">
@@ -38,8 +38,16 @@
                                             <p class="location"><i class="bx bx-location-plus"></i>
                                                 {{ $rest->address }}</p>
                                             <div class="details">
-                                                <span class="badge p-2"><i class='bx bxs-star text-yellow-300'></i>
-                                                    4.2</span>
+                                                <span class="badge bg-red-500 text-white p-2"><i
+                                                        class='bx bxs-star text-yellow-300'></i> 4.2</span>
+                                                {{-- @if (empty($rest->rating))
+                                                        <span class="badge"><i class='bx bxs-star'></i> {{ $rest->rating }}</span>
+                                                    @endif --}}
+                                                <span class="badge">{{ $rest->delivery_time }}</span>
+                                                <span
+                                                    class="badge">{{ $rest->opening_time->format('h:m') }}
+                                                    /
+                                                    {{ $rest->closeing_time->format('h:m') }}</span>
                                             </div>
                                         </div>
                                     </a>
@@ -51,12 +59,12 @@
                                         class="card restaurant-card unavailable">
                                         <span class="restaurant-status">
                                             @if ($rest->status == 1)
-                                                <em class="ribbon"></em>{{__('Open')}}
+                                                <em class="ribbon"></em>{{ __('Open') }}
                                             @endif
                                         </span>
                                         @if ($rest->status == 0)
                                             <span class="restaurant-status closed">
-                                                <em class="ribbon"></em>{{__('Closed')}}
+                                                <em class="ribbon"></em>{{ __('Closed') }}
                                             </span>
                                         @endif
                                         <div class="restaurant-image" style="

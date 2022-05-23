@@ -13,12 +13,12 @@
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('Dashboard')}}</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page"><a
-                        href="{{route('admin.vendor.list')}}">{{trans('messages.restaurants')}}</a>
+                        href="{{route('admin.vendor.list')}}">{{__('restaurants')}}</a>
                 </li>
-                <li class="breadcrumb-item">{{trans('messages.bulk_import')}} </li>
+                <li class="breadcrumb-item">{{__('Bulk import')}} </li>
             </ol>
         </nav>
-        <h1 class="text-capitalize">{{__('messages.restaurants')}} {{__('messages.bulk_import')}}</h1>
+        <h1 class="text-capitalize">{{__('restaurants bulk_import')}}</h1>
         <!-- Content Row -->
         <div class="row">
             <div class="col-12">

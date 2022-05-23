@@ -11,11 +11,11 @@
                 <!-- List Dot -->
                 <ul class="list-inline list-separator">
                     <li class="list-inline-item">
-                        <a class="list-separator-link" href="{{route('admin.business-settings.business-setup')}}">{{__('messages.business')}} {{__('messages.setup')}}</a>
+                        <a class="list-separator-link" href="{{route('admin.business-settings.business-setup')}}">{{__('business setup')}}</a>
                     </li>
 
                     <li class="list-inline-item">
-                        <a class="list-separator-link" href="{{route('admin.settings')}}">{{__('messages.profile')}}</a>
+                        <a class="list-separator-link" href="{{route('admin.settings')}}">{{__('profile')}}</a>
                     </li>
 
                     <li class="list-inline-item">

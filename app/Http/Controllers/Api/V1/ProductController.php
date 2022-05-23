@@ -39,7 +39,7 @@ class ProductController extends Controller
     {
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -94,7 +94,7 @@ class ProductController extends Controller
     {
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -112,7 +112,7 @@ class ProductController extends Controller
     {
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -135,7 +135,7 @@ class ProductController extends Controller
             return response()->json($product, 200);
         } catch (\Exception $e) {
             return response()->json([
-                'errors' => ['code' => 'product-001', 'message' => trans('messages.not_found')]
+                'errors' => ['code' => 'product-001', 'message' => __('Not found')]
             ], 404);
         }
     }
@@ -148,7 +148,7 @@ class ProductController extends Controller
             return response()->json($products, 200);
         }
         return response()->json([
-            'errors' => ['code' => 'product-001', 'message' => trans('messages.not_found')]
+            'errors' => ['code' => 'product-001', 'message' => __('Not found')]
         ], 404);
     }
 
@@ -211,14 +211,14 @@ class ProductController extends Controller
 
         $product = Food::find($request->food_id);
         if (isset($product) == false) {
-            $validator->errors()->add('food_id', trans('messages.food_not_found'));
+            $validator->errors()->add('food_id', __('food_not_found'));
         }
 
         $multi_review = Review::where(['food_id' => $request->food_id, 'user_id' => $request->user()->id, 'order_id'=>$request->order_id])->first();
         if (isset($multi_review)) {
             return response()->json([
                 'errors' => [ 
-                    ['code'=>'review','message'=> trans('messages.already_submitted')]
+                    ['code'=>'review','message'=> __('already_submitted')]
                 ]
             ], 403);
         } else {
@@ -261,6 +261,6 @@ class ProductController extends Controller
         $product->save();
         $product->increment('rating_count');
 
-        return response()->json(['message' => trans('messages.review_submited_successfully')], 200);
+        return response()->json(['message' => __('review_submited_successfully')], 200);
     }
 }

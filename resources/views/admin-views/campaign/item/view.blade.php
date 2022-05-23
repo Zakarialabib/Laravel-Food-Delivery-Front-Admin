@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-6">
                     <a href="{{route('admin.campaign.edit',['item',$campaign['id']])}}" class="btn btn-primary float-right">
-                        <i class="tio-edit"></i> {{__('messages.edit')}}
+                        <i class="tio-edit"></i> {{__('Edit')}}
                     </a>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                                  alt="Image Description">
                             {{--<!-- <div class="d-block">
                                 <h4 class="display-2 text-dark mb-0">{{count($campaign->rating)>0?number_format($campaign->rating[0]->average, 2, '.', ' '):0}}</h4>
-                                <p> {{__('messages.of')}} {{$campaign->reviews->count()}} {{__('messages.reviews')}}
+                                <p> {{__('of')}} {{$campaign->reviews->count()}} {{__('Reviews')}}
                                     <span class="badge badge-soft-dark badge-pill ml-1"></span>
                                 </p>
                             </div> -->--}}
@@ -120,18 +120,18 @@
                         </ul>
                     </div>--}}
                     <div class="col-sm-5">
-                        <small class="card-subtitle border-bottom">{{__('messages.campaign')}} {{__('messages.info')}}</small>
+                        <small class="card-subtitle border-bottom">{{__('campaign info')}}</small>
                         <small class="text-dark">
-                            {{__('messages.campaign')}} {{__('messages.starts')}} {{__('messages.from')}} : {{$campaign->start_date->format('Y-M-d')}}
+                            {{__('campaign starts from')}} : {{$campaign->start_date->format('Y-M-d')}}
                         </small><br>
                         <small class="text-dark">
-                            {{__('messages.campaign')}} {{__('messages.ends')}} {{__('messages.at')}} : {{$campaign->end_date->format('Y-M-d')}}
+                            {{__('campaign ends at')}} : {{$campaign->end_date->format('Y-M-d')}}
                         </small><br>
                         <small class="text-dark">
-                            {{__('messages.available')}} {{__('messages.time')}} {{__('messages.starts')}} : {{$campaign->start_time->format(config('timeformat'))}}
+                            {{__('Available time starts')}} : {{$campaign->start_time->format(config('timeformat'))}}
                         </small><br>
                         <small class="text-dark">
-                            {{__('messages.available')}} {{__('messages.time')}} {{__('messages.ends')}} : {{$campaign->end_time->format(config('timeformat'))}}
+                            {{__('Available time ends')}} : {{$campaign->end_time->format(config('timeformat'))}}
                         </small>
                     </div>
                     <div class="col-sm-3 border-left text-center">
@@ -146,25 +146,25 @@
                             <label class="input-label">{{$campaign->restaurant['name']}}</label>
                         </a>
                         @else
-                        <span class="badge-info">{{__('messages.restaurant')}} {{__('messages.deleted')}}</span>
+                        <span class="badge-info">{{__('restaurant deleted')}}</span>
                         @endif
                     </div>
                     <div class="col-12 pt-2">
                         <div class="card">
                             <div class="card-body">
-                                <small class="card-subtitle border-bottom">{{__('messages.item')}} {{__('messages.info')}}</small>
+                                <small class="card-subtitle border-bottom">{{__('item info')}}</small>
                                 <div class="row">
                                     <div class="col-4 pt-2">
-                                        <small class="text-dark">{{__('messages.price')}} : {{\App\CentralLogics\Helpers::format_currency($campaign['price'])}}
+                                        <small class="text-dark">{{__('Price')}} : {{\App\CentralLogics\Helpers::format_currency($campaign['price'])}}
                                         </small class="text-dark"><br>
-                                        <small class="text-dark">{{__('messages.tax')}} :
+                                        <small class="text-dark">{{__('tax')}} :
                                             {{\App\CentralLogics\Helpers::format_currency(\App\CentralLogics\Helpers::tax_calculate($campaign,$campaign['price']))}}
                                         </small class="text-dark"><br>
-                                        <small class="text-dark">{{__('messages.discount')}} :
+                                        <small class="text-dark">{{__('Discount')}} :
                                             {{\App\CentralLogics\Helpers::format_currency(\App\CentralLogics\Helpers::discount_calculate($campaign,$campaign['price']))}}
                                         </small class="text-dark"><br>
                                         
-                                        <small class="card-subtitle border-bottom mt-2"> {{__('messages.variations')}} </small><br>
+                                        <small class="card-subtitle border-bottom mt-2"> {{__('variations')}} </small><br>
                                         @foreach(json_decode($campaign['variations'],true) as $variation)
                                             <small class="text-capitalize">
                                             {{$variation['type']}} : {{\App\CentralLogics\Helpers::format_currency($variation['price'])}}
@@ -178,7 +178,7 @@
                                         @endforeach
                                     </div>
                                     <div class="col-8 pt-2 border-left">
-                                        <h4>{{__('messages.short')}} {{__('messages.description')}} : </h4>
+                                        <h4>{{__('Short description')}} : </h4>
                                         <p>{{$campaign['description']}}</p>
                                     </div> 
                                 </div>
@@ -218,15 +218,15 @@
                     <thead class="thead-light">
                     <tr>
                         <th class="">
-                            {{__('messages.#')}}
+                            {{__('#')}}
                         </th>
-                        <th class="table-column-pl-0">{{__('messages.order')}}</th>
-                        <th>{{__('messages.date')}}</th>
-                        <th>{{__('messages.customer')}}</th>
-                        <th>{{__('messages.vendor')}}</th>
-                        <th>{{__('messages.payment')}} {{__('messages.status')}}</th>
-                        <th>{{__('messages.total')}}</th>
-                        <th>{{__('messages.order')}} {{__('messages.status')}}</th>
+                        <th class="table-column-pl-0">{{__('Order')}}</th>
+                        <th>{{__('Date')}}</th>
+                        <th>{{__('customer')}}</th>
+                        <th>{{__('Vendor')}}</th>
+                        <th>{{__('Payment status')}} </th>
+                        <th>{{__('total')}}</th>
+                        <th>{{__('Payment status')}} </th>
                     </tr>
                     </thead>
 
@@ -246,20 +246,20 @@
                                     <a class="text-body text-capitalize"
                                        href="{{route('admin.customer.view',[$order->order['user_id']])}}">{{$order->order->customer['f_name'].' '.$order->order->customer['l_name']}}</a>
                                 @else
-                                    <label class="badge badge-danger">{{__('messages.invalid')}} {{__('messages.customer')}} {{__('messages.data')}}</label>
+                                    <label class="badge badge-danger">{{__('invalid customer data')}}</label>
                                 @endif
                             </td>
                             <td>
-                                <label class="badge badge-soft-primary">{{Str::limit($order->order->restaurant?$order->order->restaurant->name:__('messages.Restaurant deleted!'),20,'...')}}</label>
+                                <label class="badge badge-soft-primary">{{Str::limit($order->order->restaurant?$order->order->restaurant->name:__('Restaurant deleted!'),20,'...')}}</label>
                             </td>
                             <td>
                                 @if($order->order->payment_status=='paid')
                                     <span class="badge badge-soft-success">
-                                      <span class="legend-indicator bg-success"></span>{{__('messages.paid')}}
+                                      <span class="legend-indicator bg-success"></span>{{__('Paid')}}
                                     </span>
                                 @else
                                     <span class="badge badge-soft-danger">
-                                      <span class="legend-indicator bg-danger"></span>{{__('messages.unpaid')}}
+                                      <span class="legend-indicator bg-danger"></span>{{__('unpaid')}}
                                     </span>
                                 @endif
                             </td>
@@ -267,23 +267,23 @@
                             <td class="text-capitalize">
                                 @if($order->order['order_status']=='pending')
                                     <span class="badge badge-soft-info ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-info"></span>{{__('messages.pending')}}
+                                      <span class="legend-indicator bg-info"></span>{{__('Pending')}} 
                                     </span>
                                 @elseif($order->order['order_status']=='confirmed')
                                     <span class="badge badge-soft-info ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-info"></span>{{__('messages.confirmed')}}
+                                      <span class="legend-indicator bg-info"></span>{{__('Confirmed')}} 
                                     </span>
                                 @elseif($order->order['order_status']=='processing')
                                     <span class="badge badge-soft-warning ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-warning"></span>{{__('messages.processing')}}
+                                      <span class="legend-indicator bg-warning"></span>{{__('Processing')}}
                                     </span>
                                 @elseif($order->order['order_status']=='out_for_delivery')
                                     <span class="badge badge-soft-warning ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-warning"></span>{{__('messages.out_for_delivery')}}
+                                      <span class="legend-indicator bg-warning"></span>{{__('out_for_delivery')}}
                                     </span>
                                 @elseif($order->order['order_status']=='delivered')
                                     <span class="badge badge-soft-success ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-success"></span>{{__('messages.delivered')}}
+                                      <span class="legend-indicator bg-success"></span>{{__('Delivered')}}
                                     </span>
                                 @else
                                     <span class="badge badge-soft-danger ml-2 ml-sm-3">

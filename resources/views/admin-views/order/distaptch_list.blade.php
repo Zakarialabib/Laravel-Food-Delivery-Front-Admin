@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',ucfirst(str_replace('_',' ',$status).' '.__('messages.orders')))
+@section('title',ucfirst(str_replace('_',' ',$status).' '.__('orders')))
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -21,7 +21,7 @@
         <div class="page-header">
             <div class="row align-items-center mb-3">
                 <div class="col-9">
-                    <h1 class="page-header-title text-capitalize">{{__('messages.'.$status)}} {{__('messages.orders')}} <span
+                    <h1 class="page-header-title text-capitalize">{{__(''.$status)}} {{__('Orders')}}  <span
                             class="badge badge-soft-dark ml-2">{{$total}}</span></h1>
                 </div>
 
@@ -29,8 +29,8 @@
                     <!-- Select -->
                     {{--<select class="custom-select custom-select-sm" name="zone"
                             onchange="filter_zone_orders(this.value)">
-                        <option disabled>--- {{trans('messages.select')}} {{trans('messages.zone')}} ---</option>
-                        <option value="0" {{session('zone_filter')==0?'selected':''}}>{{trans('messages.all')}} {{trans('messages.zone')}}</option>
+                        <option disabled>--- {{__('select')}} {{__('zone')}} ---</option>
+                        <option value="0" {{session('zone_filter')==0?'selected':''}}>{{__('all')}} {{__('zone')}}</option>
                         @foreach(\App\Models\Zone::all() as $zone)
                             <option value="{{$zone['id']}}" {{session('zone_filter')==$zone['id']?'selected':''}}>{{$zone['name']}}</option>
                         @endforeach
@@ -57,8 +57,8 @@
                                     </div>
                                 </div>
                                 <input id="datatableSearch_" type="search" name="search" class="form-control"
-                                       placeholder="{{__('messages.search')}}" aria-label="{{__('messages.search')}}" required>
-                                <button type="submit" class="btn btn-primary">{{__('messages.search')}}</button>
+                                       placeholder="{{__('Search')}}" aria-label="{{__('Search')}}" required>
+                                <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
 
                             </div>
                             <!-- End Search -->
@@ -72,7 +72,7 @@
                                 <div class="d-flex align-items-center">
                                       <span class="font-size-sm mr-3">
                                         <span id="datatableCounter">0</span>
-                                        {{__('messages.selected')}}
+                                        {{__('selected')}}
                                       </span>
                                     {{--<a class="btn btn-sm btn-outline-danger" href="javascript:;">
                                         <i class="tio-delete-outlined"></i> Delete
@@ -88,43 +88,43 @@
                                      "target": "#usersExportDropdown",
                                      "type": "css-animation"
                                    }'>
-                                    <i class="tio-download-to mr-1"></i> {{__('messages.export')}}
+                                    <i class="tio-download-to mr-1"></i> {{__('Export')}}
                                 </a>
 
                                 <div id="usersExportDropdown"
                                      class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-sm-right">
-                                    <span class="dropdown-header">{{__('messages.options')}}</span>
+                                    <span class="dropdown-header">{{__('Options')}}</span>
                                     <a id="export-copy" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/illustrations/copy.svg"
                                              alt="Image Description">
-                                        {{__('messages.copy')}}
+                                        {{__('Copy')}}
                                     </a>
                                     <a id="export-print" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/illustrations/print.svg"
                                              alt="Image Description">
-                                        {{__('messages.print')}}
+                                        {{__('Print')}}
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <span class="dropdown-header">{{__('messages.download')}} {{__('messages.options')}}</span>
+                                    <span class="dropdown-header">{{__('Download options')}}</span>
                                     <a id="export-excel" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/components/excel.svg"
                                              alt="Image Description">
-                                        {{__('messages.excel')}}
+                                        {{__('Excel')}}
                                     </a>
                                     <a id="export-csv" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/components/placeholder-csv-format.svg"
                                              alt="Image Description">
-                                        .{{__('messages.csv')}}
+                                        .{{__('Csv')}}
                                     </a>
                                     <a id="export-pdf" class="dropdown-item" href="javascript:;">
                                         <img class="avatar avatar-xss avatar-4by3 mr-2"
                                              src="{{asset('public/assets/admin')}}/svg/components/pdf.svg"
                                              alt="Image Description">
-                                        {{__('messages.pdf')}}
+                                        {{__('Pdf')}}
                                     </a>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                                      "target": "#showHideDropdown",
                                      "type": "css-animation"
                                    }'>
-                                    <i class="tio-table mr-1"></i> {{__('messages.columns')}}
+                                    <i class="tio-table mr-1"></i> {{__('Columns')}}
                                 </a>
 
                                 <div id="showHideDropdown"
@@ -153,7 +153,7 @@
                                     <div class="card card-sm">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.order')}}</span>
+                                                <span class="mr-2">{{__('Order')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_order">
@@ -167,7 +167,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.date')}}</span>
+                                                <span class="mr-2">{{__('Date')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_date">
@@ -181,7 +181,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.customer')}}</span>
+                                                <span class="mr-2">{{__('customer')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm"
@@ -195,7 +195,7 @@
                                                 <!-- End Checkbox Switch -->
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.restaurant')}}</span>
+                                                <span class="mr-2">{{__('Restaurant')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm"
@@ -210,7 +210,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2 text-capitalize">{{__('messages.payment')}} {{__('messages.status')}}</span>
+                                                <span class="mr-2 text-capitalize">{{__('Payment status')}} </span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm"
@@ -225,7 +225,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.total')}}</span>
+                                                <span class="mr-2">{{__('total')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_total">
@@ -238,7 +238,7 @@
                                                 <!-- End Checkbox Switch -->
                                             </div>
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <span class="mr-2">{{__('messages.order')}} {{__('messages.status')}}</span>
+                                                <span class="mr-2">{{__('Payment status')}} </span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm" for="toggleColumn_order_status">
@@ -252,7 +252,7 @@
                                             </div>
 
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <span class="mr-2">{{__('messages.actions')}}</span>
+                                                <span class="mr-2">{{__('Actions')}}</span>
 
                                                 <!-- Checkbox Switch -->
                                                 <label class="toggle-switch toggle-switch-sm"
@@ -298,17 +298,17 @@
                     <thead class="thead-light">
                     <tr>
                         <th class="">
-                            {{__('messages.#')}}
+                            {{__('#')}}
                         </th>
-                        <th class="table-column-pl-0">{{__('messages.order')}}</th>
-                        <th>{{__('messages.date')}}</th>
-                        <th>{{__('messages.customer')}}</th>
-                        <th>{{__('messages.restaurant')}}</th>
-                        <th>{{__('messages.payment')}} {{__('messages.status')}}</th>
-                        <th>{{__('messages.total')}}</th>
-                        <th>{{__('messages.order')}} {{__('messages.status')}}</th>
-                        <th>{{__('messages.order')}} {{__('messages.type')}}</th>
-                        <th>{{__('messages.actions')}}</th>
+                        <th class="table-column-pl-0">{{__('Order')}}</th>
+                        <th>{{__('Date')}}</th>
+                        <th>{{__('customer')}}</th>
+                        <th>{{__('Restaurant')}}</th>
+                        <th>{{__('Payment status')}} </th>
+                        <th>{{__('total')}}</th>
+                        <th>{{__('Payment status')}} </th>
+                        <th>{{__('Order type')}} </th>
+                        <th>{{__('Actions')}}</th>
                     </tr>
                     </thead>
 
@@ -328,7 +328,7 @@
                                     <a class="text-body text-capitalize"
                                        href="{{route('admin.customer.view',[$order['user_id']])}}">{{$order->customer['f_name'].' '.$order->customer['l_name']}}</a>
                                 @else
-                                    <label class="badge badge-danger">{{__('messages.invalid')}} {{__('messages.customer')}} {{__('messages.data')}}</label>
+                                    <label class="badge badge-danger">{{__('invalid customer data')}}</label>
                                 @endif
                             </td>
                             <td>
@@ -337,11 +337,11 @@
                             <td>
                                 @if($order->payment_status=='paid')
                                     <span class="badge badge-soft-success">
-                                      <span class="legend-indicator bg-success"></span>{{__('messages.paid')}}
+                                      <span class="legend-indicator bg-success"></span>{{__('Paid')}}
                                     </span>
                                 @else
                                     <span class="badge badge-soft-danger">
-                                      <span class="legend-indicator bg-danger"></span>{{__('messages.unpaid')}}
+                                      <span class="legend-indicator bg-danger"></span>{{__('unpaid')}}
                                     </span>
                                 @endif
                             </td>
@@ -349,23 +349,23 @@
                             <td class="text-capitalize">
                                 @if($order['order_status']=='pending')
                                     <span class="badge badge-soft-info ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-info"></span>{{__('messages.pending')}}
+                                      <span class="legend-indicator bg-info"></span>{{__('Pending')}} 
                                     </span>
                                 @elseif($order['order_status']=='confirmed')
                                     <span class="badge badge-soft-info ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-info"></span>{{__('messages.confirmed')}}
+                                      <span class="legend-indicator bg-info"></span>{{__('Confirmed')}} 
                                     </span>
                                 @elseif($order['order_status']=='processing')
                                     <span class="badge badge-soft-warning ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-warning"></span>{{__('messages.processing')}}
+                                      <span class="legend-indicator bg-warning"></span>{{__('Processing')}}
                                     </span>
                                 @elseif($order['order_status']=='picked_up')
                                     <span class="badge badge-soft-warning ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-warning"></span>{{__('messages.out_for_delivery')}}
+                                      <span class="legend-indicator bg-warning"></span>{{__('out_for_delivery')}}
                                     </span>
                                 @elseif($order['order_status']=='delivered')
                                     <span class="badge badge-soft-success ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-success"></span>{{__('messages.delivered')}}
+                                      <span class="legend-indicator bg-success"></span>{{__('Delivered')}}
                                     </span>
                                 @else
                                     <span class="badge badge-soft-danger ml-2 ml-sm-3">
@@ -376,21 +376,21 @@
                             <td class="text-capitalize">
                                 @if($order['order_type']=='take_away')
                                     <span class="badge badge-soft-dark ml-2 ml-sm-3">
-                                        <span class="legend-indicator bg-dark"></span>{{__('messages.take_away')}}
+                                        <span class="legend-indicator bg-dark"></span>{{__('take_away')}}
                                     </span>
                                 @else
                                     <span class="badge badge-soft-success ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-success"></span>{{__('messages.delivery')}}
+                                      <span class="legend-indicator bg-success"></span>{{__('Delivery')}}
                                     </span>
                                 @endif
                             </td>
                             <td>
                                 <a class="btn btn-sm btn-white"
                                            href="{{route('admin.order.details',['id'=>$order['id']])}}"><i
-                                                class="tio-visible"></i> {{__('messages.view')}}</a>
+                                                class="tio-visible"></i> {{__('view')}}</a>
                                 <a class="btn btn-sm btn-white" target="_blank"
                                            href="{{route('admin.order.generate-invoice',[$order['id']])}}"><i
-                                                class="tio-download"></i> {{__('messages.invoice')}}</a>
+                                                class="tio-download"></i> {{__('invoice')}}</a>
                             </td>
                         </tr>
 
@@ -420,7 +420,7 @@
         <div id="datatableFilterSidebar" class="hs-unfold-content_ sidebar sidebar-bordered sidebar-box-shadow" style="display: none">
             <div class="card card-lg sidebar-card sidebar-footer-fixed">
                 <div class="card-header">
-                    <h4 class="card-header-title">{{__('messages.order')}} {{__('messages.filter')}}</h4>
+                    <h4 class="card-header-title">{{__('order filter')}}</h4>
 
                     <!-- Toggle Button -->
                     <a class="js-hs-unfold-invoker_ btn btn-icon btn-xs btn-ghost-dark ml-2" href="javascript:;"
@@ -433,7 +433,7 @@
                 <!-- Body -->
                 <form class="card-body sidebar-body sidebar-scrollbar" action="{{route('admin.order.filter')}}" method="POST" id="order_filter_form">
                     @csrf
-                    <small class="text-cap mb-3">{{__('messages.zone')}}</small>
+                    <small class="text-cap mb-3">{{__('Zone')}}</small>
 
                     <div class="mb-2" style="border: 1px solid #8080803d;border-radius: 5px">
                         <select name="zone[]" id="zone_ids" class="form-control js-select2-custom" multiple="multiple">
@@ -443,7 +443,7 @@
                         </select>
                     </div>
                     <hr class="my-4">
-                    <small class="text-cap mb-3">{{__('messages.restaurant')}}</small>
+                    <small class="text-cap mb-3">{{__('Restaurant')}}</small>
                     <div class="mb-2" style="border: 1px solid #8080803d;border-radius: 5px">
                         <select name="vendor[]" id="vendor_ids" class="form-control js-select2-custom" multiple="multiple">
                         @foreach(\App\Models\Restaurant::whereIn('id', $vendor_ids)->get() as $restaurant)
@@ -454,69 +454,69 @@
 
                     <hr class="my-4">
                     @if($status == 'all')
-                    <small class="text-cap mb-3">{{__('messages.order')}} {{__('messages.status')}}</small>
+                    <small class="text-cap mb-3">{{__('Payment status')}} </small>
 
                     <!-- Custom Checkbox -->
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus2" name="orderStatus[]" class="custom-control-input" {{isset($orderstatus)?(in_array('pending', $orderstatus)?'checked':''):''}} value="pending">
-                        <label class="custom-control-label" for="orderStatus2">{{__('messages.pending')}}</label>
+                        <label class="custom-control-label" for="orderStatus2">{{__('Pending')}} </label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus1" name="orderStatus[]" class="custom-control-input" value="confirmed" {{isset($orderstatus)?(in_array('confirmed', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus1">{{__('messages.confirmed')}}</label>
+                        <label class="custom-control-label" for="orderStatus1">{{__('Confirmed')}} </label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus3" name="orderStatus[]" class="custom-control-input" value="processing" {{isset($orderstatus)?(in_array('processing', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus3">{{__('messages.processing')}}</label>
+                        <label class="custom-control-label" for="orderStatus3">{{__('Processing')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus4" name="orderStatus[]" class="custom-control-input" value="picked_up" {{isset($orderstatus)?(in_array('picked_up', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus4">{{__('messages.out_for_delivery')}}</label>
+                        <label class="custom-control-label" for="orderStatus4">{{__('out_for_delivery')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus5" name="orderStatus[]" class="custom-control-input" value="delivered" {{isset($orderstatus)?(in_array('delivered', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus5">{{__('messages.delivered')}}</label>
+                        <label class="custom-control-label" for="orderStatus5">{{__('Delivered')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus6" name="orderStatus[]" class="custom-control-input" value="returned" {{isset($orderstatus)?(in_array('returned', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus6">{{__('messages.returned')}}</label>
+                        <label class="custom-control-label" for="orderStatus6">{{__('returned')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus7" name="orderStatus[]" class="custom-control-input" value="failed" {{isset($orderstatus)?(in_array('failed', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus7">{{__('messages.failed')}}</label>
+                        <label class="custom-control-label" for="orderStatus7">{{__('failed')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus8" name="orderStatus[]" class="custom-control-input" value="canceled" {{isset($orderstatus)?(in_array('canceled', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus8">{{__('messages.canceled')}}</label>
+                        <label class="custom-control-label" for="orderStatus8">{{__('Canceled')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus9" name="orderStatus[]" class="custom-control-input" value="refund_requested" {{isset($orderstatus)?(in_array('refund_requested', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus9">{{__('messages.refundRequest')}}</label>
+                        <label class="custom-control-label" for="orderStatus9">{{__('refundRequest')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus10" name="orderStatus[]" class="custom-control-input" value="refunded" {{isset($orderstatus)?(in_array('refunded', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus10">{{__('messages.refunded')}}</label>
+                        <label class="custom-control-label" for="orderStatus10">{{__('Refunded')}}</label>
                     </div>
 
                     <hr class="my-4">
 
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="scheduled" name="scheduled" class="custom-control-input" value="1" {{isset($scheduled)?($scheduled==1?'checked':''):''}}>
-                        <label class="custom-control-label text-uppercase" for="scheduled">{{__('messages.scheduled')}}</label>
+                        <label class="custom-control-label text-uppercase" for="scheduled">{{__('Scheduled')}}</label>
                     </div>
                     <hr class="my-4">
-                    <small class="text-cap mb-3">{{__('messages.order')}} {{__('messages.type')}}</small>
+                    <small class="text-cap mb-3">{{__('Order type')}} </small>
                     <div class="custom-control custom-radio mb-2">
                         <input type="radio" id="take_away" name="order_type" class="custom-control-input" value="take_away" {{isset($order_type)?($order_type=='take_away'?'checked':''):''}}>
-                        <label class="custom-control-label text-uppercase" for="take_away">{{__('messages.take_away')}}</label>
+                        <label class="custom-control-label text-uppercase" for="take_away">{{__('take_away')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="radio" id="delivery" name="order_type" class="custom-control-input" value="delivery" {{isset($order_type)?($order_type=='delivery'?'checked':''):''}}>
-                        <label class="custom-control-label text-uppercase" for="delivery">{{__('messages.delivery')}}</label>
+                        <label class="custom-control-label text-uppercase" for="delivery">{{__('Delivery')}}</label>
                     </div>
                     <hr class="my-4">
                     @endif
-                    <small class="text-cap mb-3">{{__('messages.date')}} {{__('messages.between')}}</small>
+                    <small class="text-cap mb-3">{{__('Date between')}}</small>
 
                     <div class="row">
                         <div class="col-12">

@@ -21,10 +21,10 @@
         </td>
         <td>
             <a class="btn btn-sm btn-white"
-                href="{{route('admin.zone.edit',[$zone['id']])}}" title="{{__('messages.edit')}} {{__('messages.zone')}}"><i class="tio-edit"></i>
+                href="{{route('admin.zone.edit',[$zone['id']])}}" title="{{__('edit zone')}}"><i class="tio-edit"></i>
             </a>
             {{--<a class="btn btn-sm btn-white" href="javascript:"
-            onclick="form_alert('zone-{{$zone['id']}}','Want to delete this zone ?')" title="{{__('messages.delete')}} {{__('messages.zone')}}"><i class="tio-delete-outlined"></i>
+            onclick="form_alert('zone-{{$zone['id']}}','Want to delete this zone ?')" title="{{__('delete zone')}}"><i class="tio-delete-outlined"></i>
             </a>
             <form action="{{route('admin.zone.delete',[$zone['id']])}}" method="post" id="zone-{{$zone['id']}}">
                 @csrf @method('delete')

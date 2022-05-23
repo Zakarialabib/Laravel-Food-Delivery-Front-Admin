@@ -81,9 +81,9 @@ class DeliveryManController extends Controller
             'earning' => 'required',
             'password'=>'required|min:6',
         ], [
-            'f_name.required' => trans('messages.first_name_is_required'),
-            'zone_id.required' => trans('messages.select_a_zone'),
-            'earning.required' => trans('messages.select_dm_type')
+            'f_name.required' => __('first_name_is_required'),
+            'zone_id.required' => __('select_a_zone'),
+            'earning.required' => __('select_dm_type')
         ]);
 
         if ($request->has('image')) {
@@ -118,7 +118,7 @@ class DeliveryManController extends Controller
         $dm->password = bcrypt($request->password);
         $dm->save();
 
-        Toastr::success(trans('messages.deliveryman_added_successfully'));
+        Toastr::success(__('deliveryman Added successfully'));
         return redirect('admin/delivery-man/list');
     }
 
@@ -140,8 +140,8 @@ class DeliveryManController extends Controller
                 if(isset($delivery_man->fcm_token))
                 {
                     $data = [
-                        'title' => trans('messages.suspended'),
-                        'description' => trans('messages.your_account_has_been_suspended'),
+                        'title' => __('suspended'),
+                        'description' => __('your_account_has_been_suspended'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'
@@ -160,12 +160,12 @@ class DeliveryManController extends Controller
 
         }
         catch (\Exception $e) {
-            Toastr::warning(trans('messages.push_notification_faild'));
+            Toastr::warning(__('push_notification_faild'));
         }
 
         $delivery_man->save();
 
-        Toastr::success(trans('messages.deliveryman_status_updated'));
+        Toastr::success(__('deliveryman_status_updated'));
         return back();
     }
 
@@ -174,7 +174,7 @@ class DeliveryManController extends Controller
         $review = DMReview::find($request->id);
         $review->status = $request->status;
         $review->save();
-        Toastr::success(trans('messages.review_visibility_updated'));
+        Toastr::success(__('review_visibility_updated'));
         return back();
     }
 
@@ -185,7 +185,7 @@ class DeliveryManController extends Controller
 
         $delivery_man->save();
 
-        Toastr::success(trans('messages.deliveryman_type_updated'));
+        Toastr::success(__('deliveryman_type_updated'));
         return back();
     }
 
@@ -196,7 +196,7 @@ class DeliveryManController extends Controller
         if($request->status == 'approved') $delivery_man->status = 1;
         $delivery_man->save();
 
-        Toastr::success(trans('messages.application_status_updated_successfully'));
+        Toastr::success(__('application_status updated successfully'));
         return back();
     }
 
@@ -210,8 +210,8 @@ class DeliveryManController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:delivery_men,phone,'.$id,
             'earning' => 'required',
         ], [
-            'f_name.required' => trans('messages.first_name_is_required'),
-            'earning.required' => trans('messages.select_dm_type')
+            'f_name.required' => __('first_name_is_required'),
+            'earning.required' => __('select_dm_type')
         ]);
 
         $delivery_man = DeliveryMan::find($id);
@@ -250,7 +250,7 @@ class DeliveryManController extends Controller
         $delivery_man->earning = $request->earning;
         $delivery_man->password = strlen($request->password)>1?bcrypt($request->password):$delivery_man['password'];
         $delivery_man->save();
-        Toastr::success(trans('messages.deliveryman_updated_successfully'));
+        Toastr::success(__('deliveryman updated successfully'));
         return redirect('admin/delivery-man/list');
     }
 
@@ -268,7 +268,7 @@ class DeliveryManController extends Controller
         }
 
         $delivery_man->delete();
-        Toastr::success(trans('messages.deliveryman_deleted_successfully'));
+        Toastr::success(__('deliveryman deleted successfully'));
         return back();
     }
 

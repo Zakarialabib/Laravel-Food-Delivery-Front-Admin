@@ -17,7 +17,7 @@ class CouponController extends Controller
     {
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -79,26 +79,26 @@ class CouponController extends Controller
                 case 406:
                     return response()->json([
                         'errors' => [
-                            ['code' => 'coupon', 'message' => trans('messages.coupon_usage_limit_over')]
+                            ['code' => 'coupon', 'message' => __('Coupon usage_limit_over')]
                         ]
                     ], 406);
                 case 407:
                     return response()->json([
                         'errors' => [
-                            ['code' => 'coupon', 'message' => trans('messages.coupon_expire')]
+                            ['code' => 'coupon', 'message' => __('Coupon expire')]
                         ]
                     ], 407);
                 default:
                     return response()->json([
                         'errors' => [
-                            ['code' => 'coupon', 'message' => trans('messages.not_found')]                            
+                            ['code' => 'coupon', 'message' => __('Not found')]                            
                         ]
                     ], 404);
                 }
             } else {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'coupon', 'message' => trans('messages.not_found')]
+                        ['code' => 'coupon', 'message' => __('Not found')]
                     ]
                 ], 404);
             }

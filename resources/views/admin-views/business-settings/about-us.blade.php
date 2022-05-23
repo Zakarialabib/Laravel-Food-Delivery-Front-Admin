@@ -12,7 +12,7 @@
         <div class="page-header_ pb-4">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.about_us')}}</h1>
+                    <h1 class="page-header-title">{{__('about_us')}}</h1>
                 </div>
             </div>
         </div>

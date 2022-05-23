@@ -16,7 +16,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-edit"></i>{{__('messages.update')}} {{__('messages.banner')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-edit"></i>{{__('update banner')}}</h1>
                 </div>
             </div>
         </div>
@@ -30,13 +30,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.title')}}</label>
-                                        <input type="text" name="title" class="form-control" placeholder="{{__('messages.new_banner')}}" value="{{$banner->title}}" required>
+                                        <label class="input-label" for="exampleFormControlInput1">{{__('Title')}}</label>
+                                        <input type="text" name="title" class="form-control" placeholder="{{__('new_banner')}}" value="{{$banner->title}}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label class="input-label" for="title">{{__('messages.zone')}}</label>
+                                        <label class="input-label" for="title">{{__('Zone')}}</label>
                                         <select name="zone_id" id="zone" class="form-control js-select2-custom" onchange="getRequest('{{url('/')}}/admin/food/get-foods?zone_id='+this.value,'choice_item')">
-                                            <option  disabled selected>---{{__('messages.select')}}---</option>
+                                            <option  disabled selected>---{{__('Select')}}---</option>
                                             @php($zones=\App\Models\Zone::all())
                                             @foreach($zones as $zone)
                                                 @if(isset(auth('admin')->user()->zone_id))
@@ -50,14 +50,14 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.banner')}} {{__('messages.type')}}</label>
+                                        <label class="input-label" for="exampleFormControlInput1">{{__('banner type')}}</label>
                                         <select name="banner_type" class="form-control" onchange="banner_type_change(this.value)">
-                                            <option value="restaurant_wise" {{$banner->type == 'restaurant_wise'? 'selected':'' }}>{{__('messages.restaurant')}} {{__('messages.wise')}}</option>
-                                            <option value="item_wise" {{$banner->type == 'item_wise'? 'selected':'' }}>{{__('messages.food')}} {{__('messages.wise')}}</option>
+                                            <option value="restaurant_wise" {{$banner->type == 'restaurant_wise'? 'selected':'' }}>{{__('restaurant wise')}}</option>
+                                            <option value="item_wise" {{$banner->type == 'item_wise'? 'selected':'' }}>{{__('Food wise')}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group" id="restaurant_wise">
-                                        <label class="input-label" for="exampleFormControlSelect1">{{__('messages.restaurant')}}<span
+                                        <label class="input-label" for="exampleFormControlSelect1">{{__('Restaurant')}}<span
                                                 class="input-label-secondary"></span></label>
                                         <select name="restaurant_id" class="js-data-example-ajax" id="resturant_ids"  title="Select Restaurant">
                                         @if($banner->type=='restaurant_wise')
@@ -69,20 +69,20 @@
                                         </select>
                                     </div>
                                     <div class="form-group" id="item_wise">
-                                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.select')}} {{__('messages.food')}}</label>
-                                        <select name="item_id" id="choice_item" class="form-control js-select2-custom" placeholder="{{__('messages.select_food')}}">
+                                        <label class="input-label" for="exampleFormControlInput1">{{__('Select food')}}</label>
+                                        <select name="item_id" id="choice_item" class="form-control js-select2-custom" placeholder="{{__('Select food')}}">
                                             
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>{{__('messages.campaign')}} {{__('messages.image')}}</label>
-                                        <small style="color: red">* ( {{__('messages.ratio')}} 3:1 )</small>
+                                        <label>{{__('campaign image')}}</label>
+                                        <small style="color: red">* ( {{__('ratio')}} 3:1 )</small>
                                         <div class="custom-file">
                                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                            <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                                            <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                                         </div>
                                     </div>
                                     <div class="form-group" style="margin-bottom:0%;">
@@ -220,7 +220,7 @@
                             });
                         }
                     } else {
-                        toastr.success('{{__('messages.banner_updated_successfully')}}', {
+                        toastr.success('{{__('banner updated successfully')}}', {
                             CloseButton: true,
                             ProgressBar: true
                         });

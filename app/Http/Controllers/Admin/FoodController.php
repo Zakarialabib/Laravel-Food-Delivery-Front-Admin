@@ -40,10 +40,10 @@ class FoodController extends Controller
             'description.*' => 'max:1000',
             'veg'=>'required'
         ], [
-            'description.*.max' => trans('messages.description_length_warning'),            
-            'name.0.required' => trans('messages.item_name_required'),
-            'category_id.required' => trans('messages.category_required'),
-            'veg.required'=>trans('messages.item_type_is_required')
+            'description.*.max' => __('description_length_warning'),            
+            'name.0.required' => __('item_name_required'),
+            'category_id.required' => __('Category required '),
+            'veg.required'=>__('item_type_is_required')
         ]);
 
         if ($request['discount_type'] == 'percent') {
@@ -53,7 +53,7 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', trans('messages.discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -92,7 +92,7 @@ class FoodController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', trans('messages.attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -182,7 +182,7 @@ class FoodController extends Controller
         $product = Food::withoutGlobalScope(RestaurantScope::class)->withoutGlobalScope('translate')->findOrFail($id);
         if(!$product)
         {
-            Toastr::error(trans('messages.food').' '.trans('messages.not_found'));
+            Toastr::error(__('food').' '.__('Not found'));
             return back();
         }
         $product_category = json_decode($product->category_ids);
@@ -195,7 +195,7 @@ class FoodController extends Controller
         $product = Food::withoutGlobalScope(RestaurantScope::class)->findOrFail($request->id);
         $product->status = $request->status;
         $product->save();
-        Toastr::success(trans('messages.food_status_updated'));
+        Toastr::success(__('food_status_updated'));
         return back();
     }
 
@@ -213,10 +213,10 @@ class FoodController extends Controller
             'description.*' => 'max:1000',
             'discount' => 'required|numeric|min:0',
         ], [
-            'description.*.max' => trans('messages.description_length_warning'),            
-            'name.0.required' => trans('messages.item_name_required'),
-            'category_id.required' => trans('messages.category_required'),
-            'veg.required'=>trans('messages.item_type_is_required'),
+            'description.*.max' => __('description_length_warning'),            
+            'name.0.required' => __('item_name_required'),
+            'category_id.required' => __('Category required '),
+            'veg.required'=>__('item_type_is_required'),
         ]);
 
         if ($request['discount_type'] == 'percent') {
@@ -226,7 +226,7 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', trans('messages.discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -266,7 +266,7 @@ class FoodController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', trans('messages.attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -355,7 +355,7 @@ class FoodController extends Controller
         }
         $product->translations()->delete();
         $product->delete();
-        Toastr::success(trans('messages.product_deleted_successfully'));
+        Toastr::success(__('product deleted successfully'));
         return back();
     }
 
@@ -518,7 +518,7 @@ class FoodController extends Controller
         $review = Review::find($request->id);
         $review->status = $request->status;
         $review->save();
-        Toastr::success(trans('messages.review_visibility_updated'));
+        Toastr::success(__('review_visibility_updated'));
         return back();
     }
 
@@ -532,7 +532,7 @@ class FoodController extends Controller
         try {
             $collections = (new FastExcel)->import($request->file('products_file'));
         } catch (\Exception $exception) {
-            Toastr::error(trans('messages.you_have_uploaded_a_wrong_format_file'));
+            Toastr::error(__('you_have_uploaded_a_wrong_format_file'));
             return back();
         }
 
@@ -540,7 +540,7 @@ class FoodController extends Controller
         $skip = ['youtube_video_url'];
         foreach ($collections as $collection) {
                 if ($collection['name'] === "" || $collection['category_id'] === "" || $collection['sub_category_id'] === "" || $collection['price'] === "" || empty($collection['available_time_starts']) === "" || empty($collection['available_time_ends']) || $collection['restaurant_id'] === "") {
-                    Toastr::error(trans('messages.please_fill_all_required_fields'));
+                    Toastr::error(__('please_fill_all_required_fields'));
                     return back();
                 }
 
@@ -573,11 +573,11 @@ class FoodController extends Controller
             DB::commit();
         }catch(\Exception $e){
             DB::rollBack();
-            Toastr::error(trans('messages.failed_to_import_data'));
+            Toastr::error(__('failed_to_import_data'));
             return back();
         }
         
-        Toastr::success(trans('messages.product_imported_successfully', ['count'=>count($data)]));
+        Toastr::success(__('product imported successfully', ['count'=>count($data)]));
         return back();
     }
 

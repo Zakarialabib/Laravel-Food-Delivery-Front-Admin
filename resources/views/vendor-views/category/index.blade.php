@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.category')}} {{__('messages.list')}}</h1>
+                    <h1 class="page-header-title">{{__('Category list')}}</h1>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h5>{{__('messages.category')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$categories->total()}}</span></h5>
+                        <h5>{{__('Category list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$categories->total()}}</span></h5>
                         {{--<form  action="javascript:"  id="dataSearch">
                             @csrf
                             <!-- Search -->
@@ -31,7 +31,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input type="search" name="search" class="form-control" placeholder="{{__('messages.search_categories')}}" aria-label="{{__('messages.search_categories')}}">
+                                <input type="search" name="search" class="form-control" placeholder="{{__('search_categories')}}" aria-label="{{__('search_categories')}}">
                             </div>
                             <!-- End Search -->
                         </form>--}}
@@ -49,9 +49,9 @@
                                 }'>
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>{{__('messages.#')}}</th>
-                                        <th>{{__('messages.id')}}</th>
-                                        <th>{{__('messages.name')}}</th>
+                                        <th>{{__('#')}}</th>
+                                        <th>{{__('id')}}</th>
+                                        <th>{{__('Name')}}</th>
                                     </tr>
                                 </thead>
 

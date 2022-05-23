@@ -42,13 +42,13 @@
 <div class="modal-body">
     <div class="d-flex flex-row">
         @if(config('toggle_veg_non_veg'))
-            <span class="badge badge-{{$product->veg?'success':'danger'}} position-absolute">{{$product->veg?__('messages.veg'):__('messages.non_veg')}}</span>
+            <span class="badge badge-{{$product->veg?'success':'danger'}} position-absolute">{{$product->veg?__('Veg'):__('Non veg')}}</span>
         @endif
         <!-- Product gallery-->
         <div class="d-flex align-items-center justify-content-center active" style="height:9.5rem;">
             <img class="img-responsive" style="height:100%;width:auto;overflow:hidden;border-radius: 5%;"
                 src="{{asset('storage/app/public/product')}}/{{$product['image']}}" 
-                onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
+                onerror="this.src='data:image/svg+xml,%3Csvg%20width%3D%22344%22%20height%3D%22194%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22M-1%200h344v194H-1z%22%2F%3E%3C%2Fdefs%3E%3Cg%20transform%3D%22translate(1)%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cmask%20id%3D%22b%22%20fill%3D%22%23fff%22%3E%3Cuse%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fmask%3E%3Cuse%20fill%3D%22%23BDBDBD%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cg%20mask%3D%22url(%23b)%22%3E%3Cpath%20d%3D%22M173.65%2069.238L198.138%2027%20248%20112.878h-49.3c.008.348.011.697.011%201.046%200%2028.915-23.44%2052.356-52.355%2052.356C117.44%20166.28%2094%20142.84%2094%20113.924c0-28.915%2023.44-52.355%2052.356-52.355%2010%200%2019.347%202.804%2027.294%207.669zm0%200l-25.3%2043.64h50.35c-.361-18.478-10.296-34.61-25.05-43.64z%22%20fill%3D%22%23757575%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'"
                     data-zoom="{{asset('storage/app/public/product')}}/{{$product['image']}}"
                     alt="Product image" width="">
             <div class="cz-image-zoom-pane"></div>
@@ -70,7 +70,7 @@
 
             @if($product->discount > 0 || \App\CentralLogics\Helpers::get_restaurant_discount($product->restaurant))
                 <div class="mb-3 text-dark">
-                    <strong>{{__('messages.discount')}} : </strong>
+                    <strong>{{__('Discount')}} : </strong>
                     <strong id="set-discount-amount">{{\App\CentralLogics\Helpers::get_product_discount($product)}}</strong>
                 </div>
             @endif
@@ -80,7 +80,7 @@
     </div>
     <div class="row pt-2">
         <div class="col-12">
-            <h2>{{__('messages.description')}}</h2>
+            <h2>{{__('description')}}</h2>
             <span class="d-block text-dark text-break">
                 {!! $product->description !!}
             </span>
@@ -107,7 +107,7 @@
 
                 <!-- Quantity + Add to cart -->
                 <div class="d-flex justify-content-between">
-                    <div class="product-description-label mt-2 text-dark h3">{{__('messages.quantity')}}:</div>
+                    <div class="product-description-label mt-2 text-dark h3">{{__('quantity')}}:</div>
                     <div class="product-quantity d-flex align-items-center">
                         <div class="input-group input-group--style-2 pr-3"
                                 style="width: 160px;">
@@ -132,7 +132,7 @@
                 </div>
                 @php($add_ons = json_decode($product->add_ons))
                 @if(count($add_ons)>0)
-                <div class="h3 p-0 pt-2">{{ __('messages.addon') }}
+                <div class="h3 p-0 pt-2">{{ __('addon') }}
                 </div>
                 
                 <div class="d-flex justify-content-left flex-wrap">
@@ -158,7 +158,7 @@
                 @endif
                 <div class="row no-gutters d-none mt-2 text-dark" id="chosen_price_div" >
                     <div class="col-2">
-                        <div class="product-description-label">{{__('messages.Total Price')}}:</div>
+                        <div class="product-description-label">{{__('Total Price')}}:</div>
                     </div>
                     <div class="col-10">
                         <div class="product-price">
@@ -173,7 +173,7 @@
                             type="button"
                             style="width:37%; height: 45px">
                             <i class="tio-shopping-cart"></i>
-                        {{__('messages.update')}}
+                        {{__('Update')}}
                     </button>
                 </div>
             </form>

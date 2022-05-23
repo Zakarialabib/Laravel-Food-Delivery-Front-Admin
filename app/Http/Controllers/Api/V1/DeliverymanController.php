@@ -97,7 +97,7 @@ class DeliverymanController extends Controller
         $dm = DeliveryMan::with(['rating'])->where(['auth_token' => $request['token']])->first();
         $dm->active = $dm->active?0:1;
         $dm->save();
-        return response()->json(['message' => trans('messages.active_status_updated')], 200);
+        return response()->json(['message' => __('active_status_updated')], 200);
     }
 
     public function get_current_orders(Request $request)
@@ -168,7 +168,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order', 'message' => trans('messages.can_not_accept')]
+                    ['code' => 'order', 'message' => __('can_not_accept')]
                 ]
             ], 404);
         }
@@ -176,7 +176,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code' => 'dm_maximum_order_exceed', 'message'=> trans('messages.dm_maximum_order_exceed_warning')]
+                    ['code' => 'dm_maximum_order_exceed', 'message'=> __('dm_maximum_order_exceed_warning')]
                 ]
             ], 405);
         }
@@ -197,7 +197,7 @@ class DeliverymanController extends Controller
             if($value)
             {
                 $data = [
-                    'title' =>trans('messages.order_push_title'),
+                    'title' =>__('Order push title'),
                     'description' => $value,
                     'order_id' => $order['id'],
                     'image' => '',
@@ -265,7 +265,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order-confirmation-model', 'message' => trans('messages.order_confirmation_warning')]
+                    ['code' => 'order-confirmation-model', 'message' => __('order_confirmation_warning')]
                 ]
             ], 403);
         }
@@ -274,7 +274,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'status', 'message' => trans('messages.you_can_not_cancel_a_order')]
+                    ['code' => 'status', 'message' => __('you_can_not_cancel_a_order')]
                 ]
             ], 403);
         }
@@ -283,7 +283,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'delivery-man', 'message' => trans('messages.order_can_not_cancle_after_confirm')]
+                    ['code' => 'delivery-man', 'message' => __('order_can_not_cancle_after_confirm')]
                 ]
             ], 403);
         }
@@ -310,7 +310,7 @@ class DeliverymanController extends Controller
                 {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'error', 'message' => trans('messages.faield_to_create_order_transaction')]
+                            ['code' => 'error', 'message' => __('faield_to_create_order_transaction')]
                         ]
                     ], 406);
                 }
@@ -377,7 +377,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order', 'message' => trans('messages.not_found')]
+                    ['code' => 'order', 'message' => __('Not found')]
                 ]
             ], 404);
         }

@@ -22,8 +22,8 @@ class CustomRoleController extends Controller
             'name' => 'required|unique:admin_roles|max:191',
             'modules'=>'required|array|min:1'
         ],[
-            'name.required'=>trans('messages.Role name is required!'),
-            'modules.required'=>trans('messages.Please select atleast one module')
+            'name.required'=>__('Role name is required!'),
+            'modules.required'=>__('Please select atleast one module')
         ]);
         DB::table('admin_roles')->insert([
             'name'=>$request->name,
@@ -33,7 +33,7 @@ class CustomRoleController extends Controller
             'updated_at'=>now()
         ]);
 
-        Toastr::success(trans('messages.role_added_successfully'));
+        Toastr::success(__('role Added successfully'));
         return back();
     }
 
@@ -57,8 +57,8 @@ class CustomRoleController extends Controller
             'name' => 'required|max:191|unique:admin_roles,name,'.$id,
             'modules'=>'required|array|min:1'
         ],[
-            'name.required'=>trans('messages.Role name is required!'),
-            'modules.required'=>trans('messages.Please select atleast one module')
+            'name.required'=>__('Role name is required!'),
+            'modules.required'=>__('Please select atleast one module')
         ]);
 
         DB::table('admin_roles')->where(['id'=>$id])->update([
@@ -68,7 +68,7 @@ class CustomRoleController extends Controller
             'updated_at'=>now()
         ]);
 
-        Toastr::success(trans('messages.role_updated_successfully'));
+        Toastr::success(__('role updated successfully'));
         return redirect()->route('admin.custom-role.create');
     }
     public function distroy($id)
@@ -78,7 +78,7 @@ class CustomRoleController extends Controller
             return view('errors.404');
         }
         $role=AdminRole::where(['id'=>$id])->delete();
-        Toastr::success(trans('messages.role_deleted_successfully'));
+        Toastr::success(__('role deleted successfully'));
         return back();
     }
 

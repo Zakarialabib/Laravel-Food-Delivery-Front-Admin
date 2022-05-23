@@ -72,7 +72,7 @@ class AccountTransactionController extends Controller
         }
 
         if ($current_balance < $request['amount']) {
-            $validator->getMessageBag()->add('amount', trans('messages.insufficient_balance'));
+            $validator->getMessageBag()->add('amount', __('insufficient_balance'));
             return response()->json(['errors' => Helpers::error_processor($validator)]);
         }
 
@@ -149,7 +149,7 @@ class AccountTransactionController extends Controller
     public function destroy($id)
     {
         AccountTransaction::where('id', $id)->delete();
-        Toastr::success(trans('messages.account_transaction_removed'));
+        Toastr::success(__('account_transaction_removed'));
         return back();
     }
 }

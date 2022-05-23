@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('messages.profile_settings'))
+@section('title',__('Profile settings'))
 
 @push('css_or_js')
 <link href="{{asset('public/assets/back-end/css/croppie.css')}}" rel="stylesheet">
@@ -14,12 +14,12 @@
         <div class="page-header">
             <div class="row align-items-end">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.Settings')}}</h1>
+                    <h1 class="page-header-title">{{__('Settings')}}</h1>
                 </div>
 
                 <div class="col-sm-auto">
                     <a class="btn btn-primary" href="{{route('seller.dashboard')}}">
-                        <i class="tio-home mr-1"></i> {{__('messages.Dashboard')}}
+                        <i class="tio-home mr-1"></i> {{__('Dashboard')}}
                     </a>
                 </div>
             </div>
@@ -55,12 +55,12 @@
                             class="js-sticky-block js-scrollspy navbar-nav navbar-nav-lg nav-tabs card card-navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link active" href="javascript:" id="generalSection">
-                                    <i class="tio-user-outlined nav-icon"></i>{{__('messages.Basic')}} {{__('messages.information')}}
+                                    <i class="tio-user-outlined nav-icon"></i>{{__('Basic information')}}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="javascript:" id="passwordSection">
-                                    <i class="tio-lock-outlined nav-icon"></i> {{__('messages.Password')}}
+                                    <i class="tio-lock-outlined nav-icon"></i> {{__('Password')}}
                                 </a>
                             </li>
                         </ul>
@@ -98,7 +98,7 @@
                     <!-- Card -->
                     <div class="card mb-3 mb-lg-5">
                         <div class="card-header">
-                            <h2 class="card-title h4">{{__('messages.Basic')}} {{__('messages.information')}}</h2>
+                            <h2 class="card-title h4">{{__('Basic information')}}</h2>
                         </div>
 
                         <!-- Body -->
@@ -106,19 +106,19 @@
                             <!-- Form -->
                             <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="firstNameLabel" class="col-sm-3 col-form-label input-label">{{__('messages.Full')}} {{__('messages.name')}}  <i
+                                <label for="firstNameLabel" class="col-sm-3 col-form-label input-label">{{__('Full name')}}  <i
                                         class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
                                         data-placement="top"
                                         title="Display name"></i></label>
 
                                 <div class="col-sm-9 row">
                                     <div class="col-md-6">
-                                        <label for="name">First {{__('messages.Name')}}  <span class="text-danger">*</span></label>
+                                        <label for="name">First {{__('Name')}}  <span class="text-danger">*</span></label>
                                         <input type="text" name="f_name" value="{{$data->f_name}}" class="form-control" id="name"
                                                required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="name">{{__('messages.Last')}} {{__('messages.Name')}}  <span class="text-danger">*</span></label>
+                                        <label for="name">{{__('Last name')}}  <span class="text-danger">*</span></label>
                                         <input type="text" name="l_name" value="{{$data->l_name}}" class="form-control" id="name"
                                                required>
                                     </div>
@@ -128,7 +128,7 @@
 
                             <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="phoneLabel" class="col-sm-3 col-form-label input-label">{{__('messages.Phone')}} <span
+                                <label for="phoneLabel" class="col-sm-3 col-form-label input-label">{{__('Phone')}} <span
                                         class="input-label-secondary">(Optional)</span></label>
 
                                 <div class="col-sm-9">
@@ -143,12 +143,12 @@
                             <!-- End Form Group -->
 
                             <div class="row form-group">
-                                <label for="newEmailLabel" class="col-sm-3 col-form-label input-label">{{__('messages.Email')}}</label>
+                                <label for="newEmailLabel" class="col-sm-3 col-form-label input-label">{{__('Email')}}</label>
 
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" name="email" id="newEmailLabel"
                                            value="{{$data->email}}"
-                                           placeholder="{{__('messages.enter_new_email_address')}}" aria-label="{{__('messages.enter_new_email_address')}}">
+                                           placeholder="{{__('enter_new_email_address')}}" aria-label="{{__('enter_new_email_address')}}">
                                 </div>
                             </div>
 
@@ -159,7 +159,7 @@
                                     <div class="custom-file">
                                         <input type="file" name="image" id="customFileUpload" class="custom-file-input"
                                             accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                        <label class="custom-file-label" for="customFileUpload">{{__('messages.image')}} {{__('messages.Upload')}}</label>
+                                        <label class="custom-file-label" for="customFileUpload">{{__('image Upload')}}</label>
                                     </div>
                                 </div>
                                 </div>
@@ -178,7 +178,7 @@
                 <!-- Card -->
                 <div id="passwordDiv" class="card mb-3 mb-lg-5">
                     <div class="card-header">
-                        <h4 class="card-title">{{__('messages.Change')}} {{__('messages.your')}} {{__('messages.password')}}</h4>
+                        <h4 class="card-title">{{__('Change your password')}}</h4>
                     </div>
 
                     <!-- Body -->
@@ -190,13 +190,13 @@
 
                         <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="newPassword" class="col-sm-3 col-form-label input-label"> {{__('messages.New')}}
-                                    {{__('messages.password')}}</label>
+                                <label for="newPassword" class="col-sm-3 col-form-label input-label"> {{__('New')}}
+                                    {{__('Password')}}</label>
 
                                 <div class="col-sm-9">
                                     <input type="password" class="js-pwstrength form-control" name="password"
-                                           id="newPassword" placeholder="{{__('messages.enter_new_password')}}"
-                                           aria-label="{{__('messages.enter_new_password')}}"
+                                           id="newPassword" placeholder="{{__('enter_new_password')}}"
+                                           aria-label="{{__('enter_new_password')}}"
                                            data-hs-pwstrength-options='{
                                            "ui": {
                                              "container": "#changePasswordForm",
@@ -216,21 +216,21 @@
 
                             <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="confirmNewPasswordLabel" class="col-sm-3 col-form-label input-label"> {{__('messages.Confirm')}}
-                                    {{__('messages.password')}} </label>
+                                <label for="confirmNewPasswordLabel" class="col-sm-3 col-form-label input-label"> {{__('Confirm')}}
+                                    {{__('Password')}} </label>
 
                                 <div class="col-sm-9">
                                     <div class="mb-3">
                                         <input type="password" class="form-control" name="confirm_password"
-                                               id="confirmNewPasswordLabel" placeholder="{{__('messages.confirm_new_password')}}"
-                                               aria-label="{{__('messages.confirm_new_password')}}">
+                                               id="confirmNewPasswordLabel" placeholder="{{__('Confirm new password')}}"
+                                               aria-label="{{__('Confirm new password')}}">
                                     </div>
                                 </div>
                             </div>
                             <!-- End Form Group -->
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('changePasswordForm','{{__('messages.want_to_update_password')}}')":"call_demo()"}}" class="btn btn-primary">{{__('messages.Save')}} {{__('messages.changes')}}</button>
+                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('changePasswordForm','{{__('want_to_update_password')}}')":"call_demo()"}}" class="btn btn-primary">{{__('Save changes')}}</button>
                             </div>
                         </form>
                         <!-- End Form -->

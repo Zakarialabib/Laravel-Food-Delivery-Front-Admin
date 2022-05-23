@@ -23,7 +23,7 @@ class DeliveryManController extends Controller
             {
                 return response()->json([
                     'errors'=>[
-                        ['code'=>'unauthorized', 'message'=>trans('messages.permission_denied')]
+                        ['code'=>'unauthorized', 'message'=>__('permission_denied')]
                     ]
                 ],403);
             }
@@ -141,7 +141,7 @@ class DeliveryManController extends Controller
         $dm->password = bcrypt($request->password);
         $dm->save();
 
-        return response()->json(['message' => trans('messages.deliveryman_added_successfully')], 200);
+        return response()->json(['message' => __('deliveryman Added successfully')], 200);
     }
 
 
@@ -161,7 +161,7 @@ class DeliveryManController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'delivery_man_id', 'message'=>trans('messages.not_found')]
+                    ['code'=>'delivery_man_id', 'message'=>__('Not found')]
                 ]
             ],404);
         }
@@ -174,8 +174,8 @@ class DeliveryManController extends Controller
                 if(isset($delivery_man->fcm_token))
                 {
                     $data = [
-                        'title' => trans('messages.suspended'),
-                        'description' => trans('messages.your_account_has_been_suspended'),
+                        'title' => __('suspended'),
+                        'description' => __('your_account_has_been_suspended'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'
@@ -199,7 +199,7 @@ class DeliveryManController extends Controller
 
         $delivery_man->save();
 
-        return response()->json(['message' => trans('messages.deliveryman_status_updated')], 200);
+        return response()->json(['message' => __('deliveryman_status_updated')], 200);
     }
 
     public function update(Request $request, $id)
@@ -220,7 +220,7 @@ class DeliveryManController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'delivery_man_id', 'message'=>trans('messages.not_found')]
+                    ['code'=>'delivery_man_id', 'message'=>__('Not found')]
                 ]
             ],404);
         }
@@ -258,7 +258,7 @@ class DeliveryManController extends Controller
         $delivery_man->password = strlen($request->password)>1?bcrypt($request->password):$delivery_man['password'];
         $delivery_man->save();
 
-        return response()->json(['message' => trans('messages.deliveryman_updated_successfully')], 200);
+        return response()->json(['message' => __('deliveryman updated successfully')], 200);
 
         return redirect('vendor-panel/delivery-man/list');
     }
@@ -278,7 +278,7 @@ class DeliveryManController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'delivery_man_id', 'message'=>trans('messages.not_found')]
+                    ['code'=>'delivery_man_id', 'message'=>__('Not found')]
                 ]
             ],404);
         }
@@ -294,6 +294,6 @@ class DeliveryManController extends Controller
 
         $delivery_man->delete();
 
-        return response()->json(['message' => trans('messages.deliveryman_deleted_successfully')], 200);
+        return response()->json(['message' => __('deliveryman deleted successfully')], 200);
     }
 }

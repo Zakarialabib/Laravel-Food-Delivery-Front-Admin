@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>{{__('messages.error')}} 500 | {{\App\Models\BusinessSetting::where(['key'=>'business_name'])->first()->value??'Stack TIKTAK'}}</title>
+    <title>{{__('error')}} 500 | {{\App\Models\BusinessSetting::where(['key'=>'business_name'])->first()->value??'Stack TIKTAK'}}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
@@ -36,8 +36,8 @@
 
             <div class="col-sm-6 col-md-4 text-center text-sm-left">
                 <h1 class="display-1 mb-0">500</h1>
-                <p class="lead">{{__('messages.500_warning_message')}}</p>
-                <a class="btn btn-primary" href="{{url()->current()}}">{{__('messages.reload_page')}}</a>
+                <p class="lead">{{__('500_warning_message')}}</p>
+                <a class="btn btn-primary" href="{{url()->current()}}">{{__('reload_page')}}</a>
             </div>
         </div>
         <!-- End Row -->
@@ -49,7 +49,7 @@
 <div class="footer text-center">
     <ul class="list-inline list-separator">
         <li class="list-inline-item">
-            <a class="list-separator-link" target="_blank" href="https://6amtech.com/">{{\App\Models\BusinessSetting::where(['key'=>'business_name'])->first()->value??'Stack TIKTAK'}} {{__('messages.support')}}</a>
+            <a class="list-separator-link" target="_blank" href="https://6amtech.com/">{{\App\Models\BusinessSetting::where(['key'=>'business_name'])->first()->value??'Stack TIKTAK'}} {{__('support')}}</a>
         </li>
     </ul>
 </div>

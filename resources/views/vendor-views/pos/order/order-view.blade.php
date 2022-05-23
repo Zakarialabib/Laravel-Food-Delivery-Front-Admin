@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('order ').__('messages.details'))
+@section('title',__('order ').__('Details'))
 
 @push('css_or_js')
 
@@ -17,45 +17,45 @@
                             <li class="breadcrumb-item">
                                 <a class="breadcrumb-link"
                                    href="{{route('vendor.order.list',['status'=>'all'])}}">
-                                    {{__('messages.orders')}}
+                                    {{__('Orders')}}
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{__('messages.order')}} {{__('messages.details')}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('Order details')}}</li>
                         </ol>
                     </nav>
 
                     <div class="d-sm-flex align-items-sm-center">
-                        <h1 class="page-header-title">{{__('messages.order')}} #{{$order['id']}}</h1>
+                        <h1 class="page-header-title">{{__('Order')}} #{{$order['id']}}</h1>
 
                         @if($order['payment_status']=='paid')
                             <span class="badge badge-soft-success ml-sm-3">
-                                <span class="legend-indicator bg-success"></span>{{__('messages.paid')}}
+                                <span class="legend-indicator bg-success"></span>{{__('Paid')}}
                             </span>
                         @else
                             <span class="badge badge-soft-danger ml-sm-3">
-                                <span class="legend-indicator bg-danger"></span>{{__('messages.unpaid')}}
+                                <span class="legend-indicator bg-danger"></span>{{__('Unpaid')}}
                             </span>
                         @endif
 
                         @if($order['order_status']=='pending')
                             <span class="badge badge-soft-info ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-info text"></span>{{__('messages.pending')}}
+                              <span class="legend-indicator bg-info text"></span>{{__('Pending')}}
                             </span>
                         @elseif($order['order_status']=='confirmed')
                             <span class="badge badge-soft-info ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-info"></span>{{__('messages.confirmed')}}
+                              <span class="legend-indicator bg-info"></span>{{__('Confirmed')}}
                             </span>
                         @elseif($order['order_status']=='processing')
                             <span class="badge badge-soft-warning ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-warning"></span>{{__('messages.cooking')}}
+                              <span class="legend-indicator bg-warning"></span>{{__('Cooking')}}
                             </span>
                         @elseif($order['order_status']=='picked_up')
                             <span class="badge badge-soft-warning ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-warning"></span>{{__('messages.out_for_delivery')}}
+                              <span class="legend-indicator bg-warning"></span>{{__('Out for delivery')}}
                             </span>
                         @elseif($order['order_status']=='delivered')
                             <span class="badge badge-soft-success ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-success"></span>{{__('messages.delivered')}}
+                              <span class="legend-indicator bg-success"></span>{{__('Delivered')}}
                             </span>
                         @else
                             <span class="badge badge-soft-danger ml-2 ml-sm-3 text-capitalize">
@@ -69,19 +69,19 @@
 
                     <div class="mt-2">
                         <a class="text-body mr-3" href="javascript:;" data-toggle="modal" data-target="#print-invoice">
-                            <i class="tio-print mr-1"></i> {{__('messages.print')}} {{__('messages.invoice')}}
+                            <i class="tio-print mr-1"></i> {{__('Print invoice')}}
                         </a>
 
                         @php($order_delivery_verification = (boolean)\App\Models\BusinessSetting::where(['key' => 'order_delivery_verification'])->first()->value)
                         <div class="hs-unfold float-right">
                             @if($order['order_status']=='pending' && $order['order_type']=='take_away')
-                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'confirmed'])}}','Change status to confirmed ?')" href="javascript:">{{__('messages.confirm_this_order')}}</a>
+                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'confirmed'])}}','Change status to confirmed ?')" href="javascript:">{{__('Confirm this order')}}</a>
                             @elseif ($order['order_status']=='confirmed' || $order['order_status']=='accepted')
-                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'processing'])}}','Change status to cooking ?')" href="javascript:">{{__('messages.Proceed_for_cooking')}}</a>
+                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'processing'])}}','Change status to cooking ?')" href="javascript:">{{__('Proceed for cooking')}}</a>
                             @elseif ($order['order_status']=='processing')
-                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'handover'])}}','Change status to ready for handover ?')" href="javascript:">{{__('messages.make_ready_for_handover')}}</a>    
+                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'handover'])}}','Change status to ready for handover ?')" href="javascript:">{{__('Make ready for handover')}}</a>    
                             @elseif ($order['order_status']=='handover' && $order['order_type']=='take_away')
-                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'delivered'])}}','Change status to delivered (payment status will be paid if not) ?', {{$order_delivery_verification?'true':'false'}})" href="javascript:">{{__('messages.maek_delivered')}}</a>    
+                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'delivered'])}}','Change status to delivered (payment status will be paid if not) ?', {{$order_delivery_verification?'true':'false'}})" href="javascript:">{{__('Maek delivered')}}</a>    
                             @endif
                         </div>
                         <!-- End Unfold -->
@@ -113,27 +113,27 @@
                         <div class="row">
                             <div class="col-12 pb-2 border-bottom">
                                 <h4 class="card-header-title">
-                                    {{__('messages.order')}} {{__('messages.details')}}
+                                    {{__('Order Details')}}
                                     <span
                                         class="badge badge-soft-dark rounded-circle ml-1">{{$order->details->count()}}</span>
                                 </h4>
                             </div>
                             <div class="col-6 pt-2">
                                 <h6 style="color: #8a8a8a;">
-                                    {{__('messages.order')}} {{__('messages.note')}} : {{$order['order_note']}}
+                                    {{__('Order note')}} : {{$order['order_note']}}
                                 </h6>
                             </div>
                             <div class="col-6 pt-2">
                                 <div class="text-right">
                                     <h6 class="text-capitalize" style="color: #8a8a8a;">
-                                        {{__('messages.payment')}} {{__('messages.method')}} : {{str_replace('_',' ',$order['payment_method'])}}
+                                        {{__('Payment Method')}} : {{str_replace('_',' ',$order['payment_method'])}}
                                     </h6>
-                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('messages.order')}} {{__('messages.type')}}
+                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('Order Type')}}
                                         : <label style="font-size: 10px"
                                                  class="badge badge-soft-primary">{{str_replace('_',' ',$order['order_type'])}}</label>
                                     </h6>
                                     @if($order->schedule_at && $order->scheduled)
-                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('messages.scheduled_at')}}
+                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('Scheduled_at')}}
                                         : <label style="font-size: 10px"
                                                  class="badge badge-soft-primary">{{date('d M Y '.config('timeformat'),strtotime($order['schedule_at']))}}</label>
                                     </h6>
@@ -155,7 +155,7 @@
                                     <a class="avatar avatar-xl mr-3" href="{{route('vendor.food.view',$detail->food['id'])}}">
                                         <img class="img-fluid"
                                              src="{{asset('storage/app/public/product')}}/{{$detail->food['image']}}"
-                                             onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
+                                             onerror="this.src='data:image/svg+xml,%3Csvg%20width%3D%22344%22%20height%3D%22194%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22M-1%200h344v194H-1z%22%2F%3E%3C%2Fdefs%3E%3Cg%20transform%3D%22translate(1)%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cmask%20id%3D%22b%22%20fill%3D%22%23fff%22%3E%3Cuse%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fmask%3E%3Cuse%20fill%3D%22%23BDBDBD%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cg%20mask%3D%22url(%23b)%22%3E%3Cpath%20d%3D%22M173.65%2069.238L198.138%2027%20248%20112.878h-49.3c.008.348.011.697.011%201.046%200%2028.915-23.44%2052.356-52.355%2052.356C117.44%20166.28%2094%20142.84%2094%20113.924c0-28.915%2023.44-52.355%2052.356-52.355%2010%200%2019.347%202.804%2027.294%207.669zm0%200l-25.3%2043.64h50.35c-.361-18.478-10.296-34.61-25.05-43.64z%22%20fill%3D%22%23757575%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'"
                                              alt="Image Description">
                                     </a>
 
@@ -165,7 +165,7 @@
                                                 <strong> {{Str::limit($detail->food['name'],20,'...')}}</strong><br>
 
                                                 @if(count(json_decode($detail['variation'],true))>0)
-                                                    <strong><u>{{__('messages.variation')}} : </u></strong>
+                                                    <strong><u>{{__('Variation')}} : </u></strong>
                                                     @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                                         <div class="font-size-sm text-body">
                                                             <span>{{$key1}} :  </span>
@@ -175,7 +175,7 @@
                                                 @endif
 
                                                 @foreach(json_decode($detail['add_ons'],true) as $key2 =>$addon)
-                                                    @if($key2==0)<strong><u>{{__('messages.addons')}} : </u></strong>@endif
+                                                    @if($key2==0)<strong><u>{{__('Addons')}} : </u></strong>@endif
                                                     <div class="font-size-sm text-body text-break">
                                                         <span>{{Str::limit($addon['name'],15,'...')}} :  </span>
                                                         <span class="font-weight-bold">
@@ -210,7 +210,7 @@
                                     <div class="avatar avatar-xl mr-3">
                                         <img class="img-fluid"
                                              src="{{asset('storage/app/public/campaign')}}/{{$detail->campaign['image']}}"
-                                             onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
+                                             onerror="this.src='data:image/svg+xml,%3Csvg%20width%3D%22344%22%20height%3D%22194%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3Cpath%20id%3D%22a%22%20d%3D%22M-1%200h344v194H-1z%22%2F%3E%3C%2Fdefs%3E%3Cg%20transform%3D%22translate(1)%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cmask%20id%3D%22b%22%20fill%3D%22%23fff%22%3E%3Cuse%20xlink%3Ahref%3D%22%23a%22%2F%3E%3C%2Fmask%3E%3Cuse%20fill%3D%22%23BDBDBD%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Cg%20mask%3D%22url(%23b)%22%3E%3Cpath%20d%3D%22M173.65%2069.238L198.138%2027%20248%20112.878h-49.3c.008.348.011.697.011%201.046%200%2028.915-23.44%2052.356-52.355%2052.356C117.44%20166.28%2094%20142.84%2094%20113.924c0-28.915%2023.44-52.355%2052.356-52.355%2010%200%2019.347%202.804%2027.294%207.669zm0%200l-25.3%2043.64h50.35c-.361-18.478-10.296-34.61-25.05-43.64z%22%20fill%3D%22%23757575%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'"
                                              alt="Image Description">
                                     </div>
 
@@ -220,7 +220,7 @@
                                                 <strong> {{Str::limit($detail->campaign['title'],20,'...')}}</strong><br>
 
                                                 @if(count(json_decode($detail['variation'],true))>0)
-                                                    <strong><u>{{__('messages.variation')}} : </u></strong>
+                                                    <strong><u>{{__('Variation')}} : </u></strong>
                                                     @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                                         <div class="font-size-sm text-body">
                                                             <span>{{$key1}} :  </span>
@@ -230,7 +230,7 @@
                                                 @endif
 
                                                 @foreach(json_decode($detail['add_ons'],true) as $key2 =>$addon)
-                                                    @if($key2==0)<strong><u>{{__('messages.addons')}} : </u></strong>@endif
+                                                    @if($key2==0)<strong><u>{{__('Addons')}} : </u></strong>@endif
                                                     <div class="font-size-sm text-body">
                                                         <span>{{Str::limit($addon['name'],15,'...')}} :  </span>
                                                         <span class="font-weight-bold">
@@ -264,34 +264,34 @@
                         <div class="row justify-content-md-end mb-3">
                             <div class="col-md-9 col-lg-8">
                                 <dl class="row text-sm-right">
-                                    <dt class="col-sm-6">{{__('messages.items')}} {{__('messages.price')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Items price')}}:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($sub_total)}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.addon')}} {{__('messages.cost')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Addon cost')}}:</dt>
                                     <dd class="col-sm-6">
                                         {{\App\CentralLogics\Helpers::format_currency($add_ons_cost)}}
                                         <hr>
                                     </dd>
 
-                                    <dt class="col-sm-6">{{__('messages.subtotal')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Subtotal')}}:</dt>
                                     <dd class="col-sm-6">
                                         {{\App\CentralLogics\Helpers::format_currency($sub_total+$add_ons_cost)}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.discount')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($order['restaurant_discount_amount'])}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.coupon')}} {{__('messages.discount')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Coupon Discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($order['coupon_discount_amount'])}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.vat/tax')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Tax')}}:</dt>
                                     <dd class="col-sm-6">
                                         + {{\App\CentralLogics\Helpers::format_currency($order['total_tax_amount'])}}</dd>
-                                    <dt class="col-sm-6">{{__('messages.delivery')}} {{__('messages.fee')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Delivery fee')}}:</dt>
                                     <dd class="col-sm-6">
                                             @php($del_c=$order['delivery_charge'])
                                         + {{\App\CentralLogics\Helpers::format_currency($del_c)}}
                                         <hr>
                                     </dd>
 
-                                    <dt class="col-sm-6">{{__('messages.total')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Total')}}:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($sub_total+$del_c+$order['total_tax_amount']+$add_ons_cost-$order['coupon_discount_amount'] - $order['restaurant_discount_amount'])}}</dd>
                                 </dl>
                                 <!-- End Row -->
@@ -310,7 +310,7 @@
                 <div class="card mb-2">
                     <!-- Header -->
                     <div class="card-header">
-                        <h4 class="card-header-title">{{__('messages.deliveryman')}}</h4>
+                        <h4 class="card-header-title">{{__('Deliveryman')}}</h4>
                     </div>
                     <!-- End Header -->
 
@@ -342,7 +342,7 @@
                                 <i class="tio-shopping-basket-outlined"></i>
                             </div>
                             <div class="media-body">
-                                <span class="text-body text-hover-primary text-lowercase">{{$order->delivery_man->orders->count()}} {{__('messages.orders')}}</span>
+                                <span class="text-body text-hover-primary text-lowercase">{{$order->delivery_man->orders->count()}} {{__('Orders')}}</span>
                             </div>
                             <div class="media-body text-right">
                                 {{--<i class="tio-chevron-right text-body"></i>--}}
@@ -352,7 +352,7 @@
                         <hr>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5>{{__('messages.contact')}} {{__('messages.info')}}</h5>
+                            <h5>{{__('Contact info')}}</h5>
                         </div>
 
                         <ul class="list-unstyled list-unstyled-py-2">
@@ -371,7 +371,7 @@
                             <hr>
                             @php($address=$order->dm_last_location)
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5>{{__('messages.last')}} {{__('messages.location')}}</h5>
+                                <h5>{{__('Last location')}}</h5>
                             </div>
                             @if(isset($address))
                             <span class="d-block">
@@ -382,13 +382,13 @@
                             </span>
                             @else
                             <span class="d-block text-lowercase qcont">
-                                {{__('messages.location').' '.__('messages.not_found')}}
+                                {{__('Location').' '.__('Not found')}}
                             </span>
                             @endif
                         @endif
                     @else
                         <span class="d-block text-lowercase qcont">
-                                {{__('messages.deliveryman').' '.__('messages.not_found')}}
+                                {{__('Deliveryman').' '.__('Not found')}}
                         </span>
                     @endif    
                     </div>
@@ -401,7 +401,7 @@
                 <div class="card">
                     <!-- Header -->
                     <div class="card-header">
-                        <h4 class="card-header-title">{{__('messages.customer')}}</h4>
+                        <h4 class="card-header-title">{{__('Customer')}}</h4>
                     </div>
                     <!-- End Header -->
 
@@ -432,7 +432,7 @@
                                     <i class="tio-shopping-basket-outlined"></i>
                                 </div>
                                 <div class="media-body">
-                                    <span class="text-body text-hover-primary">{{\App\Models\Order::where('user_id',$order['user_id'])->count()}} orders</span>
+                                    <span class="text-body text-hover-primary">{{\App\Models\Order::where('user_id',$order['user_id'])->count()}} {{__('orders')}}</span>
                                 </div>
                                 <div class="media-body text-right">
                                     {{--<i class="tio-chevron-right text-body"></i>--}}
@@ -442,7 +442,7 @@
                             <hr>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5>{{__('messages.contact')}} {{__('messages.info')}}</h5>
+                                <h5>{{__('Contact info')}}</h5>
                             </div>
 
                             <ul class="list-unstyled list-unstyled-py-2">
@@ -462,16 +462,16 @@
                                 <hr>
                                 @php($address=json_decode($order->delivery_address,true))
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <h5>{{__('messages.delivery')}} {{__('messages.info')}}</h5>
+                                    <h5>{{__('Delivery info')}}</h5>
                                     @if(isset($address))
                                         {{--<a class="link" data-toggle="modal" data-target="#shipping-address-modal"
-                                           href="javascript:">{{__('messages.edit')}}</a>--}}
+                                           href="javascript:">{{__('Edit')}}</a>--}}
                                     @endif
                                 </div>
                                 @if(isset($address))
                                     <span class="d-block">
-                                    {{__('messages.name')}}: {{$address['contact_person_name']}}<br>
-                                    {{__('messages.contact')}}:<a class="deco-none" href="tel:{{$address['contact_person_number']}}"> {{$address['contact_person_number']}}</a><br>
+                                    {{__('Name')}}: {{$address['contact_person_name']}}<br>
+                                    {{__('Contact')}}:<a class="deco-none" href="tel:{{$address['contact_person_number']}}"> {{$address['contact_person_number']}}</a><br>
                                     @if($order['order_type']!='take_away' && isset($address['address']))
                                     @if(isset($address['latitude']) && isset($address['longitude']))
                                     <a target="_blank"
@@ -536,7 +536,7 @@
                         <div class="modal-body">
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.type')}}
+                                    {{__('Type')}}
                                 </label>
                                 <div class="col-md-10 js-form-message">
                                     <input type="text" class="form-control" name="address_type"
@@ -545,7 +545,7 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.contact')}}
+                                    {{__('Contact')}}
                                 </label>
                                 <div class="col-md-10 js-form-message">
                                     <input type="text" class="form-control" name="contact_person_number"
@@ -554,7 +554,7 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.name')}}
+                                    {{__('Name')}}
                                 </label>
                                 <div class="col-md-10 js-form-message">
                                     <input type="text" class="form-control" name="contact_person_name"
@@ -563,7 +563,7 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.address')}}
+                                    {{__('Address')}}
                                 </label>
                                 <div class="col-md-10 js-form-message">
                                     <input type="text" class="form-control" name="address"
@@ -573,7 +573,7 @@
                             </div>
                             <div class="row mb-3">
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.latitude')}}
+                                    {{__('Latitude')}}
                                 </label>
                                 <div class="col-md-4 js-form-message">
                                     <input type="text" class="form-control" name="latitude"
@@ -581,7 +581,7 @@
                                            required>
                                 </div>
                                 <label for="requiredLabel" class="col-md-2 col-form-label input-label text-md-right">
-                                    {{__('messages.longitude')}}
+                                    {{__('Longitude')}}
                                 </label>
                                 <div class="col-md-4 js-form-message">
                                     <input type="text" class="form-control" name="longitude"
@@ -590,8 +590,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">{{__('messages.close')}}</button>
-                            <button type="submit" class="btn btn-primary">{{__('messages.save')}} {{__('messages.changes')}}</button>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">{{__('Close')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('Save Changes')}}</button>
                         </div>
                     </form>
                 @endif
@@ -604,7 +604,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{__('messages.print')}} {{__('messages.invoice')}}</h5>
+                    <h5 class="modal-title">{{__('Print invoice')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>

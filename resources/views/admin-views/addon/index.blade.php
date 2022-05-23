@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.add_new_addon'))
+@section('title',__('Add new addon'))
 
 @push('css_or_js')
 
@@ -12,10 +12,10 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.addon')}}</h1>
+                    <h1 class="page-header-title">{{__('Addon')}}</h1>
                 </div>
                 @if(isset($addon))
-                <a href="{{route('admin.addon.add-new')}}" class="btn btn-primary pull-right"><i class="tio-add-circle"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.addon')}}</a>
+                <a href="{{route('admin.addon.add-new')}}" class="btn btn-primary pull-right"><i class="tio-add-circle"></i> {{__('Add new addon')}}</a>
                 @endif
             </div>
         </div>
@@ -24,7 +24,7 @@
         @php($language = $language->value ?? null)
         @php($default_lang = 'en')
         <div class="card">
-            <div class="card-header"> <h5>{{__('messages.add').' '.__('messages.new')}} {{__('messages.addon')}}</h5></div>
+            <div class="card-header"> <h5>{{__('Add').' '.__('New addon')}}</h5></div>
             <div class="card-body">
                 <form action="{{isset($addon)?route('admin.addon.update',[$addon['id']]):route('admin.addon.store')}}" method="post">
                     @csrf
@@ -43,38 +43,38 @@
                         @if ($language)
                             @foreach(json_decode($language) as $lang)
                                 <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
-                                    <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" name="name[]" class="form-control" placeholder="{{__('messages.new_addon')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
+                                    <label class="input-label" for="exampleFormControlInput1">{{__('Name')}} ({{strtoupper($lang)}})</label>
+                                    <input type="text" name="name[]" class="form-control" placeholder="{{__('New addon')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
                                 </div>
                                 <input type="hidden" name="lang[]" value="{{$lang}}">
                             @endforeach
                         @else
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}}</label>
-                                <input type="text" name="name" class="form-control" placeholder="{{__('messages.new_addon')}}" value="{{old('name')}}" required maxlength="191">
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Name')}}</label>
+                                <input type="text" name="name" class="form-control" placeholder="{{__('New addon')}}" value="{{old('name')}}" required maxlength="191">
                             </div>
                             <input type="hidden" name="lang[]" value="{{$lang}}">
                         @endif
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlSelect1">{{__('messages.restaurant')}}<span
+                                <label class="input-label" for="exampleFormControlSelect1">{{__('Restaurant')}}<span
                                         class="input-label-secondary"></span></label>
-                                <select name="restaurant_id" id="restaurant_id" class="js-data-example-ajax form-control"  data-placeholder="{{__('messages.select')}} {{__('messages.restaurant')}}" oninvalid="this.setCustomValidity('{{__('messages.please_select_restaurant')}}')">
+                                <select name="restaurant_id" id="restaurant_id" class="js-data-example-ajax form-control"  data-placeholder="{{__('Select restaurant')}}" oninvalid="this.setCustomValidity('{{__('please_select_restaurant')}}')">
 
                                 </select>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.price')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Price')}}</label>
                                 <input type="number" min="0" max="999999999999.99" name="price" step="0.01" value="{{old('price')}}" class="form-control" placeholder="100" required>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary">{{isset($addon)?__('messages.update'):__('messages.add')}}</button>
+                        <button type="submit" class="btn btn-primary">{{isset($addon)?__('Update'):__('Add')}}</button>
                     </div>
                     
                 </form>
@@ -83,13 +83,13 @@
 
         <div class="card mt-1">
             <div class="card-header">
-                <h5 class="card-header-title"> {{__('messages.addon')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$addons->total()}}</span></h5>
+                <h5 class="card-header-title"> {{__('Addon list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$addons->total()}}</span></h5>
                 <div class="col-sm-auto" style="width: 306px;">
-                    <select name="restaurant_id" id="restaurant" onchange="set_restaurant_filter('{{route('admin.addon.add-new')}}',this.value)" data-placeholder="{{__('messages.select')}} {{__('messages.restaurant')}}" class="js-data-example-ajax form-control"   title="Select Restaurant">
+                    <select name="restaurant_id" id="restaurant" onchange="set_restaurant_filter('{{route('admin.addon.add-new')}}',this.value)" data-placeholder="{{__('Select restaurant')}}" class="js-data-example-ajax form-control"   title="Select Restaurant">
                     @if(isset($restaurant))    
                     <option value="{{$restaurant->id}}" selected>{{$restaurant->name}}</option>
                     @else
-                    <option value="all" selected>{{__('messages.all_restaurants')}}</option>
+                    <option value="all" selected>{{__('All restaurants')}}</option>
                     @endif
                     </select>
                 </div>
@@ -106,7 +106,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch" type="search" name="search" class="form-control" placeholder="{{__('messages.search_addons')}}" aria-label="Search addons">
+                                <input id="datatableSearch" type="search" name="search" class="form-control" placeholder="{{__('Search addons')}}" aria-label="Search addons">
                             </div>
                             <!-- End Search -->
                         </form>
@@ -119,7 +119,7 @@
                             "target": "#showHideDropdown",
                             "type": "css-animation"
                             }'>
-                            <i class="tio-table mr-1"></i> {{__('messages.columns')}} <span class="badge badge-soft-dark rounded-circle ml-1">5</span>
+                            <i class="tio-table mr-1"></i> {{__('Columns')}} <span class="badge badge-soft-dark rounded-circle ml-1">5</span>
                         </a>
 
                         <div id="showHideDropdown" class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right dropdown-card" style="width: 15rem;">
@@ -137,7 +137,7 @@
                                     <!-- End Checkbox Switch -->
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="mr-2">{{__('messages.name')}}</span>
+                                        <span class="mr-2">{{__('Name')}}</span>
                                         <!-- Checkbox Switch -->
                                         <label class="toggle-switch toggle-switch-sm" for="toggleColumn_name">
                                             <input type="checkbox" class="toggle-switch-input" id="toggleColumn_name" checked>
@@ -148,7 +148,7 @@
                                     <!-- End Checkbox Switch -->
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="mr-2">{{__('messages.price')}}</span>
+                                        <span class="mr-2">{{__('Price')}}</span>
                                         <!-- Checkbox Switch -->
                                         <label class="toggle-switch toggle-switch-sm" for="toggleColumn_price">
                                             <input type="checkbox" class="toggle-switch-input" id="toggleColumn_price" checked>
@@ -161,7 +161,7 @@
 
 
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="mr-2">{{__('messages.restaurant')}}</span>
+                                        <span class="mr-2">{{__('Restaurant')}}</span>
 
                                         <!-- Checkbox Switch -->
                                         <label class="toggle-switch toggle-switch-sm" for="toggleColumn_vendor">
@@ -175,7 +175,7 @@
 
                                 
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="mr-2">{{__('messages.status')}}</span>
+                                        <span class="mr-2">{{__('Status')}}</span>
 
                                         <!-- Checkbox Switch -->
                                         <label class="toggle-switch toggle-switch-sm" for="toggleColumn_status">
@@ -188,7 +188,7 @@
                                     </div>
                                     
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <span class="mr-2">{{__('messages.action')}}</span>
+                                        <span class="mr-2">{{__('Action')}}</span>
 
                                         <!-- Checkbox Switch -->
                                         <label class="toggle-switch toggle-switch-sm" for="toggleColumn_action">
@@ -216,12 +216,12 @@
                             }'>
                         <thead class="thead-light">
                         <tr>
-                            <th>{{__('messages.#')}}</th>
-                            <th style="width: 20%">{{__('messages.name')}}</th>
-                            <th style="width: 20%">{{__('messages.price')}}</th>
-                            <th style="width: 30%">{{__('messages.restaurant')}}</th>
-                            <th style="width: 10%">{{__('messages.status')}}</th>
-                            <th style="width: 10%">{{__('messages.action')}}</th>
+                            <th>{{__('#')}}</th>
+                            <th style="width: 20%">{{__('Name')}}</th>
+                            <th style="width: 20%">{{__('Price')}}</th>
+                            <th style="width: 30%">{{__('Restaurant')}}</th>
+                            <th style="width: 10%">{{__('Status')}}</th>
+                            <th style="width: 10%">{{__('Action')}}</th>
                         </tr>
                         </thead>
 
@@ -235,7 +235,7 @@
                                 </span>
                                 </td>
                                 <td>{{\App\CentralLogics\Helpers::format_currency($addon['price'])}}</td>
-                                <td>{{Str::limit($addon->restaurant?$addon->restaurant->name:__('messages.restaurant').' '.__('messages.deleted'),25,'...')}}</td>
+                                <td>{{Str::limit($addon->restaurant?$addon->restaurant->name:__('Restaurant').' '.__('Deleted'),25,'...')}}</td>
                                 <td>    
                                     <label class="toggle-switch toggle-switch-sm" for="stausCheckbox{{$addon->id}}">
                                     <input type="checkbox" onclick="location.href='{{route('admin.addon.status',[$addon['id'],$addon->status?0:1])}}'"class="toggle-switch-input" id="stausCheckbox{{$addon->id}}" {{$addon->status?'checked':''}}>
@@ -246,9 +246,9 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-sm btn-white"
-                                        href="{{route('admin.addon.edit',[$addon['id']])}}" title="{{__('messages.edit')}} {{__('messages.addon')}}"><i class="tio-edit"></i></a>
+                                        href="{{route('admin.addon.edit',[$addon['id']])}}" title="{{__('Edit addon')}}"><i class="tio-edit"></i></a>
                                     <a class="btn btn-sm btn-white"     href="javascript:"
-                                        onclick="form_alert('addon-{{$addon['id']}}','Want to delete this addon ?')" title="{{__('messages.delete')}} {{__('messages.addon')}}"><i class="tio-delete-outlined"></i></a>
+                                        onclick="form_alert('addon-{{$addon['id']}}','Want to delete this addon ?')" title="{{__('Delete addon')}}"><i class="tio-delete-outlined"></i></a>
                                     <form action="{{route('admin.addon.delete',[$addon['id']])}}"
                                                 method="post" id="addon-{{$addon['id']}}">
                                         @csrf @method('delete')

@@ -99,7 +99,7 @@
         <div class="col-md-12">
             <div id="loading" style="display: none;">
                 <div style="position: fixed;z-index: 9999; left: 40%;top: 37% ;width: 100%">
-                    <img width="200" src="{{asset('public/assets/admin/img/loader.gif')}}">
+                    <img width="100" src="{{asset('public/assets/admin/img/loader.gif')}}">
                 </div>
             </div>
         </div>
@@ -133,10 +133,10 @@
                         <div class="col-12">
                             <center>
                                 <h2 style="color: rgba(96,96,96,0.68)">
-                                    <i class="tio-shopping-cart-outlined"></i> {{__('messages.You have new order, Check Please.')}}
+                                    <i class="tio-shopping-cart-outlined"></i> {{__('You have new order, Check Please.')}}
                                 </h2>
                                 <hr>
-                                <button onclick="check_order()" class="btn btn-primary">{{__('messages.Ok, let me check')}}</button>
+                                <button onclick="check_order()" class="btn btn-primary">{{__('Ok, let me check')}}</button>
                             </center>
                         </div>
                     </div>

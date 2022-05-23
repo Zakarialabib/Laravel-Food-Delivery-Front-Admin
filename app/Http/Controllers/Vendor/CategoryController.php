@@ -17,7 +17,7 @@ class CategoryController extends Controller
     }
 
     public function get_all(Request $request){
-        $data = Category::where('name', 'like', '%'.$request->q.'%')->limit(8)->get([DB::raw('id, CONCAT(name, " (", if(position = 0, "'.trans('messages.main').'", "'.trans('messages.sub').'"),")") as text')]);
+        $data = Category::where('name', 'like', '%'.$request->q.'%')->limit(8)->get([DB::raw('id, CONCAT(name, " (", if(position = 0, "'.__('main').'", "'.__('sub').'"),")") as text')]);
         if(isset($request->all))
         {
             $data[]=(object)['id'=>'all', 'text'=>'All'];

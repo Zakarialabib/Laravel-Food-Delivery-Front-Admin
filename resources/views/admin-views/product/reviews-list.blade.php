@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.food')}} {{__('messages.reviews')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$reviews->total()}}</span></h1>
+                    <h1 class="page-header-title">{{__('Food reviews')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$reviews->total()}}</span></h1>
                 </div>
             </div>
         </div>
@@ -38,12 +38,12 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th style="width: 10%">{{__('messages.food')}}</th>
-                                <th style="width: 20%">{{__('messages.customer')}}</th>
-                                <th style="width: 30%">{{__('messages.review')}}</th>
-                                <th>{{__('messages.rating')}}</th>
-                                <th>{{__('messages.status')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th style="width: 10%">{{__('Food')}}</th>
+                                <th style="width: 20%">{{__('customer')}}</th>
+                                <th style="width: 30%">{{__('review')}}</th>
+                                <th>{{__('rating')}}</th>
+                                <th>{{__('status')}}</th>
                             </tr>
                             </thead>
 
@@ -61,7 +61,7 @@
                                                 </div>
                                             </a>
                                         @else
-                                            {{__('messages.Food deleted!')}}
+                                            {{__('Food deleted!')}}
                                         @endif
 
                                     </td>
@@ -80,7 +80,7 @@
                                     </td>
                                     <td>
                                         <label class="toggle-switch toggle-switch-sm" for="reviewCheckbox{{$review->id}}">
-                                            <input type="checkbox" onclick="status_form_alert('status-{{$review['id']}}','{{$review->status?__('messages.you_want_to_hide_this_review_for_customer'):__('messages.you_want_to_show_this_review_for_customer')}}', event)" class="toggle-switch-input" id="reviewCheckbox{{$review->id}}" {{$review->status?'checked':''}}>
+                                            <input type="checkbox" onclick="status_form_alert('status-{{$review['id']}}','{{$review->status?__('you_want_to_hide_this_review_for_customer'):__('you_want_to_show_this_review_for_customer')}}', event)" class="toggle-switch-input" id="reviewCheckbox{{$review->id}}" {{$review->status?'checked':''}}>
                                             <span class="toggle-switch-label">
                                                 <span class="toggle-switch-indicator"></span>
                                             </span>
@@ -120,7 +120,7 @@
         function status_form_alert(id, message, e) {
             e.preventDefault();
             Swal.fire({
-                title: '{{__('messages.are_you_sure')}}',   
+                title: '{{__('are_you_sure')}}',   
                 text: message,
                 type: 'warning',
                 showCancelButton: true,

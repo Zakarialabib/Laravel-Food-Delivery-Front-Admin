@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-2 text-center">
-                        <h1>{{ __('messages.about_us') }}</h1>
+                        <h1>{{ __('about_us') }}</h1>
                     </div>
                     <div class="col-12">
                         {!! $data !!}

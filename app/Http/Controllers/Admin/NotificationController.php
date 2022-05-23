@@ -71,7 +71,7 @@ class NotificationController extends Controller
         try {
             Helpers::send_push_notif_to_topic($notification, $topic, 'general');
         } catch (\Exception $e) {
-            Toastr::warning(trans('messages.push_notification_faild'));
+            Toastr::warning(__('push_notification_faild'));
         }
 
         return response()->json([], 200);
@@ -127,9 +127,9 @@ class NotificationController extends Controller
         try {
             Helpers::send_push_notif_to_topic($notification, $topic, 'general');
         } catch (\Exception $e) {
-            Toastr::warning(trans('messages.push_notification_faild'));
+            Toastr::warning(__('push_notification_faild'));
         }
-        Toastr::success(trans('messages.notification').' '.trans('messages.updated_successfully'));
+        Toastr::success(__('notification').' '.__('updated_successfully'));
         return back();
     }
 
@@ -138,7 +138,7 @@ class NotificationController extends Controller
         $notification = Notification::findOrFail($request->id);
         $notification->status = $request->status;
         $notification->save();
-        Toastr::success(trans('messages.notification_status_updated'));
+        Toastr::success(__('notification_status_updated'));
         return back();
     }
 
@@ -149,7 +149,7 @@ class NotificationController extends Controller
             Storage::disk('public')->delete('notification/' . $notification['image']);
         }
         $notification->delete();
-        Toastr::success(trans('messages.notification_deleted_successfully'));
+        Toastr::success(__('notification deleted successfully'));
         return back();
     }
 }

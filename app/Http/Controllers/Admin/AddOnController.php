@@ -34,8 +34,8 @@ class AddOnController extends Controller
             'restaurant_id' => 'required',
             'price' => 'required|numeric|between:0,999999999999.99',
         ], [
-            'name.required' => trans('messages.Name is required!'),
-            'restaurant_id.required' => trans('messages.please_select_restaurant'),
+            'name.required' => __('Name is required!'),
+            'restaurant_id.required' => __('please_select_restaurant'),
         ]);
 
         $addon = new AddOn();
@@ -62,7 +62,7 @@ class AddOnController extends Controller
         {
             Translation::insert($data);
         }
-        Toastr::success(trans('messages.addon_added_successfully'));
+        Toastr::success(__('addon added successfully'));
         return back();
     }
 
@@ -79,8 +79,8 @@ class AddOnController extends Controller
             'restaurant_id' => 'required',
             'price' => 'required|numeric|between:0,999999999999.99',
         ], [
-            'name.required' => trans('messages.Name is required!'),
-            'restaurant_id.required' => trans('messages.please_select_restaurant'),
+            'name.required' => __('Name is required!'),
+            'restaurant_id.required' => __('please_select_restaurant'),
         ]);
 
         $addon = AddOn::withoutGlobalScope(RestaurantScope::class)->find($id);
@@ -103,7 +103,7 @@ class AddOnController extends Controller
             }
         }
 
-        Toastr::success(trans('messages.addon_updated_successfully'));
+        Toastr::success(__('addon updated successfully'));
         return redirect(route('admin.addon.add-new'));
     }
 
@@ -111,7 +111,7 @@ class AddOnController extends Controller
     {
         $addon = AddOn::withoutGlobalScope(RestaurantScope::class)->find($request->id);
         $addon->delete();
-        Toastr::success(trans('messages.addon_deleted_successfully'));
+        Toastr::success(__('addon deleted successfully'));
         return back();
     }
 
@@ -120,7 +120,7 @@ class AddOnController extends Controller
         $addon_data = AddOn::withoutGlobalScope(RestaurantScope::class)->find($addon);
         $addon_data->status = $request->status;
         $addon_data->save();
-        Toastr::success(trans('messages.addon_status_updated'));
+        Toastr::success(__('addon_status_updated'));
         return back();
     }
 
@@ -145,14 +145,14 @@ class AddOnController extends Controller
         try {
             $collections = (new FastExcel)->import($request->file('products_file'));
         } catch (\Exception $exception) {
-            Toastr::error(trans('messages.you_have_uploaded_a_wrong_format_file'));
+            Toastr::error(__('you_have_uploaded_a_wrong_format_file'));
             return back();
         }
 
         $data = [];
         foreach ($collections as $collection) {
                 if ($collection['name'] === "" && $collection['restaurant_id'] === "") {
-                    Toastr::error(trans('messages.please_fill_all_required_fields'));
+                    Toastr::error(__('please_fill_all_required_fields'));
                     return back();
                 }
 
@@ -166,7 +166,7 @@ class AddOnController extends Controller
             ]);
         }
         DB::table('add_ons')->insert($data);
-        Toastr::success(trans('messages.addon_imported_successfully', ['count'=>count($data)]));
+        Toastr::success(__('addon imported successfully', ['count'=>count($data)]));
         return back();
     }
 

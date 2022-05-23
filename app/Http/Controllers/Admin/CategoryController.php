@@ -47,7 +47,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required|unique:categories|max:100',
         ], [
-            'name.required' => trans('messages.Name is required!'),
+            'name.required' => __('Name is required!'),
         ]);
 
         $category = new Category();
@@ -76,7 +76,7 @@ class CategoryController extends Controller
             Translation::insert($data);
         }
 
-        Toastr::success(trans('messages.category_added_successfully'));
+        Toastr::success(__('category Added successfully'));
         return back();
     }
 
@@ -91,7 +91,7 @@ class CategoryController extends Controller
         $category = Category::find($request->id);
         $category->status = $request->status;
         $category->save();
-        Toastr::success(trans('messages.category_status_updated'));
+        Toastr::success(__('Category status  updated'));
         return back();
     }
 
@@ -118,7 +118,7 @@ class CategoryController extends Controller
                 );
             }
         }
-        Toastr::success(trans('messages.category_updated_successfully'));
+        Toastr::success(__('category updated successfully'));
         return back();
     }
 
@@ -129,13 +129,13 @@ class CategoryController extends Controller
             $category->delete();
             Toastr::success('Category removed!');
         }else{
-            Toastr::warning(trans('messages.remove_sub_categories_first'));
+            Toastr::warning(__('remove_sub_categories_first'));
         }
         return back();
     }
 
     public function get_all(Request $request){
-        $data = Category::where('name', 'like', '%'.$request->q.'%')->limit(8)->get([DB::raw('id, CONCAT(name, " (", if(position = 0, "'.trans('messages.main').'", "'.trans('messages.sub').'"),")") as text')]);
+        $data = Category::where('name', 'like', '%'.$request->q.'%')->limit(8)->get([DB::raw('id, CONCAT(name, " (", if(position = 0, "'.__('main').'", "'.__('sub').'"),")") as text')]);
         if(isset($request->all))
         {
             $data[]=(object)['id'=>'all', 'text'=>'All'];
@@ -148,7 +148,7 @@ class CategoryController extends Controller
         $priority = $request->priority??0;
         $category->priority = $priority;
         $category->save();
-        Toastr::success(trans('messages.category_priority_updated successfully'));
+        Toastr::success(__('category_priority_updated successfully'));
         return back();
 
     }
@@ -163,14 +163,14 @@ class CategoryController extends Controller
         try {
             $collections = (new FastExcel)->import($request->file('products_file'));
         } catch (\Exception $exception) {
-            Toastr::error(trans('messages.you_have_uploaded_a_wrong_format_file'));
+            Toastr::error(__('you_have_uploaded_a_wrong_format_file'));
             return back();
         }
 
         $data = [];
         foreach ($collections as $collection) {
             if ($collection['name'] === "") {
-                Toastr::error(trans('messages.please_fill_all_required_fields'));
+                Toastr::error(__('please_fill_all_required_fields'));
                 return back();
             }
             $parent_id = is_numeric($collection['parent_id'])?$collection['parent_id']:0;
@@ -185,7 +185,7 @@ class CategoryController extends Controller
             ]);
         }
         DB::table('categories')->insert($data);
-        Toastr::success(trans('messages.category_imported_successfully', ['count'=>count($data)]));
+        Toastr::success(__('category imported successfully', ['count'=>count($data)]));
         return back();
     }
 

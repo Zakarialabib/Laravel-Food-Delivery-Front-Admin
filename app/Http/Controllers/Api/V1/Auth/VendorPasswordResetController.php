@@ -85,7 +85,7 @@ class VendorPasswordResetController extends Controller
             ]], 401);
         }
         return response()->json(['errors' => [
-            ['code' => 'invalid', 'message' => trans('messages.invalid_otp')]
+            ['code' => 'invalid', 'message' => __('invalid_otp')]
         ]], 400);
     }
 }

@@ -26,10 +26,10 @@
 
                     <div class="details justify-center">
                         <div class="detail-block">
-                            <a href="">
+                            <div>
                                 <h5 class="pt-2 "> {{ Str::limit($restaurant->address, 30, '...') }}</h5>
                                 <p class="py-2"><i class="bx bx-location-plus"></i>{{ __('Address') }}</p>
-                            </a>
+                            </div>
                         </div>
                         @if (empty($restaurant->rating))
                             <div class="detail-block">
@@ -411,7 +411,7 @@
                                 Swal.fire({
                                     icon: 'info',
                                     title: 'Cart',
-                                    text: "{{ __('product_already_added_in_cart') }}"
+                                    text: "{{ __('product_already Added in_cart') }}"
                                 });
                                 return false;
                             } else if (data.data == 2) {
@@ -419,7 +419,7 @@
                                 Swal.fire({
                                     icon: 'info',
                                     title: 'Cart',
-                                    text: "{{ __('product_has_been_updated_in_cart') }}"
+                                    text: "{{ __('product_has_been updated in_cart') }}"
                                 });
 
                                 return false;
@@ -433,7 +433,7 @@
                             }
                             $('.call-when-done').click();
 
-                            toastr.success('{{ __('product_has_been_added_in_cart') }}', {
+                            toastr.success('{{ __('product_has_been Added in_cart') }}', {
                                 CloseButton: true,
                                 ProgressBar: true
                             });

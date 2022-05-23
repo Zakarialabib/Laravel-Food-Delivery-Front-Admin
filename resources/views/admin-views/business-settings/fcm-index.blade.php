@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.firebase')}} {{__('messages.push')}} {{__('messages.notification')}} {{__('messages.setup')}}</h1>
+                    <h1 class="page-header-title">{{__('firebase push notification setup')}}</h1>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                             @php($key=\App\Models\BusinessSetting::where('key','push_notification_key')->first())
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">{{__('messages.server')}} {{__('messages.key')}}</label>
+                                       for="exampleFormControlInput1">{{__('server key')}}</label>
                                 <textarea name="push_notification_key" class="form-control"
                                           required>{{env('APP_MODE')!='demo'?$key->value??'':''}}</textarea>
                             </div>
@@ -54,7 +54,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h2>{{__('messages.push')}} {{__('messages.messages')}}</h2>
+                        <h2>{{__('push messages')}}</h2>
                     </div>
                     <div class="card-body">
                         <form action="{{route('admin.business-settings.update-fcm-messages')}}" method="post"
@@ -75,7 +75,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                             <span
-                                                class="d-block">{{__('messages.order')}} {{__('messages.pending')}} {{__('messages.message')}}</span>
+                                                class="d-block">{{__('order pending message')}}</span>
                                           </span>
                                         </label>
                                         <textarea name="pending_message"
@@ -96,7 +96,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block"> {{__('messages.order')}} {{__('messages.confirmation')}} {{__('messages.message')}}</span>
+                                                    class="d-block"> {{__('order confirmation message')}}</span>
                                               </span>
                                         </label>
 
@@ -119,7 +119,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block">{{__('messages.order')}} {{__('messages.processing')}} {{__('messages.message')}}</span>
+                                                    class="d-block">{{__('order processing message')}}</span>
                                               </span>
                                         </label>
 
@@ -143,7 +143,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block"> {{__('messages.restaurant')}} {{__('messages.handover')}} {{__('messages.message')}}</span>
+                                                    class="d-block"> {{__('restaurant handover message')}}</span>
                                               </span>
                                         </label>
 
@@ -166,7 +166,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block">{{__('messages.order')}} {{__('messages.out_for_delivery')}} {{__('messages.message')}}</span>
+                                                    class="d-block">{{__('order out_for_delivery message')}}</span>
                                               </span>
                                         </label>
                                         <textarea name="out_for_delivery_message"
@@ -188,7 +188,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block">{{__('messages.order')}} {{__('messages.delivered')}} {{__('messages.message')}}</span>
+                                                    class="d-block">{{__('order delivered message')}}</span>
                                               </span>
                                         </label>
 
@@ -213,7 +213,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block">{{__('messages.deliveryman')}} {{__('messages.assign')}} {{__('messages.message')}}</span>
+                                                    class="d-block">{{__('Deliveryman assign message')}}</span>
                                               </span>
                                         </label>
 
@@ -237,7 +237,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block"> {{__('messages.deliveryman')}} {{__('messages.start')}} {{__('messages.message')}}</span>
+                                                    class="d-block"> {{__('Deliveryman start message')}}</span>
                                               </span>
                                         </label>
 
@@ -262,7 +262,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block">{{__('messages.deliveryman')}} {{__('messages.delivered')}} {{__('messages.message')}}</span>
+                                                    class="d-block">{{__('Deliveryman delivered message')}}</span>
                                               </span>
                                         </label>
 
@@ -287,7 +287,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block">{{__('messages.order')}} {{__('messages.canceled')}} {{__('messages.message')}}</span>
+                                                    class="d-block">{{__('order canceled message')}}</span>
                                               </span>
                                         </label>
 
@@ -312,7 +312,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block">{{__('messages.order')}} {{__('messages.refunded')}} {{__('messages.message')}}</span>
+                                                    class="d-block">{{__('order refunded message')}}</span>
                                               </span>
                                         </label>
 

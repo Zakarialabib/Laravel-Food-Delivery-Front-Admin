@@ -83,33 +83,33 @@
                     <ul class="navbar-nav mr-auto"></ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link navbar-font" href="{{route('home')}}">{{__('messages.home')}} <span
+                            <a class="nav-link navbar-font" href="{{route('home')}}">{{__('home')}} <span
                                     class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-font" href="{{$landing_page_links['web_app_url']}}">{{__('messages.browse_web')}}</a>
+                            <a class="nav-link navbar-font" href="{{$landing_page_links['web_app_url']}}">{{__('browse_web')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-font" href="{{route('terms-and-conditions')}}">{{__('messages.terms_and_condition')}}</a>
+                            <a class="nav-link navbar-font" href="{{route('terms-and-conditions')}}">{{__('terms_and_condition')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-font" href="{{route('about-us')}}">{{__('messages.about_us')}}</a>
+                            <a class="nav-link navbar-font" href="{{route('about-us')}}">{{__('about_us')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-font" href="{{route('contact-us')}}">{{__('messages.contact_us')}}</a>
+                            <a class="nav-link navbar-font" href="{{route('contact-us')}}">{{__('Contact us')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-font" href="{{route('privacy-policy')}}">{{__('messages.privacy_policy')}}</a>
+                            <a class="nav-link navbar-font" href="{{route('privacy-policy')}}">{{__('privacy_policy')}}</a>
                         </li>
                     @if($toggle_dm_registration || $toggle_restaurant_registration)
                         <li class="nav-item dropdown">
                             <a class="nav-link navbar-font dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{__('messages.join_us')}}
+                                {{__('join_us')}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right bg-color-primary" aria-labelledby="dropdownMenuButton">
                                 @if($toggle_restaurant_registration)
                                     <a class="dropdown-item navbar-font" href="{{route('restaurant.create')}}">
-                                        {{__('messages.restaurant_registration')}}
+                                        {{__('restaurant_registration')}}
                                     </a>
                                     @if ($toggle_dm_registration)
                                     <div class="dropdown-divider"></div>
@@ -117,11 +117,11 @@
                                 @endif
                                 @if ($toggle_dm_registration)
                                     <a class="dropdown-item navbar-font" href="{{route('deliveryman.create')}}">
-                                        {{__('messages.deliveryman_registration')}}
+                                        {{__('Deliveryman registration')}}
                                     </a>
                                 @endif
                             </div>
-                            <!-- <a class="nav-link navbar-font" href="{{route('privacy-policy')}}">{{__('messages.privacy_policy')}}</a> -->
+                            <!-- <a class="nav-link navbar-font" href="{{route('privacy-policy')}}">{{__('privacy_policy')}}</a> -->
                         </li>
                     @endif
                     </ul>
@@ -179,20 +179,20 @@
                     <div class="col-lg-2 col-md-2 mb-0 mb-md-0"></div>
                     <!--Grid column-->
                     <div class="col-lg-2 col-md-2 mb-md-0 footer-items">
-                        <span class="footer-title text-uppercase mb-4">{{__('messages.support')}}</span>
+                        <span class="footer-title text-uppercase mb-4">{{__('support')}}</span>
 
                         <ul class="list-unstyled">
                             <li>
-                                <a href="{{route('about-us')}}" class="footer-item text-white">{{__('messages.about_us')}}</a>
+                                <a href="{{route('about-us')}}" class="footer-item text-white">{{__('about_us')}}</a>
                             </li>
                             <li>
-                                <a href="{{route('contact-us')}}" class="footer-item text-white">{{__('messages.contact_us')}}</a>
+                                <a href="{{route('contact-us')}}" class="footer-item text-white">{{__('Contact us')}}</a>
                             </li>
                             <li>
-                                <a href="{{route('privacy-policy')}}" class="footer-item text-white">{{__('messages.privacy_policy')}}</a>
+                                <a href="{{route('privacy-policy')}}" class="footer-item text-white">{{__('privacy_policy')}}</a>
                             </li>
                             <li>
-                                <a href="{{route('terms-and-conditions')}}" class="footer-item text-white">{{__('messages.terms_and_condition')}}</a>
+                                <a href="{{route('terms-and-conditions')}}" class="footer-item text-white">{{__('terms_and_condition')}}</a>
                             </li>
                         </ul>
                     </div>

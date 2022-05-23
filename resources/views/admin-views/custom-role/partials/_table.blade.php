@@ -15,10 +15,10 @@
         </td>--}}
         <td>
             <a class="btn btn-sm btn-white"
-                href="{{route('admin.custom-role.edit',[$r['id']])}}" title="{{__('messages.edit')}} {{__('messages.role')}}"><i class="tio-edit"></i>
+                href="{{route('admin.custom-role.edit',[$r['id']])}}" title="{{__('Edit role')}}"><i class="tio-edit"></i>
             </a>
             <a class="btn btn-sm btn-danger" href="javascript:"
-                onclick="form_alert('role-{{$r['id']}}','{{__('messages.Want_to_delete_this_role')}}')" title="{{__('messages.delete')}} {{__('messages.role')}}"><i class="tio-delete-outlined"></i>
+                onclick="form_alert('role-{{$r['id']}}','{{__('Want to delete this role')}}')" title="{{__('Delete role')}}"><i class="tio-delete-outlined"></i>
             </a>
             <form action="{{route('admin.custom-role.delete',[$r['id']])}}"
                     method="post" id="role-{{$r['id']}}">

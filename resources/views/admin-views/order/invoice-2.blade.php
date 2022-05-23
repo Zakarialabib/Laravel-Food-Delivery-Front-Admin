@@ -128,7 +128,7 @@
 
                                                 @foreach(json_decode($detail['add_on_ids'],true) as $key2 =>$id)
                                                     @php($addon=\App\Models\AddOn::find($id))
-                                                    @if($key2==0)<strong><u>Addons : </u></strong>@endif
+                                                    @if($key2==0)<strong><u>{{__('Addons')}} :</u></strong>@endif
 
                                                     @if($add_on_qtys==null)
                                                         @php($add_on_qty=1)
@@ -177,23 +177,23 @@
                         <div class="row justify-content-md-end mb-3">
                             <div class="col-md-9 col-lg-8">
                                 <dl class="row text-sm-right">
-                                    <dt class="col-sm-6">Items Price:</dt>
+                                    <dt class="col-sm-6">{{__('Items Price')}}:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($sub_total)}}</dd>
                                     <dt class="col-sm-6">Tax / VAT:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($total_tax)}}</dd>
-                                    <dt class="col-sm-6">Addon Cost:</dt>
+                                    <dt class="col-sm-6">{{__('Addon Cost')}}:</dt>
                                     <dd class="col-sm-6">
                                         {{\App\CentralLogics\Helpers::format_currency($add_ons_cost)}}
                                         <hr>
                                     </dd>
 
-                                    <dt class="col-sm-6">Subtotal:</dt>
+                                    <dt class="col-sm-6">{{__('Subtotal')}}:</dt>
                                     <dd class="col-sm-6">
                                         {{\App\CentralLogics\Helpers::format_currency($sub_total+$total_tax+$add_ons_cost)}}</dd>
-                                    <dt class="col-sm-6">Coupon Discount:</dt>
+                                    <dt class="col-sm-6">{{__('Coupon Discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($order['coupon_discount_amount'])}}</dd>
-                                    <dt class="col-sm-6">Delivery Fee:</dt>
+                                    <dt class="col-sm-6">{{__('Delivery Fee')}}:</dt>
                                     <dd class="col-sm-6">
                                         @if($order['order_type']=='take_away')
                                             @php($del_c=0)
@@ -204,7 +204,7 @@
                                         <hr>
                                     </dd>
 
-                                    <dt class="col-sm-6">Total:</dt>
+                                    <dt class="col-sm-6">{{__('Total')}}:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($sub_total+$del_c+$total_tax+$add_ons_cost-$order['coupon_discount_amount'])}}</dd>
                                 </dl>
                                 <!-- End Row -->

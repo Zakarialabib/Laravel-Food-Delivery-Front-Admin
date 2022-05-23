@@ -1,27 +1,23 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.account_transaction'))
-
-@push('css_or_js')
-
-@endpush
+@section('title',__('Account transaction'))
 
 @section('content')
 <div class="content container-fluid">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.account_transaction')}}  </li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Account transaction')}}  </li>
         </ol>
     </nav>
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <!-- <h4 class=" mb-0 text-black-50">{{__('messages.account_transaction')}}</h4> -->
+        <!-- <h4 class=" mb-0 text-black-50">{{__('Account transaction')}}</h4> -->
     </div>
     <div class="card">
         <div class="card-header">
-            <h4 class="text-capitalize">{{__('messages.add')}} {{__('messages.account_transaction')}}</h4>
+            <h4 class="text-capitalize">{{__('Add account_transaction')}}</h4>
         </div>
         <div class="card-body">
             <form action="{{route('admin.account-transaction.store')}}" method='post' id="add_transaction">
@@ -29,25 +25,25 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                        <label class="input-label" for="type">{{__('messages.type')}}<span class="input-label-secondary"></span></label>
+                        <label class="input-label" for="type">{{__('Type')}}<span class="input-label-secondary"></span></label>
                             <select name="type" id="type" class="form-control">
-                                <option value="deliveryman">{{__('messages.deliveryman')}}</option>
-                                <option value="restaurant">{{__('messages.restaurant')}}</option>
+                                <option value="deliveryman">{{__('Deliveryman')}}</option>
+                                <option value="restaurant">{{__('Restaurant')}}</option>
                             </select>
                         </div>  
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="restaurant">{{__('messages.restaurant')}}<span class="input-label-secondary"></span></label>
-                            <select id="restaurant" name="restaurant_id" data-placeholder="{{__('messages.select')}} {{__('messages.restaurant')}}" onchange="getAccountData('{{url('/')}}/admin/vendor/get-account-data/',this.value,'restaurant')" class="form-control" title="Select Restaurant" disabled>
+                            <label class="input-label" for="restaurant">{{__('Restaurant')}}<span class="input-label-secondary"></span></label>
+                            <select id="restaurant" name="restaurant_id" data-placeholder="{{__('Select restaurant')}}" onchange="getAccountData('{{url('/')}}/admin/vendor/get-account-data/',this.value,'restaurant')" class="form-control" title="Select Restaurant" disabled>
                                                     
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="deliveryman">{{__('messages.deliveryman')}}<span class="input-label-secondary"></span></label>
-                            <select id="deliveryman" name="deliveryman_id" data-placeholder="{{__('messages.select')}} {{__('messages.deliveryman')}}" onchange="getAccountData('{{url('/')}}/admin/delivery-man/get-account-data/',this.value,'deliveryman')" class="form-control" title="Select deliveryman">
+                            <label class="input-label" for="deliveryman">{{__('Deliveryman')}}<span class="input-label-secondary"></span></label>
+                            <select id="deliveryman" name="deliveryman_id" data-placeholder="{{__('Select deliveryman')}}" onchange="getAccountData('{{url('/')}}/admin/delivery-man/get-account-data/',this.value,'deliveryman')" class="form-control" title="Select deliveryman">
                                                     
                             </select>
                         </div>
@@ -57,25 +53,25 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="method">{{__('messages.method')}}<span class="input-label-secondary"></span></label>
+                            <label class="input-label" for="method">{{__('method')}}<span class="input-label-secondary"></span></label>
                             <input class="form-control" type="text" name="method" id="method" required maxlength="191">
                         </div>  
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="ref">{{__('messages.reference')}}<span class="input-label-secondary"></span></label>
+                            <label class="input-label" for="ref">{{__('Reference')}}<span class="input-label-secondary"></span></label>
                             <input  class="form-control" type="text" name="ref" id="ref" maxlength="191">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="amount">{{__('messages.amount')}}<span class="input-label-secondary" id="account_info"></span></label>
+                            <label class="input-label" for="amount">{{__('Amount')}}<span class="input-label-secondary" id="account_info"></span></label>
                             <input class="form-control" type="number" min=".01" step="0.01" name="amount" id="amount" max="999999999999.99">
                         </div>
                     </div>  
                 </div>
                 <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="{{__('messages.save')}}" >
+                    <input class="btn btn-primary" type="submit" value="{{__('Save')}}" >
                 </div>
             </form>
         </div>
@@ -84,7 +80,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>{{ __('messages.account_transaction')}} {{ __('messages.table')}}</h5>
+                    <h5>{{ __('Account transaction')}} {{ __('table')}}</h5>
                 </div>
                 <div class="card-body" style="padding: 0">
                     <div class="table-responsive">
@@ -93,13 +89,13 @@
                             style="width: 100%">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>{{__('messages.sl#')}}</th>
-                                    <th>{{ __('messages.received_from') }}</th>
-                                    <th>{{ __('messages.type') }}</th>
-                                    <th>{{__('messages.received_at')}}</th>
-                                    <th>{{__('messages.amount')}}</th>
-                                    <th>{{__('messages.reference')}}</th>
-                                    <th style="width: 5px">{{__('messages.action')}}</th>
+                                    <th>{{__('sl#')}}</th>
+                                    <th>{{ __('Receoved_from') }}</th>
+                                    <th>{{ __('Type') }}</th>
+                                    <th>{{__('Receoved_at')}}</th>
+                                    <th>{{__('Amount')}}</th>
+                                    <th>{{__('Reference')}}</th>
+                                    <th style="width: 5px">{{__('Action')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -112,7 +108,7 @@
                                         @elseif($at->deliveryman)
                                         <a href="{{route('admin.delivery-man.preview',[$at->deliveryman->id])}}">{{ $at->deliveryman->f_name }} {{ $at->deliveryman->l_name }}</a>
                                         @else
-                                            {{__('messages.not_found')}}
+                                            {{__('not_found')}}
                                         @endif
                                     </td>
                                     <td><label class="text-uppercase">{{$at['from_type']}}</label></td>
@@ -219,7 +215,7 @@
                 url: route+data_id,
                 dataType: 'json',
                 success: function (data) {
-                    $('#account_info').html('({{__('messages.cash_in_hand')}}: '+data.cash_in_hand+' {{__('messages.earning_balance')}}: '+data.earning_balance+')');
+                    $('#account_info').html('({{__('Cash in hand')}}: '+data.cash_in_hand+' {{__('earning_balance')}}: '+data.earning_balance+')');
                 },
             });
     }
@@ -248,7 +244,7 @@
                         });
                     }
                 } else {
-                    toastr.success('{{__('messages.transaction_saved')}}', {
+                    toastr.success('{{__('transaction_saved')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

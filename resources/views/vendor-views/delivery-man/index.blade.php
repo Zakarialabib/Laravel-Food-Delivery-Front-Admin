@@ -17,7 +17,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.deliveryman')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('Add new deliveryman')}}</h1>
                 </div>
             </div>
         </div>
@@ -29,15 +29,15 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.first')}} {{__('messages.name')}}</label>
-                                <input type="text" name="f_name" class="form-control" placeholder="{{__('messages.first')}} {{__('messages.name')}}"
+                                <label class="input-label" for="exampleFormControlInput1">{{__('First name')}}</label>
+                                <input type="text" name="f_name" class="form-control" placeholder="{{__('First name')}}"
                                        required>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.last')}} {{__('messages.name')}}</label>
-                                <input type="text" name="l_name" class="form-control" placeholder="{{__('messages.last')}} {{__('messages.name')}}"
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Last name')}}</label>
+                                <input type="text" name="l_name" class="form-control" placeholder="{{__('Last name')}}"
                                        required>
                             </div>
                         </div>
@@ -46,17 +46,17 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.identity')}} {{__('messages.type')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Identity type')}}</label>
                                 <select name="identity_type" class="form-control">
-                                    <option value="passport">{{__('messages.passport')}}</option>
-                                    <option value="driving_license">{{__('messages.driving')}} {{__('messages.license')}}</option>
-                                    <option value="nid">{{__('messages.nid')}}</option>
+                                    <option value="passport">{{__('passport')}}</option>
+                                    <option value="driving_license">{{__('driving license')}}</option>
+                                    <option value="nid">{{__('nid')}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.identity')}} {{__('messages.number')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Identity number')}}</label>
                                 <input type="text" name="identity_number" class="form-control"
                                        placeholder="Ex : DH-23434-LS"
                                        required>
@@ -64,19 +64,19 @@
                         </div>
                         <div class="col-md-12 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.identity')}} {{__('messages.image')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('identity image')}}</label>
                                 <div>
                                     <div class="row" id="coba"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <small class="nav-subtitle border-bottom">{{__('messages.login')}} {{__('messages.info')}}</small>
+                    <small class="nav-subtitle border-bottom">{{__('login info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="phone">{{__('messages.phone')}}</label>
+                                <label class="input-label" for="phone">{{__('Phone')}}</label>
                                 <div class="input-group">
                                     <input type="tel" name="tel" id="phone" placeholder="Ex : 017********" class="form-control" required>
                                 </div>
@@ -84,14 +84,14 @@
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.email')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Email')}}</label>
                                 <input type="email" name="email" class="form-control" placeholder="Ex : ex@example.com"
                                        required>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('messages.password')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Password')}}</label>
                                 <input type="text" name="password" class="form-control" placeholder="Ex : password"
                                     required>
                             </div>
@@ -100,11 +100,11 @@
  
 
                     <div class="form-group">
-                        <label>{{__('messages.deliveryman')}} {{__('messages.image')}}</label><small style="color: red">* ( {{__('messages.ratio')}} 1:1 )</small>
+                        <label>{{__('Deliveryman image')}}</label><small style="color: red">* ( {{__('ratio')}} 1:1 )</small>
                         <div class="custom-file">
                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                            <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                            <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                         </div>
                         
                         <center class="pt-4">

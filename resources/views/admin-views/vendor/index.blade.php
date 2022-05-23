@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.add_new_restaurant'))
+@section('title',__('Add new_restaurant'))
 
 @push('css_or_js')
 <style>
@@ -22,7 +22,7 @@
         <div class="page-header" style="border-bottom:0;padding-bottom:0;">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.restaurant')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('Add new restaurant')}}</h1>
                 </div>
             </div>
         </div>
@@ -32,39 +32,39 @@
                 <form action="{{route('admin.vendor.store')}}" method="post" enctype="multipart/form-data" class="js-validate">
                     @csrf
 
-                    <small class="nav-subtitle text-secondary border-bottom">{{__('messages.restaurant')}} {{__('messages.info')}}</small>
+                    <small class="nav-subtitle text-secondary border-bottom">{{__('restaurant info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="name">{{__('messages.restaurant')}} {{__('messages.name')}}</label>
-                                <input type="text" name="name" class="form-control" placeholder="{{__('messages.first')}} {{__('messages.name')}}" value="{{old('name')}}" required>
+                                <label class="input-label" for="name">{{__('restaurant name')}}</label>
+                                <input type="text" name="name" class="form-control" placeholder="{{__('First name')}}" value="{{old('name')}}" required>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="address">{{__('messages.restaurant')}} {{__('messages.address')}}</label>
-                                <textarea type="text" name="address" class="form-control" placeholder="{{__('messages.restaurant')}} {{__('messages.address')}}" required >{{old('address')}}</textarea>
+                                <label class="input-label" for="address">{{__('restaurant address')}}</label>
+                                <textarea type="text" name="address" class="form-control" placeholder="{{__('restaurant address')}}" required >{{old('address')}}</textarea>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="tax">{{__('messages.vat/tax')}} (%)</label>
-                                <input type="number" name="tax" class="form-control" placeholder="{{__('messages.vat/tax')}}" min="0" step=".01" required value="{{old('tax')}}">
+                                <label class="input-label" for="tax">{{__('vat/tax')}} (%)</label>
+                                <input type="number" name="tax" class="form-control" placeholder="{{__('vat/tax')}}" min="0" step=".01" required value="{{old('tax')}}">
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label class="input-label" for="minimum_delivery_time">{{__('messages.minimum_delivery_time')}}</label>
+                                    <label class="input-label" for="minimum_delivery_time">{{__('minimum_delivery_time')}}</label>
                                     <input type="text" name="minimum_delivery_time" class="form-control" placeholder="30" pattern="^[0-9]{2}$" required value="{{old('minimum_delivery_time')}}">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="input-label" for="maximum_delivery_time">{{__('messages.maximum_delivery_time')}}</label>
+                                    <label class="input-label" for="maximum_delivery_time">{{__('maximum_delivery_time')}}</label>
                                     <input type="text" name="maximum_delivery_time" class="form-control" placeholder="40" pattern="[0-9]{2}" required value="{{old('maximum_delivery_time')}}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="input-label">{{__('messages.restaurant')}} {{__('messages.logo')}}<small style="color: red"> ( {{__('messages.ratio')}} 1:1 )</small></label>
+                                <label class="input-label">{{__('restaurant logo')}}<small style="color: red"> ( {{__('ratio')}} 1:1 )</small></label>
                                 <div class="custom-file">
                                     <input type="file" name="logo" id="customFileEg1" class="custom-file-input"
                                         accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                                    <label class="custom-file-label" for="logo">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                                    <label class="custom-file-label" for="logo">{{__('Choose file')}}</label>
                                 </div>
                             </div>
                         </div>
@@ -80,11 +80,11 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="choice_zones">{{__('messages.zone')}}<span
-                                        class="input-label-secondary" title="{{__('messages.select_zone_for_map')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.select_zone_for_map')}}"></span></label>
+                                <label class="input-label" for="choice_zones">{{__('Zone')}}<span
+                                        class="input-label-secondary" title="{{__('select_zone_for_map')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('select_zone_for_map')}}"></span></label>
                                 <select name="zone_id" id="choice_zones" required
-                                        class="form-control js-select2-custom"  data-placeholder="{{__('messages.select')}} {{__('messages.zone')}}">
-                                        <option value="" selected disabled>{{__('messages.select')}} {{__('messages.zone')}}</option>
+                                        class="form-control js-select2-custom"  data-placeholder="{{__('Select zone')}}">
+                                        <option value="" selected disabled>{{__('Select zone')}}</option>
                                     @foreach(\App\Models\Zone::all() as $zone)
                                         @if(isset(auth('admin')->user()->zone_id))
                                             @if(auth('admin')->user()->zone_id == $zone->id)
@@ -97,15 +97,15 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="latitude">{{__('messages.latitude')}}<span
-                                        class="input-label-secondary" title="{{__('messages.restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.restaurant_lat_lng_warning')}}"></span></label>
+                                <label class="input-label" for="latitude">{{__('Latitude')}}<span
+                                        class="input-label-secondary" title="{{__('restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_lat_lng_warning')}}"></span></label>
                                 <input type="text" id="latitude"
                                        name="latitude" class="form-control"
                                        placeholder="Ex : -94.22213" value="{{old('latitude')}}" required readonly>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="longitude">{{__('messages.longitude')}}<span
-                                        class="input-label-secondary" title="{{__('messages.restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('messages.restaurant_lat_lng_warning')}}"></span></label>
+                                <label class="input-label" for="longitude">{{__('Longitude')}}<span
+                                        class="input-label-secondary" title="{{__('restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_lat_lng_warning')}}"></span></label>
                                 <input type="text" 
                                        name="longitude" class="form-control"
                                        placeholder="Ex : 103.344322" id="longitude" value="{{old('longitude')}}" required readonly>
@@ -117,11 +117,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name">{{__('messages.upload')}} {{__('messages.cover')}} {{__('messages.photo')}} <span class="text-danger">({{__('messages.ratio')}} 2:1)</span></label>
+                        <label for="name">{{__('upload cover photo')}} <span class="text-danger">({{__('ratio')}} 2:1)</span></label>
                         <div class="custom-file">
                             <input type="file" name="cover_photo" id="coverImageUpload" class="custom-file-input"
                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                            <label class="custom-file-label" for="customFileUpload">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                            <label class="custom-file-label" for="customFileUpload">{{__('Choose file')}}</label>
                         </div>
                     </div> 
                     <center>
@@ -129,26 +129,26 @@
                         src="{{asset('public/assets/admin/img/900x400/img1.jpg')}}" alt="Product thumbnail"/>
                     </center>  
                     <br>
-                    <small class="nav-subtitle text-secondary border-bottom">{{__('messages.owner')}} {{__('messages.info')}}</small>
+                    <small class="nav-subtitle text-secondary border-bottom">{{__('owner info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="f_name">{{__('messages.first')}} {{__('messages.name')}}</label>
-                                <input type="text" name="f_name" class="form-control" placeholder="{{__('messages.first')}} {{__('messages.name')}}"
+                                <label class="input-label" for="f_name">{{__('First name')}}</label>
+                                <input type="text" name="f_name" class="form-control" placeholder="{{__('First name')}}"
                                      value="{{old('f_name')}}"  required>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="l_name">{{__('messages.last')}} {{__('messages.name')}}</label>
-                                <input type="text" name="l_name" class="form-control" placeholder="{{__('messages.last')}} {{__('messages.name')}}"
+                                <label class="input-label" for="l_name">{{__('Last name')}}</label>
+                                <input type="text" name="l_name" class="form-control" placeholder="{{__('Last name')}}"
                                 value="{{old('l_name')}}"  required>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="phone">{{__('messages.phone')}}</label>
+                                <label class="input-label" for="phone">{{__('Phone')}}</label>
                                 <input type="text" name="phone" class="form-control" placeholder="Ex : 017********"
                                 value="{{old('phone')}}" required>
                             </div>
@@ -156,22 +156,22 @@
                     </div>
                     <br>
                     
-                    <small class="nav-subtitle text-secondary border-bottom">{{__('messages.login')}} {{__('messages.info')}}</small>
+                    <small class="nav-subtitle text-secondary border-bottom">{{__('login info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="email">{{__('messages.email')}}</label>
+                                <label class="input-label" for="email">{{__('Email')}}</label>
                                 <input type="email" name="email" class="form-control" placeholder="Ex : ex@example.com"
                                 value="{{old('email')}}"  required>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="js-form-message form-group">
-                                <label class="input-label" for="signupSrPassword">{{__('messages.password')}}</label>
+                                <label class="input-label" for="signupSrPassword">{{__('Password')}}</label>
 
                                 <div class="input-group input-group-merge">
-                                    <input type="password" class="js-toggle-password form-control" name="password" id="signupSrPassword" placeholder="{{__('messages.password_length_placeholder',['length'=>'5+'])}}" aria-label="{{__('messages.password_length_placeholder',['length'=>'5+'])}}" required
+                                    <input type="password" class="js-toggle-password form-control" name="password" id="signupSrPassword" placeholder="{{__('Password length placeholder',['length'=>'5+'])}}" aria-label="{{__('Password length placeholder',['length'=>'5+'])}}" required
                                     data-msg="Your password is invalid. Please try again."
                                     data-hs-toggle-password-options='{
                                     "target": [".js-toggle-password-target-1", ".js-toggle-password-target-2"],
@@ -189,10 +189,10 @@
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="js-form-message form-group">
-                                <label class="input-label" for="signupSrConfirmPassword">{{__('messages.confirm_password')}}</label>
+                                <label class="input-label" for="signupSrConfirmPassword">{{__('Confirm password')}}</label>
 
                                 <div class="input-group input-group-merge">
-                                <input type="password" class="js-toggle-password form-control" name="confirmPassword" id="signupSrConfirmPassword" placeholder="{{__('messages.password_length_placeholder',['length'=>'5+'])}}" aria-label="{{__('messages.password_length_placeholder',['length'=>'5+'])}}" required
+                                <input type="password" class="js-toggle-password form-control" name="confirmPassword" id="signupSrConfirmPassword" placeholder="{{__('Password length placeholder',['length'=>'5+'])}}" aria-label="{{__('Password length placeholder',['length'=>'5+'])}}" required
                                         data-msg="Password does not match the confirm password."
                                         data-hs-toggle-password-options='{
                                         "target": [".js-toggle-password-target-1", ".js-toggle-password-target-2"],
@@ -287,13 +287,13 @@
 
                 },
                 onExtensionErr: function (index, file) {
-                    toastr.error('{{__('messages.please_only_input_png_or_jpg_type_file')}}', {
+                    toastr.error('{{__('please_only_input_png_or_jpg_type_file')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 },
                 onSizeErr: function (index, file) {
-                    toastr.error('{{__('messages.file_size_too_big')}}', {
+                    toastr.error('{{__('file_size_too_big')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

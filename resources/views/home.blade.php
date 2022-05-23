@@ -74,7 +74,7 @@
                 <div class="container">
                     <div class="row featured-section">
                         <div class="col-12 featured-title-m">
-                            <span>{{__('messages.about_us')}}</span>
+                            <span>{{__('about_us')}}</span>
                         </div>
                         <div
                             class="col-lg-6 col-md-6  d-flex justify-content-center justify-content-md-start text-center text-md-left featured-section__image">
@@ -84,7 +84,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="featured-section__content"
                                  class="d-flex justify-content-center justify-content-md-start text-center text-md-left">
-                                <span>{{__('messages.about_us')}}</span>
+                                <span>{{__('about_us')}}</span>
                                 <h2
                                     class="d-flex justify-content-center justify-content-md-start text-center text-md-left">
                                     {{isset($landing_page_text)?$landing_page_text['about_title']:''}}</h2>
@@ -95,7 +95,7 @@
                                 <div 
                                     class="d-flex justify-content-center justify-content-md-start text-center text-md-left">
                                     <a href="{{route('about-us')}}"
-                                       class="btn btn-color-primary text-white rounded align-middle">{{__('messages.read_more')}}</a>
+                                       class="btn btn-color-primary text-white rounded align-middle">{{__('read_more')}}</a>
                                 </div>
                             </div>
                         </div>

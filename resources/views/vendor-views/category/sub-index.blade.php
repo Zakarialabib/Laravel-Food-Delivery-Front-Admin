@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.sub_category')}}
+                    <h1 class="page-header-title">{{__('Sub category')}} 
                     </h1>
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <h5>{{__('messages.sub_category')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$categories->total()}}</span></h5>
+                        <h5>{{__('Sub Category list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$categories->total()}}</span></h5>
                         {{--<form>
                             <!-- Search -->
                             <div class="input-group input-group-merge input-group-flush">
@@ -31,7 +31,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch" type="search" class="form-control" placeholder="{{__('messages.search_sub_categories')}}" aria-label="{{__('messages.search_sub_categories')}}">
+                                <input id="datatableSearch" type="search" class="form-control" placeholder="{{__('search_sub_categories')}}" aria-label="{{__('search_sub_categories')}}">
                             </div>
                             <!-- End Search -->
                         </form>--}}
@@ -49,10 +49,10 @@
                                 }'>
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>{{__('messages.#')}}</th>
-                                        <th>{{__('messages.id')}}</th>
-                                        <th>{{__('messages.main')}} {{__('messages.category')}}</th>
-                                        <th>{{__('messages.sub_category')}}</th>
+                                        <th>{{__('#')}}</th>
+                                        <th>{{__('id')}}</th>
+                                        <th>{{__('main category')}}</th>
+                                        <th>{{__('Sub category')}} </th>
                                     </tr>
                                 </thead>
 

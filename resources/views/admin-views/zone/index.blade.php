@@ -13,7 +13,7 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title"><i
-                            class="tio-add-circle-outlined"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.zone')}}
+                            class="tio-add-circle-outlined"></i> {{__('Add new zone')}}
                     </h1>
                 </div>
             </div>
@@ -27,28 +27,28 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">{{__('messages.name')}}</label>
-                                <input type="text" name="name" class="form-control" placeholder="{{__('messages.new_zone')}}" value="{{old('name')}}" required>
+                                       for="exampleFormControlInput1">{{__('Name')}}</label>
+                                <input type="text" name="name" class="form-control" placeholder="{{__('new_zone')}}" value="{{old('name')}}" required>
                             </div>
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Coordinates<span class="input-label-secondary" title="{{__('messages.draw_your_zone_on_the_map')}}">{{__('messages.draw_your_zone_on_the_map')}}</span></label>
+                                       for="exampleFormControlInput1">Coordinates<span class="input-label-secondary" title="{{__('draw_your_zone_on_the_map')}}">{{__('draw_your_zone_on_the_map')}}</span></label>
                                        <textarea type="text" rows="8" name="coordinates"  id="coordinates" class="form-control" readonly></textarea>
                             </div>
                         </div>
                         <div class="col-md-6 map-warper" style="height: 300px;">
-                            <input id="pac-input" class="controls rounded" style="height: 3em;width:fit-content;" title="{{__('messages.search_your_location_here')}}" type="text" placeholder="{{__('messages.search_here')}}"/>
+                            <input id="pac-input" class="controls rounded" style="height: 3em;width:fit-content;" title="{{__('search_your_location_here')}}" type="text" placeholder="{{__('Search here')}}"/>
                             <div id="map-canvas" style="height: 100%; margin:0px; padding: 0px;"></div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">{{__('messages.add')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Add')}}</button>
                 </form>
             </div>
 
             <div class="col-sm-12 col-lg-12 mb-3 my-lg-2">
                 <div class="card">
                     <div class="card-header">
-                        <h5>{{__('messages.zone')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$zones->total()}}</span></h5>
+                        <h5>{{__('Zone list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$zones->total()}}</span></h5>
                         <form action="javascript:" id="search-form" >
                                         <!-- Search -->
                             @csrf
@@ -59,8 +59,8 @@
                                     </div>
                                 </div>
                                 <input id="datatableSearch_" type="search" name="search" class="form-control"
-                                        placeholder="{{__('messages.search')}}" aria-label="{{__('messages.search')}}" required>
-                                <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                                        placeholder="{{__('Search')}}" aria-label="{{__('Search')}}" required>
+                                <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
 
                             </div>
                             <!-- End Search -->
@@ -77,13 +77,13 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th>{{__('messages.id')}}</th>
-                                <th >{{__('messages.name')}}</th>
-                                <th >{{__('messages.restaurants')}}</th>
-                                <th >{{__('messages.deliverymen')}}</th>
-                                <th >{{__('messages.status')}}</th>
-                                <th >{{__('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th>{{__('id')}}</th>
+                                <th >{{__('Name')}}</th>
+                                <th >{{__('restaurants')}}</th>
+                                <th >{{__('Deliverymen')}} </th>
+                                <th >{{__('status')}}</th>
+                                <th >{{__('Action')}}</th>
                             </tr>
                             </thead>
 
@@ -111,10 +111,10 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-white"
-                                            href="{{route('admin.zone.edit',[$zone['id']])}}" title="{{__('messages.edit')}} {{__('messages.zone')}}"><i class="tio-edit"></i>
+                                            href="{{route('admin.zone.edit',[$zone['id']])}}" title="{{__('edit zone')}}"><i class="tio-edit"></i>
                                         </a>
                                         {{--<a class="btn btn-sm btn-white" href="javascript:"
-                                        onclick="form_alert('zone-{{$zone['id']}}','Want to delete this zone ?')" title="{{__('messages.delete')}} {{__('messages.zone')}}"><i class="tio-delete-outlined"></i>
+                                        onclick="form_alert('zone-{{$zone['id']}}','Want to delete this zone ?')" title="{{__('delete zone')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('admin.zone.delete',[$zone['id']])}}" method="post" id="zone-{{$zone['id']}}">
                                             @csrf @method('delete')
@@ -146,7 +146,7 @@
         function status_form_alert(id, message, e) {
             e.preventDefault();
             Swal.fire({
-                title: '{{__('messages.are_you_sure')}}',   
+                title: '{{__('are_you_sure')}}',   
                 text: message,
                 type: 'warning',
                 showCancelButton: true,

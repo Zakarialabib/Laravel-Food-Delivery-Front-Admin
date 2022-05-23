@@ -34,7 +34,7 @@ class VendorLoginController extends Controller
             {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'auth-002', 'message' => trans('messages.inactive_vendor_warning')]
+                        ['code' => 'auth-002', 'message' => __('inactive_vendor_warning')]
                     ]
                 ], 403);
             }

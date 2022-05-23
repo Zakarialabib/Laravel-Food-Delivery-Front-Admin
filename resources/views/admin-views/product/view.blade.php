@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-6">
                     <a href="{{route('admin.food.edit',[$product['id']])}}" class="btn btn-primary float-right">
-                        <i class="tio-edit"></i> {{__('messages.edit')}}
+                        <i class="tio-edit"></i> {{__('Edit')}}
                     </a>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                                  alt="Image Description">
                             <div class="d-block">
                                 <h4 class="display-2 text-dark mb-0">{{round($product->avg_rating,1)}}</h4>
-                                <p> {{__('messages.of')}} {{$product->reviews->count()}} {{__('messages.reviews')}}
+                                <p> {{__('of')}} {{$product->reviews->count()}} {{__('Reviews')}}
                                     <span class="badge badge-soft-dark badge-pill ml-1"></span>
                                 </p>
                             </div>
@@ -51,7 +51,7 @@
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($five=$product->rating?json_decode($product->rating, true)[5]:0)
                                 <span
-                                    class="mr-3">5 {{__('messages.star')}}</span>
+                                    class="mr-3">5 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                          style="width: {{$total==0?0:($five/$total)*100}}%;"
@@ -65,7 +65,7 @@
                             <!-- Review Ratings -->
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($four=$product->rating?json_decode($product->rating, true)[4]:0)
-                                <span class="mr-3">4 {{__('messages.star')}}</span>
+                                <span class="mr-3">4 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                          style="width: {{$total==0?0:($four/$total)*100}}%;"
@@ -79,7 +79,7 @@
                             <!-- Review Ratings -->
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($three=$product->rating?json_decode($product->rating, true)[3]:0)
-                                <span class="mr-3">3 {{__('messages.star')}}</span>
+                                <span class="mr-3">3 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                          style="width: {{$total==0?0:($three/$total)*100}}%;"
@@ -93,7 +93,7 @@
                             <!-- Review Ratings -->
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($two=$product->rating?json_decode($product->rating, true)[2]:0)
-                                <span class="mr-3">2 {{__('messages.star')}}</span>
+                                <span class="mr-3">2 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                          style="width: {{$total==0?0:($two/$total)*100}}%;"
@@ -107,7 +107,7 @@
                             <!-- Review Ratings -->
                             <li class="d-flex align-items-center font-size-sm">
                                 @php($one=$product->rating?json_decode($product->rating, true)[1]:0)
-                                <span class="mr-3">1 {{__('messages.star')}}</span>
+                                <span class="mr-3">1 {{__('star')}}</span>
                                 <div class="progress flex-grow-1">
                                     <div class="progress-bar" role="progressbar"
                                          style="width: {{$total==0?0:($one/$total)*100}}%;"
@@ -131,7 +131,7 @@
                             <label class="input-label">{{$product->restaurant['name']}}</label>
                         </a>
                         @else
-                        <span class="badge-info">{{__('messages.restaurant')}} {{__('messages.deleted')}}</span>
+                        <span class="badge-info">{{__('restaurant deleted')}}</span>
                         @endif
                     </div>
                 </div>
@@ -141,22 +141,22 @@
                     </div>
                     <div class="col-sm-4 col-12 pt-2">
                         <h4 class="border-bottom">{{$product['name']}}</h4>
-                        <span>{{__('messages.price')}} :
+                        <span>{{__('Price')}} :
                             <span>{{\App\CentralLogics\Helpers::format_currency($product['price'])}}</span>
                         </span><br>
-                        <span>{{__('messages.tax')}} :
+                        <span>{{__('tax')}} :
                             <span>{{\App\CentralLogics\Helpers::format_currency(\App\CentralLogics\Helpers::tax_calculate($product,$product['price']))}}</span>
                         </span><br>
-                        <span>{{__('messages.discount')}} :
+                        <span>{{__('Discount')}} :
                             <span>{{\App\CentralLogics\Helpers::format_currency(\App\CentralLogics\Helpers::discount_calculate($product,$product['price']))}}</span>
                         </span><br>
                         <span>
-                            {{__('messages.available')}} {{__('messages.time')}} {{__('messages.starts')}} : {{date(config('timeformat'),strtotime($product['available_time_starts']))}}
+                            {{__('Available time starts')}} : {{date(config('timeformat'),strtotime($product['available_time_starts']))}}
                         </span><br>
                         <span>
-                            {{__('messages.available')}} {{__('messages.time')}} {{__('messages.ends')}} : {{date(config('timeformat'), strtotime($product['available_time_ends']))}}
+                            {{__('Available time ends')}} : {{date(config('timeformat'), strtotime($product['available_time_ends']))}}
                         </span>
-                        <h4 class="border-bottom mt-2"> {{__('messages.variations')}} </h4>
+                        <h4 class="border-bottom mt-2"> {{__('variations')}} </h4>
                         @foreach(json_decode($product['variations'],true) as $variation)
                             <span class="text-capitalize">
                               {{$variation['type']}} : {{\App\CentralLogics\Helpers::format_currency($variation['price'])}}
@@ -171,7 +171,7 @@
                     </div>
 
                     <div class="col-sm-8 col-12 pt-2 border-left">
-                        <h4>{{__('messages.short')}} {{__('messages.description')}} : </h4>
+                        <h4>{{__('Short description')}} : </h4>
                         {!!$product['description'] !!}
                     </div>
                 </div>
@@ -183,7 +183,7 @@
         <!-- Card -->
         <div class="card">
             <div class="card-header">
-            {{__('messages.product')}} {{__('messages.reviews')}}
+            {{__('product reviews')}}
             </div>
             <!-- Table -->
             <div class="table-responsive datatable-custom">
@@ -206,10 +206,10 @@
                    }'>
                     <thead class="thead-light">
                     <tr>
-                        <th>{{__('messages.reviewer')}}</th>
-                        <th>{{__('messages.review')}}</th>
-                        <th>{{__('messages.date')}}</th>
-                        <th>{{__('messages.status')}}</th>
+                        <th>{{__('reviewer')}}</th>
+                        <th>{{__('review')}}</th>
+                        <th>{{__('Date')}}</th>
+                        <th>{{__('status')}}</th>
                     </tr>
                     </thead>
 
@@ -235,7 +235,7 @@
                                         </div>
                                     </a>
                                 @else
-                                {{__('messages.customer_not_found')}}
+                                {{__('customer_not_found')}}
                                 @endif
                             </td>
                             <td>
@@ -256,7 +256,7 @@
                             </td>
                             <td>
                                 <label class="toggle-switch toggle-switch-sm" for="reviewCheckbox{{$review->id}}">
-                                    <input type="checkbox" onclick="status_form_alert('status-{{$review['id']}}','{{$review->status?__('messages.you_want_to_hide_this_review_for_customer'):__('messages.you_want_to_show_this_review_for_customer')}}', event)" class="toggle-switch-input" id="reviewCheckbox{{$review->id}}" {{$review->status?'checked':''}}>
+                                    <input type="checkbox" onclick="status_form_alert('status-{{$review['id']}}','{{$review->status?__('you_want_to_hide_this_review_for_customer'):__('you_want_to_show_this_review_for_customer')}}', event)" class="toggle-switch-input" id="reviewCheckbox{{$review->id}}" {{$review->status?'checked':''}}>
                                     <span class="toggle-switch-label">
                                         <span class="toggle-switch-indicator"></span>
                                     </span>
@@ -292,7 +292,7 @@
     function status_form_alert(id, message, e) {
         e.preventDefault();
         Swal.fire({
-            title: '{{__('messages.are_you_sure')}}',   
+            title: '{{__('are_you_sure')}}',   
             text: message,
             type: 'warning',
             showCancelButton: true,

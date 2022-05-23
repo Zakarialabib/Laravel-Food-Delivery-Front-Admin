@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.edit').' '.__('messages.account_transaction'))
+@section('title',__('Edit').' '.__('Account transaction'))
 
 @push('css_or_js')
 
@@ -11,17 +11,17 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.account_transaction')}}  </li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Account transaction')}}  </li>
         </ol>
     </nav>
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <!-- <h4 class=" mb-0 text-black-50">{{__('messages.account_transaction')}}</h4> -->
+        <!-- <h4 class=" mb-0 text-black-50">{{__('Account transaction')}}</h4> -->
     </div>
     <div class="card">
         <div class="card-header">
-            <h4 class="text-capitalize">{{__('messages.add')}} {{__('messages.account_transaction')}}</h4>
+            <h4 class="text-capitalize">{{__('Add account_transaction')}}</h4>
         </div>
         <div class="card-body">
             <form action="{{route('admin.account-transaction.store')}}" method='post' id="add_transaction">
@@ -30,25 +30,25 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                        <label class="input-label" for="type">{{__('messages.type')}}<span class="input-label-secondary"></span></label>
+                        <label class="input-label" for="type">{{__('Type')}}<span class="input-label-secondary"></span></label>
                             <select name="type" id="type" class="form-control">
-                                <option value="deliveryman" {{$account_transaction->from_type=='deliveryman'?'selected':''}}>{{__('messages.deliveryman')}}</option>
-                                <option value="restaurant" {{$account_transaction->from_type=='deliveryman'?'selected':''}}>{{__('messages.restaurant')}}</option>
+                                <option value="deliveryman" {{$account_transaction->from_type=='deliveryman'?'selected':''}}>{{__('Deliveryman')}}</option>
+                                <option value="restaurant" {{$account_transaction->from_type=='deliveryman'?'selected':''}}>{{__('Restaurant')}}</option>
                             </select>
                         </div>  
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="restaurant">{{__('messages.restaurant')}}<span class="input-label-secondary"></span></label>
-                            <select id="restaurant" name="restaurant_id" data-placeholder="{{__('messages.select')}} {{__('messages.restaurant')}}" class="form-control" title="Select Restaurant" {{$account_transaction->deliveryman?'disabled':''}}>
+                            <label class="input-label" for="restaurant">{{__('Restaurant')}}<span class="input-label-secondary"></span></label>
+                            <select id="restaurant" name="restaurant_id" data-placeholder="{{__('Select restaurant')}}" class="form-control" title="Select Restaurant" {{$account_transaction->deliveryman?'disabled':''}}>
                                                     
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="deliveryman">{{__('messages.deliveryman')}}<span class="input-label-secondary"></span></label>
-                            <select id="deliveryman" name="deliveryman_id" data-placeholder="{{__('messages.select')}} {{__('messages.deliveryman')}}" class="form-control" title="Select deliveryman" {{$account_transaction->restaurant?'disabled':''}}>
+                            <label class="input-label" for="deliveryman">{{__('Deliveryman')}}<span class="input-label-secondary"></span></label>
+                            <select id="deliveryman" name="deliveryman_id" data-placeholder="{{__('Select deliveryman')}}" class="form-control" title="Select deliveryman" {{$account_transaction->restaurant?'disabled':''}}>
                                                     
                             </select>
                         </div>
@@ -58,25 +58,25 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="method">{{__('messages.method')}}<span class="input-label-secondary"></span></label>
+                            <label class="input-label" for="method">{{__('method')}}<span class="input-label-secondary"></span></label>
                             <input class="form-control" type="text" name="method" id="method" value="{{$account_transaction->method}}" maxlength="191">
                         </div>  
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="ref">{{__('messages.reference')}}<span class="input-label-secondary"></span></label>
+                            <label class="input-label" for="ref">{{__('Reference')}}<span class="input-label-secondary"></span></label>
                             <input  class="form-control" type="text" name="ref" id="ref" value="{{$account_transaction->ref}}" maxlength="191">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="input-label" for="amount">{{__('messages.amount')}}<span class="input-label-secondary"></span></label>
+                            <label class="input-label" for="amount">{{__('Amount')}}<span class="input-label-secondary"></span></label>
                             <input class="form-control" type="number" min=".01" step="0.01" name="amount" id="amount" value="{{$account_transaction->amount}}" max="999999999999.99">
                         </div>
                     </div>  
                 </div>
                 <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="{{__('messages.save')}}" >
+                    <input class="btn btn-primary" type="submit" value="{{__('Save')}}" >
                 </div>
             </form>
         </div>
@@ -182,7 +182,7 @@
                         });
                     }
                 } else {
-                    toastr.success('{{__('messages.transaction_updated')}}', {
+                    toastr.success('{{__('transaction_updated')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

@@ -28,7 +28,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="{{route('admin.customer.view',[$customer['id']])}}">
-                        <i class="tio-visible"></i> {{__('messages.view')}}
+                        <i class="tio-visible"></i> {{__('view')}}
                     </a>
                     {{--<a class="dropdown-item" target="" href="">
                         <i class="tio-download"></i> Suspend

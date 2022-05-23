@@ -52,7 +52,7 @@
     <div class="card mb-3 mb-lg-5">
         <!-- Body -->
         <div class="card-body">
-            <label class="input-label">{{__('messages.reply')}}</label>
+            <label class="input-label">{{__('reply')}}</label>
             <!-- Quill -->
             <div class="quill-custom_">
                 <textarea class="form-control" name="reply"></textarea>
@@ -65,7 +65,7 @@
         <div class="card-footer">
             <div class="d-flex justify-content-end">
                 <button type="submit" onclick="replyConvs('{{route('admin.message.store',[$user->id])}}')"
-                        class="btn btn-primary">{{__('messages.send')}}
+                        class="btn btn-primary">{{__('send')}}
                 </button>
             </div>
         </div>

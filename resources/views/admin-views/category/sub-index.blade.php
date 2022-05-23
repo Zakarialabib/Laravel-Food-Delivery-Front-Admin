@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('messages.Add new sub category'))
+@section('title',__('Add new sub category'))
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -13,7 +13,7 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title"><i
-                            class="tio-add-circle-outlined"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.sub_category')}}
+                            class="tio-add-circle-outlined"></i> {{__('Add new sub_category')}}
                     </h1>
                 </div>
             </div>
@@ -21,7 +21,7 @@
         <!-- End Page Header -->
         <div class="card">
             <div class="card-header">
-                <h5>{{isset($category)?__('messages.update'):__('messages.add').' '.__('messages.new')}} {{__('messages.sub_category')}}</h5>
+                <h5>{{isset($category)?__('Update'):__('Add').' '.__('new sub_category')}}</h5>
             </div>
             <div class="card-body">
                 <form action="{{isset($category)?route('admin.category.update',[$category['id']]):route('admin.category.store')}}" method="post">
@@ -40,21 +40,21 @@
                     </ul>
                     @foreach(json_decode($language) as $lang)
                         <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
-                            <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}} ({{strtoupper($lang)}})</label>
-                            <input type="text" name="name[]" class="form-control" placeholder="{{__('messages.new_category')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
+                            <label class="input-label" for="exampleFormControlInput1">{{__('Name')}} ({{strtoupper($lang)}})</label>
+                            <input type="text" name="name[]" class="form-control" placeholder="{{__('new_category')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
                         </div>
                         <input type="hidden" name="lang[]" value="{{$lang}}">
                     @endforeach
                 @else
                     <div class="form-group">
-                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.name')}}</label>
-                        <input type="text" name="name" class="form-control" placeholder="{{__('messages.new_category')}}" value="{{old('name')}}" required maxlength="191">
+                        <label class="input-label" for="exampleFormControlInput1">{{__('Name')}}</label>
+                        <input type="text" name="name" class="form-control" placeholder="{{__('new_category')}}" value="{{old('name')}}" required maxlength="191">
                     </div>
                     <input type="hidden" name="lang[]" value="{{$lang}}">
                 @endif
                     <div class="form-group">
                         <label class="input-label"
-                            for="exampleFormControlSelect1">{{__('messages.main')}} {{__('messages.category')}}
+                            for="exampleFormControlSelect1">{{__('main category')}}
                             <span class="input-label-secondary">*</span></label>
                         <select id="exampleFormControlSelect1" name="parent_id" class="form-control js-select2-custom" required>
                             @foreach(\App\Models\Category::where(['position'=>0])->get() as $cat)
@@ -63,13 +63,13 @@
                         </select>
                     </div>
                     <input name="position" value="1" style="display: none">
-                    <button type="submit" class="btn btn-primary">{{isset($category)?__('messages.update'):__('messages.add')}}</button>
+                    <button type="submit" class="btn btn-primary">{{isset($category)?__('Update'):__('Add')}}</button>
                 </form>
             </div>
         </div>
         <div class="card mt-2">
             <div class="card-header pb-0">
-                <h5>{{__('messages.sub_category')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$categories->total()}}</span></h5>
+                <h5>{{__('Sub Category list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$categories->total()}}</span></h5>
                 <form id="dataSearch">
                     <!-- Search -->
                     <div class="input-group input-group-merge input-group-flush">
@@ -79,8 +79,8 @@
                             </div>
                         </div>
                         <input type="hidden" name="sub_category" value="1">
-                        <input id="datatableSearch" name="search" type="search" class="form-control" placeholder="{{__('messages.search_sub_categories')}}" aria-label="{{__('messages.search_sub_categories')}}">
-                        <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                        <input id="datatableSearch" name="search" type="search" class="form-control" placeholder="{{__('search_sub_categories')}}" aria-label="{{__('search_sub_categories')}}">
+                        <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                     </div>
                     <!-- End Search -->
                 </form>
@@ -99,13 +99,13 @@
                         }'>
                         <thead class="thead-light">
                             <tr>
-                                <th>{{__('messages.#')}}</th>
-                                <th>{{__('messages.id')}}</th>
-                                <th>{{__('messages.main')}} {{__('messages.category')}}</th>
-                                <th>{{__('messages.sub_category')}}</th>
-                                <th >{{__('messages.status')}}</th>
-                                <th >{{__('messages.priority')}}</th>
-                                <th >{{__('messages.action')}}</th>
+                                <th>{{__('#')}}</th>
+                                <th>{{__('id')}}</th>
+                                <th>{{__('main category')}}</th>
+                                <th>{{__('Sub category')}} </th>
+                                <th >{{__('status')}}</th>
+                                <th >{{__('priority')}}</th>
+                                <th >{{__('Action')}}</th>
                             </tr>
                         </thead>
 
@@ -135,18 +135,18 @@
                                 <td style="width:max-content;">
                                     <form action="{{route('admin.category.priority',$category->id)}}">
                                     <select name="priority" id="priority" onchange="this.form.submit()"> 
-                                        <option value="0" {{$category->priority == 0?'selected':''}}>{{__('messages.normal')}}</option>
-                                        <option value="1" {{$category->priority == 1?'selected':''}}>{{__('messages.medium')}}</option>
-                                        <option value="2" {{$category->priority == 2?'selected':''}}>{{__('messages.high')}}</option>
+                                        <option value="0" {{$category->priority == 0?'selected':''}}>{{__('normal')}}</option>
+                                        <option value="1" {{$category->priority == 1?'selected':''}}>{{__('medium')}}</option>
+                                        <option value="2" {{$category->priority == 2?'selected':''}}>{{__('high')}}</option>
                                     </select>
                                     </form>
                                 </td>
                                 <td>
                                     <a class="btn btn-sm btn-white"
-                                        href="{{route('admin.category.edit',[$category['id']])}}" title="{{__('messages.edit')}} {{__('messages.category')}}"><i class="tio-edit"></i>
+                                        href="{{route('admin.category.edit',[$category['id']])}}" title="{{__('edit category')}}"><i class="tio-edit"></i>
                                     </a>
                                     <a class="btn btn-sm btn-white" href="javascript:"
-                                    onclick="form_alert('category-{{$category['id']}}','Want to delete this category')" title="{{__('messages.delete')}} {{__('messages.category')}}"><i class="tio-delete-outlined"></i>
+                                    onclick="form_alert('category-{{$category['id']}}','Want to delete this category')" title="{{__('delete category')}}"><i class="tio-delete-outlined"></i>
                                     </a>
                                     <form action="{{route('admin.category.delete',[$category['id']])}}" method="post" id="category-{{$category['id']}}">
                                         @csrf @method('delete')

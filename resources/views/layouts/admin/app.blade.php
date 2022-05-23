@@ -120,7 +120,7 @@
         <div class="col-md-12">
             <div id="loading" style="display: none;">
                 <div style="position: fixed;z-index: 9999; left: 40%;top: 37% ;width: 100%">
-                    <img width="200" src="{{asset('public/assets/admin/img/loader.gif')}}">
+                    <img width="100" src="{{asset('public/assets/admin/img/loader.gif')}}">
                 </div>
             </div>
         </div>
@@ -349,7 +349,7 @@
         }
         @endif
     @endif
-    function route_alert(route, message, title="{{__('messages.are_you_sure')}}") {
+    function route_alert(route, message, title="{{__('are_you_sure')}}") {
         Swal.fire({
             title: title,
             text: message,
@@ -414,7 +414,7 @@
         /* Copy the text inside the text field */
         navigator.clipboard.writeText(copyText);
 
-        toastr.success('{{__('messages.text_copied')}}', {
+        toastr.success('{{__('text_copied')}}', {
             CloseButton: true,
             ProgressBar: true
         });

@@ -31,7 +31,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('messages.vendor_view')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('vendor_view')}}</li>
         </ol>
     </nav>
 
@@ -44,17 +44,17 @@
             <div class="col-6">
                 @if($restaurant->vendor->status)
                 <a href="{{route('admin.vendor.edit',[$restaurant->id])}}" class="btn btn-primary float-right">
-                    <i class="tio-edit"></i> {{__('messages.edit')}} {{__('messages.restaurant')}}
+                    <i class="tio-edit"></i> {{__('edit restaurant')}}
                 </a>
                 @else
                     @if(!isset($restaurant->vendor->status))
                     <a class="btn btn-danger text-capitalize font-weight-bold float-right" 
-                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],0])}}','{{__('messages.you_want_to_deny_this_application')}}')"
-                        href="javascript:">{{__('messages.deny')}}</a>
+                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],0])}}','{{__('you_want_to_deny_this_application')}}')"
+                        href="javascript:">{{__('deny')}}</a>
                     @endif
                     <a class="btn btn-primary text-capitalize font-weight-bold float-right mr-2"
-                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],1])}}','{{__('messages.you_want_to_approve_this_application')}}')"
-                        href="javascript:">{{__('messages.approve')}}</a>
+                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],1])}}','{{__('you_want_to_approve_this_application')}}')"
+                        href="javascript:">{{__('approve')}}</a>
                 @endif
             </div>
         </div>
@@ -64,25 +64,25 @@
             <!-- Nav -->
             <ul class="nav nav-tabs page-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{route('admin.vendor.view', $restaurant->id)}}">{{__('messages.restaurant')}}</a>
+                    <a class="nav-link active" href="{{route('admin.vendor.view', $restaurant->id)}}">{{__('Restaurant')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'order'])}}"  aria-disabled="true">{{__('messages.order')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'order'])}}"  aria-disabled="true">{{__('Order')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'product'])}}"  aria-disabled="true">{{__('messages.food')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'product'])}}"  aria-disabled="true">{{__('Food')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'discount'])}}"  aria-disabled="true">{{__('messages.discount')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'discount'])}}"  aria-disabled="true">{{__('Discount')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'settings'])}}"  aria-disabled="true">{{__('messages.settings')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'settings'])}}"  aria-disabled="true">{{__('Settings')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('messages.transaction')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('transaction')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'reviews'])}}"  aria-disabled="true">{{__('messages.reviews')}}</a>
+                    <a class="nav-link" href="{{route('admin.vendor.view', ['restaurant'=>$restaurant->id, 'tab'=> 'reviews'])}}"  aria-disabled="true">{{__('Reviews')}}</a>
                 </li>
             </ul>
             <!-- End Nav -->
@@ -100,7 +100,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="font-weight-bold  text-uppercase for-card-text mb-1">
-                                {{__('messages.collected_cash_by_restaurant')}}
+                                {{__('Collected cash by restaurant')}}
                             </div>
                             <div
                                 class="for-card-count">{{$wallet->collected_cash}}
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="card-footer"  style="background: #8d8d8d; border:none;">
-                        <a class="btn w-100" style="background: #f9fafc;" href="{{route('admin.account-transaction.index')}}" title="{{__('messages.goto')}} {{__('messages.account_transaction')}}">{{__('messages.collect_cash_from_restaurant')}}</a>
+                        <a class="btn w-100" style="background: #f9fafc;" href="{{route('admin.account-transaction.index')}}" title="{{__('goto account_transaction')}}">{{__('Collect cash from restaurant')}}</a>
                 </div>
             </div>
         </div>
@@ -123,7 +123,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div
-                                        class=" font-weight-bold for-card-text text-uppercase mb-1">{{__('messages.pending')}} {{__('messages.withdraw')}}</div>
+                                        class=" font-weight-bold for-card-text text-uppercase mb-1">{{__('Pending withdraw')}}</div>
                                     <div
                                         class="for-card-count">{{$wallet->pending_withdraw}}</div>
                                 </div>
@@ -142,7 +142,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div
-                                        class=" font-weight-bold for-card-text text-uppercase mb-1">{{__('messages.withdrawn')}}</div>
+                                        class=" font-weight-bold for-card-text text-uppercase mb-1">{{__('withdrawn')}}</div>
                                     <div
                                         class="for-card-count">{{$wallet->total_withdrawn}}</div>
                                 </div>
@@ -161,7 +161,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div
-                                        class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('messages.withdraw_able_balance')}}</div>
+                                        class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('Withdraw able balance')}}</div>
                                     <div
                                         class="for-card-count">{{$wallet->balance}}</div>
                                 </div>
@@ -180,7 +180,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div
-                                        class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('messages.total_earning')}}</div>
+                                        class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('Total earning')}} </div>
                                     <div
                                         class="for-card-count">{{$wallet->total_earning}}</div>
                                 </div>
@@ -291,7 +291,7 @@
                         <div class="col-md-4 col-6">
                             <div class="card mt-2">
                                 <div class="card-header">
-                                {{__('messages.restaurant')}} {{__('messages.info')}}
+                                {{__('restaurant info')}}
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled list-unstyled-py-3 text-dark mb-3">
@@ -300,16 +300,16 @@
                                         </li>
                                         <li>
                                             <i class="tio-city nav-icon"></i>
-                                            {{__('messages.address')}} : {{$restaurant->address}}
+                                            {{__('Address')}} : {{$restaurant->address}}
                                         </li>
 
                                         <li>
                                             <i class="tio-online nav-icon"></i>
-                                            {{__('messages.email')}} : {{$restaurant->email}}
+                                            {{__('Email')}} : {{$restaurant->email}}
                                         </li>
                                         <li>
                                             <i class="tio-android-phone-vs nav-icon"></i>
-                                            {{__('messages.phone')}} : {{$restaurant->phone}}
+                                            {{__('Phone')}} : {{$restaurant->phone}}
                                         </li>
                                     </ul>
                                 </div>
@@ -318,7 +318,7 @@
                         <div class="col-md-8 col-6">
                             <div class="card mt-2">
                                 <div class="card-header">
-                                {{__('messages.restaurant')}} {{__('messages.location')}}
+                                {{__('restaurant location')}}
                                 </div>
                                 <div class="card-body pt-2 pb-2">
                                     <div id="map" style="height:180px; width:100%;"></div>
@@ -333,7 +333,7 @@
                 <div class="col-md-4 col-sm-4 col-12">
                     <div class="card h-100">
                         <div class="card-header">
-                            {{__('messages.owner')}} {{__('messages.info')}}
+                            {{__('owner info')}}
                         </div>
                         <div class="card-body ">
                             <div class="text-center">
@@ -368,20 +368,20 @@
                                 <div class="card-body">
                                     <ul class="list-unstyled list-unstyled-py-3 text-dark mb-3">
                                         <li class="py-0 border-bottom">
-                                            <small class="card-subtitle">{{__('messages.bank_info')}}</small>
+                                            <small class="card-subtitle">{{__('Bank info')}} </small>
                                         </li>
                                         @if($restaurant->vendor->bank_name)
                                         <li class="pb-1 pt-1">
-                                            {{__('messages.bank_name')}}: {{$restaurant->vendor->bank_name ? $restaurant->vendor->bank_name : 'No Data found'}}
+                                            {{__('Bank name')}}: {{$restaurant->vendor->bank_name ? $restaurant->vendor->bank_name : 'No Data found'}}
                                         </li>
                                         <li class="pb-1 pt-1">
-                                            {{__('messages.branch')}}  : {{$restaurant->vendor->branch ? $restaurant->vendor->branch : 'No Data found'}}
+                                            {{__('Branch')}}  : {{$restaurant->vendor->branch ? $restaurant->vendor->branch : 'No Data found'}}
                                         </li>
                                         <li class="pb-1 pt-1">
-                                            {{__('messages.holder_name')}} : {{$restaurant->vendor->holder_name ? $restaurant->vendor->holder_name : 'No Data found'}}
+                                            {{__('Holder name')}} : {{$restaurant->vendor->holder_name ? $restaurant->vendor->holder_name : 'No Data found'}}
                                         </li>
                                         <li class="pb-1 pt-1">
-                                            {{__('messages.account_no')}}  : {{$restaurant->vendor->account_no ? $restaurant->vendor->account_no : 'No Data found'}}
+                                            {{__('Account no')}}  : {{$restaurant->vendor->account_no ? $restaurant->vendor->account_no : 'No Data found'}}
                                         </li>
                                         @else
                                         <li class="my-auto">
@@ -469,14 +469,14 @@
 
     function request_alert(url, message) {
         Swal.fire({
-            title: '{{__('messages.are_you_sure')}}',
+            title: '{{__('are_you_sure')}}',
             text: message,
             type: 'warning',
             showCancelButton: true,
             cancelButtonColor: 'default',
             confirmButtonColor: '#FC6A57',
-            cancelButtonText: '{{__('messages.no')}}',
-            confirmButtonText: '{{__('messages.yes')}}',
+            cancelButtonText: '{{__('no')}}',
+            confirmButtonText: '{{__('yes')}}',
             reverseButtons: true
         }).then((result) => {
             if (result.value) {

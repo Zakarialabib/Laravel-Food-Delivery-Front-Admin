@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('messages.add')}} {{__('messages.new')}} {{__('messages.banner')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-add-circle-outlined"></i> {{__('Add new banner')}}</h1>
                 </div>
             </div>
         </div>
@@ -26,13 +26,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.title')}}</label>
-                                        <input type="text" name="title" class="form-control" placeholder="{{__('messages.new_banner')}}" required>
+                                        <label class="input-label" for="exampleFormControlInput1">{{__('Title')}}</label>
+                                        <input type="text" name="title" class="form-control" placeholder="{{__('new_banner')}}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label class="input-label" for="title">{{__('messages.zone')}}</label>
+                                        <label class="input-label" for="title">{{__('Zone')}}</label>
                                         <select name="zone_id" id="zone" class="form-control js-select2-custom" onchange="getRequest('{{url('/')}}/admin/food/get-foods?zone_id='+this.value,'choice_item')">
-                                            <option disabled selected>---{{__('messages.select')}}---</option>
+                                            <option disabled selected>---{{__('Select')}}---</option>
                                             @php($zones=\App\Models\Zone::active()->get())
                                             @foreach($zones as $zone)
                                                 @if(isset(auth('admin')->user()->zone_id))
@@ -46,34 +46,34 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.banner')}} {{__('messages.type')}}</label>
+                                        <label class="input-label" for="exampleFormControlInput1">{{__('banner type')}}</label>
                                         <select name="banner_type" class="form-control" onchange="banner_type_change(this.value)">
-                                            <option value="restaurant_wise">{{__('messages.restaurant')}} {{__('messages.wise')}}</option>
-                                            <option value="item_wise">{{__('messages.food')}} {{__('messages.wise')}}</option>
+                                            <option value="restaurant_wise">{{__('restaurant wise')}}</option>
+                                            <option value="item_wise">{{__('Food wise')}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group" id="restaurant_wise">
-                                        <label class="input-label" for="exampleFormControlSelect1">{{__('messages.restaurant')}}<span
+                                        <label class="input-label" for="exampleFormControlSelect1">{{__('Restaurant')}}<span
                                                 class="input-label-secondary"></span></label>
                                         <select name="restaurant_id" class="js-data-example-ajax form-control"  title="Select Restaurant">
                                             
                                         </select>
                                     </div>
                                     <div class="form-group" id="item_wise">
-                                        <label class="input-label" for="exampleFormControlInput1">{{__('messages.select')}} {{__('messages.food')}}</label>
-                                        <select name="item_id" id="choice_item" class="form-control js-select2-custom" placeholder="{{__('messages.select_food')}}">
+                                        <label class="input-label" for="exampleFormControlInput1">{{__('Select food')}}</label>
+                                        <select name="item_id" id="choice_item" class="form-control js-select2-custom" placeholder="{{__('Select food')}}">
                                             
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>{{__('messages.campaign')}} {{__('messages.image')}}</label>
-                                        <small style="color: red">* ( {{__('messages.ratio')}} 3:1 )</small>
+                                        <label>{{__('campaign image')}}</label>
+                                        <small style="color: red">* ( {{__('ratio')}} 3:1 )</small>
                                         <div class="custom-file">
                                             <input type="file" name="image" id="customFileEg1" class="custom-file-input"
                                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
-                                            <label class="custom-file-label" for="customFileEg1">{{__('messages.choose')}} {{__('messages.file')}}</label>
+                                            <label class="custom-file-label" for="customFileEg1">{{__('Choose file')}}</label>
                                         </div>
                                     </div>
                                     <div class="form-group" style="margin-bottom:0%;">
@@ -94,7 +94,7 @@
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
                 <div class="card">
                     <div class="card-header">
-                        <h5>{{__('messages.banner')}} {{__('messages.list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$banners->count()}}</span></h5>
+                        <h5>{{__('banner list')}}<span class="badge badge-soft-dark ml-2" id="itemCount">{{$banners->count()}}</span></h5>
                         <form id="search-form">
                             @csrf
                             <!-- Search -->
@@ -104,8 +104,8 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch" type="search" name="search" class="form-control" placeholder="{{__('messages.search_here')}}" aria-label="{{__('messages.search_here')}}">
-                                <button type="submit" class="btn btn-light">{{__('messages.search')}}</button>
+                                <input id="datatableSearch" type="search" name="search" class="form-control" placeholder="{{__('Search here')}}" aria-label="{{__('Search here')}}">
+                                <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                             </div>
                             <!-- End Search -->
                         </form>
@@ -125,11 +125,11 @@
                                }'>
                             <thead class="thead-light">
                                 <tr>
-                                    <th>{{__('messages.#')}}</th>
-                                    <th>{{__('messages.title')}}</th>
-                                    <th>{{__('messages.type')}}</th>
-                                    <th>{{__('messages.status')}}</th>
-                                    <th>{{__('messages.action')}}</th>
+                                    <th>{{__('#')}}</th>
+                                    <th>{{__('Title')}}</th>
+                                    <th>{{__('Type')}}</th>
+                                    <th>{{__('status')}}</th>
+                                    <th>{{__('Action')}}</th>
                                 </tr>
                             </thead>
 
@@ -149,7 +149,7 @@
                                         
                                     </span>
                                     </td>
-                                    <td>{{__('messages.'.$banner['type'])}}</td>
+                                    <td>{{__(''.$banner['type'])}}</td>
                                     <td>
                                         <label class="toggle-switch toggle-switch-sm" for="statusCheckbox{{$banner->id}}">
                                             <input type="checkbox" onclick="location.href='{{route('admin.banner.status',[$banner['id'],$banner->status?0:1])}}'" class="toggle-switch-input" id="statusCheckbox{{$banner->id}}" {{$banner->status?'checked':''}}>
@@ -159,9 +159,9 @@
                                         </label>
                                     </td>
                                     <td>
-                                        <a class="btn btn-sm btn-white" href="{{route('admin.banner.edit',[$banner['id']])}}"title="{{__('messages.edit')}} {{__('messages.banner')}}"><i class="tio-edit"></i>
+                                        <a class="btn btn-sm btn-white" href="{{route('admin.banner.edit',[$banner['id']])}}"title="{{__('edit banner')}}"><i class="tio-edit"></i>
                                         </a>
-                                        <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('banner-{{$banner['id']}}','Want to delete this banner ?')" title="{{__('messages.delete')}} {{__('messages.banner')}}"><i class="tio-delete-outlined"></i>
+                                        <a class="btn btn-sm btn-white" href="javascript:" onclick="form_alert('banner-{{$banner['id']}}','Want to delete this banner ?')" title="{{__('delete banner')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('admin.banner.delete',[$banner['id']])}}"
                                                     method="post" id="banner-{{$banner['id']}}">

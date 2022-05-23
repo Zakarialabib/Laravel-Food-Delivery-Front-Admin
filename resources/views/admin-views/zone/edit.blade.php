@@ -13,7 +13,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title text-capitalize"><i class="tio-edit"></i> {{__('messages.zone')}} {{__('messages.update')}}</h1>
+                    <h1 class="page-header-title text-capitalize"><i class="tio-edit"></i> {{__('Zone update')}}</h1>
                 </div>
             </div>
         </div>
@@ -26,23 +26,23 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">{{__('messages.name')}}</label>
-                                <input type="text" name="name" class="form-control" placeholder="{{__('messages.new_zone')}}" value="{{$zone->name}}" required>
+                                       for="exampleFormControlInput1">{{__('Name')}}</label>
+                                <input type="text" name="name" class="form-control" placeholder="{{__('new_zone')}}" value="{{$zone->name}}" required>
                             </div>
                             <div class="form-group">
                                 <label class="input-label"
                                        for="exampleFormControlInput1">Coordinates<span
-                                        class="input-label-secondary" title="{{__('messages.draw_your_zone_on_the_map')}}">{{__('messages.draw_your_zone_on_the_map')}}</span></label>
+                                        class="input-label-secondary" title="{{__('draw_your_zone_on_the_map')}}">{{__('draw_your_zone_on_the_map')}}</span></label>
                                        <textarea type="text" name="coordinates"  id="coordinates" class="form-control">@foreach($zone->coordinates[0] as $key=>$coords)<?php if(count($zone->coordinates[0]) != $key+1) {if($key != 0) echo(','); ?>({{$coords->getLat()}}, {{$coords->getLng()}})<?php } ?>@endforeach
                                 </textarea>
                             </div>
                         </div>
                         <div class="col-6" style="height: 300px;">
-                            <input id="pac-input" class="controls rounded" style="height: 3em;width:fit-content;" title="{{__('messages.search_your_location_here')}}" type="text" placeholder="{{__('messages.search_here')}}"/>
+                            <input id="pac-input" class="controls rounded" style="height: 3em;width:fit-content;" title="{{__('search_your_location_here')}}" type="text" placeholder="{{__('Search here')}}"/>
                             <div id="map-canvas" style="height: 100%; margin:0px; padding: 0px;"></div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">{{__('messages.update')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Update')}}</button>
                 </form>
             </div>
             <!-- End Table -->

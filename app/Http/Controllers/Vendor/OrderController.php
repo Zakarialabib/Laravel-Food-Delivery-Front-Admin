@@ -90,7 +90,7 @@ class OrderController extends Controller
         ->orderBy('schedule_at', 'desc')
         ->paginate(config('default_pagination'));
 
-        $status = trans('messages.'.$status);
+        $status = __(''.$status);
         return view('vendor-views.order.list', compact('orders', 'status'));
     }
 
@@ -136,19 +136,19 @@ class OrderController extends Controller
 
         if($order->delivered != null)
         {
-            Toastr::warning(trans('messages.cannot_change_status_after_delivered'));
+            Toastr::warning(__('cannot_change_status_after_delivered'));
             return back();
         }
 
         if($request['order_status']=='canceled' && !config('canceled_by_restaurant'))
         {
-            Toastr::warning(trans('messages.you_can_not_cancel_a_order'));
+            Toastr::warning(__('you_can_not_cancel_a_order'));
             return back();
         }
 
         if($request['order_status']=='canceled' && $order->confirmed)
         {
-            Toastr::warning(trans('messages.you_can_not_cancel_after_confirm'));
+            Toastr::warning(__('you_can_not_cancel_after_confirm'));
             return back();
         }
 
@@ -156,7 +156,7 @@ class OrderController extends Controller
 
         if($request['order_status']=='delivered' && $order->order_type != 'take_away' && !Helpers::get_restaurant_data()->self_delivery_system)
         {
-            Toastr::warning(trans('messages.you_can_not_delivered_delivery_order'));
+            Toastr::warning(__('you_can_not_delivered_delivery_order'));
             return back();
         }
 
@@ -164,7 +164,7 @@ class OrderController extends Controller
         {
             if(!Helpers::get_restaurant_data()->self_delivery_system && config('order_confirmation_model') == 'deliveryman' && $order->order_type != 'take_away')
             {
-                Toastr::warning(trans('messages.order_confirmation_warning'));
+                Toastr::warning(__('order_confirmation_warning'));
                 return back();
             }
         }
@@ -177,13 +177,13 @@ class OrderController extends Controller
                 {
                     if($request->otp != $order->otp)
                     {
-                        Toastr::warning(trans('messages.order_varification_code_not_matched'));
+                        Toastr::warning(__('order_varification_code_not_matched'));
                         return back();
                     }
                 }
                 else
                 {
-                    Toastr::warning(trans('messages.order_varification_code_is_required'));
+                    Toastr::warning(__('order_varification_code_is_required'));
                     return back();
                 }
             }
@@ -201,7 +201,7 @@ class OrderController extends Controller
 
                 if(!$ol)
                 {
-                    Toastr::warning(trans('messages.faield_to_create_order_transaction'));
+                    Toastr::warning(__('faield_to_create_order_transaction'));
                     return back();
                 }
             }
@@ -241,10 +241,10 @@ class OrderController extends Controller
         $order->save();
         if(!Helpers::send_order_notification($order))
         {
-            Toastr::warning(trans('messages.push_notification_faild'));
+            Toastr::warning(__('push_notification_faild'));
         }
 
-        Toastr::success(trans('messages.order').' '.trans('messages.status_updated'));
+        Toastr::success(__('order').' '.__('status_updated'));
         return back();
     }
 

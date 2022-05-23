@@ -43,14 +43,14 @@ class EmployeeLoginController extends Controller
                         $response = \file_get_contents($url);
                         $response = json_decode($response);
                         if (!$response->success) {
-                            $fail(trans('messages.ReCAPTCHA Failed'));
+                            $fail(__('ReCAPTCHA Failed'));
                         }
                     },
                 ],
             ]);
         } else if(session('six_captcha') != $request->custome_recaptcha)
         {
-            Toastr::error(trans('messages.ReCAPTCHA Failed'));
+            Toastr::error(__('ReCAPTCHA Failed'));
             return back();
         }
 
@@ -60,7 +60,7 @@ class EmployeeLoginController extends Controller
             if($employee->restaurant->status == 0)
             {
                 return redirect()->back()->withInput($request->only('email', 'remember'))
-            ->withErrors([trans('messages.inactive_vendor_warning')]);
+            ->withErrors([__('inactive_vendor_warning')]);
             }
         }
         if (auth('vendor_employee')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
@@ -68,7 +68,7 @@ class EmployeeLoginController extends Controller
         }
 
         return redirect()->back()->withInput($request->only('email', 'remember'))
-            ->withErrors([trans('messages.credentials_does_not_match')]);
+            ->withErrors([__('credentials_does_not_match')]);
     }
 
     public function logout(Request $request)

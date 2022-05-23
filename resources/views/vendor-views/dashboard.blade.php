@@ -35,7 +35,7 @@
                         {{__('Dashboard')}}
 
                         <span class="float-right" style="font-size: 14px;color: gray">
-                            {{__('messages.followup')}}
+                            {{__('Followup')}}
                              <i style="font-size: 30px" class="tio-restaurant"></i>
                         </span>
                     </h1>
@@ -49,21 +49,21 @@
                 <div class="row gx-2 gx-lg-3 mb-2">
                     <div class="col-9">
                         <h4><i style="font-size: 30px"
-                               class="tio-chart-bar-4"></i>{{__('messages.dashboard_order_statistics')}}</h4>
+                               class="tio-chart-bar-4"></i>{{__('dashboard order statistics')}} </h4>
                     </div>
                     <div class="col-3">
                         <select class="custom-select" name="statistics_type" onchange="order_stats_update(this.value)">
                             <option
                                 value="overall" {{$params['statistics_type'] == 'overall'?'selected':''}}>
-                                {{__('messages.Overall Statistics')}}
+                                {{__('Overall Statistics')}}
                             </option>
                             <option
                                 value="today" {{$params['statistics_type'] == 'today'?'selected':''}}>
-                                {{__("messages.Today's Statistics")}}
+                                {{__("Today's Statistics")}}
                             </option>
                             <option
                                 value="this_month" {{$params['statistics_type'] == 'this_month'?'selected':''}}>
-                                {{__("messages.This Month's Statistics")}}
+                                {{__("This Month's Statistics")}}
                             </option>
                         </select>
                     </div>
@@ -87,14 +87,14 @@
                                     <span class="h3 mb-0">
                                         <span class="legend-indicator bg-primary"
                                               style="background-color: #511281!important;"></span>
-                                        {{__('messages.total_earning')}} : {{\App\CentralLogics\Helpers::format_currency(array_sum($earning))}}
+                                        {{__('Total earning')}}  : {{\App\CentralLogics\Helpers::format_currency(array_sum($earning))}}
                                     </span>
                                 </div>
                                 <div class="d-flex align-items-center mt-2 mb-2">
                                     <span class="h5 mb-0">
                                         <span class="legend-indicator bg-primary"
                                               style="background-color: #4CA1A3!important;"></span>
-                                        {{__('messages.commission_given')}} : {{\App\CentralLogics\Helpers::format_currency(array_sum($commission))}}
+                                        {{__('Commission given')}}  : {{\App\CentralLogics\Helpers::format_currency(array_sum($commission))}}
                                     </span>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                                 <div class="row font-size-sm">
                                     <div class="col-auto">
                                         <h4>
-                                            {{__('messages.yearly_statistics')}}
+                                            {{__('Yearly statistics')}} 
                                             <i class="tio-chart-bar-4" style="font-size: 60px"></i>
                                         </h4>
                                     </div>
@@ -211,8 +211,8 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.welcome')}}, {{auth('vendor_employee')->user()->f_name}}.</h1>
-                    <p class="page-header-text">{{__('messages.employee_welcome_message')}}</p>
+                    <h1 class="page-header-title">{{__('Welcome')}}, {{auth('vendor_employee')->user()->f_name}}.</h1>
+                    <p class="page-header-text">{{__('Employee welcome message')}} </p>
                 </div>
             </div>
         </div>

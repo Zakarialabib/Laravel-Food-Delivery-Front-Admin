@@ -34,14 +34,14 @@ class DeliveryManLoginController extends Controller
             {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'auth-003', 'message' => trans('messages.your_application_is_not_approved_yet')]
+                        ['code' => 'auth-003', 'message' => __('your_application_is_not_approved_yet')]
                     ]
                 ], 401);
             }
             else if(!auth('delivery_men')->user()->status)
             {
                 $errors = [];
-                array_push($errors, ['code' => 'auth-003', 'message' => trans('messages.your_account_has_been_suspended')]);
+                array_push($errors, ['code' => 'auth-003', 'message' => __('your_account_has_been_suspended')]);
                 return response()->json([
                     'errors' => $errors
                 ], 401);

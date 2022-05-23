@@ -11,7 +11,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('vendor.dashboard')}}">{{__('Dashboard')}}</a></li>
-                <li class="breadcrumb-item" aria-current="page">{{__('messages.deliveryman')}} {{__('messages.view')}}</li>
+                <li class="breadcrumb-item" aria-current="page">{{__('Deliveryman view')}}</li>
             </ol>
         </nav>
         <!-- Page Header -->
@@ -22,17 +22,17 @@
                 </div>
                 <div class="col-6">
                     <a href="{{url()->previous()}}" class="btn btn-primary float-right">
-                        <i class="tio-back-ui"></i> {{__('messages.back')}}
+                        <i class="tio-back-ui"></i> {{__('back')}}
                     </a>
                 </div>
                 <div class="js-nav-scroller hs-nav-scroller-horizontal">
                     <!-- Nav -->
                     <ul class="nav nav-tabs page-header-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{route('vendor.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'info'])}}"  aria-disabled="true">{{__('messages.info')}}</a>
+                            <a class="nav-link active" href="{{route('vendor.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'info'])}}"  aria-disabled="true">{{__('info')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('vendor.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('messages.transaction')}}</a>
+                            <a class="nav-link" href="{{route('vendor.delivery-man.preview', ['id'=>$dm->id, 'tab'=> 'transaction'])}}"  aria-disabled="true">{{__('transaction')}}</a>
                         </li>
                     </ul>
                     <!-- End Nav -->
@@ -44,10 +44,10 @@
         <!-- Card -->
         <div class="card mb-3 mb-lg-5 mt-2">
             <div class="card-header">
-                <h4 class="page-header-title">{{$dm['f_name'].' '.$dm['l_name']}}@if($dm['status']) @if($dm['active']) <label class="badge badge-soft-primary">{{__('messages.online')}}</label> @else <label class="badge badge-soft-danger">{{__('messages.offline')}}</label> @endif  @else <span class="badge badge-danger">{{__('messages.suspended')}}</span> @endif</h4>
+                <h4 class="page-header-title">{{$dm['f_name'].' '.$dm['l_name']}}@if($dm['status']) @if($dm['active']) <label class="badge badge-soft-primary">{{__('online')}}</label> @else <label class="badge badge-soft-danger">{{__('offline')}}</label> @endif  @else <span class="badge badge-danger">{{__('suspended')}}</span> @endif</h4>
 
                 <a  href="javascript:"  onclick="request_alert('{{route('vendor.delivery-man.status',[$dm['id'],$dm->status?0:1])}}','{{$dm->status?'Want to suspend this deliveryman ?':'Want to unsuspend this deliveryman'}}')" class="btn {{$dm->status?'btn-danger':'btn-success'}}">
-                        {{$dm->status?__('messages.suspend_this_delivery_man'):__('messages.unsuspend_this_delivery_man')}}
+                        {{$dm->status?__('suspend_this_delivery_man'):__('unsuspend_this_delivery_man')}}
                 </a>
             </div>
             <!-- Body -->
@@ -61,7 +61,7 @@
                                  alt="Image Description">
                             <div class="d-block">
                                 <h4 class="display-2 text-dark mb-0">{{count($dm->rating)>0?number_format($dm->rating[0]->average, 2, '.', ' '):0}}</h4>
-                                <p> of {{$dm->reviews->count()}} {{__('messages.reviews')}}
+                                <p> of {{$dm->reviews->count()}} {{__('Reviews')}}
                                     <span class="badge badge-soft-dark badge-pill ml-1"></span>
                                 </p>
                             </div>
@@ -158,7 +158,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="font-weight-bold  text-uppercase for-card-text mb-1">
-                                    {{__('messages.total')}} {{__('messages.delivered')}} {{__('messages.orders')}}
+                                    {{__('total delivered orders')}}
                                 </div>
                                 <div
                                     class="for-card-count">{{$dm->orders->count()}}
@@ -176,7 +176,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div
-                                    class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('messages.cash_in_hand')}}</div>
+                                    class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('Cash in hand')}}</div>
                                 <div
                                     class="for-card-count">{{\App\CentralLogics\Helpers::format_currency($dm->wallet?$dm->wallet->collected_cash:0.0)}}</div>
                             </div>
@@ -192,7 +192,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div
-                                    class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('messages.total_earning')}}</div>
+                                    class=" for-card-text font-weight-bold  text-uppercase mb-1">{{__('Total earning')}} </div>
                                 <div
                                     class="for-card-count">{{\App\CentralLogics\Helpers::format_currency($dm->wallet?$dm->wallet->total_earning:0.00)}}</div>
                             </div>
@@ -226,10 +226,10 @@
                    }'>
                     <thead class="thead-light">
                     <tr>
-                        <th>{{__('messages.reviewer')}}</th>
-                        <th>{{__('messages.review')}}</th>
-                        <th>{{__('messages.attachment')}}</th>
-                        <th>{{__('messages.date')}}</th>
+                        <th>{{__('reviewer')}}</th>
+                        <th>{{__('review')}}</th>
+                        <th>{{__('attachment')}}</th>
+                        <th>{{__('Date')}}</th>
                     </tr>
                     </thead>
 

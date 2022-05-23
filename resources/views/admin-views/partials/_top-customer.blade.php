@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="card-header">
     <h5 class="card-header-title">
-        <i class="tio-users-switch"></i> {{trans('messages.top_customers')}}
+        <i class="tio-users-switch"></i> {{__('top_customers')}}
     </h5>
     @php($params=session('dash_params'))
     @if($params['zone_id']!='all')

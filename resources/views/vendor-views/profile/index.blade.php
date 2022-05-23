@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('messages.profile_settings'))
+@section('title',__('Profile settings'))
 
 @push('css_or_js')
 
@@ -13,7 +13,7 @@
         <div class="page-header">
             <div class="row align-items-end">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('messages.settings')}}</h1>
+                    <h1 class="page-header-title">{{__('Settings')}}</h1>
                 </div>
 
                 <div class="col-sm-auto">
@@ -35,7 +35,7 @@
                             aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu"
                             data-toggle="collapse" data-target="#navbarVerticalNavMenu">
                 <span class="d-flex justify-content-between align-items-center">
-                  <span class="h5 mb-0">{{__('messages.nav_menu')}}</span>
+                  <span class="h5 mb-0">{{__('nav_menu')}}</span>
 
                   <span class="navbar-toggle-default">
                     <i class="tio-menu-hamburger"></i>
@@ -54,12 +54,12 @@
                             class="js-sticky-block js-scrollspy navbar-nav navbar-nav-lg nav-tabs card card-navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link active text-dark" href="javascript:" id="generalSection">
-                                    <i class="tio-user-outlined nav-icon"></i> {{__('messages.basic_information')}}
+                                    <i class="tio-user-outlined nav-icon"></i> {{__('Basic information')}}
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="javascript:" id="passwordSection">
-                                    <i class="tio-lock-outlined nav-icon"></i> {{__('messages.password')}}
+                                    <i class="tio-lock-outlined nav-icon"></i> {{__('Password')}}
                                 </a>
                             </li>
                         </ul>
@@ -104,7 +104,7 @@
                     <!-- Card -->
                     <div class="card mb-3 mb-lg-5">
                         <div class="card-header">
-                            <h2 class="card-title h4"><i class="tio-info"></i> {{__('messages.basic_information')}}</h2>
+                            <h2 class="card-title h4"><i class="tio-info"></i> {{__('Basic information')}}</h2>
                         </div>
 
                         <!-- Body -->
@@ -112,7 +112,7 @@
                             <!-- Form -->
                             <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="firstNameLabel" class="col-sm-3 col-form-label input-label">{{__('messages.full_name')}} <i
+                                <label for="firstNameLabel" class="col-sm-3 col-form-label input-label">{{__('Full name')}} <i
                                         class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
                                         data-placement="top"
                                         title="Display name"></i></label>
@@ -120,10 +120,10 @@
                                 <div class="col-sm-9">
                                     <div class="input-group input-group-sm-down-break">
                                         <input type="text" class="form-control" name="f_name" id="firstNameLabel"
-                                               placeholder="{{__('messages.your_first_name')}}" aria-label="{{__('messages.your_first_name')}}"
+                                               placeholder="{{__('your first name')}}" aria-label="{{__('your first name')}}"
                                                value="{{auth('vendor')->check()?auth('vendor')->user()->f_name:auth('vendor_employee')->user()->f_name}}">
                                         <input type="text" class="form-control" name="l_name" id="lastNameLabel"
-                                               placeholder="{{__('messages.your_last_name')}}" aria-label="{{__('messages.your_last_name')}}"
+                                               placeholder="{{__('your last name')}}" aria-label="{{__('your last name')}}"
                                                value="{{auth('vendor')->check()?auth('vendor')->user()->l_name:auth('vendor_employee')->user()->l_name}}">
                                     </div>
                                 </div>
@@ -132,8 +132,8 @@
 
                             <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="phoneLabel" class="col-sm-3 col-form-label input-label">{{__('messages.phone')}} <span
-                                        class="input-label-secondary">({{__('messages.optional')}})</span></label>
+                                <label for="phoneLabel" class="col-sm-3 col-form-label input-label">{{__('Phone')}} <span
+                                        class="input-label-secondary">({{__('optional')}})</span></label>
 
                                 <div class="col-sm-9">
                                     <input type="text" class="js-masked-input form-control" name="phone" id="phoneLabel"
@@ -147,17 +147,17 @@
                             <!-- End Form Group -->
 
                             <div class="row form-group">
-                                <label for="newEmailLabel" class="col-sm-3 col-form-label input-label">{{__('messages.email')}}</label>
+                                <label for="newEmailLabel" class="col-sm-3 col-form-label input-label">{{__('Email')}}</label>
 
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" name="email" id="newEmailLabel"
                                            value="{{auth('vendor')->check()?auth('vendor')->user()->email:auth('vendor_employee')->user()->email}}"
-                                           placeholder="{{__('messages.enter_new_email_address')}}" aria-label="{{__('messages.enter_new_email_address')}}">
+                                           placeholder="{{__('enter_new_email_address')}}" aria-label="{{__('enter_new_email_address')}}">
                                 </div>
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('vendor-settings-form','{{__('messages.you_want_to_update_user_info')}}') @else call_demo() @endif" class="btn btn-primary">{{__('messages.save_changes')}}</button>
+                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('vendor-settings-form','{{__('you_want_to_update_user_info')}}') @else call_demo() @endif" class="btn btn-primary">{{__('save_changes')}}</button>
                             </div>
 
                             <!-- End Form -->
@@ -170,7 +170,7 @@
                 <!-- Card -->
                 <div id="passwordDiv" class="card mb-3 mb-lg-5">
                     <div class="card-header">
-                        <h4 class="card-title">{{__('messages.change_your_password')}}</h4>
+                        <h4 class="card-title">{{__('Change your password')}}</h4>
                     </div>
 
                     <!-- Body -->
@@ -182,12 +182,12 @@
 
                         <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="newPassword" class="col-sm-3 col-form-label input-label">{{__('messages.new_password')}}</label>
+                                <label for="newPassword" class="col-sm-3 col-form-label input-label">{{__('New password')}}</label>
 
                                 <div class="col-sm-9">
                                     <input type="password" class="js-pwstrength form-control" name="password"
-                                           id="newPassword" placeholder="{{__('messages.enter_new_password')}}"
-                                           aria-label="{{__('messages.enter_new_password')}}"
+                                           id="newPassword" placeholder="{{__('enter_new_password')}}"
+                                           aria-label="{{__('enter_new_password')}}"
                                            data-hs-pwstrength-options='{
                                            "ui": {
                                              "container": "#changePasswordForm",
@@ -207,20 +207,20 @@
 
                             <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="confirmNewPasswordLabel" class="col-sm-3 col-form-label input-label">{{__('messages.confirm_password')}}</label>
+                                <label for="confirmNewPasswordLabel" class="col-sm-3 col-form-label input-label">{{__('Confirm password')}}</label>
 
                                 <div class="col-sm-9">
                                     <div class="mb-3">
                                         <input type="password" class="form-control" name="confirm_password"
-                                               id="confirmNewPasswordLabel" placeholder="{{__('messages.confirm_new_password')}}"
-                                               aria-label="{{__('messages.confirm_new_password')}}" required>
+                                               id="confirmNewPasswordLabel" placeholder="{{__('Confirm new password')}}"
+                                               aria-label="{{__('Confirm new password')}}" required>
                                     </div>
                                 </div>
                             </div>
                             <!-- End Form Group -->
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('changePasswordForm', '{{__('messages.want_to_update_password')}}') @else call_demo() @endif" class="btn btn-primary">{{__('messages.save_changes')}}</button>
+                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('changePasswordForm', '{{__('want_to_update_password')}}') @else call_demo() @endif" class="btn btn-primary">{{__('save_changes')}}</button>
                             </div>
                         </form>
                         <!-- End Form -->

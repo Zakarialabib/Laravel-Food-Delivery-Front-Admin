@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="card-header">
     <h5 class="card-header-title">
-        <i class="tio-star"></i> {{trans('messages.top_rated_foods')}}
+        <i class="tio-star"></i> {{__('top_rated_foods')}}
     </h5>
 </div>
 <!-- End Header -->
@@ -21,7 +21,7 @@
                                  onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'"
                                  alt="{{$item->name}} image">
                             <span class="ml-2">
-                                {{Str::limit($item->name??__('messages.Food deleted!'),20,'...')}}
+                                {{Str::limit($item->name??__('Food deleted!'),20,'...')}}
                             </span>
                         </td>
                         <td>
