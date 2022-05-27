@@ -112,7 +112,7 @@ class PaypalPaymentController extends Controller
     {
         $payment_id = Session::get('paypal_payment_id');
         if (empty($request['PayerID']) || empty($request['token'])) {
-            Session::put('error', __('payment_failed'));
+            Session::put('error', __('Payment failed'));
             return Redirect::back();
         }
 

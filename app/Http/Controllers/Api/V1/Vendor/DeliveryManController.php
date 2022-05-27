@@ -23,7 +23,7 @@ class DeliveryManController extends Controller
             {
                 return response()->json([
                     'errors'=>[
-                        ['code'=>'unauthorized', 'message'=>__('permission_denied')]
+                        ['code'=>'unauthorized', 'message'=>__('Permission denied')]
                     ]
                 ],403);
             }

@@ -26,7 +26,7 @@
                     <form action="{{route('vendor.custom-role.update',[$role['id']])}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="name">{{__('role_name')}}</label>
+                            <label for="name">{{__('Role name')}}</label>
                             <input type="text" name="name" value="{{$role['name']}}" class="form-control" id="name" aria-describedby="emailHelp"
                                    placeholder="Ex : Store">
                         </div>

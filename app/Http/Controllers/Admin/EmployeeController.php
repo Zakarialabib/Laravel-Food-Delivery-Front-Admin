@@ -76,7 +76,7 @@ class EmployeeController extends Controller
             'email' => 'required|unique:admins,email,'.$id,
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:20|unique:admins,phone,'.$id,
         ], [
-            'f_name.required' => __('first_name_is_required'),
+            'f_name.required' => __('First name is required'),
         ]);
 
         if ($request->role_id == 1) {

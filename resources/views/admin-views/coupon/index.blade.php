@@ -27,7 +27,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{__('Title')}}</label>
-                                        <input type="text" name="title" class="form-control" placeholder="{{__('new_coupon')}}" required maxlength="191">
+                                        <input type="text" name="title" class="form-control" placeholder="{{__('New coupon')}}" required maxlength="191">
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -165,7 +165,7 @@
                                 <th>{{__('Title')}}</th>
                                 <th>{{__('Code')}}</th>
                                 <th>{{__('Type')}}</th>
-                                <th>{{__('total_uses')}}</th>
+                                <th>{{__('Total uses')}}</th>
                                 <th>{{__('min purchase')}}</th>
                                 <th>{{__('max discount')}}</th>
                                 <th>{{__('Discount')}}</th>

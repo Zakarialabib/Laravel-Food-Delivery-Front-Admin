@@ -43,14 +43,14 @@
                         @foreach(json_decode($language) as $lang)
                             <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Name')}} ({{strtoupper($lang)}})</label>
-                                <input type="text" name="name[]" class="form-control" placeholder="{{__('new_category')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
+                                <input type="text" name="name[]" class="form-control" placeholder="{{__('New category')}}" maxlength="191" {{$lang == $default_lang? 'required':''}} oninvalid="document.getElementById('en-link').click()">
                             </div>
                             <input type="hidden" name="lang[]" value="{{$lang}}">
                         @endforeach
                     @else
                         <div class="form-group">
                             <label class="input-label" for="exampleFormControlInput1">{{__('Name')}}</label>
-                            <input type="text" name="name" class="form-control" placeholder="{{__('new_category')}}" value="{{old('name')}}" required maxlength="191">
+                            <input type="text" name="name" class="form-control" placeholder="{{__('New category')}}" value="{{old('name')}}" required maxlength="191">
                         </div>
                         <input type="hidden" name="lang[]" value="{{$lang}}">
                     @endif
@@ -98,7 +98,7 @@
                                 <i class="tio-search"></i>
                             </div>
                         </div>
-                        <input type="search" name="search" class="form-control" placeholder="{{__('search_categories')}}" aria-label="{{__('search_categories')}}">
+                        <input type="search" name="search" class="form-control" placeholder="{{__('Search categories')}}" aria-label="{{__('Search categories')}}">
                         <button type="submit" class="btn btn-primary">{{__('Search')}}</button>
                     </div>
                     <!-- End Search -->

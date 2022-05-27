@@ -103,7 +103,7 @@
                             <a class="btn btn-sm btn-danger" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'canceled'])}}', '{{__('Order_canceled_confirmation')}}')" href="javascript:">{{__('Cancel this order')}}</a>
                             @endif
                             @elseif ($order['order_status']=='confirmed' || $order['order_status']=='accepted')
-                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'processing'])}}','Change status to cooking ?')" href="javascript:">{{__('Proceed_for_cooking')}}</a>
+                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'processing'])}}','Change status to cooking ?')" href="javascript:">{{__('Proceed for cooking')}}</a>
                             @elseif ($order['order_status']=='processing')
                             <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'handover'])}}','Change status to ready for handover ?')" href="javascript:">{{__('Make ready for handover')}}</a>    
                             @elseif ($order['order_status']=='handover' && ($order['order_type']=='take_away' || \App\CentralLogics\Helpers::get_restaurant_data()->self_delivery_system))

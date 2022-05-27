@@ -81,9 +81,9 @@ class DeliveryManController extends Controller
             'earning' => 'required',
             'password'=>'required|min:6',
         ], [
-            'f_name.required' => __('first_name_is_required'),
+            'f_name.required' => __('First name is required'),
             'zone_id.required' => __('select_a_zone'),
-            'earning.required' => __('select_dm_type')
+            'earning.required' => __('Select dm type')
         ]);
 
         if ($request->has('image')) {
@@ -210,8 +210,8 @@ class DeliveryManController extends Controller
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:delivery_men,phone,'.$id,
             'earning' => 'required',
         ], [
-            'f_name.required' => __('first_name_is_required'),
-            'earning.required' => __('select_dm_type')
+            'f_name.required' => __('First name is required'),
+            'earning.required' => __('Select dm type')
         ]);
 
         $delivery_man = DeliveryMan::find($id);

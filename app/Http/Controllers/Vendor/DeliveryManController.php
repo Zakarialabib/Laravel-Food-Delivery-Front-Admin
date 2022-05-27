@@ -135,7 +135,7 @@ class DeliveryManController extends Controller
                 {
                     $data = [
                         'title' => __('suspended'),
-                        'description' => __('your_account_has_been_suspended'),
+                        'description' => __('Your account has been suspended'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'
@@ -159,7 +159,7 @@ class DeliveryManController extends Controller
 
         $delivery_man->save();
 
-        Toastr::success(__('deliveryman_status_updated'));
+        Toastr::success(__('Deliveryman status updated'));
         return back();
     }
 
@@ -170,7 +170,7 @@ class DeliveryManController extends Controller
 
         $delivery_man->save();
 
-        Toastr::success(__('deliveryman_type_updated'));
+        Toastr::success(__('Deliveryman type updated'));
         return back();
     }
 

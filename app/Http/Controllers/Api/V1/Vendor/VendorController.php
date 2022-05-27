@@ -62,7 +62,7 @@ class VendorController extends Controller
         $restaurant = $request->vendor->restaurants[0];
         $restaurant->active = $restaurant->active?0:1;
         $restaurant->save();
-        return response()->json(['message' => $restaurant->active?__('restaurant_opened'):__('restaurant_temporarily_closed')], 200);
+        return response()->json(['message' => $restaurant->active?__('Restaurant opened'):__('Restaurant temporarily closed')], 200);
     }
 
     public function get_earning_data(Request $request)
@@ -81,7 +81,7 @@ class VendorController extends Controller
             'phone' => 'required|unique:vendors,phone,'.$vendor->id,
             'password'=>'nullable|min:6',
         ], [
-            'f_name.required' => __('first_name_is_required'),
+            'f_name.required' => __('First name is required'),
             'l_name.required' => __('Last name is required!'),
         ]);
 

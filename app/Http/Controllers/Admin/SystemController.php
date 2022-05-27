@@ -38,7 +38,7 @@ class SystemController extends Controller
             'email' => 'required|unique:admins,email,'.auth('admin')->id(),
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|unique:admins,phone,'.auth('admin')->id(),
         ], [
-            'f_name.required' => __('first_name_is_required'),
+            'f_name.required' => __('First name is required'),
             'l_name.required' => __('Last name is required!'),
         ]);
 

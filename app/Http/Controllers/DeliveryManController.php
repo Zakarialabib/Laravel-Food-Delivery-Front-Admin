@@ -41,9 +41,9 @@ class DeliveryManController extends Controller
             'earning' => 'required',
             'password'=>'required|min:6',
         ], [
-            'f_name.required' => __('first_name_is_required'),
+            'f_name.required' => __('First name is required'),
             'zone_id.required' => __('select_a_zone'),
-            'earning.required' => __('select_dm_type')
+            'earning.required' => __('Select dm type')
         ]);
 
         if ($request->has('image')) {

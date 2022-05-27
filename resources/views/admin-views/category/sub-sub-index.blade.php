@@ -33,7 +33,7 @@
 
                     <div class="form-group">
                         <label class="input-label" for="exampleFormControlInput1">Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="{{__('new_category')}}" required>
+                        <input type="text" name="name" class="form-control" placeholder="{{__('New category')}}" required>
                     </div>
                     <input name="position" value="2" style="display: none">
                     <button type="submit" class="btn btn-primary">Submit</button>

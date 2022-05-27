@@ -411,7 +411,7 @@
                                 Swal.fire({
                                     icon: 'info',
                                     title: 'Cart',
-                                    text: "{{ __('product_already Added in_cart') }}"
+                                    text: "{{ __('Product already Added in cart') }}"
                                 });
                                 return false;
                             } else if (data.data == 2) {
@@ -419,7 +419,7 @@
                                 Swal.fire({
                                     icon: 'info',
                                     title: 'Cart',
-                                    text: "{{ __('product_has_been updated in_cart') }}"
+                                    text: "{{ __('Product has been updated in cart') }}"
                                 });
 
                                 return false;
@@ -433,7 +433,7 @@
                             }
                             $('.call-when-done').click();
 
-                            toastr.success('{{ __('product_has_been Added in_cart') }}', {
+                            toastr.success('{{ __('Product has been Added in cart') }}', {
                                 CloseButton: true,
                                 ProgressBar: true
                             });

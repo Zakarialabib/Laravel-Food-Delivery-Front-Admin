@@ -31,7 +31,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('vendor_view')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Vendor view')}}</li>
         </ol>
     </nav>
 

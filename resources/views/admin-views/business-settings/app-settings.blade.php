@@ -68,7 +68,7 @@
             <div class="col-md-6 col-sm-6 col-12">
                 <div class="form-group">
                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="new_restaurant">
-                        <span class="pr-2 text-capitalize">{{__('new_restaurants')}}:</span> 
+                        <span class="pr-2 text-capitalize">{{__('New restaurants')}}:</span> 
                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.business-settings.toggle-settings',['new_restaurant',$new_restaurant?0:1, 'new_restaurant'])}}'" id="new_restaurant" {{$new_restaurant?'checked':''}}>
                         <span class="toggle-switch-label">
                             <span class="toggle-switch-indicator"></span>

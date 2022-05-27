@@ -38,7 +38,7 @@
                             <div class="card mb-1 p-4 {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
                                 <div class="form-group">
                                     <label class="input-label" for="{{$lang}}_title">{{__('Title')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="title[]" id="{{$lang}}_title" class="form-control" placeholder="{{__('new_campaign')}}" oninvalid="document.getElementById('en-link').click()">
+                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="title[]" id="{{$lang}}_title" class="form-control" placeholder="{{__('New campaign')}}" oninvalid="document.getElementById('en-link').click()">
                                 </div>
                                 <input type="hidden" name="lang[]" value="{{$lang}}">
                                 <div class="form-group pt-4">
@@ -224,7 +224,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlSelect1">{{__('Addon')}}<span
-                                        class="input-label-secondary" title="{{__('restaurant_required_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_required_warning')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('Restaurant required warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant required warning')}}"></span></label>
                                 <select name="addon_ids[]" id="add_on" class="form-control js-select2-custom" multiple="multiple">
 
                                 </select>

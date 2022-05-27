@@ -23,7 +23,7 @@ class FoodController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('permission denied'));
             return back();
         }
         $categories = Category::where(['position' => 0])->get();
@@ -36,7 +36,7 @@ class FoodController extends Controller
         {
             return response()->json([
                     'errors'=>[
-                        ['code'=>'unauthorized', 'message'=>__('permission_denied')]
+                        ['code'=>'unauthorized', 'message'=>__('permission denied')]
                     ]
                 ]);
         }
@@ -64,7 +64,7 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('Discount can not be more than or equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -102,7 +102,7 @@ class FoodController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('Attribute choice option value can not be null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -192,7 +192,7 @@ class FoodController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
 
@@ -206,7 +206,7 @@ class FoodController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
         $product = Food::find($request->id);
@@ -222,7 +222,7 @@ class FoodController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'unauthorized', 'message'=>__('permission_denied')]
+                    ['code'=>'unauthorized', 'message'=>__('Permission denied')]
                 ]
             ]);
         }
@@ -249,7 +249,7 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('Discount can not be more than or equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -289,7 +289,7 @@ class FoodController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('Attribute choice option value can not be null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -367,7 +367,7 @@ class FoodController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
         $product = Food::find($request->id);
@@ -466,7 +466,7 @@ class FoodController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
         try {
@@ -512,7 +512,7 @@ class FoodController extends Controller
             DB::commit();
         }catch(\Exception $e){
             DB::rollBack();
-            Toastr::error(__('failed_to_import_data'));
+            Toastr::error(__('Failed to import data'));
             return back();
         }
 
@@ -529,7 +529,7 @@ class FoodController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
 

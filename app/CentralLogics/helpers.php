@@ -1160,7 +1160,7 @@ class Helpers
             {
                 $data = [
                     'title' =>__('Order push title'),
-                    'description' => $order->order_status=='processing'?__('Proceed_for_cooking'):__('ready_for_delivery'),
+                    'description' => $order->order_status=='processing'?__('Proceed for cooking'):__('Ready for delivery'),
                     'order_id' => $order->id,
                     'image' => '',
                     'type'=>'order_status'

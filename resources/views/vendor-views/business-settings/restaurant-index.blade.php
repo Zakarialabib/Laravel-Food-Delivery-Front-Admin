@@ -120,7 +120,7 @@
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="take_away">
-                                        <span class="pr-2 text-capitalize">{{__('take_away')}}:</span> 
+                                        <span class="pr-2 text-capitalize">{{__('Take away')}}:</span> 
                                         <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('vendor.business-settings.toggle-settings',[$restaurant->id,$restaurant->take_away?0:1, 'take_away'])}}'" id="take_away" {{$restaurant->take_away?'checked':''}}>
                                         <span class="toggle-switch-label">
                                             <span class="toggle-switch-indicator"></span>

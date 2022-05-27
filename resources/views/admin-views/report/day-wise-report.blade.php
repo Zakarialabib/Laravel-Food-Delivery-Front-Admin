@@ -179,7 +179,7 @@
                                         <i class="tio-money nav-icon"></i>
 
                                         <div class="media-body">
-                                            <h4 class="mb-1">{{__('total_sell')}}</h4>
+                                            <h4 class="mb-1">{{__('Total sell')}}</h4>
                                             <span class="font-size-sm text-dark">
                                             {{\App\CentralLogics\Helpers::format_currency($total_sell)}}
                                             </span>
@@ -435,8 +435,8 @@
                             <tr>
                                 <th  style="width: 5%">{{__('sl#')}}</th>
                                 <th  style="width: 10%">{{__('order id')}}</th>
-                                <th  style="width: 17%">{{__('total_order_amount')}}</th>
-                                <th  style="width: 10%">{{__('restaurant_commission')}}</th>
+                                <th  style="width: 17%">{{__('Total order_amount')}}</th>
+                                <th  style="width: 10%">{{__('Restaurant commission')}}</th>
                                 <th  style="width: 10%">{{__('admin_commission')}}</th>
                                 <th  style="width: 8%">{{__('Delivery fee')}}</th>
                                 <th  style="width: 8%">{{__('vat/tax')}}</th>

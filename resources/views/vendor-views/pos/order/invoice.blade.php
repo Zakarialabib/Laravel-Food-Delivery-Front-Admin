@@ -26,7 +26,7 @@
         @if($order->customer)
         <div class="col-12 text-break">
             <h5>
-                {{(__'Customer Name')}} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}
+                {{__('Customer Name')}} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}
             </h5>
             <h5>
                 {{__('Phone')}} : {{$order->customer['phone']}}

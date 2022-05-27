@@ -55,7 +55,7 @@
                                 <div class="col-md-6">
                                     <label class="input-label qcont" for="name">{{__('Last name')}}</label>
                                     <input type="text" name="l_name" value="{{$e['l_name']}}" class="form-control" id="l_name"
-                                           placeholder="{{__('last_name')}}">
+                                           placeholder="{{__('Last name')}}">
                                 </div>
                             </div>
 

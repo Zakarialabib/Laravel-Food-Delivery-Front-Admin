@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="card-header">
     <h5 class="card-header-title">
-        <i class="tio-align-to-top"></i> {{__('top_selling_foods')}}
+        <i class="tio-align-to-top"></i> {{__('Top selling foods')}}
     </h5>
     @php($params=session('dash_params'))
     @if($params['zone_id']!='all')

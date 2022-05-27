@@ -31,7 +31,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input id="datatableSearch" type="search" class="form-control" placeholder="{{__('search_sub_categories')}}" aria-label="{{__('search_sub_categories')}}">
+                                <input id="datatableSearch" type="search" class="form-control" placeholder="{{__('Search sub categories')}}" aria-label="{{__('Search sub categories')}}">
                             </div>
                             <!-- End Search -->
                         </form>--}}

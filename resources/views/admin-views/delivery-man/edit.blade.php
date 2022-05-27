@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Last name')}}</label>
                                 <input type="text" value="{{$delivery_man['l_name']}}" name="l_name"
-                                       class="form-control" placeholder="{{__('last_name')}}"
+                                       class="form-control" placeholder="{{__('Last name')}}"
                                        required>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Deliveryman type')}}</label>
                                 <select name="earning" class="form-control" required>
                                     <option value="1" {{$delivery_man->earning?'selected':''}}>{{__('freelancer')}}</option>
-                                    <option value="0" {{$delivery_man->earning?'':'selected'}}>{{__('salary_based')}}</option>
+                                    <option value="0" {{$delivery_man->earning?'':'selected'}}>{{__('Salary based')}}</option>
                                 </select>
                             </div>
                         </div>

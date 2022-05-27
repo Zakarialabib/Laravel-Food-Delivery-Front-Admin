@@ -9,7 +9,7 @@
                 <tr>
                     <th style="width: 10%">{{__('sl#')}}</th>
                     <th style="width: 10%">{{__('order id')}}</th>
-                    <th style="width: 20%">{{__('total_order_amount')}}</th>
+                    <th style="width: 20%">{{__('Total order_amount')}}</th>
                     <th style="width: 20%">{{__('restaurant earned')}}</th>
                     <th style="width: 15%">{{__('admin')}}  {{__('earned')}}</th>
                     <th style="width: 15%">{{__('Delivery')}}  {{__('fee')}}</th>

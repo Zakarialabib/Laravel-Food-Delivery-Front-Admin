@@ -25,7 +25,7 @@
                         <div class="col-12">
                             <div class="form-group lang_form">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Name')}}</label>
-                                <input type="text" name="name" class="form-control" placeholder="{{__('new_attribute')}}" maxlength="191" value="{{ $attribute['name'] }}" required>
+                                <input type="text" name="name" class="form-control" placeholder="{{__('New attribute')}}" maxlength="191" value="{{ $attribute['name'] }}" required>
                             </div>
                         </div>
                     </div>

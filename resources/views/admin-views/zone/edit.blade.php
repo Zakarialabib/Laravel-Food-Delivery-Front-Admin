@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label class="input-label"
                                        for="exampleFormControlInput1">{{__('Name')}}</label>
-                                <input type="text" name="name" class="form-control" placeholder="{{__('new_zone')}}" value="{{$zone->name}}" required>
+                                <input type="text" name="name" class="form-control" placeholder="{{__('New zone')}}" value="{{$zone->name}}" required>
                             </div>
                             <div class="form-group">
                                 <label class="input-label"
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="col-6" style="height: 300px;">
-                            <input id="pac-input" class="controls rounded" style="height: 3em;width:fit-content;" title="{{__('search_your_location_here')}}" type="text" placeholder="{{__('Search here')}}"/>
+                            <input id="pac-input" class="controls rounded" style="height: 3em;width:fit-content;" title="{{__('Search your location here')}}" type="text" placeholder="{{__('Search here')}}"/>
                             <div id="map-canvas" style="height: 100%; margin:0px; padding: 0px;"></div>
                         </div>
                     </div>

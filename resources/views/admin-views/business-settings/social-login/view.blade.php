@@ -115,7 +115,7 @@
                             <li>{{__('provide_primary_email_and_press')}} <b>{{__('Confirm email')}}</b> <small>({{__('if_needed')}})</small></li>
                             <li>{{__('in_about_section_select')}} <b>{{__('other')}}</b> {{__('and_press')}} <b>{{__('complete_registration')}}</b></li>
 
-                            <li><b>{{__('create_app')}}</b> > {{__('select_an_app_type_and_press')}} <b>{{__('next')}}</b></li>
+                            <li><b>{{__('create_app')}}</b> > {{__('Select an app type and press')}} <b>{{__('next')}}</b></li>
                             <li>{{__('complete_the_details_form_and_press')}} <b>{{__('create_app')}}</b></li><br/>
 
                             <li>{{__('form')}} <b>{{__('facebook_login')}}</b> {{__('press')}} <b>{{__('set_up')}}</b></li>
@@ -123,10 +123,10 @@
                             <li>{{__('Provide')}} <b>{{__('site_url')}}</b> <small>({{__('base_url_of_the_site')}}: https://example.com)</small> > <b>{{__('Save')}}</b></li><br/>
                             <li>{{__('now_go_to')}} <b>{{__('setting')}}</b> {{__('form')}} <b>{{__('facebook_login')}}</b> ({{__('left_sidebar')}})</li>
                             <li>{{__('make_sure_to_check')}} <b>{{__('client_auth_login')}}</b> <small>({{__('must_on')}})</small></li>
-                            <li>{{__('Provide')}} <code>{{__('valid_auth_redirect_uris')}}</code> {{__('from_below_and_click')}} <b>{{__('save_changes')}}</b></li>
+                            <li>{{__('Provide')}} <code>{{__('valid_auth_redirect_uris')}}</code> {{__('from_below_and_click')}} <b>{{__('Save changes')}}</b></li>
 
                             <li>{{__('now_go_to')}} <b>{{__('setting')}}</b> ({{__('from_left_sidebar')}}) > <b>{{__('Basic')}}</b></li>
-                            <li>{{__('fill_the_form_and_press')}} <b>{{__('save_changes')}}</b></li>
+                            <li>{{__('fill_the_form_and_press')}} <b>{{__('Save changes')}}</b></li>
                             <li>{{__('now_copy')}} <b>{{__('client_id')}}</b> & <b>{{__('client_secret')}}</b>, {{__('past_in_the_input_field_below_and')}} <b>{{__('Save')}}</b>.</li>
                         </ol>
                     </div>

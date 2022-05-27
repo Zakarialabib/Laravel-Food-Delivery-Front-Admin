@@ -52,7 +52,7 @@ class VendorController extends Controller
             'logo' => 'required',
             'tax' => 'required',
         ], [
-            'f_name.required' => __('first_name_is_required')
+            'f_name.required' => __('First name is required')
         ]);
 
         if($request->zone_id)
@@ -126,7 +126,7 @@ class VendorController extends Controller
             'minimum_delivery_time' => 'required|regex:/^([0-9]{2})$/|min:2|max:2',
             'maximum_delivery_time' => 'required|regex:/^([0-9]{2})$/|min:2|max:2',
         ], [
-            'f_name.required' => __('first_name_is_required')
+            'f_name.required' => __('First name is required')
         ]);
 
         if($request->zone_id)
@@ -601,7 +601,7 @@ class VendorController extends Controller
         {
             DB::rollBack();
             info($e);
-            Toastr::error(__('failed_to_import_data'));
+            Toastr::error(__('Failed to import data'));
             return back();
         }
 

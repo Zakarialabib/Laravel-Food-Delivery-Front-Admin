@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Last name')}}</label>
                                 <input type="text" value="{{$delivery_man['l_name']}}" name="l_name"
-                                       class="form-control" placeholder="{{__('last_name')}}"
+                                       class="form-control" placeholder="{{__('Last name')}}"
                                        required>
                             </div>
                         </div>

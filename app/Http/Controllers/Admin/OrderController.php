@@ -488,7 +488,7 @@ class OrderController extends Controller
             $zone = Zone::where('id', $order->restaurant->zone_id)->contains('coordinates', $point)->first();
             if(!$zone)
             {
-                Toastr::error(__('out_of_coverage'));
+                Toastr::error(__('Out for coverage'));
                 return back();
             }
         }

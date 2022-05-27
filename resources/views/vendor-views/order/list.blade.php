@@ -307,7 +307,7 @@
                                     </span>
                                 @elseif($order['order_status']=='picked_up')
                                     <span class="badge badge-soft-warning ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-warning"></span>{{__('out_for_delivery')}}
+                                      <span class="legend-indicator bg-warning"></span>{{__('Out for delivery')}}
                                     </span>
                                 @elseif($order['order_status']=='delivered')
                                     <span class="badge badge-soft-success ml-2 ml-sm-3">
@@ -322,7 +322,7 @@
                             <td class="text-capitalize">
                                 @if($order['order_type']=='take_away')
                                     <span class="badge badge-soft-info ml-2 ml-sm-3">
-                                        <span class="legend-indicator bg-info"></span>{{__('take_away')}}
+                                        <span class="legend-indicator bg-info"></span>{{__('Take away')}}
                                     </span>
                                 @else
                                     <span class="badge badge-soft-success ml-2 ml-sm-3">

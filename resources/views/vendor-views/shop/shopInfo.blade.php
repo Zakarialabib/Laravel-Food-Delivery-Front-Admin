@@ -1,5 +1,5 @@
 @extends('layouts.vendor.app')
-@section('title',__('restaurant_view'))
+@section('title',__('Restaurant view'))
 @push('css_or_js')
     <!-- Custom styles for this page -->
 @endpush

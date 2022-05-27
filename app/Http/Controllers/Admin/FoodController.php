@@ -92,7 +92,7 @@ class FoodController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('Attribute choice option value can not be null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -266,7 +266,7 @@ class FoodController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('Attribute choice option value can not be null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -573,7 +573,7 @@ class FoodController extends Controller
             DB::commit();
         }catch(\Exception $e){
             DB::rollBack();
-            Toastr::error(__('failed_to_import_data'));
+            Toastr::error(__('Failed to import data'));
             return back();
         }
         

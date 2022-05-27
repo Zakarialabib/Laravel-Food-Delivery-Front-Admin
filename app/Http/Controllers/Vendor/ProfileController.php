@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Vendor;
 
 use App\CentralLogics\Helpers;
 use App\Http\Controllers\Controller;
-use App\Models\Vendor;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
@@ -37,7 +36,7 @@ class ProfileController extends Controller
             'email' => 'required|unique:'.$table.',email,'.$seller->id,
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:20|unique:'.$table.',phone,'.$seller->id,
         ], [
-            'f_name.required' => __('first_name_is_required'),
+            'f_name.required' => __('First name is required'),
         ]);
         $seller = auth('vendor')->check()?auth('vendor')->user():auth('vendor_employee')->user();
         $seller->f_name = $request->f_name;
@@ -63,7 +62,7 @@ class ProfileController extends Controller
         $seller = auth('vendor')->check()?Helpers::get_vendor_data():auth('vendor_employee')->user();
         $seller->password = bcrypt($request['password']);
         $seller->save();
-        Toastr::success(__('vendor_pasword updated successfully'));
+        Toastr::success(__('Vendor pasword updated successfully'));
         return back();
     }
 

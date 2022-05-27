@@ -25,7 +25,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Title')}}</label>
-                                <input type="text" name="notification_title" class="form-control" placeholder="{{__('new_notification')}}" required maxlength="191">
+                                <input type="text" name="notification_title" class="form-control" placeholder="{{__('New notification')}}" required maxlength="191">
                             </div>
                         </div>
                         <div class="col-md-3">

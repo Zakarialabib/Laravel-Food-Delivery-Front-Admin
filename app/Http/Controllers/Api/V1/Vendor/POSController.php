@@ -220,7 +220,7 @@ class POSController extends Controller
         ->limit(8)
         ->get([DB::raw('id, CONCAT(f_name, " ", l_name, " (", phone ,")") as text')]);
         
-        $data[]=(object)['id'=>false, 'text'=>__('walk_in_customer')];
+        $data[]=(object)['id'=>false, 'text'=>__('Walk in customer')];
 
         return response()->json($data);
     }

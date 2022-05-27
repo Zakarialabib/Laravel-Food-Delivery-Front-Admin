@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('vendor_view')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Vendor view')}}</li>
         </ol>
     </nav>
 
@@ -230,7 +230,7 @@
                                                 </span>
                                             @elseif($order['order_status']=='out_for_delivery')
                                                 <span class="badge badge-soft-warning ml-2 ml-sm-3">
-                                                <span class="legend-indicator bg-warning"></span>{{__('out_for_delivery')}}
+                                                <span class="legend-indicator bg-warning"></span>{{__('Out for delivery')}}
                                                 </span>
                                             @elseif($order['order_status']=='delivered')
                                                 <span class="badge badge-soft-success ml-2 ml-sm-3">

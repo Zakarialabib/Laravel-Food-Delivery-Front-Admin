@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Title')}}</label>
                                 <input type="text" name="title" value="{{$coupon['title']}}" class="form-control"
-                                       placeholder="{{__('new_coupon')}}" required maxlength="191">
+                                       placeholder="{{__('New coupon')}}" required maxlength="191">
                             </div>
                         </div>
                         <div class="col-4">

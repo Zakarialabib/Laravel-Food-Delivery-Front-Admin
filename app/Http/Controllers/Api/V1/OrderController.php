@@ -84,7 +84,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => __('restaurant_not_found')]
+                    ['code' => 'order_time', 'message' => __('Restaurant not_found')]
                 ]
             ], 404);
         }
@@ -103,7 +103,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => __('restaurant_is_closed_at_order_time')]
+                    ['code' => 'order_time', 'message' => __('Restaurant is_closed_at_order_time')]
                 ]
             ], 406);
         }
@@ -182,7 +182,7 @@ class OrderController extends Controller
             if(!$zone)
             {
                 $errors = [];
-                array_push($errors, ['code' => 'coordinates', 'message' => __('out_of_coverage')]);
+                array_push($errors, ['code' => 'coordinates', 'message' => __('Out for coverage')]);
                 return response()->json([
                     'errors' => $errors
                 ], 403);
@@ -263,7 +263,7 @@ class OrderController extends Controller
                 } else {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'campaign', 'message' => __('product_unavailable_warning')]
+                            ['code' => 'campaign', 'message' => __('Product unavailable_warning')]
                         ]
                     ], 401);
                 }
@@ -301,7 +301,7 @@ class OrderController extends Controller
                 } else {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'food', 'message' => __('product_unavailable_warning')]
+                            ['code' => 'food', 'message' => __('Product unavailable_warning')]
                         ]
                     ], 401);
                 }

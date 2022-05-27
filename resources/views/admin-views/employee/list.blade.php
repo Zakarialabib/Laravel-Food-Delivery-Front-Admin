@@ -78,7 +78,7 @@
                                       {{$e['email']}}
                                     </td>
                                     <td>{{$e['phone']}}</td>
-                                    <td>{{$e->role?$e->role['name']:__('role_deleted')}}</td>
+                                    <td>{{$e->role?$e->role['name']:__('Role deleted')}}</td>
                                     <td>
                                         <a class="btn btn-sm btn-white"
                                             href="{{route('admin.employee.edit',[$e['id']])}}" title="{{__('edit Employee')}}"><i class="tio-edit"></i>

@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use App\CentralLogics\Helpers;
 
 class RestaurantController extends Controller
@@ -31,7 +29,7 @@ class RestaurantController extends Controller
             'address' => 'nullable|max:1000',
             'contact' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:20|unique:restaurants,phone,'.Helpers::get_restaurant_id(),
         ], [
-            'f_name.required' => __('first_name_is_required'),
+            'f_name.required' => __('First name is required'),
         ]);
         $shop = Restaurant::findOrFail(Helpers::get_restaurant_id());
         $shop->name = $request->name;
@@ -44,7 +42,7 @@ class RestaurantController extends Controller
         
         $shop->save();
 
-        Toastr::success(__('restaurant_data_updated'));
+        Toastr::success(__('Restaurant data updated'));
         return redirect()->route('vendor.shop.view');
     }
 

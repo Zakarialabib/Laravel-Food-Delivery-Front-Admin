@@ -52,7 +52,7 @@
                             <div class="card p-4 {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
                                 <div class="form-group">
                                     <label class="input-label" for="{{$lang}}_title">{{__('Title')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="title[]" id="{{$lang}}_title" class="form-control" placeholder="{{__('new_campaign')}}" value="{{$translate[$lang]['title']??$campaign['title']}}" oninvalid="document.getElementById('en-link').click()">
+                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="title[]" id="{{$lang}}_title" class="form-control" placeholder="{{__('New campaign')}}" value="{{$translate[$lang]['title']??$campaign['title']}}" oninvalid="document.getElementById('en-link').click()">
                                 </div>
                                 <input type="hidden" name="lang[]" value="{{$lang}}">
                                 <div class="form-group pt-4">
@@ -65,7 +65,7 @@
                     <div class="card p-4" id="{{$default_lang}}-form">
                         <div class="form-group">
                             <label class="input-label" for="exampleFormControlInput1">{{__('Title')}} (EN)</label>
-                            <input type="text" name="title[]" class="form-control" placeholder="{{__('new_campaign')}}" value="{{$campaign['title']}}" maxlength="100" required>
+                            <input type="text" name="title[]" class="form-control" placeholder="{{__('New campaign')}}" value="{{$campaign['title']}}" maxlength="100" required>
                         </div>
                         <input type="hidden" name="lang[]" value="en">
                         <div class="form-group pt-4">

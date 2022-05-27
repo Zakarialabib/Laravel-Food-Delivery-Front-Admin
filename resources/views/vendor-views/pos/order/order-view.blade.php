@@ -113,7 +113,7 @@
                         <div class="row">
                             <div class="col-12 pb-2 border-bottom">
                                 <h4 class="card-header-title">
-                                    {{__('Order Details')}}
+                                    {{__('Order details')}}
                                     <span
                                         class="badge badge-soft-dark rounded-circle ml-1">{{$order->details->count()}}</span>
                                 </h4>
@@ -591,7 +591,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">{{__('Close')}}</button>
-                            <button type="submit" class="btn btn-primary">{{__('Save Changes')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('Save changes')}}</button>
                         </div>
                     </form>
                 @endif

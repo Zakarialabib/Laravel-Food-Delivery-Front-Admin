@@ -21,7 +21,7 @@ class AddOnController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
         $request->validate([
@@ -63,7 +63,7 @@ class AddOnController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
         $addon = AddOn::withoutGlobalScope('translate')->findOrFail($id);
@@ -74,7 +74,7 @@ class AddOnController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
         $request->validate([
@@ -111,7 +111,7 @@ class AddOnController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission_denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
         $addon = AddOn::find($request->id);

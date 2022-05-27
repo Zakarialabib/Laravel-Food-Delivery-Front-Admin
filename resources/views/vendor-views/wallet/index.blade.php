@@ -43,7 +43,7 @@
                         @if(\App\CentralLogics\Helpers::get_vendor_data()->account_no==null || \App\CentralLogics\Helpers::get_vendor_data()->bank_name==null)
                         <a tabindex="0" class="btn btn w-100 btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="{{__('warning_missing_Bank info')}}" data-content="{{__('Warning add Bank info')}}">{{__('Request withdraw')}}</a>
                         @else   
-                        <a class="btn w-100" style="background: #f9fafc;" href="javascript:" data-toggle="modal" data-target="#balance-modal">{{__('request withdraw')}}</a>
+                        <a class="btn w-100" style="background: #f9fafc;" href="javascript:" data-toggle="modal" data-target="#balance-modal">{{__('Request withdraw')}}</a>
                         @endif
                     </div>
                 </div>

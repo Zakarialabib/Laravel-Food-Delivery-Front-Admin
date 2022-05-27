@@ -31,7 +31,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="input-label" for="exampleFormControlInput1">{{__('Title')}}</label>
-                                        <input type="text" name="title" class="form-control" placeholder="{{__('new_banner')}}" value="{{$banner->title}}" required>
+                                        <input type="text" name="title" class="form-control" placeholder="{{__('New banner')}}" value="{{$banner->title}}" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="input-label" for="title">{{__('Zone')}}</label>

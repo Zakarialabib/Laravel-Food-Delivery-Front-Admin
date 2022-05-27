@@ -77,7 +77,7 @@ class BusinessSettingsController extends Controller
 
         $restaurant->save();
 
-        return response()->json(['message'=>__('restaurant_settings_updated')], 200);
+        return response()->json(['message'=>__('Restaurant settings updated')], 200);
     }
 
     public function add_schedule(Request $request)

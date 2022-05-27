@@ -57,7 +57,7 @@
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Deliveryman type')}}</label>
                                 <select name="earning" class="form-control">
                                     <option value="1">{{__('freelancer')}}</option>
-                                    <option value="0">{{__('salary_based')}}</option>
+                                    <option value="0">{{__('Salary based')}}</option>
                                 </select>
                             </div>
                         </div>

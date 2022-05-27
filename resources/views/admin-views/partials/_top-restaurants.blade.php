@@ -1,7 +1,7 @@
 <!-- Header -->
 <div class="card-header">
     <h5 class="card-header-title">
-        <i class="tio-medal"></i> {{__('top_restaurants')}}
+        <i class="tio-medal"></i> {{__('Top restaurants')}}
     </h5>
     @php($params=session('dash_params'))
     @if($params['zone_id']!='all')

@@ -202,7 +202,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlSelect1">{{__('Addon')}}<span
-                                        class="input-label-secondary" title="{{__('restaurant_required_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_required_warning')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('Restaurant required warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant required warning')}}"></span></label>
                                 <select name="addon_ids[]" class="form-control js-select2-custom" multiple="multiple" id="add_on">
                                 </select>
                             </div>

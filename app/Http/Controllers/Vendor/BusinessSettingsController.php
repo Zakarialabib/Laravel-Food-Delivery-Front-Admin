@@ -42,7 +42,7 @@ class BusinessSettingsController extends Controller
         $restaurant->gst = json_encode(['status'=>$request->gst_status, 'code'=>$request->gst]);
         $restaurant->delivery_charge = $restaurant->self_delivery_system?$request->delivery_charge??0: $restaurant->delivery_charge;
         $restaurant->save();
-        Toastr::success(__('restaurant_settings_updated'));
+        Toastr::success(__('Restaurant settings updated'));
         return back();
     }
 
@@ -77,7 +77,7 @@ class BusinessSettingsController extends Controller
         $restaurant = Helpers::get_restaurant_data();
         $restaurant->active = $restaurant->active?0:1;
         $restaurant->save();
-        return response()->json(['message' => $restaurant->active?__('restaurant_opened'):__('restaurant_temporarily_closed')], 200);
+        return response()->json(['message' => $restaurant->active?__('Restaurant opened'):__('Restaurant temporarily closed')], 200);
     }
 
     public function add_schedule(Request $request)

@@ -118,7 +118,7 @@
                     <div class="form-group">
                         <label class="input-label" for="exampleFormControlInput1">{{__('business name')}}</label>
                         <input type="text" name="restaurant_name" value="{{$name->value??''}}" class="form-control"
-                               placeholder="{{__('new_business')}}" required>
+                               placeholder="{{__('New business')}}" required>
                     </div>
 
                     <div class="row">
@@ -605,7 +605,7 @@
                             @php($canceled_by_restaurant=\App\Models\BusinessSetting::where('key','canceled_by_restaurant')->first())
                             @php($canceled_by_restaurant=$canceled_by_restaurant?$canceled_by_restaurant->value:0)
                             <div class="form-group">
-                                <label class="input-label d-inline">{{__('restaurant_cancellation_toggle')}}</label><small style="color: red">
+                                <label class="input-label d-inline">{{__('Restaurant cancellation toggle')}}</label><small style="color: red">
                                 <!-- <span class="input-label-secondary" title="{{__('customer_varification_toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('customer_varification_toggle')}}"></span> -->
                                  *</small>
                                 <div class="input-group input-group-md-down-break">
@@ -816,8 +816,8 @@
                             @php($restaurant_self_registration=\App\Models\BusinessSetting::where('key','toggle_restaurant_registration')->first())
                             @php($restaurant_self_registration=$restaurant_self_registration?$restaurant_self_registration->value:0)
                             <div class="form-group">
-                                <label class="input-label d-inline">{{__('restaurant_self_registration')}}</label><small style="color: red"><span
-                                        class="input-label-secondary" title="{{__('restaurant_self_registration')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_self_registration')}}"></span> *</small>
+                                <label class="input-label d-inline">{{__('Restaurant self registration')}}</label><small style="color: red"><span
+                                        class="input-label-secondary" title="{{__('Restaurant self registration')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant self registration')}}"></span> *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
                                     <div class="form-control">
@@ -985,7 +985,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <input id="pac-input" class="controls rounded" style="height: 3em;width:fit-content;" title="{{__('search_your_location_here')}}" type="text" placeholder="{{__('Search here')}}"/>
+                            <input id="pac-input" class="controls rounded" style="height: 3em;width:fit-content;" title="{{__('Search your location here')}}" type="text" placeholder="{{__('Search here')}}"/>
                             <div id="location_map_canvas"></div>
                         </div>
                     </div>

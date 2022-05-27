@@ -66,10 +66,10 @@
                         <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                             style="display: {{Request::is('vendor-panel/order*')?'block':'none'}}">
                             <li class="nav-item {{Request::is('vendor-panel/order/list/pending')?'active':''}}">
-                                <a class="nav-link " href="{{route('vendor.order.list',['pending'])}}" title="{{__('Pending')}} ({{__('take_away')}})">
+                                <a class="nav-link " href="{{route('vendor.order.list',['pending'])}}" title="{{__('Pending')}} ({{__('Take away')}})">
                                     <span class="tio-circle nav-indicator-icon"></span>
                                     <span class="text-truncate">
-                                        {{__('Pending')}}  {{(config('order_confirmation_model') == 'restaurant' || \App\CentralLogics\Helpers::get_restaurant_data()->self_delivery_system)?'':__('take_away')}}
+                                        {{__('Pending')}}  {{(config('order_confirmation_model') == 'restaurant' || \App\CentralLogics\Helpers::get_restaurant_data()->self_delivery_system)?'':__('Take away')}}
                                             <span class="badge badge-soft-success badge-pill ml-1">
                                             @if(config('order_confirmation_model') == 'restaurant' || \App\CentralLogics\Helpers::get_restaurant_data()->self_delivery_system)
                                             {{\App\Models\Order::where(['order_status'=>'pending','restaurant_id'=>\App\CentralLogics\Helpers::get_restaurant_id()])->Notpos()->OrderScheduledIn(30)->count()}}
@@ -105,7 +105,7 @@
                                 </a>
                             </li>
                             <li class="nav-item {{Request::is('vendor-panel/order/list/ready_for_delivery')?'active':''}}">
-                                <a class="nav-link" href="{{route('vendor.order.list',['ready_for_delivery'])}}" title="{{__('Ready_for_delivery')}}">
+                                <a class="nav-link" href="{{route('vendor.order.list',['ready_for_delivery'])}}" title="{{__('Ready for delivery')}}">
                                     <span class="tio-circle nav-indicator-icon"></span>
                                     <span class="text-truncate">
                                         {{__('Ready for delivery')}}

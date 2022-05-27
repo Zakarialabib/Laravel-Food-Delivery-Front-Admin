@@ -109,7 +109,7 @@
                             <div class="dropdown-menu dropdown-menu-right bg-color-primary" aria-labelledby="dropdownMenuButton">
                                 @if($toggle_restaurant_registration)
                                     <a class="dropdown-item navbar-font" href="{{route('restaurant.create')}}">
-                                        {{__('restaurant_registration')}}
+                                        {{__('Restaurant registration')}}
                                     </a>
                                     @if ($toggle_dm_registration)
                                     <div class="dropdown-divider"></div>

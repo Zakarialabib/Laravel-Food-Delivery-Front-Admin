@@ -31,7 +31,7 @@
                                         <i class="tio-search"></i>
                                     </div>
                                 </div>
-                                <input type="search" name="search" class="form-control" placeholder="{{__('search_categories')}}" aria-label="{{__('search_categories')}}">
+                                <input type="search" name="search" class="form-control" placeholder="{{__('Search categories')}}" aria-label="{{__('Search categories')}}">
                             </div>
                             <!-- End Search -->
                         </form>--}}

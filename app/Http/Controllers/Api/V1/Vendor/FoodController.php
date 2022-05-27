@@ -22,7 +22,7 @@ class FoodController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'unauthorized', 'message'=>__('permission_denied')]
+                    ['code'=>'unauthorized', 'message'=>__('Permission denied')]
                 ]
             ],403);
         }
@@ -90,7 +90,7 @@ class FoodController extends Controller
             foreach (json_decode($request->choice_no) as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('Attribute choice option value can not be null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -158,7 +158,7 @@ class FoodController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'unauthorized', 'message'=>__('permission_denied')]
+                    ['code'=>'unauthorized', 'message'=>__('Permission denied')]
                 ]
             ],403);
         }
@@ -176,7 +176,7 @@ class FoodController extends Controller
         $product->status = $request->status;
         $product->save();
 
-        return response()->json(['message' => __('product_status_updated')], 200);
+        return response()->json(['message' => __('Product status_updated')], 200);
     }
 
     public function update(Request $request)
@@ -185,7 +185,7 @@ class FoodController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'unauthorized', 'message'=>__('permission_denied')]
+                    ['code'=>'unauthorized', 'message'=>__('Permission denied')]
                 ]
             ],403);
         }
@@ -253,7 +253,7 @@ class FoodController extends Controller
             foreach (json_decode($request->choice_no) as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if (json_decode($request[$str])[0] == null) {
-                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('Attribute choice option value can not be null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -324,7 +324,7 @@ class FoodController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'unauthorized', 'message'=>__('permission_denied')]
+                    ['code'=>'unauthorized', 'message'=>__('Permission denied')]
                 ]
             ],403);
         }

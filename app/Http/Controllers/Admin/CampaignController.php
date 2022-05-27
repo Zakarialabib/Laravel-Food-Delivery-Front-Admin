@@ -191,7 +191,7 @@ class CampaignController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('Attribute choice option value can not be null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -327,7 +327,7 @@ class CampaignController extends Controller
             foreach ($request->choice_no as $key => $no) {
                 $str = 'choice_options_' . $no;
                 if ($request[$str][0] == null) {
-                    $validator->getMessageBag()->add('name', __('attribute_choice_option_value_can_not_be_null'));
+                    $validator->getMessageBag()->add('name', __('Attribute choice option value can not be null'));
                     return response()->json(['errors' => Helpers::error_processor($validator)]);
                 }
                 $item['name'] = 'choice_' . $no;
@@ -479,7 +479,7 @@ class CampaignController extends Controller
     {
         $campaign->restaurants()->detach($restaurant);
         $campaign->save();
-        Toastr::success(__('restaurant_remove_from_campaign'));
+        Toastr::success(__('Restaurant remove from campaign'));
         return back();
     }
     public function addrestaurant(Request $request, Campaign $campaign)

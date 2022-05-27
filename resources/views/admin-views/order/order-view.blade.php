@@ -31,7 +31,7 @@
                                     {{__('Orders')}} 
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{__('order details')}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('Order details')}}</li>
                         </ol>
                     </nav>
 
@@ -62,7 +62,7 @@
                             </span>
                         @elseif($order['order_status']=='picked_up')
                             <span class="badge badge-soft-warning ml-2 ml-sm-3 text-capitalize">
-                              <span class="legend-indicator bg-warning"></span>{{__('out_for_delivery')}}
+                              <span class="legend-indicator bg-warning"></span>{{__('Out for delivery')}}
                             </span>
                         @elseif($order['order_status']=='delivered')
                             <span class="badge badge-soft-success ml-2 ml-sm-3 text-capitalize">
@@ -145,7 +145,7 @@
                                        href="javascript:">{{__('handover')}}</a>
                                     <a class="dropdown-item {{$order['order_status']=='picked_up'?'active':''}}"
                                        onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'picked_up'])}}','Change status to out for delivery ?')"
-                                       href="javascript:">{{__('out_for_delivery')}}</a>
+                                       href="javascript:">{{__('Out for delivery')}}</a>
                                     <a class="dropdown-item {{$order['order_status']=='delivered'?'active':''}}"
                                        onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'delivered'])}}','Change status to delivered (payment status will be paid if not)?')"
                                        href="javascript:">{{__('Delivered')}}</a>
@@ -185,7 +185,7 @@
                         <div class="row">
                             <div class="col-12 pb-2 border-bottom  d-flex justify-content-between">
                                 <h4 class="card-header-title">
-                                    {{__('order details')}}
+                                    {{__('Order details')}}
                                     <span
                                         class="badge badge-soft-dark rounded-circle ml-1">{{$order->details->count()}}</span>
                                 </h4>
@@ -199,7 +199,7 @@
                         <div class="row">
                             <div class="col-6 pt-2">
                                 <h6 style="color: #8a8a8a;">
-                                    {{__('order note')}} : {{$order['order_note']}}
+                                    {{__('Order note')}} : {{$order['order_note']}}
                                 </h6>
                             </div>
                             <div class="col-6 pt-2">
@@ -914,7 +914,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">{{__('close')}}</button>
-                            <button type="submit" class="btn btn-primary">{{__('save changes')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('Save changes')}}</button>
                         </div>
                     </form>
                 @endif
@@ -1182,12 +1182,12 @@
                         Swal.fire({
                             icon: 'info',
                             title: 'Cart',
-                            text: "{{__('product_already Added in_cart')}}"
+                            text: "{{__('Product already Added in cart')}}"
                         });
                         return false;
                     } 
                     else if (data.data == 0) {
-                        toastr.success('{{__('product_has_been Added in_cart')}}', {
+                        toastr.success('{{__('Product has been Added in cart')}}', {
                             CloseButton: true,
                             ProgressBar: true
                         });

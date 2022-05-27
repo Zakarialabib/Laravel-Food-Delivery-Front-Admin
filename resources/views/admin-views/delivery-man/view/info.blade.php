@@ -96,7 +96,7 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                            {{__('Type')}} ({{$dm->earning?__('freelancer'):__('salary_based')}})
+                            {{__('Type')}} ({{$dm->earning?__('freelancer'):__('Salary based')}})
                         </button>
                         <div class="dropdown-menu text-capitalize" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item {{$dm->earning?'active':''}}"
@@ -104,7 +104,7 @@
                                 href="javascript:">{{__('freelancer')}}</a>
                             <a class="dropdown-item {{$dm->earning?'':'active'}}"
                             onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],0])}}','{{__('want_to_disable_earnings')}}')"
-                                href="javascript:">{{__('salary_based')}}</a>
+                                href="javascript:">{{__('Salary based')}}</a>
                         </div>
                     </div>
                 </div>

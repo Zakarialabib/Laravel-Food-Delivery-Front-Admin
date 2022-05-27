@@ -267,7 +267,7 @@
                     <div class="card">
                         <div class="w-100">
                             <div class="d-flex flex-row p-1">
-                                <select id='customer' name="customer_id" data-placeholder="{{__('walk_in_customer')}}" class="js-data-example-ajax form-control">
+                                <select id='customer' name="customer_id" data-placeholder="{{__('Walk in customer')}}" class="js-data-example-ajax form-control">
 
                                 </select>
                                 <!-- <button class="btn btn-sm btn-white btn-outline-primary ml-1" type="button" title="{{__('Add customer')}}">
@@ -581,7 +581,7 @@
                         Swal.fire({
                             icon: 'info',
                             title: 'Cart',
-                            text: "{{__('product_already Added in_cart')}}"
+                            text: "{{__('Product already Added in cart')}}"
                         });
                         return false;
                     } 
@@ -590,7 +590,7 @@
                         Swal.fire({
                             icon: 'info',
                             title: 'Cart',
-                            text: "{{__('product_has_been updated in_cart')}}"
+                            text: "{{__('Product has been updated in cart')}}"
                         });
                         
                         return false;
@@ -605,7 +605,7 @@
                     }
                     $('.call-when-done').click();
 
-                    toastr.success('{{__('product_has_been Added in_cart')}}', {
+                    toastr.success('{{__('Product has been Added in cart')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

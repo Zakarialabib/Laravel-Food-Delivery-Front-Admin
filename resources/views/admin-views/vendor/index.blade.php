@@ -81,7 +81,7 @@
                         <div class="col-md-4 col-12">
                             <div class="form-group">
                                 <label class="input-label" for="choice_zones">{{__('Zone')}}<span
-                                        class="input-label-secondary" title="{{__('select_zone_for_map')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('select_zone_for_map')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('Select zone for map')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Select zone for map')}}"></span></label>
                                 <select name="zone_id" id="choice_zones" required
                                         class="form-control js-select2-custom"  data-placeholder="{{__('Select zone')}}">
                                         <option value="" selected disabled>{{__('Select zone')}}</option>
@@ -98,14 +98,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="input-label" for="latitude">{{__('Latitude')}}<span
-                                        class="input-label-secondary" title="{{__('restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_lat_lng_warning')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('Restaurant lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat_lng_warning')}}"></span></label>
                                 <input type="text" id="latitude"
                                        name="latitude" class="form-control"
                                        placeholder="Ex : -94.22213" value="{{old('latitude')}}" required readonly>
                             </div>
                             <div class="form-group">
                                 <label class="input-label" for="longitude">{{__('Longitude')}}<span
-                                        class="input-label-secondary" title="{{__('restaurant_lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('restaurant_lat_lng_warning')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('Restaurant lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat_lng_warning')}}"></span></label>
                                 <input type="text" 
                                        name="longitude" class="form-control"
                                        placeholder="Ex : 103.344322" id="longitude" value="{{old('longitude')}}" required readonly>

@@ -361,7 +361,7 @@
                                     </span>
                                 @elseif($order['order_status']=='picked_up')
                                     <span class="badge badge-soft-warning ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-warning"></span>{{__('out_for_delivery')}}
+                                      <span class="legend-indicator bg-warning"></span>{{__('Out for delivery')}}
                                     </span>
                                 @elseif($order['order_status']=='delivered')
                                     <span class="badge badge-soft-success ml-2 ml-sm-3">
@@ -376,7 +376,7 @@
                             <td class="text-capitalize">
                                 @if($order['order_type']=='take_away')
                                     <span class="badge badge-soft-dark ml-2 ml-sm-3">
-                                        <span class="legend-indicator bg-dark"></span>{{__('take_away')}}
+                                        <span class="legend-indicator bg-dark"></span>{{__('Take away')}}
                                     </span>
                                 @else
                                     <span class="badge badge-soft-success ml-2 ml-sm-3">
@@ -471,7 +471,7 @@
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus4" name="orderStatus[]" class="custom-control-input" value="picked_up" {{isset($orderstatus)?(in_array('picked_up', $orderstatus)?'checked':''):''}}>
-                        <label class="custom-control-label" for="orderStatus4">{{__('out_for_delivery')}}</label>
+                        <label class="custom-control-label" for="orderStatus4">{{__('Out for delivery')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="checkbox" id="orderStatus5" name="orderStatus[]" class="custom-control-input" value="delivered" {{isset($orderstatus)?(in_array('delivered', $orderstatus)?'checked':''):''}}>
@@ -508,7 +508,7 @@
                     <small class="text-cap mb-3">{{__('Order type')}} </small>
                     <div class="custom-control custom-radio mb-2">
                         <input type="radio" id="take_away" name="order_type" class="custom-control-input" value="take_away" {{isset($order_type)?($order_type=='take_away'?'checked':''):''}}>
-                        <label class="custom-control-label text-uppercase" for="take_away">{{__('take_away')}}</label>
+                        <label class="custom-control-label text-uppercase" for="take_away">{{__('Take away')}}</label>
                     </div>
                     <div class="custom-control custom-radio mb-2">
                         <input type="radio" id="delivery" name="order_type" class="custom-control-input" value="delivery" {{isset($order_type)?($order_type=='delivery'?'checked':''):''}}>

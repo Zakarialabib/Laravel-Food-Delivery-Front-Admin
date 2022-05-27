@@ -71,7 +71,7 @@ class EmployeeController extends Controller
             'email' => 'required|unique:vendor_employees,email,'.$id,
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:20|unique:vendor_employees,phone,'.$id,
         ], [
-            'f_name.required' => __('first_name_is_required'),
+            'f_name.required' => __('First name is required'),
         ]);
 
         $e = VendorEmployee::where('restaurant_id', Helpers::get_restaurant_id())->find($id);
