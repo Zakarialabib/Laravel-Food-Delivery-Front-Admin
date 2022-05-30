@@ -35,7 +35,7 @@ class AddOnController extends Controller
             'price' => 'required|numeric|between:0,999999999999.99',
         ], [
             'name.required' => __('Name is required!'),
-            'restaurant_id.required' => __('please_select_restaurant'),
+            'restaurant_id.required' => __('Please select restaurant'),
         ]);
 
         $addon = new AddOn();
@@ -62,7 +62,7 @@ class AddOnController extends Controller
         {
             Translation::insert($data);
         }
-        Toastr::success(__('addon added successfully'));
+        Toastr::success(__('Addon added successfully'));
         return back();
     }
 
@@ -80,7 +80,7 @@ class AddOnController extends Controller
             'price' => 'required|numeric|between:0,999999999999.99',
         ], [
             'name.required' => __('Name is required!'),
-            'restaurant_id.required' => __('please_select_restaurant'),
+            'restaurant_id.required' => __('Please select restaurant'),
         ]);
 
         $addon = AddOn::withoutGlobalScope(RestaurantScope::class)->find($id);
@@ -120,7 +120,7 @@ class AddOnController extends Controller
         $addon_data = AddOn::withoutGlobalScope(RestaurantScope::class)->find($addon);
         $addon_data->status = $request->status;
         $addon_data->save();
-        Toastr::success(__('addon_status_updated'));
+        Toastr::success(__('addon status updated'));
         return back();
     }
 
@@ -145,14 +145,14 @@ class AddOnController extends Controller
         try {
             $collections = (new FastExcel)->import($request->file('products_file'));
         } catch (\Exception $exception) {
-            Toastr::error(__('you_have_uploaded_a_wrong_format_file'));
+            Toastr::error(__('you have uploaded a wrong format file'));
             return back();
         }
 
         $data = [];
         foreach ($collections as $collection) {
                 if ($collection['name'] === "" && $collection['restaurant_id'] === "") {
-                    Toastr::error(__('please_fill_all_required_fields'));
+                    Toastr::error(__('please fill all required fields'));
                     return back();
                 }
 

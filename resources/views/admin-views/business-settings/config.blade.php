@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', __('third_party_apis'))
+@section('title', __('Third party apis'))
 
 @push('css_or_js')
 
@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('third_party_apis')}}</h1>
+                    <h1 class="page-header-title">{{__('Third party apis')}}</h1>
                     <span class="badge badge-soft-dark">{{__('map_api_hint')}}</span><br>
                     <span class="badge badge-soft-dark">{{__('map_api_hint_2')}}</span><br>
                 </div>

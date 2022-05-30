@@ -60,7 +60,7 @@ class VendorController extends Controller
             $point = new Point($request->latitude, $request->longitude);
             $zone = Zone::contains('coordinates', $point)->where('id', $request->zone_id)->first();
             if(!$zone){
-                $validator->getMessageBag()->add('latitude', __('coordinates_out_of_zone'));
+                $validator->getMessageBag()->add('latitude', __('coordinates out of zone'));
                 return back()->withErrors($validator)
                         ->withInput();
             }
@@ -94,7 +94,7 @@ class VendorController extends Controller
 
         $restaurant->save();
         // $restaurant->zones()->attach($request->zone_ids);
-        Toastr::success(__('vendor').__('added_successfully'));
+        Toastr::success(__('vendor').__('added successfully'));
         return redirect('admin/vendor/list');
     }
 
@@ -102,7 +102,7 @@ class VendorController extends Controller
     {
         if(env('APP_MODE')=='demo' && $id == 2)
         {
-            Toastr::warning(__('you_can_not_edit_this_restaurant_please_add_a_new_restaurant_to_edit'));
+            Toastr::warning(__('you can not edit this restaurant please add a new restaurant to edit'));
             return back();
         }
         $restaurant = Restaurant::find($id);
@@ -134,7 +134,7 @@ class VendorController extends Controller
             $point = new Point($request->latitude, $request->longitude);
             $zone = Zone::contains('coordinates', $point)->where('id', $request->zone_id)->first();
             if(!$zone){
-                $validator->getMessageBag()->add('latitude', __('coordinates_out_of_zone'));
+                $validator->getMessageBag()->add('latitude', __('coordinates out of zone'));
                 return back()->withErrors($validator)
                         ->withInput();
             }
@@ -173,7 +173,7 @@ class VendorController extends Controller
     {
         if(env('APP_MODE')=='demo' && $restaurant->id == 2)
         {
-            Toastr::warning(__('you_can_not_delete_this_restaurant_please_add_a_new_restaurant_to_delete'));
+            Toastr::warning(__('you can not edit this restaurant please add a new restaurant to edit'));
             return back();
         }
         if (Storage::disk('public')->exists('restaurant/' . $restaurant['logo'])) {
@@ -232,7 +232,7 @@ class VendorController extends Controller
     public function view_tab(Restaurant $restaurant)
     {
 
-        Toastr::error(__('unknown_tab'));
+        Toastr::error(__('Unknown tab'));
         return back();
     }
 
@@ -298,7 +298,7 @@ class VendorController extends Controller
                 {
                     $data = [
                         'title' => __('suspended'),
-                        'description' => __('your_account_has_been_suspended'),
+                        'description' => __('Your account has been suspended'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'
@@ -316,10 +316,10 @@ class VendorController extends Controller
 
         }
         catch (\Exception $e) {
-            Toastr::warning(__('push_notification_faild'));
+            Toastr::warning(__('Push notification faild'));
         }
 
-        Toastr::success(__('restaurant').__('status_updated'));
+        Toastr::success(__('restaurant').__('status updated'));
         return back();
     }
     
@@ -327,32 +327,32 @@ class VendorController extends Controller
     {
         if($request->menu == "schedule_order" && !Helpers::schedule_order())
         {
-            Toastr::warning(__('schedule_order_disabled_warning'));
+            Toastr::warning(__('schedule order disabled warning'));
             return back();
         }
 
         if((($request->menu == "delivery" && $restaurant->take_away==0) || ($request->menu == "take_away" && $restaurant->delivery==0)) &&  $request->status == 0 )
         {
-            Toastr::warning(__('can_not_disable_both_take_away_and_delivery'));
+            Toastr::warning(__('can not disable both take away and delivery'));
             return back();
         }
 
         if((($request->menu == "veg" && $restaurant->non_veg==0) || ($request->menu == "non_veg" && $restaurant->veg==0)) &&  $request->status == 0 )
         {
-            Toastr::warning(__('veg_non_veg_disable_warning'));
+            Toastr::warning(__('Veg non veg disable warning'));
             return back();
         }
 
         $restaurant[$request->menu] = $request->status;
         $restaurant->save();
-        Toastr::success(__('restaurant').__('settings_updated'));
+        Toastr::success(__('restaurant').__('Settings updated'));
         return back();
     }
 
     public function discountSetup(Restaurant $restaurant, Request $request)
     {
         $message=__('discount');
-        $message .= $restaurant->discount?__('updated_successfully'):__('added_successfully');
+        $message .= $restaurant->discount?__('updated_successfully'):__('added successfully');
         $restaurant->discount()->updateOrinsert(
         [
             'restaurant_id' => $restaurant->id
@@ -396,7 +396,7 @@ class VendorController extends Controller
         $restaurant->delivery_time = $request->minimum_delivery_time .'-'. $request->maximum_delivery_time;
 
         $restaurant->save();
-        Toastr::success(__('restaurant').__('settings_updated'));
+        Toastr::success(__('restaurant').__('Settings updated'));
         return back();
     }
 
@@ -408,14 +408,14 @@ class VendorController extends Controller
         if($request->status) $restaurant->status = 1;
         $restaurant->save();
 
-        Toastr::success(__('application_status updated successfully'));
+        Toastr::success(__('Application status updated successfully'));
         return back();
     }
 
     public function cleardiscount(Restaurant $restaurant)
     {
         $restaurant->discount->delete();
-        Toastr::success(__('restaurant').__('discount_cleared'));
+        Toastr::success(__('restaurant').__('Discount cleared'));
         return back();
     }
 
@@ -465,12 +465,12 @@ class VendorController extends Controller
             RestaurantWallet::where('vendor_id', $withdraw->vendor_id)->increment('total_withdrawn', $withdraw->amount);
             RestaurantWallet::where('vendor_id', $withdraw->vendor_id)->decrement('pending_withdraw', $withdraw->amount);
             $withdraw->save();
-            Toastr::success(__('seller_payment_approved'));
+            Toastr::success(__('Seller payment approved'));
             return redirect()->route('admin.vendor.withdraw_list');
         } else if ($request->approved == 2) {
             RestaurantWallet::where('vendor_id', $withdraw->vendor_id)->decrement('pending_withdraw', $withdraw->amount);
             $withdraw->save();
-            Toastr::info(__('seller_payment_denied'));
+            Toastr::info(__('Seller payment denied'));
             return redirect()->route('admin.vendor.withdraw_list');
         } else {
             Toastr::error(__('Not found'));
@@ -537,7 +537,7 @@ class VendorController extends Controller
         try {
             $collections = (new FastExcel)->import($request->file('products_file'));
         } catch (\Exception $exception) {
-            Toastr::error(__('you_have_uploaded_a_wrong_format_file'));
+            Toastr::error(__('you have uploaded a wrong format file'));
             return back();
         }
         $duplicate_phones = $collections->duplicates('phone');
@@ -546,13 +546,13 @@ class VendorController extends Controller
         // dd(['Phone'=>$duplicate_phones, 'Email'=>$duplicate_emails]);
         if($duplicate_emails->isNotEmpty())
         {
-            Toastr::error(__('duplicate_data_on_column',['field'=>__('email')]));
+            Toastr::error(__('Duplicate data on column',['field'=>__('email')]));
             return back();
         }
 
         if($duplicate_phones->isNotEmpty())
         {
-            Toastr::error(__('duplicate_data_on_column',['field'=>__('phone')]));
+            Toastr::error(__('Duplicate data on column',['field'=>__('phone')]));
             return back();
         }
 
@@ -562,7 +562,7 @@ class VendorController extends Controller
         $vendor_id = $vendor?$vendor->id:0;
         foreach ($collections as $key=>$collection) {
                 if ($collection['ownerFirstName'] === "" || $collection['restaurantName'] === "" || $collection['phone'] === "" || $collection['email'] === "" || $collection['latitude'] === "" || $collection['longitude'] === "" || empty($collection['openingTime']) === "" || empty($collection['closeingTime']) || $collection['zone_id'] === "") {
-                    Toastr::error(__('please_fill_all_required_fields'));
+                    Toastr::error(__('please fill all required fields'));
                     return back();
                 }
 
@@ -661,7 +661,7 @@ class VendorController extends Controller
         if(isset($temp))
         {
             return response()->json(['errors' => [
-                ['code'=>'time', 'message'=>__('schedule_overlapping_warning')]
+                ['code'=>'time', 'message'=>__('Schedule overlapping warning')]
             ]]);
         }
 

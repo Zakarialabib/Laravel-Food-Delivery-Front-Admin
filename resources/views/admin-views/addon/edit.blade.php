@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlSelect1">{{__('Restaurant')}}<span
                                         class="input-label-secondary"></span></label>
-                                <select name="restaurant_id" class="form-control  js-data-example-ajax"  data-placeholder="{{__('Select restaurant')}}" required oninvalid="this.setCustomValidity('{{__('please_select_restaurant')}}')">
+                                <select name="restaurant_id" class="form-control  js-data-example-ajax"  data-placeholder="{{__('Select restaurant')}}" required oninvalid="this.setCustomValidity('{{__('Please select restaurant')}}')">
                                 @if($addon->restaurant)
                                 <option value="{{$addon->restaurant_id}}" selected="selected">{{$addon->restaurant->name}}</option>
                                 @endif

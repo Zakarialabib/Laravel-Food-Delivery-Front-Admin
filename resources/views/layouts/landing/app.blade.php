@@ -90,21 +90,21 @@
                             <a class="nav-link navbar-font" href="{{$landing_page_links['web_app_url']}}">{{__('browse_web')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-font" href="{{route('terms-and-conditions')}}">{{__('terms_and_condition')}}</a>
+                            <a class="nav-link navbar-font" href="{{route('terms-and-conditions')}}">{{__('Terms and condition')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-font" href="{{route('about-us')}}">{{__('about_us')}}</a>
+                            <a class="nav-link navbar-font" href="{{route('about-us')}}">{{__('About us')}}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link navbar-font" href="{{route('contact-us')}}">{{__('Contact us')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link navbar-font" href="{{route('privacy-policy')}}">{{__('privacy_policy')}}</a>
+                            <a class="nav-link navbar-font" href="{{route('privacy-policy')}}">{{__('Privacy policy')}}</a>
                         </li>
                     @if($toggle_dm_registration || $toggle_restaurant_registration)
                         <li class="nav-item dropdown">
                             <a class="nav-link navbar-font dropdown-toggle" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{__('join_us')}}
+                                {{__('Join us')}}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right bg-color-primary" aria-labelledby="dropdownMenuButton">
                                 @if($toggle_restaurant_registration)
@@ -121,7 +121,7 @@
                                     </a>
                                 @endif
                             </div>
-                            <!-- <a class="nav-link navbar-font" href="{{route('privacy-policy')}}">{{__('privacy_policy')}}</a> -->
+                            <!-- <a class="nav-link navbar-font" href="{{route('privacy-policy')}}">{{__('Privacy policy')}}</a> -->
                         </li>
                     @endif
                     </ul>
@@ -183,16 +183,16 @@
 
                         <ul class="list-unstyled">
                             <li>
-                                <a href="{{route('about-us')}}" class="footer-item text-white">{{__('about_us')}}</a>
+                                <a href="{{route('about-us')}}" class="footer-item text-white">{{__('About us')}}</a>
                             </li>
                             <li>
                                 <a href="{{route('contact-us')}}" class="footer-item text-white">{{__('Contact us')}}</a>
                             </li>
                             <li>
-                                <a href="{{route('privacy-policy')}}" class="footer-item text-white">{{__('privacy_policy')}}</a>
+                                <a href="{{route('privacy-policy')}}" class="footer-item text-white">{{__('Privacy policy')}}</a>
                             </li>
                             <li>
-                                <a href="{{route('terms-and-conditions')}}" class="footer-item text-white">{{__('terms_and_condition')}}</a>
+                                <a href="{{route('terms-and-conditions')}}" class="footer-item text-white">{{__('Terms and condition')}}</a>
                             </li>
                         </ul>
                     </div>

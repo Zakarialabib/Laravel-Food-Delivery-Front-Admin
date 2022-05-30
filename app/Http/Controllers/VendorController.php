@@ -54,7 +54,7 @@ class VendorController extends Controller
             $point = new Point($request->latitude, $request->longitude);
             $zone = Zone::contains('coordinates', $point)->where('id', $request->zone_id)->first();
             if(!$zone){
-                $validator->getMessageBag()->add('latitude', __('coordinates_out_of_zone'));
+                $validator->getMessageBag()->add('latitude', __('coordinates out of zone'));
                 return back()->withErrors($validator)
                         ->withInput();
             }
@@ -88,7 +88,7 @@ class VendorController extends Controller
         $restaurant->delivery_time = $request->minimum_delivery_time .'-'. $request->maximum_delivery_time;
         $restaurant->status = 0;
         $restaurant->save();
-        Toastr::success(__('application_placed_successfully'));
+        Toastr::success(__('Application placed successfully'));
         return back();
     }
 }

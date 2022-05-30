@@ -222,7 +222,7 @@ class OrderController extends Controller
             $deliveryMen=Helpers::deliverymen_list_formatting($deliveryMen);
             return view('admin-views.order.order-view', compact('order', 'deliveryMen','categories', 'products','category', 'keyword', 'editing'));
         } else {
-            Toastr::info(__('no_more_orders'));
+            Toastr::info(__('No more orders'));
             return back();
         }
     }
@@ -246,12 +246,12 @@ class OrderController extends Controller
         $order = Order::Notpos()->find($request->id);
 
         if ($order['delivery_man_id'] == null && $request->order_status == 'out_for_delivery') {
-            Toastr::warning(__('please_assign_deliveryman_first'));
+            Toastr::warning(__('Please assign deliveryman first'));
             return back();
         }
 
         if ($request->order_status == 'delivered' && $order['transaction_reference'] == null && $order['payment_method'] != 'cash_on_delivery') {
-            Toastr::warning(__('Add your_paymen_ref_first'));
+            Toastr::warning(__('Add your payment ref first'));
             return back();
         }
 
@@ -280,7 +280,7 @@ class OrderController extends Controller
                 }
                 if(!$ol)
                 {
-                    Toastr::warning(__('faield_to_create_order_transaction'));
+                    Toastr::warning(__('faield to create order transaction'));
                     return back();
                 }
             }
@@ -320,7 +320,7 @@ class OrderController extends Controller
         {
             if($order->payment_method == "cash_on_delivery" || $order->payment_status=="unpaid")
             {
-                Toastr::warning(__('you_can_not_refund_a_cod_order'));
+                Toastr::warning(__('you can not refund a cod order'));
                 return back();
             }
             if(isset($order->delivered))
@@ -329,7 +329,7 @@ class OrderController extends Controller
 
                 if(!$rt)
                 {
-                    Toastr::warning(__('faield_to_create_order_transaction'));
+                    Toastr::warning(__('faield to create order transaction'));
                     return back();
                 }
             }
@@ -347,7 +347,7 @@ class OrderController extends Controller
         {
             if(in_array($order->order_status, ['delivered','canceled','refund_requested','refunded','failed']))
             {
-                Toastr::warning(__('you_can_not_cancel_a_completed_order'));
+                Toastr::warning(__('You can not cancel a completed order'));
                 return back(); 
             }
             if($order->delivery_man)
@@ -363,10 +363,10 @@ class OrderController extends Controller
         
         if(!Helpers::send_order_notification($order))
         {
-            Toastr::warning(__('push_notification_faild'));
+            Toastr::warning(__('Push notification faild'));
         }
 
-        Toastr::success(__('order').__('status_updated'));
+        Toastr::success(__('order').__('status updated'));
         return back();
     }
 
@@ -386,7 +386,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['delivery_man_id'=> __('order_already_assign_to_this_deliveryman')]
+                    ['delivery_man_id'=> __('order already assign to this deliveryman')]
                 ]
             ], 400);
         }
@@ -396,7 +396,7 @@ class OrderController extends Controller
             {
                 return response()->json([
                     'errors'=>[
-                        ['current_orders'=> __('dm_maximum_order_exceed_warning')]
+                        ['current_orders'=> __('Dm maximum order exceed warning')]
                     ]
                 ], 404);
             }
@@ -408,7 +408,7 @@ class OrderController extends Controller
 
                 $data = [
                     'title' =>__('Order push title'),
-                    'description' => __('you_are_unassigned_from_a_order'),
+                    'description' => __('You are unassigned from a order'),
                     'order_id' => '',
                     'image' => '',
                     'type'=> 'assign'
@@ -452,7 +452,7 @@ class OrderController extends Controller
                 }
                 $data = [
                     'title' =>__('Order push title'),
-                    'description' => __('you_are_assigned_to_a_order'),
+                    'description' => __('You are unassigned from a order'),
                     'order_id' => $order['id'],
                     'image' => '',
                     'type'=> 'assign'
@@ -467,7 +467,7 @@ class OrderController extends Controller
 
             } catch (\Exception $e) {
                 info($e);
-                Toastr::warning(__('push_notification_faild'));
+                Toastr::warning(__('Push notification faild'));
             }
             return response()->json([], 200);
         }
@@ -503,7 +503,7 @@ class OrderController extends Controller
 
         $order->delivery_address = json_encode($address);
         $order->save();
-        Toastr::success(__('delivery_address_updated'));
+        Toastr::success(__('delivery address updated'));
         return back();
     }
 
@@ -522,7 +522,7 @@ class OrderController extends Controller
             'transaction_reference' => $request['transaction_reference']
         ]);
 
-        Toastr::success(__('payment_reference_code_is_added'));
+        Toastr::success(__('payment reference code is added'));
         return back();
     }
 
@@ -722,7 +722,7 @@ class OrderController extends Controller
         
         if(!$request->session()->has('order_cart'))
         {
-            Toastr::error(__('order_data_not_found'));
+            Toastr::error(__('order data not found'));
             return back();
         }
         $cart = $request->session()->get('order_cart', collect([]));
@@ -779,7 +779,7 @@ class OrderController extends Controller
                         $product_price += $price*$c['quantity'];
                         $restaurant_discount_amount += $c['discount_on_food']*$c['quantity'];
                     } else {
-                        Toastr::error(__('food_not_found'));
+                        Toastr::error(__('food not found'));
                         return back();
                     }
                 } else {
@@ -821,7 +821,7 @@ class OrderController extends Controller
                         $product_price += $price*$c['quantity'];
                         $restaurant_discount_amount += $c['discount_on_food']*$c['quantity'];
                     } else {
-                        Toastr::error(__('food_not_found'));
+                        Toastr::error(__('food not found'));
                         return back();
                     }
                 }
@@ -867,7 +867,7 @@ class OrderController extends Controller
         $total_tax_amount= ($tax > 0)?(($total_price * $tax)/100):0;
         if($restaurant->minimum_order > $product_price + $total_addon_price )
         {
-            Toastr::error(__('you_need_to_order_at_least', ['amount'=>$restaurant->minimum_order.' '.Helpers::currency_code()]));
+            Toastr::error(__('you need to order at least', ['amount'=>$restaurant->minimum_order.' '.Helpers::currency_code()]));
             return back();
         }
 

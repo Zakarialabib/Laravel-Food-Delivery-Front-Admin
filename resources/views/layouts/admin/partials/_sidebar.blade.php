@@ -90,7 +90,7 @@
                                 </li>
                                 <li class="nav-item {{Request::is('admin/order/list/processing')?'active':''}}">
                                     <a class="nav-link " href="{{route('admin.order.list',['processing'])}}"
-                                       title="{{__('preparingInRestaurants')}}">
+                                       title="{{__('preparing In Restaurants')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">
                                             {{__('Processing')}}
@@ -103,7 +103,7 @@
                                 <li class="nav-item {{Request::is('admin/order/list/food_on_the_way')?'active':''}}">
                                     <a class="nav-link text-capitalize"
                                        href="{{route('admin.order.list',['food_on_the_way'])}}"
-                                       title="{{__('foodOnTheWay')}}">
+                                       title="{{__('food On The Way')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">
                                             {{__('foodOnTheWay')}}
@@ -191,10 +191,10 @@
                         <!-- Order dispachment -->
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/dispatch/*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                               href="javascript:" title="{{__('dispatchManagement')}}">
+                               href="javascript:" title="{{__('dispatch Management')}}">
                                 <i class="tio-clock nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                    {{__('dispatchManagement')}}
+                                    {{__('dispatch Management')}}
                                 </span>
                             </a>
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
@@ -202,10 +202,10 @@
                                 <li class="nav-item {{Request::is('admin/dispatch/list/searching_for_deliverymen')?'active':''}}">
                                     <a class="nav-link "
                                        href="{{route('admin.dispatch.list',['searching_for_deliverymen'])}}"
-                                       title="{{__('searchingDM')}}">
+                                       title="{{__('searching DM')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">
-                                            {{__('searchingDM')}}
+                                            {{__('searching DM')}}
                                             <span class="badge badge-soft-info badge-pill ml-1">
                                                 {{\App\Models\Order::SearchingForDeliveryman()->OrderScheduledIn(30)->count()}}
                                             </span>
@@ -217,7 +217,7 @@
                                        title="{{__('ongoingOrders')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">
-                                            {{__('ongoingOrders')}}
+                                            {{__('ongoing Orders')}}
                                                 <span class="badge badge-soft-dark bg-light badge-pill ml-1">
                                                 {{\App\Models\Order::Ongoing()->OrderScheduledIn(30)->count()}}
                                             </span>
@@ -243,7 +243,7 @@
                                href="{{route('admin.zone.home')}}" title="{{__('Zone')}}">
                                 <i class="tio-city nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                    {{__('Delivery_zone')}}                                </span>
+                                    {{__('Delivery zone')}}                                </span>
                             </a>
                         </li>
                     @endif
@@ -368,7 +368,7 @@
                             >
                                 <i class="tio-apps nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                    {{__('attributes')}}
+                                    {{__('Attributes')}}
                                 </span>
                             </a>
                         </li>
@@ -475,11 +475,11 @@
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/delivery-man/add')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.delivery-man.add')}}"
-                               title="{{__('Add delivery_man')}}"
+                               title="{{__('Add delivery man')}}"
                             >
                                 <i class="tio-running nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
-                                    {{__('Add delivery_man')}}
+                                    {{__('Add delivery man')}}
                                 </span>
                             </a>
                         </li>
@@ -529,10 +529,10 @@
 
                                 <li class="nav-item {{Request::is('admin/campaign/basic/*')?'active':''}}">
                                     <a class="nav-link " href="{{route('admin.campaign.list', 'basic')}}"
-                                       title="{{__('basic_campaign')}}">
+                                       title="{{__('Basic campaign')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span
-                                            class="text-truncate">{{__('basic_campaign')}}</span>
+                                            class="text-truncate">{{__('Basic campaign')}}</span>
                                     </a>
                                 </li>
                                 <li class="nav-item {{Request::is('admin/campaign/item/*')?'active':''}}">
@@ -715,34 +715,34 @@
                     @if(\App\CentralLogics\Helpers::module_permission_check('settings'))
                         <li class="nav-item">
                             <small class="nav-subtitle"
-                                   title="{{__('business settings')}}">{{__('web_and_app settings')}}</small>
+                                   title="{{__('business settings')}}">{{__('Web and app settings')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                         </li>
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/app-settings*')?'active':''}}">
                             <a class="nav-link " href="{{route('admin.business-settings.app-settings')}}"
-                               title="{{__('app_settings')}}"
+                               title="{{__('App settings')}}"
                             >
                                 <span class="tio-android nav-icon"></span>
                                 <span
-                                    class="text-truncate">{{__('app_settings')}}</span>
+                                    class="text-truncate">{{__('App settings')}}</span>
                             </a>
                         </li>
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/landing-page-settings*')?'active':''}}">
                             <a class="nav-link " href="{{route('admin.business-settings.landing-page-settings', 'index')}}"
-                               title="{{__('Landing_page_settings')}}"
+                               title="{{__('Landing page settings')}}"
                             >
                                 <span class="tio-website nav-icon"></span>
                                 <span
-                                    class="text-truncate">{{__('Landing_page_settings')}}</span>
+                                    class="text-truncate">{{__('Landing page settings')}}</span>
                             </a>
                         </li>
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/config*')?'active':''}}">
                             <a class="nav-link " href="{{route('admin.business-settings.config-setup')}}"
-                               title="{{__('third_party_apis')}}"
+                               title="{{__('Third party apis')}}"
                             >
                                 <span class="tio-key nav-icon"></span>
                                 <span
-                                    class="text-truncate">{{__('third_party_apis')}}</span>
+                                    class="text-truncate">{{__('Third party apis')}}</span>
                             </a>
                         </li>
 
@@ -760,27 +760,27 @@
                                 <li class="nav-item {{Request::is('admin/business-settings/pages/terms-and-conditions')?'active':''}}">
                                     <a class="nav-link "
                                        href="{{route('admin.business-settings.terms-and-conditions')}}"
-                                       title="{{__('terms_and_condition')}}">
+                                       title="{{__('Terms and condition')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{__('terms_and_condition')}}</span>
+                                        <span class="text-truncate">{{__('Terms and condition')}}</span>
                                     </a>
                                 </li>
 
                                 <li class="nav-item {{Request::is('admin/business-settings/pages/privacy-policy')?'active':''}}">
                                     <a class="nav-link "
                                        href="{{route('admin.business-settings.privacy-policy')}}"
-                                       title="{{__('privacy_policy')}}">
+                                       title="{{__('Privacy policy')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{__('privacy_policy')}}</span>
+                                        <span class="text-truncate">{{__('Privacy policy')}}</span>
                                     </a>
                                 </li>
 
                                 <li class="nav-item {{Request::is('admin/business-settings/pages/about-us')?'active':''}}">
                                     <a class="nav-link "
                                        href="{{route('admin.business-settings.about-us')}}"
-                                       title="{{__('about_us')}}">
+                                       title="{{__('About us')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
-                                        <span class="text-truncate">{{__('about_us')}}</span>
+                                        <span class="text-truncate">{{__('About us')}}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -788,7 +788,7 @@
 
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/file-manager*')?'active':''}}">
                             <a class="nav-link " href="{{route('admin.file-manager.index')}}"
-                               title="{{__('third_party_apis')}}"
+                               title="{{__('Third party apis')}}"
                             >
                                 <span class="tio-album nav-icon"></span>
                                 <span
@@ -821,25 +821,25 @@
                     @if(\App\CentralLogics\Helpers::module_permission_check('report'))
                         <li class="nav-item">
                             <small class="nav-subtitle"
-                                   title="{{__('report_and_analytics')}}">{{__('report_and_analytics')}}</small>
+                                   title="{{__('Report and analytics')}}">{{__('Report and analytics')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                         </li>
 
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/report/day-wise-report')?'active':''}}">
                             <a class="nav-link " href="{{route('admin.report.day-wise-report')}}"
-                               title="{{__('day_wise_report')}}">
+                               title="{{__('Day wise report')}}">
                                 <span class="tio-report nav-icon"></span>
                                 <span
-                                    class="text-truncate">{{__('day_wise_report')}}</span>
+                                    class="text-truncate">{{__('Day wise report')}}</span>
                             </a>
                         </li>
 
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/report/food-wise-report')?'active':''}}">
                             <a class="nav-link " href="{{route('admin.report.food-wise-report')}}"
-                               title="{{__('Food wise_report')}}">
+                               title="{{__('Food wise report')}}">
                                 <span class="tio-report nav-icon"></span>
                                 <span
-                                    class="text-truncate">{{__('Food wise_report')}}</span>
+                                    class="text-truncate">{{__('Food wise report')}}</span>
                             </a>
                         </li>
                     @endif
@@ -848,7 +848,7 @@
 
                     <li class="nav-item">
                         <small class="nav-subtitle"
-                               title="{{__('employee_handle')}}">{{__('Employee')}} {{__('section')}}</small>
+                               title="{{__('employee_handle')}}">{{__('Employee section')}}</small>
                         <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                     </li>
 

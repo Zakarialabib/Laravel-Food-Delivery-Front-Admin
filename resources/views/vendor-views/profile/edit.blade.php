@@ -195,8 +195,8 @@
 
                                 <div class="col-sm-9">
                                     <input type="password" class="js-pwstrength form-control" name="password"
-                                           id="newPassword" placeholder="{{__('enter_new_password')}}"
-                                           aria-label="{{__('enter_new_password')}}"
+                                           id="newPassword" placeholder="{{__('Enter new password')}}"
+                                           aria-label="{{__('Enter new password')}}"
                                            data-hs-pwstrength-options='{
                                            "ui": {
                                              "container": "#changePasswordForm",
@@ -230,7 +230,7 @@
                             <!-- End Form Group -->
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('changePasswordForm','{{__('want_to_update_password')}}')":"call_demo()"}}" class="btn btn-primary">{{__('Save changes')}}</button>
+                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('changePasswordForm','{{__('Want to update password')}}')":"call_demo()"}}" class="btn btn-primary">{{__('Save changes')}}</button>
                             </div>
                         </form>
                         <!-- End Form -->

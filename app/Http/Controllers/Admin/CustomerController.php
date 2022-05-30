@@ -66,10 +66,10 @@ class CustomerController extends Controller
 
         }
         catch (\Exception $e) {
-            Toastr::warning(__('push_notification_faild'));
+            Toastr::warning(__('Push notification faild'));
         }
 
-        Toastr::success(__('customer').__('status_updated'));
+        Toastr::success(__('customer').__('status updated'));
         return back();
     }
 

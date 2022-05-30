@@ -43,11 +43,11 @@
                 <div class="col-md-6">
                     <div class="hs-unfold float-right">
                         <a class="btn btn-primary text-capitalize font-weight-bold"
-                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'approved'])}}','{{__('you_want_to_approve_this_application')}}')"
+                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'approved'])}}','{{__('You want to approve_this_application')}}')"
                             href="javascript:">{{__('approve')}}</a>
                         @if($dm->application_status !='denied')
                         <a class="btn btn-danger text-capitalize font-weight-bold" 
-                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'denied'])}}','{{__('you_want_to_deny_this_application')}}')"
+                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'denied'])}}','{{__('You want to deny_this_application')}}')"
                             href="javascript:">{{__('deny')}}</a>
                         @endif
                     </div>
@@ -87,7 +87,7 @@
                          {{$dm->earning?__('disable_earning'):__('enable_earning')}}
                 </a> -->
                 @if($dm->application_status=='approved')
-                <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.status',[$dm['id'],$dm->status?0:1])}}','{{$dm->status?__('you_want_to_suspend_this_deliveryman'):__('you_want_to_unsuspend_this_deliveryman')}}')" class="btn {{$dm->status?'btn-danger':'btn-success'}}">
+                <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.status',[$dm['id'],$dm->status?0:1])}}','{{$dm->status?__('You want to suspend_this_deliveryman'):__('You want to unsuspend_this_deliveryman')}}')" class="btn {{$dm->status?'btn-danger':'btn-success'}}">
                         {{$dm->status?__('suspend_this_delivery_man'):__('unsuspend_this_delivery_man')}}
                 </a>
                 @endif
@@ -361,7 +361,7 @@
 <script>
     function request_alert(url, message) {
         Swal.fire({
-            title: '{{__('are_you_sure')}}',
+            title: '{{__('Are you sure')}}',
             text: message,
             type: 'warning',
             showCancelButton: true,

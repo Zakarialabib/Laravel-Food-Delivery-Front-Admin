@@ -163,7 +163,7 @@
 
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('item_type')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('item type')}}</label>
                                 <select name="veg" class="form-control js-select2-custom">
                                     <option value="0" {{$campaign['veg']==0?'selected':''}}>{{__('Non veg')}}</option>
                                     <option value="1" {{$campaign['veg']==1?'selected':''}}>{{__('Veg')}}</option>
@@ -343,7 +343,7 @@
 
         function add_more_customer_choice_option(i, name) {
             let n = name.split(' ').join('');
-            $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="Choice Title" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="{{__('enter_choice_values')}}" data-role="tagsinput" onchange="combination_update()"></div></div>');
+            $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="Choice Title" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="{{__('Enter choice values')}}" data-role="tagsinput" onchange="combination_update()"></div></div>');
             $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
         }
 

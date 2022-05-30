@@ -138,16 +138,16 @@
             <div class="col-md-6 mt-4">
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
-                        <h5 class="text-center">{{__('2factor_sms')}}</h5>
+                        <h5 class="text-center">{{__('2factor sms')}}</h5>
                         <span class="badge badge-soft-info">EX of SMS provider's template : your OTP is XXXX here, please check.</span><br>
                         <span class="badge badge-soft-info mb-3">NB : XXXX will be replace with otp</span>
-                        @php($config=\App\CentralLogics\Helpers::get_business_settings('2factor_sms'))
+                        @php($config=\App\CentralLogics\Helpers::get_business_settings('2factor sms'))
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.sms-module-update',['2factor_sms']):'javascript:'}}"
                               method="post">
                             @csrf
 
                             <div class="form-group mb-2">
-                                <label class="control-label">{{__('2factor_sms')}}</label>
+                                <label class="control-label">{{__('2factor sms')}}</label>
                             </div>
                             <div class="form-group mb-2 mt-2">
                                 <input type="radio" name="status" value="1" {{isset($config) && $config['status']==1?'checked':''}}>

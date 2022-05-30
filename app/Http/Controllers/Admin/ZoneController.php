@@ -110,7 +110,7 @@ class ZoneController extends Controller
         $zone = Zone::findOrFail($request->id);
         $zone->status = $request->status;
         $zone->save();
-        Toastr::success(__('zone_status_updated'));
+        Toastr::success(__('zone status updated'));
         return back();
     }
 

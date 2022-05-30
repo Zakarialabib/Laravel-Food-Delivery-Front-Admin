@@ -239,7 +239,7 @@
             var formData = new FormData(this);
             
             Swal.fire({
-                title: '{{__('are_you_sure')}}',
+                title: '{{__('Are you sure')}}',
                 text: '{{__('you want to sent notification to')}}'+$('#tergat').val()+'?',
                 type: 'info',
                 showCancelButton: true,

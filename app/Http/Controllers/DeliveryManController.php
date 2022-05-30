@@ -79,7 +79,7 @@ class DeliveryManController extends Controller
         $dm->application_status= 'pending';
         $dm->save();
 
-        Toastr::success(__('application_placed_successfully'));
+        Toastr::success(__('Application placed successfully'));
         return back();
     }
 }

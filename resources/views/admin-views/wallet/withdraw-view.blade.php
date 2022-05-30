@@ -70,13 +70,13 @@
                 </div>
                 <div class="card-body">
                     <div class="col-md-8 mt-2">
-                        <h4>{{__('bank_name')}}
+                        <h4>{{__('Bank name')}}
                             : {{$wr->vendor->bank_name ? $wr->vendor->bank_name : 'No Data found'}}</h4>
                         <h6 class="text-capitalize">{{__('branch')}}
                             : {{$wr->vendor->branch ? $wr->vendor->branch : 'No Data found'}}</h6>
                         <h6>{{__('holder_name')}}
                             : {{$wr->vendor->holder_name ? $wr->vendor->holder_name : 'No Data found'}}</h6>
-                        <h6>{{__('account_no')}}
+                        <h6>{{__('Account no')}}
                             : {{$wr->vendor->account_no ? $wr->vendor->account_no : 'No Data found'}}</h6>
                     </div>
                 </div>

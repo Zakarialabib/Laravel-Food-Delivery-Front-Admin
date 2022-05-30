@@ -349,7 +349,7 @@
         }
         @endif
     @endif
-    function route_alert(route, message, title="{{__('are_you_sure')}}") {
+    function route_alert(route, message, title="{{__('Are you sure')}}") {
         Swal.fire({
             title: title,
             text: message,
@@ -414,7 +414,7 @@
         /* Copy the text inside the text field */
         navigator.clipboard.writeText(copyText);
 
-        toastr.success('{{__('text_copied')}}', {
+        toastr.success('{{__('Text copied')}}', {
             CloseButton: true,
             ProgressBar: true
         });

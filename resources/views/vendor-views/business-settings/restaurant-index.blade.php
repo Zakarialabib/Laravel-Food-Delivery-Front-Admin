@@ -245,8 +245,8 @@
     <script>
         function restaurant_open_status(e) {
             Swal.fire({
-                title: '{{__('are_you_sure')}}',
-                text: '{{$restaurant->active ? __('you_want_to_temporarily_close_this_restaurant') : __('you_want_to_open_this_restaurant') }}',
+                title: '{{__('Are you sure')}}',
+                text: '{{$restaurant->active ? __('You want to temporarily_close_this_restaurant') : __('You want to open_this_restaurant') }}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
@@ -279,7 +279,7 @@
 
         function delete_schedule(route) {
             Swal.fire({
-                title: '{{__('are_you_sure')}}',
+                title: '{{__('Are you sure')}}',
                 text: '{{__('You want to remove this schedule')}}',
                 type: 'warning',
                 showCancelButton: true,

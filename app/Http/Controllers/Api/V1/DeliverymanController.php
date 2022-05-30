@@ -97,7 +97,7 @@ class DeliverymanController extends Controller
         $dm = DeliveryMan::with(['rating'])->where(['auth_token' => $request['token']])->first();
         $dm->active = $dm->active?0:1;
         $dm->save();
-        return response()->json(['message' => __('active_status_updated')], 200);
+        return response()->json(['message' => __('Active status updated')], 200);
     }
 
     public function get_current_orders(Request $request)
@@ -176,7 +176,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code' => 'dm_maximum_order_exceed', 'message'=> __('dm_maximum_order_exceed_warning')]
+                    ['code' => 'dm_maximum_order_exceed', 'message'=> __('Dm maximum order exceed warning')]
                 ]
             ], 405);
         }
@@ -310,7 +310,7 @@ class DeliverymanController extends Controller
                 {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'error', 'message' => __('faield_to_create_order_transaction')]
+                            ['code' => 'error', 'message' => __('faield to create order transaction')]
                         ]
                     ], 406);
                 }

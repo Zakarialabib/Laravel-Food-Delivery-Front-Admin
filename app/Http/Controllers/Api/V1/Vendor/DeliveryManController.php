@@ -175,7 +175,7 @@ class DeliveryManController extends Controller
                 {
                     $data = [
                         'title' => __('suspended'),
-                        'description' => __('your_account_has_been_suspended'),
+                        'description' => __('Your account has been suspended'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'
@@ -199,7 +199,7 @@ class DeliveryManController extends Controller
 
         $delivery_man->save();
 
-        return response()->json(['message' => __('deliveryman_status_updated')], 200);
+        return response()->json(['message' => __('deliveryman status updated')], 200);
     }
 
     public function update(Request $request, $id)

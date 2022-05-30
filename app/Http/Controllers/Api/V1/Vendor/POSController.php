@@ -126,7 +126,7 @@ class POSController extends Controller
 
         // if($restaurant->minimum_order > $product_price + $total_addon_price )
         // {
-        //     Toastr::warning(__('you_need_to_order_at_least', ['amount'=>$restaurant->minimum_order.' '.Helpers::currency_code()]));
+        //     Toastr::warning(__('you need to order at least', ['amount'=>$restaurant->minimum_order.' '.Helpers::currency_code()]));
         //     return back();
         // }
         // dd(['pro'=>$product_price, 'add'=>$total_addon_price, 'discount'=>$restaurant_discount_amount, 'tax'=>$total_tax_amount ,'cart'=>$cart]);

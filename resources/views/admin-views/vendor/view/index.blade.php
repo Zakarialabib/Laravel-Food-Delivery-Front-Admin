@@ -49,11 +49,11 @@
                 @else
                     @if(!isset($restaurant->vendor->status))
                     <a class="btn btn-danger text-capitalize font-weight-bold float-right" 
-                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],0])}}','{{__('you_want_to_deny_this_application')}}')"
+                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],0])}}','{{__('You want to deny_this_application')}}')"
                         href="javascript:">{{__('deny')}}</a>
                     @endif
                     <a class="btn btn-primary text-capitalize font-weight-bold float-right mr-2"
-                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],1])}}','{{__('you_want_to_approve_this_application')}}')"
+                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],1])}}','{{__('You want to approve_this_application')}}')"
                         href="javascript:">{{__('approve')}}</a>
                 @endif
             </div>
@@ -469,7 +469,7 @@
 
     function request_alert(url, message) {
         Swal.fire({
-            title: '{{__('are_you_sure')}}',
+            title: '{{__('Are you sure')}}',
             text: message,
             type: 'warning',
             showCancelButton: true,

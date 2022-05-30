@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('day_wise_report'))
+@section('title',__('Day wise report'))
 
 @push('css_or_js')
 
@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('day_wise_report')}} <span class="h6 badge badge-soft-success ml-2" id="itemCount">( {{session('from_date')}} - {{session('to_date')}} )</span></h1>
+                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('Day wise report')}} <span class="h6 badge badge-soft-success ml-2" id="itemCount">( {{session('from_date')}} - {{session('to_date')}} )</span></h1>
                 </div>
                 @if(!isset(auth('admin')->user()->zone_id))
                 <div class="col-sm-auto" style="width: 306px;">

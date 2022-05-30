@@ -15,7 +15,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h3 mb-0 text-black-50">{{__('custom_role')}}</h1>
+        <h1 class="h3 mb-0 text-black-50">{{__('Custom role')}}</h1>
     </div>
 
     <!-- Content Row -->
@@ -31,7 +31,7 @@
                                    placeholder="Ex : Store">
                         </div>
 
-                        <label for="module">{{__('module_permission')}} : </label>
+                        <label for="module">{{__('Module permission')}} : </label>
                         <hr>
                         <div class="row">
                             <div class="col-md-3">

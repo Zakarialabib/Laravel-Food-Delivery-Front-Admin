@@ -142,7 +142,7 @@ class CampaignController extends Controller
             'veg' => 'required',
             'description'=>'max:1000'
         ], [
-            'category_id.required' => __('select_category'),
+            'category_id.required' => __('Select category'),
         ]);
         
         if ($validator->fails()) {
@@ -450,7 +450,7 @@ class CampaignController extends Controller
         }
         $campaign->status = $status;
         $campaign->save();
-        Toastr::success(__('campaign_status_updated'));
+        Toastr::success(__('campaign status updated'));
         return back();
     }
 

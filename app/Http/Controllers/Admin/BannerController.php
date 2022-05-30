@@ -67,7 +67,7 @@ class BannerController extends Controller
         $banner = Banner::findOrFail($request->id);
         $banner->status = $request->status;
         $banner->save();
-        Toastr::success(__('banner_status_updated'));
+        Toastr::success(__('banner status updated'));
         return back();
     }
 

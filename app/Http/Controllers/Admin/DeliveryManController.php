@@ -141,7 +141,7 @@ class DeliveryManController extends Controller
                 {
                     $data = [
                         'title' => __('suspended'),
-                        'description' => __('your_account_has_been_suspended'),
+                        'description' => __('Your account has been suspended'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'
@@ -160,12 +160,12 @@ class DeliveryManController extends Controller
 
         }
         catch (\Exception $e) {
-            Toastr::warning(__('push_notification_faild'));
+            Toastr::warning(__('Push notification faild'));
         }
 
         $delivery_man->save();
 
-        Toastr::success(__('deliveryman_status_updated'));
+        Toastr::success(__('deliveryman status updated'));
         return back();
     }
 
@@ -196,7 +196,7 @@ class DeliveryManController extends Controller
         if($request->status == 'approved') $delivery_man->status = 1;
         $delivery_man->save();
 
-        Toastr::success(__('application_status updated successfully'));
+        Toastr::success(__('Application status updated successfully'));
         return back();
     }
 

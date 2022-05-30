@@ -146,7 +146,7 @@
         function status_form_alert(id, message, e) {
             e.preventDefault();
             Swal.fire({
-                title: '{{__('are_you_sure')}}',   
+                title: '{{__('Are you sure')}}',   
                 text: message,
                 type: 'warning',
                 showCancelButton: true,

@@ -104,7 +104,7 @@ class PaypalPaymentController extends Controller
             return back();
         }
 
-        Session::put('error', __('config_your_account',['method'=>__('paypal')]));
+        Session::put('error', __('config your account',['method'=>__('paypal')]));
         return back();
     }
 

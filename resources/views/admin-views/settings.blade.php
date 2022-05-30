@@ -35,7 +35,7 @@
                             aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu"
                             data-toggle="collapse" data-target="#navbarVerticalNavMenu">
                 <span class="d-flex justify-content-between align-items-center">
-                  <span class="h5 mb-0">{{__('nav_menu')}}</span>
+                  <span class="h5 mb-0">{{__('Nav menu')}}</span>
 
                   <span class="navbar-toggle-default">
                     <i class="tio-menu-hamburger"></i>
@@ -186,8 +186,8 @@
 
                                 <div class="col-sm-9">
                                     <input type="password" class="js-pwstrength form-control" name="password"
-                                           id="newPassword" placeholder="{{__('enter_new_password')}}"
-                                           aria-label="{{__('enter_new_password')}}"
+                                           id="newPassword" placeholder="{{__('Enter new password')}}"
+                                           aria-label="{{__('Enter new password')}}"
                                            data-hs-pwstrength-options='{
                                            "ui": {
                                              "container": "#changePasswordForm",
@@ -220,7 +220,7 @@
                             <!-- End Form Group -->
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('changePasswordForm','".__('want_to_update_admin_password')."')":"call_demo()"}}" class="btn btn-primary">{{__('Save')}}</button>
+                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('changePasswordForm','".__('want_to_update_Admin password')."')":"call_demo()"}}" class="btn btn-primary">{{__('Save')}}</button>
                             </div>
                         </form>
                         <!-- End Form -->

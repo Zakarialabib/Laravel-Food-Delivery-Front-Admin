@@ -35,7 +35,7 @@
                             aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu"
                             data-toggle="collapse" data-target="#navbarVerticalNavMenu">
                 <span class="d-flex justify-content-between align-items-center">
-                  <span class="h5 mb-0">{{__('nav_menu')}}</span>
+                  <span class="h5 mb-0">{{__('Nav menu')}}</span>
 
                   <span class="navbar-toggle-default">
                     <i class="tio-menu-hamburger"></i>
@@ -157,7 +157,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('vendor-settings-form','{{__('you_want_to_update_user_info')}}') @else call_demo() @endif" class="btn btn-primary">{{__('Save changes')}}</button>
+                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('vendor-settings-form','{{__('You want to update_user_info')}}') @else call_demo() @endif" class="btn btn-primary">{{__('Save changes')}}</button>
                             </div>
 
                             <!-- End Form -->
@@ -186,8 +186,8 @@
 
                                 <div class="col-sm-9">
                                     <input type="password" class="js-pwstrength form-control" name="password"
-                                           id="newPassword" placeholder="{{__('enter_new_password')}}"
-                                           aria-label="{{__('enter_new_password')}}"
+                                           id="newPassword" placeholder="{{__('Enter new password')}}"
+                                           aria-label="{{__('Enter new password')}}"
                                            data-hs-pwstrength-options='{
                                            "ui": {
                                              "container": "#changePasswordForm",
@@ -220,7 +220,7 @@
                             <!-- End Form Group -->
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('changePasswordForm', '{{__('want_to_update_password')}}') @else call_demo() @endif" class="btn btn-primary">{{__('Save changes')}}</button>
+                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('changePasswordForm', '{{__('Want to update password')}}') @else call_demo() @endif" class="btn btn-primary">{{__('Save changes')}}</button>
                             </div>
                         </form>
                         <!-- End Form -->

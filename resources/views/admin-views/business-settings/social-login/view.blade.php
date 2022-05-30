@@ -87,7 +87,7 @@
                             <li>{{__('Click')}} <b>{{__('create credentials')}}</b> > <b>{{__('auth client id')}}</b>.</li>
                             <li>{{__('Select the')}} <b>{{__('web application')}}</b> {{__('type')}}.</li>
                             <li>{{__('name_your_auth_client')}}</li>
-                            <li>{{__('Click')}} <b>{{__('Add uri')}}</b> {{__('from')}} <b>{{__('authorized_redirect_uris')}}</b> , {{__('provide the')}} <code>{{__('callback uri')}}</code> {{__('from_below_and_click')}} <b>{{__('created')}}</b></li>
+                            <li>{{__('Click')}} <b>{{__('Add uri')}}</b> {{__('from')}} <b>{{__('authorized_redirect_uris')}}</b> , {{__('provide the')}} <code>{{__('callback uri')}}</code> {{__('From below and click')}} <b>{{__('created')}}</b></li>
                             <li>{{__('Copy')}} <b>{{__('client id')}}</b> {{__('and')}} <b>{{__('client secret')}}</b>, {{__('past_in_the_input_field_below_and')}} <b>{{__('Save')}}</b>.</li>
                         </ol>
                     </div>
@@ -110,8 +110,8 @@
                     <div class="modal-body"><b></b>
                         <ol>
                             <li>{{__('goto_the_facebook_developer_page')}} (<a href="https://developers.facebook.com/apps/" target="_blank">{{__('click_here')}}</a>)</li>
-                            <li>{{__('Goto')}} <b>{{__('get_started')}}</b> {{__('from_navbar')}}</li>
-                            <li>{{__('from_register_tab_press')}} <b>{{__('Continue')}}</b> <small>({{__('if_needed')}})</small></li>
+                            <li>{{__('Goto')}} <b>{{__('Get started')}}</b> {{__('From navbar')}}</li>
+                            <li>{{__('from register tab press')}} <b>{{__('Continue')}}</b> <small>({{__('if_needed')}})</small></li>
                             <li>{{__('provide_primary_email_and_press')}} <b>{{__('Confirm email')}}</b> <small>({{__('if_needed')}})</small></li>
                             <li>{{__('in_about_section_select')}} <b>{{__('other')}}</b> {{__('and_press')}} <b>{{__('complete_registration')}}</b></li>
 
@@ -120,14 +120,14 @@
 
                             <li>{{__('form')}} <b>{{__('facebook_login')}}</b> {{__('press')}} <b>{{__('set_up')}}</b></li>
                             <li>{{__('Select')}} <b>{{__('web')}}</b></li>
-                            <li>{{__('Provide')}} <b>{{__('site_url')}}</b> <small>({{__('base_url_of_the_site')}}: https://example.com)</small> > <b>{{__('Save')}}</b></li><br/>
+                            <li>{{__('Provide')}} <b>{{__('site_url')}}</b> <small>({{__('base url of the site')}}: https://example.com)</small> > <b>{{__('Save')}}</b></li><br/>
                             <li>{{__('now_go_to')}} <b>{{__('setting')}}</b> {{__('form')}} <b>{{__('facebook_login')}}</b> ({{__('left_sidebar')}})</li>
                             <li>{{__('make_sure_to_check')}} <b>{{__('client_auth_login')}}</b> <small>({{__('must_on')}})</small></li>
-                            <li>{{__('Provide')}} <code>{{__('valid_auth_redirect_uris')}}</code> {{__('from_below_and_click')}} <b>{{__('Save changes')}}</b></li>
+                            <li>{{__('Provide')}} <code>{{__('valid_auth_redirect_uris')}}</code> {{__('From below and click')}} <b>{{__('Save changes')}}</b></li>
 
                             <li>{{__('now_go_to')}} <b>{{__('setting')}}</b> ({{__('from_left_sidebar')}}) > <b>{{__('Basic')}}</b></li>
                             <li>{{__('fill_the_form_and_press')}} <b>{{__('Save changes')}}</b></li>
-                            <li>{{__('now_copy')}} <b>{{__('client_id')}}</b> & <b>{{__('client_secret')}}</b>, {{__('past_in_the_input_field_below_and')}} <b>{{__('Save')}}</b>.</li>
+                            <li>{{__('now_copy')}} <b>{{__('Client id')}}</b> & <b>{{__('client_secret')}}</b>, {{__('past_in_the_input_field_below_and')}} <b>{{__('Save')}}</b>.</li>
                         </ol>
                     </div>
                     <div class="modal-footer">

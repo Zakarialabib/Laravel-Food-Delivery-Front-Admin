@@ -618,7 +618,7 @@
 
                                 <div class="form-group mb-2">
                                     <label
-                                        style="padding-left: 10px">{{__('Base_url_by_region')}}</label><br>
+                                        style="padding-left: 10px">{{__('Base url by region')}}</label><br>
                                     <input type="text" class="form-control" name="base_url"
                                            value="{{env('APP_MODE')!='demo'?$config['base_url']:''}}">
                                 </div>
@@ -764,7 +764,7 @@
         document.execCommand("copy");
         $temp.remove();
 
-        toastr.success("{{__('text_copied')}}");
+        toastr.success("{{__('Text copied')}}");
     }
 
 </script>

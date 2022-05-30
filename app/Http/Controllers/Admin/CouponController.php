@@ -111,7 +111,7 @@ class CouponController extends Controller
         $coupon = Coupon::find($request->id);
         $coupon->status = $request->status;
         $coupon->save();
-        Toastr::success(__('Coupon status_updated'));
+        Toastr::success(__('Coupon status updated'));
         return back();
     }
 

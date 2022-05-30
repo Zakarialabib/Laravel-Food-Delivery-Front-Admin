@@ -74,7 +74,7 @@ class AddOnController extends Controller
             );
         }
 
-        return response()->json(['message' => __('addon Added successfully')], 200);
+        return response()->json(['message' => __('Addon added successfully')], 200);
     }
 
 
@@ -170,7 +170,7 @@ class AddOnController extends Controller
         $addon_data->status = $request->status;
         $addon_data->save();
 
-        return response()->json(['message' => __('addon_status_updated')], 200);
+        return response()->json(['message' => __('addon status updated')], 200);
     }
 
     public function search(Request $request){

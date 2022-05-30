@@ -166,7 +166,7 @@
                                               </span>
                                             <span class="toggle-switch-content">
                                                 <span
-                                                    class="d-block">{{__('order out_for_delivery message')}}</span>
+                                                    class="d-block">{{__('order out for delivery message')}}</span>
                                               </span>
                                         </label>
                                         <textarea name="out_for_delivery_message"

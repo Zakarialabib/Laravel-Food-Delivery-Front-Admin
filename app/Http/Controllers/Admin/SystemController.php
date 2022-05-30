@@ -71,7 +71,7 @@ class SystemController extends Controller
         $admin = Admin::find(auth('admin')->id());
         $admin->password = bcrypt($request['password']);
         $admin->save();
-        Toastr::success(__('admin_password updated successfully'));
+        Toastr::success(__('Admin password updated successfully'));
         return back();
     }
 

@@ -82,7 +82,7 @@
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlSelect1">{{__('Restaurant')}}<span
                                         class="input-label-secondary"></span></label>
-                                <select name="restaurant_id" data-placeholder="{{__('Select restaurant')}}" class="js-data-example-ajax form-control" onchange="getRestaurantData('{{url('/')}}/admin/vendor/get-addons?data[]=0&restaurant_id=', this.value,'add_on')"  title="Select Restaurant" required oninvalid="this.setCustomValidity('{{__('please_select_restaurant')}}')">
+                                <select name="restaurant_id" data-placeholder="{{__('Select restaurant')}}" class="js-data-example-ajax form-control" onchange="getRestaurantData('{{url('/')}}/admin/vendor/get-addons?data[]=0&restaurant_id=', this.value,'add_on')"  title="Select Restaurant" required oninvalid="this.setCustomValidity('{{__('Please select restaurant')}}')">
                                 @if(isset($product->restaurant))
                                 <option value="{{$product->restaurant_id}}" selected="selected">{{$product->restaurant->name}}</option>
                                 @endif
@@ -125,7 +125,7 @@
 
                         <div class="col-md-3 col-6">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('item_type')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('item type')}}</label>
                                 <select name="veg" class="form-control js-select2-custom">
                                     <option value="0" {{$product['veg']==0?'selected':''}}>{{__('Non veg')}}</option>
                                     <option value="1" {{$product['veg']==1?'selected':''}}>{{__('Veg')}}</option>

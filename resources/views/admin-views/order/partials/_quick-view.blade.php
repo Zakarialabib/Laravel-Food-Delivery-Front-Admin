@@ -171,7 +171,7 @@
                             type="button"
                             style="width:37%; height: 45px">
                             <i class="tio-shopping-cart"></i>
-                        {{__('Add to_cart')}}
+                        {{__('Add to cart')}}
                     </button>
                 </div>
             </form>

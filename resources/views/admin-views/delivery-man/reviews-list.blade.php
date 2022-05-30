@@ -74,7 +74,7 @@
                                         </td>
                                         <td>
                                             <label class="toggle-switch toggle-switch-sm" for="reviewCheckbox{{$review->id}}">
-                                                <input type="checkbox" onclick="status_form_alert('status-{{$review['id']}}','{{$review->status?__('you_want_to_hide_this_review_for_customer'):__('you_want_to_show_this_review_for_customer')}}', event)" class="toggle-switch-input" id="reviewCheckbox{{$review->id}}" {{$review->status?'checked':''}}>
+                                                <input type="checkbox" onclick="status_form_alert('status-{{$review['id']}}','{{$review->status?__('You want to hide_this_review_for_customer'):__('You want to show_this_review_for_customer')}}', event)" class="toggle-switch-input" id="reviewCheckbox{{$review->id}}" {{$review->status?'checked':''}}>
                                                 <span class="toggle-switch-label">
                                                     <span class="toggle-switch-indicator"></span>
                                                 </span>
@@ -115,7 +115,7 @@
         function status_form_alert(id, message, e) {
             e.preventDefault();
             Swal.fire({
-                title: '{{__('are_you_sure')}}',   
+                title: '{{__('Are you sure')}}',   
                 text: message,
                 type: 'warning',
                 showCancelButton: true,

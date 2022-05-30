@@ -211,7 +211,7 @@ class ProductController extends Controller
 
         $product = Food::find($request->food_id);
         if (isset($product) == false) {
-            $validator->errors()->add('food_id', __('food_not_found'));
+            $validator->errors()->add('food_id', __('food not found'));
         }
 
         $multi_review = Review::where(['food_id' => $request->food_id, 'user_id' => $request->user()->id, 'order_id'=>$request->order_id])->first();

@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('Food wise_report'))
+@section('title',__('Food wise report'))
 
 @push('css_or_js')
 
@@ -17,7 +17,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('Food wise_report')}} <span class="h6 badge badge-soft-success ml-2" id="itemCount">( {{session('from_date')}} - {{session('to_date')}} )</span></h1>
+                    <h1 class="page-header-title"><i class="tio-filter-list"></i> {{__('Food wise report')}} <span class="h6 badge badge-soft-success ml-2" id="itemCount">( {{session('from_date')}} - {{session('to_date')}} )</span></h1>
                 </div>
                 <div class="col-sm-auto" style="width: 306px;">
                     <select name="zone_id" class="form-control js-select2-custom"

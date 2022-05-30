@@ -507,7 +507,7 @@ class BusinessSettingsController extends Controller
             ]);
         }
         
-        Toastr::success(__('payment_settings_updated'));
+        Toastr::success(__('payment settings updated'));
         return back();
     }
 
@@ -533,7 +533,7 @@ class BusinessSettingsController extends Controller
         DB::table('business_settings')->updateOrInsert(['key' => 'app_url_ios'], [
             'value' => $request['app_url_ios']
         ]);
-        Toastr::success(__('app_settings_updated'));
+        Toastr::success(__('App settings updated'));
         return back();
     }
 
@@ -577,7 +577,7 @@ class BusinessSettingsController extends Controller
                     'footer_article'=>$request['footer_article']
                 ])
             ]);
-            Toastr::success(__('landing_page_text_updated'));
+            Toastr::success(__('Landing page text updated'));
         }
         else if($tab=='links')
         {
@@ -591,7 +591,7 @@ class BusinessSettingsController extends Controller
                     'web_app_url'=>$request['web_app_url']
                 ])
             ]);
-            Toastr::success(__('landing_page_links_updated'));
+            Toastr::success(__('Landing page links updated'));
         }
         else if($tab=='speciality')
         {
@@ -616,7 +616,7 @@ class BusinessSettingsController extends Controller
             DB::table('business_settings')->updateOrInsert(['key' => 'speciality'], [
                 'value' => json_encode($data)
             ]);
-            Toastr::success(__('landing_page_speciality_updated'));
+            Toastr::success(__('Landing page speciality updated'));
         }
         else if($tab=='testimonial')
         {
@@ -643,7 +643,7 @@ class BusinessSettingsController extends Controller
             DB::table('business_settings')->updateOrInsert(['key' => 'testimonial'], [
                 'value' => json_encode($data)
             ]);
-            Toastr::success(__('landing_page_testimonial_updated'));
+            Toastr::success(__('Landing page testimonial updated'));
         }
         else if($tab=='image')
         {
@@ -669,7 +669,7 @@ class BusinessSettingsController extends Controller
             DB::table('business_settings')->updateOrInsert(['key' => 'landing_page_images'], [
                 'value' => json_encode($data)
             ]);
-            Toastr::success(__('landing_page_image_updated'));
+            Toastr::success(__('Landing page image updated'));
         }
 
         return back();
@@ -760,7 +760,7 @@ class BusinessSettingsController extends Controller
             'value' => $request->tnc
         ]);
 
-        Toastr::success(__('terms_and_condition_updated'));
+        Toastr::success(__('Terms and condition updated'));
         return back();
     }
 
@@ -783,7 +783,7 @@ class BusinessSettingsController extends Controller
             'value' => $request->privacy_policy,
         ]);
 
-        Toastr::success(__('privacy_policy_updated'));
+        Toastr::success(__('Privacy policy updated'));
         return back();
     }
 
@@ -825,7 +825,7 @@ class BusinessSettingsController extends Controller
             'value' => $request['push_notification_key']
         ]);
 
-        Toastr::success(__('settings_updated'));
+        Toastr::success(__('Settings updated'));
         return back();
     }
 
@@ -908,7 +908,7 @@ class BusinessSettingsController extends Controller
             ])
         ]);
 
-        Toastr::success(__('message_updated'));
+        Toastr::success(__('Message updated'));
         return back();
     }
 
@@ -925,7 +925,7 @@ class BusinessSettingsController extends Controller
         $restaurant->longitude=$request['longitude'];
         $restaurant->save();
 
-        Toastr::success(__('settings_updated'));
+        Toastr::success(__('Settings updated'));
         return back();
     }
     
@@ -944,7 +944,7 @@ class BusinessSettingsController extends Controller
             'value' => $request['map_api_key_server']
         ]);
 
-        Toastr::success(__('config_data_updated'));
+        Toastr::success(__('Config data updated'));
         return back();
     }
 
@@ -954,7 +954,7 @@ class BusinessSettingsController extends Controller
             'value' => $value
         ]);
 
-        Toastr::success(__('app_settings_updated'));
+        Toastr::success(__('App settings updated'));
         return back();
     }
 
@@ -986,7 +986,7 @@ class BusinessSettingsController extends Controller
             'value' => $credential_array
         ]);
 
-        Toastr::success(__('credential_updated',['service'=>$service]));
+        Toastr::success(__('Credential updated',['service'=>$service]));
         return redirect()->back();
     }
 

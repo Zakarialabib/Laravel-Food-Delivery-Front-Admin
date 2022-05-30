@@ -50,19 +50,19 @@ class BusinessSettingsController extends Controller
     {
         if($request->menu == "schedule_order" && !Helpers::schedule_order())
         {
-            Toastr::warning(__('schedule_order_disabled_warning'));
+            Toastr::warning(__('schedule order disabled warning'));
             return back();
         }
 
         if((($request->menu == "delivery" && $restaurant->take_away==0) || ($request->menu == "take_away" && $restaurant->delivery==0)) &&  $request->status == 0 )
         {
-            Toastr::warning(__('can_not_disable_both_take_away_and_delivery'));
+            Toastr::warning(__('can not disable both take away and delivery'));
             return back();
         }
 
         if((($request->menu == "veg" && $restaurant->non_veg==0) || ($request->menu == "non_veg" && $restaurant->veg==0)) &&  $request->status == 0 )
         {
-            Toastr::warning(__('veg_non_veg_disable_warning'));
+            Toastr::warning(__('Veg non veg disable warning'));
             return back();
         }
         
@@ -105,7 +105,7 @@ class BusinessSettingsController extends Controller
         if(isset($temp))
         {
             return response()->json(['errors' => [
-                ['code'=>'time', 'message'=>__('schedule_overlapping_warning')]
+                ['code'=>'time', 'message'=>__('Schedule overlapping warning')]
             ]]);
         }
 

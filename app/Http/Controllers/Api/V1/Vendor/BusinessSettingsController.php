@@ -39,7 +39,7 @@ class BusinessSettingsController extends Controller
         {
             return response()->json([
                 'error'=>[
-                    ['code'=>'delivery_or_take_way', 'message'=>__('can_not_disable_both_take_away_and_delivery')]
+                    ['code'=>'delivery_or_take_way', 'message'=>__('can not disable both take away and delivery')]
                 ]
             ],403);
         }
@@ -48,7 +48,7 @@ class BusinessSettingsController extends Controller
         {
             return response()->json([
                 'error'=>[
-                    ['code'=>'veg_non_veg', 'message'=>__('veg_non_veg_disable_warning')]
+                    ['code'=>'veg_non_veg', 'message'=>__('Veg non veg disable warning')]
                 ]
             ],403);
         }
@@ -106,7 +106,7 @@ class BusinessSettingsController extends Controller
         if(isset($temp))
         {
             return response()->json(['errors' => [
-                ['code'=>'time', 'message'=>__('schedule_overlapping_warning')]
+                ['code'=>'time', 'message'=>__('Schedule overlapping warning')]
             ]], 400);
         }
         

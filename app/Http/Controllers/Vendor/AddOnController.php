@@ -55,7 +55,7 @@ class AddOnController extends Controller
         {
             Translation::insert($data);
         }
-        Toastr::success(__('addon Added successfully'));
+        Toastr::success(__('Addon added successfully'));
         return back();
     }
 

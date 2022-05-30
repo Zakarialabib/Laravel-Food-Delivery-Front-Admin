@@ -154,7 +154,7 @@ class DeliveryManController extends Controller
 
         }
         catch (\Exception $e) {
-            Toastr::warning(__('push_notification_faild'));
+            Toastr::warning(__('Push notification faild'));
         }
 
         $delivery_man->save();

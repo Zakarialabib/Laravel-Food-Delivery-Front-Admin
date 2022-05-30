@@ -171,8 +171,7 @@
                                     </li>
                                     <li>
                                         <p>
-                                            <span>{{__('Please keep the exact change for ')}}<b>${{ $total }}</b> {{__('handy to
-                                                help us serve you better')}}.</span>
+                                            <span>{{__('Please keep the exact change for ')}}<b>${{ $total }}</b> {{__('handy to help us serve you better')}}.</span>
 
                                         </p>
                                     </li>

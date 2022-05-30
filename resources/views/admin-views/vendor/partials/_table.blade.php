@@ -31,7 +31,7 @@
         </td>
         <td>
             <label class="toggle-switch toggle-switch-sm" for="stocksCheckbox{{$dm->id}}">
-                <input type="checkbox" onclick="status_change_alert('{{route('admin.vendor.status',[$dm->id,$dm->status?0:1])}}', '{{__('you_want_to_change_this_restaurant_status')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$dm->id}}" {{$dm->status?'checked':''}}>
+                <input type="checkbox" onclick="status_change_alert('{{route('admin.vendor.status',[$dm->id,$dm->status?0:1])}}', '{{__('You want to change_this_restaurant_status')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$dm->id}}" {{$dm->status?'checked':''}}>
                 <span class="toggle-switch-label">
                     <span class="toggle-switch-indicator"></span>
                 </span>

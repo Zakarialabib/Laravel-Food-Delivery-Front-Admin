@@ -176,7 +176,7 @@ class FoodController extends Controller
         $product->status = $request->status;
         $product->save();
 
-        return response()->json(['message' => __('Product status_updated')], 200);
+        return response()->json(['message' => __('Product status updated')], 200);
     }
 
     public function update(Request $request)

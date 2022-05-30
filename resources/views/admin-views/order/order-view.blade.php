@@ -115,9 +115,9 @@
                         @endphp
                         <div class="hs-unfold ml-1">
                             <h5>
-                                <button class="btn btn-xs btn-secondary"  data-toggle="modal" data-target="#locationModal" ><i class="tio-map"></i> {{__('show_locations_on_map')}}</button>
+                                <button class="btn btn-xs btn-secondary"  data-toggle="modal" data-target="#locationModal" ><i class="tio-map"></i> {{__('Show locations on map')}}</button>
                                 @if($order->payment_method != 'cash_on_delivery' && $order->payment_status == 'paid' && $order->order_status != 'refunded')
-                                <button class="btn btn-xs btn-danger"  onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'refunded'])}}','{{__('you_want_to_refund_this_order', ['amount'=> $refund_amount.' '.\App\CentralLogics\Helpers::currency_code()])}}', '{{__('are_you_sure_want_to_refund')}}')" ><i class="tio-money"></i> {{__('refund_this_order')}}</button>
+                                <button class="btn btn-xs btn-danger"  onclick="route_alert('{{route('admin.order.status',['id'=>$order['id'],'order_status'=>'refunded'])}}','{{__('You want to refund this order', ['amount'=> $refund_amount.' '.\App\CentralLogics\Helpers::currency_code()])}}', '{{__('Are you sure want to refund')}}')" ><i class="tio-money"></i> {{__('refund this order')}}</button>
                                 @endif
                             </h5>
                         </div>
@@ -327,7 +327,7 @@
                             <!-- Media -->
                                 <div class="media">
                                 @if($editing)
-                                    <div class="avatar avatar-xl mr-3 cursor-pointer" onclick="quick_view_cart_item({{$key}})" title="{{__('click_to_edit_this_item')}}">
+                                    <div class="avatar avatar-xl mr-3 cursor-pointer" onclick="quick_view_cart_item({{$key}})" title="{{__('click to edit this item')}}">
                                         <span class="avatar-status avatar-lg-status avatar-status-dark"><i class="tio-edit"></i></span>
                                         <img class="img-fluid"
                                              src="{{asset('storage/app/public/product')}}/{{$detail->food['image']}}"
@@ -398,7 +398,7 @@
                             <!-- Media -->
                                 <div class="media">
                                     @if ($editing)
-                                    <div class="avatar avatar-xl mr-3  cursor-pointer" onclick="quick_view_cart_item({{$key}})" title="{{__('click_to_edit_this_item')}}">
+                                    <div class="avatar avatar-xl mr-3  cursor-pointer" onclick="quick_view_cart_item({{$key}})" title="{{__('click to edit this item')}}">
                                         <span class="avatar-status avatar-lg-status avatar-status-dark"><i class="tio-edit"></i></span>    
                                         <img class="img-fluid"
                                              src="{{asset('storage/app/public/campaign')}}/{{$detail->campaign['image']}}"
@@ -595,7 +595,7 @@
                             </div>
                             <div class="media-body">
                                 <span class="text-body text-hover-primary">{{$order->delivery_man['f_name'].' '.$order->delivery_man['l_name']}}</span><br>
-                                <span class="badge badge-ligh">{{$order->delivery_man->orders_count}} {{__('orders_delivered')}}</span>
+                                <span class="badge badge-ligh">{{$order->delivery_man->orders_count}} {{__('Orders delivered')}}</span>
                             </div>
                         </a>
 
@@ -639,7 +639,7 @@
                         <div class="w-100 text-center">
                             <div class="hs-unfold">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-lat='21.03' data-lng='105.85'>
-                                    {{__('assign_delivery_mam_manually')}}
+                                    {{__('Assign delivery mam manually')}}
                                 </button>
                             </div>
                         </div>
@@ -751,7 +751,7 @@
                             </div>
                             <div class="media-body">
                                 <span class="text-body text-hover-primary text-break">{{$order->restaurant->name}}</span><br>
-                                <span class="badge badge-ligh">{{$order->restaurant->orders_count}} {{__('orders_served')}}</span>
+                                <span class="badge badge-ligh">{{$order->restaurant->orders_count}} {{__('Orders served')}}</span>
                             </div>
                         </a>
                         <hr>
@@ -1210,8 +1210,8 @@
 
         function removeFromCart(key) {
             Swal.fire({
-                title: '{{__('are_you_sure')}}',
-                text: '{{__('you_want_to_remove_this_order_item')}}',
+                title: '{{__('Are you sure')}}',
+                text: '{{__('You want to remove_this_order_item')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
@@ -1246,8 +1246,8 @@
         function edit_order()
         {
             Swal.fire({
-                title: '{{__('are_you_sure')}}',
-                text: '{{__('you_want_to_edit_this_order')}}',
+                title: '{{__('Are you sure')}}',
+                text: '{{__('You want to edit_this_order')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
@@ -1265,8 +1265,8 @@
         function cancle_editing_order()
         {
             Swal.fire({
-                title: '{{__('are_you_sure')}}',
-                text: '{{__('you_want_to_cancel_editing')}}',
+                title: '{{__('Are you sure')}}',
+                text: '{{__('You want to cancel_editing')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
@@ -1284,8 +1284,8 @@
         function update_order()
         {
             Swal.fire({
-                title: '{{__('are_you_sure')}}',
-                text: '{{__('you_want_to_submit_all_changes_for_this_order')}}',
+                title: '{{__('Are you sure')}}',
+                text: '{{__('You want to submit_all_changes_for_this_order')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',

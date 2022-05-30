@@ -34,7 +34,7 @@ class WishlistController extends Controller
             $wishlist->food_id = $request->food_id;
             $wishlist->restaurant_id = $request->restaurant_id;
             $wishlist->save();
-            return response()->json(['message' => __('added_successfully')], 200);
+            return response()->json(['message' => __('added successfully')], 200);
         }
 
         return response()->json(['message' => __('already_in_wishlist')], 409);

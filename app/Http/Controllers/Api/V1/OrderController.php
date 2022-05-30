@@ -331,7 +331,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => __('you_need_to_order_at_least', ['amount'=>$restaurant->minimum_order.' '.Helpers::currency_code()])]
+                    ['code' => 'order_time', 'message' => __('you need to order at least', ['amount'=>$restaurant->minimum_order.' '.Helpers::currency_code()])]
                 ]
             ], 406);
         }

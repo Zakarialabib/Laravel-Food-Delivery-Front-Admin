@@ -149,7 +149,7 @@ class AccountTransactionController extends Controller
     public function destroy($id)
     {
         AccountTransaction::where('id', $id)->delete();
-        Toastr::success(__('account_transaction_removed'));
+        Toastr::success(__('Account transaction removed'));
         return back();
     }
 }

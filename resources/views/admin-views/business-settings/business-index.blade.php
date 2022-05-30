@@ -529,7 +529,7 @@
                             <div class="form-group">
                                 <label class="input-label d-inline text-capitalize">{{__('Time format')}}</label>
                                 <select name="time_format" class="form-control">
-                                    <option value="12" {{$tf=='12'?'selected':''}}>{{__('12_hour')}}</option>
+                                    <option value="12" {{$tf=='12'?'selected':''}}>{{__('12 hour')}}</option>
                                     <option value="24" {{$tf=='24'?'selected':''}}>{{__('24_hour')}}</option>
                                 </select>
                             </div>

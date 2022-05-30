@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('Landing_page_settings'))
+@section('title',__('Landing page settings'))
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
@@ -31,13 +31,13 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('Landing_page_settings')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Landing page settings')}}</li>
         </ol>
     </nav>
 
     <!-- Page Header -->
     <div class="page-header">
-        <h1 class="page-header-title">{{__('Landing_page_settings')}}</h1>
+        <h1 class="page-header-title">{{__('Landing page settings')}}</h1>
         <!-- Nav Scroller -->
         <div class="js-nav-scroller hs-nav-scroller-horizontal">
             <!-- Nav -->
@@ -46,7 +46,7 @@
                     <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'index')}}">{{__('text')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('button_links')}}</a>
+                    <a class="nav-link" href="{{route('admin.business-settings.landing-page-settings', 'links')}}"  aria-disabled="true">{{__('Button links')}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="{{route('admin.business-settings.landing-page-settings', 'speciality')}}"  aria-disabled="true">{{__('speciality')}}</a>

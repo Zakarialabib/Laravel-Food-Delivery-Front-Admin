@@ -13,7 +13,7 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title"><i
-                            class="tio-add-circle-outlined"></i> {{__('Add new sub_category')}}
+                            class="tio-add-circle-outlined"></i> {{__('Add new sub category')}}
                     </h1>
                 </div>
             </div>

@@ -114,7 +114,7 @@
                 },
                 cardNumber: {
                     id: "form-checkout__cardNumber",
-                    placeholder: "{{__('card_number')}}",
+                    placeholder: "{{__('Card number')}}",
                 },
                 cardExpirationMonth: {
                     id: "form-checkout__cardExpirationMonth",

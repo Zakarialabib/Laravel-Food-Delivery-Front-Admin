@@ -53,7 +53,7 @@ class FoodController extends Controller
         ], [
             'name.0.required' => __('item_name_required'),
             'category_id.required' => __('Category required '),
-            'veg.required'=>__('item_type_is_required'),
+            'veg.required'=>__('item type is required'),
             'description.*.max' => __('description_length_warning'),   
         ]);
 
@@ -238,7 +238,7 @@ class FoodController extends Controller
         ], [
             'name.0.required' => __('item_name_required'),
             'category_id.required' => __('Category required '),
-            'veg.required'=>__('item_type_is_required'),
+            'veg.required'=>__('item type is required'),
             'description.*.max' => __('description_length_warning'),   
         ]);
 
@@ -472,7 +472,7 @@ class FoodController extends Controller
         try {
             $collections = (new FastExcel)->import($request->file('products_file'));
         } catch (\Exception $exception) {
-            Toastr::error(__('you_have_uploaded_a_wrong_format_file'));
+            Toastr::error(__('you have uploaded a wrong format file'));
             return back();
         }
 
@@ -480,7 +480,7 @@ class FoodController extends Controller
         $skip = ['youtube_video_url'];
         foreach ($collections as $collection) {
             if ($collection['name'] === "" || $collection['category_id'] === "" || $collection['sub_category_id'] === "" || $collection['price'] === "" || empty($collection['available_time_starts']) === "" || empty($collection['available_time_ends']) || empty($collection['veg']) === "") {
-                Toastr::error(__('please_fill_all_required_fields'));
+                Toastr::error(__('please fill all required fields'));
                 return back();
             }
             array_push($data, [

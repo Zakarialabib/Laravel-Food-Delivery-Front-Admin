@@ -1608,6 +1608,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .aspect-video {
   aspect-ratio: 16 / 9;
 }
+.h-full {
+  height: 100%;
+}
 .h-20 {
   height: 5rem;
 }
@@ -1616,9 +1619,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .h-1 {
   height: 0.25rem;
-}
-.h-full {
-  height: 100%;
 }
 .h-4 {
   height: 1rem;
@@ -1637,12 +1637,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .h-6 {
   height: 1.5rem;
-}
-.h-screen {
-  height: 100vh;
-}
-.h-auto {
-  height: auto;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -1901,6 +1895,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-blue-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+}
+.bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 .bg-cover {
   background-size: cover;
@@ -2819,10 +2817,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .lg\:flex-col {
     flex-direction: column;
-  }
-
-  .lg\:bg-center {
-    background-position: center;
   }
 }
 

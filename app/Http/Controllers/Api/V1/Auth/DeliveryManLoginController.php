@@ -41,7 +41,7 @@ class DeliveryManLoginController extends Controller
             else if(!auth('delivery_men')->user()->status)
             {
                 $errors = [];
-                array_push($errors, ['code' => 'auth-003', 'message' => __('your_account_has_been_suspended')]);
+                array_push($errors, ['code' => 'auth-003', 'message' => __('Your account has been suspended')]);
                 return response()->json([
                     'errors' => $errors
                 ], 401);

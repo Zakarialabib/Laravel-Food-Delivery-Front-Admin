@@ -71,7 +71,7 @@ class NotificationController extends Controller
         try {
             Helpers::send_push_notif_to_topic($notification, $topic, 'general');
         } catch (\Exception $e) {
-            Toastr::warning(__('push_notification_faild'));
+            Toastr::warning(__('Push notification faild'));
         }
 
         return response()->json([], 200);
@@ -127,7 +127,7 @@ class NotificationController extends Controller
         try {
             Helpers::send_push_notif_to_topic($notification, $topic, 'general');
         } catch (\Exception $e) {
-            Toastr::warning(__('push_notification_faild'));
+            Toastr::warning(__('Push notification faild'));
         }
         Toastr::success(__('notification').' '.__('updated_successfully'));
         return back();
@@ -138,7 +138,7 @@ class NotificationController extends Controller
         $notification = Notification::findOrFail($request->id);
         $notification->status = $request->status;
         $notification->save();
-        Toastr::success(__('notification_status_updated'));
+        Toastr::success(__('Notification status updated'));
         return back();
     }
 

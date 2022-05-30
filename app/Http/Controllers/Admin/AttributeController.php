@@ -84,7 +84,7 @@ class AttributeController extends Controller
         try {
             $collections = (new FastExcel)->import($request->file('products_file'));
         } catch (\Exception $exception) {
-            Toastr::error(__('you_have_uploaded_a_wrong_format_file'));
+            Toastr::error(__('you have uploaded a wrong format file'));
             return back();
         }
 
@@ -92,7 +92,7 @@ class AttributeController extends Controller
         $skip = ['youtube_video_url'];
         foreach ($collections as $collection) {
                 if ($collection['name'] === "" ) {
-                    Toastr::error(__('please_fill_all_required_fields'));
+                    Toastr::error(__('please fill all required fields'));
                     return back();
                 }
 

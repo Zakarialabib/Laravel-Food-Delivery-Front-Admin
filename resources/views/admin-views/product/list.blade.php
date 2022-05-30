@@ -26,7 +26,7 @@
                 <!-- End Veg/NonVeg filter -->
                 @endif
                 <div class="col-sm-auto" style="min-width: 306px;">
-                    <select name="restaurant_id" id="restaurant" onchange="set_restaurant_filter('{{url()->full()}}',this.value)" data-placeholder="{{__('Select restaurant')}}" class="js-data-example-ajax form-control" onchange="getRestaurantData('{{url('/')}}/admin/vendor/get-addons?data[]=0&restaurant_id=',this.value,'add_on')" required title="Select Restaurant" oninvalid="this.setCustomValidity('{{__('please_select_restaurant')}}')">
+                    <select name="restaurant_id" id="restaurant" onchange="set_restaurant_filter('{{url()->full()}}',this.value)" data-placeholder="{{__('Select restaurant')}}" class="js-data-example-ajax form-control" onchange="getRestaurantData('{{url('/')}}/admin/vendor/get-addons?data[]=0&restaurant_id=',this.value,'add_on')" required title="Select Restaurant" oninvalid="this.setCustomValidity('{{__('Please select restaurant')}}')">
                     @if($restaurant)    
                     <option value="{{$restaurant->id}}" selected>{{$restaurant->name}}</option>
                     @else

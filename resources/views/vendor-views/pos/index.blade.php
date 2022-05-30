@@ -205,7 +205,7 @@
                                     Swal.fire('Canceled', '', 'info')
                                     }
                                     })">
-                                    <span class="text-truncate pr-2" title="Sign out">{{__('sign_out')}}</span>
+                                    <span class="text-truncate pr-2" title="Sign out">{{__('Sign out')}}</span>
                                 </a>
                             </div>
                         </div>

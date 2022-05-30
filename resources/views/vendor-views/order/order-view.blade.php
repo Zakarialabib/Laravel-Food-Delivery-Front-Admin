@@ -100,7 +100,7 @@
                             @if($order['order_status']=='pending')
                             <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'confirmed'])}}','Change status to confirmed ?')" href="javascript:">{{__('Confirm this order')}}</a>
                             @if(config('canceled_by_restaurant'))
-                            <a class="btn btn-sm btn-danger" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'canceled'])}}', '{{__('Order_canceled_confirmation')}}')" href="javascript:">{{__('Cancel this order')}}</a>
+                            <a class="btn btn-sm btn-danger" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'canceled'])}}', '{{__('Order canceled confirmation')}}')" href="javascript:">{{__('Cancel this order')}}</a>
                             @endif
                             @elseif ($order['order_status']=='confirmed' || $order['order_status']=='accepted')
                             <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'processing'])}}','Change status to cooking ?')" href="javascript:">{{__('Proceed for cooking')}}</a>

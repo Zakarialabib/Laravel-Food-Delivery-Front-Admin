@@ -103,13 +103,13 @@
                                     ?>
                                         @if(in_array($restaurant_id,$restaurant_ids))
                                         <!-- <button type="button" onclick="location.href='{{route('vendor.campaign.remove-restaurant',[$campaign['id'],$restaurant_id])}}'" title="You are already joined. Click to out from the campaign." class="btn btn-outline-danger">Out</button> -->
-                                        <button type="button" onclick="form_alert('campaign-{{$campaign['id']}}','{{__('alert_restaurant_out_from_campaign')}}')" title="You are already joined. Click to out from the campaign." class="btn btn-outline-danger">Out</button>
+                                        <button type="button" onclick="form_alert('campaign-{{$campaign['id']}}','{{__('Alert restaurant out from campaign')}}')" title="You are already joined. Click to out from the campaign." class="btn btn-outline-danger">Out</button>
                                         <form action="{{route('vendor.campaign.remove-restaurant',[$campaign['id'],$restaurant_id])}}"
                                                 method="GET" id="campaign-{{$campaign['id']}}">
                                             @csrf 
                                         </form>
                                         @else
-                                        <button type="button" class="btn btn-outline-primary" onclick="form_alert('campaign-{{$campaign['id']}}','{{__('alert_restaurant_join_campaign')}}')" title="Click to join the campaign">Join</button>
+                                        <button type="button" class="btn btn-outline-primary" onclick="form_alert('campaign-{{$campaign['id']}}','{{__('alert restaurant join campaign')}}')" title="Click to join the campaign">Join</button>
                                         <form action="{{route('vendor.campaign.addrestaurant',[$campaign['id'],$restaurant_id])}}"
                                                 method="GET" id="campaign-{{$campaign['id']}}">
                                             @csrf 

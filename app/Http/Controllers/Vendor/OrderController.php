@@ -177,13 +177,13 @@ class OrderController extends Controller
                 {
                     if($request->otp != $order->otp)
                     {
-                        Toastr::warning(__('order_varification_code_not_matched'));
+                        Toastr::warning(__('Order varification code not matched'));
                         return back();
                     }
                 }
                 else
                 {
-                    Toastr::warning(__('order_varification_code_is_required'));
+                    Toastr::warning(__('order varification code is required'));
                     return back();
                 }
             }
@@ -201,7 +201,7 @@ class OrderController extends Controller
 
                 if(!$ol)
                 {
-                    Toastr::warning(__('faield_to_create_order_transaction'));
+                    Toastr::warning(__('faield to create order transaction'));
                     return back();
                 }
             }
@@ -241,10 +241,10 @@ class OrderController extends Controller
         $order->save();
         if(!Helpers::send_order_notification($order))
         {
-            Toastr::warning(__('push_notification_faild'));
+            Toastr::warning(__('Push notification faild'));
         }
 
-        Toastr::success(__('order').' '.__('status_updated'));
+        Toastr::success(__('order').' '.__('status updated'));
         return back();
     }
 

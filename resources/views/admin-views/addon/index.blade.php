@@ -60,7 +60,7 @@
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlSelect1">{{__('Restaurant')}}<span
                                         class="input-label-secondary"></span></label>
-                                <select name="restaurant_id" id="restaurant_id" class="js-data-example-ajax form-control"  data-placeholder="{{__('Select restaurant')}}" oninvalid="this.setCustomValidity('{{__('please_select_restaurant')}}')">
+                                <select name="restaurant_id" id="restaurant_id" class="js-data-example-ajax form-control"  data-placeholder="{{__('Select restaurant')}}" oninvalid="this.setCustomValidity('{{__('Please select restaurant')}}')">
 
                                 </select>
                             </div>

@@ -100,7 +100,7 @@
 
         <div class="cart">
             <div class="empty-cart text-center">
-                <h4>{{__('Your cart is empty')}}</h4>
+                <h4>{{__(' Your cart is empty')}}</h4>
                 <p class="mb-0">{{__('Add items to get started')}}.</p>
             </div>
         </div>
