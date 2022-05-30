@@ -74,7 +74,7 @@ class MercadoPagoController extends Controller
                 $value = Helpers::order_status_update_message('confirmed');
                 if ($value) {
                     $data = [
-                        'title' =>__('order_placed_successfully'),
+                        'title' =>__('Order placed successfully'),
                         'description' => $value,
                         'order_id' => $order['id'],
                         'image' => '',
@@ -89,7 +89,7 @@ class MercadoPagoController extends Controller
                     ]);
                 }
                 $data = [
-                    'title' =>__('order_placed_successfully'),
+                    'title' =>__('Order placed successfully'),
                     'description' => __('New Order push description'),
                     'order_id' => $order->id,
                     'image' => '',

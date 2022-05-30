@@ -166,7 +166,7 @@
                                 <div class="col-xl-4 col-md-4 col-sm-6 col-6">
                                     <div class="form-group">
                                         <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="pos_system">
-                                        <span class="pr-2 text-capitalize">{{__('pos_system')}}:</span> 
+                                        <span class="pr-2 text-capitalize">{{__('Pos System')}}:</span> 
                                             <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.vendor.toggle-settings',[$restaurant->id,$restaurant->pos_system?0:1, 'pos_system'])}}'" id="pos_system" {{$restaurant->pos_system?'checked':''}}>
                                             <span class="toggle-switch-label">
                                                 <span class="toggle-switch-indicator"></span>

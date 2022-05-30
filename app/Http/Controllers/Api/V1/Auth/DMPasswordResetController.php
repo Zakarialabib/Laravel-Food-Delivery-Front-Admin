@@ -27,7 +27,7 @@ class DMPasswordResetController extends Controller
         if (isset($deliveryman)) {
             if(env('APP_MODE') =='demo')
             {
-                return response()->json(['message' => __('otp_sent_successfull')], 200);
+                return response()->json(['message' => __('Otp sent successfull')], 200);
             }
             $token = rand(1000,9999);
             DB::table('password_resets')->updateOrInsert([
@@ -38,7 +38,7 @@ class DMPasswordResetController extends Controller
             $response = SMS_module::send($request['phone'],$token);
             if($response == 'success')
             {
-                return response()->json(['message' => __('otp_sent_successfull')], 200);
+                return response()->json(['message' => __('Otp sent successfull')], 200);
             }
             else
             {

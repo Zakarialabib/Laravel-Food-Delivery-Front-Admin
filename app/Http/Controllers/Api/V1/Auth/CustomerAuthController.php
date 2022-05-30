@@ -31,7 +31,7 @@ class CustomerAuthController extends Controller
             if($user->is_phone_verified)
             {
                 return response()->json([
-                    'message' => __('phone_number_is_already_varified')
+                    'message' => __('Phone number is already varified')
                 ], 200);
 
             }
@@ -44,12 +44,12 @@ class CustomerAuthController extends Controller
                     $user->save();
                     
                     return response()->json([
-                        'message' => __('phone_number_varified_successfully'),
+                        'message' => __('Phone number verified successfully'),
                         'otp' => 'inactive'
                     ], 200);
                 }
                 return response()->json([
-                    'message' => __('phone_number_and_otp_not_matched')
+                    'message' => __('Phone number and otp not matched')
                 ], 404);
             }
 
@@ -69,13 +69,13 @@ class CustomerAuthController extends Controller
                 $user->save();
 
                 return response()->json([
-                    'message' => __('phone_number_varified_successfully'),
+                    'message' => __('Phone number verified successfully'),
                     'otp' => 'inactive'
                 ], 200);
             }
             else{
                 return response()->json([
-                    'message' => __('phone_number_and_otp_not_matched')
+                    'message' => __('Phone number and otp not matched')
                 ], 404);
             }
         }
