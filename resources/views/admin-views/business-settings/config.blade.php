@@ -2,10 +2,6 @@
 
 @section('title', __('Third party apis'))
 
-@push('css_or_js')
-
-@endpush
-
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header -->
@@ -13,8 +9,8 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title">{{__('Third party apis')}}</h1>
-                    <span class="badge badge-soft-dark">{{__('map_api_hint')}}</span><br>
-                    <span class="badge badge-soft-dark">{{__('map_api_hint_2')}}</span><br>
+                    <span class="badge badge-soft-dark">{{__('Map api hint')}}</span><br>
+                    <span class="badge badge-soft-dark">{{__('Map api hint 2')}}</span><br>
                 </div>
             </div>
         </div>
@@ -33,15 +29,15 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label class="input-label" style="padding-left: 10px">{{__('map_api_key')}} ({{__('client')}})</label>
-                                <input type="text" placeholder="{{__('map_api_key')}} ({{__('client')}})" class="form-control" name="map_api_key"
+                                <label class="input-label" style="padding-left: 10px">{{__('client map api key')}}</label>
+                                <input type="text" placeholder="{{__('client map api key')}})" class="form-control" name="map_api_key"
                                     value="{{env('APP_MODE')!='demo'?$map_api_key??'':''}}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label class="input-label" style="padding-left: 10px">{{__('map_api_key')}} ({{__('server')}})</label>
-                                <input type="text" placeholder="{{__('map_api_key')}} ({{__('server')}})" class="form-control" name="map_api_key_server"
+                                <label class="input-label" style="padding-left: 10px">{{__('Server map api key ')}}</label>
+                                <input type="text" placeholder="{{__('Server map api key')}})" class="form-control" name="map_api_key_server"
                                     value="{{env('APP_MODE')!='demo'?$map_api_key_server??'':''}}" required>
                             </div>
                         </div>
@@ -53,7 +49,3 @@
         </div>
     </div>
 @endsection
-
-@push('script_2')
-
-@endpush

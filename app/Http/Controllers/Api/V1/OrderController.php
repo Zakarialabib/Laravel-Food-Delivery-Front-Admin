@@ -370,7 +370,7 @@ class OrderController extends Controller
             $restaurant->increment('total_order');
     
             return response()->json([
-                'message' => __('order_placed_successfully'),
+                'message' => __('Order placed successfully'),
                 'order_id' => $order->id,
                 'total_ammount' => $total_price+$order->delivery_charge+$total_tax_amount
             ], 200);
@@ -481,7 +481,7 @@ class OrderController extends Controller
             $order->canceled = now();
             $order->save();
             Helpers::send_order_notification($order);       
-            return response()->json(['message' => __('order_canceled_successfully')], 200);
+            return response()->json(['message' => __('Order canceled successfully')], 200);
         }
         return response()->json([
             'errors' => [
@@ -536,7 +536,7 @@ class OrderController extends Controller
             try {
                 if ($value) {
                     $data = [
-                        'title' =>__('order_placed_successfully'),
+                        'title' =>__('Order placed successfully'),
                         'description' => $value,
                         'order_id' => $order->id,
                         'image' => '',
@@ -553,7 +553,7 @@ class OrderController extends Controller
                 if($order->order_type == 'delivery' && !$order->scheduled)
                 {
                     $data = [
-                        'title' =>__('order_placed_successfully'),
+                        'title' =>__('Order placed successfully'),
                         'description' => __('New Order push description'),
                         'order_id' => $order->id,
                         'image' => '',

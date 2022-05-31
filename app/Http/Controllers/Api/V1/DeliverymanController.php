@@ -265,7 +265,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order-confirmation-model', 'message' => __('order_confirmation_warning')]
+                    ['code' => 'order-confirmation-model', 'message' => __('Order confirmation warning')]
                 ]
             ], 403);
         }
@@ -283,7 +283,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'delivery-man', 'message' => __('order_can_not_cancle_after_confirm')]
+                    ['code' => 'delivery-man', 'message' => __('Order can not cancel after confirm')]
                 ]
             ], 403);
         }

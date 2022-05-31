@@ -141,7 +141,7 @@ class POSController extends Controller
             }
             OrderDetail::insert($order_details);
             return response()->json([
-                'message' => __('order_placed_successfully'),
+                'message' => __('Order placed successfully'),
                 'order_id' => $order->id,
                 'total_ammount' => $total_price+$order->delivery_charge+$total_tax_amount
             ], 200);

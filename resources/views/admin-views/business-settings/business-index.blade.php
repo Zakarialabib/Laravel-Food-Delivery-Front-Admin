@@ -571,8 +571,8 @@
                             @php($order_confirmation_model=\App\Models\BusinessSetting::where('key','order_confirmation_model')->first())
                             @php($order_confirmation_model=$order_confirmation_model?$order_confirmation_model->value:'deliveryman')
                             <div class="form-group">
-                                <label class="input-label d-inline">{{__('order_confirmation_model')}}</label><small style="color: red">
-                                <span class="input-label-secondary" title="{{__('order_confirmation_model_hint')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}"></span>
+                                <label class="input-label d-inline">{{__('Order confirmation model')}}</label><small style="color: red">
+                                <span class="input-label-secondary" title="{{__('Order confirmation model_hint')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}"></span>
                                  *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
@@ -922,7 +922,7 @@
                         <div class="col-md-4 col-12">
                         @php($per_km_shipping_charge=\App\Models\BusinessSetting::where('key','per_km_shipping_charge')->first())
                             <div class="form-group">
-                                <label class="input-label d-inline text-capitalize" for="per_km_shipping_charge">{{__('per_km_shipping_charge')}}</label>
+                                <label class="input-label d-inline text-capitalize" for="per_km_shipping_charge">{{__('Per km shipping charge')}}</label>
                                 <input type="number" name="per_km_shipping_charge" class="form-control" id="per_km_shipping_charge"  min="0" step=".01" value="{{$per_km_shipping_charge?$per_km_shipping_charge->value:0}}" required>
                             </div>
                         </div>

@@ -90,9 +90,9 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>{{__('sl#')}}</th>
-                                    <th>{{ __('Receoved_from') }}</th>
+                                    <th>{{ __('Received from') }}</th>
                                     <th>{{ __('Type') }}</th>
-                                    <th>{{__('Receoved_at')}}</th>
+                                    <th>{{__('Received at')}}</th>
                                     <th>{{__('Amount')}}</th>
                                     <th>{{__('Reference')}}</th>
                                     <th style="width: 5px">{{__('Action')}}</th>

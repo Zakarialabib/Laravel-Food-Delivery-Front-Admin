@@ -164,7 +164,7 @@ class OrderController extends Controller
         {
             if(!Helpers::get_restaurant_data()->self_delivery_system && config('order_confirmation_model') == 'deliveryman' && $order->order_type != 'take_away')
             {
-                Toastr::warning(__('order_confirmation_warning'));
+                Toastr::warning(__('Order confirmation warning'));
                 return back();
             }
         }

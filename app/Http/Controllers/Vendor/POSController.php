@@ -357,7 +357,7 @@ class POSController extends Controller
             OrderDetail::insert($order_details);
             session()->forget('cart');
             session(['last_order' => $order->id]);
-            Toastr::success(__('order_placed_successfully'));
+            Toastr::success(__('Order placed successfully'));
             return back();
         } catch (\Exception $e) {
             info($e);

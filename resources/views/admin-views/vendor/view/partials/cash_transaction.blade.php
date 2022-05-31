@@ -8,7 +8,7 @@
             <thead class="thead-light">
                 <tr>
                     <th>{{__('sl#')}}</th>
-                    <th>{{__('Receoved_at')}}</th>
+                    <th>{{__('Received at')}}</th>
                     <th>{{__('balance_before_transaction')}}</th>
                     <th>{{__('Amount')}}</th>
                     <th>{{__('Reference')}}</th>

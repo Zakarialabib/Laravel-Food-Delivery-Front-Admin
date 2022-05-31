@@ -230,7 +230,7 @@ class VendorController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order-confirmation-model', 'message' => __('order_confirmation_warning')]
+                    ['code' => 'order-confirmation-model', 'message' => __('Order confirmation warning')]
                 ]
             ], 403);
         }

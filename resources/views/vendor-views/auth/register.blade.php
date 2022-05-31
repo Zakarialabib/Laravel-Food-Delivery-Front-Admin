@@ -199,7 +199,7 @@
                                 <input type="password" name="confirm-password" class="form-control form-control-user"
                                     minlength="6" id="exampleRepeatPassword"
                                     required value="{{ old('confirm-password') }}">
-                                <div class="pass invalid-feedback">{{ __('password_not_matched') }}</div>
+                                <div class="pass invalid-feedback">{{ __('Password not matched') }}</div>
                             </div>
                         </div>
                     </div>

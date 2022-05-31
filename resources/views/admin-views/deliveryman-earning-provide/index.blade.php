@@ -78,7 +78,7 @@
                                 <tr>
                                     <th>{{__('sl#')}}</th>
                                     <th>{{__('Name')}}</th>
-                                    <th>{{__('Receoved_at')}}</th>
+                                    <th>{{__('Received at')}}</th>
                                     <th>{{__('Amount')}}</th>
                                     <th>{{__('method')}}</th>
                                     <th>{{__('Reference')}}</th>

@@ -89,7 +89,7 @@ class EmployeeController extends Controller
             $pass = $e['password'];
         } else {
             if (strlen($request['password']) < 6) {
-                Toastr::warning(__('password_length_warning',['length'=>'6']));
+                Toastr::warning(__('password length warning',['length'=>'6']));
                 return back();
             }
             $pass = bcrypt($request['password']);
