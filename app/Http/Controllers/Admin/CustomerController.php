@@ -95,7 +95,7 @@ class CustomerController extends Controller
             $orders = Order::latest()->where(['user_id' => $id])->Notpos()->paginate(config('default_pagination'));
             return view('admin-views.customer.customer-view', compact('customer', 'orders'));
         }
-        Toastr::error(__('customer_not_found'));
+        Toastr::error(__('Customer not found'));
         return back();
     }
 }

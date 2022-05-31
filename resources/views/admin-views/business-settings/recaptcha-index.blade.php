@@ -31,7 +31,7 @@
                             <h3>{{__('google reCaptcha')}}</h3>
                             <div class="btn-sm btn-dark p-2" data-toggle="modal" data-target="#recaptcha-modal"
                                  style="cursor: pointer">
-                                <i class="tio-info-outined"></i> {{__('Credentials SetUp')}}
+                                <i class="tio-info-outined"></i> {{__('Credentials setup')}}
                             </div>
                         </div>
                         <div class="mt-4">

@@ -66,7 +66,7 @@
                         <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                             style="display: {{Request::is('vendor-panel/order*')?'block':'none'}}">
                             <li class="nav-item {{Request::is('vendor-panel/order/list/pending')?'active':''}}">
-                                <a class="nav-link " href="{{route('vendor.order.list',['pending'])}}" title="{{__('Pending')}} ({{__('Take away')}})">
+                                <a class="nav-link " href="{{route('vendor.order.list',['pending'])}}" title="{{__('Pending Take away')}})">
                                     <span class="tio-circle nav-indicator-icon"></span>
                                     <span class="text-truncate">
                                         {{__('Pending')}}  {{(config('order_confirmation_model') == 'restaurant' || \App\CentralLogics\Helpers::get_restaurant_data()->self_delivery_system)?'':__('Take away')}}

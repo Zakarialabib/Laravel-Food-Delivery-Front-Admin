@@ -139,7 +139,7 @@
                                                 </div>
                                             </a>
                                         @else
-                                            {{__('customer_not_found')}}
+                                            {{__('Customer not found')}}
                                         @endif
                                         </td>
                                         <td>

@@ -288,7 +288,7 @@
                                     <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}"
                                         onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}"
                                         class="btn btn-primary mb-2">{{__('Save')}}</button>
-                                    <button type="button" class="btn btn-info mb-2 pull-right" onclick="copy_text('{{url('/')}}/paystack-callback')">{{__('copy_callback')}}</button>        
+                                    <button type="button" class="btn btn-info mb-2 pull-right" onclick="copy_text('{{url('/')}}/paystack-callback')">{{__('Copy callback')}}</button>        
                                 </div>
 
                                 
@@ -471,7 +471,7 @@
                                     <label
                                         style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{__('callback')}}</label>
                                     <span class="btn btn-secondary btn-sm m-2"
-                                          onclick="copyToClipboard('#id_paymob_accept')"><i class="tio-copy"></i> {{__('copy_callback')}}</span>
+                                          onclick="copyToClipboard('#id_paymob_accept')"><i class="tio-copy"></i> {{__('Copy callback')}}</span>
                                     <br>
                                     <p class="form-control" id="id_paymob_accept">{{ url('/') }}/paymob-callback</p>
                                 </div>

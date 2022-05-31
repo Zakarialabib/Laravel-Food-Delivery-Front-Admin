@@ -115,8 +115,8 @@
                             <li>{{__('Provide primary email and press')}} <b>{{__('Confirm email')}}</b> <small>({{__('if_needed')}})</small></li>
                             <li>{{__('in_about_section_select')}} <b>{{__('other')}}</b> {{__('and_press')}} <b>{{__('complete_registration')}}</b></li>
 
-                            <li><b>{{__('create_app')}}</b> > {{__('Select an app type and press')}} <b>{{__('next')}}</b></li>
-                            <li>{{__('complete_the_details_form_and_press')}} <b>{{__('create_app')}}</b></li><br/>
+                            <li><b>{{__('Create app')}}</b> > {{__('Select an app type and press')}} <b>{{__('next')}}</b></li>
+                            <li>{{__('complete_the_details_form_and_press')}} <b>{{__('Create app')}}</b></li><br/>
 
                             <li>{{__('form')}} <b>{{__('facebook_login')}}</b> {{__('press')}} <b>{{__('set_up')}}</b></li>
                             <li>{{__('Select')}} <b>{{__('web')}}</b></li>

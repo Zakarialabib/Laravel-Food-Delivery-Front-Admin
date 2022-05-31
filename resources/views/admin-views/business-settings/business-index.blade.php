@@ -140,7 +140,7 @@
                         <div class="col-md-6 col-sm-6 col-12">
                         @php($currency_symbol_position=\App\Models\BusinessSetting::where('key','currency_symbol_position')->first())
                             <div class="form-group">
-                                <label class="input-label text-capitalize" for="currency_symbol_position">{{__('currency_symbol_positon')}}</label>
+                                <label class="input-label text-capitalize" for="currency_symbol_position">{{__('Currency symbol positon')}}</label>
                                 <select name="currency_symbol_position" class="form-control js-select2-custom" id="currency_symbol_position">
                                     <option
                                         value="left" {{$currency_symbol_position?($currency_symbol_position->value=='left'?'selected':''):''}}>
@@ -419,15 +419,11 @@
                                     <option value="ar">Arabic - العربية</option>
                                     <option value="en-AU">English (Australia)</option>
                                     <option value="en-CA">English (Canada)</option>
-                                    <option value="en-IN">English (India)</option>
-                                    <option value="en-NZ">English (New Zealand)</option>
-                                    <option value="en-ZA">English (South Africa)</option>
                                     <option value="en-GB">English (United Kingdom)</option>
                                     <option value="en-US">English (United States)</option>
                                     <option value="fr">French - français</option>
                                     <option value="fr-CA">French (Canada) - français (Canada)</option>
                                     <option value="fr-FR">French (France) - français (France)</option>
-                                    <option value="fr-CH">French (Switzerland) - français (Suisse)</option>
                                 </select>
                             </div>
                         </div>
@@ -530,7 +526,7 @@
                                 <label class="input-label d-inline text-capitalize">{{__('Time format')}}</label>
                                 <select name="time_format" class="form-control">
                                     <option value="12" {{$tf=='12'?'selected':''}}>{{__('12 hour')}}</option>
-                                    <option value="24" {{$tf=='24'?'selected':''}}>{{__('24_hour')}}</option>
+                                    <option value="24" {{$tf=='24'?'selected':''}}>{{__('24 hour')}}</option>
                                 </select>
                             </div>
 
@@ -542,7 +538,7 @@
                             @php($schedule_order=$schedule_order?$schedule_order->value:0)
                             <div class="form-group">
                                 <label class="input-label d-inline">{{__('Scheduled orders')}}</label><small style="color: red">
-                                <!-- <span class="input-label-secondary" title="{{__('customer_varification_toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('customer_varification_toggle')}}"></span> -->
+                                <!-- <span class="input-label-secondary" title="{{__('Customer varification toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Customer varification toggle')}}"></span> -->
                                  *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
@@ -572,7 +568,7 @@
                             @php($order_confirmation_model=$order_confirmation_model?$order_confirmation_model->value:'deliveryman')
                             <div class="form-group">
                                 <label class="input-label d-inline">{{__('Order confirmation model')}}</label><small style="color: red">
-                                <span class="input-label-secondary" title="{{__('Order confirmation model_hint')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}"></span>
+                                <span class="input-label-secondary" title="{{__('Order confirmation model hint')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}"></span>
                                  *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
@@ -606,7 +602,7 @@
                             @php($canceled_by_restaurant=$canceled_by_restaurant?$canceled_by_restaurant->value:0)
                             <div class="form-group">
                                 <label class="input-label d-inline">{{__('Restaurant cancellation toggle')}}</label><small style="color: red">
-                                <!-- <span class="input-label-secondary" title="{{__('customer_varification_toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('customer_varification_toggle')}}"></span> -->
+                                <!-- <span class="input-label-secondary" title="{{__('Customer varification toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Customer varification toggle')}}"></span> -->
                                  *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
@@ -636,7 +632,7 @@
                             @php($canceled_by_deliveryman=$canceled_by_deliveryman?$canceled_by_deliveryman->value:0)
                             <div class="form-group">
                                 <label class="input-label d-inline">{{__('Deliveryman cancellation_toggle')}}</label><small style="color: red">
-                                <!-- <span class="input-label-secondary" title="{{__('customer_varification_toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('customer_varification_toggle')}}"></span> -->
+                                <!-- <span class="input-label-secondary" title="{{__('Customer varification toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Customer varification toggle')}}"></span> -->
                                  *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
@@ -665,8 +661,8 @@
                             @php($show_dm_earning=\App\Models\BusinessSetting::where('key','show_dm_earning')->first())
                             @php($show_dm_earning=$show_dm_earning?$show_dm_earning->value:0)
                             <div class="form-group">
-                                <label class="input-label d-inline">{{__('show_earning_for_each_order')}}</label><small style="color: red">
-                                <!-- <span class="input-label-secondary" title="{{__('customer_varification_toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('customer_varification_toggle')}}"></span> -->
+                                <label class="input-label d-inline">{{__('Show earning for each order')}}</label><small style="color: red">
+                                <!-- <span class="input-label-secondary" title="{{__('Customer varification toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Customer varification toggle')}}"></span> -->
                                  *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
@@ -728,7 +724,7 @@
                             @php($ev=$ev?$ev->value:0)
                             <div class="form-group">
                                 <label class="input-label d-inline">{{__('customer verification')}}</label><small style="color: red"><span
-                                        class="input-label-secondary" title="{{__('customer_varification_toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('customer_varification_toggle')}}"></span> *</small>
+                                        class="input-label-secondary" title="{{__('Customer varification toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Customer varification toggle')}}"></span> *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
                                     <div class="form-control">
@@ -757,7 +753,7 @@
                             @php($odc=$odc?$odc->value:0)
                             <div class="form-group">
                                 <label class="input-label d-inline">{{__('order delivery verification')}}</label><small style="color: red"><span
-                                        class="input-label-secondary" title="{{__('order_varification_toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('order_varification_toggle')}}"></span> *</small>
+                                        class="input-label-secondary" title="{{__('order varification toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('order varification toggle')}}"></span> *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
                                     <div class="form-control">
@@ -786,8 +782,8 @@
                             @php($vnv=\App\Models\BusinessSetting::where('key','toggle_veg_non_veg')->first())
                             @php($vnv=$vnv?$vnv->value:0)
                             <div class="form-group">
-                                <label class="input-label d-inline">{{__('Veg')}}/{{__('Non veg')}}</label><small style="color: red"><span
-                                        class="input-label-secondary" title="{{__('veg_non_veg')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('order_varification_toggle')}}"></span> *</small>
+                                <label class="input-label d-inline">{{__('Veg non veg')}}</label><small style="color: red"><span
+                                        class="input-label-secondary" title="{{__('Veg non veg')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('order varification toggle')}}"></span> *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
                                     <div class="form-control">
@@ -846,8 +842,8 @@
                             @php($dm_self_registration=\App\Models\BusinessSetting::where('key','toggle_dm_registration')->first())
                             @php($dm_self_registration=$dm_self_registration?$dm_self_registration->value:0)
                             <div class="form-group">
-                                <label class="input-label d-inline">{{__('dm_self_registration')}}</label><small style="color: red"><span
-                                        class="input-label-secondary" title="{{__('dm_self_registration')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('dm_self_registration')}}"></span> *</small>
+                                <label class="input-label d-inline">{{__('Dm self registration')}}</label><small style="color: red"><span
+                                        class="input-label-secondary" title="{{__('Dm self registration')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Dm self registration')}}"></span> *</small>
                                 <div class="input-group input-group-md-down-break">
                                     <!-- Custom Radio -->
                                     <div class="form-control">
@@ -894,7 +890,7 @@
                         <div class="col-md-6 col-12">
                         @php($admin_commission=\App\Models\BusinessSetting::where('key','admin_commission')->first())
                             <div class="form-group p-2">
-                                <label class="input-label text-capitalize" for="admin_commission">{{__('default_admin_commission')}}</label>
+                                <label class="input-label text-capitalize" for="admin_commission">{{__('default admin commission')}}</label>
                                 <input type="number" name="admin_commission" class="form-control" id="admin_commission" value="{{$admin_commission?$admin_commission->value:0}}" min="0" max="100" required>
                             </div>
                         </div>
@@ -902,7 +898,7 @@
                         <div class="col-md-6 col-12">
                         @php($free_delivery_over=\App\Models\BusinessSetting::where('key','free_delivery_over')->first())
                             <div class="form-group p-2 border">
-                                <label class="input-label d-inline text-capitalize" for="free_delivery_over">{{__('free_delivery_over')}} ({{\App\CentralLogics\Helpers::currency_symbol()}})</label>
+                                <label class="input-label d-inline text-capitalize" for="free_delivery_over">{{__('free delivery over')}} ({{\App\CentralLogics\Helpers::currency_symbol()}})</label>
                                 <label class="switch ml-3 float-right">
                                     <input type="checkbox" class="status" name="free_delivery_over_status" id="free_delivery_over_status" value="1"
                                         {{isset($free_delivery_over->value)?'checked':''}}>
@@ -915,7 +911,7 @@
                         <div class="col-md-4 col-12">
                         @php($minimum_shipping_charge=\App\Models\BusinessSetting::where('key','minimum_shipping_charge')->first())
                             <div class="form-group">
-                                <label class="input-label d-inline text-capitalize" for="minimum_shipping_charge">{{__('minimum_shipping_charge')}}</label>
+                                <label class="input-label d-inline text-capitalize" for="minimum_shipping_charge">{{__('minimum shipping charge')}}</label>
                                 <input type="number" name="minimum_shipping_charge" class="form-control" id="minimum_shipping_charge"  min="0" step=".01" value="{{$minimum_shipping_charge?$minimum_shipping_charge->value:0}}" required>
                             </div>
                         </div>
@@ -930,7 +926,7 @@
                         <div class="col-md-4 col-12">
                         @php($dm_maximum_orders=\App\Models\BusinessSetting::where('key','dm_maximum_orders')->first())
                             <div class="form-group">
-                                <label class="input-label d-inline text-capitalize" for="dm_maximum_orders">{{__('dm_maximum_order')}}</label><small style="color: red"><span
+                                <label class="input-label d-inline text-capitalize" for="dm_maximum_orders">{{__('dm maximum order')}}</label><small style="color: red"><span
                                         class="input-label-secondary" title="{{__('dm_maximum_order_hint')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('dm_maximum_order_hint')}}"></span> *</small>
                                 <input type="number" name="dm_maximum_orders" class="form-control" id="dm_maximum_orders"  min="1" value="{{$dm_maximum_orders?$dm_maximum_orders->value:1}}" required>
                             </div>
@@ -971,14 +967,14 @@
                             @php($default_location=$default_location->value?json_decode($default_location->value, true):0)
                             <div class="form-group">
                                 <label class="input-label text-capitalize d-inline" for="latitude">{{__('Latitude')}}<span
-                                        class="input-label-secondary" title="{{__('click_on_the_map_select_your_defaul_location')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('click_on_the_map_select_your_defaul_location')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('click on the map select your default location')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('click on the map select your default location')}}"></span></label>
                                 <input type="text" id="latitude"
                                        name="latitude" class="form-control d-inline"
                                        placeholder="Ex : -94.22213" value="{{$default_location?$default_location['lat']:0}}" required readonly>
                             </div>
                             <div class="form-group">
                                 <label class="input-label d-inline text-capitalize" for="longitude">{{__('Longitude')}}<span
-                                        class="input-label-secondary" title="{{__('click_on_the_map_select_your_defaul_location')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('click_on_the_map_select_your_defaul_location')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('click on the map select your default location')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('click on the map select your default location')}}"></span></label>
                                 <input type="text"
                                        name="longitude" class="form-control"
                                        placeholder="Ex : 103.344322" id="longitude" value="{{$default_location?$default_location['lng']:0}}" required readonly>
