@@ -16,14 +16,14 @@
                     <div class="flex flex-row mx-2">
                         <!-- First Name -->
                         <div class="lg:w-1/2 sm:w-full m-2">
-                            <x-label for="first_name" :value="__('First Name')" />
+                            <x-label for="first_name" :value="__('File name')" />
 
                             <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name"
                                 :value="old('first_name')" required autofocus />
                         </div>
                         <!-- Last Name -->
                         <div class="lg:w-1/2 sm:w-full m-2">
-                            <x-label for="last_name" :value="__('Last Name')" />
+                            <x-label for="last_name" :value="__('Last name')" />
 
                             <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name"
                                 :value="old('last_name')" required autofocus />
@@ -57,7 +57,7 @@
 
                         <!-- Confirm Password -->
                         <div class="lg:w-1/2 sm:w-full m-2">
-                            <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                            <x-label for="password_confirmation" :value="__('Confirm password')" />
 
                             <x-input id="password_confirmation" class="block mt-1 w-full" type="password"
                                 name="password_confirmation" required />

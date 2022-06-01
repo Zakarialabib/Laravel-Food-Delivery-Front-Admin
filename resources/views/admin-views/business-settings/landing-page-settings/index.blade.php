@@ -93,7 +93,7 @@
                     <input type="text" id="why_choose_us" name="why_choose_us" class="form-control" value="{{isset($landing_page_text)?$landing_page_text['why_choose_us']:''}}">
                 </div>
                 <div class="form-group">
-                    <label for="why_choose_us_title">{{__('why_choose_us_title')}}</label>
+                    <label for="why_choose_us_title">{{__('Why choose us title')}}</label>
                     <input type="text" id="why_choose_us_title" name="why_choose_us_title" class="form-control" value="{{isset($landing_page_text)?$landing_page_text['why_choose_us_title']:''}}">
                 </div>
                 <div class="form-group">

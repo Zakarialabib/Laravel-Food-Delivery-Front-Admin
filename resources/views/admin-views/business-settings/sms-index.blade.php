@@ -22,7 +22,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
-                        <h5 class="text-center">{{__('twilio_sms')}}</h5>
+                        <h5 class="text-center">{{__('Twilio sms')}}</h5>
                         <span class="badge badge-soft-info mb-3">NB : #OTP# will be replace with otp</span>
                         @php($config=\App\CentralLogics\Helpers::get_business_settings('twilio_sms'))
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.sms-module-update',['twilio_sms']):'javascript:'}}"
@@ -30,7 +30,7 @@
                             @csrf
 
                             <div class="form-group mb-2">
-                                <label class="control-label">{{__('twilio_sms')}}</label>
+                                <label class="control-label">{{__('Twilio sms')}}</label>
                             </div>
                             <div class="form-group mb-2 mt-2">
                                 <input type="radio" name="status" value="1" {{isset($config) && $config['status']==1?'checked':''}}>
@@ -50,7 +50,7 @@
                             </div>
                             <div class="form-group mb-2">
                                 <label class="text-capitalize"
-                                       style="padding-left: 10px">{{__('messaging_service_id')}}</label><br>
+                                       style="padding-left: 10px">{{__('Messaging service id')}}</label><br>
                                 <input type="text" class="form-control" name="messaging_service_id"
                                        value="{{env('APP_MODE')!='demo'?$config['messaging_service_id']??"":''}}">
                             </div>
@@ -105,12 +105,12 @@
                             </div>
                             <div class="form-group mb-2">
                                 <label class="text-capitalize"
-                                       style="padding-left: 10px">{{__('api_key')}}</label><br>
+                                       style="padding-left: 10px">{{__('Api key')}}</label><br>
                                 <input type="text" class="form-control" name="api_key"
                                        value="{{env('APP_MODE')!='demo'?$config['api_key']??"":''}}">
                             </div>
                             <div class="form-group mb-2">
-                                <label style="padding-left: 10px">{{__('api_secret')}}</label><br>
+                                <label style="padding-left: 10px">{{__('Api secret')}}</label><br>
                                 <input type="text" class="form-control" name="api_secret"
                                        value="{{env('APP_MODE')!='demo'?$config['api_secret']??"":''}}">
                             </div>
@@ -161,7 +161,7 @@
                             </div>
                             <div class="form-group mb-2">
                                 <label class="text-capitalize"
-                                       style="padding-left: 10px">{{__('api_key')}}</label><br>
+                                       style="padding-left: 10px">{{__('Api key')}}</label><br>
                                 <input type="text" class="form-control" name="api_key"
                                        value="{{env('APP_MODE')!='demo'?$config['api_key']??"":''}}">
                             </div>

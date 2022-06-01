@@ -46,7 +46,7 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('Discount can not be more than or equal'));
         }
 
         $data = json_decode($request->translations, true);
@@ -208,7 +208,7 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('Discount can not be more than or equal'));
         }
         $data = json_decode($request->translations, true);
 

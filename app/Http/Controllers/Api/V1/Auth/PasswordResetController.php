@@ -46,7 +46,7 @@ class PasswordResetController extends Controller
             {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'otp', 'message' => __('failed_to_send_sms')]
+                        ['code' => 'otp', 'message' => __('Failed to send sms')]
                 ]], 405);
             }
         }

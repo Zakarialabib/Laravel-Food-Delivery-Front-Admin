@@ -127,7 +127,7 @@
                             <div class="cart-footer">
                                 <ul>
                                     <li>
-                                        <h5><span>{{ __('SubTotal') }}</span> <span
+                                        <h5><span>{{ __('Subtotal') }}</span> <span
                                                 class="float-right">${{ $order->grand_total }}</span></h5>
                                     </li>
                                     <li>

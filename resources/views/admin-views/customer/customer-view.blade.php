@@ -28,7 +28,7 @@
                         <h1 class="page-header-title">{{__('customer id')}} #{{$customer['id']}}</h1>
                         <span class="ml-2 ml-sm-3">
                         <i class="tio-date-range">
-                        </i> {{__('joined_at')}} : {{date('d M Y '.config('timeformat'),strtotime($customer['created_at']))}}
+                        </i> {{__('Joined at')}} : {{date('d M Y '.config('timeformat'),strtotime($customer['created_at']))}}
                         </span>
                     </div>
                     

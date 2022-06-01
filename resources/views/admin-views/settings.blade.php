@@ -220,7 +220,7 @@
                             <!-- End Form Group -->
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('changePasswordForm','".__('want_to_update_Admin password')."')":"call_demo()"}}" class="btn btn-primary">{{__('Save')}}</button>
+                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('changePasswordForm','".__('Want to update admin password')."')":"call_demo()"}}" class="btn btn-primary">{{__('Save')}}</button>
                             </div>
                         </form>
                         <!-- End Form -->

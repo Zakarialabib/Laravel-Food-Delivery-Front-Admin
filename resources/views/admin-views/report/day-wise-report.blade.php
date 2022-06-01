@@ -435,12 +435,12 @@
                             <tr>
                                 <th  style="width: 5%">{{__('sl#')}}</th>
                                 <th  style="width: 10%">{{__('order id')}}</th>
-                                <th  style="width: 17%">{{__('Total order_amount')}}</th>
+                                <th  style="width: 17%">{{__('Total order amount')}}</th>
                                 <th  style="width: 10%">{{__('Restaurant commission')}}</th>
-                                <th  style="width: 10%">{{__('admin_commission')}}</th>
+                                <th  style="width: 10%">{{__('Admin commission')}}</th>
                                 <th  style="width: 8%">{{__('Delivery fee')}}</th>
                                 <th  style="width: 8%">{{__('vat/tax')}}</th>
-                                <th  style="width: 10%">{{__('amount received_by')}}</th>
+                                <th  style="width: 10%">{{__('Amount received by')}}</th>
                                 <th  style="width: 22%">{{__('Created at')}}</th>
                             </tr>
                         </thead>

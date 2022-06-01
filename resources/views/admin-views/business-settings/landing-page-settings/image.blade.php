@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('Landing_page_image_settings'))
+@section('title',__('Landing page image settings'))
 
 @push('css_or_js')
     <!-- Custom styles for this page -->

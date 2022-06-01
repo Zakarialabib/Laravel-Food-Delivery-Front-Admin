@@ -148,7 +148,7 @@ class POSController extends Controller
         } catch (\Exception $e) {
             info($e);
         }
-        Toastr::warning(__('failed_to_place_order'));
+        Toastr::warning(__('Failed to place order'));
         return back();
     }
 

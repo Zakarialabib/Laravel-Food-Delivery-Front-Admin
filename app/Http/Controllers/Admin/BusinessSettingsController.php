@@ -27,7 +27,7 @@ class BusinessSettingsController extends Controller
     {
         if(env('APP_MODE')=='demo')
         {
-            Toastr::info(__('update_option_is_disable_for_demo'));
+            Toastr::info(__('Update option is disable for demo'));
             return back();
         }
 
@@ -184,7 +184,7 @@ class BusinessSettingsController extends Controller
             'value' => $request['digit_after_decimal_point']
         ]);
 
-        Toastr::success(__('successfully updated to_changes_restart_user_app'));
+        Toastr::success(__('Successfully updated to changes restart user app'));
         return back();
     }
 
@@ -197,7 +197,7 @@ class BusinessSettingsController extends Controller
     {
         if(env('APP_MODE')=='demo')
         {
-            Toastr::info(__('update_option_is_disable_for_demo'));
+            Toastr::info(__('Update option is disable for demo'));
             return back();
         }
         BusinessSetting::updateOrInsert(['key' => 'mail_config'],

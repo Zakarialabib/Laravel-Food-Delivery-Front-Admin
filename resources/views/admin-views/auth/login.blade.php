@@ -30,7 +30,7 @@
     <!-- Content -->
     <div class="container py-5 py-sm-7">
         <label class="badge badge-soft-success float-right" style="z-index: 9;position: absolute;right: 0.5rem;top: 0.5rem;">
-            {{__('software_version')}} : {{env('SOFTWARE_VERSION')}}
+            {{__('Software version')}} : {{env('SOFTWARE_VERSION')}}
         </label>
         <a class="d-flex justify-content-center mb-5" href="javascript:">
             <img class="z-index-2"
@@ -87,8 +87,8 @@
 
                                 <div class="input-group input-group-merge">
                                     <input type="password" class="js-toggle-password form-control form-control-lg"
-                                           name="password" id="signupSrPassword" placeholder="{{__('password length placeholder',['length'=>'6+'])}}"
-                                           aria-label="{{__('password length placeholder',['length'=>'6+'])}}" required
+                                           name="password" id="signupSrPassword" placeholder="{{__('Password length placeholder',['length'=>'6+'])}}"
+                                           aria-label="{{__('Password length placeholder',['length'=>'6+'])}}" required
                                            data-msg="{{__('invalid password warning')}}"
                                            data-hs-toggle-password-options='{
                                                      "target": "#changePassTarget",
@@ -134,7 +134,7 @@
                                 </div>
                             @endif
 
-                            <button type="submit" class="btn btn-lg btn-block btn-primary">{{__('sign_in')}}</button>
+                            <button type="submit" class="btn btn-lg btn-block btn-primary">{{__('Sign in')}}</button>
                         </form>
                         <!-- End Form -->
                     </div>

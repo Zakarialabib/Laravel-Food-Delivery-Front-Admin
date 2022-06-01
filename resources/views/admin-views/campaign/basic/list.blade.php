@@ -91,7 +91,7 @@
                                             href="{{route('admin.campaign.edit',['basic',$campaign['id']])}}" title="{{__('Edit campaign')}}"><i class="tio-edit"></i>
                                         </a>
                                         <a class="btn btn-sm btn-white text-danger" href="javascript:"
-                                            onclick="form_alert('campaign-{{$campaign['id']}}','{{__('Want_to_delete_this_item')}}')" title="{{__('Delete campaign')}}"><i class="tio-delete-outlined"></i>
+                                            onclick="form_alert('campaign-{{$campaign['id']}}','{{__('Want to delete this item')}}')" title="{{__('Delete campaign')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('admin.campaign.delete',[$campaign['id']])}}"
                                                       method="post" id="campaign-{{$campaign['id']}}">

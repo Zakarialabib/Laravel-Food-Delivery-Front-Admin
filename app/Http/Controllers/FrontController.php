@@ -38,6 +38,10 @@ class FrontController extends Controller
 
         return view('front.index', compact('restaurants','top_sell'));
     }
+    public function home(){
+        
+        return view('front.download');
+    }
   
     public function aboutus()
     {

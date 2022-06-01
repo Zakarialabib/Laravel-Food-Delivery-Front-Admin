@@ -10,14 +10,14 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('Dashboard')}}</a></li>
             <li class="breadcrumb-item" aria-current="page">{{__('Employee')}}</li>
-            <li class="breadcrumb-item" aria-current="page">{{__('list')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('List')}}</li>
         </ol>
     </nav>
     <!-- Page Heading -->
     <div class="d-md-flex_ align-items-center justify-content-between mb-2">
         <div class="row">
             <div class="col-md-8">
-                <h3 class="h3 mb-0 text-black-50">{{__('Employee')}} {{__('list')}}</h3>
+                <h3 class="h3 mb-0 text-black-50">{{__('Employee')}} {{__('List')}}</h3>
             </div>
 
             <div class="col-md-4">

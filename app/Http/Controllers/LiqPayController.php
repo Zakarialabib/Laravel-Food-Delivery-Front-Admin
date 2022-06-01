@@ -298,7 +298,7 @@ class LiqPayController extends Controller
             ));
             return $html;
         }catch(\Exception $ex){
-            Toastr::error(__('config your account',['method'=>__('liqpay')]));
+            Toastr::error(__('config your account',['method'=>__('Liqpay')]));
             return back();
         }
 

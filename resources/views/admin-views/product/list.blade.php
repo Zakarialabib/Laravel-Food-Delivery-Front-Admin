@@ -250,7 +250,7 @@
                                             href="{{route('admin.food.edit',[$food['id']])}}" title="{{__('Edit food')}}"><i class="tio-edit"></i>
                                         </a>
                                         <a class="btn btn-sm btn-white" href="javascript:"
-                                            onclick="form_alert('food-{{$food['id']}}','{{__('Want_to_delete_this_item')}}')" title="{{__('Delete food')}}"><i class="tio-delete-outlined"></i>
+                                            onclick="form_alert('food-{{$food['id']}}','{{__('Want to delete this item')}}')" title="{{__('Delete food')}}"><i class="tio-delete-outlined"></i>
                                         </a>
                                         <form action="{{route('admin.food.delete',[$food['id']])}}"
                                                 method="post" id="food-{{$food['id']}}">

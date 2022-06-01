@@ -23,7 +23,7 @@ class FoodController extends Controller
     {
         if(!Helpers::get_restaurant_data()->food_section)
         {
-            Toastr::warning(__('permission denied'));
+            Toastr::warning(__('Permission denied'));
             return back();
         }
         $categories = Category::where(['position' => 0])->get();
@@ -36,7 +36,7 @@ class FoodController extends Controller
         {
             return response()->json([
                     'errors'=>[
-                        ['code'=>'unauthorized', 'message'=>__('permission denied')]
+                        ['code'=>'unauthorized', 'message'=>__('Permission denied')]
                     ]
                 ]);
         }
@@ -51,10 +51,10 @@ class FoodController extends Controller
             'description.*' => 'max:1000',
             'discount' => 'required|numeric|min:0',
         ], [
-            'name.0.required' => __('item_name_required'),
+            'name.0.required' => __('Item name required'),
             'category_id.required' => __('Category required '),
             'veg.required'=>__('item type is required'),
-            'description.*.max' => __('description_length_warning'),   
+            'description.*.max' => __('Description length warning'),   
         ]);
 
         if ($request['discount_type'] == 'percent') {
@@ -236,10 +236,10 @@ class FoodController extends Controller
             'description.*' => 'max:1000',
             'discount' => 'required|numeric|min:0',
         ], [
-            'name.0.required' => __('item_name_required'),
+            'name.0.required' => __('Item name required'),
             'category_id.required' => __('Category required '),
             'veg.required'=>__('item type is required'),
-            'description.*.max' => __('description_length_warning'),   
+            'description.*.max' => __('Description length warning'),   
         ]);
 
         if ($request['discount_type'] == 'percent') {

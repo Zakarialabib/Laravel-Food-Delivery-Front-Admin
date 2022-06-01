@@ -68,7 +68,7 @@ class DeliveryManReviewController extends Controller
         if (isset($multi_review)) {
             return response()->json([
                 'errors' => [ 
-                    ['code'=>'review','message'=> __('already_submitted')]
+                    ['code'=>'review','message'=> __('Already submitted')]
                 ]
             ], 403);
         }
@@ -95,6 +95,6 @@ class DeliveryManReviewController extends Controller
         $review->attachment = json_encode($image_array);
         $review->save();
 
-        return response()->json(['message' => __('review_submited_successfully')], 200);
+        return response()->json(['message' => __('Review submited successfully')], 200);
     }
 }

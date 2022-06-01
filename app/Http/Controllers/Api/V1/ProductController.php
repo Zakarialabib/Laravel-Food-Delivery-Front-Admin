@@ -39,7 +39,7 @@ class ProductController extends Controller
     {
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('Zone id required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -94,7 +94,7 @@ class ProductController extends Controller
     {
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('Zone id required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -112,7 +112,7 @@ class ProductController extends Controller
     {
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('Zone id required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -218,7 +218,7 @@ class ProductController extends Controller
         if (isset($multi_review)) {
             return response()->json([
                 'errors' => [ 
-                    ['code'=>'review','message'=> __('already_submitted')]
+                    ['code'=>'review','message'=> __('Already submitted')]
                 ]
             ], 403);
         } else {
@@ -261,6 +261,6 @@ class ProductController extends Controller
         $product->save();
         $product->increment('rating_count');
 
-        return response()->json(['message' => __('review_submited_successfully')], 200);
+        return response()->json(['message' => __('Review submited successfully')], 200);
     }
 }

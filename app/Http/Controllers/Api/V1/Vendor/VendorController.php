@@ -212,7 +212,7 @@ class VendorController extends Controller
             {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'status', 'message' => __('you_can_not_cancel_a_order')]
+                        ['code' => 'status', 'message' => __('You can not cancel a order')]
                     ]
                 ], 403);
             }
@@ -220,7 +220,7 @@ class VendorController extends Controller
             {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'status', 'message' => __('you_can_not_cancel_after_confirm')]
+                        ['code' => 'status', 'message' => __('You can not cancel after confirm')]
                     ]
                 ], 403);
             }
@@ -239,7 +239,7 @@ class VendorController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'status', 'message' => __('You_can_not_change_status_after_picked_up_by_delivery_man')]
+                    ['code' => 'status', 'message' => __('You can not change status after picked up by delivery man')]
                 ]
             ], 403);
         }
@@ -248,7 +248,7 @@ class VendorController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'status', 'message' => __('you_can_not_delivered_delivery_order')]
+                    ['code' => 'status', 'message' => __('You can not delivered delivery order')]
                 ]
             ], 403);
         }
@@ -432,7 +432,7 @@ class VendorController extends Controller
         $restaurant = $request['vendor']->restaurants[0];
         $campaign->restaurants()->detach($restaurant);
         $campaign->save();
-        return response()->json(['message'=>__('you_are_successfully_removed_from_the_campaign')], 200);
+        return response()->json(['message'=>__('You are successfully removed from the campaign')], 200);
     }
     public function addrestaurant(Request $request)
     {
@@ -454,7 +454,7 @@ class VendorController extends Controller
         $restaurant = $request['vendor']->restaurants[0];
         $campaign->restaurants()->attach($restaurant);
         $campaign->save();
-        return response()->json(['message'=>__('you_are_successfully_joined_to_the_campaign')], 200);
+        return response()->json(['message'=>__('You are successfully joined to the campaign')], 200);
     }
 
     public function get_products(Request $request)
@@ -550,7 +550,7 @@ class VendorController extends Controller
             {
                 DB::table('withdraw_requests')->insert($data);
                 $w->increment('pending_withdraw', $request['amount']);
-                return response()->json(['message'=>__('withdraw_request_placed_successfully')],200);
+                return response()->json(['message'=>__('Withdraw request placed successfully')],200);
             }
             catch(\Exception $e)
             {
@@ -559,7 +559,7 @@ class VendorController extends Controller
         }
         return response()->json([
             'errors'=>[
-                ['code'=>'amount', 'message'=>__('insufficient_balance')]
+                ['code'=>'amount', 'message'=>__('Insufficient balance')]
             ]
         ],403);
     }

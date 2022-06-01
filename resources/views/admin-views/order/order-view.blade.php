@@ -79,12 +79,12 @@
                         @endif
                         @if($campaign_order)
                             <span class="badge badge-soft-success ml-sm-3">
-                                <span class="legend-indicator bg-success"></span>{{__('campaign_order')}}
+                                <span class="legend-indicator bg-success"></span>{{__('Campaign order')}}
                             </span>
                         @endif
                         @if($order->edited)
                             <span class="badge badge-soft-dark ml-sm-3">
-                                <span class="legend-indicator bg-dark"></span>{{__('edited')}}
+                                <span class="legend-indicator bg-dark"></span>{{__('Edited')}}
                             </span>
                         @endif
                         <span class="ml-2 ml-sm-3">
@@ -95,7 +95,7 @@
                     <div class="mt-2">
                         <a class="text-body mr-3"
                            href={{route('admin.order.generate-invoice',[$order['id']])}}>
-                            <i class="tio-print mr-1"></i> {{__('print invoice')}}
+                            <i class="tio-print mr-1"></i> {{__('Print invoice')}}
                         </a>
 
                         <!-- Unfold -->
@@ -205,7 +205,7 @@
                             <div class="col-6 pt-2">
                                 <div class="text-right">
                                     <h6 class="text-capitalize" style="color: #8a8a8a;">
-                                        {{__('payment method')}} : {{str_replace('_',' ',$order['payment_method'])}}
+                                        {{__('Payment method')}} : {{str_replace('_',' ',$order['payment_method'])}}
                                     </h6>
                                     <h6 class="" style="color: #8a8a8a;">
                                         @if($order['transaction_reference']==null)
@@ -255,7 +255,7 @@
                                 </form>
                                 <div class="input-group header-item">
                                     <select name="category" id="category" class="form-control js-select2-custom mx-1" title="{{__('Select category')}}" onchange="set_category_filter(this.value)">
-                                        <option value="">{{__('All')}} {{__("messages.categories")}}</option>
+                                        <option value="">{{__("All Categories")}}</option>
                                         @foreach ($categories as $item)
                                         <option value="{{$item->id}}" {{$category==$item->id?'selected':''}}>{{$item->name}}</option>
                                         @endforeach
@@ -348,7 +348,7 @@
                                                 <strong> {{Str::limit($detail->food['name'], 20, '...')}}</strong><br>
 
                                                 @if(count(json_decode($detail['variation'],true))>0)
-                                                    <strong><u>{{__('variation')}} : </u></strong>
+                                                    <strong><u>{{__('Variation')}} : </u></strong>
                                                     @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                                         <div class="font-size-sm text-body">
                                                             <span>{{$key1}} :  </span>
@@ -421,7 +421,7 @@
                                                 <strong> {{Str::limit($detail->campaign['name'],20,'...')}}</strong><br>
 
                                                 @if(count(json_decode($detail['variation'],true))>0)
-                                                    <strong><u>{{__('variation')}} : </u></strong>
+                                                    <strong><u>{{__('Variation')}} : </u></strong>
                                                     @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                                         <div class="font-size-sm text-body">
                                                             <span>{{$key1}} :  </span>
@@ -521,7 +521,7 @@
                         <div class="row justify-content-md-end mb-3">
                             <div class="col-md-9 col-lg-8">
                                 <dl class="row text-sm-right">
-                                    <dt class="col-sm-6">{{__('items price')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Items price')}}:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($product_price)}}</dd>
                                     <dt class="col-sm-6">{{__('Addon cost')}}:</dt>
                                     <dd class="col-sm-6">
@@ -529,13 +529,13 @@
                                         <hr>
                                     </dd>
 
-                                    <dt class="col-sm-6">{{__('subtotal')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Subtotal')}}:</dt>
                                     <dd class="col-sm-6">
                                         {{\App\CentralLogics\Helpers::format_currency($product_price+$total_addon_price)}}</dd>
                                     <dt class="col-sm-6">{{__('Discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($restaurant_discount_amount)}}</dd>
-                                    <dt class="col-sm-6">{{__('coupon discount')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Coupon discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($coupon_discount_amount)}}</dd>
                                     <dt class="col-sm-6">{{__('vat/tax')}}:</dt>
@@ -620,7 +620,7 @@
                         <hr>
                         @php($address=$order->dm_last_location)
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5>{{__('last location')}}</h5>
+                            <h5>{{__('Last location')}}</h5>
                         </div>
                         @if(isset($address))
                         <span class="d-block">
@@ -631,7 +631,7 @@
                         </span>
                         @else
                         <span class="d-block text-lowercase qcont">
-                            {{__('location').' '.__('not_found')}}
+                            {{__('Location not found')}}
                         </span>
                         @endif
            
@@ -964,7 +964,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="locationModalLabel">{{__('location data')}}</h4>
+                    <h4 class="modal-title" id="locationModalLabel">{{__('Location data')}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -1211,7 +1211,7 @@
         function removeFromCart(key) {
             Swal.fire({
                 title: '{{__('Are you sure')}}',
-                text: '{{__('You want to remove_this_order_item')}}',
+                text: '{{__('You want to remove this order item')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
@@ -1230,7 +1230,7 @@
                                 });
                             }
                         } else {
-                            toastr.success('{{__('item_has_been_removed_from_cart')}}', {
+                            toastr.success('{{__('Item has been removed from cart')}}', {
                                 CloseButton: true,
                                 ProgressBar: true
                             });
@@ -1247,7 +1247,7 @@
         {
             Swal.fire({
                 title: '{{__('Are you sure')}}',
-                text: '{{__('You want to edit_this_order')}}',
+                text: '{{__('You want to edit this order')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
@@ -1266,7 +1266,7 @@
         {
             Swal.fire({
                 title: '{{__('Are you sure')}}',
-                text: '{{__('You want to cancel_editing')}}',
+                text: '{{__('You want to cancel editing')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
@@ -1285,7 +1285,7 @@
         {
             Swal.fire({
                 title: '{{__('Are you sure')}}',
-                text: '{{__('You want to submit_all_changes_for_this_order')}}',
+                text: '{{__('You want to submit all changes for this order')}}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',

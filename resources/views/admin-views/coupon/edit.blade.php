@@ -35,7 +35,7 @@
                                 <select name="coupon_type" class="form-control" onchange="coupon_type_change(this.value)">
                                     <option value="restaurant_wise" {{$coupon['coupon_type']=='restaurant_wise'?'selected':''}}>{{__('restaurant wise')}}</option>
                                     <option value="zone_wise" {{$coupon['coupon_type']=='zone_wise'?'selected':''}}>{{__('Zone wise')}}</option>
-                                    <option value="free_delivery" {{$coupon['coupon_type']=='free_delivery'?'selected':''}}>{{__('free_delivery')}}</option>
+                                    <option value="free_delivery" {{$coupon['coupon_type']=='free_delivery'?'selected':''}}>{{__('Free delivery')}}</option>
                                     <option value="first_order" {{$coupon['coupon_type']=='first_order'?'selected':''}}>{{__('first order')}}</option>
                                     <option value="default" {{$coupon['coupon_type']=='default'?'selected':''}}>{{__('default')}}</option>
                                 </select>

@@ -475,10 +475,10 @@
                     @if(\App\CentralLogics\Helpers::employee_module_permission_check('custom_role'))
                     <li class="navbar-vertical-aside-has-menu {{Request::is('vendor-panel/custom-role*')?'active':''}}">
                         <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('vendor.custom-role.create')}}"
-                        title="{{__('Employee Role')}}">
+                        title="{{__('Employee role')}}">
                             <i class="tio-incognito nav-icon"></i>
                             <span
-                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('Employee Role')}}</span>
+                                class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('Employee role')}}</span>
                         </a>
                     </li>
                     @endif

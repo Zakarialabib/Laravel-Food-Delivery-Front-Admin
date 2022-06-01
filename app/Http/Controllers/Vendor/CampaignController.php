@@ -27,7 +27,7 @@ class CampaignController extends Controller
     {
         $campaign->restaurants()->attach($restaurant);
         $campaign->save();
-        Toastr::success(__('restaurant Added to campaign'));
+        Toastr::success(__('Restaurant added to campaign'));
         return back();
     }
 

@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('First name')}}</label>
                                 <input type="text" value="{{$delivery_man['f_name']}}" name="f_name"
-                                       class="form-control" placeholder="{{__('first_name')}}"
+                                       class="form-control" placeholder="{{__('First name')}}"
                                        required>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                     </option>
                                     <option
                                         value="driving_license" {{$delivery_man['identity_type']=='driving_license'?'selected':''}}>
-                                        {{__('driving license')}}
+                                        {{__('Driving license')}}
                                     </option>
                                     <option value="nid" {{$delivery_man['identity_type']=='nid'?'selected':''}}>{{__('nid')}}
                                     </option>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-md-12 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('identity image')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Identity image')}}</label>
                                 <div>
                                     <div class="row" id="coba"></div>
                                 </div>
@@ -84,7 +84,7 @@
 
                         <div class="col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('identity images')}} : </label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Identity images')}} : </label>
                             </div>
                         </div>
                         <br>

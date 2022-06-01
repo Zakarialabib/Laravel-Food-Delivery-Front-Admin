@@ -106,7 +106,7 @@
                                        title="{{__('food On The Way')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">
-                                            {{__('foodOnTheWay')}}
+                                            {{__('Foods on the way')}}
                                                 <span class="badge badge-warning badge-pill ml-1">
                                                 {{\App\Models\Order::FoodOnTheWay()->OrderScheduledIn(30)->count()}}
                                             </span>
@@ -139,10 +139,10 @@
                                 </li>
                                 <li class="nav-item {{Request::is('admin/order/list/failed')?'active':''}}">
                                     <a class="nav-link " href="{{route('admin.order.list',['failed'])}}"
-                                       title="{{__('payment failed')}}">
+                                       title="{{__('Payment failed')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate text-capitalize">
-                                        {{__('payment failed')}}
+                                        {{__('Payment failed')}}
                                             <span class="badge badge-soft-danger bg-light badge-pill ml-1">
                                             {{\App\Models\Order::failed()->count()}}
                                         </span>
@@ -214,10 +214,10 @@
                                 </li>
                                 <li class="nav-item {{Request::is('admin/dispatch/list/on_going')?'active':''}}">
                                     <a class="nav-link " href="{{route('admin.dispatch.list',['on_going'])}}"
-                                       title="{{__('ongoingOrders')}}">
+                                       title="{{__('Ongoing orders')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">
-                                            {{__('ongoing Orders')}}
+                                            {{__('Ongoing orders')}}
                                                 <span class="badge badge-soft-dark bg-light badge-pill ml-1">
                                                 {{\App\Models\Order::Ongoing()->OrderScheduledIn(30)->count()}}
                                             </span>
@@ -277,7 +277,7 @@
                                 >
                                     <span class="tio-circle nav-indicator-icon"></span>
                                     <span
-                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('restaurants')}} {{__('list')}}</span>
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('restaurants')}} {{__('List')}}</span>
                                 </a>
                             </li>
                             <li class="nav-item {{Request::is('admin/vendor/bulk-import')?'active':''}}">
@@ -511,7 +511,7 @@
                     <!-- Marketing section -->
                     <li class="nav-item">
                         <small class="nav-subtitle"
-                               title="{{__('employee_handle')}}">{{__('Marketing section')}} </small>
+                               title="{{__('Employee handle')}}">{{__('Marketing section')}} </small>
                         <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                     </li>
                     <!-- Campaign -->
@@ -594,7 +594,7 @@
                     <!-- Business Section-->
                     <li class="nav-item">
                         <small class="nav-subtitle"
-                               title="{{__('business section')}}">{{__('business section')}}</small>
+                               title="{{__('Business section')}}">{{__('Business section')}}</small>
                         <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                     </li>
 
@@ -676,11 +676,11 @@
 
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/payment-method')?'active':''}}">
                             <a class="nav-link " href="{{route('admin.business-settings.payment-method')}}"
-                               title="{{__('payment methods')}}"
+                               title="{{__('Payment methods')}}"
                             >
                                 <span class="tio-atm nav-icon"></span>
                                 <span
-                                    class="text-truncate">{{__('payment methods')}}</span>
+                                    class="text-truncate">{{__('Payment methods')}}</span>
                             </a>
                         </li>
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/mail-config')?'active':''}}">
@@ -848,7 +848,7 @@
 
                     <li class="nav-item">
                         <small class="nav-subtitle"
-                               title="{{__('employee_handle')}}">{{__('Employee section')}}</small>
+                               title="{{__('Employee handle')}}">{{__('Employee section')}}</small>
                         <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                     </li>
 
@@ -856,10 +856,10 @@
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/custom-role*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.custom-role.create')}}"
-                               title="{{__('employee Role')}}">
+                               title="{{__('Employee role')}}">
                                 <i class="tio-incognito nav-icon"></i>
                                 <span
-                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('employee Role')}}</span>
+                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('Employee role')}}</span>
                             </a>
                         </li>
                     @endif
@@ -871,7 +871,7 @@
                                title="{{__('Employee')}}">
                                 <i class="tio-user nav-icon"></i>
                                 <span
-                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('employees')}}</span>
+                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('Employees')}}</span>
                             </a>
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                 style="display: {{Request::is('admin/employee*')?'block':'none'}}">

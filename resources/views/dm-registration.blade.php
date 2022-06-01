@@ -1,5 +1,5 @@
 <x-app-layout>
-    @section('title', __('deliveryman_registration'))
+    @section('title', __('Deliveryman registration'))
 
     <!-- Page Header -->
     <div class="search-nav">
@@ -205,13 +205,13 @@
 
                 },
                 onExtensionErr: function(index, file) {
-                    toastr.error('{{ __('please_only_input_png_or_jpg_type_file') }}', {
+                    toastr.error('{{ __('Please only input png or jpg type file') }}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 },
                 onSizeErr: function(index, file) {
-                    toastr.error('{{ __('file_size_too_big') }}', {
+                    toastr.error('{{ __('File size too big') }}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

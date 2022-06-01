@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Coordinates<span class="input-label-secondary" title="{{__('draw_your_zone_on_the_map')}}">{{__('draw_your_zone_on_the_map')}}</span></label>
+                                       for="exampleFormControlInput1">Coordinates<span class="input-label-secondary" title="{{__('Draw your zone on the map')}}">{{__('Draw your zone on the map')}}</span></label>
                                        <textarea type="text" rows="8" name="coordinates"  id="coordinates" class="form-control" readonly></textarea>
                             </div>
                         </div>

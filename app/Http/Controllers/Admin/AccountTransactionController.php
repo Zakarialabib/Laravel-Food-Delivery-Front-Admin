@@ -72,7 +72,7 @@ class AccountTransactionController extends Controller
         }
 
         if ($current_balance < $request['amount']) {
-            $validator->getMessageBag()->add('amount', __('insufficient_balance'));
+            $validator->getMessageBag()->add('amount', __('Insufficient balance'));
             return response()->json(['errors' => Helpers::error_processor($validator)]);
         }
 

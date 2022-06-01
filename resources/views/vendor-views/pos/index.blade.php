@@ -300,7 +300,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{__('print invoice')}}</h5>
+                    <h5 class="modal-title">{{__('Print invoice')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -636,7 +636,7 @@
                 }
             } else {
                 updateCart();
-                toastr.info('{{__('item_has_been_removed_from_cart')}}', {
+                toastr.info('{{__('Item has been removed from cart')}}', {
                     CloseButton: true,
                     ProgressBar: true
                 });

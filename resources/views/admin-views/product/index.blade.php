@@ -306,7 +306,7 @@
             $.each($("#choice_attributes option:selected"), function () {
                 if($(this).val().length > 50)
                 {
-                    toastr.error('{{__('validation.max.string',['attribute'=>__('variation'),'max'=>'50'])}}', {
+                    toastr.error('{{__('validation.max.string',['attribute'=>__('Variation'),'max'=>'50'])}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

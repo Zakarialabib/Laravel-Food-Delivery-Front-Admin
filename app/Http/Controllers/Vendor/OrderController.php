@@ -136,19 +136,19 @@ class OrderController extends Controller
 
         if($order->delivered != null)
         {
-            Toastr::warning(__('cannot_change_status_after_delivered'));
+            Toastr::warning(__('Cannot change status after delivered'));
             return back();
         }
 
         if($request['order_status']=='canceled' && !config('canceled_by_restaurant'))
         {
-            Toastr::warning(__('you_can_not_cancel_a_order'));
+            Toastr::warning(__('You can not cancel a order'));
             return back();
         }
 
         if($request['order_status']=='canceled' && $order->confirmed)
         {
-            Toastr::warning(__('you_can_not_cancel_after_confirm'));
+            Toastr::warning(__('You can not cancel after confirm'));
             return back();
         }
 
@@ -156,7 +156,7 @@ class OrderController extends Controller
 
         if($request['order_status']=='delivered' && $order->order_type != 'take_away' && !Helpers::get_restaurant_data()->self_delivery_system)
         {
-            Toastr::warning(__('you_can_not_delivered_delivery_order'));
+            Toastr::warning(__('You can not delivered delivery order'));
             return back();
         }
 
@@ -177,13 +177,13 @@ class OrderController extends Controller
                 {
                     if($request->otp != $order->otp)
                     {
-                        Toastr::warning(__('Order varification code not matched'));
+                        Toastr::warning(__('order verification code not matched'));
                         return back();
                     }
                 }
                 else
                 {
-                    Toastr::warning(__('order varification code is required'));
+                    Toastr::warning(__('order verification code is required'));
                     return back();
                 }
             }

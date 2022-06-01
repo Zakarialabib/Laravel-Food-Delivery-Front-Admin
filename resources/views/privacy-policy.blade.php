@@ -1,8 +1,7 @@
-@extends('layouts.app')
+<x-app-layout>
 
 @section('title','Privacy Policy')
 
-@section('content')
     <main>
         <div class="main-body-div">
             <!-- Top Start -->
@@ -21,4 +20,4 @@
             <!-- Top End -->
         </div>
     </main>
-@endsection
+</x-app-layout>

@@ -129,7 +129,7 @@ class NotificationController extends Controller
         } catch (\Exception $e) {
             Toastr::warning(__('Push notification faild'));
         }
-        Toastr::success(__('notification').' '.__('updated_successfully'));
+        Toastr::success(__('notification').' '.__('Updated successfully'));
         return back();
     }
 

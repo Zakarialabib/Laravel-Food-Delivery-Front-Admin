@@ -25,7 +25,7 @@ class BusinessSettingsController extends Controller
             'minimum_order' => 'required|numeric',
             'gst' => 'required_if:gst_status,1',
         ],[
-            'gst.required_if' => __('gst_can_not_be_empty'),
+            'gst.required_if' => __('Gst can not be empty'),
         ]);
         $restaurant = $request['vendor']->restaurants[0];
         $validator->sometimes('delivery_charge', 'required', function ($request) use($restaurant) {

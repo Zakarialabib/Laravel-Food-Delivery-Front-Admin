@@ -46,7 +46,7 @@
                     @if (empty($auth))
                         <li class="nav-item">
                             <a class="nav-link navbar-font"
-                                href="{{ route('login') }}">{{ __('Sign In') }}</a>
+                                href="{{ route('login') }}">{{ __('Sign in') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link navbar-font"

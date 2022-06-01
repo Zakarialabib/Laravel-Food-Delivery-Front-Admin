@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="name">{{ __('Restaurant Name') }}</label>
+                                <label class="input-label" for="name">{{ __('Restaurant name') }}</label>
                                 <input type="text" name="name" class="form-control"
                                     placeholder="{{ __('TIKTAK CASABLANCA RESTAURANT') }}"
                                     value="{{ old('name') }}" required>
@@ -117,20 +117,20 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="latitude">{{ __('latitude') }}<span
+                                <label class="input-label" for="latitude">{{ __('Latitude') }}<span
                                         class="input-label-secondary"
-                                        title="{{ __('Restaurant lat_lng_warning') }}"><img
+                                        title="{{ __('Restaurant lat lng warning') }}"><img
                                             src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
-                                            alt="{{ __('Restaurant lat_lng_warning') }}"></span></label>
+                                            alt="{{ __('Restaurant lat lng warning') }}"></span></label>
                                 <input type="text" id="latitude" name="latitude" class="form-control"
                                     placeholder="Ex : -94.22213" value="{{ old('latitude') }}" required readonly>
                             </div>
                             <div class="form-group">
                                 <label class="input-label" for="longitude">{{ __('longitude') }}<span
                                         class="input-label-secondary"
-                                        title="{{ __('Restaurant lat_lng_warning') }}"><img
+                                        title="{{ __('Restaurant lat lng warning') }}"><img
                                             src="{{ asset('/public/assets/admin/img/info-circle.svg') }}"
-                                            alt="{{ __('Restaurant lat_lng_warning') }}"></span></label>
+                                            alt="{{ __('Restaurant lat lng warning') }}"></span></label>
                                 <input type="text" name="longitude" class="form-control" placeholder="Ex : 103.344322"
                                     id="longitude" value="{{ old('longitude') }}" required readonly>
                             </div>
@@ -293,13 +293,13 @@
 
                 },
                 onExtensionErr: function(index, file) {
-                    toastr.error('{{ __('please_only_input_png_or_jpg_type_file') }}', {
+                    toastr.error('{{ __('Please only input png or jpg type file') }}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 },
                 onSizeErr: function(index, file) {
-                    toastr.error('{{ __('file_size_too_big') }}', {
+                    toastr.error('{{ __('File size too big') }}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

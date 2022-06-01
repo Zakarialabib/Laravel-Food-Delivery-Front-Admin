@@ -94,7 +94,7 @@
                                 <ul>
                                     <li>
                                         <h5>
-                                            <span>{{ __('SubTotal') }}</span>
+                                            <span>{{ __('Subtotal') }}</span>
                                             <span class="float-right">${{ $total }}</span>
                                         </h5>
                                     </li>

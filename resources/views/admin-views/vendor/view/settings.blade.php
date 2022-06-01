@@ -25,7 +25,7 @@
             </div>
             <div class="col-6">
                 <a href="{{route('admin.vendor.edit',[$restaurant->id])}}" class="btn btn-primary float-right">
-                    <i class="tio-edit"></i> {{__('edit restaurant')}}
+                    <i class="tio-edit"></i> {{__('Edit restaurant')}}
                 </a>
             </div>
         </div>
@@ -86,7 +86,7 @@
                                 <div class="col-xl-4 col-md-4 col-sm-6 col-6">
                                     <div class="form-group">
                                         <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="food_section">
-                                        <span class="pr-2">{{__('Food section')}}<span class="input-label-secondary" title="{{__('show_hide_food_menu')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('show_hide_food_menu')}}"></span> :</span> 
+                                        <span class="pr-2">{{__('Food section')}}<span class="input-label-secondary" title="{{__('Show hide food menu')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Show hide food menu')}}"></span> :</span> 
                                             <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.vendor.toggle-settings',[$restaurant->id,$restaurant->food_section?0:1, 'food_section'])}}'" name="food_section" id="food_section" {{$restaurant->food_section?'checked':''}}>
                                             <span class="toggle-switch-label text">
                                                 <span class="toggle-switch-indicator"></span>
@@ -97,7 +97,7 @@
                                 <div class="col-xl-4 col-md-4 col-sm-6 col-6">
                                     <div class="form-group">
                                         <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="free_delivery">
-                                        <span class="pr-2">{{__('free_delivery')}}:</span> 
+                                        <span class="pr-2">{{__('Free delivery')}}:</span> 
                                             <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.vendor.toggle-settings',[$restaurant->id,$restaurant->free_delivery?0:1, 'free_delivery'])}}'" id="free_delivery" {{$restaurant->free_delivery?'checked':''}}>
                                             <span class="toggle-switch-label">
                                                 <span class="toggle-switch-indicator"></span>
@@ -121,7 +121,7 @@
                                 <div class="col-xl-4 col-md-4 col-sm-6 col-6">
                                     <div class="form-group">
                                         <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="reviews_section">
-                                        <span class="pr-2">{{__('reviews panel')}}<span class="input-label-secondary" title="{{__('show_hide_reviews_menu')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('show_hide_food_menu')}}"></span> :</span> 
+                                        <span class="pr-2">{{__('reviews panel')}}<span class="input-label-secondary" title="{{__('Show hide reviews menu')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Show hide food menu')}}"></span> :</span> 
                                             <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.vendor.toggle-settings',[$restaurant->id,$restaurant->reviews_section?0:1, 'reviews_section'])}}'" name="reviews_section" id="reviews_section" {{$restaurant->reviews_section?'checked':''}}>
                                             <span class="toggle-switch-label text">
                                                 <span class="toggle-switch-indicator"></span>
@@ -155,7 +155,7 @@
                                 <div class="col-xl-4 col-md-4 col-sm-6 col-6">
                                     <div class="form-group">
                                         <label class="toggle-switch toggle-switch-sm d-flex justify-content-between border border-secondary rounded px-4 form-control" for="self_delivery_system">
-                                        <span class="pr-2 text-capitalize">{{__('self_delivery_system')}}:</span> 
+                                        <span class="pr-2 text-capitalize">{{__('Self delivery system')}}:</span> 
                                             <input type="checkbox" class="toggle-switch-input" onclick="location.href='{{route('admin.vendor.toggle-settings',[$restaurant->id,$restaurant->self_delivery_system?0:1, 'self_delivery_system'])}}'" id="self_delivery_system" {{$restaurant->self_delivery_system?'checked':''}}>
                                             <span class="toggle-switch-label">
                                                 <span class="toggle-switch-indicator"></span>
@@ -223,11 +223,11 @@
                                             </div>
 
                                             <div class="form-group col-md-4">
-                                                <label class="input-label" for="minimum_delivery_time">{{__('minimum_delivery_time')}}</label>
+                                                <label class="input-label" for="minimum_delivery_time">{{__('Minimum delivery time')}}</label>
                                                 <input type="text" name="minimum_delivery_time" class="form-control" placeholder="30" pattern="^[0-9]{2}$" required value="{{explode('-',$restaurant->delivery_time)[0]}}">
                                             </div>
                                             <div class="form-group col-md-4">
-                                                <label class="input-label" for="maximum_delivery_time">{{__('maximum_delivery_time')}}</label>
+                                                <label class="input-label" for="maximum_delivery_time">{{__('Maximum delivery time')}}</label>
                                                 <input type="text" name="maximum_delivery_time" class="form-control" placeholder="40" pattern="[0-9]{2}" required value="{{explode('-',$restaurant->delivery_time)[1]}}">
                                             </div>
                                         </div>
@@ -235,7 +235,7 @@
                                             <div class="col-6"> 
                                                 <div class="form-group p-2 border">
                                                     <label class="d-flex justify-content-between switch toggle-switch-sm text-dark" for="comission_status">
-                                                        <span>{{__('admin_commission')}}(%) <span class="input-label-secondary" title="{{__('if_sales_commission_disabled_system_default_will_be_applicable')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('if_sales_commission_disabled_system_default_will_be_applicable')}}"></span></span>
+                                                        <span>{{__('Admin commission')}}(%) <span class="input-label-secondary" title="{{__('If sales commission disabled system default will be applicable')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('If sales commission disabled system default will be applicable')}}"></span></span>
                                                         <input type="checkbox" class="toggle-switch-input" name="comission_status" id="comission_status" value="1" {{isset($restaurant->comission)?'checked':''}}>
                                                         <span class="toggle-switch-label">
                                                             <span class="toggle-switch-indicator"></span>

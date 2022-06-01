@@ -61,7 +61,7 @@ class LoginController extends Controller
             if($vendor->restaurants[0]->status == 0)
             {
                 return redirect()->back()->withInput($request->only('email', 'remember'))
-            ->withErrors([__('inactive_vendor_warning')]);
+            ->withErrors([__('Inactive vendor warning')]);
             }
         }
         if (auth('vendor')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {

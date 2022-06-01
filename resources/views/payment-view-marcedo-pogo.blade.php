@@ -32,7 +32,7 @@
                         <p class="item-name">Book x <span id="summary-quantity"></span></p>
                     </div> -->
                     <p class="alert alert-danger" role="alert" id="error_alert" style="display:none;"></p>
-                    <div class="total">{{__('amount_to_be_paid')}}<span class="price">{{\App\CentralLogics\Helpers::format_currency($order->order_amount)}}</span></div>
+                    <div class="total">{{__('Amount to be paid')}}<span class="price">{{\App\CentralLogics\Helpers::format_currency($order->order_amount)}}</span></div>
                 </div>
                 <div class="payment-details">
                     <form id="form-checkout">
@@ -106,11 +106,11 @@
                 id: "form-checkout",
                 cardholderName: {
                     id: "form-checkout__cardholderName",
-                    placeholder: "{{__('card_holder_name')}}",
+                    placeholder: "{{__('Card holder name')}}",
                 },
                 cardholderEmail: {
                     id: "form-checkout__cardholderEmail",
-                    placeholder: "{{__('card_holder_email')}}",
+                    placeholder: "{{__('Card holder email')}}",
                 },
                 cardNumber: {
                     id: "form-checkout__cardNumber",

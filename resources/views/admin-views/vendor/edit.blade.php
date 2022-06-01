@@ -44,8 +44,8 @@
                                        required value="{{$restaurant->name}}">
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="address">{{__('restaurant address')}}</label>
-                                <textarea  type="text" name="address" class="form-control" placeholder="{{__('restaurant address')}}"
+                                <label class="input-label" for="address">{{__('Restaurant address')}}</label>
+                                <textarea  type="text" name="address" class="form-control" placeholder="{{__('Restaurant address')}}"
                                        required>{{$restaurant->address}}</textarea>
                             </div>
                             <div class="form-group">
@@ -54,16 +54,16 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label class="input-label" for="minimum_delivery_time">{{__('minimum_delivery_time')}}</label>
+                                    <label class="input-label" for="minimum_delivery_time">{{__('Minimum delivery time')}}</label>
                                     <input type="text" name="minimum_delivery_time" class="form-control" placeholder="30" pattern="^[0-9]{2}$" required value="{{explode('-',$restaurant->delivery_time)[0]}}">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="input-label" for="maximum_delivery_time">{{__('maximum_delivery_time')}}</label>
+                                    <label class="input-label" for="maximum_delivery_time">{{__('Maximum delivery time')}}</label>
                                     <input type="text" name="maximum_delivery_time" class="form-control" placeholder="40" pattern="[0-9]{2}" required value="{{explode('-',$restaurant->delivery_time)[1]}}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="input-label">{{__('restaurant logo')}}<small style="color: red"> ( {{__('ratio')}} 1:1 )</small></label>
+                                <label class="input-label">{{__('Restaurant logo')}}<small style="color: red"> ( {{__('ratio')}} 1:1 )</small></label>
                                 <div class="custom-file">
                                     <input type="file" name="logo" id="customFileEg1" class="custom-file-input"
                                         accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
@@ -100,14 +100,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Latitude')}}<span
-                                        class="input-label-secondary" title="{{__('Restaurant lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat_lng_warning')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('Restaurant lat lng warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat lng warning')}}"></span></label>
                                 <input type="text"
                                        name="latitude" class="form-control" id="latitude"
                                        placeholder="Ex : -94.22213" value="{{$restaurant->latitude}}" readonly>
                             </div>
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Longitude')}}<span
-                                        class="input-label-secondary" title="{{__('Restaurant lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat_lng_warning')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('Restaurant lat lng warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat lng warning')}}"></span></label>
                                 <input type="text"
                                        name="longitude" class="form-control" id="longitude"
                                        placeholder="Ex : 103.344322" value="{{$restaurant->longitude}}" readonly>

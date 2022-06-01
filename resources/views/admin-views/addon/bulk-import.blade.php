@@ -18,7 +18,7 @@
                 <li class="breadcrumb-item">{{__('Bulk import')}} </li>
             </ol>
         </nav>
-        <h1 class="text-capitalize">{{__('Addons bulk_import')}}</h1>
+        <h1 class="text-capitalize">{{__('Addons bulk import')}}</h1>
         <!-- Content Row -->
         <div class="row">
             <div class="col-12">

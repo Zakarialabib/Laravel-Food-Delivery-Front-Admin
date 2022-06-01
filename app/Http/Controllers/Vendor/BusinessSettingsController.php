@@ -31,7 +31,7 @@ class BusinessSettingsController extends Controller
         $request->validate([
             'gst' => 'required_if:gst_status,1',
         ], [
-            'gst.required_if' => __('gst_can_not_be_empty'),
+            'gst.required_if' => __('Gst can not be empty'),
         ]);
 
         $off_day = $request->off_day?implode('',$request->off_day):'';

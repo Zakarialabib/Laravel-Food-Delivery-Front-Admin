@@ -6,14 +6,14 @@
        
         <div class="flex flex-wrap">
             <div class="lg:w-1/3 sm:w-1/2 px-2 mt-5 {{ $errors->has('f_name') ? 'is-invalid' : '' }}">
-                <label class="form-label" for="f_name">{{ __('Full Name') }}</label>
+                <label class="form-label" for="f_name">{{ __('Full name') }}</label>
                 <input
                     class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500"
                     type="text" name="f_name" id="f_name" wire:model="account.f_name">
                 <x-input-error for="f_name" />
             </div>
             <div class="lg:w-1/3 sm:w-1/2 px-2 mt-5 {{ $errors->has('l_name') ? 'is-invalid' : '' }}">
-                <label class="form-label" for="l_name">{{ __('Full Name') }}</label>
+                <label class="form-label" for="l_name">{{ __('Full name') }}</label>
                 <input
                     class="p-3 leading-5 bg-white dark:bg-dark-eval-2 text-gray-700 dark:text-gray-300 rounded border border-gray-300 mb-1 text-sm w-full focus:shadow-outline-blue focus:border-blue-500"
                     type="text" name="l_name" id="l_name" wire:model="account.l_name">

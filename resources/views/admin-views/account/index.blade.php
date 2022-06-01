@@ -17,7 +17,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h4 class="text-capitalize">{{__('Add account_transaction')}}</h4>
+            <h4 class="text-capitalize">{{__('Add account transaction')}}</h4>
         </div>
         <div class="card-body">
             <form action="{{route('admin.account-transaction.store')}}" method='post' id="add_transaction">
@@ -108,7 +108,7 @@
                                         @elseif($at->deliveryman)
                                         <a href="{{route('admin.delivery-man.preview',[$at->deliveryman->id])}}">{{ $at->deliveryman->f_name }} {{ $at->deliveryman->l_name }}</a>
                                         @else
-                                            {{__('not_found')}}
+                                            {{__('Not found')}}
                                         @endif
                                     </td>
                                     <td><label class="text-uppercase">{{$at['from_type']}}</label></td>
@@ -215,7 +215,7 @@
                 url: route+data_id,
                 dataType: 'json',
                 success: function (data) {
-                    $('#account_info').html('({{__('Cash in hand')}}: '+data.cash_in_hand+' {{__('earning_balance')}}: '+data.earning_balance+')');
+                    $('#account_info').html('({{__('Cash in hand')}}: '+data.cash_in_hand+' {{__('Earning balance')}}: '+data.earning_balance+')');
                 },
             });
     }
@@ -244,7 +244,7 @@
                         });
                     }
                 } else {
-                    toastr.success('{{__('transaction_saved')}}', {
+                    toastr.success('{{__('Transaction saved')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

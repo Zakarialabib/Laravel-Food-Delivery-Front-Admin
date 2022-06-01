@@ -9,13 +9,13 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('employee Role')}}</li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Employee role')}}</li>
         </ol>
     </nav>
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h3 mb-0 text-black-50">{{__('employee Role')}}</h1>
+        <h1 class="h3 mb-0 text-black-50">{{__('Employee role')}}</h1>
     </div>
 
     <!-- Content Row -->

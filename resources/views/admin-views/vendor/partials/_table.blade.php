@@ -31,7 +31,7 @@
         </td>
         <td>
             <label class="toggle-switch toggle-switch-sm" for="stocksCheckbox{{$dm->id}}">
-                <input type="checkbox" onclick="status_change_alert('{{route('admin.vendor.status',[$dm->id,$dm->status?0:1])}}', '{{__('You want to change_this_restaurant_status')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$dm->id}}" {{$dm->status?'checked':''}}>
+                <input type="checkbox" onclick="status_change_alert('{{route('admin.vendor.status',[$dm->id,$dm->status?0:1])}}', '{{__('You want to change this restaurant status')}}', event)" class="toggle-switch-input" id="stocksCheckbox{{$dm->id}}" {{$dm->status?'checked':''}}>
                 <span class="toggle-switch-label">
                     <span class="toggle-switch-indicator"></span>
                 </span>
@@ -42,7 +42,7 @@
                 href="{{route('admin.vendor.view',[$dm['id']])}}" title="{{__('view restaurant')}}"><i class="tio-visible text-success"></i>
             </a>
             <a class="btn btn-sm btn-white"
-                href="{{route('admin.vendor.edit',[$dm['id']])}}" title="{{__('edit restaurant')}}"><i class="tio-edit text-primary"></i>
+                href="{{route('admin.vendor.edit',[$dm['id']])}}" title="{{__('Edit restaurant')}}"><i class="tio-edit text-primary"></i>
             </a>
             {{--<a class="btn btn-sm btn-white" href="javascript:"
             onclick="form_alert('vendor-{{$dm['id']}}','Want to remove this information ?')" title="{{__('delete restaurant')}}"><i class="tio-delete-outlined text-danger"></i>

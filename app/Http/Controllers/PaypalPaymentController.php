@@ -100,7 +100,7 @@ class PaypalPaymentController extends Controller
             }
 
         } catch (\Exception $ex) {
-            Toastr::error(__('your_currency_is_not_supported',['method'=>__('paypal')]));
+            Toastr::error(__('Your currency is not supported',['method'=>__('paypal')]));
             return back();
         }
 

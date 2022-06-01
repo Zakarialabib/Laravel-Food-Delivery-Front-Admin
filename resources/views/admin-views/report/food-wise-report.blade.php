@@ -157,7 +157,7 @@
                                 @if($food->restaurant)
                                     {{$food->restaurant->zone->name}}
                                 @else
-                                    {{__('not_found')}}
+                                    {{__('Not found')}}
                                 @endif
                             </td>
                             <td>

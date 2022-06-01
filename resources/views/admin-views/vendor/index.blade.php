@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('Add new_restaurant'))
+@section('title',__('Add new restaurant'))
 
 @push('css_or_js')
 <style>
@@ -41,8 +41,8 @@
                                 <input type="text" name="name" class="form-control" placeholder="{{__('First name')}}" value="{{old('name')}}" required>
                             </div>
                             <div class="form-group">
-                                <label class="input-label" for="address">{{__('restaurant address')}}</label>
-                                <textarea type="text" name="address" class="form-control" placeholder="{{__('restaurant address')}}" required >{{old('address')}}</textarea>
+                                <label class="input-label" for="address">{{__('Restaurant address')}}</label>
+                                <textarea type="text" name="address" class="form-control" placeholder="{{__('Restaurant address')}}" required >{{old('address')}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label class="input-label" for="tax">{{__('vat/tax')}} (%)</label>
@@ -50,17 +50,17 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label class="input-label" for="minimum_delivery_time">{{__('minimum_delivery_time')}}</label>
+                                    <label class="input-label" for="minimum_delivery_time">{{__('Minimum delivery time')}}</label>
                                     <input type="text" name="minimum_delivery_time" class="form-control" placeholder="30" pattern="^[0-9]{2}$" required value="{{old('minimum_delivery_time')}}">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="input-label" for="maximum_delivery_time">{{__('maximum_delivery_time')}}</label>
+                                    <label class="input-label" for="maximum_delivery_time">{{__('Maximum delivery time')}}</label>
                                     <input type="text" name="maximum_delivery_time" class="form-control" placeholder="40" pattern="[0-9]{2}" required value="{{old('maximum_delivery_time')}}">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="input-label">{{__('restaurant logo')}}<small style="color: red"> ( {{__('ratio')}} 1:1 )</small></label>
+                                <label class="input-label">{{__('Restaurant logo')}}<small style="color: red"> ( {{__('ratio')}} 1:1 )</small></label>
                                 <div class="custom-file">
                                     <input type="file" name="logo" id="customFileEg1" class="custom-file-input"
                                         accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>
@@ -98,14 +98,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="input-label" for="latitude">{{__('Latitude')}}<span
-                                        class="input-label-secondary" title="{{__('Restaurant lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat_lng_warning')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('Restaurant lat lng warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat lng warning')}}"></span></label>
                                 <input type="text" id="latitude"
                                        name="latitude" class="form-control"
                                        placeholder="Ex : -94.22213" value="{{old('latitude')}}" required readonly>
                             </div>
                             <div class="form-group">
                                 <label class="input-label" for="longitude">{{__('Longitude')}}<span
-                                        class="input-label-secondary" title="{{__('Restaurant lat_lng_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat_lng_warning')}}"></span></label>
+                                        class="input-label-secondary" title="{{__('Restaurant lat lng warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Restaurant lat lng warning')}}"></span></label>
                                 <input type="text" 
                                        name="longitude" class="form-control"
                                        placeholder="Ex : 103.344322" id="longitude" value="{{old('longitude')}}" required readonly>
@@ -287,13 +287,13 @@
 
                 },
                 onExtensionErr: function (index, file) {
-                    toastr.error('{{__('please_only_input_png_or_jpg_type_file')}}', {
+                    toastr.error('{{__('Please only input png or jpg type file')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 },
                 onSizeErr: function (index, file) {
-                    toastr.error('{{__('file_size_too_big')}}', {
+                    toastr.error('{{__('File size too big')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

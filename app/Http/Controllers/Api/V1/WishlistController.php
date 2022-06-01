@@ -22,7 +22,7 @@ class WishlistController extends Controller
         }
         if ($request->food_id && $request->restaurant_id) {
             $errors = [];
-            array_push($errors, ['code' => 'data', 'message' => __('can_not_add_both_food_and_restaurant_at_same_time')]);
+            array_push($errors, ['code' => 'data', 'message' => __('Can not add both food and restaurant at same time')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -37,7 +37,7 @@ class WishlistController extends Controller
             return response()->json(['message' => __('added successfully')], 200);
         }
 
-        return response()->json(['message' => __('already_in_wishlist')], 409);
+        return response()->json(['message' => __('Already in wishlist')], 409);
     }
 
     public function remove_from_wishlist(Request $request)
@@ -61,7 +61,7 @@ class WishlistController extends Controller
 
         if ($wishlist) {
             $wishlist->delete();
-            return response()->json(['message' => __('successfully_removed')], 200);
+            return response()->json(['message' => __('Successfully removed')], 200);
 
         }
         return response()->json(['message' => __('Not found')], 404);

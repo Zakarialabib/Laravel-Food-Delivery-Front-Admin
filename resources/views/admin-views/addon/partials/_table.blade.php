@@ -18,9 +18,9 @@
         </td>
         <td>
             <a class="btn btn-sm btn-white"
-                href="{{route('admin.addon.edit',[$addon['id']])}}" title="{{__('edit addon')}}"><i class="tio-edit"></i></a>
+                href="{{route('admin.addon.edit',[$addon['id']])}}" title="{{__('Edit addon')}}"><i class="tio-edit"></i></a>
             <a class="btn btn-sm btn-white"     href="javascript:"
-                onclick="form_alert('addon-{{$addon['id']}}','Want to delete this addon ?')" title="{{__('delete addon')}}"><i class="tio-delete-outlined"></i></a>
+                onclick="form_alert('addon-{{$addon['id']}}','Want to delete this addon ?')" title="{{__('Delete addon')}}"><i class="tio-delete-outlined"></i></a>
             <form action="{{route('admin.addon.delete',[$addon['id']])}}"
                         method="post" id="addon-{{$addon['id']}}">
                 @csrf @method('delete')

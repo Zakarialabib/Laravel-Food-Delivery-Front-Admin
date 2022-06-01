@@ -67,7 +67,7 @@
                 <ul>
                     <li>
                         <h5>
-                            <span>{{__('SubTotal')}}</span>
+                            <span>{{__('Subtotal')}}</span>
                             <span class="float-right">${{ $total }}.00</span>
                         </h5>
                     </li>
@@ -100,7 +100,7 @@
 
         <div class="cart">
             <div class="empty-cart text-center">
-                <h4>{{__(' Your cart is empty')}}</h4>
+                <h4>{{__('Your cart is empty')}}</h4>
                 <p class="mb-0">{{__('Add items to get started')}}.</p>
             </div>
         </div>

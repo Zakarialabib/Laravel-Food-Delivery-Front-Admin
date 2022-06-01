@@ -268,13 +268,13 @@ class POSController extends Controller
         {
             if(count($request->session()->get('cart')) < 1)
             {
-                Toastr::error(__('cart_empty_warning'));
+                Toastr::error(__('Cart empty warning'));
                 return back();
             }
         }
         else
         {
-            Toastr::error(__('cart_empty_warning'));
+            Toastr::error(__('Cart empty warning'));
             return back();
         }
 
@@ -362,7 +362,7 @@ class POSController extends Controller
         } catch (\Exception $e) {
             info($e);
         }
-        Toastr::warning(__('failed_to_place_order'));
+        Toastr::warning(__('Failed to place order'));
         return back();
     }
 

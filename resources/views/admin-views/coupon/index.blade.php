@@ -36,7 +36,7 @@
                                         <select name="coupon_type" class="form-control" onchange="coupon_type_change(this.value)">
                                             <option value="restaurant_wise">{{__('restaurant wise')}}</option>
                                             <option value="zone_wise">{{__('Zone wise')}}</option>
-                                            <option value="free_delivery">{{__('free_delivery')}}</option>
+                                            <option value="free_delivery">{{__('Free delivery')}}</option>
                                             <option value="first_order">{{__('first order')}}</option>
                                             <option value="default">{{__('default')}}</option>
                                         </select>

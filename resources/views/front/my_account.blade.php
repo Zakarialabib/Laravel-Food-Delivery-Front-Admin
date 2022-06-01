@@ -30,12 +30,12 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="f_name"
-                                                placeholder="{{ __('First Name') }}"
+                                                placeholder="{{ __('File name') }}"
                                                 value="{{ $customer['f_name'] }}">
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="l_name"
-                                                placeholder="{{ __('Last Name') }}"
+                                                placeholder="{{ __('Last name') }}"
                                                 value="{{ $customer['l_name'] }}">
                                         </div>
                                         <div class="form-group">

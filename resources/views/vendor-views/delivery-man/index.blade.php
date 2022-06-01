@@ -49,7 +49,7 @@
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Identity type')}}</label>
                                 <select name="identity_type" class="form-control">
                                     <option value="passport">{{__('passport')}}</option>
-                                    <option value="driving_license">{{__('driving license')}}</option>
+                                    <option value="driving_license">{{__('Driving license')}}</option>
                                     <option value="nid">{{__('nid')}}</option>
                                 </select>
                             </div>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="col-md-12 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('identity image')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Identity image')}}</label>
                                 <div>
                                     <div class="row" id="coba"></div>
                                 </div>

@@ -165,7 +165,7 @@ class VendorController extends Controller
         $restaurant->delivery_time = $request->minimum_delivery_time .'-'. $request->maximum_delivery_time;
         // $restaurant->zones()->sync($request->zone_ids);
         $restaurant->save();
-        Toastr::success(__('restaurant').__('updated_successfully'));
+        Toastr::success(__('restaurant').__('Updated successfully'));
         return redirect('admin/vendor/list');
     }
 
@@ -352,7 +352,7 @@ class VendorController extends Controller
     public function discountSetup(Restaurant $restaurant, Request $request)
     {
         $message=__('discount');
-        $message .= $restaurant->discount?__('updated_successfully'):__('added successfully');
+        $message .= $restaurant->discount?__('Updated successfully'):__('added successfully');
         $restaurant->discount()->updateOrinsert(
         [
             'restaurant_id' => $restaurant->id

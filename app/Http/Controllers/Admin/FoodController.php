@@ -40,8 +40,8 @@ class FoodController extends Controller
             'description.*' => 'max:1000',
             'veg'=>'required'
         ], [
-            'description.*.max' => __('description_length_warning'),            
-            'name.0.required' => __('item_name_required'),
+            'description.*.max' => __('Description length warning'),            
+            'name.0.required' => __('Item name required'),
             'category_id.required' => __('Category required '),
             'veg.required'=>__('item type is required')
         ]);
@@ -53,7 +53,7 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('Discount can not be more than or equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -213,8 +213,8 @@ class FoodController extends Controller
             'description.*' => 'max:1000',
             'discount' => 'required|numeric|min:0',
         ], [
-            'description.*.max' => __('description_length_warning'),            
-            'name.0.required' => __('item_name_required'),
+            'description.*.max' => __('Description length warning'),            
+            'name.0.required' => __('Item name required'),
             'category_id.required' => __('Category required '),
             'veg.required'=>__('item type is required'),
         ]);
@@ -226,7 +226,7 @@ class FoodController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('Discount can not be more than or equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -518,7 +518,7 @@ class FoodController extends Controller
         $review = Review::find($request->id);
         $review->status = $request->status;
         $review->save();
-        Toastr::success(__('review_visibility_updated'));
+        Toastr::success(__('Review visibility updated'));
         return back();
     }
 

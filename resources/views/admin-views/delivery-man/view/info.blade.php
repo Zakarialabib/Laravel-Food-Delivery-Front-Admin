@@ -43,11 +43,11 @@
                 <div class="col-md-6">
                     <div class="hs-unfold float-right">
                         <a class="btn btn-primary text-capitalize font-weight-bold"
-                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'approved'])}}','{{__('You want to approve_this_application')}}')"
-                            href="javascript:">{{__('approve')}}</a>
+                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'approved'])}}','{{__('You want to approve this application')}}')"
+                            href="javascript:">{{__('Approve')}}</a>
                         @if($dm->application_status !='denied')
                         <a class="btn btn-danger text-capitalize font-weight-bold" 
-                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'denied'])}}','{{__('You want to deny_this_application')}}')"
+                        onclick="request_alert('{{route('admin.delivery-man.application',[$dm['id'],'denied'])}}','{{__('You want to deny this application')}}')"
                             href="javascript:">{{__('deny')}}</a>
                         @endif
                     </div>
@@ -83,12 +83,12 @@
                     <label class="badge badge-soft-{{$dm->application_status=='pending'?'info':'danger'}}">{{__(''.$dm->application_status)}}</label>
                     @endif
                 </h4>
-                <!-- <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],$dm->earning?0:1])}}','{{$dm->earning?__('want_to_disable_earnings'):__('want_to_enable_earnings')}}')" class="btn {{$dm->earning?'btn-danger':'btn-success'}}">
-                         {{$dm->earning?__('disable_earning'):__('enable_earning')}}
+                <!-- <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],$dm->earning?0:1])}}','{{$dm->earning?__('Want to disable earnings'):__('Want to enable earnings')}}')" class="btn {{$dm->earning?'btn-danger':'btn-success'}}">
+                         {{$dm->earning?__('Disable earning'):__('Enable earning')}}
                 </a> -->
                 @if($dm->application_status=='approved')
-                <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.status',[$dm['id'],$dm->status?0:1])}}','{{$dm->status?__('You want to suspend_this_deliveryman'):__('You want to unsuspend_this_deliveryman')}}')" class="btn {{$dm->status?'btn-danger':'btn-success'}}">
-                        {{$dm->status?__('suspend_this_delivery_man'):__('unsuspend_this_delivery_man')}}
+                <a  href="javascript:"  onclick="request_alert('{{route('admin.delivery-man.status',[$dm['id'],$dm->status?0:1])}}','{{$dm->status?__('You want to suspend this deliveryman'):__('You want to unsuspend this deliveryman')}}')" class="btn {{$dm->status?'btn-danger':'btn-success'}}">
+                        {{$dm->status?__('Suspend this delivery man'):__('Unsuspend this delivery man')}}
                 </a>
                 @endif
                 <div class="hs-unfold float-right">
@@ -100,10 +100,10 @@
                         </button>
                         <div class="dropdown-menu text-capitalize" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item {{$dm->earning?'active':''}}"
-                            onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],1])}}','{{__('want_to_enable_earnings')}}')"
+                            onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],1])}}','{{__('Want to enable earnings')}}')"
                                 href="javascript:">{{__('freelancer')}}</a>
                             <a class="dropdown-item {{$dm->earning?'':'active'}}"
-                            onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],0])}}','{{__('want_to_disable_earnings')}}')"
+                            onclick="request_alert('{{route('admin.delivery-man.earning',[$dm['id'],0])}}','{{__('Want to disable earnings')}}')"
                                 href="javascript:">{{__('Salary based')}}</a>
                         </div>
                     </div>

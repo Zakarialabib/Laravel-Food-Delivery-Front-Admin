@@ -60,7 +60,7 @@ class EmployeeLoginController extends Controller
             if($employee->restaurant->status == 0)
             {
                 return redirect()->back()->withInput($request->only('email', 'remember'))
-            ->withErrors([__('inactive_vendor_warning')]);
+            ->withErrors([__('Inactive vendor warning')]);
             }
         }
         if (auth('vendor_employee')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
@@ -68,7 +68,7 @@ class EmployeeLoginController extends Controller
         }
 
         return redirect()->back()->withInput($request->only('email', 'remember'))
-            ->withErrors([__('credentials_does_not_match')]);
+            ->withErrors([__('Credentials does not match')]);
     }
 
     public function logout(Request $request)

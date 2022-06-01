@@ -36,8 +36,8 @@
 
             <div class="col-sm-6 col-md-4 text-center text-sm-left">
                 <h1 class="display-1 mb-0">500</h1>
-                <p class="lead">{{__('500_warning_message')}}</p>
-                <a class="btn btn-primary" href="{{url()->current()}}">{{__('reload_page')}}</a>
+                <p class="lead">{{__('500 warning message')}}</p>
+                <a class="btn btn-primary" href="{{url()->current()}}">{{__('Reload_page')}}</a>
             </div>
         </div>
         <!-- End Row -->

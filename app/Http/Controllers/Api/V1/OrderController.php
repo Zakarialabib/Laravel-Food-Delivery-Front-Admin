@@ -74,7 +74,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => __('you_can_not_schedule_a_order_in_past')]
+                    ['code' => 'order_time', 'message' => __('You can not schedule a order in past')]
                 ]
             ], 406);
         }
@@ -93,7 +93,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'schedule_at', 'message' => __('schedule_order_not_available')]
+                    ['code' => 'schedule_at', 'message' => __('Schedule order not available')]
                 ]
             ], 406);
         }
@@ -103,7 +103,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => __('Restaurant is_closed_at_order_time')]
+                    ['code' => 'order_time', 'message' => __('Restaurant is closed at order time')]
                 ]
             ], 406);
         }
@@ -113,7 +113,7 @@ class OrderController extends Controller
         // {
         //     return response()->json([
         //         'errors' => [
-        //             ['code' => 'order_time', 'message' => __('scheduled_date_is_restaurant_offday')]
+        //             ['code' => 'order_time', 'message' => __('Scheduled date is restaurant offday')]
         //         ]
         //     ], 406);
         // }
@@ -134,7 +134,7 @@ class OrderController extends Controller
                 {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'coupon', 'message' => __('Coupon usage_limit_over')]
+                            ['code' => 'coupon', 'message' => __('Coupon usage limit over')]
                         ]
                     ], 406);
                 }
@@ -263,7 +263,7 @@ class OrderController extends Controller
                 } else {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'campaign', 'message' => __('Product unavailable_warning')]
+                            ['code' => 'campaign', 'message' => __('Product unavailable warning')]
                         ]
                     ], 401);
                 }
@@ -301,7 +301,7 @@ class OrderController extends Controller
                 } else {
                     return response()->json([
                         'errors' => [
-                            ['code' => 'food', 'message' => __('Product unavailable_warning')]
+                            ['code' => 'food', 'message' => __('Product unavailable warning')]
                         ]
                     ], 401);
                 }
@@ -380,7 +380,7 @@ class OrderController extends Controller
 
         return response()->json([
             'errors' => [
-                ['code' => 'order_time', 'message' => __('failed_to_place_order')]
+                ['code' => 'order_time', 'message' => __('Failed to place order')]
             ]
         ], 403);
     }
@@ -485,7 +485,7 @@ class OrderController extends Controller
         }
         return response()->json([
             'errors' => [
-                ['code' => 'order', 'message' => __('you_can_not_cancel_after_confirm')]
+                ['code' => 'order', 'message' => __('You can not cancel after confirm')]
             ]
         ], 401);
     }
@@ -505,11 +505,11 @@ class OrderController extends Controller
             $order->order_status = 'refund_requested';
             $order->refund_requested = now();
             $order->save();            
-            return response()->json(['message' => __('refund_request_placed_successfully')], 200);
+            return response()->json(['message' => __('Refund request placed successfully')], 200);
         }
         return response()->json([
             'errors' => [
-                ['code' => 'order', 'message' => __('you_can_not_request_for_refund_after_delivery')]
+                ['code' => 'order', 'message' => __('You can not request for refund after delivery')]
             ]
         ], 401);
     }
@@ -564,7 +564,7 @@ class OrderController extends Controller
             } catch (\Exception $e) {
                 info($e);
             }
-            return response()->json(['message' => __('payment').' '.__('method').' '.__('updated_successfully')], 200);
+            return response()->json(['message' => __('payment').' '.__('method').' '.__('Updated successfully')], 200);
         }
         return response()->json([
             'errors' => [

@@ -43,7 +43,7 @@
             </div>
             <div class="col-6">
                 <a href="{{route('admin.vendor.edit',[$restaurant->id])}}" class="btn btn-primary float-right">
-                    <i class="tio-edit"></i> {{__('edit restaurant')}}
+                    <i class="tio-edit"></i> {{__('Edit restaurant')}}
                 </a>
             </div>
         </div>

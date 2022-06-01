@@ -168,7 +168,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order', 'message' => __('can_not_accept')]
+                    ['code' => 'order', 'message' => __('Can not accept')]
                 ]
             ], 404);
         }
@@ -274,7 +274,7 @@ class DeliverymanController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'status', 'message' => __('you_can_not_cancel_a_order')]
+                    ['code' => 'status', 'message' => __('You can not cancel a order')]
                 ]
             ], 403);
         }

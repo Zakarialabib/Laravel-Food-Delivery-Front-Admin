@@ -133,12 +133,12 @@ class CustomerAuthController extends Controller
         if (isset($verify)) {
             $verify->delete();
             return response()->json([
-                'message' => __('token_varified'),
+                'message' => __('Token verified'),
             ], 200);
         }
 
         $errors = [];
-        array_push($errors, ['code' => 'token', 'message' => __('token_not_found')]);
+        array_push($errors, ['code' => 'token', 'message' => __('Token not found')]);
         return response()->json(['errors' => $errors ]
         , 404);
     }
@@ -184,7 +184,7 @@ class CustomerAuthController extends Controller
             if($response != 'success')
             {
                 $errors = [];
-                array_push($errors, ['code' => 'otp', 'message' => __('faield_to_send_sms')]);
+                array_push($errors, ['code' => 'otp', 'message' => __('Failed to send sms')]);
                 return response()->json([
                     'errors' => $errors
                 ], 405);
@@ -214,7 +214,7 @@ class CustomerAuthController extends Controller
             if(!auth()->user()->status)
             {
                 $errors = [];
-                array_push($errors, ['code' => 'auth-003', 'message' => __('your_account_is_blocked')]);
+                array_push($errors, ['code' => 'auth-003', 'message' => __('Your account is blocked')]);
                 return response()->json([
                     'errors' => $errors
                 ], 403);
@@ -233,7 +233,7 @@ class CustomerAuthController extends Controller
                 {
 
                     $errors = [];
-                    array_push($errors, ['code' => 'otp', 'message' => __('faield_to_send_sms')]);
+                    array_push($errors, ['code' => 'otp', 'message' => __('Failed to send sms')]);
                     return response()->json([
                         'errors' => $errors
                     ], 405);

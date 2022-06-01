@@ -82,7 +82,7 @@ class DeliveryManController extends Controller
             'password'=>'required|min:6',
         ], [
             'f_name.required' => __('First name is required'),
-            'zone_id.required' => __('select_a_zone'),
+            'zone_id.required' => __('Select a zone'),
             'earning.required' => __('Select dm type')
         ]);
 
@@ -174,7 +174,7 @@ class DeliveryManController extends Controller
         $review = DMReview::find($request->id);
         $review->status = $request->status;
         $review->save();
-        Toastr::success(__('review_visibility_updated'));
+        Toastr::success(__('Review visibility updated'));
         return back();
     }
 
@@ -185,7 +185,7 @@ class DeliveryManController extends Controller
 
         $delivery_man->save();
 
-        Toastr::success(__('deliveryman_type_updated'));
+        Toastr::success(__('Deliveryman type updated'));
         return back();
     }
 

@@ -94,7 +94,7 @@
     </section>
     <section class="pt-5 pb-4">
         <div class="container">
-            <h4 class="mb-4">{{__('Popular Restaurants')}}</h4>
+            <h4 class="mb-4">{{__('Popular restaurants')}}</h4>
             <div class="flex flex-wrap -mx-5 overflow-hidden">
                 @forelse ($restaurants as $restaurant)
                     <div class="lg:w-1/3 sm:w-full my-2 px-4 ">

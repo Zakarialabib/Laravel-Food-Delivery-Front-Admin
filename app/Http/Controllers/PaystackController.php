@@ -32,7 +32,7 @@ class PaystackController extends Controller
 
             return Paystack::getAuthorizationUrl()->redirectNow();
         } catch (\Exception $e) {
-            Toastr::error(__('your_currency_is_not_supported',['method'=>__('paystack')]));
+            Toastr::error(__('Your currency is not supported',['method'=>__('Paystack')]));
             return Redirect::back();
         }
     }

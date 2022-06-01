@@ -130,7 +130,7 @@ class ConfigController extends Controller
         {
             return response()->json([
                 'errors'=>[
-                    ['code'=>'coordinates','message'=>__('service_not_available_in_this_area')]
+                    ['code'=>'coordinates','message'=>__('service not available in this area')]
                 ]
             ], 404);
         }
@@ -143,7 +143,7 @@ class ConfigController extends Controller
         }
         return response()->json([
             'errors'=>[
-                ['code'=>'coordinates','message'=>__('we_are_temporarily_unavailable_in_this_area')]
+                ['code'=>'coordinates','message'=>__('We are temporarily unavailable in this area')]
             ]
         ], 403);
     }

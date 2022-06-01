@@ -81,7 +81,7 @@
                             @elseif ($order['order_status']=='processing')
                             <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'handover'])}}','Change status to ready for handover ?')" href="javascript:">{{__('Make ready for handover')}}</a>    
                             @elseif ($order['order_status']=='handover' && $order['order_type']=='take_away')
-                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'delivered'])}}','Change status to delivered (payment status will be paid if not) ?', {{$order_delivery_verification?'true':'false'}})" href="javascript:">{{__('Maek delivered')}}</a>    
+                            <a class="btn btn-sm btn-primary" onclick="order_status_change_alert('{{route('vendor.order.status',['id'=>$order['id'],'order_status'=>'delivered'])}}','Change status to delivered (payment status will be paid if not) ?', {{$order_delivery_verification?'true':'false'}})" href="javascript:">{{__('Mark delivered')}}</a>    
                             @endif
                         </div>
                         <!-- End Unfold -->
@@ -126,7 +126,7 @@
                             <div class="col-6 pt-2">
                                 <div class="text-right">
                                     <h6 class="text-capitalize" style="color: #8a8a8a;">
-                                        {{__('Payment Method')}} : {{str_replace('_',' ',$order['payment_method'])}}
+                                        {{__('Payment method')}} : {{str_replace('_',' ',$order['payment_method'])}}
                                     </h6>
                                     <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('Order Type')}}
                                         : <label style="font-size: 10px"
@@ -278,7 +278,7 @@
                                     <dt class="col-sm-6">{{__('Discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($order['restaurant_discount_amount'])}}</dd>
-                                    <dt class="col-sm-6">{{__('Coupon Discount')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Coupon discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($order['coupon_discount_amount'])}}</dd>
                                     <dt class="col-sm-6">{{__('Tax')}}:</dt>

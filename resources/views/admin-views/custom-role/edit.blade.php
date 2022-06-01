@@ -15,7 +15,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-2">
-        <h1 class="h3 mb-0 text-black-50">{{__('employee Role')}}</h1>
+        <h1 class="h3 mb-0 text-black-50">{{__('Employee role')}}</h1>
     </div>
 
     <!-- Content Row -->

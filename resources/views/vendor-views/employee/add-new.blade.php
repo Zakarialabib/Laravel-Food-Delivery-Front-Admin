@@ -99,7 +99,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label class="input-label qcont" for="customFileUpload">{{__('employee_image')}}</label>
+                                    <label class="input-label qcont" for="customFileUpload">{{__('Employee image')}}</label>
                                     <div class="form-group">
                                         <div class="custom-file">
                                             <input type="file" name="image" id="customFileUpload" class="custom-file-input"

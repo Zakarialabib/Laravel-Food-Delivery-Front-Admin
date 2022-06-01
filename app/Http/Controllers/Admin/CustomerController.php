@@ -47,7 +47,7 @@ class CustomerController extends Controller
                 {
                     $data = [
                         'title' => __('suspended'),
-                        'description' => __('your_account_has_been_blocked'),
+                        'description' => __('Your account has been blocked'),
                         'order_id' => '',
                         'image' => '',
                         'type'=> 'block'

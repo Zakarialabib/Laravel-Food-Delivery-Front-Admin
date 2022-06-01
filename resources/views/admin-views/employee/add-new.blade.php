@@ -50,7 +50,7 @@
                                 <div class="col-md-6">
                                     <label class="input-label qcont" for="fname">{{__('First name')}}</label>
                                     <input type="text" name="f_name" class="form-control" id="fname"
-                                           placeholder="{{__('first_name')}}" value="{{old('f_name')}}" required>
+                                           placeholder="{{__('First name')}}" value="{{old('f_name')}}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="input-label qcont" for="lname">{{__('Last name')}}</label>
@@ -111,7 +111,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label class="input-label qcont" for="customFileUpload">{{__('employee_image')}}</label>
+                                    <label class="input-label qcont" for="customFileUpload">{{__('Employee image')}}</label>
                                     <div class="form-group">
                                         <div class="custom-file">
                                             <input type="file" name="image" id="customFileUpload" class="custom-file-input"

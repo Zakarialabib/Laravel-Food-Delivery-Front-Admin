@@ -142,7 +142,7 @@
     <div class="row justify-content-md-end divide-y">
         <div class="col-md-7 col-lg-7">
             <dl class="row text-right">
-                <dt class="col-6">{{__('Items Price')}}:</dt>
+                <dt class="col-6">{{__('Items price')}}:</dt>
                 <dd class="col-6">{{\App\CentralLogics\Helpers::format_currency($sub_total)}}</dd>
                 <dt class="col-6">{{__('Addon Cost')}}:</dt>
                 <dd class="col-6">
@@ -155,12 +155,12 @@
                 <dt class="col-6">{{__('Discount')}}:</dt>
                 <dd class="col-6">
                     - {{\App\CentralLogics\Helpers::format_currency($order['restaurant_discount_amount'])}}</dd>
-                <dt class="col-6">{{__('Coupon Discount')}}:</dt>
+                <dt class="col-6">{{__('Coupon discount')}}:</dt>
                 <dd class="col-6">
                     - {{\App\CentralLogics\Helpers::format_currency($order['coupon_discount_amount'])}}</dd>
                 <dt class="col-6">{{__('vat/tax')}}:</dt>
                 <dd class="col-6">+ {{\App\CentralLogics\Helpers::format_currency($order['total_tax_amount'])}}</dd>
-                <dt class="col-6">{{__('Delivery Fee')}}:</dt>
+                <dt class="col-6">{{__('Delivery fee')}}:</dt>
                 <dd class="col-6">
                     @php($del_c=$order['delivery_charge'])
                     {{\App\CentralLogics\Helpers::format_currency($del_c)}}

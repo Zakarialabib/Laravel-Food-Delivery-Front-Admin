@@ -157,7 +157,7 @@
                             </div>
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('vendor-settings-form','{{__('You want to update_user_info')}}') @else call_demo() @endif" class="btn btn-primary">{{__('Save changes')}}</button>
+                                <button type="button" onclick="@if(env('APP_MODE')!='demo') form_alert('vendor-settings-form','{{__('You want to update user info')}}') @else call_demo() @endif" class="btn btn-primary">{{__('Save changes')}}</button>
                             </div>
 
                             <!-- End Form -->

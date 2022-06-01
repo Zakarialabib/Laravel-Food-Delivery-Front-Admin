@@ -38,7 +38,7 @@
 
             <div class="col-sm-6 col-md-4 text-center text-sm-left">
                 <h1 class="display-1 mb-0">404</h1>
-                <p class="lead">{{__('404_warning_message')}}.</p>
+                <p class="lead">{{__('404 warning message')}}.</p>
                 @if(auth('vendor')->check())
                     <a class="btn btn-primary" href="{{route('vendor.dashboard')}}">{{__('Dashboard')}}</a>
                 @else

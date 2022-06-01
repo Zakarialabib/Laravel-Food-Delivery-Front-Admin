@@ -164,7 +164,7 @@
                                             {{\App\CentralLogics\Helpers::format_currency(\App\CentralLogics\Helpers::discount_calculate($campaign,$campaign['price']))}}
                                         </small class="text-dark"><br>
                                         
-                                        <small class="card-subtitle border-bottom mt-2"> {{__('variations')}} </small><br>
+                                        <small class="card-subtitle border-bottom mt-2"> {{__('Variations')}} </small><br>
                                         @foreach(json_decode($campaign['variations'],true) as $variation)
                                             <small class="text-capitalize">
                                             {{$variation['type']}} : {{\App\CentralLogics\Helpers::format_currency($variation['price'])}}

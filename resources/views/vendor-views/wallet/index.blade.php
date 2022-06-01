@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('Restaurant Wallet'))
+@section('title',__('Restaurant wallet'))
 
 @push('css_or_js')
 
@@ -41,7 +41,7 @@
                     </div>
                     <div class="card-footer"  style="background: #8d8d8d; border:none;">
                         @if(\App\CentralLogics\Helpers::get_vendor_data()->account_no==null || \App\CentralLogics\Helpers::get_vendor_data()->bank_name==null)
-                        <a tabindex="0" class="btn btn w-100 btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="{{__('warning_missing_Bank info')}}" data-content="{{__('Warning add Bank info')}}">{{__('Request withdraw')}}</a>
+                        <a tabindex="0" class="btn btn w-100 btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="{{__('warning missing bank info')}}" data-content="{{__('Warning add bank info')}}">{{__('Request withdraw')}}</a>
                         @else   
                         <a class="btn w-100" style="background: #f9fafc;" href="javascript:" data-toggle="modal" data-target="#balance-modal">{{__('Request withdraw')}}</a>
                         @endif

@@ -155,7 +155,7 @@
 
                                 <div class="input-group input-group-merge">
                                     <input type="password" class="js-toggle-password form-control form-control-lg"
-                                           name="password"  placeholder="{{__('password length placeholder', ['length'=>'8+'])}}"
+                                           name="password"  placeholder="{{__('Password length placeholder', ['length'=>'8+'])}}"
                                            aria-label="8+ characters required" required
                                            data-msg="{{__('invalid password warning')}}"
                                            data-hs-toggle-password-options='{

@@ -22,7 +22,7 @@
         <!-- End Page Header -->
 
         <div class="card">
-            <div class="card-header"><h5>{{isset($category)?__('Update'):__('Add').' '.__('new category')}}</h5></div>
+            <div class="card-header"><h5>{{isset($category)?__('Update'):__('Add').' '.__('New category')}}</h5></div>
             <div class="card-body">
                 <form action="{{isset($category)?route('admin.category.update',[$category['id']]):route('admin.category.store')}}" method="post" enctype="multipart/form-data">
                     @csrf

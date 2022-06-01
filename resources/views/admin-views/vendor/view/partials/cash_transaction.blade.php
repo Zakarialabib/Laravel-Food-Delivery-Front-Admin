@@ -1,5 +1,5 @@
 <div>
-    <h3 class="qcont px-3 pt-4">{{ __('cash')}} {{ __('transactions by_admin')}}</h3>
+    <h3 class="qcont px-3 pt-4">{{ __('Cash transactions by admin')}}</h3>
 
     <div class="table-responsive">
         <table id="datatable"
@@ -9,7 +9,7 @@
                 <tr>
                     <th>{{__('sl#')}}</th>
                     <th>{{__('Received at')}}</th>
-                    <th>{{__('balance_before_transaction')}}</th>
+                    <th>{{__('Balance before transaction')}}</th>
                     <th>{{__('Amount')}}</th>
                     <th>{{__('Reference')}}</th>
                     <th style="width: 5px">{{__('Action')}}</th>

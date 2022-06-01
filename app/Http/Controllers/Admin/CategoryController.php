@@ -129,7 +129,7 @@ class CategoryController extends Controller
             $category->delete();
             Toastr::success('Category removed!');
         }else{
-            Toastr::warning(__('remove_sub_categories_first'));
+            Toastr::warning(__('Remove sub categories first'));
         }
         return back();
     }

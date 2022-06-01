@@ -69,7 +69,7 @@ class SocialAuthController extends Controller
             } else {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'auth-004', 'message' => __('email_already_exists')]
+                        ['code' => 'auth-004', 'message' => __('Email already exists')]
                     ]
                 ], 403);
             }
@@ -84,7 +84,7 @@ class SocialAuthController extends Controller
                 if(!auth()->user()->status)
                 {
                     $errors = [];
-                    array_push($errors, ['code' => 'auth-003', 'message' => __('your_account_is_blocked')]);
+                    array_push($errors, ['code' => 'auth-003', 'message' => __('Your account is blocked')]);
                     return response()->json([
                         'errors' => $errors
                     ], 403);
@@ -103,7 +103,7 @@ class SocialAuthController extends Controller
                     {
     
                         $errors = [];
-                        array_push($errors, ['code' => 'otp', 'message' => __('faield_to_send_sms')]);
+                        array_push($errors, ['code' => 'otp', 'message' => __('Failed to send sms')]);
                         return response()->json([
                             'errors' => $errors
                         ], 405);
@@ -121,7 +121,7 @@ class SocialAuthController extends Controller
 
         }
 
-        return response()->json(['error' => __('email_does_not_match')]);
+        return response()->json(['error' => __('Email does not match')]);
     }
 
 
@@ -152,7 +152,7 @@ class SocialAuthController extends Controller
             if(!auth()->user()->status)
             {
                 $errors = [];
-                array_push($errors, ['code' => 'auth-003', 'message' => __('your_account_is_blocked')]);
+                array_push($errors, ['code' => 'auth-003', 'message' => __('Your account is blocked')]);
                 return response()->json([
                     'errors' => $errors
                 ], 403);
@@ -171,7 +171,7 @@ class SocialAuthController extends Controller
                 {
 
                     $errors = [];
-                    array_push($errors, ['code' => 'otp', 'message' => __('faield_to_send_sms')]);
+                    array_push($errors, ['code' => 'otp', 'message' => __('Failed to send sms')]);
                     return response()->json([
                         'errors' => $errors
                     ], 405);
@@ -188,7 +188,7 @@ class SocialAuthController extends Controller
 
         return response()->json([
             'errors'=>[
-                ['code'=>'not-found','message' => __('user_not_found')]
+                ['code'=>'not-found','message' => __('User not found')]
             ]
         ], 404);
     }

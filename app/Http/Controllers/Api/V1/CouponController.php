@@ -17,7 +17,7 @@ class CouponController extends Controller
     {
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => __('zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('Zone id required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -79,7 +79,7 @@ class CouponController extends Controller
                 case 406:
                     return response()->json([
                         'errors' => [
-                            ['code' => 'coupon', 'message' => __('Coupon usage_limit_over')]
+                            ['code' => 'coupon', 'message' => __('Coupon usage limit over')]
                         ]
                     ], 406);
                 case 407:

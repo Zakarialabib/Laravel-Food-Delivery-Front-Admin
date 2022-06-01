@@ -156,7 +156,7 @@ class CampaignController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('Discount can not be more than or equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -294,7 +294,7 @@ class CampaignController extends Controller
         }
 
         if ($request['price'] <= $dis) {
-            $validator->getMessageBag()->add('unit_price', __('discount_can_not_be_more_than_or_equal'));
+            $validator->getMessageBag()->add('unit_price', __('Discount can not be more than or equal'));
         }
 
         if ($request['price'] <= $dis || $validator->fails()) {
@@ -486,7 +486,7 @@ class CampaignController extends Controller
     {
         $campaign->restaurants()->attach($request->restaurant_id);
         $campaign->save();
-        Toastr::success(__('restaurant Added to_campaign'));
+        Toastr::success(__('Restaurant added to campaign'));
         return back();
     }
 

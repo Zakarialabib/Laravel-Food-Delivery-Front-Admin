@@ -45,7 +45,7 @@
                         <span class="h4">{{__('Name')}} : {{$shop->name}}</span><br>
                         <span class="h5">{{__('Phone')}} : <a style="text-decoration:none; color:black;" href="tel:{{$shop->phone}}">{{$shop->phone}}</a></span><br>
                         <span class="h5">{{__('Address')}} : {{$shop->address}}</span><br>
-                        <span class="h5">{{__('admin_commission')}} : {{(isset($shop->comission)?$shop->comission:\App\Models\BusinessSetting::where('key','admin_commission')->first()->value)}}%</span><br>
+                        <span class="h5">{{__('Admin commission')}} : {{(isset($shop->comission)?$shop->comission:\App\Models\BusinessSetting::where('key','admin_commission')->first()->value)}}%</span><br>
                         <span class="h5">{{__('vat/tax')}} : {{$shop->tax}}%</span><br>
                         <a class="btn btn-primary mt-1" href="{{route('vendor.shop.edit')}}">EDIT</a>
                     </div>

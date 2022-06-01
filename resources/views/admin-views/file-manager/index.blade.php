@@ -21,14 +21,14 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{trans('Dashboard')}}</a></li>
-            <li class="breadcrumb-item text-capitalize" aria-current="page">{{__('file_manager')}}</li>
+            <li class="breadcrumb-item text-capitalize" aria-current="page">{{__('File manager')}}</li>
         </ol>
     </nav>
     <!-- Page Heading -->
     <div class="d-md-flex_ align-items-center justify-content-between mb-2">
         <div class="row">
             <div class="col-md-8">
-                <h3 class="h3 mb-0 text-capitalize text-black-50">{{__('file_manager')}}</h3>
+                <h3 class="h3 mb-0 text-capitalize text-black-50">{{__('File manager')}}</h3>
             </div>
 
             <div class="col-md-4">
@@ -127,7 +127,7 @@
                         <div class="custom-file">
                             <input type="file" name="file" id="customZipFileUpload" class="custom-file-input"
                                                         accept=".zip">
-                            <label class="custom-file-label" id="zipFileLabel" for="customZipFileUpload">{{__('upload_zip_file')}}</label>
+                            <label class="custom-file-label" id="zipFileLabel" for="customZipFileUpload">{{__('Upload zip file')}}</label>
                         </div>
                     </div>
 

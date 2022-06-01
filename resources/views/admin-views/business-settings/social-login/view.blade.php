@@ -76,19 +76,19 @@
             <div class="modal-dialog">
                 <div class="modal-content" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">{{__('google_api_setup_instructions')}}</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">{{__('Google api setup instructions')}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <ol>
-                            <li>{{__('go_to_the_credentials_page')}} ({{__('click')}} <a href="https://console.cloud.google.com/apis/credentials" target="_blank">{{__('here')}}</a>)</li>
+                            <li>{{__('Go to the Credentials page')}} ({{__('click')}} <a href="https://console.cloud.google.com/apis/credentials" target="_blank">{{__('here')}}</a>)</li>
                             <li>{{__('Click')}} <b>{{__('create credentials')}}</b> > <b>{{__('auth client id')}}</b>.</li>
                             <li>{{__('Select the')}} <b>{{__('web application')}}</b> {{__('type')}}.</li>
-                            <li>{{__('name_your_auth_client')}}</li>
-                            <li>{{__('Click')}} <b>{{__('Add uri')}}</b> {{__('from')}} <b>{{__('authorized_redirect_uris')}}</b> , {{__('provide the')}} <code>{{__('callback uri')}}</code> {{__('From below and click')}} <b>{{__('created')}}</b></li>
-                            <li>{{__('Copy')}} <b>{{__('client id')}}</b> {{__('and')}} <b>{{__('client secret')}}</b>, {{__('past_in_the_input_field_below_and')}} <b>{{__('Save')}}</b>.</li>
+                            <li>{{__('Name your auth client')}}</li>
+                            <li>{{__('Click')}} <b>{{__('Add uri')}}</b> {{__('from')}} <b>{{__('Authorized redirect uris')}}</b> , {{__('provide the')}} <code>{{__('callback uri')}}</code> {{__('From below and click')}} <b>{{__('created')}}</b></li>
+                            <li>{{__('Copy')}} <b>{{__('client id')}}</b> {{__('and')}} <b>{{__('Client secret')}}</b>, {{__('Past in the input field below and save')}}</b>.</li>
                         </ol>
                     </div>
                     <div class="modal-footer">
@@ -102,32 +102,32 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">{{__('facebook_api_set_instruction')}}</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">{{__('Facebook api set instruction')}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body"><b></b>
                         <ol>
-                            <li>{{__('goto_the_facebook_developer_page')}} (<a href="https://developers.facebook.com/apps/" target="_blank">{{__('click_here')}}</a>)</li>
+                            <li>{{__('Goto the facebook developer page')}} (<a href="https://developers.facebook.com/apps/" target="_blank">{{__('Click here')}}</a>)</li>
                             <li>{{__('Goto')}} <b>{{__('Get started')}}</b> {{__('From navbar')}}</li>
-                            <li>{{__('from register tab press')}} <b>{{__('Continue')}}</b> <small>({{__('if_needed')}})</small></li>
-                            <li>{{__('Provide primary email and press')}} <b>{{__('Confirm email')}}</b> <small>({{__('if_needed')}})</small></li>
-                            <li>{{__('in_about_section_select')}} <b>{{__('other')}}</b> {{__('and_press')}} <b>{{__('complete_registration')}}</b></li>
+                            <li>{{__('from register tab press')}} <b>{{__('Continue')}}</b> <small>({{__('If needed')}})</small></li>
+                            <li>{{__('Provide primary email and press')}} <b>{{__('Confirm email')}}</b> <small>({{__('If needed')}})</small></li>
+                            <li>{{__('In about section select')}} <b>{{__('other')}}</b> {{__('and press')}} <b>{{__('Complete registration')}}</b></li>
 
                             <li><b>{{__('Create app')}}</b> > {{__('Select an app type and press')}} <b>{{__('next')}}</b></li>
-                            <li>{{__('complete_the_details_form_and_press')}} <b>{{__('Create app')}}</b></li><br/>
+                            <li>{{__('Complete the details form and press')}} <b>{{__('Create app')}}</b></li><br/>
 
                             <li>{{__('form')}} <b>{{__('facebook_login')}}</b> {{__('press')}} <b>{{__('set_up')}}</b></li>
                             <li>{{__('Select')}} <b>{{__('web')}}</b></li>
-                            <li>{{__('Provide')}} <b>{{__('site_url')}}</b> <small>({{__('base url of the site')}}: https://example.com)</small> > <b>{{__('Save')}}</b></li><br/>
+                            <li>{{__('Provide')}} <b>{{__('Site url')}}</b> <small>({{__('base url of the site')}}: https://example.com)</small> > <b>{{__('Save')}}</b></li><br/>
                             <li>{{__('Now go to')}} <b>{{__('setting')}}</b> {{__('form')}} <b>{{__('facebook_login')}}</b> ({{__('left_sidebar')}})</li>
-                            <li>{{__('make_sure_to_check')}} <b>{{__('client_auth_login')}}</b> <small>({{__('must_on')}})</small></li>
+                            <li>{{__('Make sure to check')}} <b>{{__('Client auth login')}}</b> <small>({{__('Must on')}})</small></li>
                             <li>{{__('Provide')}} <code>{{__('valid_auth_redirect_uris')}}</code> {{__('From below and click')}} <b>{{__('Save changes')}}</b></li>
 
-                            <li>{{__('Now go to')}} <b>{{__('setting')}}</b> ({{__('from_left_sidebar')}}) > <b>{{__('Basic')}}</b></li>
-                            <li>{{__('fill_the_form_and_press')}} <b>{{__('Save changes')}}</b></li>
-                            <li>{{__('now_copy')}} <b>{{__('Client id')}}</b> & <b>{{__('client_secret')}}</b>, {{__('past_in_the_input_field_below_and')}} <b>{{__('Save')}}</b>.</li>
+                            <li>{{__('Now go to')}} <b>{{__('setting')}}</b> ({{__('From left sidebar')}}) > <b>{{__('Basic')}}</b></li>
+                            <li>{{__('Fill the form and press')}} <b>{{__('Save changes')}}</b></li>
+                            <li>{{__('Now copy')}} <b>{{__('Client id')}}</b> & <b>{{__('Client secret')}}</b>, {{__('past_in_the_input_field_below_and')}} <b>{{__('Save')}}</b>.</li>
                         </ol>
                     </div>
                     <div class="modal-footer">

@@ -32,12 +32,12 @@
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title">{{__('Welcome')}}, {{auth('admin')->user()->f_name}}.</h1>
-                    <p class="page-header-text">{{__('Welcome_message')}}</p>
+                    <p class="page-header-text">{{__('Welcome message')}}</p>
                 </div>
 
                 <div class="col-sm-auto" style="width: 306px;">
                     <label class="badge badge-soft-success float-right">
-                        {{__('software_version')}} : {{env('SOFTWARE_VERSION')}}
+                        {{__('Software version')}} : {{env('SOFTWARE_VERSION')}}
                     </label>
                     <select name="zone_id" class="form-control js-select2-custom"
                             onchange="fetch_data_zone_wise(this.value)">
@@ -60,7 +60,7 @@
             <div class="card-body">
                 <div class="row gx-2 gx-lg-3 mb-2">
                     <div class="col-9">
-                        <h4><i class="tio-chart-bar-4"></i>{{__('order_texts.dashboard_order_statistics')}}</h4>
+                        <h4><i class="tio-chart-bar-4"></i>{{__('Dashboard order statistics')}}</h4>
                     </div>
                     <div class="col-3">
                         <select class="custom-select" name="statistics_type" onchange="order_stats_update(this.value)">
@@ -70,7 +70,7 @@
                             </option>
                             <option
                                 value="today" {{$params['statistics_type'] == 'today'?'selected':''}}>
-                                {{__("messages.Today's Statistics")}}
+                                {{__("Today's Statistics")}}
                             </option>
                         </select>
                     </div>

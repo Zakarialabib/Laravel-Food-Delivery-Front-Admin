@@ -53,7 +53,7 @@ class ZoneController extends Controller
     {
         if(env('APP_MODE')=='demo' && $id == 1)
         {
-            Toastr::warning(__('you_can_not_edit_this_zone_please_add_a_new_zone_to_edit'));
+            Toastr::warning(__('You can not edit this zone please add a new zone to edit'));
             return back();
         }
         $zone=Zone::selectRaw("*,ST_AsText(ST_Centroid(`coordinates`)) as center")->findOrFail($id);
@@ -92,7 +92,7 @@ class ZoneController extends Controller
     {
         if(env('APP_MODE')=='demo' && $zone->id == 1)
         {
-            Toastr::warning(__('you_can_not_delete_this_zone_please_add_a_new_zone_to_delete'));
+            Toastr::warning(__('You can not delete this zone please add a new zone to delete'));
             return back();
         }
         $zone->delete();

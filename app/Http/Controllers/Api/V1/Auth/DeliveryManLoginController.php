@@ -34,7 +34,7 @@ class DeliveryManLoginController extends Controller
             {
                 return response()->json([
                     'errors' => [
-                        ['code' => 'auth-003', 'message' => __('your_application_is_not_approved_yet')]
+                        ['code' => 'auth-003', 'message' => __('your application is not approved yet')]
                     ]
                 ], 401);
             }

@@ -43,7 +43,7 @@ class DMPasswordResetController extends Controller
             else
             {
                 $errors = [];
-                array_push($errors, ['code' => 'otp', 'message' => __('failed_to_send_sms')]);
+                array_push($errors, ['code' => 'otp', 'message' => __('Failed to send sms')]);
                 return response()->json([
                     'errors' => $errors
                 ], 405);

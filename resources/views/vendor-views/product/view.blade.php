@@ -140,7 +140,7 @@
                         <span>
                             {{__('Available time ends')}} : {{date(config('timeformat'), strtotime($product['available_time_ends']))}}
                         </span>
-                        <h4 class="border-bottom mt-2"> {{__('variations')}} </h4>
+                        <h4 class="border-bottom mt-2"> {{__('Variations')}} </h4>
                         @foreach(json_decode($product['variations'],true) as $variation)
                             <span class="text-capitalize">
                               {{$variation['type']}} : {{\App\CentralLogics\Helpers::format_currency($variation['price'])}}

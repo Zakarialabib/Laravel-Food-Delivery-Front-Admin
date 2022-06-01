@@ -165,7 +165,7 @@
                 url: route+data_id,
                 dataType: 'json',
                 success: function (data) {
-                    $('#account_info').html('({{__('Cash in hand')}}: '+data.cash_in_hand+' {{__('earning_balance')}}: '+data.earning_balance+')');
+                    $('#account_info').html('({{__('Cash in hand')}}: '+data.cash_in_hand+' {{__('Earning balance')}}: '+data.earning_balance+')');
                 },
             });
     }
@@ -194,7 +194,7 @@
                         });
                     }
                 } else {
-                    toastr.success('{{__('transaction_saved')}}', {
+                    toastr.success('{{__('Transaction saved')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

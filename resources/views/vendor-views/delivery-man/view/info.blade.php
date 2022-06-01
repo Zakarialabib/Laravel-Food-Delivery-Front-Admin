@@ -47,7 +47,7 @@
                 <h4 class="page-header-title">{{$dm['f_name'].' '.$dm['l_name']}}@if($dm['status']) @if($dm['active']) <label class="badge badge-soft-primary">{{__('online')}}</label> @else <label class="badge badge-soft-danger">{{__('offline')}}</label> @endif  @else <span class="badge badge-danger">{{__('suspended')}}</span> @endif</h4>
 
                 <a  href="javascript:"  onclick="request_alert('{{route('vendor.delivery-man.status',[$dm['id'],$dm->status?0:1])}}','{{$dm->status?'Want to suspend this deliveryman ?':'Want to unsuspend this deliveryman'}}')" class="btn {{$dm->status?'btn-danger':'btn-success'}}">
-                        {{$dm->status?__('suspend_this_delivery_man'):__('unsuspend_this_delivery_man')}}
+                        {{$dm->status?__('Suspend this delivery man'):__('Unsuspend this delivery man')}}
                 </a>
             </div>
             <!-- Body -->

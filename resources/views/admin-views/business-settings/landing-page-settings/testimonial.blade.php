@@ -134,7 +134,7 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-sm btn-white" href="javascript:"
-                                        onclick="form_alert('sp-{{$key}}','{{__('Want_to_delete_this_item')}}')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
+                                        onclick="form_alert('sp-{{$key}}','{{__('Want to delete this item')}}')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
                                     </a>
                                     <form action="{{route('admin.business-settings.landing-page-settings-delete',['tab'=>'testimonial', 'key'=>$key])}}"
                                             method="post" id="sp-{{$key}}">

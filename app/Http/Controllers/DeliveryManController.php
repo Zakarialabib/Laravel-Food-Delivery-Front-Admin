@@ -42,7 +42,7 @@ class DeliveryManController extends Controller
             'password'=>'required|min:6',
         ], [
             'f_name.required' => __('First name is required'),
-            'zone_id.required' => __('select_a_zone'),
+            'zone_id.required' => __('Select a zone'),
             'earning.required' => __('Select dm type')
         ]);
 

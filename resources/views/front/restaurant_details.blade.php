@@ -467,7 +467,7 @@
                         }
                     } else {
                         updateCart();
-                        toastr.info('{{ __('item_has_been_removed_from_cart') }}', {
+                        toastr.info('{{ __('Item has been removed from cart') }}', {
                             CloseButton: true,
                             ProgressBar: true
                         });

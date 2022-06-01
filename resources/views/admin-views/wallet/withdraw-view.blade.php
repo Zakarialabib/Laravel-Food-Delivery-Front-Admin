@@ -32,7 +32,7 @@
                         <div class="col-4">
                             <h5 class="text-capitalize">{{__('amount')}}
                                 : {{$wr->amount}}</h5>
-                            <h5>{{__('request_time')}} : {{$wr->created_at}}</h5>
+                            <h5>{{__('Request time')}} : {{$wr->created_at}}</h5>
                         </div>
                         <div class="col-4">
                             Note : {{$wr->transaction_note}}
@@ -47,7 +47,7 @@
                                 <div class="text-center float-right text-capitalize">
                                     @if($wr->approved==1)
                                         <label class="badge badge-success p-2 rounded-bottom">
-                                            {{__('approved')}}
+                                            {{__('Approved')}}
                                         </label>
                                     @else
                                         <label class="badge badge-danger p-2 rounded-bottom">
@@ -74,7 +74,7 @@
                             : {{$wr->vendor->bank_name ? $wr->vendor->bank_name : 'No Data found'}}</h4>
                         <h6 class="text-capitalize">{{__('branch')}}
                             : {{$wr->vendor->branch ? $wr->vendor->branch : 'No Data found'}}</h6>
-                        <h6>{{__('holder_name')}}
+                        <h6>{{__('Holder name')}}
                             : {{$wr->vendor->holder_name ? $wr->vendor->holder_name : 'No Data found'}}</h6>
                         <h6>{{__('Account no')}}
                             : {{$wr->vendor->account_no ? $wr->vendor->account_no : 'No Data found'}}</h6>

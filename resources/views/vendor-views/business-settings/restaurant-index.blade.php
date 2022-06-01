@@ -178,7 +178,7 @@
                                         @if($restaurant->self_delivery_system)
                                         <div class="col-sm-{{$restaurant->self_delivery_system?'4':'6'}} col-12">
                                             <div class="form-group">
-                                                <label class="input-label text-capitalize" for="title">{{__('Delivery_charge')}}</label>
+                                                <label class="input-label text-capitalize" for="title">{{__('Delivery charge')}}</label>
                                                 <input type="number" name="delivery_charge" step="0.01" min="0" max="100000" class="form-control" placeholder="100" value="{{$restaurant->delivery_charge??'0'}}"> 
                                             </div>
                                         </div>
@@ -187,7 +187,7 @@
                                         <div class="col-sm-{{$restaurant->self_delivery_system?'4':'6'}} col-12">
                                             <div class="form-group p-2 border">
                                                 <label class="d-flex justify-content-between switch toggle-switch-sm text-dark" for="gst_status">
-                                                    <span>{{__('gst')}} <span class="input-label-secondary" title="{{__('gst_status_warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('gst_status_warning')}}"></span></span>
+                                                    <span>{{__('gst')}} <span class="input-label-secondary" title="{{__('Gst status warning')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Gst status warning')}}"></span></span>
                                                     <input type="checkbox" class="toggle-switch-input" name="gst_status" id="gst_status" value="1" {{$restaurant->gst_status?'checked':''}}>
                                                     <span class="toggle-switch-label">
                                                         <span class="toggle-switch-indicator"></span>
@@ -246,7 +246,7 @@
         function restaurant_open_status(e) {
             Swal.fire({
                 title: '{{__('Are you sure')}}',
-                text: '{{$restaurant->active ? __('You want to temporarily_close_this_restaurant') : __('You want to open_this_restaurant') }}',
+                text: '{{$restaurant->active ? __('You want to temporarily close this restaurant') : __('You want to open this restaurant') }}',
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',

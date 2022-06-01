@@ -177,7 +177,7 @@
                         <div class="row justify-content-md-end mb-3">
                             <div class="col-md-9 col-lg-8">
                                 <dl class="row text-sm-right">
-                                    <dt class="col-sm-6">{{__('Items Price')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Items price')}}:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($sub_total)}}</dd>
                                     <dt class="col-sm-6">Tax / VAT:</dt>
                                     <dd class="col-sm-6">{{\App\CentralLogics\Helpers::format_currency($total_tax)}}</dd>
@@ -190,10 +190,10 @@
                                     <dt class="col-sm-6">{{__('Subtotal')}}:</dt>
                                     <dd class="col-sm-6">
                                         {{\App\CentralLogics\Helpers::format_currency($sub_total+$total_tax+$add_ons_cost)}}</dd>
-                                    <dt class="col-sm-6">{{__('Coupon Discount')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Coupon discount')}}:</dt>
                                     <dd class="col-sm-6">
                                         - {{\App\CentralLogics\Helpers::format_currency($order['coupon_discount_amount'])}}</dd>
-                                    <dt class="col-sm-6">{{__('Delivery Fee')}}:</dt>
+                                    <dt class="col-sm-6">{{__('Delivery fee')}}:</dt>
                                     <dd class="col-sm-6">
                                         @if($order['order_type']=='take_away')
                                             @php($del_c=0)

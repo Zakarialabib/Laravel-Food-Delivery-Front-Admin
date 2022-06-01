@@ -87,9 +87,9 @@
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Identity type')}}</label>
                                 <select name="identity_type" class="form-control">
                                     <option value="passport">{{__('passport')}}</option>
-                                    <option value="driving_license">{{__('driving license')}}</option>
+                                    <option value="driving_license">{{__('Driving license')}}</option>
                                     <option value="nid">{{__('nid')}}</option>
-                                    <option value="restaurant_id">{{__('restaurant id')}}</option>
+                                    <option value="restaurant_id">{{__('Restaurant id')}}</option>
                                 </select>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="col-md-12 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="exampleFormControlInput1">{{__('identity image')}}</label>
+                                <label class="input-label" for="exampleFormControlInput1">{{__('Identity image')}}</label>
                                 <div>
                                     <div class="row" id="coba"></div>
                                 </div>
@@ -218,13 +218,13 @@
 
                 },
                 onExtensionErr: function (index, file) {
-                    toastr.error('{{__('please_only_input_png_or_jpg_type_file')}}', {
+                    toastr.error('{{__('Please only input png or jpg type file')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });
                 },
                 onSizeErr: function (index, file) {
-                    toastr.error('{{__('file_size_too_big')}}', {
+                    toastr.error('{{__('File size too big')}}', {
                         CloseButton: true,
                         ProgressBar: true
                     });

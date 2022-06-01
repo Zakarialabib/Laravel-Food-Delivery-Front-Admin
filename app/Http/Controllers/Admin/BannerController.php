@@ -30,7 +30,7 @@ class BannerController extends Controller
             'restaurant_id' => 'required_if:banner_type,restaurant_wise',
             'item_id' => 'required_if:banner_type,item_wise',
         ], [
-            'zone_id.required' => __('select_a_zone'),
+            'zone_id.required' => __('Select a zone'),
             'restaurant_id.required_if'=> __('Restaurant is required when banner type is restaurant wise'),
             'item_id.required_if'=> __('Food is required when banner type is food wise'),
         ]);
@@ -80,7 +80,7 @@ class BannerController extends Controller
             'restaurant_id' => 'required_if:banner_type,restaurant_wise',
             'item_id' => 'required_if:banner_type,item_wise',
         ], [
-            'zone_id.required' => __('select_a_zone'),
+            'zone_id.required' => __('Select a zone'),
             'restaurant_id.required_if'=> __('Restaurant is required when banner type is restaurant wise'),
             'item_id.required_if'=> __('Food is required when banner type is food wise'),
         ]);

@@ -44,17 +44,17 @@
             <div class="col-6">
                 @if($restaurant->vendor->status)
                 <a href="{{route('admin.vendor.edit',[$restaurant->id])}}" class="btn btn-primary float-right">
-                    <i class="tio-edit"></i> {{__('edit restaurant')}}
+                    <i class="tio-edit"></i> {{__('Edit restaurant')}}
                 </a>
                 @else
                     @if(!isset($restaurant->vendor->status))
                     <a class="btn btn-danger text-capitalize font-weight-bold float-right" 
-                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],0])}}','{{__('You want to deny_this_application')}}')"
+                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],0])}}','{{__('You want to deny this application')}}')"
                         href="javascript:">{{__('deny')}}</a>
                     @endif
                     <a class="btn btn-primary text-capitalize font-weight-bold float-right mr-2"
-                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],1])}}','{{__('You want to approve_this_application')}}')"
-                        href="javascript:">{{__('approve')}}</a>
+                    onclick="request_alert('{{route('admin.vendor.application',[$restaurant['id'],1])}}','{{__('You want to approve this application')}}')"
+                        href="javascript:">{{__('Approve')}}</a>
                 @endif
             </div>
         </div>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="card-footer"  style="background: #8d8d8d; border:none;">
-                        <a class="btn w-100" style="background: #f9fafc;" href="{{route('admin.account-transaction.index')}}" title="{{__('goto account_transaction')}}">{{__('Collect cash from restaurant')}}</a>
+                        <a class="btn w-100" style="background: #f9fafc;" href="{{route('admin.account-transaction.index')}}" title="{{__('goto account transaction')}}">{{__('Collect cash from restaurant')}}</a>
                 </div>
             </div>
         </div>

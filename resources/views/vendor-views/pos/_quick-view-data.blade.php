@@ -48,7 +48,7 @@
     <div class="d-flex flex-row">
         @if (config('toggle_veg_non_veg'))
             <span
-                class="badge badge-{{ $product->veg ? 'success' : 'danger' }} position-absolute">{{ $product->veg ? __('veg') : __('non_veg') }}</span>
+                class="badge badge-{{ $product->veg ? 'success' : 'danger' }} position-absolute">{{ $product->veg ? __('Veg') : __('Non veg') }}</span>
         @endif
         <!-- Product gallery-->
         <div class="d-flex align-items-center justify-content-center active" style="height:9.5rem;">

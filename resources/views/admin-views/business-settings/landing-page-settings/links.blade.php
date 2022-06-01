@@ -76,7 +76,7 @@
                     <div class="col-6"> 
                         <div class="form-group p-2 border">
                             <label class="d-flex justify-content-between switch toggle-switch-sm text-dark" for="app_url_android_status">
-                                <span>{{__('app_url')}} ({{__('play_store')}}) <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
+                                <span>{{__('app url')}} ({{__('play_store')}}) <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
                                 <input type="checkbox" class="toggle-switch-input" name="app_url_android_status" id="app_url_android_status" value="1" {{(isset($landing_page_links) && $landing_page_links['app_url_android_status'])?'checked':''}}>
                                 <span class="toggle-switch-label">
                                     <span class="toggle-switch-indicator"></span>
@@ -88,7 +88,7 @@
                     <div class="col-6"> 
                         <div class="form-group p-2 border">
                             <label class="d-flex justify-content-between switch toggle-switch-sm text-dark" for="app_url_ios_status">
-                                <span>{{__('app_url')}} ({{__('app_store')}}) <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
+                                <span>{{__('app url')}} ({{__('App store')}}) <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
                                 <input type="checkbox" class="toggle-switch-input" name="app_url_ios_status" id="app_url_ios_status" value="1" {{(isset($landing_page_links) && $landing_page_links['app_url_ios_status'])?'checked':''}}>
                                 <span class="toggle-switch-label">
                                     <span class="toggle-switch-indicator"></span>
@@ -100,7 +100,7 @@
                     <div class="col-6"> 
                         <div class="form-group p-2 border">
                             <label class="d-flex justify-content-between switch toggle-switch-sm text-dark" for="web_app_url_status">
-                                <span>{{__('web_app_url')}} <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
+                                <span>{{__('Web app url')}} <span class="input-label-secondary" title=""><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt=""></span></span>
                                 <input type="checkbox" class="toggle-switch-input" name="web_app_url_status" id="web_app_url_status" value="1" {{(isset($landing_page_links) && $landing_page_links['web_app_url_status'])?'checked':''}}>
                                 <span class="toggle-switch-label">
                                     <span class="toggle-switch-indicator"></span>
