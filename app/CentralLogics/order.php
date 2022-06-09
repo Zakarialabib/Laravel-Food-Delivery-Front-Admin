@@ -2,13 +2,14 @@
 
 namespace App\CentralLogics;
 
+use App\Models\Food;
 use App\Models\Admin;
 use App\Models\Order;
-use App\Models\OrderTransaction;
 use App\Models\AdminWallet;
+use App\Models\BusinessSetting;
+use App\Models\OrderTransaction;
 use App\Models\RestaurantWallet;
 use App\Models\DeliveryManWallet;
-use App\Models\Food;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -18,7 +19,7 @@ class OrderLogic
     {
         return rand(1000, 9999) . '-' . Str::random(5) . '-' . time();
     }
-    
+
     public static function track_order($order_id)
     {
         return Helpers::order_data_formatting(Order::with(['details', 'delivery_man.rating'])->where(['id' => $order_id])->first(), false);
@@ -67,8 +68,11 @@ class OrderLogic
                 ];
                 DB::table('order_details')->insert($or_d);
             }
+            if(config('mail.status'))
+            {
+                Mail::to($email)->send(new \App\Mail\OrderPlaced($o_id));
+            }
 
-            Mail::to($email)->send(new \App\Mail\OrderPlaced($o_id));
         } catch (\Exception $e) {
 
         }
@@ -85,6 +89,7 @@ class OrderLogic
         $comission = $order->restaurant->comission==null?\App\Models\BusinessSetting::where('key','admin_commission')->first()->value:$order->restaurant->comission;
         $order_amount = $order->order_amount - $order->delivery_charge - $order->total_tax_amount;
         $comission_amount = $comission?($order_amount/ 100) * $comission:0;
+        $dm_tips_manage_status = BusinessSetting::where('key', 'dm_tips_status')->first()->value;
         try{
             OrderTransaction::insert([
                 'vendor_id' =>$order->restaurant->vendor->id,
@@ -99,6 +104,7 @@ class OrderLogic
                 'received_by'=> $received_by?$received_by:'admin',
                 'zone_id'=>$order->zone_id,
                 'status'=> $status,
+                'dm_tips'=> $dm_tips_manage_status == 1 ? $order->dm_tips : 0,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
@@ -119,7 +125,7 @@ class OrderLogic
             else{
                 $adminWallet->delivery_charge = $adminWallet->delivery_charge+$order->delivery_charge;
             }
-            
+
 
             $vendorWallet->total_earning = $vendorWallet->total_earning+($order_amount + $order->total_tax_amount - $comission_amount);
             try
@@ -143,15 +149,20 @@ class OrderLogic
                         ['delivery_man_id' => $order->delivery_man_id]
                     );
                     $dmWallet->collected_cash=$dmWallet->collected_cash+$order->order_amount;
+                    // if($dm_tips_manage_status == 1){
+                    //     $dmWallet->total_earning = $dmWallet->total_earning + $order->dm_tips;
+                    // }
                     $dmWallet->save();
                 }
-                // else if($order->restaurant->self_delivery_system)
-                // {
-                //     $vendorWallet->collected_cash = $vendorWallet->collected_cash+$order->order_amount - $order->delivery_charge;
-                // }
+                if($order->restaurant->self_delivery_system)
+                {
+                    $vendorWallet->collected_cash = $vendorWallet->collected_cash+$order->order_amount - $order->delivery_charge;
+                }
                 $adminWallet->save();
                 $vendorWallet->save();
                 DB::commit();
+                if($order->user_id) CustomerLogic::create_loyalty_point_transaction($order->user_id, $order->id, $order->order_amount, 'order_place');
+
             }
             catch(\Exception $e)
             {
@@ -185,7 +196,7 @@ class OrderLogic
             ['vendor_id' => $order->restaurant->vendor->id]
         );
 
-        
+
         $adminWallet->total_commission_earning = $adminWallet->total_commission_earning - $order_transaction->admin_commission;
 
         $vendorWallet->total_earning = $vendorWallet->total_earning - $order_transaction->restaurant_amount;
@@ -215,7 +226,7 @@ class OrderLogic
                 {
                     $adminWallet->manual_received = $adminWallet->manual_received - $refund_amount;
                 }
-                
+
             }
             else if($received_by=='restaurant')
             {
@@ -231,7 +242,7 @@ class OrderLogic
                 //     'created_at' => now(),
                 //     'updated_at' => now()
                 // ]);
- 
+
             else if($received_by=='deliveryman')
             {
                 $dmWallet = DeliveryManWallet::firstOrNew(
@@ -256,12 +267,24 @@ class OrderLogic
 
     }
 
-    // public static function increase_order_count($food, $user)
-    // {
-    //     try
-    //     {
-    //         $food->increment('order_count');
-    //         $user->increment('order_count');
-    //     }
-    // }
+    public static function format_export_data($orders)
+    {
+        $data = [];
+        foreach($orders as $key=>$order)
+        {
+
+            $data[]=[
+                '#'=>$key+1,
+                trans('messages.order')=>$order['id'],
+                trans('messages.date')=>date('d M Y',strtotime($order['created_at'])),
+                trans('messages.customer')=>$order->customer?$order->customer['f_name'].' '.$order->customer['l_name']:__('messages.invalid').' '.__('messages.customer').' '.__('messages.data'),
+                trans('messages.Restaurant')=>\Str::limit($order->restaurant?$order->restaurant->name:__('messages.Restaurant deleted!'),20,'...'),
+                trans('messages.payment').' '.trans('messages.status')=>$order->payment_status=='paid'?__('messages.paid'):__('messages.unpaid'),
+                trans('messages.total')=>\App\CentralLogics\Helpers::format_currency($order['order_amount']),
+                trans('messages.order').' '.trans('messages.status')=>trans('messages.'. $order['order_status']),
+                trans('messages.order').' '.trans('messages.type')=>trans('messages.'.$order['order_type'])
+            ];
+        }
+        return $data;
+    }
 }

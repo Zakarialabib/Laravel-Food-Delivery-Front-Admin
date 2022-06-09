@@ -130,11 +130,11 @@ class PasswordResetController extends Controller
                 return response()->json(['message' => 'Password changed successfully.'], 200);
             }
             return response()->json(['errors' => [
-                ['code' => 'mismatch', 'message' => 'Password did,t match!']
+                ['code' => 'mismatch', 'message' => 'Password didnt match!']
             ]], 401);
         }
         return response()->json(['errors' => [
-            ['code' => 'invalid', 'message' => __('invalid_otp')]
+            ['code' => 'invalid', 'message' => __('Invalid otp')]
         ]], 400);
     }
 }

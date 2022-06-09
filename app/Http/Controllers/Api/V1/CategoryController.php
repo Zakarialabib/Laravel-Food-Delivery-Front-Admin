@@ -49,7 +49,7 @@ class CategoryController extends Controller
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
-        $zone_id= $request->header('zoneId');
+        $zone_id= json_decode($request->header('zoneId'), true);
 
         $type = $request->query('type', 'all');
 
@@ -77,7 +77,7 @@ class CategoryController extends Controller
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
-        $zone_id= $request->header('zoneId');
+        $zone_id= json_decode($request->header('zoneId'), true);
 
         $type = $request->query('type', 'all');
 
@@ -90,17 +90,8 @@ class CategoryController extends Controller
 
     public function get_all_products($id,Request $request)
     {
-        if (!$request->hasHeader('zoneId')) {
-            $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => __('Zone id required')]);
-            return response()->json([
-                'errors' => $errors
-            ], 403);
-        }
-        $zone_id= $request->header('zoneId');
-
         try {
-            return response()->json(Helpers::product_data_formatting(CategoryLogic::all_products($id, $zone_id), true, false, app()->getLocale()), 200);
+            return response()->json(Helpers::product_data_formatting(CategoryLogic::all_products($id), true, false, app()->getLocale()), 200);
         } catch (\Exception $e) {
             return response()->json([], 200);
         }

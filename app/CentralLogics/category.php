@@ -18,10 +18,10 @@ class CategoryLogic
         return Category::where(['parent_id' => $parent_id])->get();
     }
 
-    public static function products(int $category_id, int $zone_id, int $limit,int $offset, $type)
+    public static function products(int $category_id, array $zone_id, int $limit,int $offset, $type)
     {
         $paginator = Food::whereHas('restaurant', function($query)use($zone_id){
-            return $query->where('zone_id', $zone_id);
+            return $query->whereIn('zone_id', $zone_id);
         })
         ->whereHas('category',function($q)use($category_id){
             return $q->whereId($category_id)->orWhere('parent_id', $category_id);
@@ -37,9 +37,9 @@ class CategoryLogic
     }
 
 
-    public static function restaurants(int $category_id, int $zone_id, int $limit,int $offset, $type)
+    public static function restaurants(int $category_id, array $zone_id, int $limit,int $offset, $type)
     {
-        $paginator = Restaurant::withOpen()->where('zone_id', $zone_id)
+        $paginator = Restaurant::withOpen()->whereIn('zone_id', $zone_id)
         ->whereHas('foods.category', function($query)use($category_id){
             return $query->whereId($category_id)->orWhere('parent_id', $category_id);
         })
@@ -57,7 +57,7 @@ class CategoryLogic
     }
 
 
-    public static function all_products($id, $zone_id)
+    public static function all_products($id)
     {
         $cate_ids=[];
         array_push($cate_ids,(int)$id);
@@ -67,16 +67,6 @@ class CategoryLogic
                 array_push($cate_ids,$ch2['id']);
             }
         }
-
-        // $products = Food::active()->get();
-        // $product_ids = [];
-        // foreach ($products as $product) {
-        //     foreach (json_decode($product['category_ids'], true) as $category) {
-        //         if (in_array($category['id'],$cate_ids)) {
-        //             array_push($product_ids, $product['id']);
-        //         }
-        //     }
-        // }
 
         return Food::whereIn('category_id', $cate_ids)->get();
     }

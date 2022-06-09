@@ -127,7 +127,7 @@ class DMPasswordResetController extends Controller
                 return response()->json(['message' => 'Password changed successfully.'], 200);
             }
             $errors = [];
-            array_push($errors, ['code' => 'mismatch', 'message' => 'Password did,t match!']);
+            array_push($errors, ['code' => 'mismatch', 'message' => 'Password didnt match!']);
             return response()->json(['errors' => $errors], 401);
         }
 

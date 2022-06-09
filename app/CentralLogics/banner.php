@@ -11,7 +11,7 @@ class BannerLogic
 {
     public static function get_banners($zone_id)
     {
-        $banners = Banner::active()->where('zone_id', $zone_id)->get();
+        $banners = Banner::active()->whereIn('zone_id', $zone_id)->get();
         $data = [];
         foreach($banners as $banner)
         {

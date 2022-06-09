@@ -9,11 +9,8 @@ use App\Models\Order;
 use App\Models\Food;
 use App\Models\OrderDetail;
 use App\Models\User;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Zone;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
@@ -56,6 +53,9 @@ class CustomerController extends Controller
             'contact_person_number' => $request->contact_person_number,
             'address_type' => $request->address_type,
             'address' => $request->address,
+            'floor' => $request->floor,
+            'road' => $request->road,
+            'house' => $request->house,
             'longitude' => $request->longitude,
             'latitude' => $request->latitude,
             'zone_id' => $zone->id,
@@ -63,7 +63,7 @@ class CustomerController extends Controller
             'updated_at' => now()
         ];
         DB::table('customer_addresses')->insert($address);
-        return response()->json(['message' => __('Successfully added'),'zone_id'=>$zone->id], 200);
+        return response()->json(['message' => trans('messages.successfully_added'),'zone_id'=>$zone->id], 200);
     }
 
     public function update_address(Request $request,$id)
@@ -85,7 +85,7 @@ class CustomerController extends Controller
         if(!$zone)
         {
             $errors = [];
-            array_push($errors, ['code' => 'coordinates', 'message' => __('service not available in this area')]);
+            array_push($errors, ['code' => 'coordinates', 'message' => trans('messages.service_not_available_in_this_area')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -96,6 +96,9 @@ class CustomerController extends Controller
             'contact_person_number' => $request->contact_person_number,
             'address_type' => $request->address_type,
             'address' => $request->address,
+            'floor' => $request->floor,
+            'road' => $request->road,
+            'house' => $request->house,
             'longitude' => $request->longitude,
             'latitude' => $request->latitude,
             'zone_id' => $zone->id,
@@ -103,7 +106,7 @@ class CustomerController extends Controller
             'updated_at' => now()
         ];
         DB::table('customer_addresses')->where('id',$id)->update($address);
-        return response()->json(['message' => __('Updated successfully'),'zone_id'=>$zone->id], 200);
+        return response()->json(['message' => trans('messages.updated_successfully'),'zone_id'=>$zone->id], 200);
     }
 
     public function delete_address(Request $request)
@@ -118,9 +121,9 @@ class CustomerController extends Controller
 
         if (DB::table('customer_addresses')->where(['id' => $request['address_id'], 'user_id' => $request->user()->id])->first()) {
             DB::table('customer_addresses')->where(['id' => $request['address_id'], 'user_id' => $request->user()->id])->delete();
-            return response()->json(['message' => __('Successfully removed')], 200);
+            return response()->json(['message' => trans('messages.successfully_removed')], 200);
         }
-        return response()->json(['message' => __('Not found')], 404);
+        return response()->json(['message' => trans('messages.not_found')], 404);
     }
 
     public function get_order_list(Request $request)
@@ -196,7 +199,7 @@ class CustomerController extends Controller
 
         User::where(['id' => $request->user()->id])->update($userDetails);
 
-        return response()->json(['message' => __('Successfully updated')], 200);
+        return response()->json(['message' => trans('messages.successfully_updated')], 200);
     }
     public function update_interest(Request $request)
     {
@@ -214,7 +217,7 @@ class CustomerController extends Controller
 
         User::where(['id' => $request->user()->id])->update($userDetails);
 
-        return response()->json(['message' => __('interest updated successfully')], 200);
+        return response()->json(['message' => trans('messages.interest_updated_successfully')], 200);
     }
 
     public function update_cm_firebase_token(Request $request)
@@ -231,7 +234,7 @@ class CustomerController extends Controller
             'cm_firebase_token'=>$request['cm_firebase_token']
         ]);
 
-        return response()->json(['message' => __('Updated successfully')], 200);
+        return response()->json(['message' => trans('messages.updated_successfully')], 200);
     }
 
     public function get_suggested_food(Request $request)
@@ -245,14 +248,14 @@ class CustomerController extends Controller
         }
 
 
-        $zone_id= $request->header('zoneId');
+        $zone_id= json_decode($request->header('zoneId'), true);
 
         $interest = $request->user()->interest;
         $interest = isset($interest) ? json_decode($interest):null;
         // return response()->json($interest, 200);
-        
+
         $products =  Food::active()->whereHas('restaurant', function($q)use($zone_id){
-            $q->where('zone_id', $zone_id);
+            $q->whereIn('zone_id', $zone_id);
         })
         ->when(isset($interest), function($q)use($interest){
             return $q->whereIn('category_id',$interest);
@@ -268,14 +271,14 @@ class CustomerController extends Controller
     {
         if (!$request->hasHeader('zoneId') && is_numeric($request->header('zoneId'))) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => __('Zone id required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
         }
 
         $customer = $request->user();
-        $customer->zone_id = (integer)$request->header('zoneId');
+        $customer->zone_id = (integer)json_decode($request->header('zoneId'), true)[0];
         $customer->save();
         return response()->json([], 200);
     }

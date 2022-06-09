@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\CentralLogics\Helpers;
-use App\CentralLogics\OrderLogic;
 use App\CentralLogics\CouponLogic;
+use App\CentralLogics\CustomerLogic;
 use App\Http\Controllers\Controller;
 use App\Models\BusinessSetting;
 use App\Models\Order;
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Zone;
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -34,8 +34,8 @@ class OrderController extends Controller
         $order = Order::with(['restaurant', 'delivery_man.rating'])->withCount('details')->where(['id' => $request['order_id'], 'user_id' => $request->user()->id])->Notpos()->first();
         if($order)
         {
-            $order['restaurant'] = $order['restaurant']?Helpers::restaurant_data_formatting($order['restaurant']):$order['restaurant'];   
-            $order['delivery_address'] = $order['delivery_address']?json_decode($order['delivery_address']):$order['delivery_address'];   
+            $order['restaurant'] = $order['restaurant']?Helpers::restaurant_data_formatting($order['restaurant']):$order['restaurant'];
+            $order['delivery_address'] = $order['delivery_address']?json_decode($order['delivery_address']):$order['delivery_address'];
             $order['delivery_man'] = $order['delivery_man']?Helpers::deliverymen_data_formatting([$order['delivery_man']]):$order['delivery_man'];
             unset($order['details']);
         }
@@ -54,19 +54,28 @@ class OrderController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'order_amount' => 'required',
-            'payment_method'=>'required|in:cash_on_delivery,digital_payment',
+            'payment_method'=>'required|in:cash_on_delivery,digital_payment,wallet',
             'order_type' => 'required|in:take_away,delivery',
             'restaurant_id' => 'required',
             'distance' => 'required_if:order_type,delivery',
             'address' => 'required_if:order_type,delivery',
             'longitude' => 'required_if:order_type,delivery',
             'latitude' => 'required_if:order_type,delivery',
+            'dm_tips' => 'nullable|numeric'
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
+        if($request->payment_method == 'wallet' && Helpers::get_business_settings('wallet_status', false) != 1)
+        {
+            return response()->json([
+                'errors' => [
+                    ['code' => 'payment_method', 'message' => trans('messages.customer_wallet_disable_warning')]
+                ]
+            ], 203);
+        }
         $coupon = null;
         $delivery_charge = null;
         $schedule_at = $request->schedule_at?\Carbon\Carbon::parse($request->schedule_at):now();
@@ -97,7 +106,6 @@ class OrderController extends Controller
                 ]
             ], 406);
         }
-        
 
         if($restaurant->open == false)
         {
@@ -107,16 +115,6 @@ class OrderController extends Controller
                 ]
             ], 406);
         }
-        
-
-        // if(str_contains($restaurant->off_day, $schedule_at->dayOfWeek))
-        // {
-        //     return response()->json([
-        //         'errors' => [
-        //             ['code' => 'order_time', 'message' => __('Scheduled date is restaurant offday')]
-        //         ]
-        //     ], 406);
-        // }
 
         if ($request['coupon_code']) {
             $coupon = Coupon::active()->where(['code' => $request['coupon_code']])->first();
@@ -194,6 +192,9 @@ class OrderController extends Controller
             'contact_person_number' => $request->contact_person_number?$request->contact_person_number:$request->user()->phone,
             'address_type' => $request->address_type?$request->address_type:'Delivery',
             'address' => $request->address,
+            'floor' => $request->floor,
+            'road' => $request->road,
+            'house' => $request->house,
             'longitude' => (string)$request->longitude,
             'latitude' => (string)$request->latitude,
         ];
@@ -208,10 +209,12 @@ class OrderController extends Controller
         if (Order::find($order->id)) {
             $order->id = Order::orderBy('id','desc')->first()->id + 1;
         }
+
         $order->user_id = $request->user()->id;
         $order->order_amount = $request['order_amount'];
-        $order->payment_status = 'unpaid';
-        $order->order_status = $request['payment_method']=='digital_payment'?'failed':'pending';
+
+        $order->payment_status = $request['payment_method']=='wallet'?'paid':'unpaid';
+        $order->order_status = $request['payment_method']=='digital_payment'?'failed':($request->payment_method == 'wallet'?'confirmed':'pending');
         $order->coupon_code = $request['coupon_code'];
         $order->payment_method = $request->payment_method;
         $order->transaction_reference = null;
@@ -225,7 +228,14 @@ class OrderController extends Controller
         $order->scheduled = $request->schedule_at?1:0;
         $order->otp = rand(1000, 9999);
         $order->zone_id = $restaurant->zone_id;
+        $dm_tips_manage_status = BusinessSetting::where('key', 'dm_tips_status')->first()->value;
+        if ($dm_tips_manage_status == 1) {
+            $order->dm_tips = $request->dm_tips ?? 0;
+        } else {
+            $order->dm_tips = 0;
+        }
         $order->pending = now();
+        $order->confirmed = $request->payment_method == 'wallet' ? now() : null;
         $order->created_at = now();
         $order->updated_at = now();
         foreach ($request['cart'] as $c) {
@@ -321,8 +331,8 @@ class OrderController extends Controller
                 $restaurant_discount_amount = $restaurant_discount['max_discount'];
             }
         }
-        $coupon_discount_amount = $coupon ? CouponLogic::get_discount($coupon, $product_price + $total_addon_price - $restaurant_discount_amount) : 0; 
-        $total_price = $product_price + $total_addon_price - $restaurant_discount_amount - $coupon_discount_amount;
+        $coupon_discount_amount = $coupon ? CouponLogic::get_discount($coupon, $product_price + $total_addon_price - $restaurant_discount_amount) : 0;
+        $total_price = $product_price + $total_addon_price - $restaurant_discount_amount - $coupon_discount_amount ;
 
         $tax = $restaurant->tax;
         $total_tax_amount= ($tax > 0)?(($total_price * $tax)/100):0;
@@ -349,13 +359,25 @@ class OrderController extends Controller
         {
             $coupon->increment('total_uses');
         }
+
+        $order_amount = round($total_price + $total_tax_amount + $order->delivery_charge , config('round_up_to_digit'));
+
+        if($request->payment_method == 'wallet' && $request->user()->wallet_balance < $order_amount)
+        {
+            return response()->json([
+                'errors' => [
+                    ['code' => 'order_amount', 'message' => trans('messages.insufficient_balance')]
+                ]
+            ], 203);
+        }
+        // dd($order->dm_tips);
         try {
             $order->coupon_discount_amount = round($coupon_discount_amount, config('round_up_to_digit'));
-            $order->coupon_discount_title = $coupon ? $coupon->title : ''; 
+            $order->coupon_discount_title = $coupon ? $coupon->title : '';
 
             $order->restaurant_discount_amount= round($restaurant_discount_amount, config('round_up_to_digit'));
             $order->total_tax_amount= round($total_tax_amount, config('round_up_to_digit'));
-            $order->order_amount = round($total_price + $total_tax_amount + $order->delivery_charge , config('round_up_to_digit'));
+            $order->order_amount = $order_amount + $order->dm_tips;
             $order->save();
             foreach ($order_details as $key => $item) {
                 $order_details[$key]['order_id'] = $order->id;
@@ -368,13 +390,23 @@ class OrderController extends Controller
             $customer->save();
 
             $restaurant->increment('total_order');
-    
+            if($request->payment_method == 'wallet') CustomerLogic::create_wallet_transaction($order->user_id, $order->order_amount, 'order_place', $order->id);
+
+            try{
+                if($order->order_status == 'pending')
+                {
+                    Mail::to($customer['email'])->send(new \App\Mail\OrderPlaced($order->id));
+                }
+            }catch (\Exception $ex) {
+                info($ex);
+            }
             return response()->json([
                 'message' => __('Order placed successfully'),
                 'order_id' => $order->id,
                 'total_ammount' => $total_price+$order->delivery_charge+$total_tax_amount
             ], 200);
         } catch (\Exception $e) {
+            info($e);
             return response()->json([$e], 403);
         }
 
@@ -398,7 +430,7 @@ class OrderController extends Controller
 
         $paginator = Order::with(['restaurant', 'delivery_man.rating'])->withCount('details')->where(['user_id' => $request->user()->id])->whereIn('order_status', ['delivered','canceled','refund_requested','refunded','failed'])->Notpos()->latest()->paginate($request['limit'], ['*'], 'page', $request['offset']);
         $orders = array_map(function ($data) {
-            $data['delivery_address'] = $data['delivery_address']?json_decode($data['delivery_address']):$data['delivery_address'];   
+            $data['delivery_address'] = $data['delivery_address']?json_decode($data['delivery_address']):$data['delivery_address'];
             $data['restaurant'] = $data['restaurant']?Helpers::restaurant_data_formatting($data['restaurant']):$data['restaurant'];
             $data['delivery_man'] = $data['delivery_man']?Helpers::deliverymen_data_formatting([$data['delivery_man']]):$data['delivery_man'];
             return $data;
@@ -424,9 +456,9 @@ class OrderController extends Controller
         }
 
         $paginator = Order::with(['restaurant', 'delivery_man.rating'])->withCount('details')->where(['user_id' => $request->user()->id])->whereNotIn('order_status', ['delivered','canceled','refund_requested','refunded','failed'])->Notpos()->latest()->paginate($request['limit'], ['*'], 'page', $request['offset']);
-        
+
         $orders = array_map(function ($data) {
-            $data['delivery_address'] = $data['delivery_address']?json_decode($data['delivery_address']):$data['delivery_address'];   
+            $data['delivery_address'] = $data['delivery_address']?json_decode($data['delivery_address']):$data['delivery_address'];
             $data['restaurant'] = $data['restaurant']?Helpers::restaurant_data_formatting($data['restaurant']):$data['restaurant'];
             $data['delivery_man'] = $data['delivery_man']?Helpers::deliverymen_data_formatting([$data['delivery_man']]):$data['delivery_man'];
             return $data;

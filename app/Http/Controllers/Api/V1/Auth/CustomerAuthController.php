@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers\Api\V1\Auth;
 
+use App\CentralLogics\CustomerLogic;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\CentralLogics\Helpers;
-use App\CentralLogics\SMS_module;
-use App\Http\Controllers\Controller;
 use App\Mail\EmailVerification;
 use App\Models\BusinessSetting;
+use App\CentralLogics\SMS_module;
 use App\Models\EmailVerifications;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+use function PHPUnit\Framework\isNull;
 use Illuminate\Support\Facades\Validator;
 
 class CustomerAuthController extends Controller
@@ -42,7 +48,7 @@ class CustomerAuthController extends Controller
                 {
                     $user->is_phone_verified = 1;
                     $user->save();
-                    
+
                     return response()->json([
                         'message' => __('Phone number verified successfully'),
                         'otp' => 'inactive'
@@ -67,7 +73,6 @@ class CustomerAuthController extends Controller
 
                 $user->is_phone_verified = 1;
                 $user->save();
-
                 return response()->json([
                     'message' => __('Phone number verified successfully'),
                     'otp' => 'inactive'
@@ -104,7 +109,15 @@ class CustomerAuthController extends Controller
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            Mail::to($request['email'])->send(new EmailVerification($token));
+            try{
+                if(config('mail.status')) {
+                    Mail::to($request['email'])->send(new EmailVerification($token));
+                }
+
+            }catch(\Exception $ex){
+                info($ex);
+            }
+
 
             return response()->json([
                 'message' => 'Email is ready to register',
@@ -167,6 +180,26 @@ class CustomerAuthController extends Controller
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
         ]);
+        $user->ref_code = Helpers::generate_referer_code($user);
+        $user->save();
+        //Save point to refeer
+        $checkRefCode = $request->ref_code;
+        $referar_user = User::where('ref_code', '=', $checkRefCode)->first();
+        $ref_code_exchange_amt = BusinessSetting::where('key','ref_earning_exchange_rate')->first()->value;
+
+        if ($referar_user) {
+            $refer_wallet_transaction = CustomerLogic::create_wallet_transaction($referar_user->id, $ref_code_exchange_amt, 'referrer',$user->id);
+            //dd($refer_wallet_transaction);
+            try{
+                if(config('mail.status')) {
+                    Mail::to($referar_user->email)->send(new \App\Mail\AddFundToWallet($refer_wallet_transaction));
+                }
+            }catch(\Exception $ex)
+            {
+                info($ex);
+            }
+        }
+
 
         $token = $user->createToken('RestaurantCustomerAuth')->accessToken;
 
@@ -190,6 +223,15 @@ class CustomerAuthController extends Controller
                 ], 405);
             }
         }
+        try
+        {
+            Mail::to($request->email)->send(new \App\Mail\CustomerRegistration($request->f_name.' '.$request->l_name));
+        }
+        catch(\Exception $ex)
+        {
+            info($ex);
+        }
+
         return response()->json(['token' => $token,'is_phone_verified' => 0, 'phone_verify_end_url'=>"api/v1/auth/verify-phone" ], 200);
     }
 
@@ -203,12 +245,13 @@ class CustomerAuthController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-
         $data = [
             'phone' => $request->phone,
             'password' => $request->password
         ];
+
         $customer_verification = BusinessSetting::where('key','customer_verification')->first()->value;
+        //dd($customer_verification);
         if (auth()->attempt($data)) {
             $token = auth()->user()->createToken('RestaurantCustomerAuth')->accessToken;
             if(!auth()->user()->status)
@@ -239,7 +282,11 @@ class CustomerAuthController extends Controller
                     ], 405);
                 }
             }
-            
+            $user = auth()->user();
+            if($user->ref_code == null && isset($user->id)){
+                $ref_code = Helpers::generate_referer_code($user);
+                DB::table('users')->where('phone', $user->phone)->update(['ref_code' => $ref_code]);
+            }
             return response()->json(['token' => $token, 'is_phone_verified'=>auth()->user()->is_phone_verified], 200);
         } else {
             $errors = [];

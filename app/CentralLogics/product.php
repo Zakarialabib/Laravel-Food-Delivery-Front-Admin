@@ -13,7 +13,7 @@ class ProductLogic
         return Food::active()->where('id', $id)->first();
     }
 
-    public static function get_latest_products($limit, $offset, $restaurant_id, $category_id, $type)
+    public static function get_latest_products($limit, $offset, $restaurant_id, $category_id, $type='all')
     {
         $paginator = Food::active()->type($type);
         if($category_id != 0)
@@ -49,7 +49,7 @@ class ProductLogic
     {
         $key = explode(' ', $name);
         $paginator = Food::active()->whereHas('restaurant', function($q)use($zone_id){
-            $q->where('zone_id', $zone_id)->Weekday();
+            $q->whereIn('zone_id', $zone_id)->Weekday();
         })->where(function ($q) use ($key) {
             foreach ($key as $value) {
                 $q->orWhere('name', 'like', "%{$value}%");
@@ -63,13 +63,13 @@ class ProductLogic
             'products' => $paginator->items()
         ];
     }
-    
-    public static function popular_products($zone_id, $limit = null, $offset = null, $type)
+
+    public static function popular_products($zone_id, $limit = null, $offset = null, $type='all')
     {
         if($limit != null && $offset != null)
         {
             $paginator = Food::whereHas('restaurant', function($q)use($zone_id){
-                $q->where('zone_id', $zone_id)->Weekday();
+                $q->whereIn('zone_id', $zone_id)->Weekday();
             })->active()->type($type)->popular()->paginate($limit, ['*'], 'page', $offset);
 
             return [
@@ -80,7 +80,7 @@ class ProductLogic
             ];
         }
         $paginator = Food::active()->type($type)->whereHas('restaurant', function($q)use($zone_id){
-            $q->where('zone_id', $zone_id)->Weekday();
+            $q->whereIn('zone_id', $zone_id)->Weekday();
         })->popular()->limit(50)->get();
 
         return [
@@ -89,15 +89,15 @@ class ProductLogic
             'offset' => $offset,
             'products' => $paginator
         ];
-        
+
     }
 
-    public static function most_reviewed_products($zone_id, $limit = null, $offset = null, $type)
+    public static function most_reviewed_products($zone_id, $limit = null, $offset = null, $type='all')
     {
         if($limit != null && $offset != null)
         {
             $paginator = Food::whereHas('restaurant', function($q)use($zone_id){
-                $q->where('zone_id', $zone_id)->Weekday();
+                $q->whereIn('zone_id', $zone_id)->Weekday();
             })->withCount('reviews')->active()->type($type)
             ->orderBy('reviews_count','desc')
             ->paginate($limit, ['*'], 'page', $offset);
@@ -110,7 +110,7 @@ class ProductLogic
             ];
         }
         $paginator = Food::active()->type($type)->whereHas('restaurant', function($q)use($zone_id){
-            $q->where('zone_id', $zone_id)->Weekday();
+            $q->whereIn('zone_id', $zone_id)->Weekday();
         })
         ->withCount('reviews')
         ->orderBy('reviews_count','desc')
@@ -122,7 +122,7 @@ class ProductLogic
             'offset' => $offset,
             'products' => $paginator
         ];
-        
+
     }
 
     public static function get_product_review($id)
@@ -256,7 +256,7 @@ class ProductLogic
         if(isset($ratings))
         {
             $restaurant_ratings = json_decode($ratings, true);
-            $restaurant_ratings[$product_rating] = $restaurant_ratings[$product_rating] + 1; 
+            $restaurant_ratings[$product_rating] = $restaurant_ratings[$product_rating] + 1;
         }
         else
         {

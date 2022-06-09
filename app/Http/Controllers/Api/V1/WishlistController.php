@@ -76,13 +76,13 @@ class WishlistController extends Controller
                 'errors' => $errors
             ], 403);
         }
-        $zone_id= $request->header('zoneId');
+        $zone_id= json_decode($request->header('zoneId'), true);
         $wishlists = Wishlist::where('user_id', $request->user()->id)->with(['food'=>function($q)use($zone_id){
             return $q->whereHas('restaurant', function($q)use($zone_id){
-                $q->where('zone_id', $zone_id);
+                $q->whereIn('zone_id', $zone_id);
             });
         }, 'restaurant'=>function($q)use($zone_id){
-            return $q->where('zone_id', $zone_id);
+            return $q->whereIn('zone_id', $zone_id);
         }])->get();
         $wishlists = Helpers::wishlist_data_formatting($wishlists, true);
         return response()->json($wishlists, 200);

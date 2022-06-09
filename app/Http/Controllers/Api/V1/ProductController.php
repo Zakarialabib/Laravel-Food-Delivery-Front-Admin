@@ -28,7 +28,7 @@ class ProductController extends Controller
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
-        $type = $request->query('type', 'all'); 
+        $type = $request->query('type', 'all');
 
         $products = ProductLogic::get_latest_products($request['limit'], $request['offset'], $request['restaurant_id'], $request['category_id'], $type);
         $products['products'] = Helpers::product_data_formatting($products['products'], true, false, app()->getLocale());
@@ -51,18 +51,18 @@ class ProductController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        $zone_id= $request->header('zoneId');
+        $zone_id= json_decode($request->header('zoneId'), true);
 
         $key = explode(' ', $request['name']);
-        
+
         $limit = $request['limit']??10;
         $offset = $request['offset']??1;
 
-        $type = $request->query('type', 'all'); 
+        $type = $request->query('type', 'all');
 
         $products = Food::active()->type($type)
         ->whereHas('restaurant', function($q)use($zone_id){
-            $q->where('zone_id', $zone_id);
+            $q->whereIn('zone_id', $zone_id);
         })
         ->when($request->category_id, function($query)use($request){
             $query->whereHas('category',function($q)use($request){
@@ -102,12 +102,12 @@ class ProductController extends Controller
 
         $type = $request->query('type', 'all');
 
-        $zone_id= $request->header('zoneId');
+        $zone_id= json_decode($request->header('zoneId'), true);
         $products = ProductLogic::popular_products($zone_id, $request['limit'], $request['offset'], $type);
         $products['products'] = Helpers::product_data_formatting($products['products'], true, false, app()->getLocale());
         return response()->json($products, 200);
-    }    
-    
+    }
+
     public function get_most_reviewed_products(Request $request)
     {
         if (!$request->hasHeader('zoneId')) {
@@ -120,7 +120,7 @@ class ProductController extends Controller
 
         $type = $request->query('type', 'all');
 
-        $zone_id= $request->header('zoneId');
+        $zone_id= json_decode($request->header('zoneId'), true);
         $products = ProductLogic::most_reviewed_products($zone_id, $request['limit'], $request['offset'], $type);
         $products['products'] = Helpers::product_data_formatting($products['products'], true, false, app()->getLocale());
         return response()->json($products, 200);
@@ -128,7 +128,7 @@ class ProductController extends Controller
 
     public function get_product($id)
     {
-        
+
         try {
             $product = ProductLogic::get_product($id);
             $product = Helpers::product_data_formatting($product, false, false, app()->getLocale());
@@ -181,7 +181,7 @@ class ProductController extends Controller
                     $item['food_name'] = $translate['name'];
                 }
             }
-            
+
             unset($item['food']);
             array_push($storage, $item);
         }

@@ -23,7 +23,7 @@ class CouponController extends Controller
             ], 403);
         }
 
-        $zone_id= $request->header('zoneId');
+        $zone_id= json_decode($request->header('zoneId'), true);
         $data = [];
         // try {
             $coupons = Coupon::active()->whereDate('expire_date', '>=', date('Y-m-d'))->whereDate('start_date', '<=', date('Y-m-d'))->get();
@@ -31,7 +31,7 @@ class CouponController extends Controller
             {
                 if($coupon->coupon_type == 'restaurant_wise')
                 {
-                    $temp = Restaurant::active()->where('zone_id', $zone_id)->whereIn('id', json_decode($coupon->data, true))->first();
+                    $temp = Restaurant::active()->whereIn('zone_id', $zone_id)->whereIn('id', json_decode($coupon->data, true))->first();
                     if($temp)
                     {
                         $coupon->data = $temp->name;
@@ -40,10 +40,14 @@ class CouponController extends Controller
                 }
                 else if($coupon->coupon_type == 'zone_wise')
                 {
-                    if(in_array($zone_id, json_decode($coupon->data,true)))
-                    {
-                        $data[] = $coupon;
+                    foreach($zone_id as $z_id) {
+                        if(in_array($z_id, json_decode($coupon->data,true)))
+                        {
+                            $data[] = $coupon;
+                            break;
+                        }
                     }
+
                 }
                 else{
                     $data[] = $coupon;
@@ -67,7 +71,7 @@ class CouponController extends Controller
         if ($validator->errors()->count()>0) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        
+
         try {
             $coupon = Coupon::active()->where(['code' => $request['code']])->first();
             if (isset($coupon)) {
@@ -75,7 +79,7 @@ class CouponController extends Controller
 
                 switch ($staus) {
                 case 200:
-                    return response()->json($coupon, 200); 
+                    return response()->json($coupon, 200);
                 case 406:
                     return response()->json([
                         'errors' => [

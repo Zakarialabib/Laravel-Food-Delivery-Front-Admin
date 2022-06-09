@@ -11,7 +11,7 @@ use App\CentralLogics\Helpers;
 class NotificationController extends Controller
 {
     public function get_notifications(Request $request){
-        
+
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
             array_push($errors, ['code' => 'zoneId', 'message' => 'Zone id is required!']);
@@ -19,10 +19,10 @@ class NotificationController extends Controller
                 'errors' => $errors
             ], 403);
         }
-        $zone_id= $request->header('zoneId');
+        $zone_id= json_decode($request->header('zoneId'), true);
         try {
             $notifications = Notification::active()->where('tergat', 'customer')->where(function($q)use($zone_id){
-                $q->whereNull('zone_id')->orWhere('zone_id', $zone_id);
+                $q->whereNull('zone_id')->orWhereIn('zone_id', $zone_id);
             })->where('created_at', '>=', \Carbon\Carbon::today()->subDays(15))->get();
             $notifications->append('data');
 

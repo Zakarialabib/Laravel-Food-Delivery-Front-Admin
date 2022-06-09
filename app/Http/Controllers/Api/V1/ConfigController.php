@@ -15,23 +15,32 @@ use Illuminate\Support\Facades\Http;
 class ConfigController extends Controller
 {
     private $map_api_key;
-    
-    function __construct() 
+
+    function __construct()
     {
-        $map_api_key_server=BusinessSetting::where(['key'=>'map_api_key_server'])->first();
-        $map_api_key_server=$map_api_key_server?$map_api_key_server->value:null;
+        $map_api_key_server = BusinessSetting::where(['key' => 'map_api_key_server'])->first();
+        $map_api_key_server = $map_api_key_server ? $map_api_key_server->value : null;
         $this->map_api_key = $map_api_key_server;
     }
 
     public function configuration()
     {
+
+        $key = [
+            'cash_on_delivery', 'digital_payment', 'default_location', 'free_delivery_over', 'business_name', 'logo', 'address', 'phone', 'email_address', 'country', 'currency_symbol_position', 'app_minimum_version_android',
+            'app_url_android', 'app_minimum_version_ios', 'app_url_ios', 'customer_verification', 'order_delivery_verification', 'terms_and_conditions', 'privacy_policy', 'about_us', 'per_km_shipping_charge', 'minimum_shipping_charge', 'maintenance_mode', 'popular_food', 'popular_restaurant', 'new_restaurant', 'most_reviewed_foods', 'show_dm_earning', 'canceled_by_deliveryman', 'canceled_by_restaurant', 'timeformat', 'toggle_veg_non_veg', 'toggle_dm_registration', 'toggle_restaurant_registration', 'schedule_order_slot_duration',
+            'loyalty_point_exchange_rate', 'loyalty_point_item_purchase_point', 'loyalty_point_status', 'loyalty_point_minimum_point', 'wallet_status', 'schedule_order', 'dm_tips_status', 'ref_earning_status', 'ref_earning_exchange_rate', 'theme'
+        ];
+
+        $settings =  array_column(BusinessSetting::whereIn('key', $key)->get()->toArray(), 'value', 'key');
         $currency_symbol = Currency::where(['currency_code' => Helpers::currency_code()])->first()->currency_symbol;
-        $cod = json_decode(BusinessSetting::where(['key' => 'cash_on_delivery'])->first()->value, true);
-        $digital_payment = json_decode(BusinessSetting::where(['key' => 'digital_payment'])->first()->value, true);
-        $default_location=\App\Models\BusinessSetting::where('key','default_location')->first();
-        $default_location=$default_location->value?json_decode($default_location->value, true):0;
-        $free_delivery_over = BusinessSetting::where('key', 'free_delivery_over')->first()->value;
-        $free_delivery_over = $free_delivery_over?(float)$free_delivery_over:$free_delivery_over;
+        $cod = json_decode($settings['cash_on_delivery'], true);
+        $cod = json_decode($settings['cash_on_delivery'], true);
+        $digital_payment = json_decode($settings['digital_payment'], true);
+
+        $default_location = isset($settings['default_location']) ? json_decode($settings['default_location'], true) : 0;
+        $free_delivery_over = $settings['free_delivery_over'];
+        $free_delivery_over = $free_delivery_over ? (float)$free_delivery_over : $free_delivery_over;
         $languages = Helpers::get_business_settings('language');
         $lang_array = [];
         foreach ($languages as $language) {
@@ -40,25 +49,14 @@ class ConfigController extends Controller
                 'value' => Helpers::get_language_name($language)
             ]);
         }
-        // $social_login = [];
-        // foreach (Helpers::get_business_settings('social_login') as $social) {
-        //     $config = [
-        //         'login_medium' => $social['login_medium'],
-        //         'status' => (boolean)$social['status']
-        //     ];
-        //     array_push($social_login, $config);
-        // }
-        $dp = json_decode(BusinessSetting::where(['key' => 'digital_payment'])->first()->value, true);
+
+        //dd($settings['ref_earning_exchange_rate']);
         return response()->json([
-            'business_name' => BusinessSetting::where(['key' => 'business_name'])->first()->value,
-            // 'business_open_time' => BusinessSetting::where(['key' => 'business_open_time'])->first()->value,
-            // 'business_close_time' => BusinessSetting::where(['key' => 'business_close_time'])->first()->value,
-            'logo' => BusinessSetting::where(['key' => 'logo'])->first()->value,
-            'address' => BusinessSetting::where(['key' => 'address'])->first()->value,
-            'phone' => BusinessSetting::where(['key' => 'phone'])->first()->value,
-            'email' => BusinessSetting::where(['key' => 'email_address'])->first()->value,
-            // 'restaurant_location_coverage' => Branch::where(['id'=>1])->first(['longitude','latitude','coverage']),
-            // 'minimum_order_value' => (float)BusinessSetting::where(['key' => 'minimum_order_value'])->first()->value,
+            'business_name' => $settings['business_name'],
+            'logo' => $settings['logo'],
+            'address' => $settings['address'],
+            'phone' => $settings['phone'],
+            'email' => $settings['email_address'],
             'base_urls' => [
                 'product_image_url' => asset('storage/app/public/product'),
                 'customer_image_url' => asset('storage/app/public/profile'),
@@ -74,43 +72,51 @@ class ConfigController extends Controller
                 'campaign_image_url' => asset('storage/app/public/campaign'),
                 'business_logo_url' => asset('storage/app/public/business')
             ],
-            'country' => BusinessSetting::where(['key' => 'country'])->first()->value,
-            'default_location'=> [ 'lat'=> $default_location?$default_location['lat']:'23.757989', 'lng'=> $default_location?$default_location['lng']:'90.360587' ],
+            'country' => $settings['country'],
+            'default_location' => ['lat' => $default_location ? $default_location['lat'] : '23.757989', 'lng' => $default_location ? $default_location['lng'] : '90.360587'],
             'currency_symbol' => $currency_symbol,
-            'currency_symbol_direction' => BusinessSetting::where(['key' => 'currency_symbol_position'])->first()->value,
-            'app_minimum_version_android' => (integer)BusinessSetting::where(['key' => 'app_minimum_version_android'])->first()->value,
-            'app_url_android' => BusinessSetting::where(['key' => 'app_url_android'])->first()->value,
-            'app_minimum_version_ios' => (integer)BusinessSetting::where(['key' => 'app_minimum_version_ios'])->first()->value,
-            'app_url_ios' => BusinessSetting::where(['key' => 'app_url_ios'])->first()->value,
-            'customer_verification' => (boolean)BusinessSetting::where(['key' => 'customer_verification'])->first()->value,
-            'schedule_order' => (boolean)BusinessSetting::where(['key' => 'schedule_order'])->first()->value,
-            'order_delivery_verification' => (boolean)BusinessSetting::where(['key' => 'order_delivery_verification'])->first()->value,
-            'cash_on_delivery' => (boolean)($cod['status'] == 1 ? true : false),
-            'digital_payment' => (boolean)($digital_payment['status'] == 1 ? true : false),
-            'terms_and_conditions' => BusinessSetting::where(['key' => 'terms_and_conditions'])->first()->value,
-            'privacy_policy' => BusinessSetting::where(['key' => 'privacy_policy'])->first()->value,
-            'about_us' => BusinessSetting::where(['key' => 'about_us'])->first()->value,
-            'per_km_shipping_charge' => (double)BusinessSetting::where(['key' => 'per_km_shipping_charge'])->first()->value,
-            'minimum_shipping_charge' => (double)BusinessSetting::where(['key' => 'minimum_shipping_charge'])->first()->value,
-            'free_delivery_over'=>$free_delivery_over,
-            'demo'=>(boolean)(env('APP_MODE')=='demo'?true:false),
-            'maintenance_mode' => (boolean)Helpers::get_business_settings('maintenance_mode') ?? 0,
-            'order_confirmation_model'=>config('order_confirmation_model'),
-            'popular_food' => (double)BusinessSetting::where(['key' => 'popular_food'])->first()->value,
-            'popular_restaurant' => (double)BusinessSetting::where(['key' => 'popular_restaurant'])->first()->value,
-            'new_restaurant' => (double)BusinessSetting::where(['key' => 'new_restaurant'])->first()->value,
-            'most_reviewed_foods' => (double)BusinessSetting::where(['key' => 'most_reviewed_foods'])->first()->value,
-            'show_dm_earning' => (boolean)BusinessSetting::where(['key' => 'show_dm_earning'])->first()->value,
-            'canceled_by_deliveryman' => (boolean)BusinessSetting::where(['key' => 'canceled_by_deliveryman'])->first()->value,
-            'canceled_by_restaurant' => (boolean)BusinessSetting::where(['key' => 'canceled_by_restaurant'])->first()->value,
-            'timeformat' => (string)BusinessSetting::where(['key' => 'timeformat'])->first()->value,
+            'currency_symbol_direction' => $settings['currency_symbol_position'],
+            'app_minimum_version_android' => (int)$settings['app_minimum_version_android'],
+            'app_url_android' => $settings['app_url_android'],
+            'app_minimum_version_ios' => (int)$settings['app_minimum_version_ios'],
+            'app_url_ios' => $settings['app_url_ios'],
+            'customer_verification' => (bool)$settings['customer_verification'],
+            'schedule_order' => (bool)$settings['schedule_order'],
+            'order_delivery_verification' => (bool)$settings['order_delivery_verification'],
+            'cash_on_delivery' => (bool)($cod['status'] == 1 ? true : false),
+            'digital_payment' => (bool)($digital_payment['status'] == 1 ? true : false),
+            'terms_and_conditions' => $settings['terms_and_conditions'],
+            'privacy_policy' => $settings['privacy_policy'],
+            'about_us' => $settings['about_us'],
+            'per_km_shipping_charge' => (float)$settings['per_km_shipping_charge'],
+            'minimum_shipping_charge' => (float)$settings['minimum_shipping_charge'],
+            'free_delivery_over' => $free_delivery_over,
+            'demo' => (bool)(env('APP_MODE') == 'demo' ? true : false),
+            'maintenance_mode' => (bool)Helpers::get_business_settings('maintenance_mode') ?? 0,
+            'order_confirmation_model' => config('order_confirmation_model'),
+            'popular_food' => (float)$settings['popular_food'],
+            'popular_restaurant' => (float)$settings['popular_restaurant'],
+            'new_restaurant' => (float)$settings['new_restaurant'],
+            'most_reviewed_foods' => (float)$settings['most_reviewed_foods'],
+            'show_dm_earning' => (bool)$settings['show_dm_earning'],
+            'canceled_by_deliveryman' => (bool)$settings['canceled_by_deliveryman'],
+            'canceled_by_restaurant' => (bool)$settings['canceled_by_restaurant'],
+            'timeformat' => (string)$settings['timeformat'],
             'language' => $lang_array,
-            // 'social_login' => $social_login,
-            'toggle_veg_non_veg' => (boolean)BusinessSetting::where(['key' => 'toggle_veg_non_veg'])->first()->value,
-            'toggle_dm_registration' => (boolean)BusinessSetting::where(['key' => 'toggle_dm_registration'])->first()->value,
-            'toggle_restaurant_registration' => (boolean)BusinessSetting::where(['key' => 'toggle_restaurant_registration'])->first()->value,
-            'schedule_order_slot_duration' => (int)BusinessSetting::where(['key' => 'schedule_order_slot_duration'])->first()->value,
+            'toggle_veg_non_veg' => (bool)$settings['toggle_veg_non_veg'],
+            'toggle_dm_registration' => (bool)$settings['toggle_dm_registration'],
+            'toggle_restaurant_registration' => (bool)$settings['toggle_restaurant_registration'],
+            'schedule_order_slot_duration' => (int)$settings['schedule_order_slot_duration'],
             'digit_after_decimal_point' => (int)config('round_up_to_digit'),
+            'loyalty_point_exchange_rate' => (int)(isset($settings['loyalty_point_item_purchase_point']) ? $settings['loyalty_point_exchange_rate'] : 0),
+            'loyalty_point_item_purchase_point' => (float)(isset($settings['loyalty_point_item_purchase_point']) ? $settings['loyalty_point_item_purchase_point'] : 0.0),
+            'loyalty_point_status' => (int)(isset($settings['loyalty_point_status']) ? $settings['loyalty_point_status'] : 0),
+            'minimum_point_to_transfer' => (int)(isset($settings['loyalty_point_minimum_point']) ? $settings['loyalty_point_minimum_point'] : 0),
+            'customer_wallet_status' => (int)(isset($settings['wallet_status']) ? $settings['wallet_status'] : 0),
+            'ref_earning_status' => (int)(isset($settings['ref_earning_status']) ? $settings['ref_earning_status'] : 0),
+            'ref_earning_exchange_rate' => (double)(isset($settings['ref_earning_exchange_rate']) ? $settings['ref_earning_exchange_rate'] : 0),
+            'dm_tips_status' => (int)(isset($settings['dm_tips_status']) ? $settings['dm_tips_status'] : 0),
+            'theme' => (int)$settings['theme'],
         ]);
     }
 
@@ -121,26 +127,28 @@ class ConfigController extends Controller
             'lng' => 'required',
         ]);
 
-        if ($validator->errors()->count()>0) {
+        if ($validator->errors()->count() > 0) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        $point = new Point($request->lat,$request->lng);
+        $point = new Point($request->lat, $request->lng);
         $zones = Zone::contains('coordinates', $point)->latest()->get();
-        if(count($zones)<1)
-        {
+        if (count($zones) < 1) {
             return response()->json([
                 'errors'=>[
                     ['code'=>'coordinates','message'=>__('service not available in this area')]
                 ]
             ], 404);
         }
-        foreach($zones as $zone)
-        {
-            if($zone->status)
-            {
-                return response()->json(['zone_id'=>$zone->id], 200);
+        $data = array_filter($zones->toArray(), function ($zone) {
+            if ($zone['status'] == 1) {
+                return $zone;
             }
+        });
+
+        if (count($data) > 0) {
+            return response()->json(['zone_id' => json_encode(array_column($data, 'id'))], 200);
         }
+
         return response()->json([
             'errors'=>[
                 ['code'=>'coordinates','message'=>__('We are temporarily unavailable in this area')]
@@ -154,10 +162,10 @@ class ConfigController extends Controller
             'search_text' => 'required',
         ]);
 
-        if ($validator->errors()->count()>0) {
+        if ($validator->errors()->count() > 0) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        $response = Http::get('https://maps.googleapis.com/maps/api/place/autocomplete/json?input='.$request['search_text'].'&key='.$this->map_api_key);
+        $response = Http::get('https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' . $request['search_text'] . '&key=' . $this->map_api_key);
         return $response->json();
     }
 
@@ -171,10 +179,10 @@ class ConfigController extends Controller
             'destination_lng' => 'required',
         ]);
 
-        if ($validator->errors()->count()>0) {
+        if ($validator->errors()->count() > 0) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        $response = Http::get('https://maps.googleapis.com/maps/api/distancematrix/json?origins='.$request['origin_lat'].','.$request['origin_lng'].'&destinations='.$request['destination_lat'].','.$request['destination_lng'].'&key='.$this->map_api_key.'&mode=walking');
+        $response = Http::get('https://maps.googleapis.com/maps/api/distancematrix/json?origins=' . $request['origin_lat'] . ',' . $request['origin_lng'] . '&destinations=' . $request['destination_lat'] . ',' . $request['destination_lng'] . '&key=' . $this->map_api_key . '&mode=walking');
         return $response->json();
     }
 
@@ -185,13 +193,13 @@ class ConfigController extends Controller
             'placeid' => 'required',
         ]);
 
-        if ($validator->errors()->count()>0) {
+        if ($validator->errors()->count() > 0) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        $response = Http::get('https://maps.googleapis.com/maps/api/place/details/json?placeid='.$request['placeid'].'&key='.$this->map_api_key);
+        $response = Http::get('https://maps.googleapis.com/maps/api/place/details/json?placeid=' . $request['placeid'] . '&key=' . $this->map_api_key);
         return $response->json();
     }
-    
+
     public function geocode_api(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -199,10 +207,10 @@ class ConfigController extends Controller
             'lng' => 'required',
         ]);
 
-        if ($validator->errors()->count()>0) {
+        if ($validator->errors()->count() > 0) {
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
-        $response = Http::get('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$request->lat.','.$request->lng.'&key='.$this->map_api_key);
+        $response = Http::get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' . $request->lat . ',' . $request->lng . '&key=' . $this->map_api_key);
         return $response->json();
     }
 }
