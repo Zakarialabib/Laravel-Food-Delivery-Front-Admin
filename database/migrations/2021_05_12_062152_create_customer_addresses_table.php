@@ -22,7 +22,6 @@ class CreateCustomerAddressesTable extends Migration
             $table->string('longitude')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->string('contact_person_name',100)->nullable();
-            $table->string('default')->nullable();
             $table->timestamps();
         });
     }
