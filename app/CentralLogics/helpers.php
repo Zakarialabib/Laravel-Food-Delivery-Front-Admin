@@ -913,7 +913,7 @@ class Helpers
             $value = self::order_status_update_message($status);
             if ($value) {
                 $data = [
-                    'title' => trans('messages.order_push_title'),
+                    'title' => __('Order push title'),
                     'description' => $value,
                     'order_id' => $order->id,
                     'image' => '',
@@ -930,7 +930,7 @@ class Helpers
 
             if ($status == 'picked_up') {
                 $data = [
-                    'title' => trans('messages.order_push_title'),
+                    'title' => __('Order push title'),
                     'description' => $value,
                     'order_id' => $order->id,
                     'image' => '',
@@ -948,8 +948,8 @@ class Helpers
             if ($order->order_type == 'delivery' && !$order->scheduled && $order->order_status == 'pending' && $order->payment_method == 'cash_on_delivery' && config('order_confirmation_model') == 'deliveryman' && $order->order_type != 'take_away') {
                 if ($order->restaurant->self_delivery_system) {
                     $data = [
-                        'title' => trans('messages.order_push_title'),
-                        'description' => trans('messages.new_order_push_description'),
+                        'title' => __('Order push title'),
+                        'description' => __('New order push description'),
                         'order_id' => $order->id,
                         'image' => '',
                         'type' => 'new_order',
@@ -963,8 +963,8 @@ class Helpers
                     ]);
                 } else {
                     $data = [
-                        'title' => trans('messages.order_push_title'),
-                        'description' => trans('messages.new_order_push_description'),
+                        'title' => __('Order push title'),
+                        'description' => __('New order push description'),
                         'order_id' => $order->id,
                         'image' => '',
                     ];
@@ -974,8 +974,8 @@ class Helpers
 
             if ($order->order_type == 'delivery' && !$order->scheduled && $order->order_status == 'pending' && $order->payment_method == 'cash_on_delivery' && config('order_confirmation_model') == 'restaurant') {
                 $data = [
-                    'title' => trans('messages.order_push_title'),
-                    'description' => trans('messages.new_order_push_description'),
+                    'title' => __('Order push title'),
+                    'description' => __('New_order_push_description'),
                     'order_id' => $order->id,
                     'image' => '',
                     'type' => 'new_order',
@@ -991,8 +991,8 @@ class Helpers
 
             if (!$order->scheduled && (($order->order_type == 'take_away' && $order->order_status == 'pending') || ($order->payment_method != 'cash_on_delivery' && $order->order_status == 'confirmed'))) {
                 $data = [
-                    'title' => trans('messages.order_push_title'),
-                    'description' => trans('messages.new_order_push_description'),
+                    'title' => __('Order push title'),
+                    'description' => __('New order push description'),
                     'order_id' => $order->id,
                     'image' => '',
                     'type' => 'new_order',
@@ -1009,8 +1009,8 @@ class Helpers
             if ($order->order_status == 'confirmed' && $order->order_type != 'take_away' && config('order_confirmation_model') == 'deliveryman' && $order->payment_method == 'cash_on_delivery') {
                 if ($order->restaurant->self_delivery_system) {
                     $data = [
-                        'title' => trans('messages.order_push_title'),
-                        'description' => trans('messages.new_order_push_description'),
+                        'title' => __('Order push title'),
+                        'description' => __('New order push description'),
                         'order_id' => $order->id,
                         'image' => '',
                     ];
@@ -1018,8 +1018,8 @@ class Helpers
                     self::send_push_notif_to_topic($data, "restaurant_dm_" . $order->restaurant_id, 'new_order');
                 } else {
                     $data = [
-                        'title' => trans('messages.order_push_title'),
-                        'description' => trans('messages.new_order_push_description'),
+                        'title' => __('Order push title'),
+                        'description' => __('New order push description'),
                         'order_id' => $order->id,
                         'image' => '',
                         'type' => 'new_order',
@@ -1036,8 +1036,8 @@ class Helpers
 
             if ($order->order_type == 'delivery' && !$order->scheduled && $order->order_status == 'confirmed'  && ($order->payment_method != 'cash_on_delivery' || config('order_confirmation_model') == 'restaurant')) {
                 $data = [
-                    'title' => trans('messages.order_push_title'),
-                    'description' => trans('messages.new_order_push_description'),
+                    'title' => __('Order push title'),
+                    'description' => __('New order push description'),
                     'order_id' => $order->id,
                     'image' => '',
                 ];
@@ -1050,8 +1050,8 @@ class Helpers
 
             if (in_array($order->order_status, ['processing', 'handover']) && $order->delivery_man) {
                 $data = [
-                    'title' => trans('messages.order_push_title'),
-                    'description' => $order->order_status == 'processing' ? trans('messages.Proceed_for_cooking') : trans('messages.ready_for_delivery'),
+                    'title' => __('Order push title'),
+                    'description' => $order->order_status == 'processing' ? __('Proceed for cooking') : __('Ready for delivery'),
                     'order_id' => $order->id,
                     'image' => '',
                     'type' => 'order_status'

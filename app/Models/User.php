@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -19,12 +18,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'f_name', 
-        'l_name', 
-        'phone', 
-        'email', 
+        'f_name',
+        'l_name',
+        'phone',
+        'email',
         'password',
         'login_medium',
+        'ref_code',
         'social_id'
     ];
 
@@ -49,7 +49,9 @@ class User extends Authenticatable
         'is_phone_verified' => 'integer',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
-        'order_count' => 'integer'
+        'order_count' => 'integer',
+        'wallet_balance' => 'float',
+        'loyalty_point' => 'integer',
     ];
 
 
@@ -62,13 +64,14 @@ class User extends Authenticatable
         return $this->hasMany(CustomerAddress::class);
     }
 
-    // /**
-    //  * Get the user's order count.
-    //  *
-    //  * @return integer
-    //  */
-    // public function getOrderCountAttribute()
-    // {
-    //     return $this->orders->count();
-    // }
+    public function loyalty_point_transaction()
+    {
+        return $this->hasMany(LoyaltyPointTransaction::class);
+    }
+
+    public function wallet_transaction()
+    {
+        return $this->hasMany(WalletTransaction::class);
+    }
+    
 }

@@ -13,32 +13,44 @@ use App\Http\Controllers\RestaurantQueryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 // Route::get('/', 'HomeController@index')->name('home');
-Route::get('/', [FrontController::class, 'index'])->name('home');
+//Route::get('/', [FrontController::class, 'index'])->name('home');
+
+
+Route::get('/', 'FrontController@home')->name('home');
 Route::get('/langue/{locale}', 'FrontController@changeLanguage')->name('change_language');
 Route::get('terms-and-conditions', 'HomeController@terms_and_conditions')->name('terms-and-conditions');
 Route::get('about-us', 'HomeController@about_us')->name('about-us');
 Route::get('contact-us', 'HomeController@contact_us')->name('contact-us');
 Route::get('privacy-policy', 'HomeController@privacy_policy')->name('privacy-policy');
-Route::get('/search', [FrontController::class, 'search'])->name('search');
 
-Route::get('/restaurants', [FrontController::class, 'restaurant_listing'])->name('restaurant_listing');
-Route::get('/restaurant-catalogue/{restaurant}', [FrontController::class, 'restaurant_details'])->name('restaurant_details'); 
-Route::post('/search', [RestaurantQueryController::class, '__invoke'])->name('restaurants.query');
-Route::get('/area/{postcode}', function ($postcode) {
-    return view('front.restaurant_listing', ['postcode' => $postcode]);
-})->name('restaurants.filter');
+//Restaurant Registration
+Route::group(['prefix' => 'restaurant', 'as' => 'restaurant.'], function () {
+    Route::get('apply', 'VendorController@create')->name('create');
+    Route::post('apply', 'VendorController@store')->name('store');
+});
 
-Route::get('quick-view', [FrontController::class, 'quick_view'])->name('quick-view');
-Route::get('quick-view-cart-item', [FrontController::class, '@quick_view_card_item'])->name('quick-view-cart-item');
-Route::post('variant_price', [FrontController::class, 'variant_price'])->name('variant_price');
+//Deliveryman Registration
+Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.'], function () {
+    Route::get('apply', 'DeliveryManController@create')->name('create');
+    Route::post('apply', 'DeliveryManController@store')->name('store');
+});
+
+//Route::get('/search', [FrontController::class, 'search'])->name('search');
+
+//Route::get('/restaurants', [FrontController::class, 'restaurant_listing'])->name('restaurant_listing');
+//Route::get('/restaurant-catalogue/{restaurant}', [FrontController::class, 'restaurant_details'])->name('restaurant_details'); 
+//Route::post('/search', [RestaurantQueryController::class, '__invoke'])->name('restaurants.query');
+//Route::get('/area/{postcode}', function ($postcode) {
+//    return view('front.restaurant_listing', ['postcode' => $postcode]);
+//})->name('restaurants.filter');
+
 ///cart///
-Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
-Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
+//Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
+//Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
 
-// Route::get('/aboutus',[FrontController::class,'aboutus'])->name('aboutus');
-// Route::get('/contact',[FrontController::class,'contact'])->name('contact');
+Route::get('/aboutus',[FrontController::class,'aboutus'])->name('aboutus');
+Route::get('/contact',[FrontController::class,'contact'])->name('contact');
 
 Route::get('authentication-failed', function () {
     $errors = [];
@@ -168,11 +180,6 @@ Route::middleware('auth')->group(function (){
     //////////Cart///////////////
     Route::get('/cart',[FrontController::class,'cart'])->name('cart');
     Route::get('/add-to-cart/{id}', [FrontController::class, 'addToCart'])->name('addToCart');
-    
-    Route::post('add-to-cart', [FrontController::class, 'add_to_cart'])->name('add-to-cart');
-    Route::post('remove-from-cart', [FrontController::class, 'remove_from_cart'])->name('remove-from-cart');
-    Route::post('update-quantity', [FrontController::class, 'updateQuantity'])->name('updateQuantity');
-    Route::post('empty-cart', [FrontController::class, 'empty_cart'])->name('emptyCart');
     Route::get('/remove-from-cart/{id}', [FrontController::class, 'removeFromCart'])->name('removeFromCart');
     Route::delete('cartDelete/{id}', [FrontController::class, 'cartDelete'])->name('cartDelete');
     
@@ -188,16 +195,7 @@ Route::middleware('auth')->group(function (){
 
 });
 
-//Restaurant Registration
-Route::group(['prefix' => 'restaurant', 'as' => 'restaurant.'], function () {
-    Route::get('apply', 'VendorController@create')->name('create');
-    Route::post('apply', 'VendorController@store')->name('store');
-});
-
-//Deliveryman Registration
-Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.'], function () {
-    Route::get('apply', 'DeliveryManController@create')->name('create');
-    Route::post('apply', 'DeliveryManController@store')->name('store');
-});
+Route::get('/update', 'UpdateController@update_software_index')->name('index');
+Route::post('update-system', 'UpdateController@update_software')->name('update-system');
 
 require __DIR__.'/auth.php';

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
+use phpDocumentor\Reflection\Types\Boolean;
+
 Carbon::setWeekStartsAt(Carbon::MONDAY);
 Carbon::setWeekEndsAt(Carbon::SUNDAY);
 class ConfigServiceProvider extends ServiceProvider
@@ -35,6 +37,7 @@ class ConfigServiceProvider extends ServiceProvider
             $emailServices = json_decode($data['value'], true);
             if ($emailServices) {
                 $config = array(
+                    'status' => (Boolean)(isset($emailServices['status'])?$emailServices['status']:1),
                     'driver' => $emailServices['driver'],
                     'host' => $emailServices['host'],
                     'port' => $emailServices['port'],
