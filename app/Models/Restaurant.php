@@ -61,10 +61,7 @@ class Restaurant extends Model
     {
         return $this->hasMany(RestaurantSchedule::class)->orderBy('opening_time');
     }
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id');
-    }   
+
     public function deliverymen()
     {
         return $this->hasMany(DeliveryMan::class);

@@ -183,9 +183,11 @@ class CustomerAuthController extends Controller
         $user->ref_code = Helpers::generate_referer_code($user);
         $user->save();
         //Save point to refeer
-        $checkRefCode = $request->ref_code;
-        $referar_user = User::where('ref_code', '=', $checkRefCode)->first();
-        $ref_code_exchange_amt = BusinessSetting::where('key','ref_earning_exchange_rate')->first()->value;
+        if($user->ref_code){
+            $checkRefCode = $request->ref_code;
+            $referar_user = User::where('ref_code', '=', $checkRefCode)->first();
+            $ref_code_exchange_amt = BusinessSetting::where('key','ref_earning_exchange_rate')->first()->value;
+        }
 
         if ($referar_user) {
             $refer_wallet_transaction = CustomerLogic::create_wallet_transaction($referar_user->id, $ref_code_exchange_amt, 'referrer',$user->id);

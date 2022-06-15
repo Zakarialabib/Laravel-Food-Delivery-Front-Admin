@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 class Food extends Model
 {
     use HasFactory;
-    
+
     protected $casts = [
         'tax' => 'float',
         'price' => 'float',
@@ -25,7 +25,7 @@ class Food extends Model
         'reviews_count' => 'integer',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
-        'veg'=>'integer'
+        'veg' => 'integer'
     ];
 
 
@@ -37,7 +37,7 @@ class Food extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('status', 1)->whereHas('restaurant', function($query){
+        return $query->where('status', 1)->whereHas('restaurant', function ($query) {
             return $query->where('status', 1);
         });
     }
@@ -68,30 +68,29 @@ class Food extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
-    
+
     public function orders()
     {
         return $this->hasMany(OrderDetail::class);
     }
 
-    
+
     public function getCategoryAttribute()
     {
-        $category=Category::find(json_decode($this->category_ids)[0]->id);
-        return $category?$category->name:__('uncategorize');
+        $category = Category::find(json_decode($this->category_ids)[0]->id);
+        return $category ? $category->name : trans('messages.uncategorize');
     }
 
     protected static function booted()
     {
-        if(auth('vendor')->check() || auth('vendor_employee')->check())
-        {
+        if (auth('vendor')->check() || auth('vendor_employee')->check()) {
             static::addGlobalScope(new RestaurantScope);
-        } 
+        }
 
         static::addGlobalScope(new ZoneScope);
 
         static::addGlobalScope('translate', function (Builder $builder) {
-            $builder->with(['translations' => function($query){
+            $builder->with(['translations' => function ($query) {
                 return $query->where('locale', app()->getLocale());
             }]);
         });
@@ -100,16 +99,12 @@ class Food extends Model
 
     public function scopeType($query, $type)
     {
-        if($type == 'veg')
-        {
+        if ($type == 'veg') {
             return $query->where('veg', true);
-        }
-        else if($type == 'non_veg')
-        {
+        } else if ($type == 'non_veg') {
             return $query->where('veg', false);
         }
-        
+
         return $query;
     }
-    
 }
