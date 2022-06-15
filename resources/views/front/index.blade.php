@@ -29,7 +29,7 @@
                     </button>
                 </form>
                 </div> --}}
-                 <form action="{{ route('search') }}" method="GET">
+                <form action="{{ route('search') }}" method="GET">
                     @csrf
                     <div class="input-group search-location-group">
                         <input type="text" class="form-control" name="search_text" placeholder="Enter your delivery location"
@@ -162,6 +162,18 @@
                     "Error: Your browser doesn't support geolocation."
                 );
             }
+
+            $('.btn-locate').click(function(e){
+                e.preventDefault();
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position){
+                        console.log( "Latitude: " + position.coords.latitude +   " - Longitude: " + position.coords.longitude );
+                    });
+                } else {
+                    console.log( "Geolocation is not supported by this browser.");
+                }
+            }).trigger('click');
     </script>
 @endpush
 </x-app-layout>

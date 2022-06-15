@@ -50,7 +50,7 @@
             "app/CentralLogics/product.php",
             "app/CentralLogics/restaurant.php",
             "app/CentralLogics/helpers.php",
-            "app/helpers.php",
+            "app/CentralLogics/helpers.php",
             "app/CentralLogics/order.php",
             "app/CentralLogics/coupon.php",
             "app/CentralLogics/sms_module.php",

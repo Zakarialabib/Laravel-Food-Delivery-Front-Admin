@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
                 ->first();
         } else {
             $languages = [];
+            $language_default = null;
         }
         View::share([
             'languages' => $languages,

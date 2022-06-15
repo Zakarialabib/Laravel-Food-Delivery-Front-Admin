@@ -14,7 +14,7 @@ class AddCmFirebaseTokenColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('cm_firebase_token')->nullable();
+            //$table->string('cm_firebase_token')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddCmFirebaseTokenColumnToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('cm_firebase_token');
+            //$table->dropColumn('cm_firebase_token');
         });
     }
 }

@@ -20,5 +20,5 @@
     RewriteRule ^ index.php [L]
     
     # cors
-    Header set Access-Control-Allow-Origin "*"
+    # oubtou : Header set Access-Control-Allow-Origin "*"
 </IfModule>
