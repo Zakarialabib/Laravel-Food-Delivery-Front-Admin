@@ -17,7 +17,7 @@ use App\Http\Controllers\RestaurantQueryController;
 //Route::get('/', [FrontController::class, 'index'])->name('home');
 
 
-Route::get('/', 'FrontController@home')->name('home');
+Route::get('/', 'FrontController@index')->name('home');
 Route::get('/langue/{locale}', 'FrontController@changeLanguage')->name('change_language');
 Route::get('terms-and-conditions', 'HomeController@terms_and_conditions')->name('terms-and-conditions');
 Route::get('about-us', 'HomeController@about_us')->name('about-us');
@@ -36,7 +36,7 @@ Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.'], function () {
     Route::post('apply', 'DeliveryManController@store')->name('store');
 });
 
-//Route::get('/search', [FrontController::class, 'search'])->name('search');
+Route::post('/search', [FrontController::class, 'search'])->name('search');
 
 //Route::get('/restaurants', [FrontController::class, 'restaurant_listing'])->name('restaurant_listing');
 //Route::get('/restaurant-catalogue/{restaurant}', [FrontController::class, 'restaurant_details'])->name('restaurant_details'); 

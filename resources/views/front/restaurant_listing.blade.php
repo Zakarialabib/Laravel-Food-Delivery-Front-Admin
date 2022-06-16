@@ -5,7 +5,33 @@
     <div class="w-full bg-gray-100 py-10">
         <h3 class="text-3xl leading-5 text-center ">{{ __('Restaurants in map') }}</h3>
         <div id="map" class="border border-t border-gray-500" style="height:180px; width:100%"></div>
+        <div id="mapos"></div>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{\App\Models\BusinessSetting::where('key', 'map_api_key')->first()->value}}"></script>
+
+    <script type="text/javascript">
+        let map = null;
+        function initMap( center ) {
+          map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 4,
+             center: center,
+          });
+        }
+
+        function addMarker( $lat, $lng ) {
+
+            if( map == null )
+                initMap( {lat: $lat, lng: $lng} );
+            
+            new google.maps.Marker({
+                position: { lat: $lat, lng: $lng },
+                map,
+                title: "",
+            });
+        }
+    </script>
+
+
 
     <section class="pb-60">
         <div class="container">
@@ -13,8 +39,10 @@
                 <div class="lg:w-1/10 sm:w-full px-4">
                     {{-- @if (app('request')->has('location')) --}}
                     <h4 class="my-4">{{ __('Restaurants') }}</h4>
+
                     <div class="flex flex-wrap">
                         @forelse ($restaurants as $rest)
+                        <script type="text/javascript"> addMarker({{ $rest->latitude }}, {{ $rest->longitude }}); </script>
                             @if ($rest->status == 1)
                                 <div class="xl:w-1/3 px-4 lg:w-1/2 sm:w-full">
 
@@ -155,7 +183,9 @@
         </div>
     </section>
 
-    @push('scripts')
+
+    @push('scripts')   
+
         <script type="text/javascript">
             function locationPopup() {
 

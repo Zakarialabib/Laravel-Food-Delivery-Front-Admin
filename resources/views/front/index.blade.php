@@ -29,9 +29,13 @@
                     </button>
                 </form>
                 </div> --}}
-                <form action="{{ route('search') }}" method="GET">
+                <form action="{{ route('search') }}" method="POST">
                     @csrf
                     <div class="input-group search-location-group">
+                        
+                        <input type="hidden" class="form-control" name="latitude" id="user_latitude">
+                        <input type="hidden" class="form-control" name="longitude" id="user_longitude">
+
                         <input type="text" class="form-control" name="search_text" placeholder="Enter your delivery location"
                             aria-label="delivery location" aria-describedby="button-addon2">
                         <a href="" class="btn-locate"><i class='bx bx-target-lock'></i> {{__('Locate Me')}}</a>
@@ -168,7 +172,10 @@
 
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function(position){
-                        console.log( "Latitude: " + position.coords.latitude +   " - Longitude: " + position.coords.longitude );
+                        $('#user_latitude').val(position.coords.latitude);
+                        $('#user_longitude').val(position.coords.longitude);
+
+                        //console.log( "Latitude: " + position.coords.latitude +   " - Longitude: " + position.coords.longitude );
                     });
                 } else {
                     console.log( "Geolocation is not supported by this browser.");

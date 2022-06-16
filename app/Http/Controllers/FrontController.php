@@ -225,15 +225,22 @@ class FrontController extends Controller
         
         $point = new Point($request->latitude, $request->longitude);
         $zone = Zone::contains('coordinates', $point)->first();
+
+        $zone_id = $zone->id;
+        $search_text = $request->search_text;
        
         // $type = $this->query('type', 'all');
         // $zone_id = $request->header('zoneId');
+        $categories = Category::where(['position'=>0])->latest()->get();
         
-        $rest = Restaurant::where('name','LIKE','%'.$postcode.'%')
+        $rest = Restaurant::where('name','LIKE','%'.$search_text.'%')
                             ->orWhere('zone_id', $zone_id)
-                            ->get();
+                            ->paginate(30);
 
-        return view('front.restaurant_listing',['restaurants'=>$rest],compact('zone_id','search_text'));
+        return view('front.restaurant_listing',[
+            'restaurants'=>$rest,
+            'categories'=>$categories,
+        ],compact('zone_id','search_text'));
     }
      ////////////// Restaurant List ///////////////
      public function restaurant_listing()
