@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ada65b2bbd34a3316cccda87622e3d69",
+    "content-hash": "57398fd994a1b838d6359ba58711b542",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3830,6 +3830,79 @@
                 }
             ],
             "time": "2021-06-28T04:27:21+00:00"
+        },
+        {
+            "name": "livewire/livewire",
+            "version": "v2.10.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "9ea6237760f627b3b6a05d15137880780ac843b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/9ea6237760f627b3b6a05d15137880780ac843b5",
+                "reference": "9ea6237760f627b3b6a05d15137880780ac843b5",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^7.0|^8.0|^9.0",
+                "illuminate/support": "^7.0|^8.0|^9.0",
+                "illuminate/validation": "^7.0|^8.0|^9.0",
+                "league/mime-type-detection": "^1.9",
+                "php": "^7.2.5|^8.0",
+                "symfony/http-kernel": "^5.0|^6.0"
+            },
+            "require-dev": {
+                "calebporzio/sushi": "^2.1",
+                "laravel/framework": "^7.0|^8.0|^9.0",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^5.0|^6.0|^7.0",
+                "orchestra/testbench-dusk": "^5.2|^6.0|^7.0",
+                "phpunit/phpunit": "^8.4|^9.0",
+                "psy/psysh": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Livewire\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "A front-end framework for Laravel.",
+            "support": {
+                "issues": "https://github.com/livewire/livewire/issues",
+                "source": "https://github.com/livewire/livewire/tree/v2.10.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/livewire",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-04-07T21:38:12+00:00"
         },
         {
             "name": "madnest/madzipper",
@@ -8520,6 +8593,77 @@
                 "source": "https://github.com/unicodeveloper/laravel-paystack/tree/cc02add"
             },
             "time": "2022-06-11T08:14:22+00:00"
+        },
+        {
+            "name": "victorybiz/laravel-tel-input",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/victorybiz/laravel-tel-input.git",
+                "reference": "c4437a1c33327b47c4e9025a0a6bf2c6c6fc87c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/victorybiz/laravel-tel-input/zipball/c4437a1c33327b47c4e9025a0a6bf2c6c6fc87c0",
+                "reference": "c4437a1c33327b47c4e9025a0a6bf2c6c6fc87c0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0|^9.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Victorybiz\\LaravelTelInput\\LaravelTelInputServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelTelInput": "Victorybiz\\LaravelTelInput\\LaravelTelInputFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Victorybiz\\LaravelTelInput\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Victory Osayi Airuoyuwa",
+                    "email": "lavictorybiz@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Telephone Input component for Blade and Livewire based on the intl-tel-input JavaScript plugin. ",
+            "homepage": "https://github.com/victorybiz/laravel-tel-input",
+            "keywords": [
+                "blade",
+                "international-telephone-input",
+                "intl-tel-input",
+                "laravel",
+                "laravel-blade",
+                "laravel-livewire",
+                "laravel-tel-input",
+                "livewire",
+                "livewire-tel-input",
+                "tel-input",
+                "telephone-input",
+                "victorybiz"
+            ],
+            "support": {
+                "issues": "https://github.com/victorybiz/laravel-tel-input/issues",
+                "source": "https://github.com/victorybiz/laravel-tel-input/tree/v1.2.0"
+            },
+            "time": "2022-02-09T02:22:03+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

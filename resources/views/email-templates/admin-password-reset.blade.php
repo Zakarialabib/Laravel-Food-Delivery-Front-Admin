@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Password Reset</title>
+    <title>{{__('Admin Password Reset')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         /**
@@ -104,7 +104,7 @@
 <!-- end preheader -->
 <div class="card">
     <div class="card-header">
-        Your password reset token
+        {{__('Your password reset token')}}
     </div>
     <div class="card-body">
         <h1>{{$url}}</h1>

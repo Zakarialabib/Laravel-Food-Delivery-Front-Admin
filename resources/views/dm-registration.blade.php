@@ -59,7 +59,7 @@
                                 <label class="input-label"
                                     for="exampleFormControlInput1">{{ __('Zone') }}</label>
                                 <select name="zone_id" class="form-control" required
-                                    data-placeholder="{{ __('select') }} {{ __('zone') }}">
+                                    data-placeholder="{{ __('Select zone') }}">
                                     <option value="" readonly="true" hidden="true">{{ __('Select zone') }}</option>
                                     @foreach (\App\Models\Zone::all() as $zone)
                                         @if (isset(auth('admin')->user()->zone_id))
@@ -94,7 +94,7 @@
                                 <label class="input-label"
                                     for="exampleFormControlInput1">{{ __('Identity number') }}</label>
                                 <input type="text" name="identity_number" class="form-control"
-                                    value="{{ old('identity_number') }}" placeholder="Ex : DH-23434-LS" required>
+                                    value="{{ old('identity_number') }}" placeholder="Ex : DH-23434" required>
                             </div>
                         </div>
                         <div class="col-md-12 col-12">

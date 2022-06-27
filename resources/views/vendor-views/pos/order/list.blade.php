@@ -390,8 +390,8 @@
                     <div class="col-md-12">
                         <center>
                             <input type="button" class="btn btn-primary non-printable" onclick="printDiv('printableArea')"
-                                value="Proceed, If thermal printer is ready."/>
-                            <!-- <a href="{{url()->previous()}}" class="btn btn-danger non-printable">Back</a> -->
+                                value="{{__('Proceed, If thermal printer is ready')}}"/>
+                            <!-- <a href="{{url()->previous()}}" class="btn btn-danger non-printable">{{__('Back')}}</a> -->
                         </center>
                         <hr class="non-printable">
                     </div>

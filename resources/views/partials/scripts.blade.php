@@ -12,6 +12,7 @@
 <script src="{{ asset('public/assets/js/custom.js') }}"></script>
 <script src="{{ asset('public/assets/admin/js/toastr.js') }}"></script>
 
+@livewireScripts
 @laravelTelInputScripts
 
 {!! Toastr::message() !!}

@@ -16,20 +16,8 @@
                 <h4 class="text-center pt-2 pb-4">
                     {{isset($landing_page_text)?$landing_page_text['header_title_3']:''}}
                 </h4>
-                {{-- <div class="text-center">
-                <form action="{{ route('restaurants.query') }}" method="post" class="flex flex-row relative w-full lg:max-w-xl mx-auto border dark:border-dark-hover overflow-hidden rounded">
-                    @csrf
-                    <div class="input-group search-location-group">
-                        <input id="zipSearch" class="w-full min-h-full px-4 pt-6 pb-2 text-bold dark:bg-dark-primary dark:text-dark-primary" onkeydown="return checkPhoneKey(event.key)" id="search-input" name="postcode" tabindex="1" type="text"  autocomplete="false" pattern="\d{1,4}" maxlength="4" title="Four digit zip code" required>
-                        <span class="absolute transform translate-y-1/2 transition duration-500 ease-in-out left-0 ml-4 mt-1 text-sm sm:text-base">Enter your postcode</span>
-                    </label>
-                    <button class="bg-light-important dark:bg-dark-important hover:bg-light-hover dark:hover:bg-dark-hover text-light-secondary font-bold py-2 px-4 inline-flex items-center">
-                        <i class='bx bx-target-lock'></i>
-                        <span class="hidden sm:block whitespace-no-wrap">Find restaurant</span>
-                    </button>
-                </form>
-                </div> --}}
-                <form action="{{ route('search') }}" method="POST">
+                    
+                <form action="{{ url('/search') }}" method="POST">
                     @csrf
                     <div class="input-group search-location-group">
                         

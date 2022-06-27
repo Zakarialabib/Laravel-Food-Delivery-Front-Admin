@@ -14,4 +14,5 @@
 <link rel="stylesheet" href="{{ asset('public/assets/landing/fontawesome/css/fontawesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('public/assets/admin/css/toastr.css') }}">
 
+@livewireStyles
 @laravelTelInputStyles

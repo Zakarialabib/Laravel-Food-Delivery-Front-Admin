@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Password Reset</title>
+    <title>{{__('Order Placed')}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         /**
@@ -104,9 +104,11 @@
 <!-- end preheader -->
 <div class="card">
     <div class="card-header">
-        Your Order has been placed.
-        Order ID : {{$id}}.
-        We will contact you soon.
+        <p>
+            {{__('Your Order has been placed')}}.<br>
+            <strong>{{__('Order ID')}} : {{$id}}</strong>.<br>
+            {{__('We will contact you soon')}}.<br>
+        </p>
     </div>
 </div>
 

@@ -719,9 +719,8 @@
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                         </li>
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/app-settings*')?'active':''}}">
-                            <a class="nav-link " href="{{route('admin.business-settings.app-settings')}}"
-                               title="{{__('App settings')}}"
-                            >
+                            <a class="nav-link " href="{{route('admin.business-settings.app-settings-view')}}"
+                               title="{{__('App settings')}}">
                                 <span class="tio-android nav-icon"></span>
                                 <span
                                     class="text-truncate">{{__('App settings')}}</span>
@@ -729,8 +728,7 @@
                         </li>
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/landing-page-settings*')?'active':''}}">
                             <a class="nav-link " href="{{route('admin.business-settings.landing-page-settings', 'index')}}"
-                               title="{{__('Landing page settings')}}"
-                            >
+                               title="{{__('Landing page settings')}}">
                                 <span class="tio-website nav-icon"></span>
                                 <span
                                     class="text-truncate">{{__('Landing page settings')}}</span>
@@ -748,15 +746,13 @@
 
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/pages*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
-                               href="javascript:" title="{{__('pages setup')}}"
-                            >
+                               href="javascript:" title="{{__('pages setup')}}">
                                 <i class="tio-pages nav-icon"></i>
                                 <span
                                     class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('pages setup')}}</span>
                             </a>
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                 style="display: {{Request::is('admin/business-settings/pages*')?'block':'none'}}">
-
                                 <li class="nav-item {{Request::is('admin/business-settings/pages/terms-and-conditions')?'active':''}}">
                                     <a class="nav-link "
                                        href="{{route('admin.business-settings.terms-and-conditions')}}"

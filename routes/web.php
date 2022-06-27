@@ -13,9 +13,6 @@ use App\Http\Controllers\RestaurantQueryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', 'HomeController@index')->name('home');
-//Route::get('/', [FrontController::class, 'index'])->name('home');
-
 
 Route::get('/', 'FrontController@index')->name('home');
 Route::get('/langue/{locale}', 'FrontController@changeLanguage')->name('change_language');
@@ -23,6 +20,25 @@ Route::get('terms-and-conditions', 'HomeController@terms_and_conditions')->name(
 Route::get('about-us', 'HomeController@about_us')->name('about-us');
 Route::get('contact-us', 'HomeController@contact_us')->name('contact-us');
 Route::get('privacy-policy', 'HomeController@privacy_policy')->name('privacy-policy');
+
+Route::post('/search', 'FrontController@search')->name('search');
+
+Route::get('/restaurants', [FrontController::class, 'restaurant_listing'])->name('restaurant_listing');
+Route::get('/restaurant-catalogue/{restaurant}', [FrontController::class, 'restaurant_details'])->name('restaurant_details'); 
+Route::post('/search', [RestaurantQueryController::class, '__invoke'])->name('restaurants.query');
+Route::get('/area/{postcode}', function ($postcode) {
+    return view('front.restaurant_listing', ['postcode' => $postcode]);
+})->name('restaurants.filter');
+
+Route::get('quick-view', [FrontController::class, 'quick_view'])->name('quick-view');
+Route::get('quick-view-cart-item', [FrontController::class, 'quick_view_card_item'])->name('quick-view-cart-item');
+Route::post('variant_price', [FrontController::class, 'variant_price'])->name('variant_price');
+///cart///
+Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
+Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
+
+Route::get('/aboutus',[FrontController::class,'aboutus'])->name('aboutus');
+Route::get('/contact',[FrontController::class,'contact'])->name('contact');
 
 //Restaurant Registration
 Route::group(['prefix' => 'restaurant', 'as' => 'restaurant.'], function () {
@@ -36,28 +52,7 @@ Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.'], function () {
     Route::post('apply', 'DeliveryManController@store')->name('store');
 });
 
-Route::post('/search', [FrontController::class, 'search'])->name('search');
 
-//Route::get('/restaurants', [FrontController::class, 'restaurant_listing'])->name('restaurant_listing');
-//Route::get('/restaurant-catalogue/{restaurant}', [FrontController::class, 'restaurant_details'])->name('restaurant_details'); 
-//Route::post('/search', [RestaurantQueryController::class, '__invoke'])->name('restaurants.query');
-//Route::get('/area/{postcode}', function ($postcode) {
-//    return view('front.restaurant_listing', ['postcode' => $postcode]);
-//})->name('restaurants.filter');
-
-///cart///
-//Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
-//Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
-
-Route::get('quick-view', [FrontController::class, 'quick_view'])->name('quick-view');
-Route::get('quick-view-cart-item', [FrontController::class, 'quick_view_card_item'])->name('quick-view-cart-item');
-Route::post('variant_price', [FrontController::class, 'variant_price'])->name('variant_price');
-///cart///
-Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
-Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
-
-Route::get('/aboutus',[FrontController::class,'aboutus'])->name('aboutus');
-Route::get('/contact',[FrontController::class,'contact'])->name('contact');
 
 Route::get('authentication-failed', function () {
     $errors = [];
@@ -201,8 +196,5 @@ Route::middleware('auth')->group(function (){
     Route::get('download-pdf/{order}', [FrontController::class, 'downloadPDF'])->name('downloadPDF'); 
 
 });
-
-Route::get('/update', 'UpdateController@update_software_index')->name('index');
-Route::post('update-system', 'UpdateController@update_software')->name('update-system');
 
 require __DIR__.'/auth.php';

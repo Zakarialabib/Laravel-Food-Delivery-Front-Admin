@@ -23,7 +23,7 @@
 
             </div>
             <div class="col-6">
-                <h2 class="float-right">#INVOICE</h2>
+                <h2 class="float-right">#{{__('INVOICE')}}</h2>
             </div>
         </div>
 
@@ -32,19 +32,19 @@
                 <img width="150"
                      src="{{asset('storage/app/public/restaurant')}}/{{\App\Models\BusinessSetting::where(['key'=>'logo'])->first()->value}}">
                 <br><br>
-                <strong>Phone : {{\App\Models\BusinessSetting::where(['key'=>'phone'])->first()->value}}</strong><br>
-                <strong>Email : {{\App\Models\BusinessSetting::where(['key'=>'email_address'])->first()->value}}</strong><br>
-                <strong>Address : {{\App\Models\BusinessSetting::where(['key'=>'address'])->first()->value}}</strong><br><br>
+                <strong>{{__('Phone')}} : {{\App\Models\BusinessSetting::where(['key'=>'phone'])->first()->value}}</strong><br>
+                <strong>{{__('Email')}} : {{\App\Models\BusinessSetting::where(['key'=>'email_address'])->first()->value}}</strong><br>
+                <strong>{{__('Address')}} : {{\App\Models\BusinessSetting::where(['key'=>'address'])->first()->value}}</strong><br><br>
             </div>
             <div class="col-4"></div>
             <div class="col-4">
                 @if($order->customer)
-                    <strong class="float-right">Order ID : {{$order['id']}}</strong><br>
-                    <strong class="float-right">Customer Name
+                    <strong class="float-right">{{__('Order ID')}} : {{$order['id']}}</strong><br>
+                    <strong class="float-right">{{__('Customer Name')}}
                         : {{$order->customer['f_name'].' '.$order->customer['l_name']}}</strong><br>
-                    <strong class="float-right">Phone
+                    <strong class="float-right">{{__('Phone')}}
                         : {{$order->customer['phone']}}</strong><br>
-                    <strong class="float-right">Delivery Address
+                    <strong class="float-right">{{__('Delivery Address')}}
                         : {{$order->delivery_address?$order->delivery_address['address']:''}}</strong><br>
                 @endif
             </div>
@@ -59,33 +59,33 @@
                         <div class="row">
                             <div class="col-12 pb-2 border-bottom">
                                 <h4 class="card-header-title">
-                                    Order details
+                                    {{__('Order details')}}
                                     <span
                                         class="badge badge-soft-dark rounded-circle ml-1">{{$order->details->count()}}</span>
                                 </h4>
                             </div>
                             <div class="col-6 pt-2">
                                 <h6 style="color: #8a8a8a;">
-                                    Order Note : {{$order['order_note']}}
+                                    {{__('Order Note')}} : {{$order['order_note']}}
                                 </h6>
                             </div>
                             <div class="col-6 pt-2">
                                 <div class="text-right">
                                     <h6 class="text-capitalize" style="color: #8a8a8a;">
-                                        Payment Method : {{str_replace('_',' ',$order['payment_method'])}}
+                                        {{__('Payment Method')}} : {{str_replace('_',' ',$order['payment_method'])}}
                                     </h6>
                                     <h6 class="" style="color: #8a8a8a;">
                                         @if($order['__action_reference']==null)
-                                            Reference Code :
+                                            {{__('Reference Code')}} :
                                             <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
                                                     data-target=".bd-example-modal-sm">
-                                                Add
+                                                {{__('Add')}}
                                             </button>
                                         @else
-                                            Reference Code : {{$order['__action_reference']}}
+                                            {{__('Reference Code')}} : {{$order['__action_reference']}}
                                         @endif
                                     </h6>
-                                    <h6 class="text-capitalize" style="color: #8a8a8a;">Order Type
+                                    <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('Order Type')}}
                                         : {{str_replace('_',' ',$order['order_type'])}}</h6>
                                 </div>
                             </div>

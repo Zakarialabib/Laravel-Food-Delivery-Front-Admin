@@ -39,8 +39,8 @@
             <div class="col-md-12">
                 <center>
                     <input type="button" class="btn btn-primary non-printable" onclick="printDiv('printableArea')"
-                           value="Proceed, If thermal printer is ready."/>
-                    <a href="{{url()->previous()}}" class="btn btn-danger non-printable">Back</a>
+                           value="{{__('Proceed, If thermal printer is ready')}}"/>
+                    <a href="{{url()->previous()}}" class="btn btn-danger non-printable">{{__('Back')}}</a>
                 </center>
                 <hr class="non-printable">
             </div>
@@ -51,14 +51,14 @@
                         {{$order->restaurant->address}}
                     </h5>
                     <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
-                        Phone : {{$order->restaurant->phone}}
+                        {{__('Phone')}} : {{$order->restaurant->phone}}
                     </h5>
                 </div>
 
                 <span>---------------------------------------------------------------------------------</span>
                 <div class="row mt-3">
                     <div class="col-6">
-                        <h5>Order ID : {{$order['id']}}</h5>
+                        <h5>{{__('Order ID')}} : {{$order['id']}}</h5>
                     </div>
                     <div class="col-6">
                         <h5 style="font-weight: lighter">
@@ -215,7 +215,7 @@
                 </div>
                 <span>---------------------------------------------------------------------------------</span>
                 <h5 class="text-center pt-3">
-                    """THANK YOU"""
+                    """{{__('THANK YOU')}}"""
                 </h5>
                 <span>---------------------------------------------------------------------------------</span>
             </div>

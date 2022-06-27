@@ -22,6 +22,7 @@
         "laravel/passport": "^10.4",
         "laravel/tinker": "^2.5",
         "laravelpkg/laravelchk": "dev-master",
+        "livewire/livewire": "^2.10",
         "madnest/madzipper": "*",
         "mercadopago/dx-php": "2.4.3",
         "nexmo/laravel": "^2.4",
@@ -30,7 +31,8 @@
         "razorpay/razorpay": "^2.5",
         "stripe/stripe-php": "^7.77",
         "twilio/sdk": "^6.28",
-        "unicodeveloper/laravel-paystack": "1.0.*"
+        "unicodeveloper/laravel-paystack": "1.0.*",
+        "victorybiz/laravel-tel-input": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

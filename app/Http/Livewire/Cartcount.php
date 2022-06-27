@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class CartCount extends Component
 {
-
     protected $listeners = ['some-event' => '$refresh'];
     
     public function render()
@@ -14,4 +13,5 @@ class CartCount extends Component
         $cart = session()->get('cart', []);
         return view('livewire.cart-count');
     }
+
 }
