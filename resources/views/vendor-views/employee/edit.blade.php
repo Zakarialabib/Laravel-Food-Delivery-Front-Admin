@@ -95,7 +95,7 @@
                                            placeholder="Ex : ex@gmail.com">
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="input-label qcont" for="name">{{__('Password')}}<small> ( {{__('enter_if_you_want_to_change')}} )</small></label>
+                                    <label class="input-label qcont" for="name">{{__('Password')}}<small> ( {{__('Enter if you want to change')}} )</small></label>
                                     <input type="text" name="password" class="form-control" id="password"
                                            placeholder="{{__('Password length placeholder',['length'=>'8+'])}}">
                                 </div>

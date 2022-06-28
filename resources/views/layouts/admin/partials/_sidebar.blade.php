@@ -78,7 +78,7 @@
 
                                 <li class="nav-item {{Request::is('admin/order/list/accepted')?'active':''}}">
                                     <a class="nav-link " href="{{route('admin.order.list',['accepted'])}}"
-                                       title="{{__('AcceptedbyDM')}}">
+                                       title="{{__('Accepted by deliveryman')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">
                                         {{__('Accepted')}}
@@ -632,11 +632,11 @@
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/provide-deliveryman-earnings*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.provide-deliveryman-earnings.index')}}"
-                               title="{{__('Deliveryman earning_provide')}}"
+                               title="{{__('Deliveryman earning provide')}}"
                             >
                                 <i class="tio-send nav-icon"></i>
                                 <span
-                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('Deliveryman earning_provide')}}</span>
+                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('Deliveryman earning provide')}}</span>
                             </a>
                         </li>
                     @endif

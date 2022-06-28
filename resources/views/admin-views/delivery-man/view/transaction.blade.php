@@ -57,7 +57,7 @@
                         style="width: 100%">
                         <thead class="thead-light">
                             <tr>
-                                <th>{{__('sl#')}}</th>
+                                <th>{{__('#')}}</th>
                                 <th>{{__('order id')}}</th>
                                 <th>{{__('Deliveryman earned')}}</th>
                                 <th>{{__('Date')}}</th>

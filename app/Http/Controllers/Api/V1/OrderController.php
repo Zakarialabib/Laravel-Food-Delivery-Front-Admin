@@ -72,7 +72,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'payment_method', 'message' => trans('messages.customer_wallet_disable_warning')]
+                    ['code' => 'payment_method', 'message' => __('Customer wallet disable warning')]
                 ]
             ], 203);
         }
@@ -93,7 +93,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_time', 'message' => __('Restaurant not_found')]
+                    ['code' => 'order_time', 'message' => __('Restaurant not found')]
                 ]
             ], 404);
         }
@@ -366,7 +366,7 @@ class OrderController extends Controller
         {
             return response()->json([
                 'errors' => [
-                    ['code' => 'order_amount', 'message' => trans('messages.insufficient_balance')]
+                    ['code' => 'order_amount', 'message' => __('Insufficient balance')]
                 ]
             ], 203);
         }

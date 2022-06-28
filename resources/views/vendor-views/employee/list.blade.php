@@ -33,7 +33,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header py-0">
-                    <h5>{{__('Employee')}} {{__('table')}}</h5>
+                    <h5>{{__('Employee table')}}</h5>
                     <form action="javascript:" id="search-form">
                         @csrf
                         <!-- Search -->

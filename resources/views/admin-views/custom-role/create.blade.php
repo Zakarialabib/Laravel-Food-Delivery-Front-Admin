@@ -111,7 +111,7 @@
                                 <div class="form-group form-check">
                                     <input type="checkbox" name="modules[]" value="provide_dm_earning" class="form-check-input"
                                            id="provide_dm_earning">
-                                    <label class="form-check-label qcont text-dark" for="provide_dm_earning">{{__('Deliveryman earning_provide')}}</label>
+                                    <label class="form-check-label qcont text-dark" for="provide_dm_earning">{{__('Deliveryman earning provide')}}</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -218,7 +218,7 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col" style="width: 50px">{{__('sl#')}}</th>
+                                <th scope="col" style="width: 50px">{{__('#')}}</th>
                                 <th scope="col" style="width: 50px">{{__('Role name')}}</th>
                                 <th scope="col" style="width: 200px">{{__('Modules')}}</th>
                                 <th scope="col" style="width: 50px">{{__('Created at')}}</th>

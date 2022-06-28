@@ -19,11 +19,11 @@ if (! function_exists('translate')) {
                 file_put_contents(base_path('resources/lang/' . $local . '/messages.php'), $str);
                 $result = $processed_key;
             } else {
-                $result = trans('messages.' . $key, $replace);
+                $result = __($key, $replace);
             }
         } catch (\Exception $exception) {
             info($exception);
-            $result = trans('messages.' . $key, $replace);
+            $result = __($key, $replace);
         }
 
         return $result;

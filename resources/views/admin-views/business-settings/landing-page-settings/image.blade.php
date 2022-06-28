@@ -74,7 +74,7 @@
                 @csrf
 
                 <div class="form-group">
-                    <label class="input-label" >{{__('Top ')}}<small style="color: red">* ( {{__('size')}}: 772 X 899 px )</small></label>
+                    <label class="input-label" >{{__('Top')}}<small style="color: red">* ( {{__('size')}}: 772 X 899 px )</small></label>
                     <div class="custom-file">
                         <input type="file" name="top_content_image" id="customFileEg1" class="custom-file-input"
                                 accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*" required>

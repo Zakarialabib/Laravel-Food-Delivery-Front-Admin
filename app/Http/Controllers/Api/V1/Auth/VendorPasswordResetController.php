@@ -83,7 +83,7 @@ class VendorPasswordResetController extends Controller
         if(env('APP_MODE') == 'demo') {
             if ($request['reset_token'] != '1234') {
                 return response()->json(['errors' => [
-                    ['code' => 'invalid', 'message' => trans('messages.invalid_otp')]
+                    ['code' => 'invalid', 'message' => __('Invalid otp')]
                 ]], 400);
             }
             if ($request['password'] == $request['confirm_password']) {
@@ -91,10 +91,10 @@ class VendorPasswordResetController extends Controller
                     'password' => bcrypt($request['confirm_password'])
                 ]);
                 DB::table('password_resets')->where(['token' => $request['reset_token']])->delete();
-                return response()->json(['message' => translate('Password changed successfully.')], 200);
+                return response()->json(['message' => __('Password changed successfully.')], 200);
             }
             return response()->json(['errors' => [
-                ['code' => 'mismatch', 'message' => translate('messages.password_mismatch')]
+                ['code' => 'mismatch', 'message' => __('Password mismatch')]
             ]], 401);
         }
 
@@ -109,11 +109,11 @@ class VendorPasswordResetController extends Controller
                 return response()->json(['message' => 'Password changed successfully.'], 200);
             }
             return response()->json(['errors' => [
-                ['code' => 'mismatch', 'message' => 'Password did,t match!']
+                ['code' => 'mismatch', 'message' => 'Password didn,t match!']
             ]], 401);
         }
         return response()->json(['errors' => [
-            ['code' => 'invalid', 'message' => __('invalid_otp')]
+            ['code' => 'invalid', 'message' => __('Invalid otp')]
         ]], 400);
     }
 }

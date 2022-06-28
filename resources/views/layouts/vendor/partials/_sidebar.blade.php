@@ -116,7 +116,7 @@
                                 </a>
                             </li>
                             <li class="nav-item {{Request::is('vendor-panel/order/list/food_on_the_way')?'active':''}}">
-                                <a class="nav-link" href="{{route('vendor.order.list',['food_on_the_way'])}}" title="{{__('foods_on_the_way')}}">
+                                <a class="nav-link" href="{{route('vendor.order.list',['food_on_the_way'])}}" title="{{__('Foods on the way')}}">
                                     <span class="tio-circle nav-indicator-icon"></span>
                                     <span class="text-truncate">
                                         {{__('Food on the way')}} 

@@ -166,7 +166,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>{{ __('withdraw')}} {{ __('request')}} {{ __('table')}}</h5>
+                    <h5>{{ __('Withdraw request table')}}</h5>
                 </div>
                 <div class="card-body" style="padding: 0">
                     <div class="table-responsive">
@@ -180,7 +180,7 @@
                                }'>
                             <thead class="thead-light">
                             <tr>
-                                <th>{{__('sl#')}}</th>
+                                <th>{{__('#')}}</th>
                                 <th>{{__('Amount')}}</th>
                                 <th>{{__('Note')}}</th>
                                 <th>{{__('Request time')}}</th>

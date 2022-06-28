@@ -63,7 +63,7 @@ class CustomerController extends Controller
             'updated_at' => now()
         ];
         DB::table('customer_addresses')->insert($address);
-        return response()->json(['message' => trans('messages.successfully_added'),'zone_id'=>$zone->id], 200);
+        return response()->json(['message' => __('successfully added'),'zone_id'=>$zone->id], 200);
     }
 
     public function update_address(Request $request,$id)
@@ -85,7 +85,7 @@ class CustomerController extends Controller
         if(!$zone)
         {
             $errors = [];
-            array_push($errors, ['code' => 'coordinates', 'message' => trans('messages.service_not_available_in_this_area')]);
+            array_push($errors, ['code' => 'coordinates', 'message' => __('service not available in this area')]);
             return response()->json([
                 'errors' => $errors
             ], 403);
@@ -106,7 +106,7 @@ class CustomerController extends Controller
             'updated_at' => now()
         ];
         DB::table('customer_addresses')->where('id',$id)->update($address);
-        return response()->json(['message' => trans('messages.updated_successfully'),'zone_id'=>$zone->id], 200);
+        return response()->json(['message' => __('updated successfully'),'zone_id'=>$zone->id], 200);
     }
 
     public function delete_address(Request $request)
@@ -121,9 +121,9 @@ class CustomerController extends Controller
 
         if (DB::table('customer_addresses')->where(['id' => $request['address_id'], 'user_id' => $request->user()->id])->first()) {
             DB::table('customer_addresses')->where(['id' => $request['address_id'], 'user_id' => $request->user()->id])->delete();
-            return response()->json(['message' => trans('messages.successfully_removed')], 200);
+            return response()->json(['message' => __('Successfully removed')], 200);
         }
-        return response()->json(['message' => trans('messages.not_found')], 404);
+        return response()->json(['message' => __('Not found')], 404);
     }
 
     public function get_order_list(Request $request)
@@ -199,7 +199,7 @@ class CustomerController extends Controller
 
         User::where(['id' => $request->user()->id])->update($userDetails);
 
-        return response()->json(['message' => trans('messages.successfully_updated')], 200);
+        return response()->json(['message' => __('Successfully updated')], 200);
     }
     public function update_interest(Request $request)
     {
@@ -217,7 +217,7 @@ class CustomerController extends Controller
 
         User::where(['id' => $request->user()->id])->update($userDetails);
 
-        return response()->json(['message' => trans('messages.interest_updated_successfully')], 200);
+        return response()->json(['message' => __('Interest updated successfully')], 200);
     }
 
     public function update_cm_firebase_token(Request $request)
@@ -234,7 +234,7 @@ class CustomerController extends Controller
             'cm_firebase_token'=>$request['cm_firebase_token']
         ]);
 
-        return response()->json(['message' => trans('messages.updated_successfully')], 200);
+        return response()->json(['message' => __('updated successfully')], 200);
     }
 
     public function get_suggested_food(Request $request)
@@ -271,7 +271,7 @@ class CustomerController extends Controller
     {
         if (!$request->hasHeader('zoneId') && is_numeric($request->header('zoneId'))) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('Zone id required')]);
             return response()->json([
                 'errors' => $errors
             ], 403);

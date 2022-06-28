@@ -104,7 +104,7 @@
                                                 <li>
                                                     {{__('Add')}}
                                                     <b>{{__('domain')}}</b>
-                                                    {{__('(For ex: demo.tiktak.com)')}}
+                                                    {{__('(For ex: tiktak.ma)')}}
                                                 </li>
                                                 <li>
                                                     {{__('Check in ')}}

@@ -123,7 +123,7 @@
                             
                             <button type="submit" class="btn btn-lg btn-block btn-primary">{{__('Sign in')}}</button>
                             <div class="text-center">
-                                <span class="divider text-muted m-4">OR</span>
+                                <span class="divider text-muted m-4">{{__('OR')}}</span>
                             </div>
                         </form>
                         <!-- End Form -->
@@ -137,7 +137,7 @@
                             </div>
                             <!-- Form Group -->
                             <div class="js-form-message form-group">
-                                <label class="input-label" for="signinSrEmail">{{__('your email')}}</label>
+                                <label class="input-label" for="signinSrEmail">{{__('Your email')}}</label>
 
                                 <input type="email" class="form-control form-control-lg" name="email"
                                        tabindex="1" placeholder="email@address.com" aria-label="email@address.com"

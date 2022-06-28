@@ -23,7 +23,7 @@ class LoyaltyPointController extends Controller
             return response()->json(['errors' => Helpers::error_processor($validator)], 403);
         }
 
-        if($request->user()->loyalty_point < (int)BusinessSetting::where('key','loyalty_point_minimum_point')->first()->value) return response()->json(['errors' => [ ['code' => 'point', 'message' => trans('messages.insufficient_point')]]], 203);
+        if($request->user()->loyalty_point < (int)BusinessSetting::where('key','loyalty_point_minimum_point')->first()->value) return response()->json(['errors' => [ ['code' => 'point', 'message' => __('insufficient point')]]], 203);
 
         try
         {
@@ -33,12 +33,12 @@ class LoyaltyPointController extends Controller
                 Mail::to($request->user()->email)->send(new \App\Mail\AddFundToWallet($wallet_transaction));
             }
 
-            return response()->json(['message' => trans('messages.point_to_wallet_transfer_successfully')], 200);         
+            return response()->json(['message' => __('point to wallet transfer successfully')], 200);         
         }catch(\Exception $ex){
             info($ex);
         }
 
-        return response()->json(['errors' => [ ['code' => 'customer_wallet', 'message' => trans('messages.failed_to_transfer')]]], 203);
+        return response()->json(['errors' => [ ['code' => 'customer_wallet', 'message' => __('failed to transfer')]]], 203);
     }
 
     public function transactions(Request $request)

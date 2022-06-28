@@ -33,7 +33,7 @@
         <div class="col-md-12">
             <div class="card">
             <div class="card-header py-0">
-                    <h5>{{__('Employee')}} {{__('table')}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{$em->total()}}</span></h5>
+                    <h5>{{__('Employee table')}} <span class="badge badge-soft-dark ml-2" id="itemCount">{{$em->total()}}</span></h5>
                     <form action="javascript:" id="search-form">
                         @csrf
                         <!-- Search -->

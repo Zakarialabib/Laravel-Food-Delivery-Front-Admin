@@ -166,7 +166,7 @@
                                }'>
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col" style="width: 50px">{{__('sl#')}}</th>
+                                    <th scope="col" style="width: 50px">{{__('#')}}</th>
                                     <th scope="col" style="width: 50px">{{__('Role name')}}</th>
                                     <th scope="col" style="width: 200px">{{__('Modules')}}</th>
                                     <th scope="col" style="width: 50px">{{__('Created at')}}</th>

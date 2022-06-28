@@ -433,7 +433,7 @@
                         style="width: 100%">
                         <thead class="thead-light">
                             <tr>
-                                <th  style="width: 5%">{{__('sl#')}}</th>
+                                <th  style="width: 5%">{{__('#')}}</th>
                                 <th  style="width: 10%">{{__('order id')}}</th>
                                 <th  style="width: 17%">{{__('Total order amount')}}</th>
                                 <th  style="width: 10%">{{__('Restaurant commission')}}</th>

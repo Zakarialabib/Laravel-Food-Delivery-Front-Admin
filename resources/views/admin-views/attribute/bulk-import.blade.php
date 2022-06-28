@@ -2,10 +2,6 @@
 
 @section('title','Attribute Bulk Import')
 
-@push('css_or_js')
-
-@endpush
-
 @section('content')
     <div class="content container-fluid">
         <nav aria-label="breadcrumb">
@@ -18,18 +14,18 @@
                 <li class="breadcrumb-item">{{__('Bulk import')}} </li>
             </ol>
         </nav>
-        <h1 class="text-capitalize">{{__('attributes bulk_import')}}</h1>
+        <h1 class="text-capitalize">{{__('Attributes bulk import')}}</h1>
         <!-- Content Row -->
         <div class="row">
             <div class="col-12">
                 <div class="jumbotron pt-1" style="background: white">
-                    <h3>Instructions : </h3>
-                    <p> 1. Download the format file and fill it with proper data.</p>
+                    <h3>{{__('Instructions')}} : </h3>
+                    <p> 1. {{__('Download the format file and fill it with proper data')}}.</p>
 
-                    <p>2. You can download the example file to understand how the data must be filled.</p>
+                    <p>2. {{__('You can download the example file to understand how the data must be filled')}}.</p>
 
-                    <p>3. Once you have downloaded and filled the format file, upload it in the form below and
-                        submit.</p>
+                    <p>3. {{__('Once you have downloaded and filled the format file, upload it in the form below and
+                        submit')}}.</p>
 
                 </div>
             </div>
@@ -40,9 +36,9 @@
                     @csrf
                     <div class="card mt-2 rest-part">
                         <div class="card-header">
-                            <h4>Import Attributes File</h4>
+                            <h4>{{__('Import Attributes File')}}</h4>
                             <a href="{{asset('public/assets/attributes_bulk_format.xlsx')}}" download=""
-                               class="btn btn-secondary">Download Format</a>
+                               class="btn btn-secondary">{{__('Download Format')}}</a>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -58,7 +54,7 @@
                     <div class="card card-footer">
                         <div class="row">
                             <div class="col-md-12" style="padding-top: 20px">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">{{__('Submit')}}</button>
                             </div>
                         </div>
                     </div>

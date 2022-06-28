@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-2">
-                                <label class="input-label" style="padding-left: 10px">{{__('Server map api key ')}}</label>
+                                <label class="input-label" style="padding-left: 10px">{{__('Server map api key')}}</label>
                                 <input type="text" placeholder="{{__('Server map api key')}})" class="form-control" name="map_api_key_server"
                                     value="{{env('APP_MODE')!='demo'?$map_api_key_server??'':''}}" required>
                             </div>

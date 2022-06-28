@@ -632,7 +632,7 @@ class Helpers
                 "is_read": 0,
                 "icon" : "new",
                 "sound": "notification.wav",
-                "android_channel_id": "stackfood"
+                "android_channel_id": "tiktakmarket"
             }
         }';
         $ch = curl_init();
@@ -684,7 +684,7 @@ class Helpers
                     "is_read": 0,
                     "icon" : "new",
                     "sound": "notification.wav",
-                    "android_channel_id": "stackfood"
+                    "android_channel_id": "tiktakmarket"
                   }
             }';
         } else {
@@ -707,7 +707,7 @@ class Helpers
                     "is_read": 0,
                     "icon" : "new",
                     "sound": "notification.wav",
-                    "android_channel_id": "stackfood"
+                    "android_channel_id": "tiktakmarket"
                   }
             }';
         }
@@ -949,7 +949,7 @@ class Helpers
                 if ($order->restaurant->self_delivery_system) {
                     $data = [
                         'title' => __('Order push title'),
-                        'description' => __('New order push description'),
+                        'description' => __('New Order push description'),
                         'order_id' => $order->id,
                         'image' => '',
                         'type' => 'new_order',
@@ -964,7 +964,7 @@ class Helpers
                 } else {
                     $data = [
                         'title' => __('Order push title'),
-                        'description' => __('New order push description'),
+                        'description' => __('New Order push description'),
                         'order_id' => $order->id,
                         'image' => '',
                     ];
@@ -975,7 +975,7 @@ class Helpers
             if ($order->order_type == 'delivery' && !$order->scheduled && $order->order_status == 'pending' && $order->payment_method == 'cash_on_delivery' && config('order_confirmation_model') == 'restaurant') {
                 $data = [
                     'title' => __('Order push title'),
-                    'description' => __('New_order_push_description'),
+                    'description' => __('New Order push description'),
                     'order_id' => $order->id,
                     'image' => '',
                     'type' => 'new_order',
@@ -992,7 +992,7 @@ class Helpers
             if (!$order->scheduled && (($order->order_type == 'take_away' && $order->order_status == 'pending') || ($order->payment_method != 'cash_on_delivery' && $order->order_status == 'confirmed'))) {
                 $data = [
                     'title' => __('Order push title'),
-                    'description' => __('New order push description'),
+                    'description' => __('New Order push description'),
                     'order_id' => $order->id,
                     'image' => '',
                     'type' => 'new_order',
@@ -1010,7 +1010,7 @@ class Helpers
                 if ($order->restaurant->self_delivery_system) {
                     $data = [
                         'title' => __('Order push title'),
-                        'description' => __('New order push description'),
+                        'description' => __('New Order push description'),
                         'order_id' => $order->id,
                         'image' => '',
                     ];
@@ -1019,7 +1019,7 @@ class Helpers
                 } else {
                     $data = [
                         'title' => __('Order push title'),
-                        'description' => __('New order push description'),
+                        'description' => __('New Order push description'),
                         'order_id' => $order->id,
                         'image' => '',
                         'type' => 'new_order',
@@ -1037,7 +1037,7 @@ class Helpers
             if ($order->order_type == 'delivery' && !$order->scheduled && $order->order_status == 'confirmed'  && ($order->payment_method != 'cash_on_delivery' || config('order_confirmation_model') == 'restaurant')) {
                 $data = [
                     'title' => __('Order push title'),
-                    'description' => __('New order push description'),
+                    'description' => __('New Order push description'),
                     'order_id' => $order->id,
                     'image' => '',
                 ];

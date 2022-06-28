@@ -631,7 +631,7 @@
                             @php($canceled_by_deliveryman=\App\Models\BusinessSetting::where('key','canceled_by_deliveryman')->first())
                             @php($canceled_by_deliveryman=$canceled_by_deliveryman?$canceled_by_deliveryman->value:0)
                             <div class="form-group">
-                                <label class="input-label d-inline">{{__('Deliveryman cancellation_toggle')}}</label><small style="color: red">
+                                <label class="input-label d-inline">{{__('Deliveryman cancellation toggle')}}</label><small style="color: red">
                                 <!-- <span class="input-label-secondary" title="{{__('Customer verification toggle')}}"><img src="{{asset('/public/assets/admin/img/info-circle.svg')}}" alt="{{__('Customer verification toggle')}}"></span> -->
                                  *</small>
                                 <div class="input-group input-group-md-down-break">
@@ -991,7 +991,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="input-label d-inline" for="exampleFormControlInput1">{{__('footer text')}}</label>
-                                <textarea type="text" value=""
+                                <textarea type="text" value="" disabled
                                        name="footer_text" class="form-control" placeholder=""
                                        required>{{$footer_text->value??''}}</textarea>
                             </div>

@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>{{ __('withdraw')}} {{ __('request')}} {{ __('table')}} <span
+                        <h5>{{ __('Withdraw request table')}} <span
                                 class="badge badge-soft-dark ml-2">{{$withdraw_req->total()}}</span></h5>
                         <select name="withdraw_status_filter" onchange="status_filter(this.value)"
                                 class="custom-select float-right" style="width: 200px">
@@ -50,7 +50,7 @@
                                    style="width: 100%">
                                 <thead class="thead-light">
                                 <tr>
-                                    <th>{{__('sl#')}}</th>
+                                    <th>{{__('#')}}</th>
                                     <th>{{__('Amount')}}</th>
                                     {{-- <th>{{__('Note')}}</th> --}}
                                     <th>{{ __('Restaurant') }}</th>

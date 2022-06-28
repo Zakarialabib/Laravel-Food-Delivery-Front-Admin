@@ -72,7 +72,7 @@ class CampaignController extends Controller
     public function get_item_campaigns(Request $request){
         if (!$request->hasHeader('zoneId')) {
             $errors = [];
-            array_push($errors, ['code' => 'zoneId', 'message' => trans('messages.zone_id_required')]);
+            array_push($errors, ['code' => 'zoneId', 'message' => __('Zone id required')]);
             return response()->json([
                 'errors' => $errors
             ], 200);

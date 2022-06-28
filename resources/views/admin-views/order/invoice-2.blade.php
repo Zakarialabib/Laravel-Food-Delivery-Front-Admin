@@ -72,17 +72,17 @@
                             <div class="col-6 pt-2">
                                 <div class="text-right">
                                     <h6 class="text-capitalize" style="color: #8a8a8a;">
-                                        {{__('Payment Method')}} : {{str_replace('_',' ',$order['payment_method'])}}
+                                        {{__('Payment method')}} : {{str_replace('_',' ',$order['payment_method'])}}
                                     </h6>
                                     <h6 class="" style="color: #8a8a8a;">
                                         @if($order['__action_reference']==null)
-                                            {{__('Reference Code')}} :
+                                            {{__('Reference code')}} :
                                             <button class="btn btn-outline-primary btn-sm" data-toggle="modal"
                                                     data-target=".bd-example-modal-sm">
                                                 {{__('Add')}}
                                             </button>
                                         @else
-                                            {{__('Reference Code')}} : {{$order['__action_reference']}}
+                                            {{__('Reference code')}} : {{$order['__action_reference']}}
                                         @endif
                                     </h6>
                                     <h6 class="text-capitalize" style="color: #8a8a8a;">{{__('Order Type')}}

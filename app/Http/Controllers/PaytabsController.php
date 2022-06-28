@@ -126,13 +126,13 @@ class PaytabsController extends Controller
         $transRef = filter_input(INPUT_POST, 'tranRef');
 
         if (!$transRef) {
-            Toastr::error(translate('Transaction reference is not set. return url must be HTTPs with POST method to can retrieve data'));
+            Toastr::error(__('Transaction reference is not set. return url must be HTTPs with POST method to can retrieve data'));
             return back();
         }
 
         $is_valid = $plugin->is_valid_redirect($response_data);
         if (!$is_valid) {
-            Toastr::error(translate('Not a valid PayTabs response'));
+            Toastr::error(__('Not a valid PayTabs response'));
             return back();
         }
 

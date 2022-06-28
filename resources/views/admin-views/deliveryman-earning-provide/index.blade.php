@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('Deliveryman earning_provide'))
+@section('title',__('Deliveryman earning provide'))
 
 @push('css_or_js')
 
@@ -11,7 +11,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-            <li class="breadcrumb-item" aria-current="page">{{__('Deliveryman earning_provide')}}  </li>
+            <li class="breadcrumb-item" aria-current="page">{{__('Deliveryman earning provide')}}  </li>
         </ol>
     </nav>
 
@@ -67,7 +67,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="text-capitalize">{{ __('Deliveryman earning_provide')}} {{ __('table')}}</h5>
+                    <h5 class="text-capitalize">{{ __('Deliveryman earning provide table')}}</h5>
                 </div>
                 <div class="card-body" style="padding: 0">
                     <div class="table-responsive">
@@ -76,7 +76,7 @@
                             style="width: 100%">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>{{__('sl#')}}</th>
+                                    <th>{{__('#')}}</th>
                                     <th>{{__('Name')}}</th>
                                     <th>{{__('Received at')}}</th>
                                     <th>{{__('Amount')}}</th>

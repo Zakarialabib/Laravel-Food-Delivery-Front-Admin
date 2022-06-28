@@ -104,7 +104,7 @@
 <!-- end preheader -->
 <div class="card">
     <div class="card-header">
-        {{__('Your varification code')}}
+        {{__('Your verification code')}}
     </div>
     <div class="card-body">
         <h1>{{$reset_url}}</h1>

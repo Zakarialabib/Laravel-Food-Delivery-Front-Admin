@@ -33,11 +33,11 @@ class ConfirmablePasswordController extends Controller
             'password' => $request->password,
         ])) {
             throw ValidationException::withMessages([
-                'password' => __('auth.password'),
+                'password' => __('password'),
             ]);
         }
 
-        $request->session()->put('auth.password_confirmed_at', time());
+        $request->session()->put('password confirmed at', time());
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

@@ -7,7 +7,7 @@
             style="width: 100%">
             <thead class="thead-light">
                 <tr>
-                    <th>{{__('sl#')}}</th>
+                    <th>{{__('#')}}</th>
                     <th>{{__('Created at')}}</th>
                     <th>{{__('Amount')}}</th>
                     <th>{{__('status')}}</th>

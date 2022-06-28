@@ -38,6 +38,7 @@
         "barryvdh/laravel-debugbar": "^3.5",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "kkomelin/laravel-translatable-string-exporter": "^1.17",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
@@ -52,11 +53,11 @@
             "app/CentralLogics/product.php",
             "app/CentralLogics/restaurant.php",
             "app/CentralLogics/helpers.php",
-            "app/CentralLogics/helpers.php",
             "app/CentralLogics/order.php",
             "app/CentralLogics/coupon.php",
             "app/CentralLogics/sms_module.php",
             "app/CentralLogics/filemanager.php",
+            "app/helpers.php",
             "vendor/laravelpkg/laravelchk/src/Http/Controllers/LaravelchkController.php"
         ],
         "psr-4": {

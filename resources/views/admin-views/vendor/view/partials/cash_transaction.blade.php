@@ -7,7 +7,7 @@
             style="width: 100%">
             <thead class="thead-light">
                 <tr>
-                    <th>{{__('sl#')}}</th>
+                    <th>{{__('#')}}</th>
                     <th>{{__('Received at')}}</th>
                     <th>{{__('Balance before transaction')}}</th>
                     <th>{{__('Amount')}}</th>

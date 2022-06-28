@@ -108,7 +108,7 @@
                                 <div class="form-group form-check">
                                     <input type="checkbox" name="modules[]" value="provide_dm_earning" class="form-check-input"
                                            id="provide_dm_earning"  {{in_array('provide_dm_earning',(array)json_decode($role['modules']))?'checked':''}}>
-                                    <label class="form-check-label qcont text-dark" for="provide_dm_earning">{{__('Deliveryman earning_provide')}}</label>
+                                    <label class="form-check-label qcont text-dark" for="provide_dm_earning">{{__('Deliveryman earning provide')}}</label>
                                 </div>
                             </div>
                             <div class="col-md-3">

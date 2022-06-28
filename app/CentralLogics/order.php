@@ -275,14 +275,14 @@ class OrderLogic
 
             $data[]=[
                 '#'=>$key+1,
-                trans('messages.order')=>$order['id'],
-                trans('messages.date')=>date('d M Y',strtotime($order['created_at'])),
-                trans('messages.customer')=>$order->customer?$order->customer['f_name'].' '.$order->customer['l_name']:__('messages.invalid').' '.__('messages.customer').' '.__('messages.data'),
-                trans('messages.Restaurant')=>\Str::limit($order->restaurant?$order->restaurant->name:__('messages.Restaurant deleted!'),20,'...'),
-                trans('messages.payment').' '.trans('messages.status')=>$order->payment_status=='paid'?__('messages.paid'):__('messages.unpaid'),
-                trans('messages.total')=>\App\CentralLogics\Helpers::format_currency($order['order_amount']),
-                trans('messages.order').' '.trans('messages.status')=>trans('messages.'. $order['order_status']),
-                trans('messages.order').' '.trans('messages.type')=>trans('messages.'.$order['order_type'])
+                __('order')=>$order['id'],
+                __('date')=>date('d M Y',strtotime($order['created_at'])),
+                __('customer')=>$order->customer?$order->customer['f_name'].' '.$order->customer['l_name']:__('invalid').' '.__('customer').' '.__('data'),
+                __('Restaurant')=>\Str::limit($order->restaurant?$order->restaurant->name:__('Restaurant deleted!'),20,'...'),
+                __('payment').' '.__('status')=>$order->payment_status=='paid'?__('paid'):__('unpaid'),
+                __('total')=>\App\CentralLogics\Helpers::format_currency($order['order_amount']),
+                __('order').' '.__('status')=>__(''. $order['order_status']),
+                __('order').' '.__('type')=>__(''.$order['order_type'])
             ];
         }
         return $data;

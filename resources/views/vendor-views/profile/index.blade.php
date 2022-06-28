@@ -152,7 +152,7 @@
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" name="email" id="newEmailLabel"
                                            value="{{auth('vendor')->check()?auth('vendor')->user()->email:auth('vendor_employee')->user()->email}}"
-                                           placeholder="{{__('enter_new_email_address')}}" aria-label="{{__('enter_new_email_address')}}">
+                                           placeholder="{{__('Enter new email address')}}" aria-label="{{__('Enter new email address')}}">
                                 </div>
                             </div>
 

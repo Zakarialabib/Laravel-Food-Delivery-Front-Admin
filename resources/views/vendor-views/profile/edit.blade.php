@@ -36,7 +36,7 @@
                             aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu"
                             data-toggle="collapse" data-target="#navbarVerticalNavMenu">
                 <span class="d-flex justify-content-between align-items-center">
-                  <span class="h5 mb-0">Nav menu</span>
+                  <span class="h5 mb-0">{{__('Nav menu')}}</span>
 
                   <span class="navbar-toggle-default">
                     <i class="tio-menu-hamburger"></i>
@@ -129,11 +129,11 @@
                             <!-- Form Group -->
                             <div class="row form-group">
                                 <label for="phoneLabel" class="col-sm-3 col-form-label input-label">{{__('Phone')}} <span
-                                        class="input-label-secondary">(Optional)</span></label>
+                                        class="input-label-secondary">({{__('Optional')}})</span></label>
 
                                 <div class="col-sm-9">
                                     <input type="tel" class="js-masked-input form-control" name="phone" id="phoneLabel"
-                                           placeholder="+x(xxx)xxx-xx-xx" aria-label="+(xxx)xx-xxx-xxxxx"
+                                           placeholder="(xxx)xx-xx-xx" aria-label="(xxx)xx-xx-xx"
                                            value="{{$data->phone}}"
                                            data-hs-mask-options='{
                                            "template": "+(880)00-000-00000"
@@ -148,7 +148,7 @@
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" name="email" id="newEmailLabel"
                                            value="{{$data->email}}"
-                                           placeholder="{{__('enter_new_email_address')}}" aria-label="{{__('enter_new_email_address')}}">
+                                           placeholder="{{__('Enter new email address')}}" aria-label="{{__('Enter new email address')}}">
                                 </div>
                             </div>
 

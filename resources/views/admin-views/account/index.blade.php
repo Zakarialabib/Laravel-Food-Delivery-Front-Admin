@@ -80,7 +80,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>{{ __('Account transaction')}} {{ __('table')}}</h5>
+                    <h5>{{ __('Account transaction table')}}</h5>
                 </div>
                 <div class="card-body" style="padding: 0">
                     <div class="table-responsive">
@@ -89,7 +89,7 @@
                             style="width: 100%">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>{{__('sl#')}}</th>
+                                    <th>{{__('#')}}</th>
                                     <th>{{ __('Received from') }}</th>
                                     <th>{{ __('Type') }}</th>
                                     <th>{{__('Received at')}}</th>

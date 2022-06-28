@@ -263,6 +263,7 @@
             zoom: 13,
             center: myLatlng,
         });
+        
         var zonePolygon = null;
         let infoWindow = new google.maps.InfoWindow({
                 content: "Click the map to get Lat/Lng!",
