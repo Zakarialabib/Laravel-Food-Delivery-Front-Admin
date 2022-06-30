@@ -2,10 +2,7 @@
 
 @section('title','Item Campaign Preview')
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header -->
@@ -146,7 +143,7 @@
                             <label class="input-label">{{$campaign->restaurant['name']}}</label>
                         </a>
                         @else
-                        <span class="badge-info">{{__('restaurant deleted')}}</span>
+                        <span class="badge-info">{{__('Restaurant deleted')}}</span>
                         @endif
                     </div>
                     <div class="col-12 pt-2">

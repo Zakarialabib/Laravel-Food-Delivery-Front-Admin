@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Vendor List')
+@section('title', __('Vendor List'))
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -29,7 +29,7 @@
                 <div class="col-sm-auto" style="min-width: 306px;">
                     <select name="zone_id" class="form-control js-select2-custom"
                             onchange="set_zone_filter('{{route('admin.vendor.list')}}',this.value)">
-                        <option value="all">All Zones</option>
+                        <option value="all">All zones</option>
                         @foreach(\App\Models\Zone::orderBy('name')->get() as $z)
                             <option
                                 value="{{$z['id']}}" {{isset($zone) && $zone->id == $z['id']?'selected':''}}>
@@ -48,7 +48,7 @@
                 <div class="card">
                     <!-- Header -->
                     <div class="card-header pb-1 pt-1" >
-                        <h5>{{__('restaurants list')}}</h5>
+                        <h5>{{__('Restaurants list')}}</h5>
                         <form action="javascript:" id="search-form" >
                                         <!-- Search -->
                             @csrf
@@ -117,7 +117,7 @@
                                         </span>
                                     </td>
                                     <td>
-                                        {{$dm->zone?$dm->zone->name:__('Zone').' '.__('deleted')}}
+                                        {{$dm->zone?$dm->zone->name:__('Zone deleted')}}
                                         {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
                                     </td>
                                     <td>
@@ -182,7 +182,7 @@
         function status_change_alert(url, message, e) {
             e.preventDefault();
             Swal.fire({
-                title: 'Are you sure?',
+                title: '{{__('Are you sure')}}',   
                 text: message,
                 type: 'warning',
                 showCancelButton: true,

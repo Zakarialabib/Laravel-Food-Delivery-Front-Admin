@@ -2,10 +2,7 @@
 
 @section('title',__('Profile settings'))
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <!-- Content -->
     <div class="content container-fluid">

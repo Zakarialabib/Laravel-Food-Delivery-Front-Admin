@@ -2,10 +2,7 @@
 
 @section('title','Payment Setup')
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header-->
@@ -41,7 +38,7 @@
                                         style="padding-left: 10px">Inactive</label>
                                     <br>
                                 </div>
-                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">Save</button>
+                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">{{__('Save')}}</button>
                             @else
                                 <button type="submit" class="btn btn-primary mb-2">Configure</button>
                             @endif
@@ -72,7 +69,7 @@
                                         style="padding-left: 10px">Inactive</label>
                                     <br>
                                 </div>
-                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">Save</button>
+                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">{{__('Save')}}</button>
                             @else
                                 <button type="submit" class="btn btn-primary mb-2">Configure</button>
                             @endif
@@ -114,7 +111,7 @@
                                     <label style="padding-left: 10px">Store Password</label><br>
                                     <input type="text" class="form-control" name="store_password">
                                 </div>
-                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">Save</button>
+                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">{{__('Save')}}</button>
                             @else
                                 <button type="submit" class="btn btn-primary mb-2">Configure</button>
                             @endif
@@ -153,7 +150,7 @@
                                     <label style="padding-left: 10px">Razor Secret</label><br>
                                     <input type="text" class="form-control" name="razor_secret">
                                 </div>
-                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">Save</button>
+                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">{{__('Save')}}</button>
                             @else
                                 <button type="submit" class="btn btn-primary mb-2">Configure</button>
                             @endif
@@ -191,7 +188,7 @@
                                     <label style="padding-left: 10px">Paypal secret </label><br>
                                     <input type="text" class="form-control" name="paypal_secret">
                                 </div>
-                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">Save</button>
+                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">{{__('Save')}}</button>
                             @else
                                 <button type="submit" class="btn btn-primary mb-2">Configure</button>
                             @endif
@@ -230,7 +227,7 @@
                                     <label style="padding-left: 10px">API key</label><br>
                                     <input type="text" class="form-control" name="api_key">
                                 </div>
-                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">Save</button>
+                                <button type="button" onclick="call_admin()" class="btn btn-primary mb-2">{{__('Save')}}</button>
                             @else
                                 <button type="submit" class="btn btn-primary mb-2">Configure</button>
                             @endif

@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('Edit').' '.__('Account transaction'))
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Edit account transaction'))
 
 @section('content')
 <div class="content container-fluid">

@@ -106,7 +106,7 @@
     <div class="card-header">
         <p>
             {{__('Your Order has been placed')}}.<br>
-            <strong>{{__('Order ID')}} : {{$id}}</strong>.<br>
+            <strong>{{__('Order id')}} : {{$id}}</strong>.<br>
             {{__('We will contact you soon')}}.<br>
         </p>
     </div>

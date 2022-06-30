@@ -67,7 +67,7 @@
 
     <div class="card my-2">
         <div class="card-body">
-            <form action="{{route('admin.business-settings.landing-page-settings', 'text')}}" method="POST">
+            <form action="{{route('admin.business-settings.landing-page-settings-update', 'text')}}" method="POST">
                 @php($landing_page_text = \App\Models\BusinessSetting::where(['key'=>'landing_page_text'])->first())
                 @php($landing_page_text = isset($landing_page_text->value)?json_decode($landing_page_text->value, true):null)
 

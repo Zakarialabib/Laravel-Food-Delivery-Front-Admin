@@ -39,8 +39,8 @@
             <div class="col-4"></div>
             <div class="col-4">
                 @if($order->customer)
-                    <strong class="float-right">{{__('Order ID')}} : {{$order['id']}}</strong><br>
-                    <strong class="float-right">{{__('Customer Name')}}
+                    <strong class="float-right">{{__('Order id')}} : {{$order['id']}}</strong><br>
+                    <strong class="float-right">{{__('Customer name')}}
                         : {{$order->customer['f_name'].' '.$order->customer['l_name']}}</strong><br>
                     <strong class="float-right">{{__('Phone')}}
                         : {{$order->customer['phone']}}</strong><br>

@@ -1,1 +1,1 @@
-Order ID : {{$order_id}} -- payment done
+{{__('Order id')}} : {{$order_id}} -- {{__('payment done')}}

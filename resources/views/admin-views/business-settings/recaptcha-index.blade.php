@@ -63,7 +63,7 @@
 
                                 <div class="form-group mb-2">
                                     <label class="text-capitalize"
-                                           style="padding-left: 10px">{{__('Secret Key')}}</label><br>
+                                           style="padding-left: 10px">{{__('Secret key')}}</label><br>
                                     <input type="text" class="form-control" name="secret_key"
                                            value="{{env('APP_MODE')!='demo'?$config['secret_key']??"":''}}">
                                 </div>
@@ -132,7 +132,3 @@
         </div>
     </div>
 @endsection
-
-@push('script_2')
-
-@endpush

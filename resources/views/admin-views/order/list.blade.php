@@ -362,7 +362,7 @@
                                     </span>
                                 @elseif($order['order_status']=='failed')
                                     <span class="badge badge-soft-danger ml-2 ml-sm-3">
-                                      <span class="legend-indicator bg-danger text-capitalize"></span>{{__('payment')}}  {{__('failed')}}
+                                      <span class="legend-indicator bg-danger text-capitalize"></span>{{__('Payment failed')}}
                                     </span>
                                 @else
                                     <span class="badge badge-soft-danger ml-2 ml-sm-3">
@@ -547,7 +547,7 @@
                                 <button type="reset" class="btn btn-block btn-white" id="reset">Clear all filters</button>
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-block btn-primary">Save</button>
+                                <button type="submit" class="btn btn-block btn-primary">{{__('Save')}}</button>
                             </div>
                         </div>
                     </div>

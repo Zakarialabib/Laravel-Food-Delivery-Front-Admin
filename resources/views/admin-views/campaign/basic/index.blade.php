@@ -2,10 +2,7 @@
 
 @section('title','Add new campaign')
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header -->

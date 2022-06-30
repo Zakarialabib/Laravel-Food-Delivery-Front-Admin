@@ -32,12 +32,12 @@
                 <form action="{{route('admin.vendor.store')}}" method="post" enctype="multipart/form-data" class="js-validate">
                     @csrf
 
-                    <small class="nav-subtitle text-secondary border-bottom">{{__('restaurant info')}}</small>
+                    <small class="nav-subtitle text-secondary border-bottom">{{__('Restaurant info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="name">{{__('restaurant name')}}</label>
+                                <label class="input-label" for="name">{{__('Restaurant name')}}</label>
                                 <input type="text" name="name" class="form-control" placeholder="{{__('First name')}}" value="{{old('name')}}" required>
                             </div>
                             <div class="form-group">
@@ -129,7 +129,7 @@
                         src="{{asset('public/assets/admin/img/900x400/img1.jpg')}}" alt="Product thumbnail"/>
                     </center>  
                     <br>
-                    <small class="nav-subtitle text-secondary border-bottom">{{__('owner info')}}</small>
+                    <small class="nav-subtitle text-secondary border-bottom">{{__('Owner info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-4 col-12">

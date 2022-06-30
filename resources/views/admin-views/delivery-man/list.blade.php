@@ -21,7 +21,7 @@
                 <div class="col-sm-auto" style="width: 306px;">
                     <select name="zone_id" class="form-control js-select2-custom"
                             onchange="set_zone_filter('{{route('admin.delivery-man.list')}}', this.value)">
-                        <option value="all">All Zones</option>
+                        <option value="all">All zones</option>
                         @foreach(\App\Models\Zone::orderBy('name')->get() as $z)
                             <option
                                 value="{{$z['id']}}" {{isset($zone) && $zone->id == $z['id']?'selected':''}}>
@@ -97,7 +97,7 @@
                                         @if($dm->zone)
                                         <label class="badge badge-soft-info">{{$dm->zone->name}}</label>
                                         @else
-                                        <label class="badge badge-soft-warning">{{__('Zone').' '.__('deleted')}}</label>
+                                        <label class="badge badge-soft-warning">{{__('Zone deleted')}}</label>
                                         @endif
                                         {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
                                     </td>

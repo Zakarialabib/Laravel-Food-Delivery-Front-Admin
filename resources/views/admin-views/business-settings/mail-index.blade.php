@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title', 'Settings')
+@section('title', __('Mail settings'))
 
 @push('css_or_js')
 @endpush

@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Customer Details')
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Customer details'))
 
 @section('content')
     <div class="content container-fluid">
@@ -20,7 +16,7 @@
                                     {{__('Customers')}}
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{__('customer details')}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{__('Customer details')}}</li>
                         </ol>
                     </nav>
 
@@ -37,12 +33,12 @@
                 <div class="col-sm-auto">
                     <a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle mr-1"
                        href="{{route('admin.customer.view',[$customer['id']-1])}}"
-                       data-toggle="tooltip" data-placement="top" title="Previous customer">
+                       data-toggle="tooltip" data-placement="top" title="{{__('Previous customer')}}">
                         <i class="tio-arrow-backward"></i>
                     </a>
                     <a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle"
                        href="{{route('admin.customer.view',[$customer['id']+1])}}" data-toggle="tooltip"
-                       data-placement="top" title="Next customer">
+                       data-placement="top" title="{{__('Next customer')}}">
                         <i class="tio-arrow-forward"></i>
                     </a>
                 </div>
@@ -67,7 +63,7 @@
                             <thead class="thead-light">
                             <tr>
                                 <th>{{__('#')}}</th>
-                                <th style="width: 50%" class="text-center">{{__('order id')}}</th>
+                                <th style="width: 50%" class="text-center">{{__('Order id')}}</th>
                                 <th style="width: 50%">{{__('total')}}</th>
                                 <th style="width: 10%">{{__('Action')}}</th>
                             </tr>

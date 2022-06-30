@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title -->
-    <title>{{__('admin')}} | {{__('login')}}</title>
+    <title>{{__('Admin login')}}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('public/favicon.ico')}}">
@@ -238,7 +238,7 @@
 
 <!-- IE Support -->
 <script>
-    if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('public//assets/admin')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');
+    if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{asset('public/assets/admin')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');
 </script>
 </body>
 </html>

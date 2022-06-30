@@ -59,7 +59,7 @@
                                         value="driving_license" {{$delivery_man['identity_type']=='driving_license'?'selected':''}}>
                                         {{__('Driving license')}}
                                     </option>
-                                    <option value="nid" {{$delivery_man['identity_type']=='nid'?'selected':''}}>{{__('nid')}}
+                                    <option value="nid" {{$delivery_man['identity_type']=='nid'?'selected':''}}>{{__('CIN')}}
                                     </option>
                                 </select>
                             </div>

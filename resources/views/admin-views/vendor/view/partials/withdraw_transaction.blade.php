@@ -1,5 +1,5 @@
 <div>
-    <h3 class="qcont px-3 pt-4">{{ __('withdraw')}} {{ __('transactions')}}</h3>
+    <h3 class="qcont px-3 pt-4">{{ __('Withdraw transactions')}}</h3>
 
     <div class="table-responsive">
         <table id="datatable"
@@ -23,11 +23,11 @@
                     <td>{{$wt->amount}}</td>
                     <td>
                         @if($wt->approved==0)
-                            <label class="badge badge-primary">Pending</label>
+                            <label class="badge badge-primary">{{__('Pending')}}</label>
                         @elseif($wt->approved==1)
-                            <label class="badge badge-success">Approved</label>
+                            <label class="badge badge-success">{{__('Approved')}}</label>
                         @else
-                            <label class="badge badge-danger">Denied</label>
+                            <label class="badge badge-danger">{{__('Denied')}}</label>
                         @endif
                     </td>
                     <td>

@@ -2,10 +2,7 @@
 
 @section('title','Food Bulk Import')
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <nav aria-label="breadcrumb">

@@ -1,5 +1,5 @@
 @extends('layouts.vendor.app')
-@section('title','Bandk Info View')
+@section('title', __('Bank Info'))
 @push('css_or_js')
     <!-- Custom styles for this page -->
     <link href="{{asset('public/assets/back-end')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -43,7 +43,3 @@
     </div>
 
 @endsection
-
-@push('script')
-    <!-- Page level plugins -->
-@endpush

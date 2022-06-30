@@ -90,7 +90,7 @@
                                 </li>
                                 <li class="nav-item {{Request::is('admin/order/list/processing')?'active':''}}">
                                     <a class="nav-link " href="{{route('admin.order.list',['processing'])}}"
-                                       title="{{__('preparing In Restaurants')}}">
+                                       title="{{__('Preparing in restaurants')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">
                                             {{__('Processing')}}
@@ -176,7 +176,7 @@
                                 </li>
                                 <li class="nav-item {{Request::is('admin/order/list/all')?'active':''}}">
                                     <a class="nav-link" href="{{route('admin.order.list',['all'])}}"
-                                       title="{{__('all orders')}}">
+                                       title="{{__('All orders')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">
                                             {{__('All')}}
@@ -273,11 +273,11 @@
                             <li class="navbar-item {{Request::is('admin/vendor/list')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                 href="{{route('admin.vendor.list')}}"
-                                title="{{__('restaurant list')}}"
+                                title="{{__('Restaurant list')}}"
                                 >
                                     <span class="tio-circle nav-indicator-icon"></span>
                                     <span
-                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('restaurants')}} {{__('List')}}</span>
+                                        class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{__('Restaurants list')}}</span>
                                 </a>
                             </li>
                             <li class="nav-item {{Request::is('admin/vendor/bulk-import')?'active':''}}">
@@ -442,7 +442,7 @@
                                 </li>
                                 <li class="nav-item {{Request::is('admin/food/reviews')?'active':''}}">
                                     <a class="nav-link " href="{{route('admin.food.reviews')}}"
-                                       title="{{__('review list')}}">
+                                       title="{{__('Review list')}}">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{__('review')}}</span>
                                     </a>

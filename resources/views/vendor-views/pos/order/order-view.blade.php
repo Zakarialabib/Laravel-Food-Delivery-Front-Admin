@@ -1,11 +1,8 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('order ').__('Details'))
+@section('title', __('Order details'))
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header -->
@@ -91,12 +88,12 @@
                 <div class="col-sm-auto">
                     <a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle mr-1"
                        href="{{route('vendor.order.details',[$order['id']-1])}}"
-                       data-toggle="tooltip" data-placement="top" title="Previous order">
+                       data-toggle="tooltip" data-placement="top" title="{{__('Previous order')}}">
                         <i class="tio-arrow-backward"></i>
                     </a>
                     <a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle"
                        href="{{route('vendor.order.details',[$order['id']+1])}}" data-toggle="tooltip"
-                       data-placement="top" title="Next order">
+                       data-placement="top" title="{{__('Next order')}}">
                         <i class="tio-arrow-forward"></i>
                     </a>
                 </div>
@@ -382,13 +379,13 @@
                             </span>
                             @else
                             <span class="d-block text-lowercase qcont">
-                                {{__('Location').' '.__('Not found')}}
+                                {{__('Location Not found')}}
                             </span>
                             @endif
                         @endif
                     @else
                         <span class="d-block text-lowercase qcont">
-                                {{__('Deliveryman').' '.__('Not found')}}
+                                {{__('Deliveryman Not found')}}
                         </span>
                     @endif    
                     </div>
@@ -671,7 +668,7 @@
             else
             {
                 Swal.fire({
-                    title: 'Are you sure?',
+                    title: '{{__('Are you sure')}}',   
                     text: message,
                     type: 'warning',
                     showCancelButton: true,

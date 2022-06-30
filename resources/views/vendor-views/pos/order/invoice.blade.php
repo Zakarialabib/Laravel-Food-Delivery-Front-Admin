@@ -16,7 +16,7 @@
 
     <div class="row mt-3 divide-y">
         <div class="col-6">
-            <h5>{{__('Order ID')}} : {{$order['id']}}</h5>
+            <h5>{{__('Order id')}} : {{$order['id']}}</h5>
         </div>
         <div class="col-6">
             <h5 style="font-weight: lighter">
@@ -26,7 +26,7 @@
         @if($order->customer)
         <div class="col-12 text-break">
             <h5>
-                {{__('Customer Name')}} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}
+                {{__('Customer name')}} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}
             </h5>
             <h5>
                 {{__('Phone')}} : {{$order->customer['phone']}}

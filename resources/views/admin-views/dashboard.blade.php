@@ -41,7 +41,7 @@
                     </label>
                     <select name="zone_id" class="form-control js-select2-custom"
                             onchange="fetch_data_zone_wise(this.value)">
-                        <option value="all">All Zones</option>
+                        <option value="all">{{__('All zones')}}</option>
                         @foreach(\App\Models\Zone::orderBy('name')->get() as $zone)
                             <option
                                 value="{{$zone['id']}}" {{$params['zone_id'] == $zone['id']?'selected':''}}>
@@ -126,7 +126,7 @@
                         @else
                             @php($zone_name='All')
                         @endif
-                        <label class="badge badge-soft-info">( Zone : {{$zone_name}} )</label>
+                        <label class="badge badge-soft-info">( {{__('Zone')}} : {{$zone_name}} )</label>
                         <div class="chartjs-custom mx-auto">
                             <canvas id="user-overview" class="mt-2"></canvas>
                         </div>
@@ -197,7 +197,6 @@
     <script
         src="{{asset('public/assets/admin')}}/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"></script>
 @endpush
-
 
 @push('script_2')
     <script>

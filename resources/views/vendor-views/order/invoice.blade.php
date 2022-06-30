@@ -51,11 +51,11 @@
                         {{$order->restaurant->address}}
                     </h5>
                     <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
-                        Phone : {{$order->restaurant->phone}}
+                        {{__('Phone')}} : {{$order->restaurant->phone}}
                     </h5>
                     @if($order->restaurant->gst_status)
                     <h5 style="font-size: 12px;font-weight: lighter;line-height: 1">
-                        Gst No : {{$order->restaurant->gst_code}}
+                        {{__('ICE No')}} : {{$order->restaurant->gst_code}}
                     </h5>
                     @endif
                 </div>
@@ -63,7 +63,7 @@
                 <span>---------------------------------------------------------------------------------</span>
                 <div class="row mt-3">
                     <div class="col-6">
-                        <h5>Order ID : {{$order['id']}}</h5>
+                        <h5>{{__('Order id')}} : {{$order['id']}}</h5>
                     </div>
                     <div class="col-6">
                         <h5 style="font-weight: lighter">
@@ -72,13 +72,13 @@
                     </div>
                     <div class="col-12">
                         <h5>
-                            Customer Name : {{$order->customer['f_name'].' '.$order->customer['l_name']}}
+                            {{__('Customer name')}} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}
                         </h5>
                         <h5>
-                            Phone : {{$order->customer['phone']}}
+                            {{__('Phone')}} : {{$order->customer['phone']}}
                         </h5>
                         <h5 class="text-break">
-                            Address : {{isset($order->delivery_address)?json_decode($order->delivery_address, true)['address']:''}}
+                            {{__('Address')}} : {{isset($order->delivery_address)?json_decode($order->delivery_address, true)['address']:''}}
                         </h5>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                                 <td class="text-break">
                                     {{$detail->food['name']}} <br>
                                     @if(count(json_decode($detail['variation'],true))>0)
-                                        <strong><u>Variation : </u></strong>
+                                        <strong><u>{{__('Variation')}} : </u></strong>
                                         @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                             <div class="font-size-sm text-body">
                                                 <span>{{$key1}} :  </span>
@@ -148,7 +148,7 @@
                                 <td class="">
                                     {{$detail->campaign['title']}} <br>
                                     @if(count(json_decode($detail['variation'],true))>0)
-                                        <strong><u>Variation : </u></strong>
+                                        <strong><u>{{__('Variation')}} : </u></strong>
                                         @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
                                             <div class="font-size-sm text-body">
                                                 <span>{{$key1}} :  </span>
@@ -222,11 +222,11 @@
                     
                 @endif
                 <div class="d-flex flex-row justify-content-between border-top">
-                    <span>Paid by: {{$order->payment_method}}</span>	<span>{{__('Amount')}}: {{$order->order_amount + $order->adjusment}}</span>	<span>Change: {{$order->adjusment}}</span>
+                    <span>{{__('Paid by')}}: {{$order->payment_method}}</span>	<span>{{__('Amount')}}: {{$order->order_amount + $order->adjusment}}</span>	<span>{{__('Change')}}: {{$order->adjusment}}</span>
                 </div>
                 <span>---------------------------------------------------------------------------------</span>
                 <h5 class="text-center pt-3">
-                    """THANK YOU"""
+                    """{{__('THANK YOU')}}"""
                 </h5>
                 <span>---------------------------------------------------------------------------------</span>
             </div>

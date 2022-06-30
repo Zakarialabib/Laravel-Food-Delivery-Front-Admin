@@ -1,11 +1,7 @@
 @extends('layouts.admin.app')
 
 @section('title',__('Day wise report'))
-
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header -->
@@ -18,7 +14,7 @@
                 <div class="col-sm-auto" style="width: 306px;">
                     <select name="zone_id" class="form-control js-select2-custom"
                             onchange="set_zone_filter('{{url()->full()}}',this.value)">
-                        <option value="all">{{__('all zone')}}</option>
+                        <option value="all">{{__('All zone')}}</option>
                         @foreach(\App\Models\Zone::orderBy('name')->get() as $z)
                             <option
                                 value="{{$z['id']}}" {{isset($zone) && $zone->id == $z['id']?'selected':''}}>
@@ -420,7 +416,7 @@
         <div class="card mt-3">
             <!-- Header -->
             <div class="card-header">
-                <h1>{{__('order transactions')}}
+                <h1>{{__('Order transactions')}}
                 </h1>
             </div>
             <!-- End Header -->
@@ -434,7 +430,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th  style="width: 5%">{{__('#')}}</th>
-                                <th  style="width: 10%">{{__('order id')}}</th>
+                                <th  style="width: 10%">{{__('Order id')}}</th>
                                 <th  style="width: 17%">{{__('Total order amount')}}</th>
                                 <th  style="width: 10%">{{__('Restaurant commission')}}</th>
                                 <th  style="width: 10%">{{__('Admin commission')}}</th>

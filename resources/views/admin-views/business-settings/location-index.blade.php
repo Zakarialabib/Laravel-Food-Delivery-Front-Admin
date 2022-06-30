@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Settings')
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Settings'))
 
 @section('content')
     <div class="content container-fluid">
@@ -14,8 +10,8 @@
                 <div class="col-sm mb-2 mb-sm-0">
                     <h1 class="page-header-title">{{__('Location coverage setup')}}</h1>
                     <span class="badge badge-soft-danger" style="text-align: left">
-                        This location setup is for your Main branch. Carefully set your restaurant location and coverage area. If you want to ignore the coverage area then keep the input box empty.<br>
-                        You can ignore this when you have only the default branch and you don't want coverage area.
+                        {{__("This location setup is for your Main branch. Carefully set your restaurant location and coverage area. If you want to ignore the coverage area then keep the input box empty.<br>
+                        You can ignore this when you have only the default branch and you don't want coverage area.")}}
                     </span>
                 </div>
             </div>
@@ -78,7 +74,3 @@
         </div>
     </div>
 @endsection
-
-@push('script_2')
-
-@endpush

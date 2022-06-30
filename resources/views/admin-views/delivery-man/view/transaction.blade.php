@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Delivery Man Preview')
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Delivery Man Preview'))
 
 @section('content')
     <div class="content container-fluid">
@@ -44,7 +40,7 @@
         <!-- Card -->
         <div class="card mb-3 mb-lg-5 mt-2">
             <div class="card-header">
-                <h3 class="qcont px-3 pt-4">{{ __('Order')}} {{ __('transactions')}}</h3>
+                <h3 class="qcont px-3 pt-4">{{ __('Order transactions')}}</h3>
                 <div class="col-sm-auto" style="width: 306px;" >
                     <input type="date" class="form-control" onchange="set_filter('{{route('admin.delivery-man.preview',['id'=>$dm->id, 'tab'=> 'transaction'])}}',this.value, 'date')" value="{{$date}}">
                 </div>
@@ -58,7 +54,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>{{__('#')}}</th>
-                                <th>{{__('order id')}}</th>
+                                <th>{{__('Order id')}}</th>
                                 <th>{{__('Deliveryman earned')}}</th>
                                 <th>{{__('Date')}}</th>
                             </tr>
@@ -93,7 +89,7 @@
 <script>
     function request_alert(url, message) {
         Swal.fire({
-            title: 'Are you sure?',
+            title: '{{__('Are you sure')}}',   
             text: message,
             type: 'warning',
             showCancelButton: true,

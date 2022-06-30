@@ -1,9 +1,6 @@
 @extends('layouts.admin.app')
 @section('title','Employee List')
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
 <div class="content container-fluid">
     <nav aria-label="breadcrumb">
@@ -17,13 +14,13 @@
     <div class="d-md-flex_ align-items-center justify-content-between mb-2">
         <div class="row">
             <div class="col-md-8">
-                <h3 class="h3 mb-0 text-black-50">{{__('Employee')}} {{__('List')}}</h3>
+                <h3 class="h3 mb-0 text-black-50">{{__('Employee List')}}</h3>
             </div>
 
             <div class="col-md-4">
                 <a href="{{route('admin.employee.add-new')}}" class="btn btn-primary  float-right">
                     <i class="tio-add-circle"></i>
-                    <span class="text">{{__('add')}} {{__('new')}}</span>
+                    <span class="text">{{__('Add new')}}</span>
                 </a>
             </div>
         </div>

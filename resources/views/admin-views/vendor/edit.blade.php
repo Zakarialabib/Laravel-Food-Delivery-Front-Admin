@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Update restaurant info')
+@section('title', __('Update restaurant info'))
 
 @push('css_or_js')
 <style>
@@ -34,12 +34,12 @@
                     @csrf
 
                     
-                    <small class="nav-subtitle text-secondary border-bottom">{{__('restaurant info')}}</small>
+                    <small class="nav-subtitle text-secondary border-bottom">{{__('Restaurant info')}}</small>
                     <br>
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="input-label" for="name">{{__('restaurant name')}}</label>
+                                <label class="input-label" for="name">{{__('Restaurant name')}}</label>
                                 <input type="text" name="name" class="form-control" placeholder="{{__('First name')}}"
                                        required value="{{$restaurant->name}}">
                             </div>

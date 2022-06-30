@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Withdraw Request')
+@section('title', __('Withdraw request'))
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -89,7 +89,7 @@
                                                class="btn btn-white btn-sm"><i class="tio-visible"></i>
                                             </a>
                                             @else
-                                            {{__('Restaurant').' '.__('deleted') }}
+                                            {{__('Restaurant deleted') }}
                                             @endif
                                             {{--<a class="btn btn-danger btn-sm" href="javascript:"
                                             onclick="form_alert('withdraw-{{$wr['id']}}','Want to delete this  ?')">{{__('Delete')}}</a>

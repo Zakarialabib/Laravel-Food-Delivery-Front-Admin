@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Campaign view')
+@section('title', __('Campaign view'))
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">

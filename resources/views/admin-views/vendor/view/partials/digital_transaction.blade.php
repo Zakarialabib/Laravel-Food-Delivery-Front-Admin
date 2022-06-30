@@ -1,5 +1,5 @@
 <div>
-    <h3 class="qcont px-3 pt-4">{{ __('Order')}} {{ __('transactions')}}</h3>
+    <h3 class="qcont px-3 pt-4">{{ __('Order transactions')}}</h3>
 
     <div class="table-responsive">
         <table id="datatable"
@@ -8,11 +8,11 @@
             <thead class="thead-light">
                 <tr>
                     <th style="width: 10%">{{__('#')}}</th>
-                    <th style="width: 10%">{{__('order id')}}</th>
+                    <th style="width: 10%">{{__('Order id')}}</th>
                     <th style="width: 20%">{{__('Total order amount')}}</th>
-                    <th style="width: 20%">{{__('restaurant earned')}}</th>
-                    <th style="width: 15%">{{__('admin')}}  {{__('earned')}}</th>
-                    <th style="width: 15%">{{__('Delivery')}}  {{__('fee')}}</th>
+                    <th style="width: 20%">{{__('Restaurant earned')}}</th>
+                    <th style="width: 15%">{{__('Admin earned')}}</th>
+                    <th style="width: 15%">{{__('Delivery fee')}}</th>
                     <th style="width: 10%">{{__('vat/tax')}}</th>
                 </tr>
             </thead>

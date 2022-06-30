@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Add new delivery-man')
+@section('title', __('Add new deliveryman'))
 
 @push('css_or_js')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css" integrity="sha512-gxWow8Mo6q6pLa1XH/CcH8JyiSDEtiwJV78E+D+QP0EVasFs8wKXq16G8CLD4CJ2SnonHr4Lm/yY2fSI2+cbmw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -86,9 +86,9 @@
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Identity type')}}</label>
                                 <select name="identity_type" class="form-control">
+                                    <option value="nid">{{__('CIN')}}</option>
                                     <option value="passport">{{__('passport')}}</option>
                                     <option value="driving_license">{{__('Driving license')}}</option>
-                                    <option value="nid">{{__('nid')}}</option>
                                     <option value="restaurant_id">{{__('Restaurant id')}}</option>
                                 </select>
                             </div>

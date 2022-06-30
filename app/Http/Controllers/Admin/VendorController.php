@@ -561,7 +561,7 @@ class VendorController extends Controller
         $vendor = Vendor::orderBy('id', 'desc')->first('id');
         $vendor_id = $vendor?$vendor->id:0;
         foreach ($collections as $key=>$collection) {
-                if ($collection['ownerFirstName'] === "" || $collection['restaurantName'] === "" || $collection['phone'] === "" || $collection['email'] === "" || $collection['latitude'] === "" || $collection['longitude'] === "" || empty($collection['openingTime']) === "" || empty($collection['closeingTime']) || $collection['zone_id'] === "") {
+                if ($collection['ownerFirstName'] === "" || $collection['restaurantName'] === "" || $collection['phone'] === "" || $collection['email'] === "" || $collection['latitude'] === "" || $collection['longitude'] === "" || $collection['address'] === "" || empty($collection['openingTime']) === "" || empty($collection['closeingTime']) || $collection['zone_id'] === "") {
                     Toastr::error(__('please fill all required fields'));
                     return back();
                 }
@@ -584,6 +584,7 @@ class VendorController extends Controller
                 'email' => $collection['email'],
                 'latitude' => $collection['latitude'],
                 'longitude' => $collection['longitude'],
+                'address' => $collection['address'],
                 'opening_time' => $collection['openingTime'],
                 'closeing_time' => $collection['closeingTime'],
                 'vendor_id' => $vendor_id+$key+1,

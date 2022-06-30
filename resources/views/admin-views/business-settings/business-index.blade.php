@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Settings')
+@section('title', __('Settings'))
 
 @push('css_or_js')
 <style>
@@ -1056,7 +1056,7 @@
             toastr.warning('Sorry! You can not enable maintainance mode in demo!');
         @else
             Swal.fire({
-                title: 'Are you sure?',
+                title: '{{__('Are you sure')}}',   
                 text: 'Be careful before you turn on/off maintenance mode',
                 type: 'warning',
                 showCancelButton: true,

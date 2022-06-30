@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','FCM Settings')
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Push notifications settings'))
 
 @section('content')
     <div class="content container-fluid">
@@ -330,7 +326,3 @@
         </div>
     </div>
 @endsection
-
-@push('script_2')
-
-@endpush

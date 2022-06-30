@@ -2,10 +2,6 @@
 
 @section('title',__('Food wise report'))
 
-@push('css_or_js')
-
-@endpush
-
 @section('content')
 
     @php 
@@ -22,7 +18,7 @@
                 <div class="col-sm-auto" style="width: 306px;">
                     <select name="zone_id" class="form-control js-select2-custom"
                             onchange="set_zone_filter('{{url()->full()}}',this.value)" id="zone">
-                        <option value="all">All Zones</option>
+                        <option value="all">All zones</option>
                         @foreach(\App\Models\Zone::orderBy('name')->get() as $z)
                             <option
                                 value="{{$z['id']}}" {{isset($zone) && $zone->id == $z['id']?'selected':''}}>
@@ -36,7 +32,7 @@
                         @if(isset($restaurant))    
                         <option value="{{$restaurant->id}}" selected>{{$restaurant->name}}</option>
                         @else
-                        <option value="all" selected>{{__('all restaurants')}}</option>
+                        <option value="all" selected>{{__('All restaurants')}}</option>
                         @endif
                     </select>
                 </div>
@@ -51,8 +47,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">{{__('show data')}} by {{__('Date')}}
-                                    {{__('range')}}</label>
+                                <label for="exampleInputEmail1" class="form-label">{{__('Show data by date range')}}</label>
                             </div>
                         </div>
                         <div class="col-4">
@@ -150,7 +145,7 @@
                                 @if($food->restaurant)
                                 {{Str::limit($food->restaurant->name,25,'...')}}
                                 @else
-                                {{__('restaurant deleted')}}
+                                {{__('Restaurant deleted')}}
                                 @endif
                             </td>
                             <td>

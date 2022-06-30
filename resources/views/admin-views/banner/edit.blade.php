@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Update Banner')
+@section('title', __('Update banner'))
 
 @push('css_or_js')
 <style>
@@ -16,7 +16,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-edit"></i>{{__('update banner')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-edit"></i>{{__('Update banner')}}</h1>
                 </div>
             </div>
         </div>

@@ -1,10 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title','Food Preview')
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Food Preview'))
 
 @section('content')
     <div class="content container-fluid">
@@ -210,7 +206,7 @@
                                         <div class="ml-3">
                                         <span class="d-block h5 text-hover-primary mb-0">{{$review->customer['f_name']." ".$review->customer['l_name']}} <i
                                                 class="tio-verified text-primary" data-toggle="tooltip" data-placement="top"
-                                                title="Verified Customer"></i></span>
+                                                title="{{__('Verified Customer')}}"></i></span>
                                             <span class="d-block font-size-sm text-body">{{$review->customer->email}}</span>
                                         </div>
                                     </a>
@@ -258,7 +254,3 @@
         @endif
     </div>
 @endsection
-
-@push('script_2')
-
-@endpush

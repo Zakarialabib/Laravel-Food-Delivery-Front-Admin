@@ -34,7 +34,7 @@
             <div class="col-md-4">
                 <button type="button" class="btn btn-primary modalTrigger  float-right" data-toggle="modal" data-target="#exampleModal">
                     <i class="tio-add-circle"></i>
-                    <span class="text">{{__('add')}} {{__('new')}}</span>
+                    <span class="text">{{__('Add new')}}</span>
                 </button>
             </div>
         </div>

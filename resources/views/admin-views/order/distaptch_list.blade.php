@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',ucfirst(str_replace('_',' ',$status).' '.__('orders')))
+@section('title', ucfirst(str_replace('_',' ',$status).' '.__('orders')))
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -29,8 +29,8 @@
                     <!-- Select -->
                     {{--<select class="custom-select custom-select-sm" name="zone"
                             onchange="filter_zone_orders(this.value)">
-                        <option disabled>--- {{__('select')}} {{__('zone')}} ---</option>
-                        <option value="0" {{session('zone_filter')==0?'selected':''}}>{{__('all')}} {{__('zone')}}</option>
+                        <option disabled>--- {{__('Select zone')}} ---</option>
+                        <option value="0" {{session('zone_filter')==0?'selected':''}}>{{__('All zone')}}</option>
                         @foreach(\App\Models\Zone::all() as $zone)
                             <option value="{{$zone['id']}}" {{session('zone_filter')==$zone['id']?'selected':''}}>{{$zone['name']}}</option>
                         @endforeach
@@ -133,7 +133,7 @@
                             <div class="hs-unfold mr-2">
                                 <a class="js-hs-unfold-invoker btn btn-sm btn-white" href="javascript:;"
                                    onclick="$('#datatableFilterSidebar,.hs-unfold-overlay').show(500)">
-                                    <i class="tio-filter-list mr-1"></i> Filters <span class="badge badge-success badge-pill ml-1" id="filter_count"></span>
+                                    <i class="tio-filter-list mr-1"></i> {{__('Filters')}} <span class="badge badge-success badge-pill ml-1" id="filter_count"></span>
                                 </a>
                             </div>
                             <!-- End Unfold -->
@@ -539,7 +539,7 @@
                                 <button type="reset" class="btn btn-block btn-white" id="reset">Clear all filters</button>
                             </div>
                             <div class="col">
-                                <button type="submit" class="btn btn-block btn-primary">Save</button>
+                                <button type="submit" class="btn btn-block btn-primary">{{__('Save')}}</button>
                             </div>
                         </div>
                     </div>

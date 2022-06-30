@@ -1,11 +1,8 @@
 @extends('layouts.admin.app')
 
-@section('title','Payment Setup')
+@section('title', __('Payment Setup'))
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header -->
@@ -265,7 +262,7 @@
                                 </div>
                                 <div class="form-group mb-2">
                                     <label
-                                        style="padding-left: 10px">{{__('PublicKey')}}</label><br>
+                                        style="padding-left: 10px">{{__('Public Key')}}</label><br>
                                     <input type="text" class="form-control" name="publicKey"
                                            value="{{env('APP_MODE')!='demo'?$config['publicKey']:''}}">
                                 </div>
@@ -370,7 +367,7 @@
                                 </div>
                                 <div class="form-group mb-2">
                                     <label class="text-capitalize"
-                                        style="padding-left: 10px">{{__('PublicKey')}}</label><br>
+                                        style="padding-left: 10px">{{__('Public Key')}}</label><br>
                                     <input type="text" class="form-control" name="public_key"
                                            value="{{env('APP_MODE')!='demo'?$config['public_key']:''}}">
                                 </div>
@@ -422,7 +419,7 @@
                                 </div>
                                 <div class="form-group mb-2">
                                     <label class="text-capitalize"
-                                        style="padding-left: 10px">{{__('PublicKey')}}</label><br>
+                                        style="padding-left: 10px">{{__('Public Key')}}</label><br>
                                     <input type="text" class="form-control" name="public_key"
                                            value="{{env('APP_MODE')!='demo'?$config['public_key']:''}}">
                                 </div>

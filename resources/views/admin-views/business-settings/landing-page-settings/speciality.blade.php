@@ -67,7 +67,7 @@
 
     <div class="card my-2">
         <div class="card-body">
-            <form action="{{route('admin.business-settings.landing-page-settings', 'speciality')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.business-settings.landing-page-settings-update', 'speciality')}}" method="POST" enctype="multipart/form-data">
                 @php($speciality = \App\Models\BusinessSetting::where(['key'=>'speciality'])->first())
                 @php($speciality = isset($speciality->value)?json_decode($speciality->value, true):null)
 
@@ -121,7 +121,7 @@
                                     <a class="btn btn-sm btn-white" href="javascript:"
                                         onclick="form_alert('sp-{{$key}}','{{__('Want to delete this item')}}')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
                                     </a>
-                                    <form action="{{route('admin.business-settings.landing-page-settings-delete',['tab'=>'speciality', 'key'=>$key])}}"
+                                    <form action="{{route('admin.business-settings.landing-page-settings-update-delete',['tab'=>'speciality', 'key'=>$key])}}"
                                             method="post" id="sp-{{$key}}">
                                         @csrf @method('delete')
                                     </form>

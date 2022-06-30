@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-header p-3">
                     <h3 class="text-center text-capitalize">
-                        {{__('vendor')}} {{__('withdraw')}} {{__('information')}}
+                        {{__('Vendor withdraw information')}}
                     </h3>
 
                     <i class="tio-wallet-outlined" style="font-size: 30px"></i>
@@ -86,14 +86,14 @@
             <div class="col-md-4">
                 <div class="card" style="min-height: 260px;">
                     <div class="card-header">
-                        <h3 class="h3 mb-0">{{__('restaurant')}} {{__('info')}}</h3>
+                        <h3 class="h3 mb-0">{{__('Restaurant info')}}</h3>
                         <i class="tio tio-shop-outlined"></i>
                     </div>
                     <div class="card-body">
-                        <h5>{{__('restaurant')}} : {{$wr->vendor->restaurants[0]->name}}</h5>
-                        <h5>{{__('phone')}} : {{$wr->vendor->restaurants[0]->contact}}</h5>
-                        <h5>{{__('address')}} : {{$wr->vendor->restaurants[0]->address}}</h5>
-                        <h5 class="text-capitalize badge badge-success">{{__('balance')}}
+                        <h5>{{__('Restaurant')}} : {{$wr->vendor->restaurants[0]->name}}</h5>
+                        <h5>{{__('Phone')}} : {{$wr->vendor->restaurants[0]->contact}}</h5>
+                        <h5>{{__('Address')}} : {{$wr->vendor->restaurants[0]->address}}</h5>
+                        <h5 class="text-capitalize badge badge-success">{{__('Balance')}}
                             : {{$wr->vendor->wallet->balance}}
                         </h5>
                     </div>
@@ -103,13 +103,13 @@
         <div class="col-md-4">
             <div class="card" style="min-height: 260px;">
                 <div class="card-header">
-                    <h3 class="h3 mb-0 "> {{__('owner')}} {{__('info')}}</h3>
+                    <h3 class="h3 mb-0 "> {{__('Owner info')}}</h3>
                     <i class="tio tio-user-big-outlined"></i>
                 </div>
                 <div class="card-body">
-                    <h5>{{__('name')}} : {{$wr->vendor->f_name}} {{$wr->vendor->l_name}}</h5>
-                    <h5>{{__('email')}} : {{$wr->vendor->email}}</h5>
-                    <h5>{{__('phone')}} : {{$wr->vendor->phone}}</h5>
+                    <h5>{{__('Name')}} : {{$wr->vendor->f_name}} {{$wr->vendor->l_name}}</h5>
+                    <h5>{{__('Email')}} : {{$wr->vendor->email}}</h5>
+                    <h5>{{__('Phone')}} : {{$wr->vendor->phone}}</h5>
                 </div>
             </div>
         </div>

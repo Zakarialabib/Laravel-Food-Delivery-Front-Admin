@@ -317,7 +317,7 @@
         function status_change_alert(url, message, e) {
             e.preventDefault();
             Swal.fire({
-                title: 'Are you sure?',
+                title: '{{__('Are you sure')}}',   
                 text: message,
                 type: 'warning',
                 showCancelButton: true,

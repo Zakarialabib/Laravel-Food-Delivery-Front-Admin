@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Add new zone')
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Add new zone'))
 
 @section('content')
     <div class="content container-fluid">
@@ -32,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Coordinates<span class="input-label-secondary" title="{{__('Draw your zone on the map')}}">{{__('Draw your zone on the map')}}</span></label>
+                                       for="exampleFormControlInput1">{{__('Coordinates')}}<span class="input-label-secondary" title="{{__('Draw your zone on the map')}}">{{__('Draw your zone on the map')}}</span></label>
                                        <textarea type="text" rows="8" name="coordinates"  id="coordinates" class="form-control" readonly></textarea>
                             </div>
                         </div>

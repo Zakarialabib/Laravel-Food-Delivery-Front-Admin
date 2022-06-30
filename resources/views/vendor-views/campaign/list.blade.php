@@ -2,10 +2,7 @@
 
 @section('title','Campaign List')
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
 @php($restaurant_id = \App\CentralLogics\Helpers::get_restaurant_id())
     <div class="content container-fluid">

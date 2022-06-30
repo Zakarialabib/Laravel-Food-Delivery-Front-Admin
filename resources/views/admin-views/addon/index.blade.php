@@ -2,10 +2,7 @@
 
 @section('title',__('Add new addon'))
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header -->
@@ -24,7 +21,7 @@
         @php($language = $language->value ?? null)
         @php($default_lang = 'en')
         <div class="card">
-            <div class="card-header"> <h5>{{__('Add').' '.__('New addon')}}</h5></div>
+            <div class="card-header"> <h5>{{__('Add new addon')}}</h5></div>
             <div class="card-body">
                 <form action="{{isset($addon)?route('admin.addon.update',[$addon['id']]):route('admin.addon.store')}}" method="post">
                     @csrf
@@ -235,7 +232,7 @@
                                 </span>
                                 </td>
                                 <td>{{\App\CentralLogics\Helpers::format_currency($addon['price'])}}</td>
-                                <td>{{Str::limit($addon->restaurant?$addon->restaurant->name:__('Restaurant').' '.__('Deleted'),25,'...')}}</td>
+                                <td>{{Str::limit($addon->restaurant?$addon->restaurant->name:__('Restaurant deleted'),25,'...')}}</td>
                                 <td>    
                                     <label class="toggle-switch toggle-switch-sm" for="stausCheckbox{{$addon->id}}">
                                     <input type="checkbox" onclick="location.href='{{route('admin.addon.status',[$addon['id'],$addon->status?0:1])}}'"class="toggle-switch-input" id="stausCheckbox{{$addon->id}}" {{$addon->status?'checked':''}}>

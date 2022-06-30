@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',$restaurant->name."'s Foods")
+@section('title', $restaurant->name)
 
 @push('css_or_js')
     <!-- Custom styles for this page -->
@@ -134,7 +134,7 @@
                                                 <div class="ml-3">
                                                 <span class="d-block h5 text-hover-primary mb-0">{{Str::limit($review->customer['f_name']." ".$review->customer['l_name'], 15)}} <i
                                                         class="tio-verified text-primary" data-toggle="tooltip" data-placement="top"
-                                                        title="Verified Customer"></i></span>
+                                                        title="{{__('Verified Customer')}}"></i></span>
                                                     <span class="d-block font-size-sm text-body">{{Str::limit($review->customer->email, 20)}}</span>
                                                 </div>
                                             </a>

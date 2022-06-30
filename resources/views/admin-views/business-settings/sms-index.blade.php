@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','SMS Module Setup')
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('SMS Module Setup'))
 
 @section('content')
     <div class="content container-fluid">
@@ -23,7 +19,7 @@
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
                         <h5 class="text-center">{{__('Twilio sms')}}</h5>
-                        <span class="badge badge-soft-info mb-3">NB : #OTP# will be replace with otp</span>
+                        <span class="badge badge-soft-info mb-3">{{__('NB : #OTP# will be replace with otp')}}</span>
                         @php($config=\App\CentralLogics\Helpers::get_business_settings('twilio_sms'))
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.sms-module-update',['twilio_sms']):'javascript:'}}"
                             method="post">
@@ -84,7 +80,7 @@
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
                         <h5 class="text-center">{{__('nexmo_sms')}}</h5>
-                        <span class="badge badge-soft-info mb-3">NB : #OTP# will be replace with otp</span>
+                        <span class="badge badge-soft-info mb-3">{{__('NB : #OTP# will be replace with otp')}}</span>
                         @php($config=\App\CentralLogics\Helpers::get_business_settings('nexmo_sms'))
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.sms-module-update',['nexmo_sms']):'javascript:'}}"
                               method="post">
@@ -139,8 +135,8 @@
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
                         <h5 class="text-center">{{__('2factor sms')}}</h5>
-                        <span class="badge badge-soft-info">EX of SMS provider's template : your OTP is XXXX here, please check.</span><br>
-                        <span class="badge badge-soft-info mb-3">NB : XXXX will be replace with otp</span>
+                        <span class="badge badge-soft-info">{{__("EX of SMS provider's template : your OTP is XXXX here, please check")}}.</span><br>
+                        <span class="badge badge-soft-info mb-3">{{__('NB : #OTP# will be replace with otp')}}</span>
                         @php($config=\App\CentralLogics\Helpers::get_business_settings('2factor sms'))
                         <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.sms-module-update',['2factor_sms']):'javascript:'}}"
                               method="post">
@@ -220,7 +216,3 @@
         </div>
     </div>
 @endsection
-
-@push('script_2')
-
-@endpush

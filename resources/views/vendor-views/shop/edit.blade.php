@@ -1,6 +1,7 @@
-
 @extends('layouts.vendor.app')
+
 @section('title',__('Edit restaurant'))
+
 @push('css_or_js')
     <!-- Custom styles for this page -->
     <link href="{{asset('public/assets/admin')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -42,7 +43,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="name">{{__('restaurant name')}} <span class="text-danger">*</span></label>
+                                    <label for="name">{{__('Restaurant name')}} <span class="text-danger">*</span></label>
                                     <input type="text" name="name" value="{{$shop->name}}" class="form-control" id="name"
                                             required>
                                 </div>

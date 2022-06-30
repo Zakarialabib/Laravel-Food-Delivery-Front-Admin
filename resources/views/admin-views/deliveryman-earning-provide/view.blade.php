@@ -1,10 +1,9 @@
 @extends('layouts.admin.app')
-@section('title','Accoutn transaction information')
-@push('css_or_js')
 
-@endpush
+@section('title', __('Account transaction information'))
 
 @section('content')
+
 <div class="content container-fluid">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -20,7 +19,6 @@
         </div>
     </div>
     <div class="row mt-3">
-        
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -50,19 +48,7 @@
                     <h6>{{__('Reference')}} : {{$account_transaction->ref}}</h6>
                 </div>
             </div>
-          
-       
-       
         </div>
-    
-     
-
     </div>
- 
 </div>
-
 @endsection
-
-@push('script')
-
-@endpush

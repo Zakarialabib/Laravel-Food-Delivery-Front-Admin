@@ -143,10 +143,10 @@
 
                                         <div class="form-group col-md-6 mb-md-0 d-none d-md-block">
                                             <button type="button" class="btn btn-outline-primary w-100" data-dismiss="modal"
-                                                aria-label="Close">Close</button>
+                                                aria-label="Close">{{__('Close')}}</button>
                                         </div>
                                         <div class="form-group col-md-6 mb-0">
-                                            <button class="btn btn-secondary w-100">Save changes</button>
+                                            <button class="btn btn-secondary w-100">{{__('Save changes')}}</button>
                                         </div>
 
                                     </div>

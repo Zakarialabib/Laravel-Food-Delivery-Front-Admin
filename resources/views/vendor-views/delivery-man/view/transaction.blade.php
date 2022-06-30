@@ -1,11 +1,8 @@
 @extends('layouts.admin.app')
 
-@section('title','Delivery Man Preview')
+@section('title', __('Delivery Man Preview'))
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <nav aria-label="breadcrumb">
@@ -44,7 +41,7 @@
         <!-- Card -->
         <div class="card mb-3 mb-lg-5 mt-2">
             <div class="card-header">
-                <h3 class="qcont px-3 pt-4">{{ __('Order')}} {{ __('transactions')}}</h3>
+                <h3 class="qcont px-3 pt-4">{{ __('Order transactions')}}</h3>
             </div>
             <!-- Body -->
             <div class="card-body">
@@ -55,7 +52,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>{{__('#')}}</th>
-                                <th>{{__('order id')}}</th>
+                                <th>{{__('Order id')}}</th>
                                 <th>{{__('Deliveryman earned')}}</th>
                             </tr>
                         </thead>
@@ -85,7 +82,7 @@
 <script>
     function request_alert(url, message) {
         Swal.fire({
-            title: 'Are you sure?',
+            title: '{{__('Are you sure')}}',   
             text: message,
             type: 'warning',
             showCancelButton: true,

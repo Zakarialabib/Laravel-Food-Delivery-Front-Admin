@@ -1,6 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Order Details')
+@section('title', __('Order details'))
 
 @push('css_or_js')
 <style>
@@ -70,7 +70,7 @@
                             </span>
                         @elseif($order['order_status']=='failed')
                             <span class="badge badge-soft-danger ml-2 ml-sm-3 text-capitalize">
-                                <span class="legend-indicator text-capitalize bg-danger"></span>{{__('payment')}} {{ __('failed')}}
+                                <span class="legend-indicator text-capitalize bg-danger"></span>{{__('Payment failed')}}
                             </span>
                         @else
                             <span class="badge badge-soft-danger ml-2 ml-sm-3 text-capitalize">
@@ -163,12 +163,12 @@
                 <div class="col-sm-auto">
                     <a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle mr-1"
                        href="{{route('admin.order.details',[$order['id']-1])}}"
-                       data-toggle="tooltip" data-placement="top" title="Previous order">
+                       data-toggle="tooltip" data-placement="top" title="{{__('Previous order')}}">
                         <i class="tio-arrow-backward"></i>
                     </a>
                     <a class="btn btn-icon btn-sm btn-ghost-secondary rounded-circle"
                        href="{{route('admin.order.details',[$order['id']+1])}}" data-toggle="tooltip"
-                       data-placement="top" title="Next order">
+                       data-placement="top" title="{{__('Next order')}}">
                         <i class="tio-arrow-forward"></i>
                     </a>
                 </div>
@@ -255,7 +255,7 @@
                                 </form>
                                 <div class="input-group header-item">
                                     <select name="category" id="category" class="form-control js-select2-custom mx-1" title="{{__('Select category')}}" onchange="set_category_filter(this.value)">
-                                        <option value="">{{__("All Categories")}}</option>
+                                        <option value="">{{__("All categories")}}</option>
                                         @foreach ($categories as $item)
                                         <option value="{{$item->id}}" {{$category==$item->id?'selected':''}}>{{$item->name}}</option>
                                         @endforeach
@@ -1501,4 +1501,5 @@
         })
 
     </script>
+    
 @endpush

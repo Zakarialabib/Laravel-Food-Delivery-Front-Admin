@@ -23,7 +23,7 @@
             </span>
         </td>
         <td>
-            {{$dm->zone?$dm->zone->name:__('Zone').' '.__('deleted')}}
+            {{$dm->zone?$dm->zone->name:__('Zone deleted')}}
             {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
         </td>
         <td>

@@ -82,11 +82,5 @@
 @endsection
 
 @push('script')
-    <!-- Page level plugins -->
     <script src="{{asset('public/assets/back-end/js/croppie.js')}}"></script>
-    <script>
-
-
-
-
 @endpush

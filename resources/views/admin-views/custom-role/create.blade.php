@@ -1,9 +1,6 @@
 @extends('layouts.admin.app')
 @section('title',__('Custom role'))
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
 <div class="content container-fluid"> 
     <nav aria-label="breadcrumb">

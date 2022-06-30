@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('Update').' '.__('notification'))
-
-@push('css_or_js')
-
-@endpush
+@section('title',__('Update notification'))
 
 @section('content')
     <div class="content container-fluid">
@@ -32,7 +28,7 @@
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{__('Zone')}}</label>
                                 <select name="zone" class="form-control js-select2-custom" >
-                                    <option value="all" {{isset($notification->zone_id)?'':'selected'}}>{{__('all zone')}}</option>
+                                    <option value="all" {{isset($notification->zone_id)?'':'selected'}}>{{__('All zone')}}</option>
                                     @foreach(\App\Models\Zone::orderBy('name')->get() as $z)
                                         <option value="{{$z['id']}}"  {{$notification->zone_id==$z['id']?'selected':''}}>{{$z['name']}}</option>
                                     @endforeach

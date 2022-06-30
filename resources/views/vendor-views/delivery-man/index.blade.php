@@ -50,7 +50,7 @@
                                 <select name="identity_type" class="form-control">
                                     <option value="passport">{{__('passport')}}</option>
                                     <option value="driving_license">{{__('Driving license')}}</option>
-                                    <option value="nid">{{__('nid')}}</option>
+                                    <option value="nid">{{__('CIN')}}</option>
                                 </select>
                             </div>
                         </div>

@@ -14,7 +14,7 @@
         @if($dm->zone)
         <label class="badge badge-soft-info">{{$dm->zone->name}}</label>
         @else
-        <label class="badge badge-soft-warning">{{__('Zone').' '.__('deleted')}}</label>
+        <label class="badge badge-soft-warning">{{__('Zone deleted')}}</label>
         @endif
         {{--<span class="d-block font-size-sm">{{$banner['image']}}</span>--}}
     </td>

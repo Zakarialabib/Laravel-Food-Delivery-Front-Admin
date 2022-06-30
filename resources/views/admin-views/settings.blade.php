@@ -2,10 +2,7 @@
 
 @section('title',__('Profile settings'))
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <!-- Content -->
     <div class="content container-fluid">
@@ -115,7 +112,7 @@
                                 <label for="firstNameLabel" class="col-sm-3 col-form-label input-label">{{__('Full name')}} <i
                                         class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
                                         data-placement="top"
-                                        title="Display name"></i></label>
+                                        title="{{__('Display name')}}"></i></label>
 
                                 <div class="col-sm-9">
                                     <div class="input-group input-group-sm-down-break">

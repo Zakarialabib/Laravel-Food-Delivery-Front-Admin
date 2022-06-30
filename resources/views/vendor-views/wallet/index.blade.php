@@ -2,10 +2,7 @@
 
 @section('title',__('Restaurant wallet'))
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
 <div class="content container-fluid">
     <div class="card">
@@ -136,7 +133,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{__('withdraw request')}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{__('Withdraw request')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

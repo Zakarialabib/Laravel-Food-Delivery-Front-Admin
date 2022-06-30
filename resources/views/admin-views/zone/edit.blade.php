@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','Update Branch')
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Update Branch'))
 
 @section('content')
 
@@ -31,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="input-label"
-                                       for="exampleFormControlInput1">Coordinates<span
+                                       for="exampleFormControlInput1">{{__('Coordinates')}}<span
                                         class="input-label-secondary" title="{{__('Draw your zone on the map')}}">{{__('Draw your zone on the map')}}</span></label>
                                        <textarea type="text" name="coordinates"  id="coordinates" class="form-control">@foreach($zone->coordinates[0] as $key=>$coords)<?php if(count($zone->coordinates[0]) != $key+1) {if($key != 0) echo(','); ?>({{$coords->getLat()}}, {{$coords->getLng()}})<?php } ?>@endforeach
                                 </textarea>

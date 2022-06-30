@@ -74,7 +74,7 @@
                         <div class="card-header">
                             {{__('Discount info')}}
                             <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#updatesettingsmodal">
-                                {{$restaurant->discount?__('Update').' '.__('Discount'):__('Add').' '.__('Discount')}}
+                                {{$restaurant->discount?__('Update discount'):__('Add discount')}}
                             </button>
                         </div>
                         <div class="card-body">

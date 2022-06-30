@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('Deliveryman earning provide'))
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Deliveryman earning provide'))
 
 @section('content')
 <div class="content container-fluid">

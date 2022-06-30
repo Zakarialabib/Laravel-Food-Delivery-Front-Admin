@@ -67,7 +67,7 @@
 
     <div class="card my-2">
         <div class="card-body">
-            <form action="{{route('admin.business-settings.landing-page-settings', 'links')}}" method="POST">
+            <form action="{{route('admin.business-settings.landing-page-settings-update', 'links')}}" method="POST">
                 @php($landing_page_links = \App\Models\BusinessSetting::where(['key'=>'landing_page_links'])->first())
                 @php($landing_page_links = isset($landing_page_links->value)?json_decode($landing_page_links->value, true):null)
 

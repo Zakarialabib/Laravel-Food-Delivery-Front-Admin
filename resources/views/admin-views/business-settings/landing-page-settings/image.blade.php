@@ -67,7 +67,7 @@
 
     <div class="card my-2">
         <div class="card-body">
-            <form action="{{route('admin.business-settings.landing-page-settings', 'image')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.business-settings.landing-page-settings-update', 'image')}}" method="POST" enctype="multipart/form-data">
             @php($landing_page_images = \App\Models\BusinessSetting::where(['key'=>'landing_page_images'])->first())
             @php($landing_page_images = isset($landing_page_images->value)?json_decode($landing_page_images->value, true):null)
 

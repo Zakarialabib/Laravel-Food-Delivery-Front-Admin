@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title','About us')
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('About us'))
 
 @section('content')
     <div class="content container-fluid">

@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('Profile settings'))
+@section('title', __('Profile settings'))
 
 @push('css_or_js')
 <link href="{{asset('public/assets/back-end/css/croppie.css')}}" rel="stylesheet">
@@ -14,7 +14,7 @@
         <div class="page-header">
             <div class="row align-items-end">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title">{{__('Settings')}}</h1>
+                    <h1 class="page-header-title">{{__('Profile settings')}}</h1>
                 </div>
 
                 <div class="col-sm-auto">
@@ -109,11 +109,11 @@
                                 <label for="firstNameLabel" class="col-sm-3 col-form-label input-label">{{__('Full name')}}  <i
                                         class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
                                         data-placement="top"
-                                        title="Display name"></i></label>
+                                        title="{{__('Display name')}}"></i></label>
 
                                 <div class="col-sm-9 row">
                                     <div class="col-md-6">
-                                        <label for="name">First {{__('Name')}}  <span class="text-danger">*</span></label>
+                                        <label for="name">{{__('First name')}}  <span class="text-danger">*</span></label>
                                         <input type="text" name="f_name" value="{{$data->f_name}}" class="form-control" id="name"
                                                required>
                                     </div>
@@ -165,7 +165,7 @@
                                 </div>
 
                             <div class="d-flex justify-content-end">
-                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('seller-profile-form','Want to update seller info ?')":"call_demo()"}}" class="btn btn-primary">Save changes</button>
+                                <button type="button" onclick="{{env('APP_MODE')!='demo'?"form_alert('seller-profile-form','Want to update seller info ?')":"call_demo()"}}" class="btn btn-primary">{{__('Save changes')}}</button>
                             </div>
 
                             <!-- End Form -->
@@ -190,8 +190,7 @@
 
                         <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="newPassword" class="col-sm-3 col-form-label input-label"> {{__('New')}}
-                                    {{__('Password')}}</label>
+                                <label for="newPassword" class="col-sm-3 col-form-label input-label"> {{__('New password')}}</label>
 
                                 <div class="col-sm-9">
                                     <input type="password" class="js-pwstrength form-control" name="password"
@@ -216,8 +215,7 @@
 
                             <!-- Form Group -->
                             <div class="row form-group">
-                                <label for="confirmNewPasswordLabel" class="col-sm-3 col-form-label input-label"> {{__('Confirm')}}
-                                    {{__('Password')}} </label>
+                                <label for="confirmNewPasswordLabel" class="col-sm-3 col-form-label input-label"> {{__('Confirm password')}} </label>
 
                                 <div class="col-sm-9">
                                     <div class="mb-3">
@@ -282,4 +280,3 @@
         });
     </script>
 @endpush
-

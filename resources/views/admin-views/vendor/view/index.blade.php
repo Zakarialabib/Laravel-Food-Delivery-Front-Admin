@@ -291,7 +291,7 @@
                         <div class="col-md-4 col-6">
                             <div class="card mt-2">
                                 <div class="card-header">
-                                {{__('restaurant info')}}
+                                {{__('Restaurant info')}}
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled list-unstyled-py-3 text-dark mb-3">
@@ -333,7 +333,7 @@
                 <div class="col-md-4 col-sm-4 col-12">
                     <div class="card h-100">
                         <div class="card-header">
-                            {{__('owner info')}}
+                            {{__('Owner info')}}
                         </div>
                         <div class="card-body ">
                             <div class="text-center">

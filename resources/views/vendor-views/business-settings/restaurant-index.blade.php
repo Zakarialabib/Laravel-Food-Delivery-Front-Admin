@@ -1,6 +1,6 @@
 @extends('layouts.vendor.app')
 
-@section('title',__('Settings'))
+@section('title',__('Restaurant setup'))
 
 @push('css_or_js')
 <link href="{{asset('public/assets/admin/css/croppie.css')}}" rel="stylesheet">

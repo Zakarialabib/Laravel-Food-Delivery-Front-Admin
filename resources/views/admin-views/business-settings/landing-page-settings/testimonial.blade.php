@@ -67,7 +67,7 @@
 
     <div class="card my-2">
         <div class="card-body">
-            <form action="{{route('admin.business-settings.landing-page-settings', 'testimonial')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.business-settings.landing-page-settings-update', 'testimonial')}}" method="POST" enctype="multipart/form-data">
                 @php($testimonial = \App\Models\BusinessSetting::where(['key'=>'testimonial'])->first())
                 @php($testimonial = isset($testimonial->value)?json_decode($testimonial->value, true):null)
 
@@ -136,7 +136,7 @@
                                     <a class="btn btn-sm btn-white" href="javascript:"
                                         onclick="form_alert('sp-{{$key}}','{{__('Want to delete this item')}}')" title="{{__('Delete')}}"><i class="tio-delete-outlined"></i>
                                     </a>
-                                    <form action="{{route('admin.business-settings.landing-page-settings-delete',['tab'=>'testimonial', 'key'=>$key])}}"
+                                    <form action="{{route('admin.business-settings.landing-page-settings-update-delete',['tab'=>'testimonial', 'key'=>$key])}}"
                                             method="post" id="sp-{{$key}}">
                                         @csrf @method('delete')
                                     </form>

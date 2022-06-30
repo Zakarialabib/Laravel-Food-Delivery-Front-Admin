@@ -2,17 +2,14 @@
 
 @section('title',__('Update campaign'))
 
-@push('css_or_js')
-
-@endpush
-
+ 
 @section('content')
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('update campaign')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-edit"></i> {{__('Update campaign')}}</h1>
                 </div>
             </div>
         </div>

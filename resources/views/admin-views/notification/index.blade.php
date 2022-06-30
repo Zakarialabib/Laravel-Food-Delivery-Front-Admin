@@ -1,10 +1,6 @@
 @extends('layouts.admin.app')
 
-@section('title',__('notification'))
-
-@push('css_or_js')
-
-@endpush
+@section('title', __('Notification'))
 
 @section('content')
     <div class="content container-fluid">
@@ -12,7 +8,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
-                    <h1 class="page-header-title"><i class="tio-notifications"></i> {{__('notification')}}</h1>
+                    <h1 class="page-header-title"><i class="tio-notifications"></i> {{__('Notification')}}</h1>
                 </div>
             </div>
         </div>
@@ -78,7 +74,7 @@
                 <div class="card">
                     <div class="card-header py-1">
                         <div class="row justify-content-between align-items-center flex-grow-1">
-                        <h3>Notification list<span
+                        <h3>{{__('Notification list')}}<span
                             class="badge badge-soft-dark ml-2">{{$notifications->total()}}</span></h3>
                             <div class="col-md-4 mb-3 mb-md-0">
                                 <form>
@@ -137,11 +133,11 @@
                                             <img style="height: 50px"
                                                  src="{{asset('storage/app/public/notification')}}/{{$notification['image']}}">
                                         @else
-                                            <label class="badge badge-soft-warning">No {{__('image')}}</label>
+                                            <label class="badge badge-soft-warning">{{__('No image')}}</label>
                                         @endif
                                     </td>
                                     <td>
-                                        {{$notification->zone_id==null?__('All'):($notification->zone?$notification->zone->name:__('Zone').' '.__('deleted'))}}
+                                        {{$notification->zone_id==null?__('All'):($notification->zone?$notification->zone->name:__('Zone deleted'))}}
                                     </td>
                                     <td class="text-uppercase">
                                         {{$notification->tergat}}
