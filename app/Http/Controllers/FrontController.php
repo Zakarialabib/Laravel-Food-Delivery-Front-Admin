@@ -113,7 +113,7 @@ class FrontController extends Controller
         return view('front.address',['address'=>$address]);
     }
 
-    public function address_store()
+    public function address_store(Request $request)
     {
         $inputs = request()->validate([
             'contact_person_name' => 'required',
@@ -131,8 +131,9 @@ class FrontController extends Controller
             'latitude.required' =>'Latitude is required',
         ]);
         
-        $zone = Zone::contains('coordinates', $point)->first();
         $point = new Point($request->latitude,$request->longitude);
+        $zone = Zone::contains('coordinates', $point)->first();
+
 
         $address = new CustomerAddress;
         $address->contact_person_name=$inputs['contact_person_name'];
@@ -141,7 +142,9 @@ class FrontController extends Controller
         $address->address=$inputs['address'];
         $address->longitude=$inputs['longitude'];
         $address->latitude=$inputs['latitude'];
-        $address->zone_id = $zone->id;
+        $address->zone_id = $zone ? $zone->id : 0;
+
+        $address->user_id = auth()->user()->id;
         
         $address->save();
         return back();
@@ -312,8 +315,14 @@ class FrontController extends Controller
         ]);
     }
 
+    public function cart_items()
+    {
+        return view('front.cart');
+    }
+
     public function add_to_cart(Request $request)
     {
+
         $product = Food::find($request->id);
 
         $data = array();
@@ -362,7 +371,7 @@ class FrontController extends Controller
         $data['quantity'] = $request['quantity'];
         $data['price'] = $price;
         $data['name'] = $product->name;
-        $data['discount'] = Helpers::product_discount_calculate($product, $price,Helpers::get_restaurant_data());
+        $data['discount'] = Helpers::product_discount_calculate($product, $price, $product->restaurant); //Helpers::get_restaurant_data());
         $data['image'] = $product->image;
         $data['add_ons'] = [];
         $data['add_on_qtys'] = [];
@@ -395,6 +404,8 @@ class FrontController extends Controller
             $cart = collect([$data]);
             $request->session()->put('cart', $cart);
         }
+
+        $request->session()->put('restaurant', $product->restaurant);
 
         return response()->json([
             'data' => $data
@@ -434,9 +445,10 @@ class FrontController extends Controller
         session()->put('cartsession', $cartsession);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-   //removes from Cart
-   public function remove_from_cart(Request $request)
-   {
+    
+    //removes from Cart
+    public function remove_from_cart(Request $request)
+    {
        if ($request->session()->has('cart')) {
            $cart = $request->session()->get('cart', collect([]));
            $cart->forget($request->key);
@@ -444,21 +456,37 @@ class FrontController extends Controller
        }
 
        return response()->json([],200);
-   }
+    }
 
-   //updated the quantity for a cart item
-   public function updateQuantity(Request $request)
-   {
-       $cart = $request->session()->get('cart', collect([]));
-       $cart = $cart->map(function ($object, $key) use ($request) {
-           if ($key == $request->key) {
-               $object['quantity'] = $request->quantity;
-           }
+    //updated the quantity for a cart item
+    public function updateQuantity(Request $request)
+    {
+        $role = $request->role;
+
+        if( !$role )
+            $role = 'plus';
+
+        $cart = $request->session()->get('cart', collect([]));
+
+        $cart = $cart->map(function ($object, $key) use ($request, $role) {
+            if ($key == $request->key) {
+
+                if( $role == 'plus' )
+                    $object['quantity'] += 1;
+                else
+                    $object['quantity'] -= 1;
+
+
+                if( $object['quantity'] <= 0 )
+                    $object['quantity'] = 1;
+            }
            return $object;
-       });
-       $request->session()->put('cart', $cart);
-       return response()->json([],200);
-   }
+        });
+        
+        $request->session()->put('cart', $cart);
+        
+        return response()->json([],200);
+    }
    
      //empty Cart
      public function empty_cart(Request $request)
@@ -514,6 +542,9 @@ class FrontController extends Controller
         $cartsession = session()->get('cartsession');
         $request->session()->forget('cart');
         $request->session()->forget('address');
+
+
+        //dd($order->address, $order);
            
          return view('front.order_tracking', compact('order'), ['Order'=>$order]);
      }
@@ -525,14 +556,16 @@ class FrontController extends Controller
          $data = $request->session()->put(['address'=>[
             'id'=>$id,
             'location'=>$address->location,
-             'home'=>$address->home,
-             'house_name'=>$address->house_name,
+            'home'=>$address->home,
+            'house_name'=>$address->house_name,
             'area'=>$address->area,
             'pincode'=>$address->pincode,
             'city'=>$address->city]
-            ]);  
+        ]);  
+
 
          $store = $request->session()->get('address');         
+        //dd($address, $store);
             
          return redirect()->back()->with('success', 'Address selected successfully!');
      }
@@ -580,15 +613,16 @@ class FrontController extends Controller
      public function orderStore(Order $order,Request $request,CustomerAddress $address)
      {
         
-        $address = CustomerAddress::where('default','1')
-                                  ->first();
+        $address = CustomerAddress::where('default','1')->first();
 
         $store = session()->get('address');
         $cart = session()->get('cart', []);
         
         $rest = session()->get('restaurant');
+
+        //dd($store, $rest);
     
-        $inputs = request()->validate(['delivery_method'=>'required',]);
+        $inputs = request()->validate(['delivery_method'=>'required']);
         
         $restaurant_discount_amount = 0;
 
@@ -605,13 +639,14 @@ class FrontController extends Controller
         
 
         foreach($cart as $cartitems){
-                $total +=($cartitems['price'] * $cartitems['quantity']);       
+            $total +=($cartitems['price'] * $cartitems['quantity']);       
         }
         
        
         $customer = Auth::user()->id;
         $order->order_amount = $total;
-        $order->delivery_address = $address_id;
+        //$order->delivery_address = $address_id;
+        $order->delivery_address_id = $address_id;
         $order->order_type = $inputs['delivery_method'];
         $order->order_status = 'pending';
         $order->payment_status = 'pending';
@@ -624,7 +659,7 @@ class FrontController extends Controller
 
         $order->save();
         
-        $cartid=array();
+        /*$cartid=array();
 
         foreach($cart as $cartItem){
             // dd($cartItem);
@@ -632,7 +667,7 @@ class FrontController extends Controller
             $quantity=$cartItem['quantity'];
             $name=$cartItem['name'];
             $order->transaction()->attach(['quantity'=>$quantity,'name'=>$name]);
-        }    
+        }*/
         
         return view('front.order',['Order' => $order],compact('order'));
         

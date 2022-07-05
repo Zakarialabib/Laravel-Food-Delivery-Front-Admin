@@ -142,33 +142,36 @@
 @endpush
 
 @push('scripts')
+    <script src="{{asset('public/assets/admin')}}/js/sweet_alert.js"></script>
+    <script src="{{asset('public/assets/admin')}}/js/toastr.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key={{ \App\Models\BusinessSetting::where('key', 'map_api_key')->first()->value }}&v=3.45.8">
     </script>
     <script>
-          function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-                infoWindow.setPosition(pos);
-                infoWindow.setContent(
-                    browserHasGeolocation ?
-                    "Error: The Geolocation service failed." :
-                    "Error: Your browser doesn't support geolocation."
-                );
+        
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(
+                browserHasGeolocation ?
+                "Error: The Geolocation service failed." :
+                "Error: Your browser doesn't support geolocation."
+            );
+        }
+
+        $('.btn-locate').click(function(e){
+            e.preventDefault();
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position){
+                    $('#user_latitude').val(position.coords.latitude);
+                    $('#user_longitude').val(position.coords.longitude);
+
+                    //console.log( "Latitude: " + position.coords.latitude +   " - Longitude: " + position.coords.longitude );
+                });
+            } else {
+                console.log( "Geolocation is not supported by this browser.");
             }
-
-            $('.btn-locate').click(function(e){
-                e.preventDefault();
-
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function(position){
-                        $('#user_latitude').val(position.coords.latitude);
-                        $('#user_longitude').val(position.coords.longitude);
-
-                        //console.log( "Latitude: " + position.coords.latitude +   " - Longitude: " + position.coords.longitude );
-                    });
-                } else {
-                    console.log( "Geolocation is not supported by this browser.");
-                }
-            }).trigger('click');
+        }).trigger('click');
     </script>
 @endpush
 </x-app-layout>

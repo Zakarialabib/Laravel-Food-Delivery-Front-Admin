@@ -112,8 +112,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <x-tel-input id="contact_person_number" name="contact_person_number"
-                                        value="{{ $value->contact_person_number }}" required class="form-control" />
+                                    <input id="contact_person_number" name="contact_person_number" value="{{ $value->contact_person_number }}" type="phone" required class="form-control" >
                                     @error('contact_person_number')
                                         <p style="color:red">{{ $errors->first('contact_person_number') }}
                                         @enderror
@@ -212,8 +211,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-lg-6">
-                                <x-tel-input id="contact_person_number" name="contact_person_number"
-                                    placeholder="{{ __('Ex : 017********') }}" required class="form-control" />
+                                <input id="contact_person_number" name="contact_person_number" placeholder="{{ __('Ex : 017********') }}" type="phone" required class="form-control" >
                                 @if ($errors->has('contact_person_name'))
                                     <span class="text-danger">{{ $errors->first('contact_person_name') }}</span>
                                 @endif

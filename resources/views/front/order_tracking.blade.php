@@ -15,20 +15,23 @@
 
                             @if ($order->order_type == 'delivery')
                                 <p class="mb-0">{{__('Thanks for shopping! Your order number is')}}<strong>#{{ $order->id }}</strong>. The restaurant will deliver your order by
-                                    {{ $order->created_at->format('H:m') }}PM.</p>
+                                    {{ $order->created_at }} PM.</p>
                                 <span>{{__('For any questions, reach out to us on info@tiktak.ma')}}</span>
                                 <h6 class="mt-3">{{__('Delivery Address')}}</h6>
                                 <div class="card address-card">
                                     <div class="card-body deliverable">
                                         <div class="delivery">
                                             <i class="bx bxs-check-circle"></i>
-                                            <h5 class="card-title">{{ $order->address->home }}</h5>
+                                            <h5 class="card-title">{{ $order->address->contact_person_name }}</h5>
                                         </div>
-                                        <h6>{{ Auth::user()->first_name }}, {{ Auth::user()->mobile }}</h6>
+                                        <h6>{{ Auth::user()->f_name }}, {{ Auth::user()->phone }}</h6>
                                         <p class="card-text">
+                                            @if( $order->address )
+                                            {{ $order->address->contact_person_number }}, {{ $order->address->address }},
                                             {{ $order->address->location }}, {{ $order->address->house_name }},
                                             {{ $order->address->area }},{{ $order->address->city }},
                                             {{ $order->address->pincode }}.
+                                            @endif
                                         </p>
                                     </div>
                                 </div>

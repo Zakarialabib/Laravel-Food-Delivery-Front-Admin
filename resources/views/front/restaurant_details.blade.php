@@ -181,6 +181,8 @@
     </div>
 
     @push('scripts')
+<script src="{{asset('public/assets/admin')}}/js/sweet_alert.js"></script>
+<script src="{{asset('public/assets/admin')}}/js/toastr.js"></script>
         <script
                 src="https://maps.googleapis.com/maps/api/js?key={{ \App\Models\BusinessSetting::where('key', 'map_api_key')->first()->value }}&callback=initMap&v=3.45.8">
         </script>
@@ -191,6 +193,8 @@
             };
             let map;
             initMap();
+
+            updateCart();
 
             function initMap() {
                 map = new google.maps.Map(document.getElementById("map"), {
@@ -401,12 +405,13 @@
                         }
                     });
                     $.post({
-                        url: '{{ route('add-to-cart') }}',
+                        url: '{{ route('frnt-add-to-cart') }}',
                         data: $('#' + form_id).serializeArray(),
                         beforeSend: function() {
                             $('#loading').show();
                         },
                         success: function(data) {
+                            $('.call-when-done').click();
                             if (data.data == 1) {
                                 Swal.fire({
                                     icon: 'info',
@@ -431,7 +436,6 @@
                                 });
                                 return false;
                             }
-                            $('.call-when-done').click();
 
                             toastr.success('{{ __('Product has been Added in cart') }}', {
                                 CloseButton: true,
@@ -453,8 +457,10 @@
                 }
             }
 
-            function removeFromCart(key) {
-                $.post('{{ route('remove-from-cart') }}', {
+            function removeFromCart(e, key) {
+                //e.preventDefault();
+
+                $.post('{{ route('frnt_remove_from_cart') }}', {
                     _token: '{{ csrf_token() }}',
                     key: key
                 }, function(data) {
@@ -477,7 +483,7 @@
             }
 
             function emptyCart() {
-                $.post('{{ route('emptyCart') }}', {
+                $.post('{{ route('frnt-empty-cart') }}', {
                     _token: '{{ csrf_token() }}'
                 }, function(data) {
                     updateCart();
@@ -497,15 +503,29 @@
             });
 
 
+            function updateQty(key, role='plus') {
+ 
+                $.post('{{ route('frnt-update-quantity') }}', {
+                    _token: '{{ csrf_token() }}',
+                    key: key,
+                    role: role
+                }, function(data) {
+                    updateCart();
+                });
+                
+            }
+
+
             function updateQuantity(e) {
                 var element = $(e.target);
-                var minValue = parseInt(element.attr('min'));
+                var minValue = parseInt(element.data('min'));
+                var valueCurrent = parseInt(element.data('val'));
                 // maxValue = parseInt(element.attr('max'));
-                var valueCurrent = parseInt(element.val());
+                //var valueCurrent = parseInt(element.val());
 
                 var key = element.data('key');
                 if (valueCurrent >= minValue) {
-                    $.post('{{ route('updateQuantity') }}', {
+                    $.post('{{ route('frnt-update-quantity') }}', {
                         _token: '{{ csrf_token() }}',
                         key: key,
                         quantity: valueCurrent

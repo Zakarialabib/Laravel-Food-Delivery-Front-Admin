@@ -141,7 +141,8 @@
                             @endif
                             <div class="cart-footer">
                                 @php $total = 0 @endphp
-                                @foreach ((array) session('cart') as $id => $details)
+                                @if( session('cart') )
+                                @foreach (session('cart') as $id => $details)
                                     @php $total += $details['price'] * $details['quantity'] @endphp
                                 @endforeach
                                 <ul>
@@ -175,9 +176,9 @@
 
                                         </p>
                                     </li>
-                                    <button class="btn btn-primary mt-3 w-100"
-                                        onclick="window.location.href='{{ route('order') }}';">{{__('Checkout')}}</button>
+                                    <button class="btn btn-primary mt-3 w-100" onclick="window.location.href='{{ route('order') }}';">{{__('Checkout')}}</button>
                                 </ul>
+                                @endif
                             </div>
                         </div>
 
@@ -228,15 +229,13 @@
                                 <div id="map"></div>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" name="contact_person_name" class="form-control"
-                                    placeholder="{{ __('Contact person name') }}">
+                                <input type="text" name="contact_person_name" class="form-control" placeholder="{{ __('Contact person name') }}">
                                 @if ($errors->has('contact_person_name'))
                                     <span class="text-danger">{{ $errors->first('contact_person_name') }}</span>
                                 @endif
                             </div>
                             <div class="form-group col-lg-6">
-                                <x-tel-input id="contact_person_number" name="contact_person_number"
-                                    placeholder="{{ __('Ex : 017********') }}" required class="form-control" />
+                                <input id="contact_person_number" type="phone" required name="contact_person_number" class="form-control" placeholder="{{ __('Ex : 017********') }}">
                                 @if ($errors->has('contact_person_name'))
                                     <span class="text-danger">{{ $errors->first('contact_person_name') }}</span>
                                 @endif
@@ -327,8 +326,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <x-tel-input id="contact_person_number" name="contact_person_number"
-                                        value="{{ $value->contact_person_number }}" required class="form-control" />
+                                    <input id="contact_person_number" type="phone" required name="contact_person_number" class="form-control" value="{{ $value->contact_person_number }}" placeholder="{{ __('Ex : 017********') }}">
                                     @error('contact_person_number')
                                         <p style="color:red">{{ $errors->first('contact_person_number') }}
                                         @enderror

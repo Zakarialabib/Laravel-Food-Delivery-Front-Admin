@@ -1,4 +1,11 @@
   <!-- header -->
+  <script type="text/javascript">
+    function updateCart() {
+        $.post('{{ route('frnt-update-cart'); }}', {_token: '{{ csrf_token() }}'}, function (data) {
+            $('#cart').empty().html(data);
+        });
+    }
+  </script>
   <header>
     <div class="container-fluid">
         <nav id="navbar_top" class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -12,8 +19,11 @@
                 type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+                   
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto"></ul>
+                <ul class="navbar-nav uppercase">
+                </ul>
                 <ul class="navbar-nav uppercase">
                     <div class="btn-group show-on-hover">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -70,6 +80,14 @@
                                 @csrf
                             </form>
                         </li>
+                        <div class="btn-group show-on-hover dropleft">
+                            <button type="button" class="btn btn-default dropdown-toggle" onclick="updateCart()" data-toggle="dropdown">
+                                <i class="fas fa-cart-arrow-down"></i>
+                            </button>
+                            <div class="dropdown-menu" role="menu">
+                                <div id="cart"></div>
+                            </div>
+                        </div>
                     @endif
                     <livewire:cart-count />
                 </ul>

@@ -181,8 +181,15 @@ Route::middleware('auth')->group(function (){
     Route::post('/changePassword',[FrontController::class, 'change_password'])->name('change_password');
     //////////Cart///////////////
     Route::get('/cart',[FrontController::class,'cart'])->name('cart');
-    Route::get('/add-to-cart/{id}', [FrontController::class, 'addToCart'])->name('addToCart');
-    Route::get('/remove-from-cart/{id}', [FrontController::class, 'removeFromCart'])->name('removeFromCart');
+    
+    Route::post('/add-to-cart', [FrontController::class, 'add_to_cart'])->name('frnt-add-to-cart');
+    Route::post('/cart-items', [FrontController::class, 'cart_items'])->name('frnt-update-cart');
+    Route::post('/remove_from_cart', [FrontController::class, 'remove_from_cart'])->name('frnt_remove_from_cart');
+
+    Route::get('/remove-from-cart/{id?}', [FrontController::class, 'removeFromCart'])->name('frnt-remove-from-cart');
+    Route::get('/empty-cart', [FrontController::class, 'removeFromCart'])->name('frnt-empty-cart');
+    Route::post('/update-quantity', [FrontController::class, 'updateQuantity'])->name('frnt-update-quantity');
+
     Route::delete('cartDelete/{id}', [FrontController::class, 'cartDelete'])->name('cartDelete');
     
     Route::get('/checkout',[FrontController::class,'checkout'])->name('checkout');
