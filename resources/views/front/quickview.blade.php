@@ -187,10 +187,14 @@
                 </div>
 
                 <div class="d-flex justify-content-center mt-2">
-                    <button class="btn btn-primary" onclick="addToCart()" type="button" style="width:37%; height: 45px">
+                    @if ( Auth::check() )
+                    <button class="btn btn-primary" onclick="addToCart()" type="button" style="height: 45px">
                         <i class="tio-shopping-cart"></i>
                         {{ __('Add to cart') }}
                     </button>
+                    @else
+                    <a class="btn btn-primary" href="{{ route('login') }}">{{ __('Add to cart') }}</a>
+                    @endif
                 </div>
             </form>
         </div>
