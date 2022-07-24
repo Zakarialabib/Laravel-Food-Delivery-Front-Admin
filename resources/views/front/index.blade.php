@@ -1,4 +1,5 @@
 <x-app-layout>
+    @section('title',''.\App\Models\BusinessSetting::where(['key'=>'business_name'])->first()->value??'TIKTAK')
     <!-- Banner -->
     @php($landing_page_text = \App\Models\BusinessSetting::where(['key'=>'landing_page_text'])->first())
     @php($landing_page_text = isset($landing_page_text->value)?json_decode($landing_page_text->value, true):null)

@@ -10,60 +10,202 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        h6 {
-            margin-bottom: 0;
-        }
-
-    </style>
 </head>
 
 <body>
-
-    <div class="p-4 container-fluid">
-
-
-        <h2>Order #{{ $order->id }}</h2>
-        <p>{{ $order->order_date }}</p>
-        <table class="table table-bordered mt-4" style="width:50%">
-            <tr>
-                <td>Order status</td>
-                <td>{{ $order->order_status }}</td>
-            </tr>
-            <tr>
-                <td>Total amount</td>
-                <td>${{ $order->item_total }}</td>
-            </tr>
-            <tr>
-                <td>Total discount</td>
-                <td>${{ $order->discount }}</td>
-            </tr>
-            <tr>
-                <td>Delivery charge</td>
-                <td>${{ $order->delivery_fee }}</td>
-            </tr>
-            <tr>
-                <td>Amount</td>
-                <td>${{ $order->grand_total }}</td>
-            </tr>
-        </table>
-
-
-        <!-- <h4 class="mt-4">Restuarant address</h4>
-        <p class="mb-1">Blue Bell Restuarant</p>
-        <p class="mb-1">Park Avenue road, Ernakulam, 682 011</p>
-
-        <h4 class="mt-4">Customer address</h4>
-        <p class="mb-1">John Doe</p>
-        <p class="mb-1">Address_1, Street name,
-            City,
-            Pincode
-        </p>
-        <p class="mb-1">999 9999 999, John@gmail.com </p> -->
-
-
-    </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        <div class="content container-fluid">
+            <div class="row">
+                <div class="col-5">
+                    <div class="text-center pt-4 mb-3">
+                        <h2 style="line-height: 1">{{$order->restaurant->name}}</h2>
+                        <h5 class="text-break" style="font-size: 20px;font-weight: lighter;line-height: 1">
+                            {{$order->restaurant->address}}
+                        </h5>
+                        <h5 style="font-size: 16px;font-weight: lighter;line-height: 1">
+                            {{__('Phone')}} : {{$order->restaurant->phone}}
+                        </h5>
+                        @if($order->restaurant->gst_status)
+                        <h5 style="font-size: 12px;font-weight: lighter;line-height: 1">
+                            {{__('ICE No')}} : {{$order->restaurant->gst_code}}
+                        </h5>
+                        @endif
+                    </div>
+    
+                    <span>---------------------------------------------------------------------------------</span>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <h5>{{__('Order id')}} : {{$order['id']}}</h5>
+                        </div>
+                        <div class="col-6">
+                            <h5 style="font-weight: lighter">
+                                {{date('d/M/Y '.config('timeformat'),strtotime($order['created_at']))}}
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <h5>
+                                {{__('Customer name')}} : {{$order->customer['f_name'].' '.$order->customer['l_name']}}
+                            </h5>
+                            <h5>
+                                {{__('Phone')}} : {{$order->customer['phone']}}
+                            </h5>
+                            <h5 class="text-break">
+                                {{__('Address')}} : {{isset($order->delivery_address)?json_decode($order->delivery_address, true)['address']:''}}
+                            </h5>
+                        </div>
+                    </div>
+                    <h5 class="text-uppercase"></h5>
+                    <span>---------------------------------------------------------------------------------</span>
+                    <table class="table table-bordered mt-3" style="width: 98%">
+                        <thead>
+                        <tr>
+                            <th style="width: 10%">{{__('QTY')}}</th>
+                            <th class="">{{__('DESC')}}</th>
+                            <th class="">{{__('Price')}}</th>
+                        </tr>
+                        </thead>
+    
+                        <tbody>
+                        @php($sub_total=0)
+                        @php($total_tax=0)
+                        @php($total_dis_on_pro=0)
+                        @php($add_ons_cost=0)
+                        @foreach($order->details as $detail)
+                            @if($detail->food)
+                                <tr>
+                                    <td class="">
+                                        {{$detail['quantity']}}
+                                    </td>
+                                    <td class="text-break">
+                                        {{$detail->food['name']}} <br>
+                                        @if(count(json_decode($detail['variation'],true))>0)
+                                            <strong><u>{{__('Variation')}} : </u></strong>
+                                            @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
+                                                <div class="font-size-sm text-body">
+                                                    <span>{{$key1}} :  </span>
+                                                    <span class="font-weight-bold">{{$key1=='price'?\App\CentralLogics\Helpers::format_currency($variation):$variation}}</span>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                        <div class="font-size-sm text-body">
+                                            <span>{{'Price'}} :  </span>
+                                            <span class="font-weight-bold">{{\App\CentralLogics\Helpers::format_currency($detail->price)}}</span>
+                                        </div>
+                                        @endif
+    
+                                        @foreach(json_decode($detail['add_ons'],true) as $key2 =>$addon)
+                                            @if($key2==0)<strong><u>{{__('Addons')}} :</u></strong>@endif
+                                            <div class="font-size-sm text-body">
+                                                <span class="text-break">{{$addon['name']}} :  </span>
+                                                <span class="font-weight-bold">
+                                                    {{$addon['quantity']}} x {{\App\CentralLogics\Helpers::format_currency($addon['price'])}}
+                                                </span>
+                                            </div>
+                                            @php($add_ons_cost+=$addon['price']*$addon['quantity'])
+                                        @endforeach
+                                    </td>
+                                    <td style="width: 28%">
+                                        @php($amount=($detail['price'])*$detail['quantity'])
+                                        {{\App\CentralLogics\Helpers::format_currency($amount)}}
+                                    </td>
+                                </tr>
+                                @php($sub_total+=$amount)
+                                @php($total_tax+=$detail['tax_amount']*$detail['quantity'])
+                            
+                            @elseif($detail->campaign)
+                                <tr>
+                                    <td class="">
+                                        {{$detail['quantity']}}
+                                    </td>
+                                    <td class="">
+                                        {{$detail->campaign['title']}} <br>
+                                        @if(count(json_decode($detail['variation'],true))>0)
+                                            <strong><u>{{__('Variation')}} : </u></strong>
+                                            @foreach(json_decode($detail['variation'],true)[0] as $key1 =>$variation)
+                                                <div class="font-size-sm text-body">
+                                                    <span>{{$key1}} :  </span>
+                                                    <span class="font-weight-bold">{{$key1=='price'?\App\CentralLogics\Helpers::format_currency($variation):$variation}}</span>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                        <div class="font-size-sm text-body">
+                                            <span>{{'Price'}} :  </span>
+                                            <span class="font-weight-bold">{{\App\CentralLogics\Helpers::format_currency($detail->price)}}</span>
+                                        </div>
+                                        @endif
+    
+                                        @foreach(json_decode($detail['add_ons'],true) as $key2 =>$addon)
+                                            @if($key2==0)<strong><u>{{__('Addons')}} :</u></strong>@endif
+                                            <div class="font-size-sm text-body">
+                                                <span>{{$addon['name']}} :  </span>
+                                                <span class="font-weight-bold">
+                                                                {{$addon['quantity']}} x {{\App\CentralLogics\Helpers::format_currency($addon['price'])}}
+                                                            </span>
+                                            </div>
+                                            @php($add_ons_cost+=$addon['price']*$addon['quantity'])
+                                        @endforeach
+                                    </td>
+                                    <td style="width: 28%">
+                                        @php($amount=($detail['price'])*$detail['quantity'])
+                                        {{\App\CentralLogics\Helpers::format_currency($amount)}}
+                                    </td>
+                                </tr>
+                                @php($sub_total+=$amount)
+                                @php($total_tax+=$detail['tax_amount']*$detail['quantity'])
+                            @endif
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <span>---------------------------------------------------------------------------------</span>
+                    <div class="row justify-content-md-end mb-3" style="width: 97%">
+                        <div class="col-md-7 col-lg-7">
+                            <dl class="row text-right">
+                                <dt class="col-6">{{__('Items price')}}:</dt>
+                                <dd class="col-6">{{\App\CentralLogics\Helpers::format_currency($sub_total)}}</dd>
+                                <dt class="col-6">{{__('Addon Cost')}}:</dt>
+                                <dd class="col-6">
+                                    {{\App\CentralLogics\Helpers::format_currency($add_ons_cost)}}
+                                    <hr>
+                                </dd>
+                                <dt class="col-6">{{__('Subtotal')}}:</dt>
+                                <dd class="col-6">
+                                    {{\App\CentralLogics\Helpers::format_currency($sub_total+$total_tax+$add_ons_cost)}}</dd>
+                                <dt class="col-6">{{__('Discount')}}:</dt>
+                                <dd class="col-6">
+                                    - {{\App\CentralLogics\Helpers::format_currency($order['restaurant_discount_amount'])}}</dd>
+                                <dt class="col-6">{{__('Coupon discount')}}:</dt>
+                                <dd class="col-6">
+                                    - {{\App\CentralLogics\Helpers::format_currency($order['coupon_discount_amount'])}}</dd>
+                                <dt class="col-6">{{__('vat/tax')}}:</dt>
+                                <dd class="col-6">+ {{\App\CentralLogics\Helpers::format_currency($order['total_tax_amount'])}}</dd>
+                                <dt class="col-6">{{__('Delivery fee')}}:</dt>
+                                <dd class="col-6">
+                                    @php($del_c=$order['delivery_charge'])
+                                    {{\App\CentralLogics\Helpers::format_currency($del_c)}}
+                                    <hr>
+                                </dd>
+    
+                                <dt class="col-6" style="font-size: 20px">{{__('Total')}}:</dt>
+                                <dd class="col-6" style="font-size: 20px">{{\App\CentralLogics\Helpers::format_currency($sub_total+$del_c+$order['total_tax_amount']+$add_ons_cost-$order['coupon_discount_amount'] - $order['restaurant_discount_amount'])}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    @if ($order->edited && $order->payment_method != 'cash_on_delivery')
+                        
+                    @endif
+                    <div class="d-flex flex-row justify-content-between border-top">
+                        <span>{{__('Paid by')}}: {{$order->payment_method}}</span>	<span>{{__('Amount')}}: {{$order->order_amount + $order->adjusment}}</span>	<span>{{__('Change')}}: {{$order->adjusment}}</span>
+                    </div>
+                    <span>---------------------------------------------------------------------------------</span>
+                    <h5 class="text-center pt-3">
+                        """{{__('THANK YOU')}}"""
+                    </h5>
+                    <span>---------------------------------------------------------------------------------</span>
+                </div>
+            </div>
+        </div>
+    
+    
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

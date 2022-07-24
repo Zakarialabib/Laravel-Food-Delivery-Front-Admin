@@ -82,14 +82,18 @@
                         </li>
                         <div class="btn-group show-on-hover dropleft">
                             <button type="button" class="btn btn-default dropdown-toggle" onclick="updateCart()" data-toggle="dropdown">
-                                <i class="fas fa-cart-arrow-down"></i>
+                                <span class="cart-badge-wrap">
+                                    @if( session('cart'))
+                                    <span class="cart-badge">{{ count( session('cart')) }}</span>
+                                    @endif
+                                    <i class='bx bx-shopping-bag mr-1'></i>
+                                    </span>
                             </button>
                             <div class="dropdown-menu" role="menu">
                                 <div id="cart"></div>
                             </div>
                         </div>
                     @endif
-                    <livewire:cart-count />
                 </ul>
             </div>
         </nav>

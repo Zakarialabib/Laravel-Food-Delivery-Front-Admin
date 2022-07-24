@@ -1,5 +1,5 @@
 <x-app-layout>
-    @section('title', $restaurant->name)
+    @section('title', $restaurant->name . __('menu'))
     {{-- loader --}}
     <div class="container">
         <div class="row">
@@ -70,7 +70,7 @@
     <section class="py-60">
         <div class="container">
             <div class="row cuisine-dish-wrap">
-                <div class="col-lg-8 cuisine-col">
+                <div class="col-lg-12 cuisine-col">
                     <div class="card-header d-flex flex-wrap justify-content-between">
                         <form id="search-form" class="header-item">
                             <!-- Search -->
@@ -86,17 +86,7 @@
                             </div>
                             <!-- End Search -->
                         </form>
-                        <div class="input-group header-item" style="width:250px;">
-                            <select name="category" id="category" class="form-control js-select2-custom mx-1"
-                                title="{{ __('Select category') }}" onchange="set_category_filter(this.value)">
-                                <option value="">{{ __('All categories') }}</option>
-                                @foreach ($categories as $item)
-                                    <option value="{{ $item->id }}" {{ $category == $item->id ? 'selected' : '' }}>
-                                        {{ Str::limit($item->name, 20, '...') }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
+                        
                     </div>
                     <div class="rest-menus bg-gray-100" id="rest-menus">
                         <div class="tab-content" id="pills-tabContent">
@@ -110,12 +100,11 @@
                                         @if ($restaurant->active == 1)
                                             <div class="flex flex-wrap overflow-hidden">
                                                 @foreach ($products as $product)
-                                                    <div class="px-4 py-4 lg:w-1/3 md:w-1/3 sm-w-1/2">
+                                                    <div class="px-4 py-4 lg:w-1/3 md:w-1/3 sm:w-1/2">
                                                         @include('front.single_product', [
                                                             'product' => $product,
                                                             'restaurant' => $restaurant,
                                                         ])
-                                                        {{-- <hr class="d-sm-none"> --}}
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -165,7 +154,6 @@
                         </div>
                     </div>
                 </div>
-                <livewire:cart />
             </div>
         </div>
     </section>
@@ -181,10 +169,10 @@
     </div>
 
     @push('scripts')
-<script src="{{asset('public/assets/admin')}}/js/sweet_alert.js"></script>
-<script src="{{asset('public/assets/admin')}}/js/toastr.js"></script>
+        <script src="{{ asset('public/assets/admin') }}/js/sweet_alert.js"></script>
+        <script src="{{ asset('public/assets/admin') }}/js/toastr.js"></script>
         <script
-                src="https://maps.googleapis.com/maps/api/js?key={{ \App\Models\BusinessSetting::where('key', 'map_api_key')->first()->value }}&callback=initMap&v=3.45.8">
+            src="https://maps.googleapis.com/maps/api/js?key={{ \App\Models\BusinessSetting::where('key', 'map_api_key')->first()->value }}&callback=initMap&v=3.45.8">
         </script>
         <script>
             const myLatLng = {
@@ -503,8 +491,8 @@
             });
 
 
-            function updateQty(key, role='plus') {
- 
+            function updateQty(key, role = 'plus') {
+
                 $.post('{{ route('frnt-update-quantity') }}', {
                     _token: '{{ csrf_token() }}',
                     key: key,
@@ -512,7 +500,7 @@
                 }, function(data) {
                     updateCart();
                 });
-                
+
             }
 
 

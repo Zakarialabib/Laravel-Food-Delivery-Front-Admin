@@ -43,7 +43,7 @@
                                         <label style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{__('Callback uri')}}</label>
                                         <span class="btn btn-secondary btn-sm m-2" onclick="copyToClipboard('#id_{{$socialLoginService['login_medium']}}')"><i class="tio-copy"></i> {{__('Copy uri')}}</span>
                                         <br>
-                                        <span class="form-control" id="id_{{$socialLoginService['login_medium']}}" style="height: unset">{{ url('/') }}/customer/auth/login/{{$socialLoginService['login_medium']}}/callback</span>
+                                        <span class="form-control" id="id_{{$socialLoginService['login_medium']}}" style="height: unset">{{ url('/') }}/auth/login/{{$socialLoginService['login_medium']}}/callback</span>
                                     </div>
                                     <div class="form-group mb-2">
                                         <label

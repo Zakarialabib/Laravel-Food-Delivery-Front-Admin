@@ -48,13 +48,13 @@
     </button>
 </div>
 <div class="modal-body">
-    <div class="d-flex flex-row">
+    <div class="container">
         @if (config('toggle_veg_non_veg'))
             <span
                 class="badge badge-{{ $product->veg ? 'success' : 'danger' }} position-absolute">{{ $product->veg ? __('Veg') : __('Non veg') }}</span>
         @endif
         <!-- Product gallery-->
-        <div class="d-flex align-items-center justify-content-center active" style="height:9.5rem;">
+        <div class="w-full flex justify-center" style="height:9.5rem;">
             @if (empty($product['image']))
                 <img class="img-responsive" style="height:100%;width:auto;overflow:hidden;border-radius: 5%;"
                     src="{{ asset('storage/app/public/product/' . $product['image']) }}"
@@ -68,7 +68,7 @@
             <div class="cz-image-zoom-pane"></div>
         </div>
         <!-- Product details-->
-        <div class="details pl-2">
+        <div class="details w-full text-center py-2">
             <a class="py-2 font-semibold text-2xl capitalize text-break">{{ $product->name }}</a>
 
             <div class="py-2 text-dark">
@@ -91,7 +91,7 @@
             @endif
         </div>
     </div>
-    <div class="row pt-2">
+    <div class="row text-center">
         <div class="col-12">
             <?php
             $cart = false;
@@ -102,10 +102,13 @@
                     }
                 }
             }?>
-            <h2 class="mt-2 text-dark text-xl">{{ __('Description') }}</h2>
-            <span class="d-block text-dark text-break">
-                {!! $product->description !!}
-            </span>
+            <div class="py-4 divide-y-2">
+                <h2 class="mt-2 text-dark text-xl">{{ __('Description') }}</h2>
+                <span class="d-block text-dark text-break">
+                    {!! $product->description !!}
+                </span>
+            </div>
+
             <form id="add-to-cart-form" class="mb-2">
                 @csrf
                 <input type="hidden" name="id" value="{{ $product->id }}">
@@ -124,7 +127,7 @@
                     </div>
                 @endforeach
 
-                <!-- Quantity + Add to cart -->
+                {{-- <!-- Quantity + Add to cart -->
                 <div class="d-flex justify-content-between py-4 border-b border-gray-200">
                     <div class="mt-2 text-dark text-xl">{{ __('Quantity') }}:</div>
                     <div class="product-quantity flex items-center justify-betweenr">
@@ -146,10 +149,9 @@
                             </span>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 @php($add_ons = json_decode($product->add_ons))
                 @if (count($add_ons) > 0)
-                    <div class="mt-2 text-dark text-xl">{{ __('Addon') }} :</div>
                     @foreach (\App\Models\AddOn::whereIn('id', $add_ons)->active()->get() as $key => $add_on)
                         <div class="py-4 border-b border-gray-200 flex items-center justify-between">
                             <input type="hidden" name="addon-price{{ $add_on->id }}" value="{{ $add_on->price }}">

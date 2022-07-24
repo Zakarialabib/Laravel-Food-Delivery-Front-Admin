@@ -1,4 +1,5 @@
 <x-app-layout>
+    @section('title', __('Verify your email'))
     <div class="search-nav">
         <div class="container">
             <h3 class="text-center">{{ __('Verify your email') }}</h3>

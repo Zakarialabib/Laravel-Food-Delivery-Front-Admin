@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use Grimzy\LaravelMysqlSpatial\Types\Point;
 use App\CentralLogics\RestaurantLogic;
+use Brian2694\Toastr\Facades\Toastr;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Rules\MatchOldPassword;
 use App\CentralLogics\Helpers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Category;
 use App\Models\CustomerAddress;
+use App\Models\OrderDetail;
 use App\Models\User;
 use App\Models\Food;
 use App\Models\Order;
 use App\Models\Zone;
-use Carbon\Carbon;
 use Session;
-Use PDF;
-use Illuminate\Support\Facades\DB;
 use Hash;
 use Auth;
 
@@ -106,7 +106,6 @@ class FrontController extends Controller
         return back()->with('success','Password Updated Successfully.');
     }
 
-    ///////////// Customer Address///////////////////
     public function address(CustomerAddress $address)
     {
         $address = CustomerAddress::all();
@@ -246,19 +245,25 @@ class FrontController extends Controller
         ],compact('zone_id','search_text'));
     }
      ////////////// Restaurant List ///////////////
-     public function restaurant_listing()
+     public function restaurant_listing(Request $request)
      {    
-         $itemfoods = Food::all();
+        $itemfoods = Food::all();
 
-         $restaurant = Restaurant::where('status', 1)->paginate(10);
-      
-         $categories = Category::where(['position'=>0])->latest()->get();
-      
-         return view('front.restaurant_listing',
-                    [
-                    'restaurants'=>$restaurant,
-                    'categories'=>$categories,
-                    ]);
+        $keyword = $request->query('keyword', false);
+        
+        $key = explode(' ', $keyword);
+
+        $restaurants = Restaurant::where('status', 1)
+       
+        ->when($keyword, function($query)use($key){
+            return $query->where(function ($q) use ($key) {
+                foreach ($key as $value) {
+                    $q->orWhere('name', 'like', "%{$value}%");
+                }
+            });
+        })->latest()->paginate(10);
+
+         return view('front.restaurant_listing', compact('keyword','restaurants'));
      }
      public function restaurant_details($id,Request $request)
      {
@@ -505,11 +510,6 @@ class FrontController extends Controller
         session()->flash('success', 'Product removed successfully');
     }
 
-    public function cart2()
-    {
-        return view('front.cart2');       
-    }
-
     public function emptycart()
     {
         return view('front.emptycart');
@@ -616,33 +616,33 @@ class FrontController extends Controller
         $address = CustomerAddress::where('default','1')->first();
 
         $store = session()->get('address');
-        $cart = session()->get('cart', []);
         
+        $cart = $request->session()->get('cart');
+
         $rest = session()->get('restaurant');
 
-        //dd($store, $rest);
+        $order_details = [];
     
         $inputs = request()->validate(['delivery_method'=>'required']);
         
         $restaurant_discount_amount = 0;
-
+        $total_addon_price = 0;
+        $product_price = 0;
         $address_id = 0;
+
         if($request->delivery_method == "delivery") {
         
          $address_id = isset($store['id']) ? $store['id'] : ($address->id);
         }
         
-        $restaurant_id = null;
-        $restaurant_id = $rest['restaurant'];
+        $restaurant_id = $rest->id;
         
         $total=0;
-        
 
-        foreach($cart as $cartitems){
-            $total +=($cartitems['price'] * $cartitems['quantity']);       
-        }
+        // foreach($cart as $cartitems){
+        //     $total +=($cartitems['price'] * $cartitems['quantity']);       
+        // }
         
-       
         $customer = Auth::user()->id;
         $order->order_amount = $total;
         //$order->delivery_address = $address_id;
@@ -657,17 +657,71 @@ class FrontController extends Controller
         $order->created_at = now();
         $order->updated_at = now();
 
-        $order->save();
-        
-        /*$cartid=array();
+        foreach ($cart as $c) {
+            if(is_array($c))
+            {
+                $product = Food::find($c['id']);
+                if ($product) {
+                    $price = $c['price'];
+                    $product->tax = $rest->tax;
+                    $product = Helpers::product_data_formatting($product);
+                    $addon_data = Helpers::calculate_addon_price(\App\Models\AddOn::whereIn('id',$c['add_ons'])->get(), $c['add_on_qtys']);
+                    $or_d = [
+                        'food_id' => $c['id'],
+                        'item_campaign_id' => null,
+                        'food_details' => json_encode($product),
+                        'quantity' => $c['quantity'],
+                        'price' => $price,
+                        'tax_amount' => Helpers::tax_calculate($product, $price),
+                        'discount_on_food' => Helpers::product_discount_calculate($product, $price, $rest),
+                        'discount_type' => 'discount_on_product',
+                        'variant' => json_encode($c['variant']),
+                        'variation' => json_encode([$c['variations']]),
+                        'add_ons' => json_encode($addon_data['addons']),
+                        'total_add_on_price' => $addon_data['total_add_on_price'],
+                        'created_at' => now(),
+                        'updated_at' => now()
+                    ];
+                    $total_addon_price += $or_d['total_add_on_price'];
+                    $product_price += $price*$or_d['quantity'];
+                    $restaurant_discount_amount += $or_d['discount_on_food']*$or_d['quantity'];
+                    $order_details[] = $or_d;
+                }
+            }
+        }
 
-        foreach($cart as $cartItem){
-            // dd($cartItem);
-            array_push($cartid,$cartItem);
-            $quantity=$cartItem['quantity'];
-            $name=$cartItem['name'];
-            $order->transaction()->attach(['quantity'=>$quantity,'name'=>$name]);
-        }*/
+        if(isset($cart['discount']))
+        {
+            $restaurant_discount_amount += $cart['discount_type']=='percent'&&$cart['discount']>0?((($product_price + $total_addon_price - $restaurant_discount_amount) * $cart['discount'])/100):$cart['discount'];
+        }
+
+        $total_price = $product_price + $total_addon_price - $restaurant_discount_amount;
+        $tax = isset($cart['tax'])?$cart['tax']:$rest->tax;
+        $total_tax_amount= ($tax > 0)?(($total_price * $tax)/100):0;
+
+        try {
+            $order->restaurant_discount_amount= $restaurant_discount_amount;
+            $order->total_tax_amount= $total_tax_amount;
+            $order->order_amount = $total_price + $total_tax_amount + $order->delivery_charge;
+            
+            $order->save();
+
+            foreach ($order_details as $key => $item) {
+                $order_details[$key]['order_id'] = $order->id;
+            }
+            
+            OrderDetail::insert($order_details);
+            
+            session()->forget('cart');
+            
+            Toastr::success(__('Order placed successfully'));
+            
+            return redirect()->route('order');
+
+        } catch (\Exception $e) {
+            info($e);
+        }
+        Toastr::warning(__('Failed to place order'));
         
         return view('front.order',['Order' => $order],compact('order'));
         
@@ -675,7 +729,7 @@ class FrontController extends Controller
 
      public function order_history(Order $order)
      {
-         $order = Order::orderBy('created_at', 'DESC')->where('user_id',auth()->user()->id)->get();
+         $order = Order::with('details')->orderBy('created_at', 'DESC')->where('user_id',auth()->user()->id)->get();
          
          $itemfoods = Food::all();
 

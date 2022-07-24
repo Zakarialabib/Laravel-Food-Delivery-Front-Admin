@@ -7,42 +7,34 @@
         <div id="map" class="border border-t border-gray-500" style="height:180px; width:100%"></div>
         <div id="mapos"></div>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{\App\Models\BusinessSetting::where('key', 'map_api_key')->first()->value}}"></script>
 
-    <script type="text/javascript">
-        let map = null;
-        function initMap( center ) {
-          map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 4,
-             center: center,
-          });
-        }
-
-        function addMarker( $lat, $lng ) {
-
-            if( map == null )
-                initMap( {lat: $lat, lng: $lng} );
-            
-            new google.maps.Marker({
-                position: { lat: $lat, lng: $lng },
-                map,
-                title: "",
-            });
-        }
-    </script>
-
-
-
-    <section class="pb-60">
+    <section class="py-60">
         <div class="container">
-            <div class="flex flex-row">
-                <div class="lg:w-1/10 sm:w-full px-4">
-                    {{-- @if (app('request')->has('location')) --}}
+            <div class="row cuisine-dish-wrap">
+                <div class="col-lg-12 cuisine-col">
+                    <div class="card-header d-flex flex-wrap justify-content-between">
+                        <form id="search-form" class="header-item w-full">
+                            <!-- Search -->
+                            <div class="input-group input-group-merge input-group-flush">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="bx bx-search"></i>
+                                    </div>
+                                </div>
+                                <input id="datatableSearch" type="search" value="{{ $keyword ? $keyword : '' }}"
+                                    name="search" class="form-control" placeholder="{{ __('Search here') }}"
+                                    aria-label="{{ __('Search here') }}">
+                            </div>
+                            <!-- End Search -->
+                        </form>
+                    </div>
                     <h4 class="my-4">{{ __('Restaurants') }}</h4>
 
                     <div class="flex flex-wrap">
                         @forelse ($restaurants as $rest)
-                        <script type="text/javascript"> addMarker({{ $rest->latitude }}, {{ $rest->longitude }}); </script>
+                            <script type="text/javascript">
+                                addMarker({{ $rest->latitude }}, {{ $rest->longitude }});
+                            </script>
                             @if ($rest->status == 1)
                                 <div class="xl:w-1/3 px-4 lg:w-1/2 sm:w-full">
 
@@ -58,7 +50,8 @@
                                                 <em class="ribbon"></em>{{ _('Closed') }}
                                         @endif
                                         </span>
-                                        <div class="restaurant-image" style="background-image: url({{ asset('storage/app/public/restaurant/cover/' . $rest->cover_photo) }});
+                                        <div class="restaurant-image"
+                                            style="background-image: url({{ asset('storage/app/public/restaurant/cover/' . $rest->cover_photo) }});
                                     background-size: cover;height: 120px;">
                                         </div>
                                         <div class="card-body">
@@ -72,8 +65,7 @@
                                                         <span class="badge"><i class='bx bxs-star'></i> {{ $rest->rating }}</span>
                                                     @endif --}}
                                                 <span class="badge">{{ $rest->delivery_time }}</span>
-                                                <span
-                                                    class="badge">{{ $rest->opening_time->format('h:m') }}
+                                                <span class="badge">{{ $rest->opening_time->format('h:m') }}
                                                     /
                                                     {{ $rest->closeing_time->format('h:m') }}</span>
                                             </div>
@@ -81,7 +73,7 @@
                                     </a>
                                 </div>
                             @else
-                                <div class="col-lg-4 col-sm-6">
+                                <div class="lg:w-1/3 md:w-1/3 sm:w-1/2 px-4">
 
                                     <a href="{{ route('restaurant_details', $rest->id) }}"
                                         class="card restaurant-card unavailable">
@@ -95,7 +87,8 @@
                                                 <em class="ribbon"></em>{{ __('Closed') }}
                                             </span>
                                         @endif
-                                        <div class="restaurant-image" style="
+                                        <div class="restaurant-image"
+                                            style="
                                                         background-image: url('{{ $rest->cover_photo }}');
                                                       ">
                                         </div>
@@ -113,70 +106,12 @@
                             @endif
                         @empty
                             <div class="empty-status-div">
-                                <h4 class="mb-4">Sorry! We couldn't find any results</h4>
+                                <h4 class="mb-4">{{ __("Sorry! We couldn't find any results") }}</h4>
                             </div>
                         @endforelse
                     </div>
-                    {{-- @endif --}}
                     <div class="pt-3">
                         {{ $restaurants->links('layouts.tailwind') }}
-                    </div>
-                </div>
-                <div class="lg:w-1/2 sm:w-full px-4 mt-4 cart-col">
-                    <div class="my-2 px-4 flex sm:flex-row flex-col">
-                        <div class="mb-1 sm:mb-0">
-                            <div class="relative py-2">
-                                <p class="mt-2 text-sm leading-normal">{{ __('Results per page') }}</p>
-                                <x-select
-                                    class="appearance-none h-full rounded-l border block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                </x-select>
-                            </div>
-                            <div class="relative">
-                                <p class="mt-2 text-sm leading-normal">{{ __('Order by name') }}</p>
-                                <x-select
-                                    class="appearance-none h-full rounded-l border block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                    <option value="asc">{{ __('ASC') }}</option>
-                                    <option value="desc">{{ __('DESC') }}</option>
-                                </x-select>
-                            </div>
-                            <div class="relative">
-                                <p class="mt-2 text-sm leading-normal">{{ __('Order by filters') }}</p>
-                                <x-select
-                                    class="h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                                    <option value="price">{{ __('Price') }}</option>
-                                    <option value="status">{{ __('Status') }}</option>
-                                    <option value="created_at">{{ __('Created at') }}</option>
-                                    <option value="updated_at">{{ __('Updated at') }}</option>
-                                </x-select>
-                            </div>
-
-                            <div class="block relative">
-                                <p class="mt-2 text-sm leading-normal">{{ __('Search') }}</p>
-                                <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
-                                    <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
-                                        <path
-                                            d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
-                                        </path>
-                                    </svg>
-                                </span>
-                                <input id="search" type="text"
-                                    class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
-                                    autocomplete="off" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container my-4 px-4 flex flex-wrap">
-                        @foreach ($categories as $category)
-                            <div class="my-2 mx-2">
-                                <a class="leading-2 text-sm bg-red-500 hover:bg-white text-white hover:text-red-500 py-2 px-2 rounded"
-                                    href="#sub-cat2">
-                                    {{ $category['name'] }}
-                                </a>
-                            </div>
-                        @endforeach
                     </div>
                 </div>
             </div>
@@ -184,8 +119,10 @@
     </section>
 
 
-    @push('scripts')   
-
+    @push('scripts')
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key={{ \App\Models\BusinessSetting::where('key', 'map_api_key')->first()->value }}">
+        </script>
         <script type="text/javascript">
             function locationPopup() {
 
@@ -193,6 +130,48 @@
 
                 document.getElementById('location-popup').style.display = "none";
 
+            }
+
+            function set_category_filter(id) {
+                var nurl = new URL('{!! url()->full() !!}');
+                nurl.searchParams.set('category_id', id);
+                location.href = nurl;
+            }
+
+
+            $('#search-form').on('submit', function(e) {
+                e.preventDefault();
+                var keyword = $('#datatableSearch').val();
+                var nurl = new URL('{!! url()->full() !!}');
+                nurl.searchParams.set('keyword', keyword);
+                location.href = nurl;
+            });
+       
+            let map = null;
+
+            function initMap(center) {
+                map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 4,
+                    center: center,
+                });
+            }
+
+            function addMarker($lat, $lng) {
+
+                if (map == null)
+                    initMap({
+                        lat: $lat,
+                        lng: $lng
+                    });
+
+                new google.maps.Marker({
+                    position: {
+                        lat: $lat,
+                        lng: $lng
+                    },
+                    map,
+                    title: "",
+                });
             }
         </script>
     @endpush

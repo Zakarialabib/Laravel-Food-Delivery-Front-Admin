@@ -34,7 +34,6 @@ Route::get('quick-view', [FrontController::class, 'quick_view'])->name('quick-vi
 Route::get('quick-view-cart-item', [FrontController::class, 'quick_view_card_item'])->name('quick-view-cart-item');
 Route::post('variant_price', [FrontController::class, 'variant_price'])->name('variant_price');
 ///cart///
-Route::get('/cart2',[FrontController::class,'cart2'])->name('cart2');
 Route::get('/emptycart',[FrontController::class,'emptycart'])->name('emptycart');
 
 Route::get('/aboutus',[FrontController::class,'aboutus'])->name('aboutus');

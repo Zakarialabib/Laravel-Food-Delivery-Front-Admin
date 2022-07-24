@@ -9,6 +9,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "barryvdh/laravel-cors": "^2.0",
+        "barryvdh/laravel-dompdf": "^1.0",
         "brian2694/laravel-toastr": "^5.54",
         "doctrine/dbal": "^3.3",
         "fideloper/proxy": "^4.4",

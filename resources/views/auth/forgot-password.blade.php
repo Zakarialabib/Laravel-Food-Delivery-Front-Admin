@@ -1,4 +1,5 @@
 <x-app-layout>
+    @section('title', __('Recover your password'))
     <div class="search-nav">
         <div class="container">
             <h3 class="text-center">{{ __('Password forgotten?') }}</h3>

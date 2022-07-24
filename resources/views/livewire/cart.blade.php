@@ -15,7 +15,7 @@
                         $product_subtotal = $details['price'] * $details['quantity'];
                         $subtotal = 0;
                         $addon_price = 0;
-                        $tax = \App\CentralLogics\Helpers::get_restaurant_data()->tax;
+                        // $tax = \App\CentralLogics\Helpers::get_restaurant_data()->tax;
                         $discount = 0;
                         $discount_type = 'amount';
                         $discount_on_product = 0;
@@ -24,14 +24,12 @@
                     <div class="cart-body">
                         <div class="cart-item">
                             <div class="details" class="media align-items-center cursor-pointer"
-                                onclick="quickViewCartItem({{ $details['id'] }}, {{ $key }})">
-                                <img class="avatar avatar-sm mr-1"
-                                    src="{{ asset('storage/app/public/product') }}/{{ $details['image'] }}"
-                                    onerror="this.src='{{ asset('public/assets/admin/img/160x160/img2.jpg') }}'"
-                                    alt="{{ $details['name'] }} image">
+                                onclick="quickViewCartItem({{ $details['id'] }}, 
+                                
+                                )">
                                 <div class="media-body">
                                     <h5 class="text-hover-primary mb-0">{{ Str::limit($details['name'], 10) }}</h5>
-                                    <small>{{ Str::limit($details['variant'], 20) }}</small>
+                                    <small>{{ Str::limit($details['variant'], 30) }}</small>
                                 </div>
                             </div>
                             <div class="price">
@@ -62,7 +60,7 @@
                 $total = $subtotal + $addon_price;
                 $discount_amount = $discount_type == 'percent' && $discount > 0 ? (($total - $discount_on_product) * $discount) / 100 : $discount;
                 $total -= $discount_amount + $discount_on_product;
-                $total_tax_amount = $tax > 0 ? ($total * $tax) / 100 : 0;
+                // $total_tax_amount = $tax > 0 ? ($total * $tax) / 100 : 0;
                 @endphp
                 <ul>
                     <li>

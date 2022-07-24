@@ -16,24 +16,24 @@
                     <div class="col-lg-8 cuisine-col">
                         <div class="form-row">
                             <div class="form-group col-lg-6">
-                                <h6 class="checkout-title">{{__('Delivery Type')}}</h6>
+                                <h6 class="checkout-title">{{ __('Delivery Type') }}</h6>
                                 <select class="form-control " name="delivery_method" id="select"
                                     onchange="status(this)">
-                                    <option value="delivery" selected="delivery">{{__('Delivery')}}</option>
-                                    <option value="pickup">{{__('Pickup')}}</option>
+                                    <option value="delivery" selected="delivery">{{ __('Delivery') }}</option>
+                                    <option value="pickup">{{ __('Pickup') }}</option>
                                 </select>
                             </div>
-                        </div>
-                        <h6 class="checkout-title">{{__('Payment')}}</h6>
-                        <div class="form-group col-lg-12">
-                            <div class="custom-radio">
-                                <input type="radio" id="radio1" name="payment-type" checked="checked">
-                                <label for="radio1">{{__('Pay via Cash')}}</label>
-                                <img src="{{ asset('assets/images/cash.png') }}" alt="Icon">
+                            <div class="form-group col-lg-6">
+                                <h6 class="checkout-title">{{ __('Payment methods') }}</h6>
+                                <div class="custom-radio">
+                                    <input type="radio" id="radio1" name="payment-type" checked="checked">
+                                    <label for="radio1">{{ __('Pay via Cash') }}</label>
+                                    <i class='bx bxs-dollar-circle'></i>
+                                </div>
                             </div>
                         </div>
                         <div class="checkout-delivery-address food-item-cards-wrap" id="sub1">
-                            <h6 class="checkout-title">{{__('Delivery Address')}}</h6>
+                            <h6 class="checkout-title">{{ __('Delivery Address') }}</h6>
                             <div class="row">
                                 @foreach ($address as $add)
                                     <div class="col-xl-6">
@@ -53,58 +53,43 @@
                                                 @if (!session('address'))
                                                     <button class="btn btn-primary btn-sm"><a
                                                             href="{{ route('addressStore', $add->id) }} "
-                                                            style="color:white">{{__('Deliver here')}}</a></button>
+                                                            style="color:white">{{ __('Deliver here') }}</a></button>
                                                 @else
                                                     <button class="btn btn-primary btn-sm"><a
                                                             href="{{ route('addressStore', $add->id) }} "
-                                                            style="color:white">{{__('Delivered here')}}</a></button>
+                                                            style="color:white">{{ __('Delivered here') }}</a></button>
                                                 @endif
                                                 <button type="button" class="btn btn-outline-primary btn-sm"
                                                     id="edit-item" data-toggle="modal"
                                                     data-target="#exampleModal{{ $add->id }}">
-                                                    {{__('Edit')}}</button> {{ session()->get('location') }}
+                                                    {{ __('Edit') }}</button> {{ session()->get('location') }}
                                                 <button class="btn btn-outline-primary btn-sm">
                                                     <a href="{{ route('address_destroy', $add->id) }}">
-                                                        {{__('Delete')}}</a></button>
+                                                        {{ __('Delete') }}</a></button>
 
                                             </div>
                                         </div>
                                     </div>
 
-                                    {{--  <div class="col-xl-6">
-                                <div class="card address-card">
-                                    <div class="card-body unavailable">
-                                        <div class="delivery ">
-                                            <i class='bx bxs-x-circle'></i>
-                                            <h5 class="card-title">{{ $add->address_type }}</h5>
-                                        </div>
-                                        <p class="card-text">
-                                           {{ $add->address }}
-                                        </p>
-                                        <button class="btn btn-outline-primary btn-sm">{{__('Does not deliver here')}}</button>
-                                    </div>
-                                </div>
-                            </div> --}}
                                 @endforeach
 
                             </div>
 
                             <button type="button" class="btn btn-outline-primary mb-lg-auto mb-4" data-toggle="modal"
-                                data-target="#exampleModal">{{__('Add New Address')}}</button>
+                                data-target="#exampleModal">{{ __('Add New Address') }}</button>
 
                         </div>
 
                         @if ('delvery_method' != 'delivery')
                             <div class="checkout-delivery-address" id="pick1">
-                                <h6 class="checkout-title">{{__('Pick up')}}</h6>
+                                <h6 class="checkout-title">{{ __('Pick up') }}</h6>
 
                                 @if (session('restaurant'))
-                                    <p>{{"This is a Pickup order. You'll need to go to"}}
-                                        <strong>{{ session('restaurant')['name'] }}</strong> {{__('to
-                                        pick up this order.
-                                        Pick up at')}}
+                                    <p>{{ "This is a Pickup order. You'll need to go to" }}
+                                        <strong>{{ session('restaurant')['name'] }}</strong>
+                                        {{ __('To pick up this order. Pick up at') }}
                                         .{{ session('restaurant')['addess'] }}
-                                       </strong>
+                                        </strong>
                                     </p>
                                 @endif
 
@@ -114,7 +99,7 @@
                     <div class="col-lg-4 cart-col">
                         <div class="cart d-none d-md-block">
                             <div class="cart-head">
-                                <span>{{__('Your order')}}</span>
+                                <span>{{ __('Your order') }}</span>
                             </div>
                             @php $total = 0 @endphp
                             @if (session('cart'))
@@ -131,8 +116,9 @@
 
                                             </div>
                                             <div class="price">
-                                                <h6>${{ $total }}.00</h6>
-
+                                                <h6>
+                                                    {{ \App\CentralLogics\Helpers::format_currency($total) }}
+                                                </h6>
                                             </div>
                                         </div>
 
@@ -141,43 +127,55 @@
                             @endif
                             <div class="cart-footer">
                                 @php $total = 0 @endphp
-                                @if( session('cart') )
-                                @foreach (session('cart') as $id => $details)
-                                    @php $total += $details['price'] * $details['quantity'] @endphp
-                                @endforeach
-                                <ul>
-                                    <li>
-                                        <h5>
-                                            <span>{{__('Subtotal')}}</span>
-                                            <span class="float-right">${{ $total }}.00</span>
-                                        </h5>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <span>{{__('Delivery fee')}}</span>
-                                            <span class="float-right">$00.00</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <span>{{__('Tax')}}</span> <span class="float-right">$00.00</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <h4>
-                                            <span>{{__('Total')}}</span>
-                                            <span class="float-right">${{ $total }}.00</span>
-                                        </h4>
+                                @if (session('cart'))
+                                    @foreach (session('cart') as $id => $details)
+                                        @php $total += $details['price'] * $details['quantity'] @endphp
+                                    @endforeach
+                                    <ul>
+                                        <li>
+                                            <h5>
+                                                <span>{{ __('Subtotal') }}</span>
+                                                <span class="float-right">
+                                                    {{ \App\CentralLogics\Helpers::format_currency($total) }}
+                                                </span>
+                                            </h5>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span>{{ __('Delivery fee') }}</span>
+                                                <span class="float-right">
+                                                    {{ \App\CentralLogics\Helpers::format_currency(session('restaurant')['delivery_charge']) }}
+                                                </span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span>{{ __('Tax') }}</span> <span class="float-right">
+                                                    $00.00
+                                                </span>
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <h4>
+                                                <span>{{ __('Total') }}</span>
+                                                <span class="float-right">
+                                                    {{ \App\CentralLogics\Helpers::format_currency($total) }}
+                                                </span>
+                                            </h4>
 
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <span>{{__('Please keep the exact change for ')}}<b>${{ $total }}</b> {{__('handy to help us serve you better')}}.</span>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                <span>{{ __('Please keep the exact change for ') }}<b>
+                                                        {{ \App\CentralLogics\Helpers::format_currency($total) }}
+                                                    </b>
+                                                    {{ __('handy to help us serve you better') }}.</span>
 
-                                        </p>
-                                    </li>
-                                    <button class="btn btn-primary mt-3 w-100" onclick="window.location.href='{{ route('order') }}';">{{__('Checkout')}}</button>
-                                </ul>
+                                            </p>
+                                        </li>
+                                        <button class="btn btn-primary mt-3 w-100"
+                                            onclick="window.location.href='{{ route('order') }}';">{{ __('Order now') }}</button>
+                                    </ul>
                                 @endif
                             </div>
                         </div>
@@ -229,13 +227,16 @@
                                 <div id="map"></div>
                             </div>
                             <div class="form-group col-lg-6">
-                                <input type="text" name="contact_person_name" class="form-control" placeholder="{{ __('Contact person name') }}">
+                                <input type="text" name="contact_person_name" class="form-control"
+                                    placeholder="{{ __('Contact person name') }}">
                                 @if ($errors->has('contact_person_name'))
                                     <span class="text-danger">{{ $errors->first('contact_person_name') }}</span>
                                 @endif
                             </div>
                             <div class="form-group col-lg-6">
-                                <input id="contact_person_number" type="phone" required name="contact_person_number" class="form-control" placeholder="{{ __('Ex : 017********') }}">
+                                <input id="contact_person_number" type="phone" required
+                                    name="contact_person_number" class="form-control"
+                                    placeholder="{{ __('Ex : 017********') }}">
                                 @if ($errors->has('contact_person_name'))
                                     <span class="text-danger">{{ $errors->first('contact_person_name') }}</span>
                                 @endif
@@ -264,13 +265,13 @@
                                     <span class="text-danger">{{ $errors->first('address_type') }}</span>
                                 @endif
                             </div>
-                           
+
                             <div class="form-group col-md-6 mb-md-0 d-none d-md-block">
                                 <button type="button" class="btn btn-outline-primary w-100" data-dismiss="modal"
-                                    aria-label="Close">{{__('Close')}}</button>
+                                    aria-label="Close">{{ __('Close') }}</button>
                             </div>
                             <div class="form-group col-md-6 mb-0">
-                                <button class="btn btn-secondary w-100">{{__('Save changes')}}</button>
+                                <button class="btn btn-secondary w-100">{{ __('Save changes') }}</button>
                             </div>
 
                         </div>
@@ -326,7 +327,10 @@
                                         @enderror
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <input id="contact_person_number" type="phone" required name="contact_person_number" class="form-control" value="{{ $value->contact_person_number }}" placeholder="{{ __('Ex : 017********') }}">
+                                    <input id="contact_person_number" type="phone" required
+                                        name="contact_person_number" class="form-control"
+                                        value="{{ $value->contact_person_number }}"
+                                        placeholder="{{ __('Ex : 017********') }}">
                                     @error('contact_person_number')
                                         <p style="color:red">{{ $errors->first('contact_person_number') }}
                                         @enderror
@@ -348,7 +352,8 @@
                                             {{ __('Home') }}
                                         </option>
 
-                                        <option value="Office" {{ $value->home === __('Office') ? 'selected' : '' }}>
+                                        <option value="Office"
+                                            {{ $value->home === __('Office') ? 'selected' : '' }}>
                                             {{ __('Office') }}</option>
 
                                         <option value="Other" {{ $value->home === __('Other') ? 'selected' : '' }}>
@@ -359,10 +364,10 @@
 
                                 <div class="form-group col-md-6 mb-md-0 d-none d-md-block">
                                     <button type="button" class="btn btn-outline-primary w-100" data-dismiss="modal"
-                                        aria-label="Close">{{__('Close')}}</button>
+                                        aria-label="Close">{{ __('Close') }}</button>
                                 </div>
                                 <div class="form-group col-md-6 mb-0">
-                                    <button class="btn btn-secondary w-100">{{__('Save')}}</button>
+                                    <button class="btn btn-secondary w-100">{{ __('Save') }}</button>
                                 </div>
 
                             </div>
@@ -393,4 +398,4 @@
             }
         </script>
     @endpush
-    </x-app-layout>
+</x-app-layout>

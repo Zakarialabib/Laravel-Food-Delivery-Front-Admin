@@ -1,4 +1,5 @@
 <x-app-layout>
+    @section('title', __('Login to your account'))
     <div class="flex flex-wrap">
     <div class="lg:w-1/2 px-4 bg-zinc-100 ">
     <div class="search-nav">

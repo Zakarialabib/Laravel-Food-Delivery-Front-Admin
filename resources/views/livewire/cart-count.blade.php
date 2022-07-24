@@ -15,7 +15,7 @@
 
     @else
 
-        <a class="nav-link" href="{{route('cart2')}}">
+        <a class="nav-link" href="{{route('cart')}}">
 
         <span class="cart-badge-wrap">
 
